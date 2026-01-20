@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch - Ghar Ke Paas Job, 24 Hours Mein</title>
+    <meta name="description" content="Get hired in 24 hours. Swipe right, get called, start working.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #111827;
+            background: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transform: rotate(-3deg);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .logo-letter {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            line-height: 1;
+            transform: rotate(3deg);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .logo-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .tagline-emoji {
+            font-size: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #111827;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 1.75rem;
+            color: #4b5563;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 80px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Decorative circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+
+        .circle-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            top: -300px;
+            right: -300px;
+        }
+
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #14b8a6, #10b981);
+            bottom: -200px;
+            left: -200px;
+        }
+
+        /* Success Stories */
+        .stories {
+            padding: 6rem 2rem;
+            background: #f9fafb;
+        }
+
+        .stories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stories-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            color: #111827;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .story {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .story:hover {
+            border-color: #10b981;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+        }
+
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.75rem;
+        }
+
+        .story-info h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+
+        .story-role {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        .story-text {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-result {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .result-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            padding: 6rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: #111827;
+        }
+
+        .footer-note {
+            color: #6b7280;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .stats {
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .cta-button {
+                padding: 1.25rem 2.5rem;
+                font-size: 1.25rem;
+            }
+
+            .stories-title,
+            .footer-cta h2 {
+                font-size: 2rem;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .circle-1,
+            .circle-2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        
+        <div class="hero-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="logo-letter">S</div>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Switch</span>
+                    <span class="logo-subtitle">Jobs Near You</span>
+                </div>
+            </div>
+
+            <div class="tagline">
+                <span class="tagline-emoji">💡</span>
+                <span>Apni Life Ka Switch ON Karo</span>
+                <span class="tagline-emoji">🚀</span>
+            </div>
+
+            <h1>
+                <span class="gradient-text">Ghar ke paas job,</span>
+                Switch pe click!
+            </h1>
+
+            <p class="subtitle">Swipe karo, job pao, life badlo. Bas itna hi!</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Got hired</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">18hrs</span>
+                    <span class="stat-label">Avg time</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Companies</span>
+                </div>
+            </div>
+
+            <a href="#download" class="cta-button">Switch ON Karo - Free Download</a>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="stories">
+        <div class="stories-container">
+            <h2 class="stories-title">Real People. Real Results.</h2>
+
+            <div class="stories-grid">
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">R</div>
+                        <div class="story-info">
+                            <h3>Rajesh Kumar</h3>
+                            <p class="story-role">Delivery Partner, Swiggy</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"मैंने कल रात apply किया था। आज सुबह phone आया, दोपहर को interview हुआ, शाम को joining! 18 घंटे में पूरा process complete हो गया। Switch is amazing!"</p>
+                    <div class="story-result">
+                        <div class="result-label">Now earning</div>
+                        <div class="result-value">₹52,000/month</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">S</div>
+                        <div class="story-info">
+                            <h3>Suresh Singh</h3>
+                            <p class="story-role">Security Guard, Securitas</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"Cyber Hub में job मिली, ghar se sirf 2km दूर! पहले मैं Noida जाता था 25km. अब petrol, time और thakaan तीनों बच रहे हैं। Family के साथ ज्यादा time मिलता है।"</p>
+                    <div class="story-result">
+                        <div class="result-label">Hired in</div>
+                        <div class="result-value">2 Days</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">P</div>
+                        <div class="story-info">
+                            <h3>Priya Sharma</h3>
+                            <p class="story-role">Store Assistant, D-Mart</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"Ladies ke liye process bahut safe hai। Phone pe proper information di, location share kiya, aur next day interview fix ho gaya। अब ₹22K salary है और Sundays off भी मिलता है!"</p>
+                    <div class="story-result">
+                        <div class="result-label">Got hired</div>
+                        <div class="result-value">Next Day</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">A</div>
+                        <div class="story-info">
+                            <h3>Amit Verma</h3>
+                            <p class="story-role">Warehouse Packer, Amazon</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"Mujhe 10th pass ke liye achhi job nahi mil rahi thi। Switch pe dekha, right swipe kiya, 3 घंटे में call आया। अब Amazon में kaam kar raha hun with night allowance और PF benefits!"</p>
+                    <div class="story-result">
+                        <div class="result-label">Earning</div>
+                        <div class="result-value">₹28,000/month</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">M</div>
+                        <div class="story-info">
+                            <h3>Mukesh Yadav</h3>
+                            <p class="story-role">Delivery Executive, Blinkit</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"Switch pe 5 jobs के लिए apply किया। सब companies ने call किया! मैंने सबसे अच्छी salary wali choose kar ली। अब flexible timing है और weekends pe extra कमाता हूं।"</p>
+                    <div class="story-result">
+                        <div class="result-label">Monthly income</div>
+                        <div class="result-value">₹65,000</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">N</div>
+                        <div class="story-info">
+                            <h3>Neha Gupta</h3>
+                            <p class="story-role">Receptionist, Salon</p>
+                        </div>
+                    </div>
+                    <p class="story-text">"12th pass ke baad job dhund rahi thi। Switch download kiya, salon receptionist का job dekha sector 26 में। Apply kiya, same day interview, next day joining। AC office aur अच्छा environment!"</p>
+                    <div class="story-result">
+                        <div class="result-label">Started in</div>
+                        <div class="result-value">36 Hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Abhi Switch Karo!</h2>
+        <a href="#download" class="cta-button">Life Ka Switch ON Karo</a>
+        <p class="footer-note">5000+ log switch kar chuke hain. Ab aapki baari! ⚡</p>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+    </script>
+</body>
+</html>
