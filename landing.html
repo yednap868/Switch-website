@@ -374,6 +374,34 @@
                 display: none;
             }
         }
+
+        .phone-fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #14b8a6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .phone-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .phone-fab svg {
+            width: 28px;
+            height: 28px;
+        }
     </style>
 </head>
 <body>
@@ -530,6 +558,12 @@
         <a href="#download" class="cta-button">Life Ka Switch ON Karo</a>
         <p class="footer-note">5000+ log switch kar chuke hain. Ab aapki baari! ⚡</p>
     </section>
+
+    <a href="tel:+918037565248" class="phone-fab" aria-label="Call us">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+    </a>
 
     <script>
         // Smooth scroll
