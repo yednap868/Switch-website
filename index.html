@@ -3,1533 +3,1115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switch - Ghar Ke Paas Job | Hire Trained Workers</title>
+  <title>Switch — India Ka Fastest Job Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #059669;
-      --primary-dark: #047857;
-      --primary-light: #D1FAE5;
-      --primary-lighter: #ECFDF5;
-      --accent: #10B981;
-      --black: #111827;
-      --gray-900: #1F2937;
-      --gray-700: #374151;
-      --gray-600: #4B5563;
-      --gray-500: #6B7280;
-      --gray-400: #9CA3AF;
-      --gray-200: #E5E7EB;
-      --gray-100: #F3F4F6;
-      --gray-50: #F9FAFB;
-      --white: #FFFFFF;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    .bg-pattern {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 20% 0%, var(--primary-lighter) 0%, transparent 50%),
-        radial-gradient(circle at 80% 100%, var(--primary-lighter) 0%, transparent 50%);
-      opacity: 0.7;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 2rem;
-      position: relative;
-      z-index: 10;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 1.375rem;
-      color: var(--black);
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: white;
-      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.25);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-pill {
-      padding: 0.625rem 1.25rem;
-      border-radius: 100px;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .nav-pill-worker {
-      color: var(--gray-700);
-      background: var(--gray-100);
-    }
-
-    .nav-pill-worker:hover {
-      background: var(--gray-200);
-    }
-
-    .nav-pill-business {
-      color: white;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      box-shadow: 0 2px 12px rgba(5, 150, 105, 0.3);
-    }
-
-    .nav-pill-business:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
-    }
-
-    @media (max-width: 500px) {
-      .navbar {
-        padding: 1rem 1.25rem;
-      }
-      .nav-pill {
-        padding: 0.5rem 0.875rem;
-        font-size: 0.8125rem;
-      }
-    }
-
-    .hero {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 6rem;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.625rem;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 0.625rem 1.25rem;
-      border-radius: 100px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 10vw, 4rem);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.04em;
-      color: var(--gray-900);
-      animation: fadeInUp 0.6s ease-out 0.1s both;
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero > p {
-      font-size: 1.25rem;
-      color: var(--gray-600);
-      margin-bottom: 3rem;
-      animation: fadeInUp 0.6s ease-out 0.2s both;
-    }
-
-    .cta-section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 360px;
-      margin: 0 auto;
-      animation: fadeInUp 0.6s ease-out 0.3s both;
-    }
-
-    .call-btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.875rem;
-      padding: 1.25rem 2rem;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      color: white;
-      font-size: 1.125rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 24px rgba(5, 150, 105, 0.3);
-      overflow: hidden;
-    }
-
-    .call-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .call-btn:hover::before {
-      left: 100%;
-    }
-
-    .call-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(5, 150, 105, 0.4);
-    }
-
-    .call-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .call-btn svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .secondary-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.625rem;
-      padding: 1.125rem 2rem;
-      background: var(--white);
-      border: 1.5px solid var(--gray-200);
-      color: var(--gray-700);
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .secondary-btn:hover {
-      border-color: var(--gray-400);
-      background: var(--gray-50);
-    }
-
-    .secondary-btn svg {
-      width: 20px;
-      height: 20px;
-      color: var(--gray-500);
-    }
-
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 0.875rem;
-      margin-top: 4rem;
-      animation: fadeInUp 0.6s ease-out 0.4s both;
-    }
-
-    .stat {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      padding: 1.25rem 1.5rem;
-      border-radius: 16px;
-      text-align: center;
-      flex: 1;
-      max-width: 130px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .stat:hover {
-      border-color: var(--primary-light);
-      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .stat-value {
-      font-size: 1.625rem;
-      font-weight: 800;
-      color: var(--gray-900);
-    }
-
-    .stat-label {
-      font-size: 0.8125rem;
-      color: var(--gray-500);
-      margin-top: 0.25rem;
-      font-weight: 500;
-    }
-
-    .testimonials {
-      padding: 6rem 1.5rem;
-      background: var(--gray-50);
-      position: relative;
-      z-index: 10;
-    }
-
-    .testimonials-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.03em;
-      color: var(--gray-900);
-    }
-
-    .section-header p {
-      color: var(--gray-500);
-      font-size: 1.0625rem;
-    }
-
-    .section-header .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 0.375rem 1rem;
-      border-radius: 100px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-
-    @media (max-width: 700px) {
-      .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .testimonial-card:hover {
-      border-color: var(--primary-light);
-      box-shadow: 0 8px 32px rgba(5, 150, 105, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .testimonial-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .testimonial-avatar {
-      width: 52px;
-      height: 52px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.125rem;
-      color: white;
-      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
-    }
-
-    .testimonial-name {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--gray-900);
-    }
-
-    .testimonial-role {
-      font-size: 0.875rem;
-      color: var(--gray-500);
-    }
-
-    .testimonial-quote {
-      font-size: 1rem;
-      color: var(--gray-600);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .testimonial-result {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 0.625rem 1rem;
-      border-radius: 10px;
-      font-size: 0.9375rem;
-      font-weight: 700;
-    }
-
-    .testimonial-result svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* ─── Worker Journey Section ─── */
-    .worker-journey {
-      padding: 6rem 1.5rem;
-      background: var(--white);
-      position: relative;
-      z-index: 10;
-    }
-
-    .worker-journey-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .steps-flow {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .steps-flow {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .steps-flow {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .step-card {
-      background: var(--white);
-      border: 1.5px solid var(--gray-200);
-      border-radius: 20px;
-      padding: 1.75rem;
-      position: relative;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .step-card:hover {
-      border-color: var(--primary-light);
-      box-shadow: 0 8px 28px rgba(5, 150, 105, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .step-number {
-      width: 28px;
-      height: 28px;
-      background: var(--primary-lighter);
-      color: var(--primary-dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .step-icon {
-      font-size: 2rem;
-      margin-bottom: 0.875rem;
-      display: block;
-    }
-
-    .step-title {
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-desc {
-      font-size: 0.9375rem;
-      color: var(--gray-600);
-      line-height: 1.65;
-    }
-
-    .step-highlight {
-      display: inline-block;
-      margin-top: 0.875rem;
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      padding: 0.375rem 0.875rem;
-      border-radius: 8px;
-      font-size: 0.8125rem;
-      font-weight: 700;
-    }
-
-    .jyoti-step-card {
-      background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-      border-color: var(--primary-light);
-    }
-
-    .jyoti-step-card:hover {
-      box-shadow: 0 8px 28px rgba(5, 150, 105, 0.2);
-    }
-
-    /* ─── Hiring Section ─── */
-    .hiring {
-      padding: 6rem 1.5rem;
-      background: var(--gray-900);
-      position: relative;
-      z-index: 10;
-      overflow: hidden;
-    }
-
-    .hiring::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hiring::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -80px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hiring-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hiring .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(16,185,129,0.15);
-      color: var(--accent);
-      padding: 0.375rem 1rem;
-      border-radius: 100px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .hiring .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .hiring .section-header h2 {
-      color: var(--white);
-    }
-
-    .hiring .section-header p {
-      color: var(--gray-400);
-    }
-
-    .hiring-flow {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .hiring-flow {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .hiring-flow {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .hiring-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-    }
-
-    .hiring-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(16,185,129,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(16,185,129,0.1);
-    }
-
-    .hiring-card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .hiring-card-step {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-
-    .hiring-card-title {
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.625rem;
-    }
-
-    .hiring-card-desc {
-      font-size: 0.9375rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.65;
-    }
-
-    .hiring-card-tag {
-      display: inline-block;
-      margin-top: 1rem;
-      background: rgba(16,185,129,0.15);
-      color: var(--accent);
-      padding: 0.375rem 0.875rem;
-      border-radius: 8px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-    }
-
-    .hiring-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 2.5rem 0;
-    }
-
-    .hiring-divider-line {
-      flex: 1;
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .hiring-divider-text {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.4);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .manager-flow {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .manager-flow {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .manager-card {
-      background: rgba(16,185,129,0.08);
-      border: 1px solid rgba(16,185,129,0.2);
-      border-radius: 16px;
-      padding: 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .manager-card:hover {
-      background: rgba(16,185,129,0.12);
-      border-color: rgba(16,185,129,0.35);
-    }
-
-    .manager-card-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .manager-card-title {
-      font-size: 0.9375rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.375rem;
-    }
-
-    .manager-card-desc {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-    }
-
-    .hiring-cta {
-      text-align: center;
-      margin-top: 3.5rem;
-    }
-
-    .hiring-cta p {
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 1.5rem;
-      font-size: 1.0625rem;
-    }
-
-    .hire-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.875rem;
-      padding: 1.25rem 2.5rem;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      color: white;
-      font-size: 1.125rem;
-      font-weight: 700;
-      border-radius: 16px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 24px rgba(16,185,129,0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hire-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .hire-btn:hover::before {
-      left: 100%;
-    }
-
-    .hire-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 36px rgba(16,185,129,0.45);
-    }
-
-    .hire-btn svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    /* ─── Bottom CTA ─── */
-    .bottom-cta {
-      padding: 5rem 1.5rem 6rem;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      background: var(--white);
-    }
-
-    .bottom-cta-inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .bottom-cta h2 {
-      font-size: clamp(2rem, 6vw, 2.75rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-      color: var(--gray-900);
-    }
-
-    .bottom-cta p {
-      color: var(--gray-500);
-      margin-bottom: 2.5rem;
-      font-size: 1.125rem;
-    }
-
-    .bottom-cta .cta-section {
-      margin: 0 auto;
-      animation: none;
-    }
-
-    /* ─── Floating Widget ─── */
-    .floating-widget {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
-    }
-
-    .jyoti-bubble {
-      background: var(--white);
-      border-radius: 20px;
-      border-bottom-right-radius: 6px;
-      padding: 1rem 1.25rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0,0,0,0.08);
-      max-width: 280px;
-      animation: bubbleIn 0.5s ease-out 1.2s both;
-      position: relative;
-    }
-
-    @keyframes bubbleIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .jyoti-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.625rem;
-    }
-
-    .jyoti-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.25rem;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      color: white;
-      border: 2px solid var(--primary-light);
-      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
-    }
-
-    .jyoti-avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .jyoti-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .jyoti-name {
-      font-weight: 700;
-      font-size: 0.9375rem;
-      color: var(--gray-900);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .jyoti-badge {
-      font-size: 0.625rem;
-      background: var(--primary);
-      color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .jyoti-status {
-      font-size: 0.75rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .jyoti-status::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: statusPulse 2s infinite;
-    }
-
-    @keyframes statusPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .jyoti-message {
-      font-size: 0.9375rem;
-      color: var(--gray-700);
-      line-height: 1.5;
-    }
-
-    .bubble-close {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 20px;
-      height: 20px;
-      border: none;
-      background: var(--gray-100);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .jyoti-bubble:hover .bubble-close {
-      opacity: 1;
-    }
-
-    .bubble-close svg {
-      width: 12px;
-      height: 12px;
-      color: var(--gray-500);
-    }
-
-    .floating-call-btn {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.4);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      animation: floatIn 0.4s ease-out 0.5s both;
-      position: relative;
-    }
-
-    .floating-call-btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 32px rgba(5, 150, 105, 0.5);
-    }
-
-    .floating-call-btn:active {
-      transform: scale(1.02);
-    }
-
-    .floating-call-btn svg {
-      width: 28px;
-      height: 28px;
-      color: white;
-    }
-
-    @keyframes floatIn {
-      from {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .floating-call-btn::before {
-      content: '';
-      position: absolute;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--primary);
-      opacity: 0;
-      animation: pulseRing 2s ease-out infinite;
-    }
-
-    @keyframes pulseRing {
-      0% {
-        transform: scale(1);
-        opacity: 0.4;
-      }
-      100% {
-        transform: scale(1.6);
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .floating-widget {
-        bottom: 100px;
-        right: 16px;
-      }
-
-      .jyoti-bubble {
-        max-width: 240px;
-        padding: 0.875rem 1rem;
-      }
-
-      .jyoti-avatar {
-        width: 40px;
-        height: 40px;
-      }
-
-      .jyoti-message {
-        font-size: 0.875rem;
-      }
-
-      .floating-call-btn {
-        width: 56px;
-        height: 56px;
-      }
-
-      .floating-call-btn::before {
-        width: 56px;
-        height: 56px;
-      }
-
-      .floating-call-btn svg {
-        width: 24px;
-        height: 24px;
-      }
-    }
-
-    .sticky-call {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 1rem 1.5rem;
-      padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid var(--gray-200);
-      z-index: 99;
-    }
-
-    @media (max-width: 640px) {
-      .sticky-call {
-        display: block;
-      }
-
-      .bottom-cta {
-        padding-bottom: 9rem;
-      }
-
-      .stats {
-        gap: 0.625rem;
-      }
-
-      .stat {
-        padding: 1rem;
-      }
-
-      .stat-value {
-        font-size: 1.375rem;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.25rem, 9vw, 3.5rem);
-      }
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem 1.5rem;
-      color: var(--gray-400);
-      font-size: 0.875rem;
-      position: relative;
-      z-index: 10;
-      background: var(--gray-50);
-      border-top: 1px solid var(--gray-200);
-    }
-
-    @media (max-width: 640px) {
-      .footer {
-        padding-bottom: 7rem;
-      }
+      --bg: #060608;
+      --bg2: #0c0c10;
+      --green: #00e87b;
+      --green-dim: rgba(0,232,123,0.12);
+      --green-glow: rgba(0,232,123,0.25);
+      --white: #ffffff;
+      --off: rgba(255,255,255,0.65);
+      --muted: rgba(255,255,255,0.35);
+      --card: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.08);
+      --card-hover: rgba(255,255,255,0.07);
+      --radius: 20px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);
+      color:var(--white);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ─── BACKGROUND ─── */
+    .bg-wrap{
+      position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;
+    }
+    .orb{
+      position:absolute;border-radius:50%;filter:blur(90px);opacity:0.55;
+    }
+    .orb-1{
+      width:700px;height:700px;
+      background:radial-gradient(circle,rgba(0,232,123,0.35) 0%,transparent 70%);
+      top:-200px;left:-200px;
+      animation:drift1 22s ease-in-out infinite alternate;
+    }
+    .orb-2{
+      width:500px;height:500px;
+      background:radial-gradient(circle,rgba(0,180,255,0.2) 0%,transparent 70%);
+      top:40%;right:-150px;
+      animation:drift2 28s ease-in-out infinite alternate;
+    }
+    .orb-3{
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(120,0,255,0.15) 0%,transparent 70%);
+      bottom:-100px;left:30%;
+      animation:drift3 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(180px,120px) scale(1.15)}}
+    @keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-120px,80px) scale(1.1)}}
+    @keyframes drift3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,-100px) scale(1.2)}}
+
+    .grid-overlay{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+      background-size:64px 64px;
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:2}
+
+    /* ─── NAV ─── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:1.125rem 2rem;
+      display:flex;align-items:center;justify-content:space-between;
+      background:rgba(6,6,8,0.7);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      transition:background 0.3s;
+    }
+    .nav-logo{
+      display:flex;align-items:center;gap:0.75rem;
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;font-size:1.25rem;color:var(--white);
+      text-decoration:none;letter-spacing:-0.02em;
+    }
+    .nav-logo-icon{
+      width:36px;height:36px;border-radius:10px;
+      background:linear-gradient(135deg,var(--green),#00b860);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;font-size:1rem;color:#000;
+      box-shadow:0 0 20px rgba(0,232,123,0.4);
+    }
+    .nav-pills{
+      display:flex;align-items:center;gap:0.375rem;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:4px;border-radius:100px;
+    }
+    .nav-pill{
+      padding:0.5rem 1.125rem;border-radius:100px;
+      font-size:0.875rem;font-weight:600;
+      text-decoration:none;transition:all 0.25s;
+      color:var(--muted);
+    }
+    .nav-pill:hover{color:var(--white);background:rgba(255,255,255,0.07)}
+    .nav-pill.active{background:var(--green);color:#000}
+    .nav-cta{
+      display:flex;align-items:center;gap:0.625rem;
+      padding:0.625rem 1.375rem;
+      background:var(--green);color:#000;
+      font-size:0.875rem;font-weight:700;
+      border-radius:100px;text-decoration:none;
+      transition:all 0.3s;
+      box-shadow:0 0 24px rgba(0,232,123,0.3);
+    }
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,232,123,0.45)}
+    .nav-cta svg{width:16px;height:16px}
+    @media(max-width:640px){
+      .nav-pills{display:none}
+      .nav-cta span{display:none}
+      .nav-cta{padding:0.625rem}
+      .nav-cta svg{width:20px;height:20px}
+    }
+
+    /* ─── HERO ─── */
+    .hero{
+      min-height:100vh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;
+      padding:7rem 2rem 5rem;
+      position:relative;z-index:2;
+    }
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:0.625rem;
+      background:var(--green-dim);border:1px solid rgba(0,232,123,0.25);
+      color:var(--green);
+      padding:0.5rem 1.25rem;border-radius:100px;
+      font-size:0.8125rem;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;
+      margin-bottom:2rem;
+      animation:fadeUp 0.8s ease both;
+    }
+    .hero-eyebrow-dot{
+      width:7px;height:7px;background:var(--green);border-radius:50%;
+      animation:blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+    .hero h1{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(3.5rem,10vw,7.5rem);
+      font-weight:700;
+      line-height:0.95;
+      letter-spacing:-0.04em;
+      margin-bottom:1.75rem;
+      animation:fadeUp 0.8s ease 0.1s both;
+    }
+    .g-text{
+      background:linear-gradient(135deg,var(--green) 0%,#00ffcc 50%,var(--green) 100%);
+      background-size:200%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:shimmerText 4s linear infinite;
+    }
+    @keyframes shimmerText{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+    .hero-sub{
+      font-size:clamp(1.125rem,2.5vw,1.375rem);
+      color:var(--off);
+      max-width:520px;margin:0 auto 3rem;
+      line-height:1.65;
+      animation:fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-doors{
+      display:flex;gap:1rem;
+      margin-bottom:4rem;
+      animation:fadeUp 0.8s ease 0.3s both;
+    }
+    @media(max-width:560px){.hero-doors{flex-direction:column;width:100%;max-width:360px}}
+    .door{
+      display:flex;flex-direction:column;align-items:flex-start;
+      padding:1.75rem 2rem;border-radius:24px;
+      text-decoration:none;
+      transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position:relative;overflow:hidden;
+      min-width:220px;
+    }
+    .door::before{
+      content:'';position:absolute;inset:0;opacity:0;
+      transition:opacity 0.35s ease;
+    }
+    .door:hover{transform:translateY(-6px) scale(1.02)}
+    .door-worker{
+      background:var(--green);color:#000;
+      box-shadow:0 8px 40px rgba(0,232,123,0.35);
+    }
+    .door-worker::before{background:linear-gradient(135deg,rgba(255,255,255,0.15),transparent)}
+    .door-worker:hover::before{opacity:1}
+    .door-worker:hover{box-shadow:0 16px 60px rgba(0,232,123,0.5)}
+    .door-biz{
+      background:rgba(255,255,255,0.06);
+      border:1.5px solid rgba(255,255,255,0.12);
+      color:var(--white);
+    }
+    .door-biz:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+    .door-tag{
+      font-size:0.6875rem;font-weight:700;
+      letter-spacing:0.1em;text-transform:uppercase;
+      opacity:0.7;margin-bottom:0.5rem;
+    }
+    .door-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.375rem;font-weight:700;
+      line-height:1.2;margin-bottom:1.25rem;
+      letter-spacing:-0.02em;
+    }
+    .door-arrow{
+      display:flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:50%;
+      background:rgba(0,0,0,0.15);
+      transition:transform 0.3s;
+    }
+    .door-worker .door-arrow{background:rgba(0,0,0,0.15)}
+    .door-biz .door-arrow{background:rgba(255,255,255,0.1)}
+    .door:hover .door-arrow{transform:translateX(4px)}
+    .door-arrow svg{width:18px;height:18px}
+
+    /* ─── STATS BAR ─── */
+    .stats-bar{
+      display:flex;justify-content:center;gap:0;
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--card-border);
+      border-radius:20px;
+      padding:0;overflow:hidden;
+      max-width:680px;margin:0 auto;
+      animation:fadeUp 0.8s ease 0.4s both;
+    }
+    .stat-item{
+      flex:1;padding:1.5rem 1rem;text-align:center;
+      border-right:1px solid var(--card-border);
+      transition:background 0.3s;
+    }
+    .stat-item:last-child{border-right:none}
+    .stat-item:hover{background:rgba(255,255,255,0.03)}
+    .stat-num{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(1.5rem,4vw,2rem);font-weight:700;
+      color:var(--green);line-height:1;
+      margin-bottom:0.375rem;
+    }
+    .stat-lbl{font-size:0.8rem;color:var(--muted);font-weight:500}
+
+    /* ─── SECTION LABEL ─── */
+    .section-label{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      font-size:0.75rem;font-weight:700;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--green);
+      margin-bottom:1.25rem;
+    }
+    .section-label::before{
+      content:'';display:block;width:24px;height:2px;
+      background:var(--green);border-radius:2px;
+    }
+
+    /* ─── SECTION HEADING ─── */
+    .section-h{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2.25rem,5vw,4rem);
+      font-weight:700;letter-spacing:-0.035em;
+      line-height:1.05;margin-bottom:1.25rem;
+    }
+    .section-p{
+      font-size:1.0625rem;color:var(--off);
+      line-height:1.7;max-width:560px;
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal{
+      opacity:0;transform:translateY(50px);
+      transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* ─── WORKER SECTION ─── */
+    .worker-section{
+      padding:8rem 0;
+      position:relative;z-index:2;
+    }
+    .worker-header{
+      max-width:700px;margin-bottom:5rem;
+    }
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1.25rem;
+    }
+    @media(max-width:900px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.steps-grid{grid-template-columns:1fr}}
+
+    .step-card{
+      background:var(--card);
+      border:1px solid var(--card-border);
+      border-radius:var(--radius);
+      padding:2rem;
+      position:relative;overflow:hidden;
+      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+      cursor:default;
+    }
+    .step-card::after{
+      content:'';position:absolute;
+      inset:0;border-radius:var(--radius);
+      background:linear-gradient(135deg,var(--green-dim),transparent 60%);
+      opacity:0;transition:opacity 0.4s;
+    }
+    .step-card:hover{
+      background:var(--card-hover);
+      border-color:rgba(0,232,123,0.3);
+      transform:translateY(-6px);
+      box-shadow:0 16px 48px rgba(0,232,123,0.08);
+    }
+    .step-card:hover::after{opacity:1}
+
+    .step-num{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:0.75rem;font-weight:700;
+      color:var(--green);letter-spacing:0.08em;
+      margin-bottom:1.25rem;
+    }
+    .step-icon-wrap{
+      width:52px;height:52px;border-radius:14px;
+      background:var(--green-dim);
+      border:1px solid rgba(0,232,123,0.2);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;margin-bottom:1.25rem;
+      transition:all 0.3s;
+    }
+    .step-card:hover .step-icon-wrap{
+      background:rgba(0,232,123,0.2);
+      box-shadow:0 0 20px rgba(0,232,123,0.2);
+    }
+    .step-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.0625rem;font-weight:600;
+      margin-bottom:0.625rem;letter-spacing:-0.01em;
+    }
+    .step-desc{
+      font-size:0.9375rem;color:var(--off);
+      line-height:1.65;margin-bottom:1.25rem;
+    }
+    .step-tag{
+      display:inline-block;
+      background:var(--green-dim);
+      border:1px solid rgba(0,232,123,0.2);
+      color:var(--green);
+      padding:0.375rem 0.875rem;
+      border-radius:100px;
+      font-size:0.8rem;font-weight:600;
+    }
+
+    /* Jyoti card special */
+    .step-card.jyoti-card{
+      border-color:rgba(0,232,123,0.25);
+      background:linear-gradient(135deg,rgba(0,232,123,0.07),rgba(0,232,123,0.02));
+    }
+    .step-card.jyoti-card::before{
+      content:'';position:absolute;inset:0;
+      border-radius:var(--radius);
+      background:linear-gradient(135deg,rgba(0,232,123,0.15),transparent 50%);
+      opacity:0.5;
+    }
+    .jyoti-pulse{
+      position:absolute;top:1.25rem;right:1.25rem;
+      width:8px;height:8px;border-radius:50%;background:var(--green);
+      animation:livePulse 1.5s ease-in-out infinite;
+    }
+    @keyframes livePulse{
+      0%,100%{box-shadow:0 0 0 0 rgba(0,232,123,0.6)}
+      50%{box-shadow:0 0 0 8px rgba(0,232,123,0)}
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider{
+      height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+      margin:0;
+    }
+
+    /* ─── BUSINESS SECTION ─── */
+    .biz-section{
+      padding:8rem 0;
+      position:relative;z-index:2;
+    }
+    .biz-header{max-width:700px;margin-bottom:5rem}
+
+    .pipeline{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1.25rem;margin-bottom:4rem;
+    }
+    @media(max-width:900px){.pipeline{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.pipeline{grid-template-columns:1fr}}
+
+    .p-card{
+      background:var(--card);
+      border:1px solid var(--card-border);
+      border-radius:var(--radius);
+      padding:2rem;
+      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+      position:relative;overflow:hidden;
+    }
+    .p-card:hover{
+      background:var(--card-hover);
+      border-color:rgba(255,255,255,0.15);
+      transform:translateY(-6px);
+    }
+    .p-card-step{
+      font-size:0.7rem;font-weight:700;
+      letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:1rem;
+    }
+    .p-card-icon{
+      font-size:2rem;margin-bottom:1rem;display:block;
+    }
+    .p-card-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1rem;font-weight:600;
+      margin-bottom:0.625rem;letter-spacing:-0.01em;
+    }
+    .p-card-desc{
+      font-size:0.9rem;color:var(--off);line-height:1.65;
+    }
+    .p-card-badge{
+      display:inline-block;margin-top:1rem;
+      background:rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.1);
+      color:rgba(255,255,255,0.7);
+      padding:0.3rem 0.75rem;border-radius:6px;
+      font-size:0.8rem;font-weight:600;
+    }
+
+    /* Manager cards */
+    .manager-label{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.375rem;font-weight:700;
+      letter-spacing:-0.025em;
+      margin-bottom:1.25rem;
+      color:var(--white);
+    }
+    .manager-label span{color:var(--green)}
+    .manager-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    @media(max-width:768px){.manager-grid{grid-template-columns:1fr}}
+
+    .m-card{
+      background:linear-gradient(135deg,rgba(0,232,123,0.06),rgba(0,232,123,0.02));
+      border:1px solid rgba(0,232,123,0.15);
+      border-radius:var(--radius);
+      padding:1.75rem;
+      display:flex;flex-direction:column;gap:0.75rem;
+      transition:all 0.3s;
+    }
+    .m-card:hover{
+      border-color:rgba(0,232,123,0.3);
+      box-shadow:0 8px 32px rgba(0,232,123,0.08);
+      transform:translateY(-4px);
+    }
+    .m-card-icon{
+      width:44px;height:44px;border-radius:12px;
+      background:rgba(0,232,123,0.12);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.25rem;
+    }
+    .m-card-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:600;font-size:1rem;
+      letter-spacing:-0.01em;
+    }
+    .m-card-desc{font-size:0.9rem;color:var(--off);line-height:1.65}
+
+    /* ─── TESTIMONIALS ─── */
+    .testi-section{
+      padding:8rem 0;
+      position:relative;z-index:2;
+    }
+    .testi-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);
+      gap:1.25rem;margin-top:3.5rem;
+    }
+    @media(max-width:700px){.testi-grid{grid-template-columns:1fr}}
+
+    .t-card{
+      background:var(--card);
+      border:1px solid var(--card-border);
+      border-radius:var(--radius);
+      padding:2rem;
+      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .t-card:hover{
+      background:var(--card-hover);
+      border-color:rgba(255,255,255,0.12);
+      transform:translateY(-4px);
+    }
+    .t-top{
+      display:flex;align-items:center;gap:1rem;
+      margin-bottom:1.25rem;
+    }
+    .t-avatar{
+      width:50px;height:50px;border-radius:14px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--green),#00b860);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;font-size:1.125rem;color:#000;
+      box-shadow:0 4px 16px rgba(0,232,123,0.25);
+    }
+    .t-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.9375rem;margin-bottom:2px}
+    .t-role{font-size:0.8125rem;color:var(--muted)}
+    .t-quote{font-size:0.9375rem;color:var(--off);line-height:1.7;margin-bottom:1.5rem}
+    .t-result{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);
+      color:var(--green);
+      padding:0.5rem 1rem;border-radius:10px;
+      font-size:0.875rem;font-weight:700;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section{
+      padding:8rem 2rem;
+      position:relative;z-index:2;
+      text-align:center;
+    }
+    .cta-inner{max-width:700px;margin:0 auto}
+    .cta-eyebrow{
+      display:inline-block;
+      font-size:0.75rem;font-weight:700;
+      letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--green);margin-bottom:1.5rem;
+    }
+    .cta-h{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2.5rem,6vw,5rem);
+      font-weight:700;letter-spacing:-0.04em;
+      line-height:1;margin-bottom:1.5rem;
+    }
+    .cta-p{font-size:1.125rem;color:var(--off);margin-bottom:3rem;line-height:1.65}
+    .cta-buttons{
+      display:flex;align-items:center;justify-content:center;
+      gap:1rem;flex-wrap:wrap;
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:0.75rem;
+      padding:1.125rem 2.25rem;
+      background:var(--green);color:#000;
+      font-size:1rem;font-weight:700;
+      border-radius:100px;text-decoration:none;
+      transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow:0 0 40px rgba(0,232,123,0.35);
+      position:relative;overflow:hidden;
+    }
+    .btn-primary::before{
+      content:'';position:absolute;
+      top:50%;left:50%;width:0;height:0;
+      background:rgba(255,255,255,0.2);
+      border-radius:50%;transform:translate(-50%,-50%);
+      transition:width 0.6s ease,height 0.6s ease,opacity 0.6s ease;
+      opacity:0;
+    }
+    .btn-primary:hover::before{width:300px;height:300px;opacity:0}
+    .btn-primary:hover{
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 0 60px rgba(0,232,123,0.5);
+    }
+    .btn-primary svg{width:20px;height:20px}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:0.625rem;
+      padding:1.125rem 2.25rem;
+      background:rgba(255,255,255,0.06);
+      border:1.5px solid rgba(255,255,255,0.12);
+      color:var(--white);
+      font-size:1rem;font-weight:600;
+      border-radius:100px;text-decoration:none;
+      transition:all 0.3s;
+    }
+    .btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+    .btn-ghost svg{width:18px;height:18px;color:var(--off)}
+
+    /* ─── FLOATING JYOTI ─── */
+    .float-widget{
+      position:fixed;bottom:28px;right:28px;z-index:200;
+      display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+    }
+    .jyoti-card{
+      background:rgba(12,12,16,0.92);
+      border:1px solid rgba(0,232,123,0.25);
+      border-radius:20px;border-bottom-right-radius:6px;
+      padding:1rem 1.25rem;
+      max-width:280px;
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      box-shadow:0 8px 40px rgba(0,0,0,0.4),0 0 60px rgba(0,232,123,0.06);
+      animation:bubbleIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both;
+    }
+    @keyframes bubbleIn{
+      from{opacity:0;transform:translateY(12px) scale(0.9)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+    .jyoti-top{
+      display:flex;align-items:center;gap:0.75rem;
+      margin-bottom:0.625rem;
+    }
+    .jyoti-av{
+      width:40px;height:40px;border-radius:50%;flex-shrink:0;
+      background:linear-gradient(135deg,var(--green),#00b860);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.125rem;
+      box-shadow:0 0 16px rgba(0,232,123,0.3);
+    }
+    .jyoti-nm{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:600;font-size:0.9rem;
+      display:flex;align-items:center;gap:0.5rem;
+    }
+    .jyoti-nm-badge{
+      font-size:0.6rem;background:var(--green);color:#000;
+      padding:2px 6px;border-radius:4px;font-weight:700;
+      letter-spacing:0.05em;text-transform:uppercase;
+    }
+    .jyoti-online{
+      font-size:0.75rem;color:var(--green);
+      display:flex;align-items:center;gap:4px;
+    }
+    .jyoti-online::before{
+      content:'';width:6px;height:6px;background:var(--green);
+      border-radius:50%;animation:livePulse 1.5s ease-in-out infinite;
+    }
+    .jyoti-msg{font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.55}
+    .jyoti-close{
+      position:absolute;top:8px;right:8px;
+      width:22px;height:22px;border:none;
+      background:rgba(255,255,255,0.08);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;opacity:0;transition:opacity 0.2s;
+    }
+    .jyoti-card:hover .jyoti-close{opacity:1}
+    .jyoti-close svg{width:11px;height:11px;color:var(--off)}
+
+    .float-btn{
+      width:60px;height:60px;border-radius:50%;
+      background:linear-gradient(135deg,var(--green),#00b860);
+      display:flex;align-items:center;justify-content:center;
+      text-decoration:none;
+      box-shadow:0 0 0 0 rgba(0,232,123,0.5);
+      animation:floatIn 0.4s ease 0.6s both, ringPulse 2.5s ease-out 2s infinite;
+      position:relative;transition:transform 0.3s;
+    }
+    .float-btn:hover{transform:scale(1.1)}
+    .float-btn svg{width:26px;height:26px;color:#000}
+    @keyframes floatIn{from{opacity:0;transform:scale(0.4)}to{opacity:1;transform:scale(1)}}
+    @keyframes ringPulse{
+      0%{box-shadow:0 0 0 0 rgba(0,232,123,0.5)}
+      70%{box-shadow:0 0 0 18px rgba(0,232,123,0)}
+      100%{box-shadow:0 0 0 0 rgba(0,232,123,0)}
+    }
+
+    /* ─── STICKY MOBILE CTA ─── */
+    .sticky-mobile{
+      display:none;
+      position:fixed;bottom:0;left:0;right:0;z-index:99;
+      padding:1rem 1.5rem calc(1rem + env(safe-area-inset-bottom));
+      background:rgba(6,6,8,0.9);
+      backdrop-filter:blur(20px);
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    @media(max-width:640px){
+      .sticky-mobile{display:block}
+      .float-widget{bottom:88px;right:16px}
+      .float-btn{width:52px;height:52px}
+      .float-btn svg{width:22px;height:22px}
+    }
+
+    /* ─── FOOTER ─── */
+    footer{
+      text-align:center;
+      padding:2.5rem;
+      color:var(--muted);
+      font-size:0.8125rem;
+      position:relative;z-index:2;
+      border-top:1px solid var(--card-border);
+    }
+
+    @media(max-width:640px){
+      footer{padding-bottom:7rem}
+      .cta-section{padding-bottom:10rem}
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-pattern"></div>
+  <!-- Background effects -->
+  <div class="bg-wrap">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
 
-  <nav class="navbar">
-    <a href="#" class="logo">
-      <div class="logo-icon">S</div>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">S</div>
       Switch
     </a>
-    <div class="nav-links">
-      <a href="#worker" class="nav-pill nav-pill-worker">Job Chahiye</a>
-      <a href="#hiring" class="nav-pill nav-pill-business">Hire Karo</a>
+    <div class="nav-pills">
+      <a href="#worker" class="nav-pill active" id="pill-worker">Job Chahiye</a>
+      <a href="#hiring" class="nav-pill" id="pill-biz">Hire Karo</a>
     </div>
+    <a href="tel:+918037565248" class="nav-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+      <span>Call Now</span>
+    </a>
   </nav>
 
-  <section class="hero" id="worker">
-    <div class="pill">
-      <span class="pill-dot"></span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
       5000+ log hire ho chuke hain
     </div>
+    <h1>India ka<br><span class="g-text">fastest job</span><br>platform</h1>
+    <p class="hero-sub">Job chahiye ya worker? Dono kaam hote hain — 18 ghante mein. Ek call se.</p>
 
-    <h1>Ghar ke paas job,<br><span class="highlight">ek call mein</span></h1>
-    <p>Call karo, job options suno. Kal interview, parso joining.</p>
-
-    <div class="cta-section">
-      <a href="tel:+918037565248" class="call-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-        </svg>
-        Abhi Call Karo
+    <div class="hero-doors">
+      <a href="#worker" class="door door-worker">
+        <div class="door-tag">Job Seekers</div>
+        <div class="door-title">Mujhe job<br>chahiye →</div>
+        <div class="door-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+        </div>
       </a>
-
-      <a href="https://app.switchlocally.com" class="secondary-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-        </svg>
-        Jobs Browse Karo
+      <a href="#hiring" class="door door-biz">
+        <div class="door-tag">Businesses</div>
+        <div class="door-title">Mujhe workers<br>chahiye →</div>
+        <div class="door-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+        </div>
       </a>
     </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-value">5000+</div>
-        <div class="stat-label">Hired</div>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num" data-target="5000" data-suffix="+">0</div>
+        <div class="stat-lbl">Workers Hired</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">18hrs</div>
-        <div class="stat-label">Avg Time</div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="18" data-suffix="hrs">0</div>
+        <div class="stat-lbl">Average Time</div>
       </div>
-      <div class="stat">
-        <div class="stat-value">500+</div>
-        <div class="stat-label">Companies</div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="500" data-suffix="+">0</div>
+        <div class="stat-lbl">Companies</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="10" data-suffix="min">0</div>
+        <div class="stat-lbl">To Get Trained</div>
       </div>
     </div>
   </section>
 
-  <section class="testimonials">
-    <div class="testimonials-inner">
-      <div class="section-header">
-        <h2>Real people, real results</h2>
-        <p>Unki kahani, unki zubaani</p>
+  <div class="divider"></div>
+
+  <!-- WORKER SECTION -->
+  <section class="worker-section" id="worker">
+    <div class="wrap">
+      <div class="worker-header reveal">
+        <div class="section-label">For Job Seekers</div>
+        <h2 class="section-h">Koi bhi. Kahin se bhi.<br><span class="g-text">10 minute mein ready.</span></h2>
+        <p class="section-p">Pehle seekho, phir jaao. Jyoti har task mein help karegi — app ke andar hi, 24/7.</p>
       </div>
 
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">R</div>
+      <div class="steps-grid">
+
+        <div class="step-card reveal" style="transition-delay:0.05s">
+          <div class="step-num">STEP 01</div>
+          <div class="step-icon-wrap">📱</div>
+          <div class="step-title">App Kholo, Job Chuno</div>
+          <p class="step-desc">Switch app mein apne area ki jobs browse karo — delivery, security, retail, housekeeping. Ghar ke paas wali job pehle dikhegi.</p>
+          <span class="step-tag">Ghar baithke</span>
+        </div>
+
+        <div class="step-card reveal" style="transition-delay:0.1s">
+          <div class="step-num">STEP 02</div>
+          <div class="step-icon-wrap">📚</div>
+          <div class="step-title">Training Module Karo</div>
+          <p class="step-desc">Short videos, tips, aur step-by-step guides se apni role ki poori training lo. Sirf 10 minute. Koi bhi kar sakta hai.</p>
+          <span class="step-tag">Sirf 10 minute</span>
+        </div>
+
+        <div class="step-card reveal" style="transition-delay:0.15s">
+          <div class="step-num">STEP 03</div>
+          <div class="step-icon-wrap">✅</div>
+          <div class="step-title">Test Pass, Verified Bano</div>
+          <p class="step-desc">Training ke baad ek chota test. Pass karo aur pao Switch ka Verified badge — yahi proof hai ki tum ready ho.</p>
+          <span class="step-tag">Verified ✓</span>
+        </div>
+
+        <div class="step-card reveal" style="transition-delay:0.2s">
+          <div class="step-num">STEP 04</div>
+          <div class="step-icon-wrap">🏢</div>
+          <div class="step-title">Seedha Business Pe Jao</div>
+          <p class="step-desc">Verified hote hi directly company pe jao. Koi extra onboarding nahi, koi wait nahi — bas seedha kaam shuru.</p>
+          <span class="step-tag">Day 1 se productive</span>
+        </div>
+
+        <div class="step-card reveal" style="transition-delay:0.25s">
+          <div class="step-num">STEP 05</div>
+          <div class="step-icon-wrap">📋</div>
+          <div class="step-title">Daily Tasks Milenge</div>
+          <p class="step-desc">Har subah app mein tumhara aaj ka task list ready hoga. Ek ek kaam complete karte jao — manager ko real-time dikh raha hai.</p>
+          <span class="step-tag">Har din, clear goals</span>
+        </div>
+
+        <div class="step-card jyoti-card reveal" style="transition-delay:0.3s;position:relative">
+          <div class="jyoti-pulse"></div>
+          <div class="step-num" style="color:var(--green)">ALWAYS ON</div>
+          <div class="step-icon-wrap" style="font-size:1.75rem">🤖</div>
+          <div class="step-title">Jyoti Har Waqt Saath</div>
+          <p class="step-desc">Kisi bhi task mein dikkat? App ke andar hi Jyoti se poochho. Woh specific task pe guide karegi — live, step-by-step, Hindi mein.</p>
+          <span class="step-tag">24/7 in-app help</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BUSINESS / HIRING SECTION -->
+  <section class="biz-section" id="hiring">
+    <div class="wrap">
+      <div class="biz-header reveal">
+        <div class="section-label">For Businesses</div>
+        <h2 class="section-h">Pre-trained. Verified.<br><span class="g-text">Day 1 Ready.</span></h2>
+        <p class="section-p">No onboarding headaches. Switch workers arrive trained, tested, and ready to execute — with built-in SOPs and a manager approval system.</p>
+      </div>
+
+      <div class="pipeline">
+
+        <div class="p-card reveal" style="transition-delay:0.05s">
+          <div class="p-card-step">Stage 01</div>
+          <span class="p-card-icon">📚</span>
+          <div class="p-card-title">Role-Specific Training</div>
+          <p class="p-card-desc">Every worker completes a structured training module for their role before they ever step into your business. No classroom needed.</p>
+          <span class="p-card-badge">10 min modules</span>
+        </div>
+
+        <div class="p-card reveal" style="transition-delay:0.1s">
+          <div class="p-card-step">Stage 02</div>
+          <span class="p-card-icon">🧪</span>
+          <div class="p-card-title">In-App Assessment</div>
+          <p class="p-card-desc">After training, workers take a standardized test inside the Switch app. Only those who pass receive the Verified badge.</p>
+          <span class="p-card-badge">Standardized test</span>
+        </div>
+
+        <div class="p-card reveal" style="transition-delay:0.15s">
+          <div class="p-card-step">Stage 03</div>
+          <span class="p-card-icon">✅</span>
+          <div class="p-card-title">Verified Badge Issued</div>
+          <p class="p-card-desc">A role-specific Verified badge is issued. Visible to you before you hire. Not self-reported — earned by passing the test.</p>
+          <span class="p-card-badge">Quality guaranteed</span>
+        </div>
+
+        <div class="p-card reveal" style="transition-delay:0.2s">
+          <div class="p-card-step">Stage 04</div>
+          <span class="p-card-icon">🚀</span>
+          <div class="p-card-title">Worker Arrives, Starts</div>
+          <p class="p-card-desc">No classroom onboarding. Worker opens Switch on Day 1 and begins executing daily SOPs immediately. Zero ramp-up time.</p>
+          <span class="p-card-badge">Zero ramp-up</span>
+        </div>
+
+        <div class="p-card reveal" style="transition-delay:0.25s">
+          <div class="p-card-step">Stage 05</div>
+          <span class="p-card-icon">📋</span>
+          <div class="p-card-title">Daily SOPs, In-App</div>
+          <p class="p-card-desc">Each worker gets role-specific, sequenced SOPs every day inside Switch. Tasks are checklist-driven. Jyoti handles any blockers.</p>
+          <span class="p-card-badge">Structured daily work</span>
+        </div>
+
+        <div class="p-card reveal" style="transition-delay:0.3s;border-color:rgba(0,232,123,0.2)">
+          <div class="p-card-step" style="color:var(--green)">Always On</div>
+          <span class="p-card-icon">🤖</span>
+          <div class="p-card-title">Jyoti — Work AI</div>
+          <p class="p-card-desc">Workers are never stuck waiting for a supervisor. Jyoti guides them through any task in real-time, in Hindi. Inside the app.</p>
+          <span class="p-card-badge" style="color:var(--green);border-color:rgba(0,232,123,0.2);background:var(--green-dim)">24/7 AI support</span>
+        </div>
+
+      </div>
+
+      <!-- Manager dashboard -->
+      <div class="reveal">
+        <p class="manager-label">Manager Dashboard — <span>Full Control</span></p>
+        <div class="manager-grid">
+          <div class="m-card reveal" style="transition-delay:0.05s">
+            <div class="m-card-icon">👀</div>
+            <div class="m-card-title">Real-Time SOP Visibility</div>
+            <p class="m-card-desc">See every task your workers are executing — live. No walking the floor, no chasing updates. Status visible in the dashboard.</p>
+          </div>
+          <div class="m-card reveal" style="transition-delay:0.1s">
+            <div class="m-card-icon">✔️</div>
+            <div class="m-card-title">One-Tap SOP Approval</div>
+            <p class="m-card-desc">Worker marks a task complete → you get notified → you approve with one tap. Only approved SOPs count toward their work log.</p>
+          </div>
+          <div class="m-card reveal" style="transition-delay:0.15s">
+            <div class="m-card-icon">📆</div>
+            <div class="m-card-title">Auto Attendance Logging</div>
+            <p class="m-card-desc">Once SOPs are approved, Switch marks attendance and logs the work day automatically. No registers. No disputes. Clean records.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi-section">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="section-label">Real Results</div>
+        <h2 class="section-h">Unki kahani,<br>unki zubaani.</h2>
+      </div>
+      <div class="testi-grid">
+
+        <div class="t-card reveal" style="transition-delay:0.05s">
+          <div class="t-top">
+            <div class="t-avatar">R</div>
             <div>
-              <div class="testimonial-name">Rajesh Kumar</div>
-              <div class="testimonial-role">Delivery Partner, Swiggy</div>
+              <div class="t-name">Rajesh Kumar</div>
+              <div class="t-role">Delivery Partner, Swiggy</div>
             </div>
           </div>
-          <p class="testimonial-quote">"Raat ko call kiya, subah interview, shaam ko joining. 18 ghante mein sab ho gaya."</p>
-          <div class="testimonial-result">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-            </svg>
+          <p class="t-quote">"Raat ko call kiya, subah interview, shaam ko joining. 18 ghante mein sab ho gaya."</p>
+          <div class="t-result">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
             ₹52,000/month
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">S</div>
+        <div class="t-card reveal" style="transition-delay:0.1s">
+          <div class="t-top">
+            <div class="t-avatar">S</div>
             <div>
-              <div class="testimonial-name">Suresh Singh</div>
-              <div class="testimonial-role">Security Guard, Securitas</div>
+              <div class="t-name">Suresh Singh</div>
+              <div class="t-role">Security Guard, Securitas</div>
             </div>
           </div>
-          <p class="testimonial-quote">"Ghar se 2km pe job mili. Pehle 25km Noida jaata tha. Time aur paisa dono bach raha hai."</p>
-          <div class="testimonial-result">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-            </svg>
+          <p class="t-quote">"Ghar se 2km pe job mili. Pehle 25km Noida jaata tha. Time aur paisa dono bach raha hai."</p>
+          <div class="t-result">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
             2km door job
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">P</div>
+        <div class="t-card reveal" style="transition-delay:0.15s">
+          <div class="t-top">
+            <div class="t-avatar">P</div>
             <div>
-              <div class="testimonial-name">Priya Sharma</div>
-              <div class="testimonial-role">Store Assistant, D-Mart</div>
+              <div class="t-name">Priya Sharma</div>
+              <div class="t-role">Store Assistant, D-Mart</div>
             </div>
           </div>
-          <p class="testimonial-quote">"Safe process. Phone pe info di, next day interview. Ab ₹22K salary aur Sundays off."</p>
-          <div class="testimonial-result">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+          <p class="t-quote">"Safe process. Phone pe info di, next day interview. Ab ₹22K salary aur Sundays off."</p>
+          <div class="t-result">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             Next day joining
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">A</div>
+        <div class="t-card reveal" style="transition-delay:0.2s">
+          <div class="t-top">
+            <div class="t-avatar">A</div>
             <div>
-              <div class="testimonial-name">Amit Verma</div>
-              <div class="testimonial-role">Warehouse Packer, Amazon</div>
+              <div class="t-name">Amit Verma</div>
+              <div class="t-role">Warehouse Packer, Amazon</div>
             </div>
           </div>
-          <p class="testimonial-quote">"10th pass hun. Call kiya, 3 ghante mein interview fix. Ab Amazon mein hun with PF."</p>
-          <div class="testimonial-result">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-            </svg>
+          <p class="t-quote">"10th pass hun. Call kiya, 3 ghante mein interview fix. Ab Amazon mein hun with PF."</p>
+          <div class="t-result">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
             ₹28,000/month
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Worker Journey Section ─── -->
-  <section class="worker-journey">
-    <div class="worker-journey-inner">
-      <div class="section-header">
-        <div class="section-tag">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-          </svg>
-          Kaam Sikhna Ab Aasaan Hai
-        </div>
-        <h2>10 minute mein<br><span style="background:linear-gradient(135deg,#059669,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">koi bhi job seekh lo</span></h2>
-        <p>Pehle training, phir kaam. Har din Jyoti tere saath hai — app ke andar hi.</p>
-      </div>
-
-      <div class="steps-flow">
-
-        <div class="step-card">
-          <span class="step-icon">📱</span>
-          <div class="step-number">1</div>
-          <div class="step-title">App Kholo, Job Choose Karo</div>
-          <p class="step-desc">Switch app mein apne area ki available jobs dekho. Delivery, security, retail, housekeeping — jo bhi pasand ho.</p>
-          <span class="step-highlight">Ghar baithke</span>
-        </div>
-
-        <div class="step-card">
-          <span class="step-icon">📚</span>
-          <div class="step-number">2</div>
-          <div class="step-title">Training Module Complete Karo</div>
-          <p class="step-desc">Short video lessons aur step-by-step guides mein apni job ki puri training lo. Sirf 10 minute mein sab kuch samajh aa jaata hai.</p>
-          <span class="step-highlight">Sirf 10 minute</span>
-        </div>
-
-        <div class="step-card">
-          <span class="step-icon">✅</span>
-          <div class="step-number">3</div>
-          <div class="step-title">Test Pass Karo, Verified Bano</div>
-          <p class="step-desc">Training ke baad ek chota sa test dena hoga. Pass karo aur pao apna verified badge — yahi badge bolta hai ki tum ready ho.</p>
-          <span class="step-highlight">Verified ✓ Badge</span>
-        </div>
-
-        <div class="step-card">
-          <span class="step-icon">🏢</span>
-          <div class="step-number">4</div>
-          <div class="step-title">Seedha Business Pe Jao</div>
-          <p class="step-desc">Verified hote hi directly company mein jao. Koi lamba onboarding nahi, koi extra training nahi — bas seedha kaam shuru.</p>
-          <span class="step-highlight">Day 1 se productive</span>
-        </div>
-
-        <div class="step-card">
-          <span class="step-icon">📋</span>
-          <div class="step-number">5</div>
-          <div class="step-title">Daily Tasks Milenge</div>
-          <p class="step-desc">Har subah app mein tumhari aaj ki task list ready hogi. Ek ek task complete karte jao — manager ko real-time dikh raha hai.</p>
-          <span class="step-highlight">Har din, clear goals</span>
-        </div>
-
-        <div class="step-card jyoti-step-card">
-          <span class="step-icon">🤖</span>
-          <div class="step-number">6</div>
-          <div class="step-title">Jyoti Har Waqt Saath Hai</div>
-          <p class="step-desc">Koi bhi task mein confusion? App ke andar hi Jyoti se pooch lo. Woh specific task pe guide karegi — live, step-by-step, Hindi mein.</p>
-          <span class="step-highlight">24/7 in-app help</span>
-        </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ─── Hiring Section (For Businesses) ─── -->
-  <section class="hiring" id="hiring">
-    <div class="hiring-inner">
-      <div class="section-header">
-        <div class="section-tag">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-          </svg>
-          For Businesses
-        </div>
-        <h2>Trained. Verified. <span style="color:#10B981">Day 1 Ready.</span></h2>
-        <p>No onboarding headaches. Switch workers arrive already trained, tested, and ready to execute — with built-in daily SOPs and manager oversight.</p>
-      </div>
-
-      <!-- Worker pipeline: Training → Test → Verified → Deploy -->
-      <div class="hiring-flow">
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">📚</span>
-          <div class="hiring-card-step">Step 1</div>
-          <div class="hiring-card-title">Job-Specific Training Module</div>
-          <p class="hiring-card-desc">Before they set foot in your business, every worker completes a structured training module tailored to their role — retail, delivery, housekeeping, security, and more.</p>
-          <span class="hiring-card-tag">10 min per module</span>
-        </div>
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">🧪</span>
-          <div class="hiring-card-step">Step 2</div>
-          <div class="hiring-card-title">In-App Assessment & Test</div>
-          <p class="hiring-card-desc">After training, workers take a short assessment directly in the Switch app. Only those who pass receive the Verified badge — your guarantee they know the job.</p>
-          <span class="hiring-card-tag">Standardized test</span>
-        </div>
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">✅</span>
-          <div class="hiring-card-step">Step 3</div>
-          <div class="hiring-card-title">Verified Badge Issued</div>
-          <p class="hiring-card-desc">A passed worker earns a role-specific Verified badge visible to you. This badge means they've been trained and tested — not just self-reported. You hire with confidence.</p>
-          <span class="hiring-card-tag">Quality guaranteed</span>
-        </div>
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">🏢</span>
-          <div class="hiring-card-step">Step 4</div>
-          <div class="hiring-card-title">Worker Arrives, Starts Executing</div>
-          <p class="hiring-card-desc">No classroom onboarding. No handholding. The worker shows up on Day 1, opens the Switch app, and begins executing their daily SOPs immediately.</p>
-          <span class="hiring-card-tag">Zero ramp-up time</span>
-        </div>
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">📋</span>
-          <div class="hiring-card-step">Step 5</div>
-          <div class="hiring-card-title">Daily SOPs, In the App</div>
-          <p class="hiring-card-desc">Each worker sees their assigned SOPs for the day inside Switch. Tasks are role-specific, sequenced, and checklist-driven. If they get stuck, Jyoti guides them on-the-spot.</p>
-          <span class="hiring-card-tag">Structured daily work</span>
-        </div>
-
-        <div class="hiring-card">
-          <span class="hiring-card-icon">🤖</span>
-          <div class="hiring-card-step">Always On</div>
-          <div class="hiring-card-title">Jyoti — In-App Work Assistant</div>
-          <p class="hiring-card-desc">Your workers are never stuck waiting for a supervisor. Jyoti, Switch's AI assistant, guides workers through any specific task right inside the app — in Hindi, step by step.</p>
-          <span class="hiring-card-tag">24/7 AI support</span>
-        </div>
-
-      </div>
-
-      <!-- Manager SOP approval flow -->
-      <div class="hiring-divider">
-        <div class="hiring-divider-line"></div>
-        <div class="hiring-divider-text">Manager Dashboard</div>
-        <div class="hiring-divider-line"></div>
-      </div>
-
-      <div class="manager-flow">
-
-        <div class="manager-card">
-          <span class="manager-card-icon">👀</span>
-          <div>
-            <div class="manager-card-title">Real-Time SOP Visibility</div>
-            <p class="manager-card-desc">See every task your workers are working on — live. No need to walk the floor or chase updates. The Switch dashboard shows task status in real-time.</p>
-          </div>
-        </div>
-
-        <div class="manager-card">
-          <span class="manager-card-icon">✔️</span>
-          <div>
-            <div class="manager-card-title">One-Tap SOP Approval</div>
-            <p class="manager-card-desc">When a worker marks a task complete, you get a notification. Review the work, then approve with one tap. Only approved SOPs count toward the worker's work log.</p>
-          </div>
-        </div>
-
-        <div class="manager-card">
-          <span class="manager-card-icon">📆</span>
-          <div>
-            <div class="manager-card-title">Automatic Attendance & Work Days</div>
-            <p class="manager-card-desc">Once SOPs are approved, Switch automatically marks the worker's attendance and logs the work day. No manual registers. No disputes. Clean records, always.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="hiring-cta">
-        <p>Ready to hire pre-trained, verified workers for your business?</p>
-        <a href="tel:+918037565248" class="hire-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-          </svg>
-          Call to Hire Now
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="bottom-cta">
-    <div class="bottom-cta-inner">
-      <h2>Ek call, naya start</h2>
-      <p>Job dhundna band karo. Abhi call karo, kal se kaam shuru.</p>
-
-      <div class="cta-section">
-        <a href="tel:+918037565248" class="call-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-          </svg>
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="cta-eyebrow">Ready? Let's go.</div>
+      <h2 class="cta-h">Ek call.<br><span class="g-text">Sab badal jaata hai.</span></h2>
+      <p class="cta-p">Job dhundna band karo. Business ke liye trained workers dhundna band karo. Switch pe sab ready hai.</p>
+      <div class="cta-buttons">
+        <a href="tel:+918037565248" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
           Abhi Call Karo
         </a>
-
-        <a href="https://app.switchlocally.com" class="secondary-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-          </svg>
+        <a href="https://app.switchlocally.com" class="btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
           Jobs Browse Karo
         </a>
       </div>
     </div>
   </section>
 
-  <div class="floating-widget">
-    <div class="jyoti-bubble" id="jyotiBubble">
-      <button class="bubble-close" onclick="document.getElementById('jyotiBubble').style.display='none'">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+  <!-- FLOATING JYOTI -->
+  <div class="float-widget">
+    <div class="jyoti-card" id="jyotiCard" style="position:relative">
+      <button class="jyoti-close" onclick="document.getElementById('jyotiCard').style.display='none'">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-      <div class="jyoti-header">
-        <div class="jyoti-avatar">👩🏻</div>
-        <div class="jyoti-info">
-          <span class="jyoti-name">
-            Jyoti
-            <span class="jyoti-badge">Switch</span>
-          </span>
-          <span class="jyoti-status">Online</span>
+      <div class="jyoti-top">
+        <div class="jyoti-av">👩🏻</div>
+        <div>
+          <div class="jyoti-nm">Jyoti <span class="jyoti-nm-badge">Switch</span></div>
+          <div class="jyoti-online">Online</div>
         </div>
       </div>
-      <p class="jyoti-message">
-        Hi! Main Jyoti hun 👋 Job chahiye? Call karo — ya koi task mein help chahiye? App ke andar hi pooch sakte ho!
-      </p>
+      <p class="jyoti-msg">Hi! Main Jyoti hun 👋<br>Job chahiye? Ek call karo — 2 min mein area ki jobs bata dungi!</p>
     </div>
-    <a href="tel:+918037565248" class="floating-call-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-      </svg>
+    <a href="tel:+918037565248" class="float-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
     </a>
   </div>
 
-  <div class="sticky-call">
-    <a href="tel:+918037565248" class="call-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-      </svg>
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-mobile">
+    <a href="tel:+918037565248" class="btn-primary" style="width:100%;justify-content:center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:20px;height:20px"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
       Abhi Call Karo
     </a>
   </div>
 
-  <footer class="footer">
-    © 2025 Switch
-  </footer>
+  <footer>© 2025 Switch — India Ka Fastest Job Platform</footer>
+
+  <script>
+    // ── Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Counter animation
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current).toLocaleString('en-IN') + suffix;
+      }, 16);
+    }
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          counterObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+    // ── Nav pill active state on scroll
+    const workerSection = document.getElementById('worker');
+    const hiringSection = document.getElementById('hiring');
+    const pillWorker = document.getElementById('pill-worker');
+    const pillBiz = document.getElementById('pill-biz');
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          if (e.target.id === 'hiring') {
+            pillBiz.classList.add('active');
+            pillWorker.classList.remove('active');
+          } else {
+            pillWorker.classList.add('active');
+            pillBiz.classList.remove('active');
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    navObs.observe(workerSection);
+    navObs.observe(hiringSection);
+  </script>
 
 </body>
 </html>
