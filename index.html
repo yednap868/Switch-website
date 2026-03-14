@@ -3,563 +3,700 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switch</title>
+  <title>Switch — India Ka Fastest Job Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #060608;
-      --green: #00e87b;
-      --green-dim: rgba(0,232,123,0.1);
+      --green: #16a34a;
+      --green-mid: #22c55e;
+      --green-light: #dcfce7;
+      --green-xlight: #f0fdf4;
+      --text: #09090b;
+      --text-2: #52525b;
+      --text-3: #a1a1aa;
+      --border: #e4e4e7;
+      --border-2: #d1d5db;
       --white: #ffffff;
-      --off: rgba(255,255,255,0.6);
-      --muted: rgba(255,255,255,0.3);
-      --card: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.08);
+      --off: #fafafa;
+      --card: #ffffff;
     }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       font-family:'Plus Jakarta Sans',sans-serif;
-      background:var(--bg);
-      color:var(--white);
+      background:var(--white);
+      color:var(--text);
       overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
     }
 
-    /* ─── BG ─── */
-    .bg-wrap{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-    .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.45}
-    .orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,232,123,0.3),transparent 70%);top:-200px;left:-150px;animation:o1 24s ease-in-out infinite alternate}
-    .orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,150,255,0.15),transparent 70%);top:50%;right:-180px;animation:o2 30s ease-in-out infinite alternate}
-    .orb-3{width:450px;height:450px;background:radial-gradient(circle,rgba(100,0,255,0.12),transparent 70%);bottom:-80px;left:35%;animation:o3 20s ease-in-out infinite alternate}
-    @keyframes o1{to{transform:translate(160px,100px) scale(1.1)}}
-    @keyframes o2{to{transform:translate(-100px,60px) scale(1.15)}}
-    @keyframes o3{to{transform:translate(50px,-80px) scale(1.2)}}
-    .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px}
-
     /* ─── NAV ─── */
     nav{
       position:fixed;top:0;left:0;right:0;z-index:100;
-      padding:1rem 1.5rem;
-      display:flex;align-items:center;justify-content:center;
-      background:rgba(6,6,8,0.75);
-      backdrop-filter:blur(24px);
-      -webkit-backdrop-filter:blur(24px);
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
       border-bottom:1px solid var(--border);
+      padding:0.875rem 2rem;
     }
     .nav-inner{
-      width:100%;max-width:1100px;
+      max-width:1100px;margin:0 auto;
       display:flex;align-items:center;justify-content:space-between;
     }
     .nav-logo{
       display:flex;align-items:center;gap:0.625rem;
       font-family:'Space Grotesk',sans-serif;
-      font-weight:700;font-size:1.2rem;color:var(--white);
+      font-weight:700;font-size:1.25rem;color:var(--text);
       text-decoration:none;letter-spacing:-0.02em;
     }
     .nav-logo-box{
-      width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(135deg,var(--green),#00b860);
+      width:34px;height:34px;border-radius:9px;
+      background:var(--green);
       display:flex;align-items:center;justify-content:center;
-      font-weight:800;font-size:0.95rem;color:#000;
-      box-shadow:0 0 18px rgba(0,232,123,0.35);
+      font-weight:800;font-size:0.9rem;color:#fff;
     }
 
-    /* ─── BIG TOGGLE ─── */
-    .toggle-wrap{
-      display:flex;align-items:center;
-      background:rgba(255,255,255,0.06);
-      border:1px solid var(--border);
-      border-radius:100px;padding:4px;gap:2px;
+    /* Toggle */
+    .toggle{
+      display:flex;
+      background:var(--text);
+      border-radius:100px;
+      padding:3px;gap:2px;
     }
-    .toggle-btn{
+    .t-btn{
       padding:0.5rem 1.375rem;
       border-radius:100px;
       font-size:0.875rem;font-weight:700;
-      cursor:pointer;border:none;background:transparent;
-      color:var(--muted);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor:pointer;border:none;
+      color:rgba(255,255,255,0.45);
+      background:transparent;
+      transition:all 0.28s cubic-bezier(0.34,1.56,0.64,1);
       font-family:'Plus Jakarta Sans',sans-serif;
-      letter-spacing:0.01em;white-space:nowrap;
+      letter-spacing:0.005em;white-space:nowrap;
     }
-    .toggle-btn.on{
-      background:var(--green);color:#000;
-      box-shadow:0 2px 16px rgba(0,232,123,0.4);
+    .t-btn.on{
+      background:var(--green-mid);
+      color:#fff;
+      box-shadow:0 2px 12px rgba(34,197,94,0.4);
     }
-    .toggle-btn:not(.on):hover{color:var(--off)}
+    .t-btn:not(.on):hover{color:rgba(255,255,255,0.75)}
     @media(max-width:480px){
-      .toggle-btn{padding:0.45rem 1rem;font-size:0.8125rem}
+      .t-btn{padding:0.45rem 0.875rem;font-size:0.8rem}
+      nav{padding:0.75rem 1.125rem}
     }
+    .nav-right{width:80px}
+    @media(max-width:640px){.nav-right{display:none}}
 
-    /* ─── PAGE VIEWS ─── */
-    .page{display:none}
+    /* ─── PAGE SWITCH ─── */
+    .page{display:none;opacity:0;transform:translateY(12px);transition:opacity 0.4s ease,transform 0.4s ease}
     .page.active{display:block}
+    .page.shown{opacity:1;transform:none}
 
-    /* ─── REVEAL ─── */
-    .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.65s cubic-bezier(0.16,1,0.3,1),transform 0.65s cubic-bezier(0.16,1,0.3,1)}
-    .reveal.visible{opacity:1;transform:none}
+    /* ─── UTILITIES ─── */
+    .wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .section{padding:7rem 0}
+    .divider{height:1px;background:var(--border);margin:0}
 
-    /* ─── SECTION UTILITIES ─── */
-    .wrap{max-width:1100px;margin:0 auto;padding:0 1.75rem;position:relative;z-index:2}
-    .section{padding:7rem 0;position:relative;z-index:2}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent)}
-    .g-text{
-      background:linear-gradient(135deg,var(--green),#00ffcc 50%,var(--green));
-      background-size:200%;
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      animation:shimmer 4s linear infinite;
+    /* Reveal */
+    .r{opacity:0;transform:translateY(36px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+    .r.v{opacity:1;transform:none}
+
+    /* Green highlight */
+    .hi{
+      color:var(--green);
+      position:relative;display:inline;
     }
-    @keyframes shimmer{to{background-position:200%}}
+    .hi::after{
+      content:'';position:absolute;
+      left:0;bottom:-2px;right:0;height:3px;
+      background:var(--green-light);
+      border-radius:2px;
+      transform:scaleX(0);transform-origin:left;
+      transition:transform 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s;
+    }
+    .r.v .hi::after{transform:scaleX(1)}
 
-    /* ────────────────────────────────────────
+    /* ═══════════════════════════════════════
        WORKER PAGE
-    ──────────────────────────────────────── */
+    ═══════════════════════════════════════ */
 
     /* Worker hero */
     .w-hero{
-      min-height:100vh;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;padding:7rem 1.5rem 4rem;
-      position:relative;z-index:2;
-    }
-    .w-hero-kicker{
-      font-size:1rem;font-weight:700;
-      color:var(--green);
-      letter-spacing:0.04em;margin-bottom:1.5rem;
-      animation:fadeUp 0.7s ease both;
-    }
-    .w-hero h1{
-      font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(3.5rem,13vw,8rem);
-      font-weight:700;line-height:0.92;
-      letter-spacing:-0.05em;
-      margin-bottom:1.5rem;
-      animation:fadeUp 0.7s ease 0.08s both;
-    }
-    .w-hero-sub{
-      font-size:clamp(1.125rem,3vw,1.375rem);
-      color:var(--off);max-width:440px;
-      line-height:1.6;margin:0 auto 3rem;
-      animation:fadeUp 0.7s ease 0.16s both;
-    }
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-
-    /* Worker value pills */
-    .w-pills{
-      display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;
-      margin-bottom:3.5rem;
-      animation:fadeUp 0.7s ease 0.22s both;
-    }
-    .w-pill{
-      display:flex;align-items:center;gap:0.625rem;
-      background:rgba(255,255,255,0.06);
-      border:1px solid var(--border);
-      border-radius:100px;
-      padding:0.625rem 1.125rem;
-      font-size:0.9375rem;font-weight:700;
-    }
-    .w-pill-icon{font-size:1.1rem}
-    .w-pill-num{color:var(--green)}
-
-    /* Worker steps — big visual cards */
-    .w-steps{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
-    }
-    @media(max-width:768px){.w-steps{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
-
-    .w-step{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:2.25rem 2rem;
-      text-align:center;
-      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+      padding:9rem 2rem 6rem;
+      background:var(--white);
       position:relative;overflow:hidden;
     }
+    .w-hero-inner{max-width:1100px;margin:0 auto}
+
+    /* animated bg line */
+    .w-hero::before{
+      content:'';
+      position:absolute;top:0;right:0;
+      width:55%;height:100%;
+      background:linear-gradient(135deg,var(--green-xlight) 0%,transparent 60%);
+      z-index:0;
+    }
+    .w-hero-content{position:relative;z-index:1;max-width:680px}
+
+    .w-eyebrow{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      font-size:0.8125rem;font-weight:700;
+      letter-spacing:0.06em;text-transform:uppercase;
+      color:var(--green);margin-bottom:1.75rem;
+    }
+    .w-eyebrow-dot{
+      width:7px;height:7px;background:var(--green);border-radius:50%;
+      animation:blink 1.8s ease-in-out infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.6)}}
+
+    .w-hero h1{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(3.25rem,8vw,6.5rem);
+      font-weight:700;line-height:0.95;
+      letter-spacing:-0.04em;
+      color:var(--text);
+      margin-bottom:1.75rem;
+    }
+    .w-hero h1 em{
+      font-style:italic;color:var(--green);
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-weight:800;
+    }
+
+    .w-hero-sub{
+      font-size:clamp(1rem,2.5vw,1.25rem);
+      color:var(--text-2);
+      line-height:1.75;
+      max-width:500px;
+      margin-bottom:2.5rem;
+    }
+
+    .w-hero-pills{
+      display:flex;flex-wrap:wrap;gap:0.625rem;
+      margin-bottom:3rem;
+    }
+    .w-hpill{
+      display:flex;align-items:center;gap:0.5rem;
+      border:1.5px solid var(--border-2);
+      border-radius:100px;
+      padding:0.5rem 1rem;
+      font-size:0.875rem;font-weight:600;
+      color:var(--text-2);
+      background:var(--white);
+      transition:all 0.2s;
+    }
+    .w-hpill:hover{border-color:var(--green);color:var(--green);background:var(--green-xlight)}
+    .w-hpill strong{color:var(--text);font-weight:700}
+
+    .w-hero-cta{
+      display:inline-flex;align-items:center;gap:0.75rem;
+      padding:1.125rem 2.25rem;
+      background:var(--text);color:var(--white);
+      font-size:1rem;font-weight:700;
+      border-radius:14px;text-decoration:none;
+      transition:all 0.3s;
+      box-shadow:0 4px 24px rgba(9,9,11,0.12);
+      letter-spacing:-0.01em;
+    }
+    .w-hero-cta:hover{background:var(--green);transform:translateY(-2px);box-shadow:0 8px 32px rgba(22,163,74,0.25)}
+    .w-hero-cta svg{width:18px;height:18px;transition:transform 0.3s}
+    .w-hero-cta:hover svg{transform:translateX(3px)}
+
+    /* Hero stats */
+    .w-stats-row{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:0;
+      border:1.5px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      margin-top:5rem;
+      background:var(--white);
+      box-shadow:0 4px 24px rgba(0,0,0,0.04);
+    }
+    @media(max-width:700px){.w-stats-row{grid-template-columns:repeat(2,1fr)}}
+    .w-stat{
+      padding:2rem 1.5rem;
+      border-right:1.5px solid var(--border);
+      transition:background 0.2s;
+    }
+    .w-stat:last-child{border-right:none}
+    @media(max-width:700px){
+      .w-stat:nth-child(2){border-right:none}
+      .w-stat:nth-child(3){border-top:1.5px solid var(--border)}
+      .w-stat:nth-child(4){border-top:1.5px solid var(--border)}
+    }
+    .w-stat:hover{background:var(--green-xlight)}
+    .w-stat-num{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:2rem;font-weight:700;
+      color:var(--text);line-height:1;
+      margin-bottom:0.375rem;
+    }
+    .w-stat-num span{color:var(--green)}
+    .w-stat-lbl{font-size:0.8125rem;color:var(--text-3);font-weight:500}
+
+    /* ── Worker steps ── */
+    .w-steps{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;
+    }
+    @media(max-width:900px){.w-steps{grid-template-columns:1fr;max-width:500px;margin:0 auto}}
+
+    .w-step{
+      border:1.5px solid var(--border);
+      border-radius:20px;
+      padding:2.5rem 2rem;
+      background:var(--white);
+      position:relative;overflow:hidden;
+      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
     .w-step:hover{
-      border-color:rgba(0,232,123,0.3);
-      transform:translateY(-8px);
-      box-shadow:0 20px 60px rgba(0,232,123,0.07);
+      border-color:var(--green);
+      transform:translateY(-6px);
+      box-shadow:0 20px 60px rgba(22,163,74,0.08);
     }
-    .w-step-big-icon{
-      font-size:3.5rem;margin-bottom:1.25rem;
-      display:block;
-      filter:drop-shadow(0 0 20px rgba(0,232,123,0.3));
+    .w-step-n{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:5rem;font-weight:700;
+      color:var(--border);line-height:1;
+      position:absolute;top:1rem;right:1.5rem;
+      letter-spacing:-0.04em;
+      transition:color 0.3s;
+      pointer-events:none;
     }
-    .w-step-num{
-      font-size:0.7rem;font-weight:700;
-      letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--green);margin-bottom:0.625rem;
+    .w-step:hover .w-step-n{color:var(--green-light)}
+    .w-step-tag{
+      display:inline-block;
+      background:var(--green-light);color:var(--green);
+      padding:0.35rem 0.875rem;border-radius:100px;
+      font-size:0.75rem;font-weight:700;
+      letter-spacing:0.05em;text-transform:uppercase;
+      margin-bottom:1.5rem;
     }
     .w-step-title{
       font-family:'Space Grotesk',sans-serif;
       font-size:1.375rem;font-weight:700;
-      letter-spacing:-0.025em;margin-bottom:0.625rem;
+      letter-spacing:-0.025em;
+      margin-bottom:0.75rem;
+      line-height:1.2;
     }
-    .w-step-line{
-      font-size:0.9375rem;color:var(--off);line-height:1.5;
+    .w-step-body{
+      font-size:0.9375rem;color:var(--text-2);
+      line-height:1.7;
     }
-    .w-step-tag{
-      display:inline-block;margin-top:1.25rem;
-      background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);
-      color:var(--green);padding:0.35rem 0.875rem;
-      border-radius:100px;font-size:0.8rem;font-weight:700;
-    }
+    .w-step-body strong{color:var(--text);font-weight:700}
 
-    /* Jyoti step */
-    .w-step.jyoti{
-      background:linear-gradient(135deg,rgba(0,232,123,0.08),rgba(0,232,123,0.02));
-      border-color:rgba(0,232,123,0.2);
+    /* ── Jyoti block ── */
+    .jyoti-block{
+      background:var(--text);
+      border-radius:24px;
+      padding:4rem;
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:4rem;align-items:center;
+      position:relative;overflow:hidden;
+    }
+    @media(max-width:768px){
+      .jyoti-block{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem}
+    }
+    .jyoti-block::before{
+      content:'';position:absolute;
+      top:-100px;right:-100px;
+      width:400px;height:400px;
+      background:radial-gradient(circle,rgba(34,197,94,0.15),transparent 70%);
+      pointer-events:none;
+    }
+    .jyoti-left{position:relative;z-index:1}
+    .jyoti-kicker{
+      font-size:0.75rem;font-weight:700;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--green-mid);margin-bottom:1.125rem;
+      display:flex;align-items:center;gap:0.5rem;
     }
     .live-dot{
-      display:inline-block;width:8px;height:8px;
-      background:var(--green);border-radius:50%;
-      margin-right:6px;vertical-align:middle;
-      animation:liveBlink 1.5s ease-in-out infinite;
+      display:inline-block;width:7px;height:7px;
+      background:var(--green-mid);border-radius:50%;
+      animation:livePulse 1.6s ease-in-out infinite;
     }
-    @keyframes liveBlink{0%,100%{box-shadow:0 0 0 0 rgba(0,232,123,0.6)}50%{box-shadow:0 0 0 7px rgba(0,232,123,0)}}
+    @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)}50%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}
+    .jyoti-h{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(1.75rem,4vw,2.875rem);
+      font-weight:700;letter-spacing:-0.035em;
+      color:#fff;line-height:1.1;
+      margin-bottom:1.25rem;
+    }
+    .jyoti-h span{color:var(--green-mid)}
+    .jyoti-p{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.75}
 
-    /* Worker wins — salary cards */
+    .jyoti-right{position:relative;z-index:1}
+    .jyoti-chat{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:16px;
+      padding:1.5rem;
+      display:flex;flex-direction:column;gap:0.875rem;
+    }
+    .jchat-label{
+      font-size:0.7rem;font-weight:700;
+      letter-spacing:0.08em;text-transform:uppercase;
+      color:rgba(255,255,255,0.3);
+      margin-bottom:0.25rem;
+    }
+    .jchat-q{
+      background:rgba(255,255,255,0.07);
+      border-radius:10px;
+      padding:0.875rem 1.125rem;
+      font-size:0.9rem;color:rgba(255,255,255,0.8);
+      line-height:1.5;
+      border-left:3px solid var(--green-mid);
+      transition:all 0.2s;
+    }
+    .jchat-q:hover{background:rgba(255,255,255,0.1);color:#fff}
+
+    /* ── Worker wins ── */
     .w-wins{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:1.25rem;
     }
     @media(max-width:900px){.w-wins{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:480px){.w-wins{grid-template-columns:repeat(2,1fr)}}
 
     .w-win{
-      background:var(--card);border:1px solid var(--border);
-      border-radius:20px;padding:1.75rem 1.25rem;
-      text-align:center;
-      transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+      border:1.5px solid var(--border);
+      border-radius:20px;
+      padding:2rem 1.5rem;
+      background:var(--white);
+      transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+      text-align:left;
     }
-    .w-win:hover{border-color:rgba(0,232,123,0.25);transform:translateY(-4px)}
-    .w-win-av{
-      width:56px;height:56px;border-radius:16px;
-      background:linear-gradient(135deg,var(--green),#00b860);
-      display:flex;align-items:center;justify-content:center;
+    .w-win:hover{
+      border-color:var(--green);
+      transform:translateY(-4px);
+      box-shadow:0 16px 48px rgba(22,163,74,0.07);
+    }
+    .w-win-name{font-size:0.875rem;font-weight:700;color:var(--text);margin-bottom:2px}
+    .w-win-role{font-size:0.8rem;color:var(--text-3);margin-bottom:1.5rem}
+    .w-win-big{
       font-family:'Space Grotesk',sans-serif;
-      font-weight:700;font-size:1.25rem;color:#000;
-      margin:0 auto 1rem;
-      box-shadow:0 4px 20px rgba(0,232,123,0.25);
+      font-size:2rem;font-weight:700;
+      color:var(--green);letter-spacing:-0.03em;
+      line-height:1;margin-bottom:4px;
     }
-    .w-win-name{font-weight:700;font-size:0.9375rem;margin-bottom:2px}
-    .w-win-role{font-size:0.8125rem;color:var(--muted);margin-bottom:1rem}
-    .w-win-salary{
-      font-family:'Space Grotesk',sans-serif;
-      font-size:1.375rem;font-weight:700;color:var(--green);
+    .w-win-tag{font-size:0.8rem;color:var(--text-2)}
+    .w-win-quote{
+      font-size:0.875rem;color:var(--text-2);
+      line-height:1.65;margin-top:1rem;
+      padding-top:1rem;
+      border-top:1px solid var(--border);
+      font-style:italic;
     }
-    .w-win-tag{font-size:0.8rem;color:var(--muted);margin-top:4px}
 
-    /* Worker CTA */
+    /* ── Worker CTA ── */
     .w-cta{
-      padding:6rem 1.5rem;text-align:center;
-      position:relative;z-index:2;
+      background:var(--green-xlight);
+      border-top:1px solid var(--green-light);
+      padding:6rem 2rem;text-align:center;
     }
+    .w-cta-inner{max-width:640px;margin:0 auto}
     .w-cta h2{
       font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(2.5rem,7vw,5.5rem);
-      font-weight:700;line-height:0.95;
-      letter-spacing:-0.04em;margin-bottom:1.25rem;
+      font-size:clamp(2.5rem,6vw,4.5rem);
+      font-weight:700;letter-spacing:-0.04em;
+      line-height:1;margin-bottom:1.25rem;
+      color:var(--text);
     }
-    .w-cta p{font-size:1.125rem;color:var(--off);margin-bottom:2.5rem}
-    .big-btn{
-      display:inline-flex;align-items:center;gap:0.75rem;
-      padding:1.25rem 2.75rem;
-      background:var(--green);color:#000;
-      font-family:'Space Grotesk',sans-serif;
-      font-size:1.125rem;font-weight:700;
-      border-radius:100px;text-decoration:none;
-      transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      box-shadow:0 0 50px rgba(0,232,123,0.35);
-      letter-spacing:-0.01em;
-    }
-    .big-btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 0 70px rgba(0,232,123,0.5)}
-    .big-btn svg{width:20px;height:20px}
+    .w-cta h2 span{color:var(--green)}
+    .w-cta p{font-size:1.125rem;color:var(--text-2);margin-bottom:2.5rem;line-height:1.6}
 
-    /* ────────────────────────────────────────
+    /* ═══════════════════════════════════════
        BUSINESS PAGE
-    ──────────────────────────────────────── */
+    ═══════════════════════════════════════ */
     .b-hero{
-      min-height:100vh;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;padding:7rem 1.5rem 4rem;
-      position:relative;z-index:2;
+      padding:9rem 2rem 6rem;
+      background:var(--white);position:relative;overflow:hidden;
     }
+    .b-hero::before{
+      content:'';position:absolute;top:0;right:0;
+      width:45%;height:100%;
+      background:linear-gradient(135deg,var(--green-xlight),transparent 60%);
+      z-index:0;
+    }
+    .b-hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
     .b-eyebrow{
       display:inline-flex;align-items:center;gap:0.5rem;
-      background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);
-      color:var(--green);
-      padding:0.5rem 1.25rem;border-radius:100px;
-      font-size:0.8rem;font-weight:700;
+      background:var(--green-light);color:var(--green);
+      padding:0.4rem 1rem;border-radius:100px;
+      font-size:0.75rem;font-weight:700;
       letter-spacing:0.08em;text-transform:uppercase;
-      margin-bottom:2rem;
-      animation:fadeUp 0.7s ease both;
+      margin-bottom:1.75rem;
     }
     .b-hero h1{
       font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(3rem,8vw,6.5rem);
-      font-weight:700;line-height:0.94;
+      font-size:clamp(3rem,7vw,6rem);
+      font-weight:700;line-height:0.95;
       letter-spacing:-0.04em;
-      margin-bottom:1.5rem;
-      animation:fadeUp 0.7s ease 0.08s both;
+      margin-bottom:1.75rem;max-width:680px;
     }
+    .b-hero h1 span{color:var(--green)}
     .b-hero-sub{
       font-size:clamp(1rem,2.5vw,1.25rem);
-      color:var(--off);max-width:540px;margin:0 auto 3.5rem;
-      line-height:1.7;
-      animation:fadeUp 0.7s ease 0.16s both;
+      color:var(--text-2);line-height:1.75;
+      max-width:520px;margin-bottom:3rem;
     }
 
-    /* Business stats row */
+    /* Business stats */
     .b-stats{
-      display:flex;gap:0;
-      background:rgba(255,255,255,0.04);
-      border:1px solid var(--border);border-radius:20px;
-      overflow:hidden;max-width:700px;margin:0 auto;
-      animation:fadeUp 0.7s ease 0.24s both;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      border:1.5px solid var(--border);border-radius:20px;overflow:hidden;
+      max-width:780px;margin-top:5rem;
+      box-shadow:0 4px 24px rgba(0,0,0,0.04);
     }
+    @media(max-width:700px){.b-stats{grid-template-columns:repeat(2,1fr)}}
     .b-stat{
-      flex:1;padding:1.75rem 1rem;text-align:center;
-      border-right:1px solid var(--border);
+      padding:2rem 1.5rem;
+      border-right:1.5px solid var(--border);
+      background:var(--white);transition:background 0.2s;
     }
     .b-stat:last-child{border-right:none}
+    @media(max-width:700px){
+      .b-stat:nth-child(2){border-right:none}
+      .b-stat:nth-child(3){border-top:1.5px solid var(--border)}
+      .b-stat:nth-child(4){border-top:1.5px solid var(--border)}
+    }
+    .b-stat:hover{background:var(--green-xlight)}
     .b-stat-num{
       font-family:'Space Grotesk',sans-serif;
-      font-size:1.875rem;font-weight:700;
-      color:var(--green);line-height:1;margin-bottom:0.375rem;
+      font-size:2rem;font-weight:700;
+      color:var(--text);line-height:1;margin-bottom:0.375rem;
     }
-    .b-stat-lbl{font-size:0.8rem;color:var(--muted);font-weight:500}
+    .b-stat-num span{color:var(--green)}
+    .b-stat-lbl{font-size:0.8125rem;color:var(--text-3);font-weight:500}
 
     /* Section label */
     .s-label{
-      display:inline-flex;align-items:center;gap:0.5rem;
+      display:inline-flex;align-items:center;gap:0.625rem;
       font-size:0.75rem;font-weight:700;
       letter-spacing:0.1em;text-transform:uppercase;
       color:var(--green);margin-bottom:1.125rem;
     }
-    .s-label::before{content:'';width:20px;height:2px;background:var(--green);border-radius:2px}
+    .s-label::before{content:'';width:18px;height:2px;background:var(--green);border-radius:2px}
     .s-h{
       font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(2rem,4vw,3.5rem);font-weight:700;
-      letter-spacing:-0.035em;line-height:1.05;margin-bottom:1rem;
+      font-size:clamp(2rem,4vw,3.25rem);
+      font-weight:700;letter-spacing:-0.035em;
+      line-height:1.05;margin-bottom:1rem;
     }
-    .s-p{font-size:1rem;color:var(--off);line-height:1.7;max-width:560px}
+    .s-h span{color:var(--green)}
+    .s-p{font-size:1rem;color:var(--text-2);line-height:1.75;max-width:560px}
 
     /* Pipeline */
     .b-pipeline{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:1.375rem;
     }
     @media(max-width:900px){.b-pipeline{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:560px){.b-pipeline{grid-template-columns:1fr}}
 
     .b-card{
-      background:var(--card);border:1px solid var(--border);
-      border-radius:20px;padding:1.875rem;
-      transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
-      position:relative;
+      border:1.5px solid var(--border);
+      border-radius:20px;padding:2rem;
+      background:var(--white);
+      transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+      position:relative;overflow:hidden;
+    }
+    .b-card::before{
+      content:'';position:absolute;
+      left:0;top:0;bottom:0;width:3px;
+      background:var(--border);
+      transition:background 0.3s;
     }
     .b-card:hover{
-      background:rgba(255,255,255,0.07);
-      border-color:rgba(255,255,255,0.14);
-      transform:translateY(-6px);
+      border-color:var(--green);
+      transform:translateY(-5px);
+      box-shadow:0 16px 48px rgba(22,163,74,0.07);
     }
+    .b-card:hover::before{background:var(--green)}
+
     .b-card-step{
       font-size:0.7rem;font-weight:700;
       letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--muted);margin-bottom:1rem;
+      color:var(--text-3);margin-bottom:1.25rem;
     }
-    .b-card-icon{font-size:1.875rem;display:block;margin-bottom:1rem}
     .b-card-title{
       font-family:'Space Grotesk',sans-serif;
-      font-size:1rem;font-weight:600;letter-spacing:-0.01em;
-      margin-bottom:0.5rem;
+      font-size:1.0625rem;font-weight:600;
+      letter-spacing:-0.02em;margin-bottom:0.625rem;
     }
-    .b-card-desc{font-size:0.9rem;color:var(--off);line-height:1.65}
+    .b-card-desc{font-size:0.9rem;color:var(--text-2);line-height:1.7}
     .b-card-badge{
-      display:inline-block;margin-top:0.875rem;
-      background:rgba(255,255,255,0.06);border:1px solid var(--border);
-      color:rgba(255,255,255,0.6);
+      display:inline-block;margin-top:1rem;
+      background:var(--off);border:1px solid var(--border);
+      color:var(--text-2);
       padding:0.3rem 0.75rem;border-radius:6px;
       font-size:0.8rem;font-weight:600;
     }
-    .b-card.highlight{
-      border-color:rgba(0,232,123,0.2);
-      background:linear-gradient(135deg,rgba(0,232,123,0.06),rgba(0,232,123,0.01));
+    .b-card.hi-card{
+      border-color:var(--green);background:var(--green-xlight);
     }
+    .b-card.hi-card::before{background:var(--green)}
+    .b-card.hi-card .b-card-step{color:var(--green)}
+    .b-card.hi-card .b-card-badge{background:var(--green-light);color:var(--green);border-color:var(--green-light)}
 
-    /* Manager cards */
-    .b-manager-label{
-      font-family:'Space Grotesk',sans-serif;
-      font-size:1.25rem;font-weight:700;
-      letter-spacing:-0.02em;margin-bottom:1.25rem;
-    }
-    .b-manager-label span{color:var(--green)}
-    .b-mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    /* Manager grid */
+    .b-mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
     @media(max-width:768px){.b-mgrid{grid-template-columns:1fr}}
-
     .b-mcard{
-      background:linear-gradient(135deg,rgba(0,232,123,0.06),rgba(0,232,123,0.01));
-      border:1px solid rgba(0,232,123,0.15);
-      border-radius:18px;padding:1.75rem;
-      transition:all 0.3s;display:flex;flex-direction:column;gap:0.75rem;
+      background:var(--off);
+      border:1.5px solid var(--border);
+      border-radius:20px;padding:2rem;
+      transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
     }
-    .b-mcard:hover{border-color:rgba(0,232,123,0.3);transform:translateY(-4px)}
-    .b-mcard-icon{
-      width:42px;height:42px;border-radius:12px;
-      background:rgba(0,232,123,0.1);
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.2rem;
+    .b-mcard:hover{border-color:var(--green);background:var(--green-xlight);transform:translateY(-4px)}
+    .b-mcard-num{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:2.5rem;font-weight:700;
+      color:var(--green-light);
+      letter-spacing:-0.04em;
+      line-height:1;margin-bottom:1rem;
+      transition:color 0.3s;
     }
+    .b-mcard:hover .b-mcard-num{color:var(--green)}
     .b-mcard-title{
       font-family:'Space Grotesk',sans-serif;
-      font-weight:600;font-size:0.9375rem;letter-spacing:-0.01em;
+      font-weight:600;font-size:1rem;
+      letter-spacing:-0.015em;margin-bottom:0.5rem;
     }
-    .b-mcard-desc{font-size:0.875rem;color:var(--off);line-height:1.65}
+    .b-mcard-desc{font-size:0.9rem;color:var(--text-2);line-height:1.7}
 
     /* Business CTA */
     .b-cta{
-      padding:6rem 1.5rem;text-align:center;
-      position:relative;z-index:2;
+      background:var(--text);
+      padding:6rem 2rem;text-align:center;
+      position:relative;overflow:hidden;
     }
+    .b-cta::before{
+      content:'';position:absolute;
+      top:-150px;left:50%;transform:translateX(-50%);
+      width:600px;height:600px;
+      background:radial-gradient(circle,rgba(34,197,94,0.1),transparent 70%);
+      pointer-events:none;
+    }
+    .b-cta-inner{max-width:640px;margin:0 auto;position:relative;z-index:1}
     .b-cta h2{
       font-family:'Space Grotesk',sans-serif;
-      font-size:clamp(2.25rem,5vw,4.5rem);
+      font-size:clamp(2.25rem,5vw,4rem);
       font-weight:700;letter-spacing:-0.04em;
       line-height:1;margin-bottom:1.25rem;
+      color:#fff;
     }
-    .b-cta p{font-size:1.0625rem;color:var(--off);margin-bottom:2.5rem}
-    .b-btn-row{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+    .b-cta h2 span{color:var(--green-mid)}
+    .b-cta p{font-size:1.0625rem;color:rgba(255,255,255,0.55);margin-bottom:2.5rem;line-height:1.65}
+    .b-cta-row{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
     .b-btn-ghost{
       display:inline-flex;align-items:center;gap:0.625rem;
       padding:1.125rem 2rem;
-      background:rgba(255,255,255,0.06);
-      border:1.5px solid var(--border);
-      color:var(--white);
+      background:rgba(255,255,255,0.08);
+      border:1.5px solid rgba(255,255,255,0.15);
+      color:#fff;
       font-size:1rem;font-weight:600;
-      border-radius:100px;text-decoration:none;
+      border-radius:14px;text-decoration:none;
       transition:all 0.3s;
     }
-    .b-btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.18)}
-    .b-btn-ghost svg{width:18px;height:18px;color:var(--off)}
+    .b-btn-ghost:hover{background:rgba(255,255,255,0.13);border-color:rgba(255,255,255,0.25)}
+    .b-btn-ghost svg{width:18px;height:18px;opacity:0.6}
+
+    /* Main green CTA button */
+    .btn-main{
+      display:inline-flex;align-items:center;gap:0.75rem;
+      padding:1.125rem 2.25rem;
+      background:var(--green);color:#fff;
+      font-size:1rem;font-weight:700;
+      border-radius:14px;text-decoration:none;
+      transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+      box-shadow:0 4px 24px rgba(22,163,74,0.25);
+      letter-spacing:-0.01em;
+    }
+    .btn-main:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 8px 36px rgba(22,163,74,0.3)}
+    .btn-main svg{width:18px;height:18px;transition:transform 0.3s}
+    .btn-main:hover svg{transform:translateX(3px)}
+
+    /* dark bg version */
+    .btn-main-dark{background:var(--green-mid);color:#fff}
+    .btn-main-dark:hover{background:var(--green);box-shadow:0 8px 36px rgba(34,197,94,0.3)}
 
     /* ─── FOOTER ─── */
     footer{
       text-align:center;padding:2.5rem;
-      color:var(--muted);font-size:0.8125rem;
-      position:relative;z-index:2;
+      color:var(--text-3);font-size:0.8125rem;
       border-top:1px solid var(--border);
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-wrap">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-  <div class="grid-bg"></div>
-
-  <!-- NAV WITH TOGGLE -->
+  <!-- NAV -->
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo">
         <div class="nav-logo-box">S</div>
         Switch
       </a>
-
-      <div class="toggle-wrap">
-        <button class="toggle-btn on" id="btn-worker" onclick="showPage('worker')">Job Chahiye 👷</button>
-        <button class="toggle-btn" id="btn-biz" onclick="showPage('biz')">Hire Karo 🏢</button>
+      <div class="toggle">
+        <button class="t-btn on" id="btn-w" onclick="show('w')">Job Chahiye</button>
+        <button class="t-btn" id="btn-b" onclick="show('b')">Hire Karo</button>
       </div>
-
-      <div style="width:80px"></div><!-- spacer to center toggle -->
+      <div class="nav-right"></div>
     </div>
   </nav>
 
 
-  <!-- ══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
        WORKER PAGE
-  ══════════════════════════════════════ -->
-  <div class="page active" id="page-worker">
+  ═══════════════════════════════════════ -->
+  <div class="page active" id="page-w">
 
     <!-- Hero -->
     <div class="w-hero">
-      <div class="w-hero-kicker">✦ India ka fastest job platform ✦</div>
-      <h1>Kal se<br><span class="g-text">kaam shuru.</span></h1>
-      <p class="w-hero-sub">Training lo. Test pass karo. Seedha kaam pe jao.<br>Jyoti har waqt app mein saath hai.</p>
-
-      <div class="w-pills">
-        <div class="w-pill"><span class="w-pill-icon">⚡</span><span class="w-pill-num">18 ghante</span> mein joining</div>
-        <div class="w-pill"><span class="w-pill-icon">📍</span><span class="w-pill-num">2km</span> ke andar job</div>
-        <div class="w-pill"><span class="w-pill-icon">💰</span><span class="w-pill-num">₹60K</span> tak kamai</div>
-        <div class="w-pill"><span class="w-pill-icon">👥</span><span class="w-pill-num">5000+</span> already kaam pe</div>
-      </div>
-
-      <a href="https://app.switchlocally.com" class="big-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-        Abhi Join Karo
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- How it works — 3 big steps -->
-    <div class="section">
-      <div class="wrap">
-        <div style="text-align:center;margin-bottom:4rem" class="reveal">
-          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem">Kaam kaise milta hai</div>
-          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.75rem);font-weight:700;letter-spacing:-0.04em;line-height:1.05">Sirf <span class="g-text">3 kadam.</span></h2>
-        </div>
-
-        <div class="w-steps">
-          <div class="w-step reveal" style="transition-delay:0.05s">
-            <span class="w-step-big-icon">📚</span>
-            <div class="w-step-num">STEP 01</div>
-            <div class="w-step-title">10 min Training</div>
-            <p class="w-step-line">App mein short videos dekho. Apni job seekh lo — delivery, security, retail, jo bhi.</p>
-            <span class="w-step-tag">Koi bhi kar sakta hai</span>
+      <div class="w-hero-inner">
+        <div class="w-hero-content">
+          <div class="w-eyebrow">
+            <span class="w-eyebrow-dot"></span>
+            5000+ log kaam kar rahe hain
           </div>
-
-          <div class="w-step reveal" style="transition-delay:0.12s">
-            <span class="w-step-big-icon">✅</span>
-            <div class="w-step-num">STEP 02</div>
-            <div class="w-step-title">Test Pass → Verified</div>
-            <p class="w-step-line">Ek chota sa test. Pass karo aur pao Switch ka Verified badge. Yahi teri guarantee hai.</p>
-            <span class="w-step-tag">Verified ✓ Badge milega</span>
-          </div>
-
-          <div class="w-step reveal" style="transition-delay:0.2s">
-            <span class="w-step-big-icon">🏢</span>
-            <div class="w-step-num">STEP 03</div>
-            <div class="w-step-title">Seedha Kaam Pe</div>
-            <p class="w-step-line">Verified hote hi company mein jao. App mein daily tasks milenge. Jyoti har waqt help karegi.</p>
-            <span class="w-step-tag">Day 1 se paisa</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Jyoti highlight -->
-    <div class="section">
-      <div class="wrap">
-        <div style="max-width:800px;margin:0 auto;text-align:center" class="reveal">
-          <div style="font-size:3.5rem;margin-bottom:1.25rem;filter:drop-shadow(0 0 24px rgba(0,232,123,0.4))">🤖</div>
-          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem"><span class="live-dot"></span>LIVE — App ke andar</div>
-          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.75rem);font-weight:700;letter-spacing:-0.04em;line-height:1.05;margin-bottom:1.25rem">
-            Jyoti — teri<br><span class="g-text">personal guide.</span>
-          </h2>
-          <p style="font-size:1.125rem;color:var(--off);line-height:1.7;max-width:520px;margin:0 auto 2.5rem">
-            Kisi bhi task mein atko mat. Switch app ke andar hi Jyoti se poochho — woh Hindi mein, step-by-step, abhi guide karegi. 24/7.
+          <h1>Koi bhi job.<br><em>10 minute</em><br>ki training.</h1>
+          <p class="w-hero-sub">
+            10th pass? Graduate? Koi experience nahi? Koi fark nahi.<br>
+            Switch pe training lo, verified bano, aur kal se ghar ke paas kamai shuru karo.
           </p>
-          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem">
-            <div style="background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);padding:0.625rem 1.25rem;border-radius:100px;font-size:0.9rem;font-weight:600;color:var(--green)">📦 Parcel kahan rakhun?</div>
-            <div style="background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);padding:0.625rem 1.25rem;border-radius:100px;font-size:0.9rem;font-weight:600;color:var(--green)">🧹 Cleaning sequence kya hai?</div>
-            <div style="background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);padding:0.625rem 1.25rem;border-radius:100px;font-size:0.9rem;font-weight:600;color:var(--green)">🛒 Shelf kaise arrange karein?</div>
-            <div style="background:var(--green-dim);border:1px solid rgba(0,232,123,0.2);padding:0.625rem 1.25rem;border-radius:100px;font-size:0.9rem;font-weight:600;color:var(--green)">🔒 Guard duty checklist?</div>
+          <div class="w-hero-pills">
+            <div class="w-hpill"><strong>18 ghante</strong>&nbsp;mein joining</div>
+            <div class="w-hpill"><strong>2km</strong>&nbsp;ke andar job</div>
+            <div class="w-hpill"><strong>₹20K–60K</strong>&nbsp;monthly salary</div>
+            <div class="w-hpill">Koi experience zaruri nahi</div>
+          </div>
+          <a href="https://app.switchlocally.com" class="w-hero-cta">
+            Abhi Start Karo
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+
+        <div class="w-stats-row r">
+          <div class="w-stat">
+            <div class="w-stat-num"><span data-target="5000" data-suffix="+">5000+</span></div>
+            <div class="w-stat-lbl">Log hire ho chuke hain</div>
+          </div>
+          <div class="w-stat">
+            <div class="w-stat-num"><span data-target="18" data-suffix=" ghante">18 ghante</span></div>
+            <div class="w-stat-lbl">Average joining time</div>
+          </div>
+          <div class="w-stat">
+            <div class="w-stat-num"><span data-target="500" data-suffix="+">500+</span></div>
+            <div class="w-stat-lbl">Companies hiring</div>
+          </div>
+          <div class="w-stat">
+            <div class="w-stat-num"><span data-target="10" data-suffix=" min">10 min</span></div>
+            <div class="w-stat-lbl">Mein training complete</div>
           </div>
         </div>
       </div>
@@ -567,89 +704,174 @@
 
     <div class="divider"></div>
 
-    <!-- Success stories — just numbers -->
+    <!-- How it works -->
     <div class="section">
       <div class="wrap">
-        <div style="text-align:center;margin-bottom:3.5rem" class="reveal">
-          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem">Ye log already kaam kar rahe hain</div>
-          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-0.04em">Unki kamai, <span class="g-text">teri baari.</span></h2>
+        <div class="r" style="text-align:center;max-width:600px;margin:0 auto 4.5rem">
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem"><span style="width:18px;height:2px;background:var(--green);border-radius:2px;display:inline-block"></span>Kaise kaam karta hai</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1.05">Sirf teen kadam. <span class="hi">Bas.</span></h2>
+        </div>
+        <div class="w-steps">
+
+          <div class="w-step r" style="transition-delay:0.05s">
+            <div class="w-step-n">01</div>
+            <span class="w-step-tag">Step 01</span>
+            <div class="w-step-title">10 Minute Mein Seekho</div>
+            <p class="w-step-body">
+              Switch app pe <strong>apni job ke videos dekho.</strong> Delivery karna ho, security guard banna ho, mall mein kaam karna ho — sabke liye short training available hai.<br><br>
+              Padhne ki zarurat nahi. Dekhna hai, sunna hai, khatam.
+            </p>
+          </div>
+
+          <div class="w-step r" style="transition-delay:0.12s">
+            <div class="w-step-n">02</div>
+            <span class="w-step-tag">Step 02</span>
+            <div class="w-step-title">Test Pass Karo, Verified Bano</div>
+            <p class="w-step-body">
+              Training ke baad ek <strong>chota sa test — bas 5 minute.</strong> Pass karo aur pao Switch ka <strong>Verified badge.</strong><br><br>
+              Yahi badge companies ko bolta hai: "Ye banda/bandi ready hai." Interview ka darr khatam.
+            </p>
+          </div>
+
+          <div class="w-step r" style="transition-delay:0.2s">
+            <div class="w-step-n">03</div>
+            <span class="w-step-tag">Step 03</span>
+            <div class="w-step-title">Seedha Kaam Pe, Kal Se</div>
+            <p class="w-step-body">
+              Verified badge ke saath <strong>seedha company mein jao.</strong> App mein har roz ka task list milega. Koi kaam unclear lage? Jyoti app mein hi step-by-step guide karegi.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Jyoti -->
+    <div class="section" style="background:var(--off)">
+      <div class="wrap">
+        <div class="jyoti-block r">
+          <div class="jyoti-left">
+            <div class="jyoti-kicker">
+              <span class="live-dot"></span>
+              App ke andar — 24/7
+            </div>
+            <h2 class="jyoti-h">Phanse nahi.<br><span>Jyoti</span> hai na.</h2>
+            <p class="jyoti-p">
+              Koi bhi kaam mein atko, Jyoti se pooch lo. Supervisor ka wait nahi karna, manager ko call nahi karna. Woh Hindi mein, abhi, step-by-step guide karegi — sirf tumhare task ke liye.
+            </p>
+          </div>
+          <div class="jyoti-right">
+            <div class="jyoti-chat">
+              <div class="jchat-label">Log aisa poochte hain Jyoti se</div>
+              <div class="jchat-q">"Parcel deliver karte waqt address nahi mil raha, kya karoon?"</div>
+              <div class="jchat-q">"Store mein opening checklist kya hai?"</div>
+              <div class="jchat-q">"Guard duty shift handover kaise karte hain?"</div>
+              <div class="jchat-q">"Shelf arrangement mein sequence kya follow karna hai?"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Wins -->
+    <div class="section">
+      <div class="wrap">
+        <div class="r" style="margin-bottom:3.5rem">
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem"><span style="width:18px;height:2px;background:var(--green);border-radius:2px;display:inline-block"></span>Unki kamai</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1.05">Switch se <span class="hi">yahan tak pahunche.</span></h2>
         </div>
         <div class="w-wins">
-          <div class="w-win reveal" style="transition-delay:0.05s">
-            <div class="w-win-av">R</div>
-            <div class="w-win-name">Rajesh K.</div>
-            <div class="w-win-role">Swiggy Delivery</div>
-            <div class="w-win-salary">₹52,000</div>
+
+          <div class="w-win r" style="transition-delay:0.05s">
+            <div class="w-win-name">Rajesh Kumar</div>
+            <div class="w-win-role">Delivery Partner, Swiggy · Delhi</div>
+            <div class="w-win-big">₹52,000</div>
             <div class="w-win-tag">per month</div>
+            <p class="w-win-quote">"Raat ko call kiya, subah interview, shaam ko joining. 18 ghante mein sab ho gaya."</p>
           </div>
-          <div class="w-win reveal" style="transition-delay:0.1s">
-            <div class="w-win-av">P</div>
-            <div class="w-win-name">Priya S.</div>
-            <div class="w-win-role">D-Mart Assistant</div>
-            <div class="w-win-salary">₹22,000</div>
-            <div class="w-win-tag">+ Sundays off</div>
+
+          <div class="w-win r" style="transition-delay:0.1s">
+            <div class="w-win-name">Priya Sharma</div>
+            <div class="w-win-role">Store Assistant, D-Mart · Noida</div>
+            <div class="w-win-big">₹22,000</div>
+            <div class="w-win-tag">+ Sundays off, ghar ke paas</div>
+            <p class="w-win-quote">"Phone pe info di, next day interview. Aur ab Sundays ghar pe hoon."</p>
           </div>
-          <div class="w-win reveal" style="transition-delay:0.15s">
-            <div class="w-win-av">A</div>
-            <div class="w-win-name">Amit V.</div>
-            <div class="w-win-role">Amazon Warehouse</div>
-            <div class="w-win-salary">₹28,000</div>
-            <div class="w-win-tag">+ PF included</div>
+
+          <div class="w-win r" style="transition-delay:0.15s">
+            <div class="w-win-name">Amit Verma</div>
+            <div class="w-win-role">Warehouse, Amazon · Gurugram</div>
+            <div class="w-win-big">₹28,000</div>
+            <div class="w-win-tag">+ PF + health insurance</div>
+            <p class="w-win-quote">"10th pass hun. 3 ghante mein interview fix ho gaya. PF bhi milta hai."</p>
           </div>
-          <div class="w-win reveal" style="transition-delay:0.2s">
-            <div class="w-win-av">S</div>
-            <div class="w-win-name">Suresh S.</div>
-            <div class="w-win-role">Security Guard</div>
-            <div class="w-win-salary">2km</div>
-            <div class="w-win-tag">ghar se job</div>
+
+          <div class="w-win r" style="transition-delay:0.2s">
+            <div class="w-win-name">Suresh Singh</div>
+            <div class="w-win-role">Security Guard, Securitas · Pune</div>
+            <div class="w-win-big">2km</div>
+            <div class="w-win-tag">ghar se job — rooz ka safar khatam</div>
+            <p class="w-win-quote">"Pehle 25km Noida jaata tha. Ab 2km pe kaam hai, paisa aur time dono bache."</p>
           </div>
+
         </div>
       </div>
     </div>
 
     <!-- Worker CTA -->
-    <div class="w-cta reveal">
-      <h2>Tu bhi ready hai.<br><span class="g-text">Switch kar.</span></h2>
-      <p>Training lo. Verified bano. Kal se kaam shuru karo.</p>
-      <a href="https://app.switchlocally.com" class="big-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-        App Kholo
-      </a>
+    <div class="w-cta">
+      <div class="w-cta-inner r">
+        <h2>Tu bhi ready hai.<br><span>Kal se shuru kar.</span></h2>
+        <p>Training lo. Verified bano. Ghar ke paas job pao. 18 ghante ya usse bhi kam.</p>
+        <a href="https://app.switchlocally.com" class="btn-main" style="font-size:1.0625rem;padding:1.25rem 2.5rem">
+          App Kholo, Job Chuno
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
     </div>
 
-  </div><!-- /page-worker -->
+  </div><!-- /page-w -->
 
 
-  <!-- ══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
        BUSINESS PAGE
-  ══════════════════════════════════════ -->
-  <div class="page" id="page-biz">
+  ═══════════════════════════════════════ -->
+  <div class="page" id="page-b">
 
     <!-- Hero -->
     <div class="b-hero">
-      <div class="b-eyebrow">
-        <span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block"></span>
-        For Businesses
-      </div>
-      <h1>Pre-trained.<br>Verified.<br><span class="g-text">Day 1 Ready.</span></h1>
-      <p class="b-hero-sub">No onboarding. No handholding. Switch workers arrive trained, tested, and ready to execute daily SOPs from the first hour.</p>
+      <div class="b-hero-inner">
+        <div class="b-eyebrow">For Businesses</div>
+        <h1>Pre-trained.<br>Verified.<br><span>Day 1 Ready.</span></h1>
+        <p class="b-hero-sub">
+          No onboarding. No handholding. Switch workers arrive trained, tested, and ready to execute daily SOPs from hour one — with a manager dashboard that gives you full control.
+        </p>
+        <a href="https://app.switchlocally.com" class="btn-main">
+          Start Hiring
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
 
-      <div class="b-stats">
-        <div class="b-stat">
-          <div class="b-stat-num" data-target="500" data-suffix="+">0+</div>
-          <div class="b-stat-lbl">Companies Hiring</div>
-        </div>
-        <div class="b-stat">
-          <div class="b-stat-num" data-target="0" data-suffix=" days">0 days</div>
-          <div class="b-stat-lbl">Onboarding Time</div>
-        </div>
-        <div class="b-stat">
-          <div class="b-stat-num" data-target="10" data-suffix="min">0min</div>
-          <div class="b-stat-lbl">Training Per Role</div>
-        </div>
-        <div class="b-stat">
-          <div class="b-stat-num" data-target="5000" data-suffix="+">0+</div>
-          <div class="b-stat-lbl">Verified Workers</div>
+        <div class="b-stats r">
+          <div class="b-stat">
+            <div class="b-stat-num"><span data-target="500" data-suffix="+">500+</span></div>
+            <div class="b-stat-lbl">Companies hiring</div>
+          </div>
+          <div class="b-stat">
+            <div class="b-stat-num" style="color:var(--green)">0 days</div>
+            <div class="b-stat-lbl">Onboarding time</div>
+          </div>
+          <div class="b-stat">
+            <div class="b-stat-num"><span data-target="10" data-suffix=" min">10 min</span></div>
+            <div class="b-stat-lbl">Training per role</div>
+          </div>
+          <div class="b-stat">
+            <div class="b-stat-num"><span data-target="5000" data-suffix="+">5000+</span></div>
+            <div class="b-stat-lbl">Verified workers</div>
+          </div>
         </div>
       </div>
     </div>
@@ -659,53 +881,47 @@
     <!-- Pipeline -->
     <div class="section">
       <div class="wrap">
-        <div style="margin-bottom:4rem" class="reveal">
+        <div class="r" style="margin-bottom:4rem">
           <div class="s-label">How It Works</div>
-          <h2 class="s-h">From training to your floor —<br><span class="g-text">fully automated.</span></h2>
-          <p class="s-p">Every Switch worker goes through the same rigorous pipeline before they ever walk into your business.</p>
+          <h2 class="s-h">From zero to <span>executing on your floor.</span></h2>
+          <p class="s-p">Every Switch worker goes through the same pipeline before they walk into your business. Fully automated. No manual onboarding required.</p>
         </div>
         <div class="b-pipeline">
-          <div class="b-card reveal" style="transition-delay:0.05s">
+          <div class="b-card r" style="transition-delay:0.05s">
             <div class="b-card-step">Stage 01</div>
-            <span class="b-card-icon">📚</span>
             <div class="b-card-title">Role-Specific Training Module</div>
             <p class="b-card-desc">Workers complete a structured 10-minute training for their exact role — retail, delivery, housekeeping, security — before Day 1.</p>
             <span class="b-card-badge">10 min per role</span>
           </div>
-          <div class="b-card reveal" style="transition-delay:0.1s">
+          <div class="b-card r" style="transition-delay:0.1s">
             <div class="b-card-step">Stage 02</div>
-            <span class="b-card-icon">🧪</span>
-            <div class="b-card-title">Standardized In-App Test</div>
-            <p class="b-card-desc">After training, workers take a standardized assessment in the Switch app. Only those who pass receive the Verified badge.</p>
+            <div class="b-card-title">Standardized In-App Assessment</div>
+            <p class="b-card-desc">After training, workers take a standardized test inside Switch. Only those who pass receive the Verified badge — earned, not self-reported.</p>
             <span class="b-card-badge">Standardized test</span>
           </div>
-          <div class="b-card reveal" style="transition-delay:0.15s">
+          <div class="b-card r" style="transition-delay:0.15s">
             <div class="b-card-step">Stage 03</div>
-            <span class="b-card-icon">✅</span>
-            <div class="b-card-title">Verified Badge Issued</div>
-            <p class="b-card-desc">Passed workers earn a role-specific Verified badge visible to you before hiring. Earned by testing — not self-reported.</p>
+            <div class="b-card-title">Verified Badge — Your Quality Signal</div>
+            <p class="b-card-desc">A role-specific Verified badge appears on the worker's profile. You see it before hiring. It means they've proven they know the job.</p>
             <span class="b-card-badge">Quality guaranteed</span>
           </div>
-          <div class="b-card reveal" style="transition-delay:0.2s">
+          <div class="b-card r" style="transition-delay:0.2s">
             <div class="b-card-step">Stage 04</div>
-            <span class="b-card-icon">🚀</span>
             <div class="b-card-title">Worker Arrives, Starts Immediately</div>
-            <p class="b-card-desc">Day 1, the worker opens Switch and starts executing their daily SOPs immediately. Zero classroom onboarding required.</p>
+            <p class="b-card-desc">Day 1, they open Switch and begin their SOPs. No classroom session. No briefing required. Zero ramp-up time.</p>
             <span class="b-card-badge">Zero ramp-up</span>
           </div>
-          <div class="b-card reveal" style="transition-delay:0.25s">
+          <div class="b-card r" style="transition-delay:0.25s">
             <div class="b-card-step">Stage 05</div>
-            <span class="b-card-icon">📋</span>
-            <div class="b-card-title">Daily SOPs, In-App</div>
-            <p class="b-card-desc">Each worker receives role-specific, sequenced SOPs every morning. Checklist-driven. Jyoti resolves any task blockers live.</p>
+            <div class="b-card-title">Daily SOPs Delivered In-App</div>
+            <p class="b-card-desc">Each worker receives role-specific, sequenced SOPs every morning. Checklist-driven. Any blocker gets resolved by Jyoti, live.</p>
             <span class="b-card-badge">Structured daily work</span>
           </div>
-          <div class="b-card highlight reveal" style="transition-delay:0.3s">
-            <div class="b-card-step" style="color:var(--green)">Always On</div>
-            <span class="b-card-icon">🤖</span>
-            <div class="b-card-title">Jyoti — AI Work Assistant</div>
-            <p class="b-card-desc">Workers never wait for a supervisor. Jyoti guides them through any task in real-time, in Hindi, 24/7 — inside the app.</p>
-            <span class="b-card-badge" style="color:var(--green);background:var(--green-dim);border-color:rgba(0,232,123,0.2)">24/7 AI support</span>
+          <div class="b-card hi-card r" style="transition-delay:0.3s">
+            <div class="b-card-step">Always On</div>
+            <div class="b-card-title">Jyoti — In-App AI Work Assistant</div>
+            <p class="b-card-desc">Workers never wait for a supervisor. Jyoti guides them through any task in real-time, in Hindi, 24/7 — from inside the Switch app.</p>
+            <span class="b-card-badge">24/7 AI support</span>
           </div>
         </div>
       </div>
@@ -714,91 +930,112 @@
     <div class="divider"></div>
 
     <!-- Manager dashboard -->
-    <div class="section">
+    <div class="section" style="background:var(--off)">
       <div class="wrap">
-        <div class="reveal" style="margin-bottom:2.5rem">
+        <div class="r" style="margin-bottom:3rem">
           <div class="s-label">Manager Dashboard</div>
-          <h2 class="s-h">You stay in control.<br><span class="g-text">Always.</span></h2>
+          <h2 class="s-h">You stay in <span>full control.</span></h2>
+          <p class="s-p">See everything, approve what's done, and let attendance log itself.</p>
         </div>
         <div class="b-mgrid">
-          <div class="b-mcard reveal" style="transition-delay:0.05s">
-            <div class="b-mcard-icon">👀</div>
+          <div class="b-mcard r" style="transition-delay:0.05s">
+            <div class="b-mcard-num">01</div>
             <div class="b-mcard-title">Real-Time SOP Visibility</div>
-            <p class="b-mcard-desc">See every task your workers are executing — live. No walking the floor, no chasing updates.</p>
+            <p class="b-mcard-desc">See every task your workers are executing — live. No walking the floor. No chasing updates. Everything visible in your dashboard.</p>
           </div>
-          <div class="b-mcard reveal" style="transition-delay:0.1s">
-            <div class="b-mcard-icon">✔️</div>
+          <div class="b-mcard r" style="transition-delay:0.1s">
+            <div class="b-mcard-num">02</div>
             <div class="b-mcard-title">One-Tap SOP Approval</div>
-            <p class="b-mcard-desc">Worker marks a task complete → you get notified → approve with one tap. Only approved SOPs count toward their log.</p>
+            <p class="b-mcard-desc">Worker marks a task complete → you get notified → approve with one tap. Only approved SOPs count toward their work log.</p>
           </div>
-          <div class="b-mcard reveal" style="transition-delay:0.15s">
-            <div class="b-mcard-icon">📆</div>
-            <div class="b-mcard-title">Auto Attendance Logging</div>
-            <p class="b-mcard-desc">Once SOPs are approved, Switch auto-logs attendance and work days. No registers. No disputes. Clean records.</p>
+          <div class="b-mcard r" style="transition-delay:0.15s">
+            <div class="b-mcard-num">03</div>
+            <div class="b-mcard-title">Automatic Attendance Logging</div>
+            <p class="b-mcard-desc">Once SOPs are approved, Switch auto-logs attendance and work days. No registers. No disputes. Clean, audit-ready records.</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Business CTA -->
-    <div class="b-cta reveal">
-      <div class="s-label" style="justify-content:center;margin-bottom:1.5rem">Ready to hire?</div>
-      <h2>Trained workers.<br><span class="g-text">Your floor. Tomorrow.</span></h2>
-      <p>Get pre-verified workers for your business — with SOPs, attendance, and AI support built in.</p>
-      <div class="b-btn-row">
-        <a href="https://app.switchlocally.com" class="big-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          Start Hiring
-        </a>
-        <a href="https://app.switchlocally.com" class="b-btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-          Browse Workers
-        </a>
+    <div class="b-cta">
+      <div class="b-cta-inner r">
+        <h2>Trained workers.<br><span>Your floor. Tomorrow.</span></h2>
+        <p>Get pre-verified workers — with built-in SOPs, AI support, and attendance tracking included.</p>
+        <div class="b-cta-row">
+          <a href="https://app.switchlocally.com" class="btn-main btn-main-dark" style="font-size:1.0625rem;padding:1.25rem 2.5rem">
+            Start Hiring Now
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a href="https://app.switchlocally.com" class="b-btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+            Browse Verified Workers
+          </a>
+        </div>
       </div>
     </div>
 
-  </div><!-- /page-biz -->
+  </div><!-- /page-b -->
 
   <footer>© 2025 Switch — India Ka Fastest Job Platform</footer>
 
   <script>
-    function showPage(which) {
-      document.getElementById('page-worker').classList.toggle('active', which === 'worker');
-      document.getElementById('page-biz').classList.toggle('active', which === 'biz');
-      document.getElementById('btn-worker').classList.toggle('on', which === 'worker');
-      document.getElementById('btn-biz').classList.toggle('on', which === 'biz');
+    // ── Page toggle
+    function show(which) {
+      ['w','b'].forEach(k => {
+        const p = document.getElementById('page-'+k);
+        const b = document.getElementById('btn-'+k);
+        if (k === which) {
+          p.classList.add('active');
+          b.classList.add('on');
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              p.classList.add('shown');
+              setTimeout(initReveals, 80);
+            });
+          });
+        } else {
+          p.classList.remove('active','shown');
+          b.classList.remove('on');
+        }
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Trigger reveals in the newly shown page
-      setTimeout(triggerReveals, 100);
     }
 
-    // Scroll reveal
-    function triggerReveals() {
-      const els = document.querySelectorAll('.page.active .reveal:not(.visible)');
+    // ── Scroll reveal
+    function initReveals() {
+      const els = document.querySelectorAll('.page.active .r:not(.v)');
       const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-      }, { threshold: 0.1 });
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       els.forEach(el => obs.observe(el));
     }
-    triggerReveals();
 
-    // Counter animation
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target);
-      if (!target) { el.textContent = '0' + (el.dataset.suffix || ''); return; }
-      const suffix = el.dataset.suffix || '';
-      const dur = 1600;
-      const step = target / (dur / 16);
+    // Start shown state for initial page
+    requestAnimationFrame(() => {
+      document.getElementById('page-w').classList.add('shown');
+      initReveals();
+    });
+
+    // ── Counter animation
+    function countUp(el) {
+      const t = parseInt(el.dataset.target);
+      if (!t) return;
+      const suf = el.dataset.suffix || '';
+      const dur = 1500;
+      const step = t / (dur / 16);
       let cur = 0;
-      const t = setInterval(() => {
-        cur += step;
-        if (cur >= target) { cur = target; clearInterval(t); }
-        el.textContent = Math.floor(cur).toLocaleString('en-IN') + suffix;
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, t);
+        el.textContent = Math.floor(cur).toLocaleString('en-IN') + suf;
+        if (cur >= t) clearInterval(timer);
       }, 16);
     }
     const cObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); cObs.unobserve(e.target); } });
-    }, { threshold: 0.5 });
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); cObs.unobserve(e.target); } });
+    }, { threshold: 0.6 });
     document.querySelectorAll('[data-target]').forEach(el => cObs.observe(el));
   </script>
 
