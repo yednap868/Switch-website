@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switch - Ghar Ke Paas Job</title>
+  <title>Switch - Ghar Ke Paas Job | Hire Trained Workers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
       right: 0;
       bottom: 0;
       z-index: -1;
-      background: 
+      background:
         radial-gradient(circle at 20% 0%, var(--primary-lighter) 0%, transparent 50%),
         radial-gradient(circle at 80% 100%, var(--primary-lighter) 0%, transparent 50%);
       opacity: 0.7;
@@ -56,10 +56,13 @@
 
     .navbar {
       display: flex;
-      justify-content: center;
-      padding: 1.5rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
       position: relative;
       z-index: 10;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .logo {
@@ -69,6 +72,7 @@
       font-weight: 700;
       font-size: 1.375rem;
       color: var(--black);
+      text-decoration: none;
     }
 
     .logo-icon {
@@ -83,6 +87,51 @@
       font-size: 1.25rem;
       color: white;
       box-shadow: 0 4px 16px rgba(5, 150, 105, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-pill {
+      padding: 0.625rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-pill-worker {
+      color: var(--gray-700);
+      background: var(--gray-100);
+    }
+
+    .nav-pill-worker:hover {
+      background: var(--gray-200);
+    }
+
+    .nav-pill-business {
+      color: white;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      box-shadow: 0 2px 12px rgba(5, 150, 105, 0.3);
+    }
+
+    .nav-pill-business:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
+    }
+
+    @media (max-width: 500px) {
+      .navbar {
+        padding: 1rem 1.25rem;
+      }
+      .nav-pill {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.8125rem;
+      }
     }
 
     .hero {
@@ -305,6 +354,21 @@
       font-size: 1.0625rem;
     }
 
+    .section-header .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.375rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -388,6 +452,367 @@
       height: 16px;
     }
 
+    /* ─── Worker Journey Section ─── */
+    .worker-journey {
+      padding: 6rem 1.5rem;
+      background: var(--white);
+      position: relative;
+      z-index: 10;
+    }
+
+    .worker-journey-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .steps-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .steps-flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .steps-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 1.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .step-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: 0 8px 28px rgba(5, 150, 105, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: var(--primary-lighter);
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 0.875rem;
+      display: block;
+    }
+
+    .step-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.9375rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .step-highlight {
+      display: inline-block;
+      margin-top: 0.875rem;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.375rem 0.875rem;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+
+    .jyoti-step-card {
+      background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+      border-color: var(--primary-light);
+    }
+
+    .jyoti-step-card:hover {
+      box-shadow: 0 8px 28px rgba(5, 150, 105, 0.2);
+    }
+
+    /* ─── Hiring Section ─── */
+    .hiring {
+      padding: 6rem 1.5rem;
+      background: var(--gray-900);
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .hiring::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hiring::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hiring-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hiring .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16,185,129,0.15);
+      color: var(--accent);
+      padding: 0.375rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .hiring .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hiring .section-header h2 {
+      color: var(--white);
+    }
+
+    .hiring .section-header p {
+      color: var(--gray-400);
+    }
+
+    .hiring-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hiring-flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hiring-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .hiring-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .hiring-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(16,185,129,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(16,185,129,0.1);
+    }
+
+    .hiring-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hiring-card-step {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hiring-card-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.625rem;
+    }
+
+    .hiring-card-desc {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    .hiring-card-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(16,185,129,0.15);
+      color: var(--accent);
+      padding: 0.375rem 0.875rem;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+
+    .hiring-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .hiring-divider-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .hiring-divider-text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .manager-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .manager-flow {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .manager-card {
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .manager-card:hover {
+      background: rgba(16,185,129,0.12);
+      border-color: rgba(16,185,129,0.35);
+    }
+
+    .manager-card-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .manager-card-title {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.375rem;
+    }
+
+    .manager-card-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    .hiring-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    .hiring-cta p {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+      font-size: 1.0625rem;
+    }
+
+    .hire-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 700;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px rgba(16,185,129,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hire-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .hire-btn:hover::before {
+      left: 100%;
+    }
+
+    .hire-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 36px rgba(16,185,129,0.45);
+    }
+
+    .hire-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ─── Bottom CTA ─── */
     .bottom-cta {
       padding: 5rem 1.5rem 6rem;
       text-align: center;
@@ -420,6 +845,7 @@
       animation: none;
     }
 
+    /* ─── Floating Widget ─── */
     .floating-widget {
       position: fixed;
       bottom: 24px;
@@ -727,13 +1153,17 @@
   <div class="bg-pattern"></div>
 
   <nav class="navbar">
-    <div class="logo">
+    <a href="#" class="logo">
       <div class="logo-icon">S</div>
       Switch
+    </a>
+    <div class="nav-links">
+      <a href="#worker" class="nav-pill nav-pill-worker">Job Chahiye</a>
+      <a href="#hiring" class="nav-pill nav-pill-business">Hire Karo</a>
     </div>
   </nav>
 
-  <section class="hero">
+  <section class="hero" id="worker">
     <div class="pill">
       <span class="pill-dot"></span>
       5000+ log hire ho chuke hain
@@ -780,7 +1210,7 @@
         <h2>Real people, real results</h2>
         <p>Unki kahani, unki zubaani</p>
       </div>
-      
+
       <div class="testimonial-grid">
         <div class="testimonial-card">
           <div class="testimonial-header">
@@ -854,11 +1284,194 @@
     </div>
   </section>
 
+  <!-- ─── Worker Journey Section ─── -->
+  <section class="worker-journey">
+    <div class="worker-journey-inner">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+          </svg>
+          Kaam Sikhna Ab Aasaan Hai
+        </div>
+        <h2>10 minute mein<br><span style="background:linear-gradient(135deg,#059669,#10B981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">koi bhi job seekh lo</span></h2>
+        <p>Pehle training, phir kaam. Har din Jyoti tere saath hai — app ke andar hi.</p>
+      </div>
+
+      <div class="steps-flow">
+
+        <div class="step-card">
+          <span class="step-icon">📱</span>
+          <div class="step-number">1</div>
+          <div class="step-title">App Kholo, Job Choose Karo</div>
+          <p class="step-desc">Switch app mein apne area ki available jobs dekho. Delivery, security, retail, housekeeping — jo bhi pasand ho.</p>
+          <span class="step-highlight">Ghar baithke</span>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">📚</span>
+          <div class="step-number">2</div>
+          <div class="step-title">Training Module Complete Karo</div>
+          <p class="step-desc">Short video lessons aur step-by-step guides mein apni job ki puri training lo. Sirf 10 minute mein sab kuch samajh aa jaata hai.</p>
+          <span class="step-highlight">Sirf 10 minute</span>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">✅</span>
+          <div class="step-number">3</div>
+          <div class="step-title">Test Pass Karo, Verified Bano</div>
+          <p class="step-desc">Training ke baad ek chota sa test dena hoga. Pass karo aur pao apna verified badge — yahi badge bolta hai ki tum ready ho.</p>
+          <span class="step-highlight">Verified ✓ Badge</span>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">🏢</span>
+          <div class="step-number">4</div>
+          <div class="step-title">Seedha Business Pe Jao</div>
+          <p class="step-desc">Verified hote hi directly company mein jao. Koi lamba onboarding nahi, koi extra training nahi — bas seedha kaam shuru.</p>
+          <span class="step-highlight">Day 1 se productive</span>
+        </div>
+
+        <div class="step-card">
+          <span class="step-icon">📋</span>
+          <div class="step-number">5</div>
+          <div class="step-title">Daily Tasks Milenge</div>
+          <p class="step-desc">Har subah app mein tumhari aaj ki task list ready hogi. Ek ek task complete karte jao — manager ko real-time dikh raha hai.</p>
+          <span class="step-highlight">Har din, clear goals</span>
+        </div>
+
+        <div class="step-card jyoti-step-card">
+          <span class="step-icon">🤖</span>
+          <div class="step-number">6</div>
+          <div class="step-title">Jyoti Har Waqt Saath Hai</div>
+          <p class="step-desc">Koi bhi task mein confusion? App ke andar hi Jyoti se pooch lo. Woh specific task pe guide karegi — live, step-by-step, Hindi mein.</p>
+          <span class="step-highlight">24/7 in-app help</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Hiring Section (For Businesses) ─── -->
+  <section class="hiring" id="hiring">
+    <div class="hiring-inner">
+      <div class="section-header">
+        <div class="section-tag">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+          </svg>
+          For Businesses
+        </div>
+        <h2>Trained. Verified. <span style="color:#10B981">Day 1 Ready.</span></h2>
+        <p>No onboarding headaches. Switch workers arrive already trained, tested, and ready to execute — with built-in daily SOPs and manager oversight.</p>
+      </div>
+
+      <!-- Worker pipeline: Training → Test → Verified → Deploy -->
+      <div class="hiring-flow">
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">📚</span>
+          <div class="hiring-card-step">Step 1</div>
+          <div class="hiring-card-title">Job-Specific Training Module</div>
+          <p class="hiring-card-desc">Before they set foot in your business, every worker completes a structured training module tailored to their role — retail, delivery, housekeeping, security, and more.</p>
+          <span class="hiring-card-tag">10 min per module</span>
+        </div>
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">🧪</span>
+          <div class="hiring-card-step">Step 2</div>
+          <div class="hiring-card-title">In-App Assessment & Test</div>
+          <p class="hiring-card-desc">After training, workers take a short assessment directly in the Switch app. Only those who pass receive the Verified badge — your guarantee they know the job.</p>
+          <span class="hiring-card-tag">Standardized test</span>
+        </div>
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">✅</span>
+          <div class="hiring-card-step">Step 3</div>
+          <div class="hiring-card-title">Verified Badge Issued</div>
+          <p class="hiring-card-desc">A passed worker earns a role-specific Verified badge visible to you. This badge means they've been trained and tested — not just self-reported. You hire with confidence.</p>
+          <span class="hiring-card-tag">Quality guaranteed</span>
+        </div>
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">🏢</span>
+          <div class="hiring-card-step">Step 4</div>
+          <div class="hiring-card-title">Worker Arrives, Starts Executing</div>
+          <p class="hiring-card-desc">No classroom onboarding. No handholding. The worker shows up on Day 1, opens the Switch app, and begins executing their daily SOPs immediately.</p>
+          <span class="hiring-card-tag">Zero ramp-up time</span>
+        </div>
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">📋</span>
+          <div class="hiring-card-step">Step 5</div>
+          <div class="hiring-card-title">Daily SOPs, In the App</div>
+          <p class="hiring-card-desc">Each worker sees their assigned SOPs for the day inside Switch. Tasks are role-specific, sequenced, and checklist-driven. If they get stuck, Jyoti guides them on-the-spot.</p>
+          <span class="hiring-card-tag">Structured daily work</span>
+        </div>
+
+        <div class="hiring-card">
+          <span class="hiring-card-icon">🤖</span>
+          <div class="hiring-card-step">Always On</div>
+          <div class="hiring-card-title">Jyoti — In-App Work Assistant</div>
+          <p class="hiring-card-desc">Your workers are never stuck waiting for a supervisor. Jyoti, Switch's AI assistant, guides workers through any specific task right inside the app — in Hindi, step by step.</p>
+          <span class="hiring-card-tag">24/7 AI support</span>
+        </div>
+
+      </div>
+
+      <!-- Manager SOP approval flow -->
+      <div class="hiring-divider">
+        <div class="hiring-divider-line"></div>
+        <div class="hiring-divider-text">Manager Dashboard</div>
+        <div class="hiring-divider-line"></div>
+      </div>
+
+      <div class="manager-flow">
+
+        <div class="manager-card">
+          <span class="manager-card-icon">👀</span>
+          <div>
+            <div class="manager-card-title">Real-Time SOP Visibility</div>
+            <p class="manager-card-desc">See every task your workers are working on — live. No need to walk the floor or chase updates. The Switch dashboard shows task status in real-time.</p>
+          </div>
+        </div>
+
+        <div class="manager-card">
+          <span class="manager-card-icon">✔️</span>
+          <div>
+            <div class="manager-card-title">One-Tap SOP Approval</div>
+            <p class="manager-card-desc">When a worker marks a task complete, you get a notification. Review the work, then approve with one tap. Only approved SOPs count toward the worker's work log.</p>
+          </div>
+        </div>
+
+        <div class="manager-card">
+          <span class="manager-card-icon">📆</span>
+          <div>
+            <div class="manager-card-title">Automatic Attendance & Work Days</div>
+            <p class="manager-card-desc">Once SOPs are approved, Switch automatically marks the worker's attendance and logs the work day. No manual registers. No disputes. Clean records, always.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hiring-cta">
+        <p>Ready to hire pre-trained, verified workers for your business?</p>
+        <a href="tel:+918037565248" class="hire-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Call to Hire Now
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <section class="bottom-cta">
     <div class="bottom-cta-inner">
       <h2>Ek call, naya start</h2>
       <p>Job dhundna band karo. Abhi call karo, kal se kaam shuru.</p>
-      
+
       <div class="cta-section">
         <a href="tel:+918037565248" class="call-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
@@ -895,7 +1508,7 @@
         </div>
       </div>
       <p class="jyoti-message">
-        Hi! Main Jyoti 👋 Call karo, 2 min mein aapke area ki jobs batati hun!
+        Hi! Main Jyoti hun 👋 Job chahiye? Call karo — ya koi task mein help chahiye? App ke andar hi pooch sakte ho!
       </p>
     </div>
     <a href="tel:+918037565248" class="floating-call-btn">
