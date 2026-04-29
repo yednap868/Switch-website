@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switch - Ghar Ke Paas Job, 24 Hours Mein</title>
-    <meta name="description" content="Get hired in 24 hours. Swipe right, get called, start working.">
-    
+    <title>Switch - 4hr & 8hr Shift Jobs Near You</title>
+    <meta name="description" content="4 hour ya 8 hour shift — apni marzi se kaam karo, paise daily milte hain. Ghar ke paas shift jobs on Switch.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -52,13 +52,13 @@
         .logo-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
             transform: rotate(-3deg);
             transition: all 0.3s ease;
         }
@@ -85,7 +85,7 @@
         .logo-title {
             font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -130,7 +130,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -142,6 +142,24 @@
             color: #4b5563;
             margin-bottom: 3rem;
             font-weight: 600;
+        }
+
+        .shift-pills {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .shift-pill {
+            background: rgba(99, 102, 241, 0.08);
+            border: 2px solid rgba(99, 102, 241, 0.25);
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 800;
+            color: #6366f1;
         }
 
         .stats {
@@ -158,7 +176,7 @@
         .stat-number {
             font-size: 3.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -175,7 +193,7 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: white;
             padding: 1.5rem 4rem;
             border-radius: 16px;
@@ -183,12 +201,12 @@
             font-size: 1.5rem;
             font-weight: 800;
             transition: all 0.3s ease;
-            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 80px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.4);
         }
 
         /* Decorative circles */
@@ -201,7 +219,7 @@
         .circle-1 {
             width: 600px;
             height: 600px;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             top: -300px;
             right: -300px;
         }
@@ -209,9 +227,84 @@
         .circle-2 {
             width: 400px;
             height: 400px;
-            background: linear-gradient(135deg, #14b8a6, #10b981);
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
             bottom: -200px;
             left: -200px;
+        }
+
+        /* Shifts Section */
+        .shifts-section {
+            padding: 5rem 2rem;
+            background: #fafaff;
+        }
+
+        .shifts-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .shifts-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.75rem;
+            color: #111827;
+        }
+
+        .shifts-sub {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .shifts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .shift-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .shift-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(99, 102, 241, 0.12);
+        }
+
+        .shift-card-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .shift-card-title {
+            font-size: 1.375rem;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .shift-card-time {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #6366f1;
+            margin-bottom: 0.5rem;
+        }
+
+        .shift-card-desc {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 600;
+            line-height: 1.5;
         }
 
         /* Success Stories */
@@ -248,9 +341,9 @@
         }
 
         .story:hover {
-            border-color: #10b981;
+            border-color: #6366f1;
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
         }
 
         .story-header {
@@ -263,7 +356,7 @@
         .avatar {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -286,6 +379,17 @@
             font-weight: 600;
         }
 
+        .story-shift-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.08);
+            color: #6366f1;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            margin-top: 0.25rem;
+        }
+
         .story-text {
             font-size: 1.125rem;
             color: #374151;
@@ -294,10 +398,10 @@
         }
 
         .story-result {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
             padding: 1rem 1.5rem;
             border-radius: 12px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         .result-label {
@@ -310,7 +414,7 @@
         .result-value {
             font-size: 1.5rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #10b981, #14b8a6);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -347,8 +451,8 @@
             justify-content: flex-start;
             gap: 1rem;
             padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #0d9488, #10b981);
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
         }
 
         .top-cta-text {
@@ -448,17 +552,18 @@
 </head>
 <body>
     <div class="top-cta">
-        <span class="top-cta-text">Staff hire krne ke liye WhatsApp kre</span>
+        <span class="top-cta-text">4hr & 8hr Shifts Available — Abhi Join Karo</span>
         <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
         </a>
     </div>
+
     <!-- Hero -->
     <section class="hero">
         <div class="circle circle-1"></div>
         <div class="circle circle-2"></div>
-        
+
         <div class="hero-content">
             <div class="logo">
                 <div class="logo-icon">
@@ -466,60 +571,119 @@
                 </div>
                 <div class="logo-text">
                     <span class="logo-title">Switch</span>
-                    <span class="logo-subtitle">Jobs Near You</span>
+                    <span class="logo-subtitle">Shift Jobs Near You</span>
                 </div>
             </div>
 
             <div class="tagline">
-                <span class="tagline-emoji">💡</span>
-                <span>Apni Life Ka Switch ON Karo</span>
-                <span class="tagline-emoji">🚀</span>
+                <span class="tagline-emoji">⏰</span>
+                <span>Apni Shift Chuno. Apni Life Chuno.</span>
+                <span class="tagline-emoji">⚡</span>
             </div>
 
             <h1>
-                <span class="gradient-text">Ghar ke paas job,</span>
-                Switch pe click!
+                <span class="gradient-text">4hr ya 8hr Shift,</span>
+                Aapki Marzi!
             </h1>
 
-            <p class="subtitle">Swipe karo, job pao, life badlo. Bas itna hi!</p>
+            <p class="subtitle">Subah, dopahar ya raat — jab chaaho kaam karo, paise roz milte hain</p>
+
+            <div class="shift-pills">
+                <span class="shift-pill">🌅 Morning 6am–10am</span>
+                <span class="shift-pill">☀️ Day 10am–6pm</span>
+                <span class="shift-pill">🌆 Evening 6pm–10pm</span>
+                <span class="shift-pill">🌙 Night 10pm–6am</span>
+            </div>
 
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label">Got hired</span>
+                    <span class="stat-number">₹150/hr</span>
+                    <span class="stat-label">Avg. hourly pay</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">18hrs</span>
-                    <span class="stat-label">Avg time</span>
+                    <span class="stat-number">4hr</span>
+                    <span class="stat-label">Min. shift</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Companies</span>
+                    <span class="stat-number">2000+</span>
+                    <span class="stat-label">Shifts daily</span>
                 </div>
             </div>
 
-            <a href="https://app.switchlocally.com" class="cta-button">Switch Karo</a>
+            <a href="https://app.switchlocally.com" class="cta-button">Apni Shift Chuno →</a>
+        </div>
+    </section>
+
+    <!-- Shift Types -->
+    <section class="shifts-section">
+        <div class="shifts-container">
+            <h2 class="shifts-title">Har Zaroorat Ka Shift</h2>
+            <p class="shifts-sub">Ghar sambhalo, bacche padhao, aur kaam bhi karo — sabka shift available hai</p>
+
+            <div class="shifts-grid">
+                <div class="shift-card">
+                    <span class="shift-card-emoji">🌅</span>
+                    <div class="shift-card-title">4hr Morning</div>
+                    <div class="shift-card-time">6am – 10am</div>
+                    <div class="shift-card-desc">Bacche school jaate hain, aap kaam karo. Din bhar free!</div>
+                </div>
+                <div class="shift-card">
+                    <span class="shift-card-emoji">☀️</span>
+                    <div class="shift-card-title">8hr Day</div>
+                    <div class="shift-card-time">9am – 5pm</div>
+                    <div class="shift-card-desc">Full-time salary, ghar ke paas. Travel nahi, thakaan nahi.</div>
+                </div>
+                <div class="shift-card">
+                    <span class="shift-card-emoji">🌆</span>
+                    <div class="shift-card-title">4hr Evening</div>
+                    <div class="shift-card-time">6pm – 10pm</div>
+                    <div class="shift-card-desc">Din mein ghar ka kaam, shaam ko extra income.</div>
+                </div>
+                <div class="shift-card">
+                    <span class="shift-card-emoji">🌙</span>
+                    <div class="shift-card-title">8hr Night</div>
+                    <div class="shift-card-time">10pm – 6am</div>
+                    <div class="shift-card-desc">Night allowance extra. Din mein aaram, raat ko kamaai.</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Success Stories -->
     <section class="stories">
         <div class="stories-container">
-            <h2 class="stories-title">Real People. Real Results.</h2>
+            <h2 class="stories-title">Inki Shift Badli, Zindagi Badli</h2>
 
             <div class="stories-grid">
                 <div class="story">
                     <div class="story-header">
-                        <div class="avatar">R</div>
+                        <div class="avatar">K</div>
                         <div class="story-info">
-                            <h3>Rajesh Kumar</h3>
-                            <p class="story-role">Delivery Partner, Swiggy</p>
+                            <h3>Kavita Devi</h3>
+                            <p class="story-role">Cashier, DMart</p>
+                            <span class="story-shift-badge">4hr Morning Shift</span>
                         </div>
                     </div>
-                    <p class="story-text">"मैंने कल रात apply किया था। आज सुबह phone आया, दोपहर को interview हुआ, शाम को joining! 18 घंटे में पूरा process complete हो गया। Switch is amazing!"</p>
+                    <p class="story-text">"Bacche 8 baje school jaate hain. Main 9 baje se 1 baje tak 4hr shift karti hoon aur wapas ghar aa jaati hoon unse pehle. ₹600 roz — mahine ka ₹18,000. Ghar bhi, kaam bhi."</p>
+                    <div class="story-result">
+                        <div class="result-label">Monthly income</div>
+                        <div class="result-value">₹18,000/month</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">R</div>
+                        <div class="story-info">
+                            <h3>Ramesh Nair</h3>
+                            <p class="story-role">Warehouse Helper, Amazon</p>
+                            <span class="story-shift-badge">8hr Day Shift</span>
+                        </div>
+                    </div>
+                    <p class="story-text">"Pehle 2 ghante commute karta tha Noida. Switch pe ghar ke paas 8hr day shift mili — 9 se 5. Petrol bachta hai, family ke saath dinner hota hai. Life switch ho gayi!"</p>
                     <div class="story-result">
                         <div class="result-label">Now earning</div>
-                        <div class="result-value">₹52,000/month</div>
+                        <div class="result-value">₹28,000/month</div>
                     </div>
                 </div>
 
@@ -527,44 +691,31 @@
                     <div class="story-header">
                         <div class="avatar">S</div>
                         <div class="story-info">
-                            <h3>Suresh Singh</h3>
+                            <h3>Sunita Patel</h3>
+                            <p class="story-role">Store Assistant, Reliance Smart</p>
+                            <span class="story-shift-badge">4hr Evening Shift</span>
+                        </div>
+                    </div>
+                    <p class="story-text">"Din mein ghar ka kaam, 6 baje se 10 baje tak evening shift. Pati ko pata bhi nahi tha main itna kama sakti hoon. Switch ne dikhaya ki 4hr shift mein bhi full dignity ka kaam milta hai."</p>
+                    <div class="story-result">
+                        <div class="result-label">Extra income</div>
+                        <div class="result-value">₹500/day</div>
+                    </div>
+                </div>
+
+                <div class="story">
+                    <div class="story-header">
+                        <div class="avatar">D</div>
+                        <div class="story-info">
+                            <h3>Deepak Rao</h3>
                             <p class="story-role">Security Guard, Securitas</p>
+                            <span class="story-shift-badge">8hr Night Shift</span>
                         </div>
                     </div>
-                    <p class="story-text">"Cyber Hub में job मिली, ghar se sirf 2km दूर! पहले मैं Noida जाता था 25km. अब petrol, time और thakaan तीनों बच रहे हैं। Family के साथ ज्यादा time मिलता है।"</p>
+                    <p class="story-text">"Night 10pm se 6am — raat ka extra allowance milta hai, din mein aaram. Switch pe apply kiya, next day joining hua. Ab ₹32K mein night allowance alag — pehle se zyada kamaata hoon."</p>
                     <div class="story-result">
-                        <div class="result-label">Hired in</div>
-                        <div class="result-value">2 Days</div>
-                    </div>
-                </div>
-
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">P</div>
-                        <div class="story-info">
-                            <h3>Priya Sharma</h3>
-                            <p class="story-role">Store Assistant, D-Mart</p>
-                        </div>
-                    </div>
-                    <p class="story-text">"Ladies ke liye process bahut safe hai। Phone pe proper information di, location share kiya, aur next day interview fix ho gaya। अब ₹22K salary है और Sundays off भी मिलता है!"</p>
-                    <div class="story-result">
-                        <div class="result-label">Got hired</div>
-                        <div class="result-value">Next Day</div>
-                    </div>
-                </div>
-
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">A</div>
-                        <div class="story-info">
-                            <h3>Amit Verma</h3>
-                            <p class="story-role">Warehouse Packer, Amazon</p>
-                        </div>
-                    </div>
-                    <p class="story-text">"Mujhe 10th pass ke liye achhi job nahi mil rahi thi। Switch pe dekha, right swipe kiya, 3 घंटे में call आया। अब Amazon में kaam kar raha hun with night allowance और PF benefits!"</p>
-                    <div class="story-result">
-                        <div class="result-label">Earning</div>
-                        <div class="result-value">₹28,000/month</div>
+                        <div class="result-label">With night allowance</div>
+                        <div class="result-value">₹32,000/month</div>
                     </div>
                 </div>
 
@@ -572,29 +723,31 @@
                     <div class="story-header">
                         <div class="avatar">M</div>
                         <div class="story-info">
-                            <h3>Mukesh Yadav</h3>
-                            <p class="story-role">Delivery Executive, Blinkit</p>
+                            <h3>Mohd. Irfan</h3>
+                            <p class="story-role">Delivery + Store Helper</p>
+                            <span class="story-shift-badge">4hr + 4hr Double Shift</span>
                         </div>
                     </div>
-                    <p class="story-text">"Switch pe 5 jobs के लिए apply किया। सब companies ने call किया! मैंने सबसे अच्छी salary wali choose kar ली। अब flexible timing है और weekends pe extra कमाता हूं।"</p>
+                    <p class="story-text">"Morning 4hr delivery shift, shaam ko 4hr store helper shift. Dono ek hi area mein, ek Switch se mile. Doosri job nahi milti thi, ab double income hai. ₹45K roz ka hisaab!"</p>
                     <div class="story-result">
-                        <div class="result-label">Monthly income</div>
-                        <div class="result-value">₹65,000</div>
+                        <div class="result-label">Combined income</div>
+                        <div class="result-value">₹45,000/month</div>
                     </div>
                 </div>
 
                 <div class="story">
                     <div class="story-header">
-                        <div class="avatar">N</div>
+                        <div class="avatar">A</div>
                         <div class="story-info">
-                            <h3>Neha Gupta</h3>
-                            <p class="story-role">Receptionist, Salon</p>
+                            <h3>Anita Singh</h3>
+                            <p class="story-role">Kitchen Helper, Cloud Kitchen</p>
+                            <span class="story-shift-badge">First Shift Job</span>
                         </div>
                     </div>
-                    <p class="story-text">"12th pass ke baad job dhund rahi thi। Switch download kiya, salon receptionist का job dekha sector 26 में। Apply kiya, same day interview, next day joining। AC office aur अच्छा environment!"</p>
+                    <p class="story-text">"Pehle koi full-time nahi deta tha, sochti thi bas ghar hi sambhaluungi. Switch pe 4hr morning shift dekhi — cloud kitchen, 2km ghar se. Apply kiya, same day call aaya. Ab main bhi kamaati hoon!"</p>
                     <div class="story-result">
-                        <div class="result-label">Started in</div>
-                        <div class="result-value">36 Hours</div>
+                        <div class="result-label">Joined in</div>
+                        <div class="result-value">Same Day</div>
                     </div>
                 </div>
             </div>
@@ -603,18 +756,17 @@
 
     <!-- Footer CTA -->
     <section class="footer-cta">
-        <h2>Abhi Switch Karo!</h2>
-        <a href="https://app.switchlocally.com" class="cta-button">Switch Karo</a>
-        <p class="footer-note">5000+ log switch kar chuke hain. Ab aapki baari! ⚡</p>
+        <h2>Apni Shift Abhi Chuno!</h2>
+        <a href="https://app.switchlocally.com" class="cta-button">Switch Karo →</a>
+        <p class="footer-note">2000+ shifts roz available hain. Aapka shift aapka intezaar kar raha hai. ⚡</p>
     </section>
 
     <script>
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ 
-                    behavior: 'smooth' 
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+                    behavior: 'smooth'
                 });
             });
         });
