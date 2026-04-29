@@ -4,506 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Switch — Hire Verified Workers Today</title>
-    <meta name="description" content="Post a shift, get matched with KYC-verified workers near you. Hire in hours, not weeks. No agencies, no hassle.">
+    <meta name="description" content="Post a shift requirement. Get matched with Aadhaar-verified workers near you. Most employers confirm a hire the same day.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; -webkit-font-smoothing: antialiased; }
 
-        /* ── NAV ── */
+        /* NAV */
         nav {
             background: #111827;
-            height: 64px;
+            height: 60px;
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 2rem;
             position: sticky; top: 0; z-index: 100;
         }
-        .nav-logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; }
-        .nav-logo-box {
-            width: 32px; height: 32px; background: #fff; border-radius: 8px;
+        .logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+        .logo-mark {
+            width: 30px; height: 30px; background: #fff; border-radius: 7px;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900; font-size: 0.9rem; color: #111827;
+            font-weight: 900; font-size: 0.875rem; color: #111827; letter-spacing: -0.03em;
         }
-        .nav-wordmark { font-weight: 800; font-size: 1.125rem; color: #fff; letter-spacing: -0.02em; }
-        .nav-for-biz { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 1px; }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-link { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.15s; }
+        .logo-name { font-weight: 800; font-size: 1.0625rem; color: #fff; letter-spacing: -0.02em; }
+        .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+        .nav-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.15s; }
         .nav-link:hover { color: #fff; }
-        .nav-cta {
-            background: #fff; color: #111827; padding: 0.5rem 1.25rem;
-            border-radius: 8px; text-decoration: none; font-size: 0.875rem; font-weight: 700;
+        .nav-btn {
+            background: #fff; color: #111827;
+            padding: 0.4375rem 1.125rem; border-radius: 7px;
+            text-decoration: none; font-size: 0.875rem; font-weight: 700;
             transition: opacity 0.15s;
         }
-        .nav-cta:hover { opacity: 0.88; }
+        .nav-btn:hover { opacity: 0.85; }
 
-        /* ── HERO ── */
-        .hero {
-            max-width: 1160px; margin: 0 auto;
-            padding: 5rem 2rem 4rem;
-            display: grid; grid-template-columns: 1fr 480px; gap: 3rem; align-items: center;
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 100px;
-            padding: 0.3rem 0.875rem; font-size: 0.78rem; font-weight: 700; color: #374151;
-            margin-bottom: 1.75rem;
-        }
-        .badge-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
-        .hero h1 {
-            font-size: clamp(2.75rem, 5vw, 4.25rem);
-            font-weight: 900; line-height: 1.02;
+        /* HERO */
+        .hero-wrap { max-width: 1160px; margin: 0 auto; padding: 5rem 2rem 4rem; display: grid; grid-template-columns: 1fr 440px; gap: 4rem; align-items: center; }
+        .hero-h1 {
+            font-size: clamp(2.75rem, 4.5vw, 4rem);
+            font-weight: 900; line-height: 1.04;
             letter-spacing: -0.04em; color: #111827;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
-        .hero h1 em { font-style: italic; }
-        .hero-sub {
-            font-size: 1.125rem; color: #6b7280; line-height: 1.75;
-            margin-bottom: 2.5rem; max-width: 500px;
+        .hero-p { font-size: 1.0625rem; color: #6b7280; line-height: 1.7; margin-bottom: 2rem; max-width: 460px; }
+        .hero-btns { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: #111827; color: #fff;
+            padding: 0.875rem 1.75rem; border-radius: 9px;
+            text-decoration: none; font-size: 0.9375rem; font-weight: 700;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            transition: background 0.15s;
         }
-        .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .btn-dark {
-            background: #111827; color: #fff; padding: 0.9375rem 2rem; border-radius: 10px;
-            text-decoration: none; font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
-            transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+        .btn-primary:hover { background: #1f2937; }
+        .btn-ghost {
+            color: #374151; text-decoration: none; font-size: 0.9375rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.375rem;
+            border: 1.5px solid #e5e7eb; padding: 0.8125rem 1.5rem; border-radius: 9px;
+            transition: border-color 0.15s;
         }
-        .btn-dark:hover { background: #1f2937; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
-        .btn-text {
-            color: #111827; text-decoration: none; font-size: 0.9375rem; font-weight: 600;
-            display: inline-flex; align-items: center; gap: 0.375rem; transition: gap 0.2s;
+        .btn-ghost:hover { border-color: #9ca3af; }
+        .hero-screen {
+            width: 100%; border-radius: 20px;
+            box-shadow: 0 24px 72px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+            display: block;
         }
-        .btn-text:hover { gap: 0.6rem; }
 
-        /* Hero image */
-        .hero-image-wrap {
-            position: relative; display: flex; justify-content: center; align-items: flex-end;
+        /* TRUST LINE */
+        .trust-line {
+            border-top: 1px solid #f3f4f6;
+            padding: 1.25rem 2rem;
+            display: flex; justify-content: center; align-items: center; gap: 0.625rem;
+            font-size: 0.875rem; color: #9ca3af; font-weight: 500;
         }
-        .hero-img {
-            width: 380px; height: 460px; object-fit: cover; object-position: center top;
-            border-radius: 32px;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.14);
-        }
-        .hero-trust-chip {
-            position: absolute; bottom: 24px; left: -8px;
-            background: #111827; color: #fff; border-radius: 16px;
-            padding: 12px 18px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-        }
-        .chip-top { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 500; margin-bottom: 2px; }
-        .chip-val { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.02em; }
-        .hero-rating-chip {
-            position: absolute; top: 32px; right: -8px;
-            background: #fff; border-radius: 14px;
-            padding: 10px 14px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-            display: flex; align-items: center; gap: 8px;
-        }
-        .rating-star { font-size: 1.1rem; }
-        .rating-val { font-size: 0.9375rem; font-weight: 800; color: #111827; }
-        .rating-label { font-size: 0.75rem; color: #9ca3af; font-weight: 500; }
+        .trust-line strong { color: #374151; font-weight: 700; }
 
-        /* ── STATS ── */
-        .stats-bar { border-top: 1px solid #f3f4f6; border-bottom: 1px solid #f3f4f6; background: #fafafa; padding: 2.5rem 2rem; }
+        /* STATS */
+        .stats-wrap { background: #f9fafb; border-top: 1px solid #f3f4f6; border-bottom: 1px solid #f3f4f6; padding: 2.5rem 2rem; }
         .stats-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
         .stat { text-align: center; }
-        .stat-num { font-size: 2.25rem; font-weight: 900; letter-spacing: -0.04em; color: #111827; line-height: 1; margin-bottom: 0.375rem; }
-        .stat-lbl { font-size: 0.875rem; color: #9ca3af; font-weight: 500; }
+        .stat-n { font-size: 2rem; font-weight: 900; letter-spacing: -0.04em; color: #111827; line-height: 1; margin-bottom: 0.3rem; }
+        .stat-l { font-size: 0.8125rem; color: #9ca3af; font-weight: 500; }
 
-        /* ── SECTIONS ── */
-        .section { padding: 6rem 2rem; }
-        .section-inner { max-width: 1160px; margin: 0 auto; }
-        .section-alt { padding: 6rem 2rem; background: #f9fafb; }
-        .s-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 0.875rem; }
-        .s-title { font-size: clamp(1.875rem, 3vw, 2.625rem); font-weight: 900; letter-spacing: -0.035em; color: #111827; line-height: 1.08; margin-bottom: 1rem; }
-        .s-sub { font-size: 1.0625rem; color: #6b7280; line-height: 1.7; max-width: 480px; margin-bottom: 3.5rem; }
+        /* SECTIONS */
+        .sec { padding: 5.5rem 2rem; }
+        .sec-alt { padding: 5.5rem 2rem; background: #f9fafb; }
+        .sec-inner { max-width: 1160px; margin: 0 auto; }
+        .sec-h { font-size: clamp(1.75rem, 2.75vw, 2.375rem); font-weight: 900; letter-spacing: -0.035em; color: #111827; line-height: 1.1; margin-bottom: 0.75rem; }
+        .sec-p { font-size: 1rem; color: #6b7280; line-height: 1.7; max-width: 440px; }
 
-        /* ── HOW IT WORKS ── */
-        .hiw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3rem; align-items: start; }
-        .hiw-step {}
-        .hiw-phone-wrap {
-            position: relative; margin-bottom: 2rem;
-        }
-        .hiw-phone {
-            width: 100%; max-width: 220px; display: block; margin: 0 auto;
-            border-radius: 28px;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06);
-        }
-        .hiw-step-num {
-            width: 36px; height: 36px; background: #111827; color: #fff;
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
-            font-weight: 900; font-size: 0.9rem; margin-bottom: 1rem;
-        }
-        .hiw-step-title { font-size: 1.125rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .hiw-step-desc { font-size: 0.9375rem; color: #6b7280; line-height: 1.65; }
+        /* HOW IT WORKS */
+        .hiw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3.5rem; margin-top: 3.5rem; align-items: start; }
+        .hiw-num { font-size: 0.75rem; font-weight: 800; color: #9ca3af; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.875rem; }
+        .hiw-screen { width: 100%; max-width: 240px; display: block; margin: 0 auto 1.5rem; border-radius: 20px; box-shadow: 0 16px 48px rgba(0,0,0,0.11), 0 0 0 1px rgba(0,0,0,0.06); }
+        .hiw-title { font-size: 1.0625rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+        .hiw-desc { font-size: 0.9rem; color: #6b7280; line-height: 1.65; }
 
-        /* ── WHO NEEDS IT ── */
-        .needs-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
-        .need-card {
-            background: #fff; border: 1px solid #f3f4f6; border-radius: 20px;
-            padding: 1.75rem 1.5rem; transition: all 0.25s;
-        }
-        .need-card:hover { border-color: #e5e7eb; box-shadow: 0 8px 32px rgba(0,0,0,0.07); transform: translateY(-4px); }
-        .need-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
-        .need-title { font-size: 1rem; font-weight: 800; color: #111827; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
-        .need-desc { font-size: 0.875rem; color: #9ca3af; line-height: 1.6; font-weight: 500; }
+        /* WHY SWITCH */
+        .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+        .why-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.75rem; transition: box-shadow 0.2s; }
+        .why-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+        .why-icon { width: 40px; height: 40px; background: #111827; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .why-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .why-title { font-size: 0.9375rem; font-weight: 800; color: #111827; letter-spacing: -0.01em; margin-bottom: 0.375rem; }
+        .why-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.65; }
 
-        /* ── TRUST ── */
-        .trust-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
-        .trust-card {
-            background: #fff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 2rem;
-            transition: all 0.25s;
-        }
-        .trust-card:hover { border-color: #e5e7eb; box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-3px); }
-        .trust-icon {
-            width: 44px; height: 44px; background: #111827; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.25rem; margin-bottom: 1.25rem;
-        }
-        .trust-title { font-size: 1.0625rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-        .trust-desc { font-size: 0.9rem; color: #6b7280; line-height: 1.65; }
+        /* WHO USES */
+        .uses-tags { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 2rem; }
+        .use-tag { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 100px; padding: 0.5rem 1.125rem; font-size: 0.9rem; font-weight: 600; color: #374151; }
 
-        /* ── TESTIMONIALS ── */
-        .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
-        .testi {
-            background: #fff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 2rem;
-            transition: all 0.25s;
-        }
-        .testi:hover { border-color: #e5e7eb; box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-3px); }
-        .stars { color: #111827; font-size: 0.875rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
-        .testi-text { font-size: 0.9375rem; color: #374151; line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
-        .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-        .testi-av {
-            width: 40px; height: 40px; background: #111827; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 800; font-size: 0.875rem; flex-shrink: 0;
-        }
+        /* TESTIMONIALS */
+        .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+        .testi { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.75rem; }
+        .testi-q { font-size: 0.9375rem; color: #374151; line-height: 1.7; margin-bottom: 1.25rem; }
         .testi-name { font-weight: 700; font-size: 0.875rem; color: #111827; }
-        .testi-biz { font-size: 0.8rem; color: #9ca3af; }
+        .testi-role { font-size: 0.8125rem; color: #9ca3af; margin-top: 2px; }
+        .stars-row { display: flex; gap: 2px; margin-bottom: 0.875rem; }
+        .stars-row svg { width: 14px; height: 14px; fill: #111827; stroke: none; }
 
-        /* ── FOOTER CTA ── */
-        .footer-cta {
-            background: #111827; padding: 6rem 2rem; text-align: center;
-        }
-        .footer-cta h2 {
-            font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 900;
-            color: #fff; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1rem;
-        }
-        .footer-cta p { color: rgba(255,255,255,0.45); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.6; }
-        .btn-white {
-            background: #fff; color: #111827; padding: 0.9375rem 2.25rem;
-            border-radius: 10px; text-decoration: none; font-size: 1rem; font-weight: 700;
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            transition: all 0.2s;
-        }
-        .btn-white:hover { opacity: 0.9; transform: translateY(-2px); }
-        .footer-small { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
-        .footer-small a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.8rem; transition: color 0.15s; }
-        .footer-small a:hover { color: rgba(255,255,255,0.6); }
+        /* FOOTER CTA */
+        .fcta { background: #111827; padding: 5.5rem 2rem; text-align: center; }
+        .fcta h2 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 0.875rem; }
+        .fcta p { color: rgba(255,255,255,0.4); font-size: 0.9375rem; margin-bottom: 2rem; line-height: 1.6; }
+        .btn-white { background: #fff; color: #111827; padding: 0.875rem 2rem; border-radius: 9px; text-decoration: none; font-size: 0.9375rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; transition: opacity 0.15s; }
+        .btn-white:hover { opacity: 0.88; }
 
-        /* ── FOOTER ── */
-        footer { background: #111827; border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 2rem; }
-        .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.78rem; }
-        .footer-links { display: flex; gap: 1.5rem; }
-        .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.78rem; }
+        /* FOOTER */
+        footer { background: #111827; border-top: 1px solid rgba(255,255,255,0.07); padding: 1.25rem 2rem; }
+        .foot-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+        .foot-copy { color: rgba(255,255,255,0.2); font-size: 0.78rem; }
+        .foot-links { display: flex; gap: 1.5rem; }
+        .foot-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.78rem; transition: color 0.15s; }
+        .foot-links a:hover { color: rgba(255,255,255,0.6); }
 
-        /* ── RESPONSIVE ── */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
-            .hero-image-wrap { display: none; }
+            .hero-wrap { grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 1.5rem 3rem; }
+            .hero-screen-wrap { display: none; }
             .stats-inner { grid-template-columns: repeat(2,1fr); }
-            .hiw-grid { grid-template-columns: 1fr; max-width: 400px; }
-            .needs-grid { grid-template-columns: repeat(2,1fr); }
-            .trust-grid { grid-template-columns: 1fr 1fr; }
+            .hiw-grid { grid-template-columns: 1fr; max-width: 360px; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
             .testi-grid { grid-template-columns: 1fr; }
             .nav-link { display: none; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
+            .why-grid { grid-template-columns: 1fr; }
             .stats-inner { grid-template-columns: repeat(2,1fr); }
-            .needs-grid { grid-template-columns: 1fr 1fr; }
-            .trust-grid { grid-template-columns: 1fr; }
-            .footer-inner { flex-direction: column; text-align: center; }
-            .footer-links { justify-content: center; }
+            .foot-inner { flex-direction: column; text-align: center; }
+            .foot-links { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-    <a href="/" class="nav-logo">
-        <div class="nav-logo-box">S</div>
-        <div>
-            <div class="nav-wordmark">Switch</div>
-            <div class="nav-for-biz">For Business</div>
-        </div>
+    <a href="/" class="logo">
+        <div class="logo-mark">S</div>
+        <span class="logo-name">Switch</span>
     </a>
     <div class="nav-right">
         <a href="#how-it-works" class="nav-link">How it works</a>
-        <a href="#who-needs-it" class="nav-link">Use cases</a>
-        <a href="https://app.switchlocally.com/hire" class="nav-cta" target="_blank">Post a Job →</a>
+        <a href="https://app.switchlocally.com/hire" class="nav-btn" target="_blank">Post a Requirement</a>
     </div>
 </nav>
 
-<!-- HERO -->
 <div style="max-width:1160px; margin:0 auto;">
-    <section class="hero">
-        <div>
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Verified workers near you, available now
-            </div>
-            <h1>Need staff?<br><em>Hired today.</em></h1>
-            <p class="hero-sub">Post what you need — security guard, store helper, delivery rider, kitchen staff, or anything else. Get matched with KYC-verified workers nearby within the hour.</p>
-            <div class="hero-actions">
-                <a href="https://app.switchlocally.com/hire" class="btn-dark" target="_blank">
-                    Post a Job Free
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="btn-text" target="_blank">
-                    Talk to us first
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
+<section class="hero-wrap">
+    <div>
+        <h1 class="hero-h1">Hire verified workers.<br>Today.</h1>
+        <p class="hero-p">Post a shift requirement. Get matched with Aadhaar-verified candidates near you. Most employers confirm a hire the same day.</p>
+        <div class="hero-btns">
+            <a href="https://app.switchlocally.com/hire" class="btn-primary" target="_blank">
+                Post a Requirement
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="btn-ghost" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Chat on WhatsApp
+            </a>
         </div>
-
-        <div class="hero-image-wrap">
-            <img src="assets/hero-worker.jpg" alt="Switch verified worker" class="hero-img">
-            <div class="hero-trust-chip">
-                <div class="chip-top">Workers placed</div>
-                <div class="chip-val">5,000+</div>
-            </div>
-            <div class="hero-rating-chip">
-                <span class="rating-star">⭐</span>
-                <div>
-                    <div class="rating-val">4.9</div>
-                    <div class="rating-label">Employer rating</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+    <div class="hero-screen-wrap">
+        <img src="assets/screen-2.png" alt="Switch employer app — worker profiles" class="hero-screen">
+    </div>
+</section>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar">
+<div class="trust-line">
+    <strong>Trusted by 500+ businesses</strong> — restaurants, hotels, warehouses, retail chains, and more
+</div>
+
+<div class="stats-wrap">
     <div class="stats-inner">
         <div class="stat">
-            <div class="stat-num">5,000+</div>
-            <div class="stat-lbl">Workers hired</div>
+            <div class="stat-n">4.8</div>
+            <div class="stat-l">Average employer rating</div>
         </div>
         <div class="stat">
-            <div class="stat-num">&lt; 24 hrs</div>
-            <div class="stat-lbl">Average time to hire</div>
+            <div class="stat-n">&lt; 6 hrs</div>
+            <div class="stat-l">Average time to hire</div>
         </div>
         <div class="stat">
-            <div class="stat-num">500+</div>
-            <div class="stat-lbl">Businesses served</div>
+            <div class="stat-n">100%</div>
+            <div class="stat-l">Aadhaar verified workers</div>
         </div>
         <div class="stat">
-            <div class="stat-num">100%</div>
-            <div class="stat-lbl">KYC verified workers</div>
+            <div class="stat-n">500+</div>
+            <div class="stat-l">Businesses use Switch</div>
         </div>
     </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<section class="section" id="how-it-works">
-    <div class="section-inner">
-        <div class="s-eyebrow">How it works</div>
-        <h2 class="s-title">Three steps.<br>One hire.</h2>
-        <p class="s-sub">No recruiting experience needed. No agencies. Just tell us what you need and workers show up.</p>
+<section class="sec" id="how-it-works">
+    <div class="sec-inner">
+        <h2 class="sec-h">How it works</h2>
+        <p class="sec-p">No experience posting jobs required. Just tell us what you need and we handle the rest.</p>
 
         <div class="hiw-grid">
-            <div class="hiw-step">
-                <div class="hiw-phone-wrap">
-                    <img src="assets/screen-1.png" alt="Post your job on Switch" class="hiw-phone">
-                </div>
-                <div class="hiw-step-num">1</div>
-                <div class="hiw-step-title">Post your requirement</div>
-                <p class="hiw-step-desc">Tell us the role and shift type. Takes 2 minutes. No job description or experience needed — just pick the role and location.</p>
+            <div>
+                <div class="hiw-num">Step 01</div>
+                <img src="assets/screen-1.png" alt="Post a requirement on Switch" class="hiw-screen">
+                <div class="hiw-title">Post your requirement</div>
+                <p class="hiw-desc">Pick the role, drop your location, tell us when. Takes 2 minutes. No job description needed.</p>
             </div>
-
-            <div class="hiw-step">
-                <div class="hiw-phone-wrap">
-                    <img src="assets/screen-2.png" alt="Get matched with workers" class="hiw-phone">
-                </div>
-                <div class="hiw-step-num">2</div>
-                <div class="hiw-step-title">Get matched instantly</div>
-                <p class="hiw-step-desc">We surface KYC-verified workers near you. Browse profiles, check ratings, and call or schedule an in-person interview directly in the app.</p>
+            <div>
+                <div class="hiw-num">Step 02</div>
+                <img src="assets/screen-2.png" alt="Browse matched worker profiles" class="hiw-screen">
+                <div class="hiw-title">Browse matched profiles</div>
+                <p class="hiw-desc">We send you 3–5 verified candidates near you, with ratings from their past employers. Call directly from the app.</p>
             </div>
-
-            <div class="hiw-step">
-                <div class="hiw-phone-wrap">
-                    <img src="assets/screen-3.png" alt="Worker confirmed and shift starts" class="hiw-phone">
-                </div>
-                <div class="hiw-step-num">3</div>
-                <div class="hiw-step-title">Shift confirmed. They show up.</div>
-                <p class="hiw-step-desc">Confirm with a joining OTP. Your worker arrives at the location and the shift starts. Track everything from your phone.</p>
+            <div>
+                <div class="hiw-num">Step 03</div>
+                <img src="assets/screen-3.png" alt="Shift confirmed — worker arrives" class="hiw-screen">
+                <div class="hiw-title">Confirm. They show up.</div>
+                <p class="hiw-desc">One tap to confirm. Worker arrives at your door. Track the shift live from your phone.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WHO NEEDS IT -->
-<section class="section-alt" id="who-needs-it">
-    <div class="section-inner">
-        <div class="s-eyebrow">Who uses Switch</div>
-        <h2 class="s-title">Anyone who needs<br>reliable staff, fast.</h2>
-        <p class="s-sub">From a single store to a large warehouse — if you need someone to show up and get to work, Switch gets it done.</p>
+<section class="sec-alt">
+    <div class="sec-inner">
+        <h2 class="sec-h">Why employers choose Switch</h2>
+        <p class="sec-p">Faster than an agency, safer than a classifieds post.</p>
 
-        <div class="needs-grid">
-            <div class="need-card">
-                <span class="need-emoji">🏪</span>
-                <div class="need-title">Shops & Retail</div>
-                <p class="need-desc">Store helpers, cashiers, and stock assistants for your retail floor.</p>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <div class="why-title">Aadhaar + video verified</div>
+                <p class="why-desc">Every worker completes a live video KYC before joining. Identity and documents checked — not just a selfie scan.</p>
             </div>
-            <div class="need-card">
-                <span class="need-emoji">🍽️</span>
-                <div class="need-title">Restaurants & Cafes</div>
-                <p class="need-desc">Kitchen helpers, dishwashers, and delivery staff for your food business.</p>
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="why-title">Matched near you</div>
+                <p class="why-desc">Workers matched within your area. No long commutes means no late arrivals and no last-minute cancellations.</p>
             </div>
-            <div class="need-card">
-                <span class="need-emoji">📦</span>
-                <div class="need-title">Warehouses & Logistics</div>
-                <p class="need-desc">Pickers, packers, and loaders for your warehouse and last-mile ops.</p>
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="why-title">Rated by past employers</div>
+                <p class="why-desc">See ratings and work history from previous jobs before you call. No surprises on the day.</p>
             </div>
-            <div class="need-card">
-                <span class="need-emoji">🏢</span>
-                <div class="need-title">Offices & Buildings</div>
-                <p class="need-desc">Security guards, housekeeping staff, and front-desk attendants.</p>
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <div class="why-title">Same-day hiring</div>
+                <p class="why-desc">Post in the morning. Interview by noon. Hire by evening. Most placements happen within 6 hours.</p>
             </div>
-            <div class="need-card">
-                <span class="need-emoji">🏠</span>
-                <div class="need-title">Homes & Residences</div>
-                <p class="need-desc">Domestic help, moving day labour, and household assistants.</p>
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <div class="why-title">All on your phone</div>
+                <p class="why-desc">Browse profiles, call candidates, confirm with OTP, track the shift. Everything in one app. No paperwork.</p>
             </div>
-            <div class="need-card">
-                <span class="need-emoji">🏨</span>
-                <div class="need-title">Hotels & Hospitality</div>
-                <p class="need-desc">Housekeeping, room service, and banquet staff on short notice.</p>
-            </div>
-            <div class="need-card">
-                <span class="need-emoji">🎪</span>
-                <div class="need-title">Events & Exhibitions</div>
-                <p class="need-desc">Setup crew, helpers, and crowd management staff for events.</p>
-            </div>
-            <div class="need-card">
-                <span class="need-emoji">🔧</span>
-                <div class="need-title">Manufacturing & Factories</div>
-                <p class="need-desc">Factory helpers, machine operators, and floor supervisors.</p>
+            <div class="why-card">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                </div>
+                <div class="why-title">No contract, no lock-in</div>
+                <p class="why-desc">Hire for one shift or hire every week. No agency retainer, no long-term commitment. Pay only for what you hire.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TRUST & WHY SWITCH -->
-<section class="section">
-    <div class="section-inner">
-        <div class="s-eyebrow">Why Switch</div>
-        <h2 class="s-title">Workers you can<br>actually trust.</h2>
-        <p class="s-sub">Every worker on Switch is verified before they ever show up at your door.</p>
-
-        <div class="trust-grid">
-            <div class="trust-card">
-                <div class="trust-icon">🪪</div>
-                <div class="trust-title">Video KYC Verified</div>
-                <p class="trust-desc">Every worker completes a live video KYC check with our agents. Identity and documents verified before they join the platform.</p>
-            </div>
-            <div class="trust-card">
-                <div class="trust-icon">📍</div>
-                <div class="trust-title">Near You, Always</div>
-                <p class="trust-desc">Workers are matched based on your exact location. No long commutes means no late arrivals and no no-shows.</p>
-            </div>
-            <div class="trust-card">
-                <div class="trust-icon">⭐</div>
-                <div class="trust-title">Rated by Real Employers</div>
-                <p class="trust-desc">Every worker has a rating from previous employers. You can check work history and reviews before you interview.</p>
-            </div>
-            <div class="trust-card">
-                <div class="trust-icon">⚡</div>
-                <div class="trust-title">Hire the Same Day</div>
-                <p class="trust-desc">Post in the morning, interview by afternoon, worker confirmed by evening. Faster than any agency or job board.</p>
-            </div>
-            <div class="trust-card">
-                <div class="trust-icon">📱</div>
-                <div class="trust-title">All on Your Phone</div>
-                <p class="trust-desc">Browse profiles, call candidates, confirm with OTP, and track your hired worker — everything managed from one app.</p>
-            </div>
-            <div class="trust-card">
-                <div class="trust-icon">🔁</div>
-                <div class="trust-title">Flexible Shifts</div>
-                <p class="trust-desc">Need someone for 4 hours or a full day? Morning, evening, or night? Post any shift type and get workers who fit exactly.</p>
-            </div>
+<section class="sec">
+    <div class="sec-inner">
+        <h2 class="sec-h">Who uses Switch</h2>
+        <p class="sec-p">Anyone who needs reliable staff at short notice.</p>
+        <div class="uses-tags">
+            <span class="use-tag">Restaurants &amp; cafes</span>
+            <span class="use-tag">Hotels &amp; hospitality</span>
+            <span class="use-tag">Retail &amp; shops</span>
+            <span class="use-tag">Warehouses</span>
+            <span class="use-tag">Corporate offices</span>
+            <span class="use-tag">Events &amp; exhibitions</span>
+            <span class="use-tag">Households</span>
+            <span class="use-tag">Factories</span>
+            <span class="use-tag">Security &amp; facilities</span>
+            <span class="use-tag">Clinics &amp; hospitals</span>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section-alt">
-    <div class="section-inner">
-        <div class="s-eyebrow">What employers say</div>
-        <h2 class="s-title">Businesses that hire<br>smarter with Switch.</h2>
-
+<section class="sec-alt">
+    <div class="sec-inner">
+        <h2 class="sec-h">What employers say</h2>
         <div class="testi-grid">
             <div class="testi">
-                <div class="stars">★★★★★</div>
-                <p class="testi-text">"We needed two security guards on short notice before a long weekend. Switch sent verified profiles within the hour and both confirmed the same evening. Nothing else comes close."</p>
-                <div class="testi-author">
-                    <div class="testi-av">A</div>
-                    <div>
-                        <div class="testi-name">Arvind Mehta</div>
-                        <div class="testi-biz">Operations Head, Retail Chain · Gurgaon</div>
-                    </div>
+                <div class="stars-row">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
+                <p class="testi-q">"Needed two security guards before a long weekend. Posted at 10am, both confirmed by 4pm. Both showed up on time the next morning."</p>
+                <div class="testi-name">Arvind M.</div>
+                <div class="testi-role">Operations Manager, Gurgaon</div>
             </div>
             <div class="testi">
-                <div class="stars">★★★★★</div>
-                <p class="testi-text">"The video KYC gave us real confidence. We hired a full housekeeping team for our hotel and every single one showed up on time, professional, and ready to work."</p>
-                <div class="testi-author">
-                    <div class="testi-av">S</div>
-                    <div>
-                        <div class="testi-name">Sunaina Kapoor</div>
-                        <div class="testi-biz">General Manager, Boutique Hotel · Delhi</div>
-                    </div>
+                <div class="stars-row">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
+                <p class="testi-q">"The video KYC is the reason we switched from agencies. Every person we've hired through Switch has been on time and professional."</p>
+                <div class="testi-name">Priya K.</div>
+                <div class="testi-role">General Manager, Boutique Hotel, Delhi</div>
             </div>
             <div class="testi">
-                <div class="stars">★★★★★</div>
-                <p class="testi-text">"Our warehouse headcount fluctuates daily. With Switch I post a shift in the morning and have someone on the floor by noon. We use it almost every single week now."</p>
-                <div class="testi-author">
-                    <div class="testi-av">R</div>
-                    <div>
-                        <div class="testi-name">Rahul Singhania</div>
-                        <div class="testi-biz">Founder, Logistics Startup · Noida</div>
-                    </div>
+                <div class="stars-row">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 </div>
+                <p class="testi-q">"Our warehouse headcount changes every week. I post a shift in the morning and have someone on the floor by noon. We use Switch almost every week now."</p>
+                <div class="testi-name">Rahul S.</div>
+                <div class="testi-role">Founder, Logistics Startup, Noida</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FOOTER CTA -->
-<div class="footer-cta">
-    <h2>Your next hire is<br>a few taps away.</h2>
-    <p>Post your first requirement for free.<br>No contracts. No upfront cost. Pay only when you hire.</p>
+<div class="fcta">
+    <h2>Post your first<br>requirement free.</h2>
+    <p>No contract. No upfront cost. Pay only when you hire.</p>
     <a href="https://app.switchlocally.com/hire" class="btn-white" target="_blank">
-        Post a Job Free →
+        Post a Requirement
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <div class="footer-small">
-        <a href="https://wa.me/message/EVIXKAWHM7VYK1" target="_blank">WhatsApp us</a>
-        <a href="https://app.switchlocally.com/hire" target="_blank">Employer App</a>
-    </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
-    <div class="footer-inner">
-        <span class="footer-copy">© 2026 Switch. All rights reserved.</span>
-        <div class="footer-links">
+    <div class="foot-inner">
+        <span class="foot-copy">© 2026 Switch. All rights reserved.</span>
+        <div class="foot-links">
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
             <a href="https://wa.me/message/EVIXKAWHM7VYK1" target="_blank">Contact</a>
