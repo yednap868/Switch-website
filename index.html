@@ -3,395 +3,691 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switch - 4hr & 8hr Shift Jobs Near You</title>
-    <meta name="description" content="4 hour ya 8 hour shift — apni marzi se kaam karo, paise daily milte hain. Ghar ke paas shift jobs on Switch.">
+    <title>Switch for Business — Hire Shift Workers Today</title>
+    <meta name="description" content="Post a shift, get matched with verified workers nearby. Hire in hours, not weeks.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.5;
+            background: #fff;
             color: #111827;
-            background: white;
-            padding-top: 56px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .top-cta {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
+        /* ── NAV ── */
+        nav {
+            background: #111827;
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            text-decoration: none;
+        }
+        .nav-logo-box {
+            width: 32px; height: 32px;
+            background: #fff;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 0.9rem; color: #111827;
+        }
+        .nav-logo-name {
+            font-weight: 800;
+            font-size: 1.125rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .nav-logo-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-left: 0.25rem;
+            margin-top: 2px;
+        }
+        .nav-right {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: #111827;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        .top-cta-text { font-size: 1rem; font-weight: 700; color: white; }
-        .whatsapp-btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: #25D366; color: white;
-            padding: 0.6rem 1.25rem; border-radius: 12px;
-            text-decoration: none; font-size: 1rem; font-weight: 800;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+        .nav-link {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
-        .whatsapp-btn svg { width: 22px; height: 22px; fill: currentColor; }
+        .nav-link:hover { color: #fff; }
+        .nav-cta {
+            background: #fff;
+            color: #111827;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.9; }
 
+        /* ── HERO ── */
         .hero {
-            min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
-            padding: 2rem;
-            position: relative; overflow: hidden;
+            padding: 6rem 2rem 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
-        .hero-content { max-width: 900px; text-align: center; position: relative; z-index: 10; }
-
-        .logo { display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
-        .logo-icon {
-            width: 80px; height: 80px;
-            background: #111827;
-            border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            transform: rotate(-3deg); transition: all 0.3s ease;
-        }
-        .logo:hover .logo-icon { transform: rotate(0deg) scale(1.05); }
-        .logo-letter { font-size: 3.5rem; font-weight: 900; color: white; line-height: 1; transform: rotate(3deg); }
-        .logo-text { display: flex; flex-direction: column; gap: 0.25rem; }
-        .logo-title {
-            font-size: 2.5rem; font-weight: 900; line-height: 1;
-            color: #111827;
-        }
-        .logo-subtitle { font-size: 0.75rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; }
-
-        .tagline {
-            font-size: 1.125rem; color: #6b7280; font-weight: 600;
-            margin-bottom: 3rem;
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-        }
-        .tagline-emoji { font-size: 1.5rem; animation: pulse 2s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-
-        h1 { font-size: 5rem; font-weight: 900; line-height: 1.1; margin-bottom: 2rem; color: #111827; }
-        .gradient-text {
-            color: #111827;
-            display: block;
-        }
-        .subtitle { font-size: 1.75rem; color: #4b5563; margin-bottom: 3rem; font-weight: 600; }
-
-        .shift-pills { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-        .shift-pill {
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             background: #f3f4f6;
-            border: 2px solid #e5e7eb;
-            border-radius: 50px; padding: 0.6rem 1.5rem;
-            font-size: 1rem; font-weight: 800; color: #111827;
+            border: 1px solid #e5e7eb;
+            border-radius: 100px;
+            padding: 0.35rem 0.875rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.01em;
         }
-
-        .stats { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
-        .stat { text-align: center; }
-        .stat-number {
-            font-size: 3.5rem; font-weight: 900;
-            color: #111827;
-            display: block; line-height: 1; margin-bottom: 0.5rem;
-        }
-        .stat-label { font-size: 1rem; color: #6b7280; font-weight: 600; }
-
-        .cta-button {
-            display: inline-block;
+        .eyebrow-dot {
+            width: 6px; height: 6px;
             background: #111827;
-            color: white; padding: 1.5rem 4rem; border-radius: 16px;
-            text-decoration: none; font-size: 1.5rem; font-weight: 800;
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
         }
-        .cta-button:hover { transform: translateY(-4px); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3); }
-
-        .circle { position: absolute; border-radius: 50%; opacity: 0.04; }
-        .circle-1 { width: 600px; height: 600px; background: #111827; top: -300px; right: -300px; }
-        .circle-2 { width: 400px; height: 400px; background: #111827; bottom: -200px; left: -200px; }
-
-        /* Shifts section */
-        .shifts-section { padding: 5rem 2rem; background: #f9fafb; }
-        .shifts-container { max-width: 1000px; margin: 0 auto; }
-        .shifts-title { text-align: center; font-size: 2.5rem; font-weight: 900; margin-bottom: 0.75rem; color: #111827; }
-        .shifts-sub { text-align: center; font-size: 1.125rem; color: #6b7280; font-weight: 600; margin-bottom: 3rem; }
-        .shifts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-        .shift-card {
-            background: white; border-radius: 20px; padding: 2rem 1.5rem;
-            border: 2px solid #e5e7eb; text-align: center; transition: all 0.3s ease;
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: #111827;
+            margin-bottom: 1.5rem;
         }
-        .shift-card:hover { border-color: #111827; transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1); }
-        .shift-card-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-        .shift-card-title { font-size: 1.375rem; font-weight: 900; color: #111827; margin-bottom: 0.5rem; }
-        .shift-card-time { font-size: 0.9rem; font-weight: 700; color: #6b7280; margin-bottom: 0.5rem; }
-        .shift-card-desc { font-size: 0.875rem; color: #6b7280; font-weight: 600; line-height: 1.5; }
-
-        /* Stories */
-        .stories { padding: 6rem 2rem; background: #f9fafb; }
-        .stories-container { max-width: 1200px; margin: 0 auto; }
-        .stories-title { text-align: center; font-size: 3rem; font-weight: 900; margin-bottom: 4rem; color: #111827; }
-        .stories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .story {
-            background: white; padding: 2.5rem; border-radius: 24px;
-            border: 2px solid #e5e7eb; transition: all 0.3s ease;
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 900;
         }
-        .story:hover { border-color: #111827; transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
-        .story-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-        .avatar {
-            width: 60px; height: 60px; flex-shrink: 0;
+        .hero-sub {
+            font-size: 1.125rem;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #111827;
+            color: #fff;
+            padding: 0.875rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            letter-spacing: -0.01em;
+        }
+        .btn-primary:hover { background: #1f2937; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .btn-ghost {
+            color: #111827;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            transition: gap 0.2s;
+        }
+        .btn-ghost:hover { gap: 0.625rem; }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .phone-mock {
+            width: 280px;
+            background: #111827;
+            border-radius: 36px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.2), 0 0 0 8px #1f2937;
+            position: relative;
+        }
+        .phone-notch {
+            width: 80px; height: 6px;
+            background: #374151;
+            border-radius: 3px;
+            margin: 0 auto 1.5rem;
+        }
+        .phone-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .phone-card-row {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            margin-bottom: 0.5rem;
+        }
+        .phone-avatar {
+            width: 36px; height: 36px;
             background: #111827;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 900; font-size: 1.75rem;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.875rem;
+            flex-shrink: 0;
         }
-        .story-info h3 { font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.25rem; }
-        .story-role { font-size: 1rem; color: #6b7280; font-weight: 600; }
-        .story-shift-badge {
+        .phone-name { font-weight: 700; font-size: 0.875rem; color: #111827; }
+        .phone-role { font-size: 0.75rem; color: #6b7280; }
+        .phone-badge {
             display: inline-block;
-            background: #f3f4f6; color: #374151;
-            font-size: 0.75rem; font-weight: 800;
-            padding: 0.2rem 0.6rem; border-radius: 6px; margin-top: 0.25rem;
+            background: #f0fdf4;
+            color: #15803d;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
         }
-        .story-text { font-size: 1.125rem; color: #374151; line-height: 1.7; margin-bottom: 1.5rem; }
-        .story-result {
-            background: #f3f4f6;
-            padding: 1rem 1.5rem; border-radius: 12px;
+        .phone-cta {
+            background: #111827;
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.625rem;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .phone-label {
+            text-align: center;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 1rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ── STATS ── */
+        .stats-bar {
+            border-top: 1px solid #f3f4f6;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 2.5rem 2rem;
+        }
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #111827;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 0.375rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        /* ── HOW IT WORKS ── */
+        .section {
+            padding: 6rem 2rem;
+        }
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: #111827;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .section-sub {
+            font-size: 1.0625rem;
+            color: #6b7280;
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: 3.5rem;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .step {
+            padding: 2rem;
+            border: 1px solid #f3f4f6;
+            border-radius: 20px;
+            background: #fafafa;
+            transition: all 0.25s;
+        }
+        .step:hover {
+            border-color: #e5e7eb;
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+        .step-number {
+            width: 40px; height: 40px;
+            background: #111827;
+            color: #fff;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.625rem;
+            letter-spacing: -0.02em;
+        }
+        .step-desc {
+            font-size: 0.9375rem;
+            color: #6b7280;
+            line-height: 1.65;
+        }
+
+        /* ── SHIFT TYPES ── */
+        .section-alt {
+            padding: 6rem 2rem;
+            background: #f9fafb;
+        }
+        .shifts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-top: 3.5rem;
+        }
+        .shift-card {
+            background: #fff;
             border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 1.75rem 1.5rem;
+            transition: all 0.25s;
         }
-        .result-label { font-size: 0.875rem; color: #6b7280; font-weight: 600; margin-bottom: 0.25rem; }
-        .result-value { font-size: 1.5rem; font-weight: 900; color: #111827; }
+        .shift-card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            transform: translateY(-3px);
+        }
+        .shift-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        .shift-title {
+            font-size: 1.0625rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .shift-desc {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            line-height: 1.6;
+            font-weight: 500;
+        }
 
-        /* Footer */
-        .footer-cta { padding: 6rem 2rem; background: white; text-align: center; }
-        .footer-cta h2 { font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: #111827; }
-        .footer-note { color: #6b7280; margin-top: 1.5rem; font-size: 1rem; }
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .testimonial {
+            background: #fff;
+            border: 1px solid #f3f4f6;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.25s;
+        }
+        .testimonial:hover {
+            border-color: #e5e7eb;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+        .testimonial-text {
+            font-size: 0.9375rem;
+            color: #374151;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .testimonial-avatar {
+            width: 40px; height: 40px;
+            background: #111827;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: #111827;
+        }
+        .testimonial-biz {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            font-weight: 500;
+        }
 
-        @media (max-width: 768px) {
-            .top-cta { flex-wrap: wrap; padding: 0.6rem 1rem; gap: 0.5rem; }
-            .top-cta-text { font-size: 0.9rem; }
-            .whatsapp-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
-            body { padding-top: 72px; }
-            h1 { font-size: 3rem; }
-            .subtitle { font-size: 1.25rem; }
-            .stats { gap: 2rem; flex-wrap: wrap; }
-            .stat-number { font-size: 2.5rem; }
-            .cta-button { padding: 1.25rem 2.5rem; font-size: 1.25rem; }
-            .stories-title, .footer-cta h2 { font-size: 2rem; }
-            .stories-grid { grid-template-columns: 1fr; }
-            .circle-1, .circle-2 { display: none; }
+        /* ── FOOTER CTA ── */
+        .footer-cta {
+            background: #111827;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .footer-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .footer-cta p {
+            color: rgba(255,255,255,0.5);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .btn-white {
+            background: #fff;
+            color: #111827;
+            padding: 0.875rem 2.25rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        .btn-white:hover { opacity: 0.92; transform: translateY(-1px); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111827;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer-note {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+            .hero-visual { display: none; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .shifts-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .nav-link { display: none; }
+        }
+        @media (max-width: 540px) {
+            .shifts-grid { grid-template-columns: 1fr 1fr; }
+            .stats-inner { grid-template-columns: repeat(3, 1fr); }
+            .stat-number { font-size: 1.75rem; }
         }
     </style>
 </head>
 <body>
-    <div class="top-cta">
-        <span class="top-cta-text">4hr & 8hr Shifts Available — Abhi Join Karo</span>
-        <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp
+
+    <!-- NAV -->
+    <nav>
+        <a href="/" class="nav-logo">
+            <div class="nav-logo-box">S</div>
+            <span class="nav-logo-name">Switch</span>
+            <span class="nav-logo-tag">for Business</span>
         </a>
+        <div class="nav-right">
+            <a href="#how-it-works" class="nav-link">How it works</a>
+            <a href="#shifts" class="nav-link">Shift types</a>
+            <a href="https://app.switchlocally.com/hire" class="nav-cta" target="_blank">Post a Job</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section style="max-width:1100px; margin: 0 auto;">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    Verified workers. Flexible shifts.
+                </div>
+                <h1>Hire shift workers.<br><em>In hours, not weeks.</em></h1>
+                <p class="hero-sub">Post a morning, day, or night shift and get matched with verified workers near your location. No agencies, no paperwork, no waiting.</p>
+                <div class="hero-actions">
+                    <a href="https://app.switchlocally.com/hire" class="btn-primary" target="_blank">Start Hiring →</a>
+                    <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="btn-ghost" target="_blank">
+                        Talk to us
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="phone-mock">
+                    <div class="phone-notch"></div>
+
+                    <div class="phone-card">
+                        <div class="phone-card-row">
+                            <div class="phone-avatar">R</div>
+                            <div>
+                                <div class="phone-name">Ramesh Kumar</div>
+                                <div class="phone-role">Security Guard · 2 yrs exp</div>
+                            </div>
+                        </div>
+                        <span class="phone-badge">✓ KYC Verified</span>
+                        <div class="phone-cta">Schedule Interview →</div>
+                    </div>
+
+                    <div class="phone-card">
+                        <div class="phone-card-row">
+                            <div class="phone-avatar">P</div>
+                            <div>
+                                <div class="phone-name">Priya Sharma</div>
+                                <div class="phone-role">Store Helper · 1 yr exp</div>
+                            </div>
+                        </div>
+                        <span class="phone-badge">✓ KYC Verified</span>
+                        <div class="phone-cta">Schedule Interview →</div>
+                    </div>
+
+                    <div class="phone-label">Switch for Business</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Workers placed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24 hrs</div>
+                <div class="stat-label">Avg. time to hire</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Businesses served</div>
+            </div>
+        </div>
     </div>
 
-    <section class="hero">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="hero-content">
-            <div class="logo">
-                <div class="logo-icon"><div class="logo-letter">S</div></div>
-                <div class="logo-text">
-                    <span class="logo-title">Switch</span>
-                    <span class="logo-subtitle">Shift Jobs Near You</span>
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+        <div class="section-inner">
+            <div class="section-eyebrow">How it works</div>
+            <h2 class="section-title">From posting to placement,<br>in three steps.</h2>
+            <p class="section-sub">No recruiting experience needed. Tell us what you need and we handle the rest.</p>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Post your requirement</div>
+                    <p class="step-desc">Tell us the role, shift type, and location. Takes under 2 minutes. No job description needed.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Get matched instantly</div>
+                    <p class="step-desc">We surface verified, available workers near you. Every profile is KYC-checked and ready to start.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Interview and confirm</div>
+                    <p class="step-desc">Call them directly or schedule an in-person interview. Confirm with an OTP — your new hire starts the same day.</p>
                 </div>
             </div>
-
-            <div class="tagline">
-                <span class="tagline-emoji">⏰</span>
-                <span>Apni Shift Chuno. Apni Life Chuno.</span>
-                <span class="tagline-emoji">⚡</span>
-            </div>
-
-            <h1>
-                <span class="gradient-text">4hr ya 8hr Shift,</span>
-                Aapki Marzi!
-            </h1>
-
-            <p class="subtitle">Subah, dopahar ya raat — jab chaaho kaam karo, paise roz milte hain</p>
-
-            <div class="shift-pills">
-                <span class="shift-pill">🌅 Morning 6am–10am</span>
-                <span class="shift-pill">☀️ Day 10am–6pm</span>
-                <span class="shift-pill">🌆 Evening 6pm–10pm</span>
-                <span class="shift-pill">🌙 Night 10pm–6am</span>
-            </div>
-
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number">₹150/hr</span>
-                    <span class="stat-label">Avg. hourly pay</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">4hr</span>
-                    <span class="stat-label">Min. shift</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">2000+</span>
-                    <span class="stat-label">Shifts daily</span>
-                </div>
-            </div>
-
-            <a href="https://app.switchlocally.com" class="cta-button">Apni Shift Chuno →</a>
         </div>
     </section>
 
-    <section class="shifts-section">
-        <div class="shifts-container">
-            <h2 class="shifts-title">Har Zaroorat Ka Shift</h2>
-            <p class="shifts-sub">Ghar sambhalo, bacche padhao, aur kaam bhi karo — sabka shift available hai</p>
+    <!-- SHIFT TYPES -->
+    <section class="section-alt" id="shifts">
+        <div class="section-inner">
+            <div class="section-eyebrow">Shift types</div>
+            <h2 class="section-title">Staffing that fits<br>your schedule.</h2>
+            <p class="section-sub">Whether you need someone for a few hours or a full day, we have workers ready for every shift.</p>
+
             <div class="shifts-grid">
                 <div class="shift-card">
-                    <span class="shift-card-emoji">🌅</span>
-                    <div class="shift-card-title">4hr Morning</div>
-                    <div class="shift-card-time">6am – 10am</div>
-                    <div class="shift-card-desc">Bacche school jaate hain, aap kaam karo. Din bhar free!</div>
+                    <span class="shift-emoji">🌅</span>
+                    <div class="shift-title">Morning Shift</div>
+                    <p class="shift-desc">Start your business day with the right staff already in place.</p>
                 </div>
                 <div class="shift-card">
-                    <span class="shift-card-emoji">☀️</span>
-                    <div class="shift-card-title">8hr Day</div>
-                    <div class="shift-card-time">9am – 5pm</div>
-                    <div class="shift-card-desc">Full-time salary, ghar ke paas. Travel nahi, thakaan nahi.</div>
+                    <span class="shift-emoji">☀️</span>
+                    <div class="shift-title">Full Day Shift</div>
+                    <p class="shift-desc">Full-time coverage for your store, warehouse, or office.</p>
                 </div>
                 <div class="shift-card">
-                    <span class="shift-card-emoji">🌆</span>
-                    <div class="shift-card-title">4hr Evening</div>
-                    <div class="shift-card-time">6pm – 10pm</div>
-                    <div class="shift-card-desc">Din mein ghar ka kaam, shaam ko extra income.</div>
+                    <span class="shift-emoji">🌆</span>
+                    <div class="shift-title">Evening Shift</div>
+                    <p class="shift-desc">Keep operations running through the evening rush hours.</p>
                 </div>
                 <div class="shift-card">
-                    <span class="shift-card-emoji">🌙</span>
-                    <div class="shift-card-title">8hr Night</div>
-                    <div class="shift-card-time">10pm – 6am</div>
-                    <div class="shift-card-desc">Night allowance extra. Din mein aaram, raat ko kamaai.</div>
+                    <span class="shift-emoji">🌙</span>
+                    <div class="shift-title">Night Shift</div>
+                    <p class="shift-desc">Round-the-clock security, cleaning, and warehouse coverage.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stories">
-        <div class="stories-container">
-            <h2 class="stories-title">Inki Shift Badli, Zindagi Badli</h2>
-            <div class="stories-grid">
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">K</div>
-                        <div class="story-info">
-                            <h3>Kavita Devi</h3>
-                            <p class="story-role">Cashier, DMart</p>
-                            <span class="story-shift-badge">4hr Morning Shift</span>
+    <!-- TESTIMONIALS -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-eyebrow">What businesses say</div>
+            <h2 class="section-title">Trusted by businesses<br>across the city.</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"We needed two security guards on short notice. Switch sent us verified profiles within the hour and we had both confirmed by evening. Genuinely impressive."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div>
+                            <div class="testimonial-name">Arvind Mehta</div>
+                            <div class="testimonial-biz">Operations Head, Retail Chain</div>
                         </div>
-                    </div>
-                    <p class="story-text">"Bacche 8 baje school jaate hain. Main 9 baje se 1 baje tak 4hr shift karti hoon aur wapas ghar aa jaati hoon unse pehle. ₹600 roz — mahine ka ₹18,000. Ghar bhi, kaam bhi."</p>
-                    <div class="story-result">
-                        <div class="result-label">Monthly income</div>
-                        <div class="result-value">₹18,000/month</div>
                     </div>
                 </div>
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">R</div>
-                        <div class="story-info">
-                            <h3>Ramesh Nair</h3>
-                            <p class="story-role">Warehouse Helper, Amazon</p>
-                            <span class="story-shift-badge">8hr Day Shift</span>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The KYC verification gave us real confidence. We hired a housekeeping team for our hotel and every single one showed up on time and was professional."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div>
+                            <div class="testimonial-name">Sunaina Kapoor</div>
+                            <div class="testimonial-biz">GM, Boutique Hotel</div>
                         </div>
-                    </div>
-                    <p class="story-text">"Pehle 2 ghante commute karta tha Noida. Switch pe ghar ke paas 8hr day shift mili — 9 se 5. Petrol bachta hai, family ke saath dinner hota hai. Life switch ho gayi!"</p>
-                    <div class="story-result">
-                        <div class="result-label">Now earning</div>
-                        <div class="result-value">₹28,000/month</div>
                     </div>
                 </div>
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">S</div>
-                        <div class="story-info">
-                            <h3>Sunita Patel</h3>
-                            <p class="story-role">Store Assistant, Reliance Smart</p>
-                            <span class="story-shift-badge">4hr Evening Shift</span>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Our warehouse needs fluctuate daily. Switch lets us post a shift in the morning and have someone on the floor by noon. We use it almost every week."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div>
+                            <div class="testimonial-name">Rahul Singhania</div>
+                            <div class="testimonial-biz">Founder, Logistics Startup</div>
                         </div>
-                    </div>
-                    <p class="story-text">"Din mein ghar ka kaam, 6 baje se 10 baje tak evening shift. Pati ko pata bhi nahi tha main itna kama sakti hoon. Switch ne dikhaya ki 4hr shift mein bhi full dignity ka kaam milta hai."</p>
-                    <div class="story-result">
-                        <div class="result-label">Extra income</div>
-                        <div class="result-value">₹500/day</div>
-                    </div>
-                </div>
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">D</div>
-                        <div class="story-info">
-                            <h3>Deepak Rao</h3>
-                            <p class="story-role">Security Guard, Securitas</p>
-                            <span class="story-shift-badge">8hr Night Shift</span>
-                        </div>
-                    </div>
-                    <p class="story-text">"Night 10pm se 6am — raat ka extra allowance milta hai, din mein aaram. Switch pe apply kiya, next day joining hua. Ab ₹32K mein night allowance alag — pehle se zyada kamaata hoon."</p>
-                    <div class="story-result">
-                        <div class="result-label">With night allowance</div>
-                        <div class="result-value">₹32,000/month</div>
-                    </div>
-                </div>
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">M</div>
-                        <div class="story-info">
-                            <h3>Mohd. Irfan</h3>
-                            <p class="story-role">Delivery + Store Helper</p>
-                            <span class="story-shift-badge">4hr + 4hr Double Shift</span>
-                        </div>
-                    </div>
-                    <p class="story-text">"Morning 4hr delivery shift, shaam ko 4hr store helper shift. Dono ek hi area mein, ek Switch se mile. Doosri job nahi milti thi, ab double income hai. ₹45K roz ka hisaab!"</p>
-                    <div class="story-result">
-                        <div class="result-label">Combined income</div>
-                        <div class="result-value">₹45,000/month</div>
-                    </div>
-                </div>
-                <div class="story">
-                    <div class="story-header">
-                        <div class="avatar">A</div>
-                        <div class="story-info">
-                            <h3>Anita Singh</h3>
-                            <p class="story-role">Kitchen Helper, Cloud Kitchen</p>
-                            <span class="story-shift-badge">First Shift Job</span>
-                        </div>
-                    </div>
-                    <p class="story-text">"Pehle koi full-time nahi deta tha, sochti thi bas ghar hi sambhaluungi. Switch pe 4hr morning shift dekhi — cloud kitchen, 2km ghar se. Apply kiya, same day call aaya. Ab main bhi kamaati hoon!"</p>
-                    <div class="story-result">
-                        <div class="result-label">Joined in</div>
-                        <div class="result-value">Same Day</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="footer-cta">
-        <h2>Apni Shift Abhi Chuno!</h2>
-        <a href="https://app.switchlocally.com" class="cta-button">Switch Karo →</a>
-        <p class="footer-note">2000+ shifts roz available hain. Aapka shift aapka intezaar kar raha hai. ⚡</p>
-    </section>
+    <!-- FOOTER CTA -->
+    <div class="footer-cta">
+        <h2>Ready to hire?<br>Post your first shift free.</h2>
+        <p>No contracts. No upfront cost. Pay only when you hire.</p>
+        <a href="https://app.switchlocally.com/hire" class="btn-white" target="_blank">Post a Job →</a>
+    </div>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-note">© 2026 Switch. All rights reserved. · <a href="https://wa.me/message/EVIXKAWHM7VYK1" style="color:rgba(255,255,255,0.3); text-decoration:none;">WhatsApp us</a></p>
+    </footer>
+
 </body>
 </html>
