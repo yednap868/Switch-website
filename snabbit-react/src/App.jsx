@@ -133,7 +133,7 @@ function Hero() {
 
           <div className="hero-live">
             <span className="hero-dot" />
-            <span>Now live · 500+ cities across India</span>
+            <span>Now live · 5 cities across India</span>
           </div>
 
           <h1 className="hero-h1">
