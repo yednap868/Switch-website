@@ -133,7 +133,7 @@ function Hero() {
 
           <div className="hero-live">
             <span className="hero-dot" />
-            <span>Now live · Gurgaon &amp; Delhi NCR</span>
+            <span>Now live · Gurgaon</span>
           </div>
 
           <h1 className="hero-h1">
@@ -210,7 +210,7 @@ function Stats() {
           { num: '1,000+', lbl: 'Verified Users' },
           { num: '200+',   lbl: 'Jobs Completed' },
           { num: '4.8 ★',  lbl: 'Average Rating' },
-          { num: '🏙',     lbl: 'Gurgaon & Delhi NCR' },
+          { num: '🏙',     lbl: 'Gurgaon' },
         ].map((s, i) => (
           <div className="s-cell" key={i}>
             <div className="s-num">{s.num}</div>
