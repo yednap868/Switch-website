@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import SeoPage from './pages/SeoPage.jsx'
+import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
@@ -10,18 +11,18 @@ const ALL_ROLES_MARQUEE = [
 ]
 
 const ROLES = [
-  { img: '/house-cleaner.jpg',   name: 'Home Cleaning',      desc: 'Sweep, mop, dust — full home or specific rooms',       tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/cook-chef.jpg',       name: 'Cook',                desc: 'Daily meals, tiffin prep, or catering support',        tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/driver.jpg',          name: 'Driver',              desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/store-helper.jpg',    name: 'Store Helper',        desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/painter.jpg',         name: 'Painter',             desc: 'Interior, exterior painting and touch-ups',                   tags: ['8 hrs','2 days','7 days'] },
-  { img: '/carpenter.jpg',       name: 'Carpenter',           desc: 'Furniture assembly, repairs, custom woodwork',                  tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/electrician.jpg',     name: 'Electrician',         desc: 'Wiring, fixtures, fuse boxes, appliance installation',          tags: ['4 hrs','8 hrs'] },
-  { img: '/plumber.jpg',         name: 'Plumber',             desc: 'Pipe repairs, leaks, bathroom and kitchen fitting',             tags: ['4 hrs','8 hrs'] },
-  { img: '/delivery-rider.jpg',  name: 'Delivery Worker',     desc: 'Last-mile delivery, loading and unloading',           tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse', desc: 'Sorting, packing, assembly line support',             tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/baby-care.jpg',       name: 'Nanny / Babysitter',  desc: 'Childcare, school pickup, homework help',             tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/security-guard.jpg',  name: 'Security Guard',      desc: 'Gate duty, premises security, night patrol',          tags: ['12 hrs','2 days','7 days'] },
+  { img: '/house-cleaner.jpg',   name: 'Home Cleaning',      slug: 'home-cleaning-gurgaon',      desc: 'Sweep, mop, dust — full home or specific rooms',       tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/cook-chef.jpg',       name: 'Cook',               slug: 'cook-gurgaon',               desc: 'Daily meals, tiffin prep, or catering support',        tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/driver.jpg',          name: 'Driver',             slug: 'driver-gurgaon',             desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/store-helper.jpg',    name: 'Store Helper',       slug: 'store-helper-gurgaon',       desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/painter.jpg',         name: 'Painter',            slug: 'painter-gurgaon',            desc: 'Interior, exterior painting and touch-ups',            tags: ['8 hrs','2 days','7 days'] },
+  { img: '/carpenter.jpg',       name: 'Carpenter',          slug: 'carpenter-gurgaon',          desc: 'Furniture assembly, repairs, custom woodwork',         tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/electrician.jpg',     name: 'Electrician',        slug: 'electrician-gurgaon',        desc: 'Wiring, fixtures, fuse boxes, appliance installation', tags: ['4 hrs','8 hrs'] },
+  { img: '/plumber.jpg',         name: 'Plumber',            slug: 'plumber-gurgaon',            desc: 'Pipe repairs, leaks, bathroom and kitchen fitting',    tags: ['4 hrs','8 hrs'] },
+  { img: '/delivery-rider.jpg',  name: 'Delivery Worker',    slug: 'delivery-worker-gurgaon',    desc: 'Last-mile delivery, loading and unloading',            tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse',slug: 'factory-warehouse-gurgaon',  desc: 'Sorting, packing, assembly line support',              tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/baby-care.jpg',       name: 'Nanny / Babysitter', slug: 'nanny-gurgaon',              desc: 'Childcare, school pickup, homework help',              tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/security-guard.jpg',  name: 'Security Guard',     slug: 'security-guard-gurgaon',     desc: 'Gate duty, premises security, night patrol',           tags: ['12 hrs','2 days','7 days'] },
 ]
 
 const REVIEWS = [
@@ -236,7 +237,7 @@ function Roles() {
         </div>
         <div className="roles-grid">
           {ROLES.map((r, i) => (
-            <div className="role" key={i}>
+            <Link to={`/${r.slug}`} className="role" key={i}>
               <img src={r.img} alt={r.name} className="role-img" />
               <div className="role-body">
                 <div className="r-name">{r.name}</div>
@@ -245,7 +246,7 @@ function Roles() {
                   {r.tags.map(t => <span className="r-tag" key={t}>{t}</span>)}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -383,6 +384,32 @@ function CTA() {
   )
 }
 
+/* ─── ALL SERVICES DIRECTORY ──────────────────────── */
+function AllServicesDirectory() {
+  return (
+    <section className="svc-dir">
+      <div className="svc-dir-inner">
+        <div className="svc-dir-hd">
+          <span className="tag">All service pages</span>
+          <h2 className="svc-dir-h2">120 pages across 12 categories</h2>
+        </div>
+        <div className="svc-dir-grid">
+          {SERVICE_LIST.map(svc => (
+            <div className="svc-dir-col" key={svc.id}>
+              <Link to={`/${svc.slug}`} className="svc-dir-name">{svc.name}</Link>
+              <ul>
+                {svc.pages.map(p => (
+                  <li key={p.slug}><Link to={`/${p.slug}`}>{p.label}</Link></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── FOOTER ──────────────────────────────────────── */
 function Footer() {
   return (
@@ -445,6 +472,7 @@ function HomePage() {
       <Reviews />
       <FAQ />
       <CTA />
+      <AllServicesDirectory />
       <Footer />
     </>
   )

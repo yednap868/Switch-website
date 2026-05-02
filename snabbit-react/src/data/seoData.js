@@ -629,6 +629,132 @@ const SERVICES = [
       { name: 'Ridhi S.', text: 'Night patrol guard for our society. Detailed shift logs every morning. Very reliable.', rating: 5 },
     ],
   },
+  {
+    id: 'store-helper',
+    name: 'Store Helper',
+    plural: 'Store Helpers',
+    verb: 'assist',
+    img: '/store-helper.jpg',
+    shortDesc: 'Reliable store helpers for stacking, billing and customer floor support in Gurgaon.',
+    longDesc: 'Switch connects you with experienced store helpers in Gurgaon for shelf stacking, inventory management, billing counter support, and customer floor assistance. All workers are Aadhaar-verified and trained for retail environments.',
+    tasks: [
+      'Shelf stacking and product arrangement',
+      'Billing counter assistance',
+      'Customer floor support and guidance',
+      'Inventory counting and stock check',
+      'Unloading delivery stock',
+      'Price tagging and label placement',
+      'Store opening and closing duties',
+      'Display setup and visual merchandising support',
+      'Cash and carry packaging assistance',
+      'Daily sweep and store hygiene maintenance',
+    ],
+    checklistCategories: [
+      { cat: 'Stocking', items: ['Unbox new stock', 'Shelve by category', 'Check expiry dates', 'Face products forward'] },
+      { cat: 'Customer Support', items: ['Greet customers', 'Guide to product location', 'Assist with heavy items', 'Handle basic queries'] },
+      { cat: 'Billing Area', items: ['Pack items', 'Hand bags to customers', 'Manage queue flow', 'Keep counter tidy'] },
+      { cat: 'Store Upkeep', items: ['Sweep aisles', 'Remove empty cartons', 'Wipe shelves', 'Maintain trial room'] },
+    ],
+    prices: [
+      { label: '8 Hours', price: '₹749', desc: 'Full-day store support' },
+      { label: '12 Hours', price: '₹1,099', desc: 'Extended shift' },
+      { label: '2 Days', price: '₹1,399', desc: 'Weekend or sale event' },
+      { label: '7 Days', price: '₹4,499', desc: 'Weekly store staffing' },
+    ],
+    benefits: [
+      'Reliable cover during peak hours and festive sales',
+      'No long-term employment commitment required',
+      'Workers experienced in retail floor operations',
+      'Scale up staff quickly during Diwali or year-end sales',
+      'Aadhaar-verified — accountable and trustworthy',
+      'Reduce checkout wait times with extra billing support',
+      'Flexible durations — book for a day or a full week',
+    ],
+    useCases: [
+      'Festive or sale period staffing surge',
+      'New store launch requiring extra floor hands',
+      'Staff shortage cover at short notice',
+      'Inventory restock after delivery',
+      'Weekend crowd management support',
+    ],
+    faqs: [
+      { q: 'Can I book a store helper for a single day?', a: 'Yes. The 8-hour plan is ideal for a single shift. Book from the Switch app and confirm same day.' },
+      { q: 'Are workers experienced in retail?', a: 'Yes. Store helpers on Switch have prior retail or inventory experience verified during onboarding.' },
+      { q: 'Can I hire multiple helpers at once?', a: 'Yes. Book individually or contact hello@switchlocally.com for bulk staffing requests during sales.' },
+      { q: 'Are workers background verified?', a: 'Yes. All Switch workers are Aadhaar-verified and background checked.' },
+      { q: 'Can helpers assist at a billing counter?', a: 'Yes. They can pack, bag, and assist at the counter — mention this requirement at booking.' },
+      { q: 'What if the worker doesn\'t show up?', a: 'We guarantee attendance. In the rare event of a no-show, we replace the worker or issue a full refund.' },
+    ],
+    areas: ['MG Road', 'Sector 29', 'Udyog Vihar', 'DLF Phase 1', 'DLF Phase 2', 'Sohna Road', 'Golf Course Road', 'Sector 45', 'Palam Vihar', 'Cyber City', 'Sector 14', 'South City'],
+    reviews: [
+      { name: 'Sameer K.', text: 'Our store needed part-time help during Diwali. Switch sent 3 experienced hands within hours.', rating: 5 },
+      { name: 'Kirti S.', text: 'Hired a store helper for a new product launch. Handled stocking and billing counter perfectly.', rating: 5 },
+      { name: 'Pradnyesh K.', text: 'Reliable, punctual and good with customers. Will keep using Switch for our store.', rating: 5 },
+    ],
+  },
+  {
+    id: 'factory-warehouse',
+    name: 'Factory / Warehouse',
+    plural: 'Factory & Warehouse Workers',
+    verb: 'operate',
+    img: '/warehouse-staff.jpg',
+    shortDesc: 'Trained factory and warehouse workers for sorting, packing and assembly line support in Gurgaon.',
+    longDesc: 'Switch connects you with experienced factory and warehouse workers in Gurgaon for sorting, packing, assembly line operations, inventory management, and loading and unloading. All workers are Aadhaar-verified and familiar with industrial safety protocols.',
+    tasks: [
+      'Sorting and segregation of goods',
+      'Packing and labelling products',
+      'Assembly line station support',
+      'Loading and unloading trucks',
+      'Inventory counting and stock audits',
+      'Bin and rack organisation',
+      'Barcode scanning and data entry',
+      'Quality check and reject segregation',
+      'Wrapping and palletising goods',
+      'Housekeeping of warehouse floor',
+    ],
+    checklistCategories: [
+      { cat: 'Incoming Goods', items: ['Verify delivery challan', 'Count and check items', 'Mark damaged goods', 'Stock into assigned bin'] },
+      { cat: 'Packing', items: ['Pack per SKU instructions', 'Label with product info', 'Seal and tape securely', 'Stack on pallet'] },
+      { cat: 'Dispatch', items: ['Pick items per order', 'Pack and weigh', 'Generate shipping label', 'Load onto vehicle'] },
+      { cat: 'Safety', items: ['Wear PPE as required', 'Keep aisles clear', 'Report spills immediately', 'No unauthorised zone entry'] },
+    ],
+    prices: [
+      { label: '8 Hours', price: '₹749', desc: 'Single shift' },
+      { label: '12 Hours', price: '₹1,099', desc: 'Extended production shift' },
+      { label: '2 Days', price: '₹1,399', desc: 'Short-term project' },
+      { label: '7 Days', price: '₹4,499', desc: 'Weekly workforce' },
+    ],
+    benefits: [
+      'Scale up workforce quickly for peak production seasons',
+      'No permanent headcount — hire flexibly by the day',
+      'Workers familiar with factory safety and protocol',
+      'Aadhaar-verified and accountable for goods handling',
+      'Reduce overtime by adding shift support workers',
+      'Experienced with packing, assembly and sorting operations',
+      'Available for 8-hour, 12-hour or multi-day shifts',
+    ],
+    useCases: [
+      'Peak order season requiring extra packing staff',
+      'New product launch requiring assembly line support',
+      'Inventory audit needing additional counting staff',
+      'Truck arrival requiring fast loading and unloading crew',
+      'Factory maintenance period requiring warehouse staff cover',
+    ],
+    faqs: [
+      { q: 'Can factory workers handle food or pharmaceutical products?', a: 'Yes. Mention the product type at booking and we assign workers with relevant handling experience.' },
+      { q: 'Are workers familiar with safety protocols?', a: 'Yes. All Switch factory workers complete a basic industrial safety orientation before onboarding.' },
+      { q: 'Can I hire a team of 5 or more workers?', a: 'Yes. Contact hello@switchlocally.com for bulk workforce requests of 5 or more workers.' },
+      { q: 'Are workers available for night shifts?', a: 'Yes. Both day and night shift workers are available. Specify your shift timing at booking.' },
+      { q: 'Do workers bring their own equipment?', a: 'Workers bring themselves. PPE and tools should be provided by the facility as per safety standards.' },
+      { q: 'How quickly can I get workers on short notice?', a: 'Most same-day requests are confirmed within 6 hours. Check real-time availability in the Switch app.' },
+    ],
+    areas: ['IMT Manesar', 'Udyog Vihar', 'Sector 37', 'Sohna Road', 'DLF Phase 1', 'Pataudi Road', 'Sector 29', 'Sector 56', 'Cyber City', 'Manesar', 'Palam Vihar', 'NH-48'],
+    reviews: [
+      { name: 'Pradnyesh K.', text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our business.', rating: 5 },
+      { name: 'Sameer K.', text: 'Hired 3 packers for our festive season rush. Efficient, reliable and no damage to goods.', rating: 5 },
+      { name: 'Ridhi S.', text: 'Assembly line support during a product launch. Workers were trained and quick to adapt.', rating: 5 },
+    ],
+  },
 ]
 
 // ─── PAGE GENERATORS ─────────────────────────────
@@ -860,7 +986,7 @@ function makeVerifiedPage(s) {
   }
 }
 
-// ─── GENERATE ALL 100 PAGES ────────────────────────
+// ─── GENERATE ALL 120 PAGES ───────────────────────
 
 export const SEO_PAGES = SERVICES.flatMap(s => [
   makeLandingPage(s),
@@ -878,3 +1004,21 @@ export const SEO_PAGES = SERVICES.flatMap(s => [
 export function getPageBySlug(slug) {
   return SEO_PAGES.find(p => p.slug === slug) || null
 }
+
+export const SERVICE_LIST = SERVICES.map(s => ({
+  id: s.id,
+  name: s.name,
+  slug: `${s.id}-gurgaon`,
+  pages: [
+    { label: `${s.name} in Gurgaon`, slug: `${s.id}-gurgaon` },
+    { label: 'Pricing & Rates', slug: `${s.id}-cost-gurgaon` },
+    { label: 'How to Hire', slug: `hire-${s.id}-gurgaon` },
+    { label: 'Benefits', slug: `${s.id}-benefits-gurgaon` },
+    { label: 'Checklist', slug: `${s.id}-checklist-gurgaon` },
+    { label: 'FAQs', slug: `${s.id}-faq-gurgaon` },
+    { label: 'Near Me', slug: `${s.id}-near-me-gurgaon` },
+    { label: 'Same Day', slug: `same-day-${s.id}-gurgaon` },
+    { label: 'Reviews', slug: `${s.id}-reviews-gurgaon` },
+    { label: 'Verified Workers', slug: `verified-${s.id}-gurgaon` },
+  ],
+}))

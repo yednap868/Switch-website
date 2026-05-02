@@ -372,6 +372,33 @@ ul{list-style:none}
 .ph-c{width:158px;transform:translateY(-28px)}
 .ph-s{width:124px;opacity:0.55}
 
+/* ─── ROLE CARD AS LINK ──────────────────────────── */
+a.role{display:block;text-decoration:none;color:inherit}
+a.role:hover{background:var(--s2)}
+
+/* ─── ALL SERVICES DIRECTORY ─────────────────────── */
+.svc-dir{background:var(--s1);padding:7rem 2.5rem;border-top:1px solid var(--bd)}
+.svc-dir-inner{max-width:1240px;margin:0 auto}
+.svc-dir-hd{margin-bottom:3.5rem}
+.svc-dir-h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;color:#fff;letter-spacing:-0.025em;margin-top:0.5rem}
+.svc-dir-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2.5rem 2rem;
+}
+.svc-dir-col{}
+.svc-dir-name{
+  display:block;font-size:0.9375rem;font-weight:700;color:#fff;
+  text-decoration:none;margin-bottom:0.875rem;
+  transition:color .15s;
+}
+.svc-dir-name:hover{color:rgba(255,255,255,0.6)}
+.svc-dir-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.375rem}
+.svc-dir-col li a{
+  font-size:0.8125rem;font-weight:400;color:var(--t4);
+  text-decoration:none;transition:color .15s;line-height:1.5;
+}
+.svc-dir-col li a:hover{color:var(--t2)}
+
 /* ─── FOOTER ─────────────────────────────────────── */
 .footer{background:var(--bg);padding:6rem 2.5rem 2.5rem}
 .ft-grid{
@@ -424,6 +451,8 @@ ul{list-style:none}
   .sec{padding:7rem 2rem}
   .cta-sec{padding:7rem 2rem}
   .hw-trust{grid-template-columns:repeat(2,1fr);gap:1.25rem}
+  .svc-dir-grid{grid-template-columns:repeat(3,1fr)}
+  .svc-dir{padding:5rem 2rem}
 }
 
 /* iPad / Tablet portrait ≤860px */
@@ -463,6 +492,8 @@ ul{list-style:none}
   .role:nth-child(2n){border-right:none}
   .role:nth-child(n+11){border-bottom:none}
   .role-img{height:260px}
+  .svc-dir-grid{grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem}
+  .svc-dir{padding:4rem 2rem}
 }
 
 /* Large mobile ≤600px */
@@ -563,6 +594,13 @@ ul{list-style:none}
   .ft-desc{max-width:100%}
   .ft-col h5{margin-bottom:1rem}
   .ft-bot{flex-direction:column;align-items:center;text-align:center;gap:0.375rem;padding-top:1.5rem}
+}
+
+/* ≤480px — single col directory */
+@media(max-width:480px){
+  .svc-dir-grid{grid-template-columns:1fr;gap:1.75rem}
+  .svc-dir{padding:3rem 1.25rem}
+  .svc-dir-h2{font-size:1.375rem}
 }
 
 /* Small phones ≤380px */
