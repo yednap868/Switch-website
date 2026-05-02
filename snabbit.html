@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snabbit — House Help in 10 min</title>
+<meta name="description" content="Book trained & verified Snabbit Experts for cleaning, dishwashing, laundry & more - instantly, whenever you need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111827;-webkit-font-smoothing:antialiased}
+
+:root{
+  --p:#7c3aed;--pd:#6d28d9;--pl:#ede9fe;--po:#f5f3ff;
+  --tx:#111827;--mu:#6b7280;--bd:#e5e7eb;--su:#f9fafb;
+  --a:#f59e0b;
+}
+
+/* ── NAV ── */
+nav{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;position:sticky;top:0;z-index:300;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.logo-ic{width:32px;height:32px;background:var(--p);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.875rem;color:#fff}
+.logo-t{font-weight:800;font-size:1.0625rem;color:var(--tx);letter-spacing:-.025em}
+.nav-mid{display:flex;align-items:center;gap:.25rem}
+.nl{color:var(--mu);text-decoration:none;font-size:.875rem;font-weight:500;padding:.375rem .75rem;border-radius:6px;transition:color .15s,background .15s}
+.nl:hover{color:var(--tx);background:var(--su)}
+.nav-r{display:flex;align-items:center;gap:.75rem}
+.nav-dl{background:var(--p);color:#fff;padding:.5rem 1.125rem;border-radius:7px;text-decoration:none;font-size:.875rem;font-weight:700;transition:background .15s;display:flex;align-items:center;gap:.4rem}
+.nav-dl:hover{background:var(--pd)}
+.nav-dl svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── HERO ── */
+.hero{padding:5.5rem 2.5rem 5rem;background:#fff;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;top:-300px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(124,58,237,.07) 0%,transparent 65%);pointer-events:none}
+.hero-g{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.h-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--po);border:1px solid rgba(124,58,237,.2);color:var(--p);font-size:.8125rem;font-weight:700;padding:.3125rem .875rem;border-radius:9999px;margin-bottom:1.5rem}
+.h-dot{width:6px;height:6px;background:var(--p);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{font-size:clamp(2.75rem,4vw,4rem);font-weight:900;letter-spacing:-.05em;line-height:1.04;color:var(--tx);margin-bottom:1.125rem}
+h1 em{font-style:normal;color:var(--p)}
+.h-sub{font-size:1.0625rem;color:var(--mu);line-height:1.75;margin-bottom:2rem;max-width:460px}
+.h-badges{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:2rem}
+.hb{display:flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:600;color:var(--tx)}
+.hb-ic{width:18px;height:18px;border-radius:50%;background:var(--po);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hb-ic svg{width:10px;height:10px;stroke:var(--p);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.h-btns{display:flex;align-items:center;gap:.875rem;flex-wrap:wrap}
+.dl-btn{display:inline-flex;align-items:center;gap:.625rem;background:#111827;color:#fff;padding:.6875rem 1.375rem;border-radius:10px;text-decoration:none;transition:opacity .15s,transform .15s}
+.dl-btn:hover{opacity:.88;transform:translateY(-1px)}
+.dl-btn-sub{font-size:.625rem;font-weight:500;opacity:.6;line-height:1;margin-bottom:1px}
+.dl-btn-name{font-size:.9375rem;font-weight:800;line-height:1}
+.dl-btn svg{width:22px;height:22px;flex-shrink:0}
+
+/* phone mockup */
+.hero-r{position:relative;display:flex;justify-content:center;align-items:center;padding:2rem 0}
+.phone{width:256px;height:510px;background:#18181b;border-radius:42px;padding:10px;box-shadow:0 40px 120px rgba(0,0,0,.22),0 0 0 1px rgba(255,255,255,.05);position:relative}
+.phone-screen{width:100%;height:100%;background:var(--su);border-radius:34px;overflow:hidden;display:flex;flex-direction:column}
+.ps-bar{background:var(--p);padding:.75rem 1rem .625rem;color:#fff;flex-shrink:0}
+.ps-greet{font-size:.5625rem;opacity:.72;font-weight:500;margin-bottom:1px}
+.ps-name{font-size:.8125rem;font-weight:800}
+.ps-body{flex:1;padding:.75rem;display:flex;flex-direction:column;gap:.625rem;overflow:hidden}
+.ps-eta{background:#fff;border-radius:14px;padding:.875rem;box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.ps-eta-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.ps-eta-lbl{font-size:.625rem;font-weight:700;color:var(--p)}
+.ps-eta-badge{background:#d1fae5;color:#065f46;font-size:.5rem;font-weight:800;padding:.1875rem .4375rem;border-radius:9999px}
+.ps-eta-name{font-size:.75rem;font-weight:800;color:var(--tx);margin-bottom:1px}
+.ps-eta-role{font-size:.5625rem;color:var(--mu);font-weight:500}
+.ps-map{height:72px;background:linear-gradient(135deg,#dbeafe 0%,#ede9fe 60%,#fce7f3 100%);border-radius:10px;position:relative;margin-top:.5rem;overflow:hidden}
+.ps-map::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10h20M10 0v20' stroke='rgba(99,102,241,0.08)' stroke-width='1'/%3E%3C/svg%3E")}
+.ps-map-you{position:absolute;top:50%;left:40%;transform:translate(-50%,-50%);width:10px;height:10px;background:var(--p);border-radius:50%;box-shadow:0 0 0 4px rgba(124,58,237,.2);z-index:1}
+.ps-map-exp{position:absolute;top:30%;right:25%;width:8px;height:8px;background:#ef4444;border-radius:50%;z-index:1}
+.ps-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:.375rem}
+.ps-svc{background:#fff;border-radius:10px;padding:.5rem .25rem;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.ps-svc-ic{font-size:.9375rem;line-height:1;margin-bottom:2px}
+.ps-svc-t{font-size:.45rem;font-weight:700;color:var(--tx);line-height:1.2}
+
+/* floating badge */
+.ph-float{position:absolute;left:-28px;bottom:90px;background:#fff;border-radius:14px;padding:.625rem .875rem;box-shadow:0 12px 40px rgba(0,0,0,.13);display:flex;align-items:center;gap:.5rem;animation:bob 3.5s ease-in-out infinite;white-space:nowrap}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.pf-ic{width:30px;height:30px;background:var(--po);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9375rem;flex-shrink:0}
+.pf-v{font-size:.875rem;font-weight:800;color:var(--tx);line-height:1}
+.pf-l{font-size:.625rem;color:var(--mu);font-weight:500;margin-top:1px}
+
+/* ── TRUST STRIP ── */
+.trust-strip{background:var(--po);border-top:1px solid rgba(124,58,237,.1);border-bottom:1px solid rgba(124,58,237,.1);padding:1rem 2.5rem}
+.trust-g{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.ts-i{display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:var(--tx)}
+.ts-i svg{width:16px;height:16px;stroke:var(--p);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── SCAFFOLD ── */
+.sec{padding:6rem 2.5rem;background:#fff}
+.sec-g{padding:6rem 2.5rem;background:var(--su)}
+.si{max-width:1200px;margin:0 auto}
+.s-lbl{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin-bottom:.625rem}
+.s-h{font-size:clamp(1.875rem,2.8vw,2.5rem);font-weight:900;letter-spacing:-.04em;color:var(--tx);line-height:1.1;margin-bottom:.75rem}
+.s-p{font-size:1rem;color:var(--mu);line-height:1.75;max-width:520px}
+
+/* ── SERVICES ── */
+.svc-hd{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.svc-hd a{color:var(--p);font-size:.875rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.svc-card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:1.375rem 1.5rem;display:flex;align-items:center;justify-content:space-between;text-decoration:none;color:var(--tx);transition:box-shadow .2s,border-color .2s,transform .2s}
+.svc-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:#d1d5db;transform:translateY(-2px)}
+.svc-l{display:flex;align-items:center;gap:.875rem}
+.svc-ic{width:42px;height:42px;border-radius:12px;background:var(--po);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.svc-name{font-size:.9375rem;font-weight:700}
+.svc-arr{width:28px;height:28px;border-radius:50%;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;flex-shrink:0}
+.svc-arr svg{width:12px;height:12px;stroke:var(--mu);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .15s}
+.svc-card:hover .svc-arr{background:var(--p);border-color:var(--p)}
+.svc-card:hover .svc-arr svg{stroke:#fff}
+
+/* ── HOW IT WORKS ── */
+.hiw-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3.5rem;position:relative}
+.hiw-g::before{content:'';position:absolute;top:19px;left:calc(16.67% + 16px);right:calc(16.67% + 16px);height:0;border-top:2px dashed #d1d5db;z-index:0}
+.hiw-c{position:relative;z-index:1}
+.hiw-n{width:38px;height:38px;background:var(--p);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:800;color:#fff;margin-bottom:1.25rem}
+.hiw-h{font-size:1rem;font-weight:800;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.hiw-p{font-size:.875rem;color:var(--mu);line-height:1.7}
+
+/* ── WHY CHOOSE ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bd);border-radius:16px;overflow:hidden;margin-bottom:3rem}
+.st-i{background:#fff;padding:1.75rem 1.5rem;text-align:center;border-right:1px solid var(--bd)}
+.st-i:last-child{border-right:none}
+.st-n{font-size:2.25rem;font-weight:900;letter-spacing:-.05em;color:var(--p);line-height:1;margin-bottom:.375rem}
+.st-l{font-size:.8125rem;color:var(--mu);font-weight:500}
+.why-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.why-c{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:1.75rem;transition:box-shadow .2s,transform .2s}
+.why-c:hover{box-shadow:0 12px 40px rgba(0,0,0,.07);transform:translateY(-2px)}
+.why-ic{width:44px;height:44px;border-radius:12px;background:var(--po);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
+.why-h{font-size:.9375rem;font-weight:800;color:var(--tx);margin-bottom:.375rem}
+.why-p{font-size:.875rem;color:var(--mu);line-height:1.65}
+
+/* ── CITIES ── */
+.cities-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem;margin-top:2.5rem}
+.city-c{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .2s,border-color .2s,transform .2s;cursor:pointer}
+.city-c:hover{box-shadow:0 8px 24px rgba(0,0,0,.07);border-color:#d1d5db;transform:translateY(-2px)}
+.city-name{font-size:.9375rem;font-weight:700;color:var(--tx)}
+.city-areas{font-size:.75rem;color:var(--mu);font-weight:500;margin-top:2px}
+.city-arr svg{width:13px;height:13px;stroke:#9ca3af;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.serving-box{background:var(--po);border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:1.5rem 2rem;margin-top:1.75rem}
+.sb-title{font-size:.875rem;font-weight:700;color:var(--p);margin-bottom:.875rem}
+.sb-areas{display:flex;flex-wrap:wrap;gap:.5rem}
+.sb-tag{background:#fff;border:1px solid rgba(124,58,237,.18);color:var(--tx);font-size:.8125rem;font-weight:500;padding:.3rem .75rem;border-radius:9999px}
+
+/* ── PRESS ── */
+.press-sec{padding:2.5rem 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:#fff;overflow:hidden;position:relative}
+.press-lbl{text-align:center;font-size:.6875rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9ca3af;margin-bottom:1.25rem}
+.mq-track{display:flex;width:max-content;animation:mq 28s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{padding:0 2.5rem;display:flex;align-items:center;font-size:1rem;font-weight:800;color:#9ca3af;letter-spacing:-.02em;white-space:nowrap;border-right:1px solid var(--bd)}
+.mq-fade{position:absolute;top:0;bottom:0;width:80px;pointer-events:none;z-index:1}
+.mq-fl{left:0;background:linear-gradient(to right,#fff,transparent)}
+.mq-fr{right:0;background:linear-gradient(to left,#fff,transparent)}
+
+/* ── REVIEWS ── */
+.rev-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.rev-score{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.rev-num{font-size:3.5rem;font-weight:900;letter-spacing:-.06em;color:var(--tx);line-height:1}
+.rev-stars{display:flex;gap:3px;margin-bottom:.25rem}
+.rev-stars svg{width:15px;height:15px;fill:var(--a);stroke:none}
+.rev-ct{font-size:.8125rem;color:var(--mu);font-weight:500}
+.rev-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.rev-c{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:1.625rem;display:flex;flex-direction:column;transition:box-shadow .25s}
+.rev-c:hover{box-shadow:0 12px 40px rgba(0,0,0,.07)}
+.rev-s{display:flex;gap:2px;margin-bottom:.875rem}
+.rev-s svg{width:13px;height:13px;fill:var(--a);stroke:none}
+.rev-txt{font-size:.9rem;color:#374151;line-height:1.75;flex:1;margin-bottom:1.25rem}
+.rev-foot{display:flex;align-items:center;gap:.625rem}
+.rev-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8125rem;color:#fff;flex-shrink:0}
+.rev-nm{font-size:.875rem;font-weight:700;color:var(--tx)}
+.rev-loc{font-size:.75rem;color:var(--mu);margin-top:1px}
+
+/* ── FAQ ── */
+.faq-w{margin-top:2.75rem;border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.faq-i{border-bottom:1px solid var(--bd)}
+.faq-i:last-child{border-bottom:none}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.75rem;background:none;border:none;font-family:inherit;font-size:.9375rem;font-weight:700;color:var(--tx);cursor:pointer;text-align:left;gap:1rem;transition:background .15s}
+.faq-btn:hover{background:var(--su)}
+.faq-ic svg{width:18px;height:18px;stroke:var(--mu);transition:transform .25s,stroke .15s;flex-shrink:0}
+.faq-i.open .faq-ic svg{transform:rotate(45deg);stroke:var(--tx)}
+.faq-body{overflow:hidden;max-height:0;transition:max-height .32s ease,padding .32s ease;font-size:.9rem;color:var(--mu);line-height:1.75;padding:0 1.75rem}
+.faq-i.open .faq-body{max-height:200px;padding:0 1.75rem 1.375rem}
+.faq-more{padding:1.125rem 1.75rem;background:var(--su)}
+.faq-more a{color:var(--p);font-size:.875rem;font-weight:700;text-decoration:none}
+.faq-more a:hover{text-decoration:underline}
+
+/* ── FOOTER CTA ── */
+.fcta{background:var(--p);padding:6rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.fcta::before{content:'';position:absolute;top:-120px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 60%);border-radius:50%;pointer-events:none}
+.fcta::after{content:'';position:absolute;bottom:-80px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 60%);border-radius:50%;pointer-events:none}
+.fcta-in{max-width:520px;margin:0 auto;position:relative;z-index:1}
+.fcta-tag{display:inline-flex;align-items:center;gap:.375rem;background:rgba(255,255,255,.15);color:#fff;font-size:.75rem;font-weight:700;padding:.3125rem .875rem;border-radius:9999px;margin-bottom:1.25rem;letter-spacing:.03em}
+.fcta h2{font-size:clamp(1.875rem,3.5vw,2.75rem);font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1.08;margin-bottom:.75rem}
+.fcta p{color:rgba(255,255,255,.6);font-size:.9375rem;line-height:1.65;margin-bottom:2.25rem}
+.fcta-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.dl-btn-w{display:inline-flex;align-items:center;gap:.625rem;background:#fff;color:var(--tx);padding:.6875rem 1.375rem;border-radius:10px;text-decoration:none;transition:opacity .15s,transform .15s}
+.dl-btn-w:hover{opacity:.92;transform:translateY(-1px)}
+.dl-btn-w .dl-btn-sub{color:var(--mu)}
+.dl-btn-w .dl-btn-name{color:var(--tx)}
+
+/* ── FOOTER ── */
+footer{background:#111827;padding:4rem 2.5rem 2rem}
+.ft-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.ft-logo .logo-t{color:#fff}
+.ft-desc{font-size:.875rem;color:#9ca3af;line-height:1.7;margin-top:.875rem;max-width:280px}
+.ft-contact{margin-top:1.25rem;display:flex;flex-direction:column;gap:.5rem}
+.ft-contact a{color:#6b7280;text-decoration:none;font-size:.8125rem;display:flex;align-items:flex-start;gap:.5rem;transition:color .15s;line-height:1.5}
+.ft-contact a:hover{color:#9ca3af}
+.ft-contact svg{width:14px;height:14px;stroke:#6b7280;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+.ft-col h4{font-size:.75rem;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.625rem}
+.ft-col a{color:#6b7280;text-decoration:none;font-size:.875rem;transition:color .15s}
+.ft-col a:hover{color:#d1d5db}
+.ft-bot{max-width:1200px;margin:0 auto;border-top:1px solid #1f2937;padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.875rem}
+.ft-copy{font-size:.75rem;color:#374151}
+.ft-bl{display:flex;gap:1.5rem;flex-wrap:wrap}
+.ft-bl a{color:#374151;text-decoration:none;font-size:.75rem;transition:color .15s}
+.ft-bl a:hover{color:#6b7280}
+
+/* ── FADE IN ── */
+.fi{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.fi.in{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-mid{display:none}
+  .hero-g{grid-template-columns:1fr;gap:3rem}
+  .hero-r{display:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .hiw-g{grid-template-columns:1fr;max-width:440px}.hiw-g::before{display:none}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .st-i:nth-child(2){border-right:none}.st-i:nth-child(3){border-right:1px solid var(--bd);border-top:1px solid var(--bd)}.st-i:nth-child(4){border-top:1px solid var(--bd)}
+  .why-g{grid-template-columns:1fr 1fr}
+  .cities-g{grid-template-columns:repeat(3,1fr)}
+  .rev-g{grid-template-columns:repeat(2,1fr)}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2.5rem}
+}
+@media(max-width:768px){
+  .hiw-g{max-width:none}
+  .cities-g{grid-template-columns:repeat(2,1fr)}
+  .rev-g{grid-template-columns:1fr}
+  .rev-hd{flex-direction:column;align-items:flex-start;gap:1rem}
+  .why-g{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  nav{padding:0 1.25rem}
+  .hero{padding:3.5rem 1.25rem 3rem}
+  .h-sub{max-width:none}
+  .h-btns{flex-direction:column;align-items:stretch}
+  .dl-btn{justify-content:center}
+  .h-badges{gap:.875rem}
+  .trust-strip{padding:1rem 1.25rem}
+  .trust-g{gap:1.25rem;justify-content:flex-start}
+  .sec,.sec-g{padding:4rem 1.25rem}
+  .fcta{padding:4.5rem 1.25rem}
+  .s-p{max-width:none}
+  .svc-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .st-i:nth-child(3){border-right:none;border-top:1px solid var(--bd)}.st-i:nth-child(4){border-top:1px solid var(--bd)}
+  .cities-g{grid-template-columns:repeat(2,1fr)}
+  .serving-box{padding:1.25rem}
+  .ft-top{grid-template-columns:1fr;gap:2rem}
+  .ft-bot{flex-direction:column;text-align:center}
+  .ft-bl{justify-content:center}
+  .fcta-btns{flex-direction:column;align-items:stretch}
+  .dl-btn-w{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-ic">S</div>
+    <span class="logo-t">Snabbit</span>
+  </a>
+  <div class="nav-mid">
+    <a href="#services" class="nl">Services</a>
+    <a href="#cities" class="nl">Cities</a>
+    <a href="#about" class="nl">About</a>
+    <a href="#faq" class="nl">FAQ</a>
+  </div>
+  <div class="nav-r">
+    <a href="#download" class="nav-dl">
+      <svg viewBox="0 0 24 24"><path d="M12 2v13M8 11l4 4 4-4"/><rect x="3" y="17" width="18" height="4" rx="1"/></svg>
+      Download App
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="h-tag"><span class="h-dot"></span>Trusted by 10L+ families</div>
+      <h1>Instant Home Services <em>in Minutes</em></h1>
+      <p class="h-sub">Book trained &amp; verified Snabbit Experts for cleaning, dishwashing, laundry &amp; more — instantly, whenever you need.</p>
+      <div class="h-badges">
+        <div class="hb"><div class="hb-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>Top Rated Experts</div>
+        <div class="hb"><div class="hb-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>Background Checked</div>
+        <div class="hb"><div class="hb-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>2-Day Training</div>
+      </div>
+      <div class="h-btns">
+        <a href="#" class="dl-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.97.06l12.06-6.96L13 13.68 3.18 23.76zm-1.12-1.08V1.33L13.45 12 2.07 22.68zm18.78-10.5l-2.96-1.71-3.31 3.31 3.31 3.31 2.99-1.72c.85-.49.85-1.7-.03-2.19zM4.15.18l8.85 8.85-3.14 3.14L3.82.24C3.5.06 3.15.07 2.85.23z"/></svg>
+          <div><div class="dl-btn-sub">Get it on</div><div class="dl-btn-name">Google Play</div></div>
+        </a>
+        <a href="#" class="dl-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div><div class="dl-btn-sub">Download on the</div><div class="dl-btn-name">App Store</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="hero-r">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ps-bar">
+            <div class="ps-greet">Good morning, Priya! 👋</div>
+            <div class="ps-name">Home Services in 10 Minutes</div>
+          </div>
+          <div class="ps-body">
+            <div class="ps-eta">
+              <div class="ps-eta-top">
+                <span class="ps-eta-lbl">Expert on the way</span>
+                <span class="ps-eta-badge">ETA: ~10 min</span>
+              </div>
+              <div class="ps-eta-name">Sunita Devi</div>
+              <div class="ps-eta-role">Housekeeping · ⭐ 4.9</div>
+              <div class="ps-map">
+                <div class="ps-map-you"></div>
+                <div class="ps-map-exp"></div>
+              </div>
+            </div>
+            <div class="ps-svcs">
+              <div class="ps-svc"><div class="ps-svc-ic">🍽️</div><div class="ps-svc-t">Dishwashing</div></div>
+              <div class="ps-svc"><div class="ps-svc-ic">🧹</div><div class="ps-svc-t">Cleaning</div></div>
+              <div class="ps-svc"><div class="ps-svc-ic">👕</div><div class="ps-svc-t">Laundry</div></div>
+              <div class="ps-svc"><div class="ps-svc-ic">🪟</div><div class="ps-svc-t">Windows</div></div>
+              <div class="ps-svc"><div class="ps-svc-ic">🛁</div><div class="ps-svc-t">Bathroom</div></div>
+              <div class="ps-svc"><div class="ps-svc-ic">🌀</div><div class="ps-svc-t">Fan Clean</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ph-float">
+        <div class="pf-ic">⭐</div>
+        <div><div class="pf-v">4.8 Rated</div><div class="pf-l">74,712 reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-g">
+    <div class="ts-i"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>100% Background Verified</div>
+    <div class="ts-i"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>100% Female Workforce</div>
+    <div class="ts-i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Service in 10 Minutes</div>
+    <div class="ts-i"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>No Hidden Charges</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="si">
+    <div class="svc-hd fi">
+      <div><span class="s-lbl">Services</span><h2 class="s-h" style="margin-bottom:0">What Can Your House Help Do?</h2></div>
+      <a href="#">View All <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="svc-grid">
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">🍽️</div><div class="svc-name">Dishwashing</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">🍳</div><div class="svc-name">Kitchen Cleaning</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">🌀</div><div class="svc-name">Fan Cleaning</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">🪟</div><div class="svc-name">Window Cleaning</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">👕</div><div class="svc-name">Laundry Help</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+      <a href="#" class="svc-card fi"><div class="svc-l"><div class="svc-ic">🛁</div><div class="svc-name">Bathroom Cleaning</div></div><div class="svc-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec-g">
+  <div class="si">
+    <span class="s-lbl fi">How It Works</span>
+    <h2 class="s-h fi">Book House Help in 3 Simple Steps</h2>
+    <p class="s-p fi">Download the Snabbit app and get verified home help in minutes.</p>
+    <div class="hiw-g">
+      <div class="hiw-c fi"><div class="hiw-n">1</div><div class="hiw-h">Choose Your Service</div><p class="hiw-p">Open the app, select your service and choose instant or scheduled booking.</p></div>
+      <div class="hiw-c fi"><div class="hiw-n">2</div><div class="hiw-h">Set Time &amp; Duration</div><p class="hiw-p">Choose a time, set duration and get multiple tasks done in one booking.</p></div>
+      <div class="hiw-c fi"><div class="hiw-n">3</div><div class="hiw-h">Expert Arrives On Time</div><p class="hiw-p">Our Expert reaches your doorstep at the scheduled time, ready to work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="sec" id="about">
+  <div class="si">
+    <span class="s-lbl fi">Why Choose Snabbit</span>
+    <h2 class="s-h fi">Trusted by 10 Lakh+ Families</h2>
+    <p class="s-p fi">Every Expert is background checked, Aadhaar verified &amp; professionally trained before their first booking.</p>
+    <div class="stats-row fi">
+      <div class="st-i"><div class="st-n">10L+</div><div class="st-l">Families Served</div></div>
+      <div class="st-i"><div class="st-n">4.8</div><div class="st-l">Average Rating</div></div>
+      <div class="st-i"><div class="st-n">500K+</div><div class="st-l">Bookings Done</div></div>
+      <div class="st-i"><div class="st-n">10 min</div><div class="st-l">Average Arrival</div></div>
+    </div>
+    <div class="why-g">
+      <div class="why-c fi"><div class="why-ic">🔒</div><div class="why-h">Background Verified &amp; Trusted</div><p class="why-p">Aadhaar and PAN are verified, and every Expert is put through a multi-step verification process before being onboarded.</p></div>
+      <div class="why-c fi"><div class="why-ic">👩</div><div class="why-h">Powered by Women Workforce</div><p class="why-p">A 100% female workforce is maintained — trained, empowered, and trusted by families across India.</p></div>
+      <div class="why-c fi"><div class="why-ic">💳</div><div class="why-h">No Hidden Charges</div><p class="why-p">Transparent pricing is ensured, with no hidden charges — what you see is exactly what you pay.</p></div>
+      <div class="why-c fi"><div class="why-ic">⭐</div><div class="why-h">Top Rated Experts</div><p class="why-p">Experts are rated and trusted by people just like you, with a platform average of 4.8 stars.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="sec-g" id="cities">
+  <div class="si">
+    <span class="s-lbl fi">Where We Serve</span>
+    <h2 class="s-h fi">House Help Across India</h2>
+    <p class="s-p fi">Book trained, background-verified House Help across major cities, with new neighbourhoods going live every month.</p>
+    <div class="cities-g fi">
+      <div class="city-c"><div><div class="city-name">Bangalore</div><div class="city-areas">27 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Delhi</div><div class="city-areas">8 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Ghaziabad</div><div class="city-areas">5 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Gurugram</div><div class="city-areas">23 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Hyderabad</div><div class="city-areas">9 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Mumbai</div><div class="city-areas">36 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Navi Mumbai</div><div class="city-areas">4 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Noida</div><div class="city-areas">20 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Noida Extension</div><div class="city-areas">3 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Pune</div><div class="city-areas">8 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div class="city-c"><div><div class="city-name">Thane</div><div class="city-areas">9 areas</div></div><div class="city-arr"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+    </div>
+    <div class="serving-box fi">
+      <div class="sb-title">Serving 27 Areas in Bangalore</div>
+      <div class="sb-areas">
+        <span class="sb-tag">Bellandur</span><span class="sb-tag">Koramangala</span><span class="sb-tag">Brookefield</span><span class="sb-tag">Indiranagar</span><span class="sb-tag">BTM Layout</span><span class="sb-tag">Hebbal</span><span class="sb-tag">HSR Layout</span><span class="sb-tag">Hongasandra</span><span class="sb-tag">Whitefield</span><span class="sb-tag">Hoodi</span><span class="sb-tag">Marathahalli</span><span class="sb-tag">Hulimavu</span><span class="sb-tag">Electronic City</span><span class="sb-tag">Kudlu</span><span class="sb-tag">Mahadevapura</span><span class="sb-tag">Mahalakshmi</span><span class="sb-tag">Munnekolala</span><span class="sb-tag">Nagasandra</span><span class="sb-tag">Rayasandra</span><span class="sb-tag">Sarjapura</span><span class="sb-tag">Seegehalli</span><span class="sb-tag">Singasandra</span><span class="sb-tag">Tejaswini Nagar</span><span class="sb-tag">Thanisandra</span><span class="sb-tag">Varthur</span><span class="sb-tag">Yelahanka</span><span class="sb-tag">Yeswanthpur</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS MARQUEE -->
+<div class="press-sec">
+  <div class="press-lbl">In The Spotlight</div>
+  <div style="overflow:hidden;position:relative">
+    <div class="mq-track">
+      <span class="mq-item">YourStory</span><span class="mq-item">Inc42</span><span class="mq-item">MoneyControl</span><span class="mq-item">Economic Times</span><span class="mq-item">Forbes India</span><span class="mq-item">Business Standard</span><span class="mq-item">The Hindu</span><span class="mq-item">YourStory</span><span class="mq-item">Inc42</span><span class="mq-item">MoneyControl</span><span class="mq-item">Economic Times</span><span class="mq-item">Forbes India</span><span class="mq-item">Business Standard</span><span class="mq-item">The Hindu</span>
+    </div>
+    <div class="mq-fade mq-fl"></div>
+    <div class="mq-fade mq-fr"></div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="sec">
+  <div class="si">
+    <div class="rev-hd fi">
+      <div><span class="s-lbl">Customer Reviews</span><h2 class="s-h" style="margin-bottom:0">Hear From Our Customers</h2></div>
+      <div class="rev-score">
+        <div class="rev-num">4.8</div>
+        <div>
+          <div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="rev-ct">74,712 Ratings Combined</div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-g">
+      <div class="rev-c fi"><div class="rev-s"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="rev-txt">"Amazing experience in Indiranagar! Booked at 9 AM and the expert arrived in exactly 10 minutes. Very impressed with the quality of cleaning. Will definitely book again."</p><div class="rev-foot"><div class="rev-av" style="background:linear-gradient(135deg,#0f766e,#14b8a6)">R</div><div><div class="rev-nm">Rahul M</div><div class="rev-loc">Indiranagar, Bangalore</div></div></div></div>
+      <div class="rev-c fi"><div class="rev-s"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="rev-txt">"Great service in Marol! Helper arrived on time and did a thorough job. The booking process on the app is very simple. Will recommend to friends and family."</p><div class="rev-foot"><div class="rev-av" style="background:linear-gradient(135deg,#7c3aed,#c084fc)">M</div><div><div class="rev-nm">Meera T</div><div class="rev-loc">Marol, Mumbai</div></div></div></div>
+      <div class="rev-c fi"><div class="rev-s"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="rev-txt">"Excellent service in Koramangala! The helper was on time, very professional and thorough. My house was spotless after the cleaning. Highly recommend Snabbit!"</p><div class="rev-foot"><div class="rev-av" style="background:linear-gradient(135deg,#b45309,#f59e0b)">P</div><div><div class="rev-nm">Priya S</div><div class="rev-loc">Koramangala, Bangalore</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-g" id="faq">
+  <div class="si">
+    <span class="s-lbl fi">FAQ</span>
+    <h2 class="s-h fi">Frequently Asked Questions</h2>
+    <p class="s-p fi">Everything you need to know about Snabbit home services.</p>
+    <div class="faq-w fi">
+      <div class="faq-i open"><button class="faq-btn">What is Snabbit?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Snabbit is India's first on-demand home services platform. We provide quick and reliable female House Help at your doorstep within 10 minutes.</div></div>
+      <div class="faq-i"><button class="faq-btn">How do I book a service immediately?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Download the Snabbit app, select your service, choose "Instant Booking", and a verified Expert will be dispatched — typically arriving within 10 minutes.</div></div>
+      <div class="faq-i"><button class="faq-btn">What is included in the service?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Our experts handle dishwashing, kitchen cleaning, bathroom cleaning, fan and window cleaning, laundry help, and more. You can bundle multiple tasks in one booking.</div></div>
+      <div class="faq-i"><button class="faq-btn">How can I trust the experts sent by Snabbit?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Every Expert undergoes Aadhaar + PAN verification, a multi-step background check, and 2 days of professional training before their first booking.</div></div>
+      <div class="faq-i"><button class="faq-btn">What if I need to cancel or reschedule my booking?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">You can cancel or reschedule through the app before the Expert is dispatched. Please refer to our cancellation policy in the app for details on applicable charges.</div></div>
+      <div class="faq-i"><button class="faq-btn">How quickly can I get an expert to my home?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">For instant bookings the average arrival time is 10 minutes. You can also schedule bookings in advance for a specific time that suits your routine.</div></div>
+      <div class="faq-more"><a href="#">View all FAQs →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="fcta" id="download">
+  <div class="fcta-in">
+    <div class="fcta-tag">✦ India's First Quick Service App</div>
+    <h2>On-demand home services to empower urban households</h2>
+    <p>4.8 · 74,712 Ratings Combined</p>
+    <div class="fcta-btns">
+      <a href="#" class="dl-btn-w">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M3.18 23.76c.3.17.65.19.97.06l12.06-6.96L13 13.68 3.18 23.76zm-1.12-1.08V1.33L13.45 12 2.07 22.68zm18.78-10.5l-2.96-1.71-3.31 3.31 3.31 3.31 2.99-1.72c.85-.49.85-1.7-.03-2.19zM4.15.18l8.85 8.85-3.14 3.14L3.82.24C3.5.06 3.15.07 2.85.23z"/></svg>
+        <div><div class="dl-btn-sub">Get it on</div><div class="dl-btn-name">Google Play</div></div>
+      </a>
+      <a href="#" class="dl-btn-w">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div><div class="dl-btn-sub">Download on the</div><div class="dl-btn-name">App Store</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <a href="/" class="logo ft-logo"><div class="logo-ic">S</div><span class="logo-t" style="color:#fff">Snabbit</span></a>
+      <p class="ft-desc">India's first on-demand home services platform. Empowering urban households with reliable, verified female help.</p>
+      <div class="ft-contact">
+        <a href="mailto:help@snabbit.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>help@snabbit.com</a>
+        <a href="#"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Clayworks 5B, Koramangala, Bengaluru — 560034</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Cities</h4>
+      <ul>
+        <li><a href="#">Bangalore</a></li><li><a href="#">Delhi</a></li><li><a href="#">Gurugram</a></li><li><a href="#">Mumbai</a></li><li><a href="#">Noida</a></li><li><a href="#">Hyderabad</a></li><li><a href="#">Pune</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">House Help</a></li><li><a href="#">Dishwashing</a></li><li><a href="#">Kitchen Cleaning</a></li><li><a href="#">Fan Cleaning</a></li><li><a href="#">Window Cleaning</a></li><li><a href="#">Laundry Help</a></li><li><a href="#">Bathroom Cleaning</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Refund Policy</a></li><li><a href="#">Equal Opportunity</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-copy">© 2026 MaestroEdge Solutions Pvt. Ltd. All rights reserved.</span>
+    <div class="ft-bl">
+      <a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Equal Opportunity</a><a href="#">Refund Policy</a><a href="#">Vulnerability Disclosure</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-i');
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-i').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  });
+});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
