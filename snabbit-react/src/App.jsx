@@ -3,8 +3,8 @@ import './App.css'
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
-  'Home Cleaning','Cook','Driver','Store Helper','Waiter',
-  'General Helper','Promoter','Bouncer','Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
+  'Home Cleaning','Cook','Driver','Store Helper','Painter',
+  'Carpenter','Electrician','Plumber','Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
 ]
 
 const ROLES = [
@@ -12,10 +12,10 @@ const ROLES = [
   { img: '/cook-chef.jpg',       name: 'Cook',                desc: 'Daily meals, tiffin prep, or catering support',        tags: ['4 hrs','8 hrs','2 days'] },
   { img: '/driver.jpg',          name: 'Driver',              desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/store-helper.jpg',    name: 'Store Helper',        desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/painter.jpg',         name: 'Waiter',              desc: 'Table service, order taking, restaurant and banquet support',    tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/carpenter.jpg',       name: 'General Helper',      desc: 'Office setup, shifting, loading, cleaning and odd jobs',         tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/electrician.jpg',     name: 'Promoter',            desc: 'Brand activations, product demos, mall and event promotions',    tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/plumber.jpg',         name: 'Bouncer',             desc: 'Entry management, crowd control, venue and event security',      tags: ['8 hrs','12 hrs','2 days'] },
+  { img: '/painter.jpg',         name: 'Painter',             desc: 'Interior, exterior painting and touch-ups',                   tags: ['8 hrs','2 days','7 days'] },
+  { img: '/carpenter.jpg',       name: 'Carpenter',           desc: 'Furniture assembly, repairs, custom woodwork',                  tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/electrician.jpg',     name: 'Electrician',         desc: 'Wiring, fixtures, fuse boxes, appliance installation',          tags: ['4 hrs','8 hrs'] },
+  { img: '/plumber.jpg',         name: 'Plumber',             desc: 'Pipe repairs, leaks, bathroom and kitchen fitting',             tags: ['4 hrs','8 hrs'] },
   { img: '/delivery-rider.jpg',  name: 'Delivery Worker',     desc: 'Last-mile delivery, loading and unloading',           tags: ['4 hrs','8 hrs','12 hrs'] },
   { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse', desc: 'Sorting, packing, assembly line support',             tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/baby-care.jpg',       name: 'Nanny / Babysitter',  desc: 'Childcare, school pickup, homework help',             tags: ['4 hrs','8 hrs','2 days'] },
