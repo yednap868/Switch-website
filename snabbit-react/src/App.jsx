@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
+import SeoPage from './pages/SeoPage.jsx'
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
@@ -431,8 +433,8 @@ function Footer() {
   )
 }
 
-/* ─── APP ─────────────────────────────────────────── */
-export default function App() {
+/* ─── HOME ────────────────────────────────────────── */
+function HomePage() {
   return (
     <>
       <Nav />
@@ -445,5 +447,15 @@ export default function App() {
       <CTA />
       <Footer />
     </>
+  )
+}
+
+/* ─── APP ─────────────────────────────────────────── */
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/:slug" element={<SeoPage />} />
+    </Routes>
   )
 }
