@@ -408,7 +408,9 @@ ul{list-style:none}
     min-height:auto;
     padding-top:0;
   }
+  /* image goes FIRST on mobile so text is never under the nav */
   .hero-r{
+    order:-1;
     height:55vw;
     min-height:280px;
     max-height:440px;
@@ -418,6 +420,8 @@ ul{list-style:none}
   .hero-r-fade{height:180px}
   .hero-booking-card{display:none}
   .hero-l{
+    order:1;
+    align-items:flex-start;
     justify-content:flex-start;
     padding:3rem 2.5rem 5rem;
   }
@@ -440,8 +444,11 @@ ul{list-style:none}
   .hero-r{height:60vw;max-height:380px}
   .hero-l{padding:2.5rem 1.5rem 4rem}
   .hero-h1{font-size:2.375rem}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .btn-book,.btn-schedule{justify-content:center}
   .sec{padding:4rem 1.5rem}
   .cta-sec{padding:4rem 1.5rem}
+  .ft-grid{grid-template-columns:1fr;gap:2rem}
 }
 
 /* Mobile ≤480px */
