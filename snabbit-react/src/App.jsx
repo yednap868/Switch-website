@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import './App.css'
 import SeoPage from './pages/SeoPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
@@ -384,6 +385,43 @@ function CTA() {
   )
 }
 
+/* ─── HOME SEO HEAD ───────────────────────────────── */
+function HomeHead() {
+  const localBusiness = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Switch',
+    description: 'Book verified blue-collar workers in Gurgaon instantly. Home cleaners, cooks, drivers, electricians, plumbers, carpenters and more.',
+    url: 'https://switchlocally.com',
+    email: 'hello@switchlocally.com',
+    areaServed: { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '1000' },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Blue-Collar Services in Gurgaon',
+      itemListElement: SERVICE_LIST.map(s => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: `${s.name} in Gurgaon`, url: `https://switchlocally.com/${s.slug}` },
+      })),
+    },
+  }
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Switch',
+    url: 'https://switchlocally.com',
+  }
+  return (
+    <Helmet>
+      <title>Book Verified Blue-Collar Workers in Gurgaon | Switch</title>
+      <meta name="description" content="Switch is Gurgaon's fastest platform to hire verified home cleaners, cooks, drivers, electricians, plumbers, painters, carpenters and more. Aadhaar-verified workers. Book in 2 minutes. Pay only after work is done." />
+      <link rel="canonical" href="https://switchlocally.com/" />
+      <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
+      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+    </Helmet>
+  )
+}
+
 /* ─── ALL SERVICES DIRECTORY ──────────────────────── */
 function AllServicesDirectory() {
   return (
@@ -391,17 +429,21 @@ function AllServicesDirectory() {
       <div className="svc-dir-inner">
         <div className="svc-dir-hd">
           <span className="tag">All service pages</span>
-          <h2 className="svc-dir-h2">120 pages across 12 categories</h2>
+          <h2 className="svc-dir-h2">120 pages · 12 categories · Gurgaon</h2>
+          <p className="svc-dir-sub">Every service, every question answered. Click any category to explore.</p>
         </div>
         <div className="svc-dir-grid">
           {SERVICE_LIST.map(svc => (
-            <div className="svc-dir-col" key={svc.id}>
-              <Link to={`/${svc.slug}`} className="svc-dir-name">{svc.name}</Link>
-              <ul>
-                {svc.pages.map(p => (
-                  <li key={p.slug}><Link to={`/${p.slug}`}>{p.label}</Link></li>
+            <div className="svc-dir-card" key={svc.id}>
+              <Link to={`/${svc.slug}`} className="svc-dir-card-head">
+                <span className="svc-dir-card-name">{svc.name}</span>
+                <span className="svc-dir-card-arr">→</span>
+              </Link>
+              <div className="svc-dir-chips">
+                {svc.pages.slice(1).map(p => (
+                  <Link key={p.slug} to={`/${p.slug}`} className="svc-dir-chip">{p.label}</Link>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
@@ -464,6 +506,7 @@ function Footer() {
 function HomePage() {
   return (
     <>
+      <HomeHead />
       <Nav />
       <Hero />
       <Stats />
