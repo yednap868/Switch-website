@@ -258,12 +258,6 @@ function HowItWorks() {
     { n:'2', title:'Add details & select time',  desc:'Tell us what you need and pick a time that works for you. Done in under 2 minutes, no calls needed.' },
     { n:'3', title:'Confirm & relax',            desc:'We\'ll match you with a verified, nearby worker. Sit back and relax — they\'ll handle the rest.' },
   ]
-  const trust = [
-    { icon: <IcoShield />, label: 'Aadhaar Verified',   sub: 'All workers are background checked' },
-    { icon: <IcoCheck />,  label: 'On-time Guarantee',  sub: 'Punctual or it\'s on us' },
-    { icon: <IcoStar />,   label: '4.8 Average Rating', sub: 'Loved by 1,000+ customers' },
-    { icon: <IcoBolt />,   label: '24/7 Support',       sub: 'We\'re here to help anytime' },
-  ]
   return (
     <section className="sec" id="how-it-works">
       <div className="w">
@@ -280,17 +274,6 @@ function HowItWorks() {
               <div className="step-num">{s.n}</div>
               <div className="step-title">{s.title}</div>
               <p className="step-desc">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="hw-trust">
-          {trust.map((t, i) => (
-            <div className="hw-ti" key={i}>
-              {t.icon}
-              <div>
-                <div className="hwt-label">{t.label}</div>
-                <div className="hwt-sub">{t.sub}</div>
-              </div>
             </div>
           ))}
         </div>
