@@ -3,8 +3,8 @@ import './App.css'
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
-  'Home Cleaning','Cook','Driver','Store Helper','Electrician',
-  'Plumber','Carpenter','Painter','Delivery Worker','Warehouse Staff','Nanny / Babysitter','Security Guard',
+  'Home Cleaning','Cook','Driver','Store Helper','Waiter',
+  'General Helper','Promoter','Bouncer','Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
 ]
 
 const ROLES = [
@@ -12,10 +12,10 @@ const ROLES = [
   { img: '/cook-chef.jpg',       name: 'Cook',                desc: 'Daily meals, tiffin prep, or catering support',        tags: ['4 hrs','8 hrs','2 days'] },
   { img: '/driver.jpg',          name: 'Driver',              desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/store-helper.jpg',    name: 'Store Helper',        desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/electrician.jpg',     name: 'Electrician',         desc: 'Wiring, fixtures, fuse boxes, appliance installation', tags: ['4 hrs','8 hrs'] },
-  { img: '/plumber.jpg',         name: 'Plumber',             desc: 'Pipe repairs, leaks, bathroom and kitchen fitting',    tags: ['4 hrs','8 hrs'] },
-  { img: '/carpenter.jpg',       name: 'Carpenter',           desc: 'Furniture assembly, repairs, custom woodwork',         tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/painter.jpg',         name: 'Painter',             desc: 'Interior, exterior painting and touch-ups',           tags: ['8 hrs','2 days','7 days'] },
+  { img: '/painter.jpg',         name: 'Waiter',              desc: 'Table service, order taking, restaurant and banquet support',    tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/carpenter.jpg',       name: 'General Helper',      desc: 'Office setup, shifting, loading, cleaning and odd jobs',         tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/electrician.jpg',     name: 'Promoter',            desc: 'Brand activations, product demos, mall and event promotions',    tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/plumber.jpg',         name: 'Bouncer',             desc: 'Entry management, crowd control, venue and event security',      tags: ['8 hrs','12 hrs','2 days'] },
   { img: '/delivery-rider.jpg',  name: 'Delivery Worker',     desc: 'Last-mile delivery, loading and unloading',           tags: ['4 hrs','8 hrs','12 hrs'] },
   { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse', desc: 'Sorting, packing, assembly line support',             tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/baby-care.jpg',       name: 'Nanny / Babysitter',  desc: 'Childcare, school pickup, homework help',             tags: ['4 hrs','8 hrs','2 days'] },
@@ -133,7 +133,7 @@ function Hero() {
 
           <div className="hero-live">
             <span className="hero-dot" />
-            <span>Now live · 5 cities across India</span>
+            <span>Now live · Gurgaon &amp; Delhi NCR</span>
           </div>
 
           <h1 className="hero-h1">
@@ -210,7 +210,7 @@ function Stats() {
           { num: '1,000+', lbl: 'Verified Users' },
           { num: '200+',   lbl: 'Jobs Completed' },
           { num: '4.8 ★',  lbl: 'Average Rating' },
-          { num: '5+',     lbl: 'Cities Covered' },
+          { num: '🏙',     lbl: 'Gurgaon & Delhi NCR' },
         ].map((s, i) => (
           <div className="s-cell" key={i}>
             <div className="s-num">{s.num}</div>
@@ -254,18 +254,25 @@ function Roles() {
 /* ─── HOW IT WORKS ────────────────────────────────── */
 function HowItWorks() {
   const items = [
-    { n:'1', title:'Pick your role & slot',  desc:'Choose the job category, select a duration — 4 hrs to 7 days — and set your date and location. Done in under 2 minutes.' },
-    { n:'2', title:'Confirmed in 6 hours',   desc:'We match you with a verified, nearby professional. Confirmed fast — no phone calls, no paperwork, no middlemen.' },
-    { n:'3', title:'Work done, pay after',   desc:'Your worker arrives on time and completes the task. Pay securely in-app only after the job is finished to your satisfaction.' },
+    { n:'1', title:'Choose the service',         desc:'Pick from 12+ verified blue-collar services — from home cleaning to security guards. Done in seconds.' },
+    { n:'2', title:'Add details & select time',  desc:'Tell us what you need and pick a time that works for you. Done in under 2 minutes, no calls needed.' },
+    { n:'3', title:'Confirm & relax',            desc:'We\'ll match you with a verified, nearby worker. Sit back and relax — they\'ll handle the rest.' },
+  ]
+  const trust = [
+    { icon: <IcoShield />, label: 'Aadhaar Verified',   sub: 'All workers are background checked' },
+    { icon: <IcoCheck />,  label: 'On-time Guarantee',  sub: 'Punctual or it\'s on us' },
+    { icon: <IcoStar />,   label: '4.8 Average Rating', sub: 'Loved by 1,000+ customers' },
+    { icon: <IcoBolt />,   label: '24/7 Support',       sub: 'We\'re here to help anytime' },
   ]
   return (
     <section className="sec" id="how-it-works">
       <div className="w">
         <div className="sec-hd">
           <span className="tag">How it works</span>
-          <h2 className="h2">From booking to done<br />in three steps.</h2>
-          <p className="lead">No agencies, no middlemen. Direct booking with verified workers at transparent prices.</p>
+          <h2 className="h2">Simple steps to get<br />the right worker.</h2>
+          <p className="lead">Quick. Easy. Reliable. Get help in just a few taps.</p>
         </div>
+        <img src="/how-it-works.png" alt="How Switch works" className="hiw-img" />
         <div className="steps">
           {items.map((s, i) => (
             <div className="step" key={i}>
@@ -273,6 +280,17 @@ function HowItWorks() {
               <div className="step-num">{s.n}</div>
               <div className="step-title">{s.title}</div>
               <p className="step-desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="hw-trust">
+          {trust.map((t, i) => (
+            <div className="hw-ti" key={i}>
+              {t.icon}
+              <div>
+                <div className="hwt-label">{t.label}</div>
+                <div className="hwt-sub">{t.sub}</div>
+              </div>
             </div>
           ))}
         </div>
