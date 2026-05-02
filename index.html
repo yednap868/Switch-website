@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switch — Hire Verified Workers. Today.</title>
+<meta name="description" content="Post a shift. Get matched with Aadhaar-verified workers near you. Most employers hire within 6 hours. No contracts, no upfront cost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0f172a;-webkit-font-smoothing:antialiased}
+
+:root{
+  --n9:#071828;--n8:#0c2140;--n7:#112952;
+  --g:#16a34a;--gd:#15803d;--gbg:#f0fdf4;--gbo:#bbf7d0;
+  --tx:#0f172a;--mu:#64748b;--bd:#e2e8f0;--su:#f8fafc;
+}
+
+/* ─── NAV ─── */
+nav{background:var(--n9);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;position:sticky;top:0;z-index:300;border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+.logo-m{width:32px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9375rem;color:var(--n9)}
+.logo-t{font-weight:800;font-size:1.0625rem;color:#fff;letter-spacing:-.025em}
+.nav-mid{display:flex;align-items:center;gap:.125rem}
+.nl{color:rgba(255,255,255,.42);text-decoration:none;font-size:.875rem;font-weight:500;padding:.375rem .75rem;border-radius:6px;transition:color .15s,background .15s}
+.nl:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-r{display:flex;align-items:center;gap:.75rem}
+.nav-wa{color:rgba(255,255,255,.48);text-decoration:none;font-size:.875rem;font-weight:600;padding:.4375rem .875rem;border-radius:7px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:.4rem;transition:color .15s,border-color .15s}
+.nav-wa:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.nav-cta{background:var(--g);color:#fff;padding:.5rem 1.125rem;border-radius:7px;text-decoration:none;font-size:.875rem;font-weight:700;transition:background .15s}
+.nav-cta:hover{background:var(--gd)}
+
+/* ─── HERO ─── */
+.hero{
+  background:var(--n9);
+  background-image:
+    radial-gradient(ellipse 70% 60% at 78% 38%,rgba(22,163,74,.1) 0%,transparent 62%),
+    radial-gradient(ellipse 55% 65% at 12% 68%,rgba(29,78,216,.13) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(255,255,255,0.025)'/%3E%3C/svg%3E");
+  padding:5.5rem 2.5rem 5rem;position:relative;overflow:hidden;
+}
+.hero-g{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:center}
+.h-pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:#4ade80;font-size:.8125rem;font-weight:700;padding:.3125rem .875rem;border-radius:9999px;margin-bottom:1.75rem}
+.h-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.75)}}
+.h1{font-size:clamp(3rem,4.5vw,4.625rem);font-weight:900;line-height:1.01;letter-spacing:-.05em;color:#fff;margin-bottom:1.375rem}
+.h1 em{font-style:normal;color:#4ade80}
+.h-sub{font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:2.25rem;max-width:480px}
+.h-sub strong{color:rgba(255,255,255,.82);font-weight:600}
+.h-btns{display:flex;align-items:center;gap:.875rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-w{background:#fff;color:var(--n8);padding:.9375rem 2rem;border-radius:10px;text-decoration:none;font-size:.9375rem;font-weight:800;display:inline-flex;align-items:center;gap:.5rem;transition:opacity .15s,transform .15s}
+.btn-w:hover{opacity:.9;transform:translateY(-1px)}
+.btn-o{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.75);padding:.9375rem 2rem;border-radius:10px;text-decoration:none;font-size:.9375rem;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:background .15s,border-color .15s,color .15s}
+.btn-o:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.32);color:#fff}
+.h-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.h-ti{display:flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.35)}
+.h-ti svg{width:13px;height:13px;flex-shrink:0}
+
+/* phone + floats */
+.hero-phone{position:relative;padding:1rem 1.5rem}
+.ph-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:310px;height:310px;background:radial-gradient(circle,rgba(22,163,74,.22) 0%,transparent 68%);border-radius:50%;filter:blur(28px);pointer-events:none}
+.ph-img{position:relative;z-index:1;width:100%;display:block;border-radius:28px;box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.ftag{position:absolute;z-index:2;background:rgba(7,24,40,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);border-radius:9999px;padding:.4375rem 1rem;display:flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.35)}
+.ft1{top:14%;right:-6%;animation:bob1 4s ease-in-out infinite}
+.ft2{bottom:28%;left:-14%;animation:bob2 5s ease-in-out infinite}
+.ft3{bottom:9%;right:-4%;animation:bob1 3.6s ease-in-out infinite .7s}
+@keyframes bob1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+.fd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.fg{background:#4ade80}.fa{background:#fbbf24}.fb{background:#60a5fa}
+
+/* ─── MARQUEE ─── */
+.mq-wrap{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:.9375rem 0;overflow:hidden;position:relative;background:#fff}
+.mq-track{display:flex;width:max-content;animation:mq 32s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:.5rem;padding:0 2.25rem;font-size:.875rem;font-weight:600;color:var(--mu);border-right:1px solid var(--bd);white-space:nowrap}
+.mq-dot{width:4px;height:4px;background:#cbd5e1;border-radius:50%}
+.mq-fade{position:absolute;top:0;bottom:0;width:90px;pointer-events:none;z-index:1}
+.mq-fl{left:0;background:linear-gradient(to right,#fff,transparent)}
+.mq-fr{right:0;background:linear-gradient(to left,#fff,transparent)}
+
+/* ─── STATS ─── */
+.stats-s{background:var(--n8);padding:3.5rem 2.5rem}
+.stats-g{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-i{text-align:center;padding:1.25rem 1rem;border-right:1px solid rgba(255,255,255,.06)}
+.stat-i:last-child{border-right:none}
+.stat-n{font-size:2.5rem;font-weight:900;letter-spacing:-.05em;color:#fff;line-height:1;margin-bottom:.375rem}
+.stat-l{font-size:.8125rem;color:rgba(255,255,255,.32);font-weight:500}
+
+/* ─── WORKERS TEAM SECTION ─── */
+.team-sec{padding:5.5rem 2.5rem;background:#fff}
+.team-si{max-width:1200px;margin:0 auto}
+.team-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.team-head-left .s-lbl{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem}
+.team-head-left h2{font-size:clamp(2rem,2.8vw,2.625rem);font-weight:900;letter-spacing:-.04em;color:var(--tx);line-height:1.08;margin-bottom:.5rem}
+.team-head-left p{font-size:1rem;color:var(--mu);line-height:1.7;max-width:440px}
+.team-stats{display:flex;gap:2rem;flex-shrink:0}
+.team-stat{text-align:center}
+.team-stat-n{font-size:1.875rem;font-weight:900;letter-spacing:-.04em;color:var(--tx);line-height:1}
+.team-stat-l{font-size:.78rem;color:var(--mu);font-weight:500;margin-top:.25rem}
+.team-img-frame{
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 24px 72px rgba(0,0,0,.1),0 0 0 1px var(--bd);
+  position:relative;
+}
+.team-img{width:100%;display:block}
+
+/* ─── WORKER PROFILE SECTION ─── */
+.worker-sec{padding:5.5rem 2.5rem;background:var(--n9);position:relative;overflow:hidden}
+.worker-sec::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(22,163,74,.08),transparent 70%);border-radius:50%}
+.worker-sec::after{content:'';position:absolute;bottom:-150px;left:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(29,78,216,.1),transparent 70%);border-radius:50%}
+.worker-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+.wt-lbl{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#4ade80;margin-bottom:.75rem}
+.wt-h{font-size:clamp(1.875rem,2.5vw,2.5rem);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1.1;margin-bottom:1rem}
+.wt-p{font-size:1rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:2rem}
+.wt-feats{list-style:none;display:flex;flex-direction:column;gap:.875rem}
+.wt-feats li{display:flex;align-items:center;gap:.75rem;font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)}
+.wf-ic{width:24px;height:24px;border-radius:50%;background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wf-ic svg{width:12px;height:12px;stroke:#4ade80;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* profile card */
+.p-card{background:#fff;border-radius:22px;padding:1.75rem;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);max-width:340px;margin:0 auto;position:relative;z-index:1}
+.pc-hd{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+.pc-ph{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;border:3px solid var(--gbo)}
+.pc-nm{font-size:1.0625rem;font-weight:800;color:var(--tx);letter-spacing:-.02em}
+.pc-rl{font-size:.875rem;color:var(--mu);font-weight:500;margin-top:2px}
+.pc-st{display:flex;align-items:center;gap:3px;margin-top:4px}
+.pc-st svg{width:13px;height:13px;fill:#f59e0b;stroke:none}
+.pc-st span{font-size:.8125rem;font-weight:700;color:var(--tx);margin-left:3px}
+.pc-bgs{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.pc-bg{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:700;padding:.3rem .6875rem;border-radius:9999px}
+.pcb-v{background:var(--gbg);color:var(--g);border:1px solid var(--gbo)}
+.pcb-a{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pc-mt{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.375rem}
+.pc-mi{display:flex;align-items:center;gap:.35rem;font-size:.8125rem;color:var(--mu);font-weight:500}
+.pc-mi svg{width:13px;height:13px;stroke:var(--mu);fill:none;stroke-width:2;stroke-linecap:round}
+.pc-ac{display:grid;grid-template-columns:1fr 1fr;gap:.625rem}
+.pc-call{background:var(--n9);color:#fff;padding:.6875rem;border-radius:9px;font-size:.875rem;font-weight:700;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.375rem}
+.pc-view{background:var(--su);color:var(--tx);padding:.6875rem;border-radius:9px;font-size:.875rem;font-weight:700;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:.375rem;border:1px solid var(--bd)}
+.pc-rv{background:var(--su);border-radius:10px;padding:.875rem 1rem;margin-top:1rem}
+.pc-rv-l{font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin-bottom:.375rem}
+.pc-rv-v{font-size:.875rem;font-weight:600;color:var(--tx)}
+
+/* ─── ROLE CATEGORIES ─── */
+.role-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:2rem}
+.rc-item{background:var(--su);border:1px solid var(--bd);border-radius:14px;padding:.875rem 1rem;display:flex;align-items:center;gap:.75rem;transition:box-shadow .2s,border-color .2s,transform .2s}
+.rc-item:hover{box-shadow:0 8px 24px rgba(0,0,0,.07);border-color:#cbd5e1;transform:translateY(-2px)}
+.rc-icon{width:34px;height:34px;border-radius:9px;background:var(--n9);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rc-icon svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rc-name{font-size:.8125rem;font-weight:700;color:var(--tx);line-height:1.2}
+.rc-cnt{font-size:.72rem;color:var(--mu);font-weight:500;margin-top:1px}
+
+/* ─── MATCH LIST ─── */
+.match-list{background:var(--n8);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04)}
+.ml-hd{padding:1rem 1.375rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.ml-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;color:#4ade80}
+.ml-loc{font-size:.78rem;color:rgba(255,255,255,.28);font-weight:500}
+.ml-item{display:flex;align-items:center;gap:.875rem;padding:.9375rem 1.375rem;border-bottom:1px solid rgba(255,255,255,.045);transition:background .15s}
+.ml-item:hover{background:rgba(255,255,255,.03)}
+.ml-item.sel{background:rgba(22,163,74,.1);border-bottom-color:rgba(22,163,74,.15)}
+.ml-item.sel:hover{background:rgba(22,163,74,.13)}
+.ml-av{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;border:2px solid rgba(22,163,74,.55)}
+.ml-av-ph{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#fff;flex-shrink:0}
+.ml-body{flex:1;min-width:0}
+.ml-nm{font-size:.875rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-bottom:3px}
+.ml-vbg{background:rgba(22,163,74,.15);color:#4ade80;font-size:.625rem;font-weight:800;padding:.15rem .45rem;border-radius:9999px;border:1px solid rgba(22,163,74,.3);letter-spacing:.03em;text-transform:uppercase}
+.ml-meta{font-size:.78rem;color:rgba(255,255,255,.36);font-weight:500}
+.ml-quote{font-size:.74rem;color:rgba(255,255,255,.48);margin-top:.3rem;line-height:1.45;font-style:italic}
+.ml-call{flex-shrink:0;background:var(--g);color:#fff;padding:.4375rem .9375rem;border-radius:8px;font-size:.8rem;font-weight:700;text-decoration:none;transition:background .15s,transform .15s}
+.ml-call:hover{background:var(--gd);transform:translateY(-1px)}
+.ml-more{display:flex;align-items:center;justify-content:center;padding:.9375rem 1.375rem;font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.3);text-decoration:none;border-top:1px solid rgba(255,255,255,.05);transition:color .15s;gap:.35rem}
+.ml-more:hover{color:rgba(255,255,255,.65)}
+
+/* ─── SECTION SCAFFOLD ─── */
+.sec{padding:7rem 2.5rem;background:#fff}
+.sec-g{padding:7rem 2.5rem;background:var(--su)}
+.si{max-width:1200px;margin:0 auto}
+.s-lbl{display:block;font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem}
+.s-h{font-size:clamp(2rem,2.8vw,2.625rem);font-weight:900;letter-spacing:-.04em;color:var(--tx);line-height:1.08;margin-bottom:.875rem}
+.s-p{font-size:1rem;color:var(--mu);line-height:1.75;max-width:480px}
+
+/* ─── HOW IT WORKS ─── */
+.hiw{display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;margin-top:4.5rem}
+.hiw-n{width:40px;height:40px;background:var(--n9);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.875rem;font-weight:800;color:#fff;margin-bottom:1.5rem}
+.hiw-img{width:100%;max-width:200px;display:block;margin:0 auto 1.5rem;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.05)}
+.hiw-h{font-size:1.0625rem;font-weight:800;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.hiw-p{font-size:.875rem;color:var(--mu);line-height:1.7}
+
+/* ─── WHY ─── */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.w-card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:1.875rem;transition:box-shadow .25s,transform .25s}
+.w-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.09);transform:translateY(-3px)}
+.w-ic{width:44px;height:44px;border-radius:12px;background:var(--n9);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.w-ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.w-h{font-size:.9375rem;font-weight:800;color:var(--tx);letter-spacing:-.01em;margin-bottom:.4rem}
+.w-p{font-size:.875rem;color:var(--mu);line-height:1.65}
+
+/* ─── PRICING ─── */
+.price{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:1.5rem;margin-top:3.5rem}
+.pc2{border:1.5px solid var(--bd);border-radius:20px;padding:2.5rem;position:relative;transition:box-shadow .2s}
+.pc2:hover{box-shadow:0 20px 60px rgba(0,0,0,.09)}
+.pc2.feat{border-color:var(--g);background:var(--gbg)}
+.p-badge{position:absolute;top:1.5rem;right:1.5rem;background:var(--g);color:#fff;font-size:.6875rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .625rem;border-radius:9999px}
+.p-type{font-size:.8125rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.p-price{font-size:3.5rem;font-weight:900;letter-spacing:-.06em;color:var(--tx);line-height:1}
+.p-unit{font-size:.875rem;color:var(--mu);margin-top:.25rem;margin-bottom:2rem}
+.p-div{border:none;border-top:1px solid var(--bd);margin-bottom:1.75rem}
+.pc2.feat .p-div{border-color:var(--gbo)}
+.p-feats{list-style:none;display:flex;flex-direction:column;gap:.875rem;margin-bottom:2rem}
+.p-feats li{display:flex;align-items:center;gap:.625rem;font-size:.9rem;font-weight:500;color:var(--tx)}
+.pfc circle{fill:var(--gbg);stroke:var(--gbo);stroke-width:1.5}
+.pc2.feat .pfc circle{fill:#dcfce7;stroke:#86efac}
+.pfc path{stroke:var(--g);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.p-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem;border-radius:10px;font-size:.9375rem;font-weight:700;text-decoration:none;transition:background .15s}
+.pc2:not(.feat) .p-cta{background:var(--n9);color:#fff}
+.pc2:not(.feat) .p-cta:hover{background:var(--n7)}
+.pc2.feat .p-cta{background:var(--g);color:#fff}
+.pc2.feat .p-cta:hover{background:var(--gd)}
+
+/* ─── COMPARISON (3-card elevated) ─── */
+.cmp-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.cmp-cards{display:grid;grid-template-columns:1fr 1.06fr 1fr;gap:0;align-items:start;margin-top:0}
+/* base card */
+.cc{border:1.5px solid var(--bd);border-radius:20px;overflow:hidden;background:#fff;transition:box-shadow .25s}
+/* switch card — elevated */
+.cc.sw{
+  border-color:var(--g);
+  box-shadow:0 24px 64px rgba(22,163,74,.18),0 0 0 0 transparent;
+  transform:translateY(-12px);
+  position:relative;z-index:2;
+}
+/* card header */
+.cc-hd{padding:1.5rem 1.75rem 1.375rem;border-bottom:1px solid var(--bd)}
+.cc.sw .cc-hd{background:var(--g);border-bottom-color:var(--gd)}
+.cc-rec{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.22);color:#fff;font-size:.6875rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .625rem;border-radius:9999px;margin-bottom:.5rem}
+.cc-name{font-size:1.0625rem;font-weight:900;letter-spacing:-.02em;color:var(--tx)}
+.cc.sw .cc-name{color:#fff}
+.cc-sub{font-size:.8125rem;color:var(--mu);font-weight:500;margin-top:.2rem}
+.cc.sw .cc-sub{color:rgba(255,255,255,.65)}
+/* feature rows */
+.cc-rows{padding:.375rem 0}
+.cc-row{display:flex;align-items:center;gap:.875rem;padding:.875rem 1.75rem;border-bottom:1px solid var(--bd);transition:background .15s}
+.cc-row:last-child{border-bottom:none}
+.cc:hover .cc-row{background:var(--su)}
+.cc.sw:hover .cc-row{background:rgba(22,163,74,.04)}
+.cc-row-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--su)}
+.cc.sw .cc-row-icon{background:rgba(22,163,74,.1)}
+.cc-row-icon svg{width:14px;height:14px;stroke:var(--mu);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cc.sw .cc-row-icon svg{stroke:var(--g)}
+.cc-row-body{}
+.cc-row-label{font-size:.75rem;font-weight:600;color:var(--mu);margin-bottom:.15rem;line-height:1}
+.cc-row-val{font-size:.875rem;font-weight:700;color:var(--tx);display:flex;align-items:center;gap:.3rem;line-height:1.3}
+.cc.sw .cc-row-val{color:#065f46}
+.ck{color:var(--g);font-size:.9375rem}
+.cx{color:#ef4444}
+.dash{color:#94a3b8}
+/* CTA row at bottom of switch card */
+.cc-cta-row{padding:1.25rem 1.75rem;background:rgba(22,163,74,.06);border-top:1px solid var(--gbo)}
+.cc-cta-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--g);color:#fff;padding:.8125rem;border-radius:10px;font-size:.875rem;font-weight:700;text-decoration:none;transition:background .15s}
+.cc-cta-btn:hover{background:var(--gd)}
+
+/* ─── TESTIMONIALS ─── */
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+.tc{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:2rem;position:relative;display:flex;flex-direction:column;transition:box-shadow .25s}
+.tc:hover{box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.tc-qt{position:absolute;top:1.25rem;right:1.5rem;font-size:4.5rem;line-height:1;color:var(--bd);font-family:Georgia,serif;pointer-events:none;user-select:none}
+.tc-stars{display:flex;gap:3px;margin-bottom:1rem}
+.tc-stars svg{width:14px;height:14px;fill:#f59e0b;stroke:none}
+.tc-txt{font-size:.9375rem;color:#374151;line-height:1.75;margin-bottom:1.5rem;flex:1}
+.tc-foot{display:flex;align-items:center;gap:.75rem}
+.tc-av{width:38px;height:38px;border-radius:50%;background:var(--n8);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.875rem;flex-shrink:0}
+.tc-nm{font-weight:700;font-size:.875rem;color:var(--tx)}
+.tc-rl{font-size:.8125rem;color:var(--mu);margin-top:1px}
+
+/* ─── FAQ ─── */
+.faq-w{margin-top:3.5rem;border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.faq-i{border-bottom:1px solid var(--bd)}
+.faq-i:last-child{border-bottom:none}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.75rem;background:none;border:none;font-family:inherit;font-size:.9375rem;font-weight:700;color:var(--tx);cursor:pointer;text-align:left;gap:1rem;transition:background .15s}
+.faq-btn:hover{background:var(--su)}
+.faq-ic svg{width:18px;height:18px;stroke:var(--mu);transition:transform .25s,stroke .15s;flex-shrink:0}
+.faq-i.open .faq-ic svg{transform:rotate(45deg);stroke:var(--tx)}
+.faq-body{overflow:hidden;max-height:0;transition:max-height .32s ease,padding .32s ease;font-size:.9rem;color:var(--mu);line-height:1.75;padding:0 1.75rem}
+.faq-i.open .faq-body{max-height:220px;padding:0 1.75rem 1.375rem}
+
+/* ─── FOOTER CTA ─── */
+.fcta{padding:7rem 2.5rem;background:var(--n9);background-image:radial-gradient(ellipse 70% 60% at 80% 40%,rgba(22,163,74,.11) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 10% 60%,rgba(29,78,216,.09) 0%,transparent 60%);text-align:center}
+.fcta-in{max-width:580px;margin:0 auto}
+.fcta h2{font-size:clamp(2.25rem,4vw,3.25rem);font-weight:900;color:#fff;letter-spacing:-.045em;line-height:1.04;margin-bottom:.875rem}
+.fcta p{color:rgba(255,255,255,.35);font-size:1rem;line-height:1.65;margin-bottom:2.5rem}
+.fcta-btns{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn-wp{background:#fff;color:var(--n8);padding:1rem 2rem;border-radius:10px;text-decoration:none;font-size:.9375rem;font-weight:800;display:inline-flex;align-items:center;gap:.5rem;transition:opacity .15s,transform .15s}
+.btn-wp:hover{opacity:.9;transform:translateY(-1px)}
+.btn-ws{background:transparent;border:1.5px solid rgba(255,255,255,.18);color:rgba(255,255,255,.6);padding:1rem 2rem;border-radius:10px;text-decoration:none;font-size:.9375rem;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:border-color .15s,color .15s}
+.btn-ws:hover{border-color:rgba(255,255,255,.42);color:#fff}
+
+/* ─── FOOTER ─── */
+footer{background:var(--n9);border-top:1px solid rgba(255,255,255,.05);padding:1.5rem 2.5rem}
+.ft-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+.ft-copy{color:rgba(255,255,255,.18);font-size:.78rem}
+.ft-links{display:flex;gap:1.5rem}
+.ft-links a{color:rgba(255,255,255,.28);text-decoration:none;font-size:.78rem;transition:color .15s}
+.ft-links a:hover{color:rgba(255,255,255,.65)}
+
+/* ─── MOBILE STICKY ─── */
+.mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:#fff;border-top:1px solid var(--bd);padding:.875rem 1rem;gap:.625rem}
+.mob a{flex:1;display:flex;align-items:center;justify-content:center;gap:.375rem;padding:.8125rem;border-radius:9px;font-size:.875rem;font-weight:700;text-decoration:none}
+.mb-p{background:var(--n9);color:#fff}
+.mb-u{background:var(--g);color:#fff}
+
+/* ─── FADE IN ─── */
+.fi{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.fi.in{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero-g{grid-template-columns:1fr;gap:3rem}
+  .hero-phone{display:none}
+  .stats-g{grid-template-columns:repeat(2,1fr)}
+  .hiw{grid-template-columns:1fr;max-width:300px}
+  .why{grid-template-columns:1fr 1fr}
+  .testi{grid-template-columns:1fr}
+  .nav-mid{display:none}.nav-wa{display:none}
+  .price{grid-template-columns:1fr;max-width:460px}
+  .worker-grid{grid-template-columns:1fr;gap:3rem}
+  .match-list{max-width:460px}
+  .cmp-cards{grid-template-columns:1fr;gap:1rem}
+  .cc.sw{transform:none}
+  .team-head{flex-direction:column;align-items:flex-start}
+  .role-cats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .hero{padding:4rem 1.25rem 3.5rem}
+  .sec,.sec-g,.worker-sec,.team-sec{padding:4.5rem 1.25rem}
+  .why{grid-template-columns:1fr}
+  .ft-in{flex-direction:column;text-align:center}
+  .ft-links{justify-content:center}
+  .mob{display:flex}
+  body{padding-bottom:80px}
+  .fcta-btns{flex-direction:column;align-items:stretch}
+  .btn-wp,.btn-ws{justify-content:center}
+  .stats-g{grid-template-columns:repeat(2,1fr)}
+  .team-stats{flex-wrap:wrap;gap:1.25rem}
+  .role-cats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-m">S</div>
+    <span class="logo-t">Switch</span>
+  </a>
+  <div class="nav-mid">
+    <a href="#how" class="nl">How it works</a>
+    <a href="#pricing" class="nl">Pricing</a>
+    <a href="#compare" class="nl">Compare</a>
+    <a href="#faq" class="nl">FAQ</a>
+  </div>
+  <div class="nav-r">
+    <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="nav-wa" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://app.switchlocally.com/hire" class="nav-cta" target="_blank" rel="noopener">Post a Requirement</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="h-pill"><span class="h-dot"></span>Live — 500+ businesses hiring on Switch</div>
+      <h1 class="h1">Hire verified<br>workers. <em>Today.</em></h1>
+      <p class="h-sub">Post a shift in 2 minutes. Get matched with <strong>Aadhaar-verified workers</strong> near you. Call directly, pick your hire, confirm in one tap.</p>
+      <div class="h-btns">
+        <a href="https://app.switchlocally.com/hire" class="btn-w" target="_blank" rel="noopener">
+          Post a Requirement
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://app.switchlocally.com/hire" class="btn-o" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Hire Urgently
+        </a>
+      </div>
+      <div class="h-trust">
+        <div class="h-ti"><svg viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>4.8 employer rating</div>
+        <div class="h-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>100% Aadhaar verified</div>
+        <div class="h-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&lt;6 hrs avg hire time</div>
+        <div class="h-ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>No contract</div>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="ph-glow"></div>
+      <img src="assets/screen-home.png" alt="Switch app" class="ph-img">
+      <div class="ftag ft1"><span class="fd fg"></span> Aadhaar Verified</div>
+      <div class="ftag ft2"><span class="fd fa"></span> ⭐ 4.8 Rated</div>
+      <div class="ftag ft3"><span class="fd fb"></span> Hired in &lt;6 hrs</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item"><span class="mq-dot"></span>Restaurants &amp; Cafes</span>
+    <span class="mq-item"><span class="mq-dot"></span>Hotels &amp; Hospitality</span>
+    <span class="mq-item"><span class="mq-dot"></span>Warehouses &amp; Logistics</span>
+    <span class="mq-item"><span class="mq-dot"></span>Retail &amp; Shops</span>
+    <span class="mq-item"><span class="mq-dot"></span>Corporate Offices</span>
+    <span class="mq-item"><span class="mq-dot"></span>Events &amp; Exhibitions</span>
+    <span class="mq-item"><span class="mq-dot"></span>Factories</span>
+    <span class="mq-item"><span class="mq-dot"></span>Clinics &amp; Hospitals</span>
+    <span class="mq-item"><span class="mq-dot"></span>Security &amp; Facilities</span>
+    <span class="mq-item"><span class="mq-dot"></span>Households</span>
+    <span class="mq-item"><span class="mq-dot"></span>Restaurants &amp; Cafes</span>
+    <span class="mq-item"><span class="mq-dot"></span>Hotels &amp; Hospitality</span>
+    <span class="mq-item"><span class="mq-dot"></span>Warehouses &amp; Logistics</span>
+    <span class="mq-item"><span class="mq-dot"></span>Retail &amp; Shops</span>
+    <span class="mq-item"><span class="mq-dot"></span>Corporate Offices</span>
+    <span class="mq-item"><span class="mq-dot"></span>Events &amp; Exhibitions</span>
+    <span class="mq-item"><span class="mq-dot"></span>Factories</span>
+    <span class="mq-item"><span class="mq-dot"></span>Clinics &amp; Hospitals</span>
+    <span class="mq-item"><span class="mq-dot"></span>Security &amp; Facilities</span>
+    <span class="mq-item"><span class="mq-dot"></span>Households</span>
+  </div>
+  <div class="mq-fade mq-fl"></div>
+  <div class="mq-fade mq-fr"></div>
+</div>
+
+<!-- STATS -->
+<div class="stats-s">
+  <div class="stats-g">
+    <div class="stat-i"><div class="stat-n">4.8 ★</div><div class="stat-l">Average employer rating</div></div>
+    <div class="stat-i"><div class="stat-n">&lt;6 hrs</div><div class="stat-l">Average time to hire</div></div>
+    <div class="stat-i"><div class="stat-n">100%</div><div class="stat-l">Aadhaar verified workers</div></div>
+    <div class="stat-i"><div class="stat-n">500+</div><div class="stat-l">Businesses on Switch</div></div>
+  </div>
+</div>
+
+<!-- WORKERS TEAM IMAGE SECTION -->
+<section class="team-sec">
+  <div class="team-si">
+    <div class="team-head fi">
+      <div class="team-head-left">
+        <span class="s-lbl">Our Network</span>
+        <h2>Verified staff across every role.</h2>
+        <p>Every worker in our network is Aadhaar &amp; video verified, rated by employers, and matched to your location.</p>
+      </div>
+      <div class="team-stats">
+        <div class="team-stat">
+          <div class="team-stat-n">10,000+</div>
+          <div class="team-stat-l">Verified workers</div>
+        </div>
+        <div class="team-stat">
+          <div class="team-stat-n">8+</div>
+          <div class="team-stat-l">Job categories</div>
+        </div>
+        <div class="team-stat">
+          <div class="team-stat-n">NCR</div>
+          <div class="team-stat-l">Delhi / Gurgaon / Noida</div>
+        </div>
+      </div>
+    </div>
+    <div class="team-img-frame fi">
+      <img src="assets/workers-team.png" alt="Switch verified staff — ready for any role" class="team-img">
+    </div>
+    <div class="role-cats fi">
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <div><div class="rc-name">Shop Helper</div><div class="rc-cnt">650+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4v1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1V6a4 4 0 0 1 4-4z"/><path d="M9 11v6M12 11v6M15 11v6"/></svg></div>
+        <div><div class="rc-name">Kitchen Staff</div><div class="rc-cnt">900+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div><div class="rc-name">Delivery Partner</div><div class="rc-cnt">500+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div><div class="rc-name">Security Guard</div><div class="rc-cnt">1,200+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <div><div class="rc-name">Warehouse Staff</div><div class="rc-cnt">800+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div><div class="rc-name">Event Staff</div><div class="rc-cnt">700+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><div class="rc-name">Housekeeping</div><div class="rc-cnt">1,500+ workers</div></div>
+      </div>
+      <div class="rc-item">
+        <div class="rc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div><div class="rc-name">&amp; More Roles</div><div class="rc-cnt">8+ categories</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKER PROFILE SECTION -->
+<div class="worker-sec">
+  <div class="worker-grid">
+    <div>
+      <span class="wt-lbl fi">Verified Worker Profiles</span>
+      <h2 class="wt-h fi">You always see<br>who you're hiring.</h2>
+      <p class="wt-p fi">Every worker is Aadhaar-verified and rated by past employers. You see their full profile before you call — no surprises.</p>
+      <ul class="wt-feats fi">
+        <li>
+          <span class="wf-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+          Live Aadhaar + video KYC
+        </li>
+        <li>
+          <span class="wf-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          Ratings from real previous shifts
+        </li>
+        <li>
+          <span class="wf-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          Distance shown — only local workers
+        </li>
+        <li>
+          <span class="wf-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 17z"/></svg></span>
+          Call directly — no middlemen
+        </li>
+      </ul>
+    </div>
+    <div class="fi">
+      <div class="match-list">
+        <div class="ml-hd">
+          <span class="ml-tag"><span class="fd fg"></span> 3 verified matches near you</span>
+          <span class="ml-loc">Gurgaon, Sector 29</span>
+        </div>
+
+        <!-- Worker 1 — selected -->
+        <div class="ml-item sel">
+          <img src="assets/hero-worker.jpg" alt="Rajesh Kumar" class="ml-av">
+          <div class="ml-body">
+            <div class="ml-nm">Rajesh Kumar <span class="ml-vbg">Aadhaar ✓</span></div>
+            <div class="ml-meta">Security Guard · 2.3 km · ⭐ 4.9 · 14 shifts</div>
+            <div class="ml-quote">"Punctual and professional." — Amit R.</div>
+          </div>
+          <a href="https://app.switchlocally.com/hire" class="ml-call" target="_blank" rel="noopener">Call</a>
+        </div>
+
+        <!-- Worker 2 -->
+        <div class="ml-item">
+          <div class="ml-av-ph" style="background:linear-gradient(135deg,#1e40af,#3b82f6)">M</div>
+          <div class="ml-body">
+            <div class="ml-nm">Mohan Singh <span class="ml-vbg">Aadhaar ✓</span></div>
+            <div class="ml-meta">Security Guard · 1.8 km · ⭐ 4.7 · 9 shifts</div>
+          </div>
+          <a href="https://app.switchlocally.com/hire" class="ml-call" target="_blank" rel="noopener">Call</a>
+        </div>
+
+        <!-- Worker 3 -->
+        <div class="ml-item">
+          <div class="ml-av-ph" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">D</div>
+          <div class="ml-body">
+            <div class="ml-nm">Deepak Yadav <span class="ml-vbg">Aadhaar ✓</span></div>
+            <div class="ml-meta">Security Guard · 3.1 km · ⭐ 4.6 · 22 shifts</div>
+          </div>
+          <a href="https://app.switchlocally.com/hire" class="ml-call" target="_blank" rel="noopener">Call</a>
+        </div>
+
+        <a href="https://app.switchlocally.com/hire" class="ml-more" target="_blank" rel="noopener">
+          View all 47 verified matches near you
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how">
+  <div class="si">
+    <span class="s-lbl fi">How it works</span>
+    <h2 class="s-h fi">Post a shift. Done in 3 steps.</h2>
+    <p class="s-p fi">No experience posting jobs required. Just tell us what you need.</p>
+    <div class="hiw">
+      <div class="fi">
+        <div class="hiw-n">1</div>
+        <img src="assets/screen-home.png" alt="Post a requirement" class="hiw-img">
+        <div class="hiw-h">Post your requirement</div>
+        <p class="hiw-p">Pick the role, drop your location, tell us when. Takes 2 minutes. No job description needed.</p>
+      </div>
+      <div class="fi">
+        <div class="hiw-n">2</div>
+        <img src="assets/screen-2.png" alt="Browse profiles" class="hiw-img">
+        <div class="hiw-h">Browse matched profiles</div>
+        <p class="hiw-p">We send you verified candidates near you, each rated by past employers. Compare, call directly, and choose.</p>
+      </div>
+      <div class="fi">
+        <div class="hiw-n">3</div>
+        <img src="assets/screen-3.png" alt="Confirm" class="hiw-img">
+        <div class="hiw-h">Confirm. They show up.</div>
+        <p class="hiw-p">One tap to confirm. Worker arrives on schedule. Track the shift live from your phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SWITCH -->
+<section class="sec-g">
+  <div class="si">
+    <span class="s-lbl fi">Why Switch</span>
+    <h2 class="s-h fi">Faster than an agency.<br>Safer than classifieds.</h2>
+    <div class="why">
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="w-h">Aadhaar + video verified</div><p class="w-p">Every worker completes live video KYC. Identity confirmed in real time — not just a document scan.</p></div>
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="w-h">Matched near you</div><p class="w-p">Workers sourced within your area. Local matches mean fewer no-shows and no last-minute cancellations.</p></div>
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="w-h">Rated by past employers</div><p class="w-p">See ratings and work history from real shifts before you call. No surprises on the day.</p></div>
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="w-h">Same-day hiring</div><p class="w-p">Post in the morning. Interview by noon. Hire by evening. Most placements within 6 hours.</p></div>
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="w-h">Everything on your phone</div><p class="w-p">Browse profiles, call, confirm, and track — all in one app. Zero paperwork.</p></div>
+      <div class="w-card fi"><div class="w-ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div class="w-h">No contract, no lock-in</div><p class="w-p">Hire for one shift or every week. No retainer, no commitment. Pay only when you hire.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="si">
+    <span class="s-lbl fi">Pricing</span>
+    <h2 class="s-h fi">Simple. No hidden costs.</h2>
+    <p class="s-p fi">Pay only when a hire is confirmed. No monthly fees, no contracts.</p>
+    <div class="price fi">
+      <div class="pc2">
+        <div class="p-type">Standard Hiring</div>
+        <div class="p-price">₹200</div>
+        <div class="p-unit">per hour · per worker</div>
+        <hr class="p-div">
+        <ul class="p-feats">
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Aadhaar-verified worker</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Flexible shift timing</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Employer-rated profiles</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Reliable local matching</li>
+        </ul>
+        <a href="https://app.switchlocally.com/hire" class="p-cta" target="_blank" rel="noopener">Post a Requirement <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="pc2 feat">
+        <div class="p-badge">Recommended</div>
+        <div class="p-type">Urgent Hiring</div>
+        <div class="p-price">₹250</div>
+        <div class="p-unit">per hour · per worker</div>
+        <hr class="p-div">
+        <ul class="p-feats">
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Priority matching</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Worker within 60 minutes</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Instant replacement support</li>
+          <li><svg class="pfc" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8"/><path d="M5.5 9l2.5 2.5 4.5-4.5"/></svg>Everything in Standard</li>
+        </ul>
+        <a href="https://app.switchlocally.com/hire" class="p-cta" target="_blank" rel="noopener">Hire Urgently <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON 3-CARD -->
+<section class="sec-g" id="compare">
+  <div class="si">
+    <div class="cmp-intro fi">
+      <div>
+        <span class="s-lbl">Comparison</span>
+        <h2 class="s-h" style="margin-bottom:0">Why employers choose Switch</h2>
+      </div>
+      <p style="font-size:.9375rem;color:var(--mu);max-width:340px;line-height:1.65">See how Switch compares to traditional hiring options — on every dimension that matters.</p>
+    </div>
+
+    <div class="cmp-cards fi">
+
+      <!-- Classifieds -->
+      <div class="cc">
+        <div class="cc-hd">
+          <div class="cc-name">Classifieds</div>
+          <div class="cc-sub">OLX, WhatsApp groups, etc.</div>
+        </div>
+        <div class="cc-rows">
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Time to hire</div><div class="cc-row-val"><span class="dash">—</span>Unpredictable</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Identity verified</div><div class="cc-row-val"><span class="cx">✗</span>None</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Worker ratings</div><div class="cc-row-val"><span class="cx">✗</span>No</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.49"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Replacement support</div><div class="cc-row-val"><span class="cx">✗</span>None</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Contract required</div><div class="cc-row-val"><span class="dash">—</span>None</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Cost model</div><div class="cc-row-val">Free (no support)</div></div></div>
+        </div>
+      </div>
+
+      <!-- Switch (elevated) -->
+      <div class="cc sw">
+        <div class="cc-hd">
+          <div class="cc-rec">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Best Choice
+          </div>
+          <div class="cc-name">Switch</div>
+          <div class="cc-sub">Verified · Fast · No contract</div>
+        </div>
+        <div class="cc-rows">
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Time to hire</div><div class="cc-row-val"><span class="ck">✓</span>Under 6 hours</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Identity verified</div><div class="cc-row-val"><span class="ck">✓</span>Aadhaar + Video</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Worker ratings</div><div class="cc-row-val"><span class="ck">✓</span>From real jobs</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.49"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Replacement support</div><div class="cc-row-val"><span class="ck">✓</span>Instant</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Contract required</div><div class="cc-row-val"><span class="ck">✓</span>None</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Cost model</div><div class="cc-row-val"><span class="ck">✓</span>Pay per hire</div></div></div>
+        </div>
+        <div class="cc-cta-row">
+          <a href="https://app.switchlocally.com/hire" class="cc-cta-btn" target="_blank" rel="noopener">
+            Start Hiring on Switch
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Agency -->
+      <div class="cc">
+        <div class="cc-hd">
+          <div class="cc-name">Agency</div>
+          <div class="cc-sub">Traditional staffing agency</div>
+        </div>
+        <div class="cc-rows">
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Time to hire</div><div class="cc-row-val"><span class="dash">—</span>Days to weeks</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Identity verified</div><div class="cc-row-val"><span class="dash">—</span>Varies</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Worker ratings</div><div class="cc-row-val"><span class="cx">✗</span>No</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.49"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Replacement support</div><div class="cc-row-val"><span class="dash">—</span>Sometimes</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Contract required</div><div class="cc-row-val"><span class="cx">✗</span>Long-term</div></div></div>
+          <div class="cc-row"><div class="cc-row-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="cc-row-body"><div class="cc-row-label">Cost model</div><div class="cc-row-val">Monthly retainer</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+  <div class="si">
+    <span class="s-lbl fi">Testimonials</span>
+    <h2 class="s-h fi">What employers say</h2>
+    <div class="testi">
+      <div class="tc fi"><div class="tc-qt">&ldquo;</div><div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="tc-txt">"Needed two security guards before a long weekend. Posted at 10am, both confirmed by 4pm. Both showed up on time the next morning."</p><div class="tc-foot"><div class="tc-av" style="background:linear-gradient(135deg,#0f766e,#14b8a6)">A</div><div><div class="tc-nm">Arvind M.</div><div class="tc-rl">Operations Manager, Gurgaon</div></div></div></div>
+      <div class="tc fi"><div class="tc-qt">&ldquo;</div><div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="tc-txt">"The video KYC is the reason we switched from agencies. Every person we've hired through Switch has been on time and professional."</p><div class="tc-foot"><div class="tc-av" style="background:linear-gradient(135deg,#7c3aed,#c084fc)">P</div><div><div class="tc-nm">Priya K.</div><div class="tc-rl">GM, Boutique Hotel, Delhi</div></div></div></div>
+      <div class="tc fi"><div class="tc-qt">&ldquo;</div><div class="tc-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="tc-txt">"Our warehouse headcount changes every week. I post a shift in the morning and have someone on the floor by noon. We use Switch almost every week."</p><div class="tc-foot"><div class="tc-av" style="background:linear-gradient(135deg,#b45309,#f59e0b)">R</div><div><div class="tc-nm">Rahul S.</div><div class="tc-rl">Founder, Logistics Startup, Noida</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-g" id="faq">
+  <div class="si">
+    <span class="s-lbl fi">FAQ</span>
+    <h2 class="s-h fi">Common questions</h2>
+    <div class="faq-w fi">
+      <div class="faq-i open"><button class="faq-btn">How much does Switch cost?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Standard hiring is ₹200 per hour per worker. Urgent hiring (worker within 60 minutes) is ₹250/hr. You pay only when a hire is confirmed — no upfront cost, no monthly fees, no contracts.</div></div>
+      <div class="faq-i"><button class="faq-btn">How quickly can I get workers?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Most employers confirm a hire within 6 hours of posting. With Urgent Hiring, a worker is matched and dispatched to you within 60 minutes.</div></div>
+      <div class="faq-i"><button class="faq-btn">Do I choose which worker I hire?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Yes, always. We show you matched profiles — each with ratings, work history, and contact info. You review them, call whoever looks best, and confirm the one you want. You're always in control.</div></div>
+      <div class="faq-i"><button class="faq-btn">How does Aadhaar verification work?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Every worker completes a live video KYC session before being listed. We verify their Aadhaar against their face in real time — not just a document upload. Workers who don't pass are never shown to employers.</div></div>
+      <div class="faq-i"><button class="faq-btn">What if a worker doesn't show up?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">Urgent Hiring includes instant replacement support — if a confirmed worker doesn't arrive, we find a replacement immediately. For standard hires, contact our team on WhatsApp and we'll resolve it the same day.</div></div>
+      <div class="faq-i"><button class="faq-btn">Do I need to sign a contract?<span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-body">No. Switch is completely contract-free. Post when you need someone, pay only for confirmed hires. No lock-in, no retainer, no commitment beyond the shift you're filling.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="fcta">
+  <div class="fcta-in">
+    <h2>Post your first<br>requirement free.</h2>
+    <p>No contract. No upfront cost.<br>Pay only when you hire.</p>
+    <div class="fcta-btns">
+      <a href="https://app.switchlocally.com/hire" class="btn-wp" target="_blank" rel="noopener">Post a Requirement <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="https://wa.me/message/EVIXKAWHM7VYK1" class="btn-ws" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <span class="ft-copy">© 2026 Switch. All rights reserved.</span>
+    <div class="ft-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="https://wa.me/message/EVIXKAWHM7VYK1" target="_blank" rel="noopener">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="mob">
+  <a href="https://app.switchlocally.com/hire" class="mb-p" target="_blank" rel="noopener">Post a Requirement</a>
+  <a href="https://app.switchlocally.com/hire" class="mb-u" target="_blank" rel="noopener">⚡ Hire Urgently</a>
+</div>
+
+<script>
+document.querySelectorAll('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-i');
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-i').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  });
+});
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
