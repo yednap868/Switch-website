@@ -132,7 +132,7 @@ function CtaBlock({ service }) {
       </div>
       <h3 className="sp-cta-h">Book a {service} in Gurgaon Today</h3>
       <p className="sp-cta-p">Verified professionals. Flexible hours. Pay only after you're satisfied.</p>
-      <a href="/#download" className="sp-cta-btn">Get the App — It's Free</a>
+      <a href="https://app.switchlocally.com/hire" className="sp-cta-btn">Get the App — It's Free</a>
     </div>
   )
 }
@@ -165,7 +165,7 @@ function StickyCTA({ service }) {
   }, [])
   return (
     <div className={`sp-sticky${visible ? ' sp-sticky--show' : ''}`}>
-      <a href="/#download" className="sp-sticky-btn">Book {service} Now</a>
+      <a href="https://app.switchlocally.com/hire" className="sp-sticky-btn">Book {service} Now</a>
     </div>
   )
 }
@@ -183,7 +183,7 @@ function LandingPage({ page }) {
             <p className="sp-intro">{page.intro}</p>
             <TrustBadges />
             <div className="sp-hero-btns">
-              <a href="/#download" className="sp-cta-btn">Book Now — Free App</a>
+              <a href="https://app.switchlocally.com/hire" className="sp-cta-btn">Book Now — Free App</a>
               <a href={`/${page.serviceId}-cost-gurgaon`} className="sp-cta-ghost">View Pricing →</a>
             </div>
           </div>
@@ -545,7 +545,7 @@ function NearMePage({ page }) {
           <h1 className="sp-h1">{page.h1}</h1>
           <p className="sp-intro">{page.intro}</p>
           <TrustBadges />
-          <a href="/#download" className="sp-cta-btn">Find One Near You</a>
+          <a href="https://app.switchlocally.com/hire" className="sp-cta-btn">Find One Near You</a>
         </div>
       </section>
       <section className="sp-section sp-alt">
@@ -597,7 +597,7 @@ function SameDayPage({ page }) {
           <h1 className="sp-h1">{page.h1}</h1>
           <p className="sp-intro">{page.intro}</p>
           <TrustBadges />
-          <a href="/#download" className="sp-cta-btn">Book for Today</a>
+          <a href="https://app.switchlocally.com/hire" className="sp-cta-btn">Book for Today</a>
         </div>
       </section>
       <section className="sp-section sp-alt">
@@ -790,7 +790,7 @@ export default function SeoPage() {
             <Link to="/#how-it-works" className="sp-nav-link">How it works</Link>
             <Link to="/#reviews" className="sp-nav-link">Reviews</Link>
           </div>
-          <a href="/#download" className="sp-nav-cta">Get the App</a>
+          <a href="https://app.switchlocally.com/hire" className="sp-nav-cta">Get the App</a>
         </div>
       </nav>
 
