@@ -428,9 +428,8 @@ function AllServicesDirectory() {
     <section className="svc-dir">
       <div className="svc-dir-inner">
         <div className="svc-dir-hd">
-          <span className="tag">All service pages</span>
-          <h2 className="svc-dir-h2">120 pages · 12 categories · Gurgaon</h2>
-          <p className="svc-dir-sub">Every service, every question answered. Click any category to explore.</p>
+          <h2 className="svc-dir-h2">Browse by service</h2>
+          <p className="svc-dir-sub">Every worker type available in Gurgaon — pricing, hiring guides, and verified professionals.</p>
         </div>
         <div className="svc-dir-grid">
           {SERVICE_LIST.map(svc => (
