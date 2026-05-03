@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './App.css'
@@ -107,8 +107,14 @@ function StarRow() {
 
 /* ─── NAV ─────────────────────────────────────────── */
 function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
+  }, [])
   return (
-    <nav className="nav">
+    <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
       <div className="nav-inner">
         <a href="/" className="nav-logo">
           <div className="nav-mark">S</div>
@@ -131,6 +137,10 @@ function Hero() {
   const doubled = [...ALL_ROLES_MARQUEE, ...ALL_ROLES_MARQUEE]
   return (
     <section className="hero">
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-grid" />
+        <div className="hero-glow" />
+      </div>
       {/* LEFT */}
       <div className="hero-l">
         <div className="hero-l-wrap">
@@ -216,7 +226,7 @@ function Stats() {
           { num: '4.8 ★',  lbl: 'Average Rating' },
           { num: '🏙',     lbl: 'Gurgaon' },
         ].map((s, i) => (
-          <div className="s-cell" key={i}>
+          <div className="s-cell" key={i} data-anim style={{'--delay':`${i*90}ms`}}>
             <div className="s-num">{s.num}</div>
             <div className="s-lbl">{s.lbl}</div>
           </div>
@@ -231,14 +241,14 @@ function Roles() {
   return (
     <section className="sec sec-alt sec-border-t" id="roles">
       <div className="w">
-        <div className="sec-hd">
+        <div className="sec-hd" data-anim>
           <span className="tag">All categories</span>
           <h2 className="h2">Every blue-collar role,<br />one platform.</h2>
           <p className="lead">From a 4-hour cook to a 7-day warehouse team — book the right skill for exactly as long as you need it.</p>
         </div>
         <div className="roles-grid">
           {ROLES.map((r, i) => (
-            <Link to={`/${r.slug}`} className="role" key={i}>
+            <Link to={`/${r.slug}`} className="role" key={i} data-anim style={{'--delay':`${(i%4)*65}ms`}}>
               <img src={r.img} alt={r.name} className="role-img" />
               <div className="role-body">
                 <div className="r-name">{r.name}</div>
@@ -265,15 +275,15 @@ function HowItWorks() {
   return (
     <section className="sec" id="how-it-works">
       <div className="w">
-        <div className="sec-hd">
+        <div className="sec-hd" data-anim>
           <span className="tag">How it works</span>
           <h2 className="h2">Simple steps to get<br />the right worker.</h2>
           <p className="lead">Quick. Easy. Reliable. Get help in just a few taps.</p>
         </div>
-        <img src="/how-it-works.png" alt="How Switch works" className="hiw-img" />
+        <img src="/how-it-works.png" alt="How Switch works" className="hiw-img" data-anim />
         <div className="steps">
           {items.map((s, i) => (
-            <div className="step" key={i}>
+            <div className="step" key={i} data-anim style={{'--delay':`${i*130}ms`}}>
               <div className="step-n">Step {s.n}</div>
               <div className="step-num">{s.n}</div>
               <div className="step-title">{s.title}</div>
@@ -292,7 +302,7 @@ function Reviews() {
   return (
     <section className="sec sec-alt sec-border-t" id="reviews">
       <div className="w">
-        <div className="sec-hd">
+        <div className="sec-hd" data-anim>
           <span className="tag">Customer reviews</span>
           <h2 className="h2">Trusted by thousands<br />across India.</h2>
           <p className="lead">Real bookings, real workers, real results — every single day.</p>
@@ -325,12 +335,12 @@ function FAQ() {
   return (
     <section className="sec" id="faq">
       <div className="w">
-        <div className="sec-hd">
+        <div className="sec-hd" data-anim>
           <span className="tag">FAQ</span>
           <h2 className="h2">Questions?<br />We have answers.</h2>
           <p className="lead">Everything you need to know before your first booking.</p>
         </div>
-        <div className="faq-grid">
+        <div className="faq-grid" data-anim style={{'--delay':'80ms'}}>
           {FAQS.map((f, i) => (
             <div className={`faq-item${open === i ? ' open' : ''}`} key={i}>
               <button className="faq-btn" onClick={() => setOpen(o => o === i ? null : i)}>
@@ -353,7 +363,7 @@ function CTA() {
   return (
     <section className="cta-sec" id="download">
       <div className="cta-inner">
-        <div>
+        <div data-anim>
           <span className="tag">Get the app</span>
           <h2 className="cta-h2">Book any worker,<br />anytime, anywhere.</h2>
           <p className="cta-p">12 job categories. Flexible slots from 4 hours to 7 days. Aadhaar-verified workers, guaranteed results.</p>
@@ -375,7 +385,7 @@ function CTA() {
             </a>
           </div>
         </div>
-        <div className="phones">
+        <div className="phones" data-anim style={{'--delay':'180ms'}}>
           <img src="/screen-2.png" alt="" className="ph ph-s" />
           <img src="/screen-home.png" alt="Switch app" className="ph ph-c" />
           <img src="/screen-3.png" alt="" className="ph ph-s" />
@@ -427,11 +437,11 @@ function AllServicesDirectory() {
   return (
     <section className="svc-dir">
       <div className="svc-dir-inner">
-        <div className="svc-dir-hd">
+        <div className="svc-dir-hd" data-anim>
           <h2 className="svc-dir-h2">Browse by service</h2>
           <p className="svc-dir-sub">Every worker type available in Gurgaon — pricing, hiring guides, and verified professionals.</p>
         </div>
-        <div className="svc-dir-grid">
+        <div className="svc-dir-grid" data-anim style={{'--delay':'100ms'}}>
           {SERVICE_LIST.map(svc => (
             <div className="svc-dir-card" key={svc.id}>
               <Link to={`/${svc.slug}`} className="svc-dir-card-head">
@@ -503,6 +513,16 @@ function Footer() {
 
 /* ─── HOME ────────────────────────────────────────── */
 function HomePage() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    )
+    document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
   return (
     <>
       <HomeHead />
