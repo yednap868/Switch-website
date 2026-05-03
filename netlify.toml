@@ -1,9 +1,8 @@
 [build]
-  publish = "."
-  command = "echo 'No build needed - static HTML'"
+  publish = "snabbit-react/dist"
+  command = "cd snabbit-react && npm install && npm run build"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
