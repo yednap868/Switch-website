@@ -8,7 +8,7 @@ import { SERVICE_LIST } from './data/seoData.js'
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
   'Home Cleaning','Cook','Driver','Store Helper','Painter',
-  'Carpenter','Electrician','Plumber','Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
+  'Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
 ]
 
 const ROLES = [
@@ -17,10 +17,7 @@ const ROLES = [
   { img: '/driver.jpg',          name: 'Driver',             slug: 'driver-gurgaon',             desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/store-helper.jpg',    name: 'Store Helper',       slug: 'store-helper-gurgaon',       desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/painter.jpg',         name: 'Painter',            slug: 'painter-gurgaon',            desc: 'Interior, exterior painting and touch-ups',            tags: ['8 hrs','2 days','7 days'] },
-  { img: '/carpenter.jpg',       name: 'Carpenter',          slug: 'carpenter-gurgaon',          desc: 'Furniture assembly, repairs, custom woodwork',         tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/electrician.jpg',     name: 'Electrician',        slug: 'electrician-gurgaon',        desc: 'Wiring, fixtures, fuse boxes, appliance installation', tags: ['4 hrs','8 hrs'] },
-  { img: '/plumber.jpg',         name: 'Plumber',            slug: 'plumber-gurgaon',            desc: 'Pipe repairs, leaks, bathroom and kitchen fitting',    tags: ['4 hrs','8 hrs'] },
-  { img: '/delivery-rider.jpg',  name: 'Delivery Worker',    slug: 'delivery-worker-gurgaon',    desc: 'Last-mile delivery, loading and unloading',            tags: ['4 hrs','8 hrs','12 hrs'] },
+{ img: '/delivery-rider.jpg',  name: 'Delivery Worker',    slug: 'delivery-worker-gurgaon',    desc: 'Last-mile delivery, loading and unloading',            tags: ['4 hrs','8 hrs','12 hrs'] },
   { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse',slug: 'factory-warehouse-gurgaon',  desc: 'Sorting, packing, assembly line support',              tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/baby-care.jpg',       name: 'Nanny / Babysitter', slug: 'nanny-gurgaon',              desc: 'Childcare, school pickup, homework help',              tags: ['4 hrs','8 hrs','2 days'] },
   { img: '/security-guard.jpg',  name: 'Security Guard',     slug: 'security-guard-gurgaon',     desc: 'Gate duty, premises security, night patrol',           tags: ['12 hrs','2 days','7 days'] },
@@ -31,14 +28,14 @@ const REVIEWS = [
   { name: 'Neha P.',    loc: 'Pune',       text: 'Booked a driver for 7 days straight. Always professional, always on time. Will definitely rebook.' },
   { name: 'Pradnyesh', loc: 'Bangalore',  text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our business.' },
   { name: 'Ridhi S.',   loc: 'Delhi',      text: 'Hired a painter for 2 days. Clean work, no mess, finished ahead of schedule. Effortless experience.' },
-  { name: 'Ritika M.',  loc: 'Hyderabad',  text: 'Plumber fixed our pipe leak in under 2 hours. Booked at 9 PM, arrived 8 AM sharp. Incredible service.' },
+  { name: 'Ritika M.',  loc: 'Hyderabad',  text: 'Cook prepared amazing meals for our family event. Booked at 9 PM, arrived 8 AM sharp. Incredible service.' },
   { name: 'Sameer K.',  loc: 'Chennai',    text: 'Our store needed part-time help during Diwali. Switch sent 3 experienced hands within just a few hours.' },
   { name: 'Karishma',  loc: 'Ahmedabad',  text: 'Switch is our weekly go-to for home cleaning. Always trained, always polite, always thorough. Love it.' },
   { name: 'Rabia A.',   loc: 'Surat',      text: 'Got a nanny for 2 weeks. She was wonderful with my kids — completely reliable and trusted.' },
 ]
 
 const FAQS = [
-  { q: 'What types of workers can I book?',       a: 'Switch covers 12+ blue-collar categories — cooks, drivers, cleaners, electricians, plumbers, carpenters, security guards, factory workers, store helpers, nannies, painters, delivery workers, and more.' },
+  { q: 'What types of workers can I book?',       a: 'Switch covers multiple blue-collar categories — cooks, drivers, cleaners, security guards, factory workers, store helpers, nannies, painters, delivery workers, and more.' },
   { q: 'What booking durations are available?',   a: 'Book for 4 hours, 8 hours, 12 hours, 2 days, or up to 7 days. Mix and match based on your exact requirement.' },
   { q: 'Are all workers background verified?',    a: 'Yes. Every worker is Aadhaar-verified, background-checked, and skills-assessed before they are approved to take bookings on the platform.' },
   { q: 'How quickly can I get someone?',          a: 'Most bookings are confirmed within 6 hours. For urgent needs, same-day availability is shown in real time within the app.' },
@@ -401,7 +398,7 @@ function HomeHead() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Switch',
-    description: 'Book verified blue-collar workers in Gurgaon instantly. Home cleaners, cooks, drivers, electricians, plumbers, carpenters and more.',
+    description: 'Book verified blue-collar workers in Gurgaon instantly. Home cleaners, cooks, drivers, painters, security guards, delivery workers and more.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     areaServed: { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
@@ -424,7 +421,7 @@ function HomeHead() {
   return (
     <Helmet>
       <title>Book Verified Blue-Collar Workers in Gurgaon | Switch</title>
-      <meta name="description" content="Switch is Gurgaon's fastest platform to hire verified home cleaners, cooks, drivers, electricians, plumbers, painters, carpenters and more. Aadhaar-verified workers. Book in 2 minutes. Pay only after work is done." />
+      <meta name="description" content="Switch is Gurgaon's fastest platform to hire verified home cleaners, cooks, drivers, painters, security guards, delivery workers and more. Aadhaar-verified workers. Book in 2 minutes. Pay only after work is done." />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
