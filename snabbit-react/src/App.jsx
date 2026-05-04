@@ -126,7 +126,7 @@ function Nav() {
           <a href="#reviews" className="nav-link">Reviews</a>
           <a href="#faq" className="nav-link">FAQ</a>
         </div>
-        <a href="https://app.switchlocally.com/hire" className="nav-cta">Book Now</a>
+        <a href="https://app.switchlocally.com/employer" className="nav-cta">Book Now</a>
       </div>
     </nav>
   )
@@ -170,14 +170,14 @@ function Hero() {
           </div>
 
           <div className="hero-ctas">
-            <a href="https://app.switchlocally.com/hire" className="btn-book">
+            <a href="https://app.switchlocally.com/employer" className="btn-book">
               <IcoBolt />
               <span>
                 <span className="btn-main">Book Instant</span>
                 <span className="btn-sub">Help in under 60 mins</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com/hire" className="btn-schedule">
+            <a href="https://app.switchlocally.com/employer" className="btn-schedule">
               <IcoCal />
               <span>
                 <span className="btn-main">Schedule Later</span>
@@ -369,14 +369,14 @@ function CTA() {
           <p className="cta-p">12 job categories. Flexible slots from 4 hours to 7 days. Aadhaar-verified workers, guaranteed results.</p>
           <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com</a>
           <div className="cta-btns">
-            <a href="https://app.switchlocally.com/hire" className="btn-book">
+            <a href="https://app.switchlocally.com/employer" className="btn-book">
               <IcoApple />
               <span>
                 <span className="btn-sub" style={{opacity:0.55}}>Download on the</span>
                 <span className="btn-main">App Store</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com/hire" className="btn-book">
+            <a href="https://app.switchlocally.com/employer" className="btn-book">
               <IcoPlay />
               <span>
                 <span className="btn-sub" style={{opacity:0.55}}>Get it on</span>
