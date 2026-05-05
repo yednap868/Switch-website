@@ -98,6 +98,14 @@ function IcoShield() {
   )
 }
 
+function IcoPin() {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13">
+      <path d="M8 1a4.5 4.5 0 014.5 4.5c0 3-4.5 9.5-4.5 9.5S3.5 8.5 3.5 5.5A4.5 4.5 0 018 1zm0 2.5a2 2 0 100 4 2 2 0 000-4z"/>
+    </svg>
+  )
+}
+
 function StarRow() {
   return <div className="rev-stars">{[0,1,2,3,4].map(i=><IcoStar key={i}/>)}</div>
 }
@@ -120,6 +128,7 @@ function Nav() {
         <div className="nav-links">
           <a href="#roles" className="nav-link">Services</a>
           <a href="#how-it-works" className="nav-link">How it works</a>
+          <a href="#pricing" className="nav-link">Pricing</a>
           <a href="#reviews" className="nav-link">Reviews</a>
           <a href="#faq" className="nav-link">FAQ</a>
         </div>
@@ -459,6 +468,71 @@ function AllServicesDirectory() {
 }
 
 /* ─── FOOTER ──────────────────────────────────────── */
+/* ─── PRICING ─────────────────────────────────────── */
+function Pricing() {
+  return (
+    <section className="sec sec-alt sec-border-t" id="pricing">
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag">Pricing · Transparent</span>
+          <h2 className="h2">Simple, honest pricing.</h2>
+          <p className="lead">No hidden fees. Pay only for the hours you need — with an early-bird deal for your first bookings.</p>
+        </div>
+
+        <div className="pricing-grid" data-anim style={{'--delay':'80ms'}}>
+
+          <div className="price-card price-card--featured">
+            <div className="price-badge">First 5 Bookings</div>
+            <div className="price-tag-wrap">
+              <span className="price-currency">₹</span>
+              <span className="price-amount">200</span>
+              <span className="price-per">/hr</span>
+            </div>
+            <div className="price-name">Early Bird Rate</div>
+            <p className="price-desc">Lock in our launch price for your first 5 bookings. All worker categories included.</p>
+            <ul className="price-perks">
+              <li><IcoCheck />Aadhaar-verified workers</li>
+              <li><IcoCheck />Same-day availability</li>
+              <li><IcoCheck />Pay after work is done</li>
+              <li><IcoCheck />Free cancellation (2 hrs notice)</li>
+              <li><IcoCheck />All durations: 4 hrs – 7 days</li>
+            </ul>
+            <a href="https://app.switchlocally.com/employer" className="price-cta price-cta--primary">
+              <IcoBolt />Claim Early Bird Rate
+            </a>
+            <p className="price-note">Limited to first 5 bookings per account</p>
+          </div>
+
+          <div className="price-card">
+            <div className="price-tag-wrap">
+              <span className="price-currency">₹</span>
+              <span className="price-amount">250</span>
+              <span className="price-per">/hr</span>
+            </div>
+            <div className="price-name">Standard Rate</div>
+            <p className="price-desc">Our regular rate after the early-bird period. Still the most competitive rate in the market.</p>
+            <ul className="price-perks">
+              <li><IcoCheck />Aadhaar-verified workers</li>
+              <li><IcoCheck />Same-day availability</li>
+              <li><IcoCheck />Pay after work is done</li>
+              <li><IcoCheck />Free cancellation (2 hrs notice)</li>
+              <li><IcoCheck />All durations: 4 hrs – 7 days</li>
+            </ul>
+            <a href="https://app.switchlocally.com/employer" className="price-cta price-cta--secondary">
+              Book a Worker
+            </a>
+          </div>
+
+        </div>
+
+        <div className="pricing-note" data-anim style={{'--delay':'180ms'}}>
+          All prices are per worker per hour. Multi-day bookings billed at hourly rate × hours worked. No platform fee.
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -469,6 +543,19 @@ function Footer() {
             <span className="ft-name">Switch</span>
           </div>
           <p className="ft-desc">India's trusted platform for booking verified blue-collar professionals — fast, flexible, and reliable.</p>
+          <div className="ft-address">
+            <IcoPin />
+            <div>
+              <div className="ft-addr-line">5th Floor, WeWork, Cyber Hub</div>
+              <div className="ft-addr-line">Gurgaon, Haryana 122002</div>
+              <a
+                href="https://www.google.com/maps/search/WeWork+Cyber+Hub+Gurgaon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ft-map-link"
+              >View on Google Maps →</a>
+            </div>
+          </div>
           <div className="ft-social">
             <a href="#" title="LinkedIn">in</a>
             <a href="#" title="X.com">𝕏</a>
@@ -528,6 +615,7 @@ function HomePage() {
       <Stats />
       <Roles />
       <HowItWorks />
+      <Pricing />
       <Reviews />
       <FAQ />
       <CTA />

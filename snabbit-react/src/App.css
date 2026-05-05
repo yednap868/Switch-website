@@ -784,3 +784,119 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   .step{padding:1.5rem 1.25rem}
 }
 
+/* ─── PRICING ────────────────────────────────────── */
+.pricing-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.5rem;max-width:860px;
+}
+.price-card{
+  background:var(--s1);border:1px solid var(--bd);
+  border-radius:20px;padding:2.5rem 2.25rem;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.price-card:hover{
+  border-color:rgba(99,102,241,0.3);
+  box-shadow:0 12px 50px rgba(0,0,0,0.5),0 0 0 1px rgba(99,102,241,0.08);
+  transform:translateY(-3px);
+}
+.price-card--featured{
+  border-color:rgba(99,102,241,0.4);
+  background:linear-gradient(160deg,rgba(99,102,241,0.08) 0%,var(--s1) 60%);
+  box-shadow:0 0 0 1px rgba(99,102,241,0.15),0 20px 60px rgba(0,0,0,0.4);
+}
+.price-card--featured:hover{
+  border-color:rgba(99,102,241,0.55);
+  box-shadow:0 0 0 1px rgba(99,102,241,0.2),0 20px 70px rgba(0,0,0,0.5);
+}
+.price-badge{
+  display:inline-flex;align-self:flex-start;
+  font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(139,92,246,0.95);
+  background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.35);
+  padding:0.3rem 0.875rem;border-radius:99px;
+  margin-bottom:1.5rem;
+}
+.price-tag-wrap{
+  display:flex;align-items:flex-end;gap:0.125rem;
+  margin-bottom:0.5rem;line-height:1;
+}
+.price-currency{
+  font-size:1.75rem;font-weight:800;color:rgba(255,255,255,0.7);
+  padding-bottom:0.3rem;letter-spacing:-0.02em;
+}
+.price-amount{
+  font-size:4rem;font-weight:900;letter-spacing:-0.05em;
+  background:linear-gradient(135deg,#fff 20%,rgba(200,205,255,0.85) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.price-per{
+  font-size:1rem;font-weight:500;color:rgba(255,255,255,0.45);
+  padding-bottom:0.6rem;letter-spacing:-0.01em;
+}
+.price-name{
+  font-size:1.125rem;font-weight:700;color:#fff;letter-spacing:-0.02em;
+  margin-bottom:0.75rem;
+}
+.price-desc{
+  font-size:0.9375rem;color:rgba(255,255,255,0.5);line-height:1.7;
+  margin-bottom:1.75rem;
+}
+.price-perks{
+  display:flex;flex-direction:column;gap:0.625rem;
+  margin-bottom:2rem;flex:1;
+}
+.price-perks li{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.9375rem;font-weight:400;color:rgba(255,255,255,0.65);
+}
+.price-perks li svg{color:rgba(99,102,241,0.8);flex-shrink:0}
+.price-cta{
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  padding:1rem 1.5rem;border-radius:12px;
+  font-size:1rem;font-weight:700;letter-spacing:-0.01em;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  margin-bottom:0.75rem;text-decoration:none;
+}
+.price-cta--primary{background:#fff;color:#000}
+.price-cta--primary:hover{background:#ebebeb;transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,255,255,0.14)}
+.price-cta--primary svg{width:16px;height:16px;flex-shrink:0}
+.price-cta--secondary{
+  background:rgba(99,102,241,0.12);
+  border:1px solid rgba(99,102,241,0.35);color:#fff;
+}
+.price-cta--secondary:hover{background:rgba(99,102,241,0.2);border-color:rgba(99,102,241,0.5);transform:translateY(-2px)}
+.price-note{font-size:0.8125rem;color:rgba(255,255,255,0.3);text-align:center}
+.pricing-note{
+  margin-top:2.5rem;
+  font-size:0.875rem;color:rgba(255,255,255,0.35);text-align:center;
+  border-top:1px solid var(--bd);padding-top:2rem;max-width:860px;
+}
+@media(max-width:680px){.pricing-grid{grid-template-columns:1fr}}
+@media(max-width:480px){
+  .price-card{padding:2rem 1.5rem}
+  .price-amount{font-size:3.25rem}
+}
+
+/* ─── FOOTER ADDRESS ─────────────────────────────── */
+.ft-address{
+  display:flex;align-items:flex-start;gap:0.5rem;
+  margin-bottom:1.75rem;
+}
+.ft-address svg{
+  flex-shrink:0;margin-top:3px;
+  color:rgba(255,255,255,0.35);
+  width:14px;height:14px;
+}
+.ft-addr-line{
+  font-size:0.875rem;font-weight:400;color:rgba(255,255,255,0.5);line-height:1.65;
+}
+.ft-map-link{
+  display:inline-block;margin-top:0.3rem;
+  font-size:0.8125rem;font-weight:500;
+  color:rgba(139,92,246,0.8);text-decoration:none;
+  transition:color .15s;
+}
+.ft-map-link:hover{color:rgba(160,120,255,1)}
+
