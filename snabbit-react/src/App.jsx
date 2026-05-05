@@ -531,7 +531,6 @@ function Pricing() {
             <ul className="price-perks">
               <li><IcoCheck />Aadhaar-verified workers</li>
               <li><IcoCheck />Same-day availability</li>
-              <li><IcoCheck />Pay after work is done</li>
               <li><IcoCheck />Free cancellation (2 hrs notice)</li>
               <li><IcoCheck />All durations: 4 hrs – 7 days</li>
             </ul>
@@ -552,7 +551,6 @@ function Pricing() {
             <ul className="price-perks">
               <li><IcoCheck />Aadhaar-verified workers</li>
               <li><IcoCheck />Same-day availability</li>
-              <li><IcoCheck />Pay after work is done</li>
               <li><IcoCheck />Free cancellation (2 hrs notice)</li>
               <li><IcoCheck />All durations: 4 hrs – 7 days</li>
             </ul>
