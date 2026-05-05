@@ -24,14 +24,14 @@ const ROLES = [
 ]
 
 const REVIEWS = [
-  { name: 'Kirti S.',   loc: 'Mumbai',     text: 'Found a reliable cook in minutes. Punctual, skilled, and the food was excellent every single day.' },
-  { name: 'Neha P.',    loc: 'Pune',       text: 'Booked a driver for 7 days straight. Always professional, always on time. Will definitely rebook.' },
-  { name: 'Pradnyesh', loc: 'Bangalore',  text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our business.' },
-  { name: 'Ridhi S.',   loc: 'Delhi',      text: 'Hired a painter for 2 days. Clean work, no mess, finished ahead of schedule. Effortless experience.' },
-  { name: 'Ritika M.',  loc: 'Hyderabad',  text: 'Cook prepared amazing meals for our family event. Booked at 9 PM, arrived 8 AM sharp. Incredible service.' },
-  { name: 'Sameer K.',  loc: 'Chennai',    text: 'Our store needed part-time help during Diwali. Switch sent 3 experienced hands within just a few hours.' },
-  { name: 'Karishma',  loc: 'Ahmedabad',  text: 'Switch is our weekly go-to for home cleaning. Always trained, always polite, always thorough. Love it.' },
-  { name: 'Rabia A.',   loc: 'Surat',      text: 'Got a nanny for 2 weeks. She was wonderful with my kids — completely reliable and trusted.' },
+  { name: 'Kirti S.',   loc: 'DLF Phase 2',     text: 'Found a reliable cook in minutes. Punctual, skilled, and the food was excellent every single day.' },
+  { name: 'Neha P.',    loc: 'Sector 52',        text: 'Booked a driver for 7 days straight. Always professional, always on time. Will definitely rebook.' },
+  { name: 'Pradnyesh', loc: 'Udyog Vihar',      text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our business.' },
+  { name: 'Ridhi S.',   loc: 'Golf Course Road', text: 'Hired a painter for 2 days. Clean work, no mess, finished ahead of schedule. Effortless experience.' },
+  { name: 'Ritika M.',  loc: 'Sector 23',        text: 'Cook prepared amazing meals for our family event. Booked at 9 PM, arrived 8 AM sharp. Incredible service.' },
+  { name: 'Sameer K.',  loc: 'DLF Phase 5',      text: 'Our store needed part-time help during Diwali. Switch sent 3 experienced hands within just a few hours.' },
+  { name: 'Karishma',  loc: 'Sikanderpur',      text: 'Switch is our weekly go-to for home cleaning. Always trained, always polite, always thorough. Love it.' },
+  { name: 'Rabia A.',   loc: 'Sector 45',        text: 'Got a nanny for 2 weeks. She was wonderful with my kids — completely reliable and trusted.' },
 ]
 
 const FAQS = [
