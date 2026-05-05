@@ -230,13 +230,51 @@ function Stats() {
           { num: '1,000+', lbl: 'Verified Users' },
           { num: '200+',   lbl: 'Jobs Completed' },
           { num: '4.8 ★',  lbl: 'Average Rating' },
-          { num: '🏙',     lbl: 'Gurgaon' },
         ].map((s, i) => (
           <div className="s-cell" key={i} data-anim style={{'--delay':`${i*90}ms`}}>
             <div className="s-num">{s.num}</div>
             <div className="s-lbl">{s.lbl}</div>
           </div>
         ))}
+        <div className="s-cell s-cell--city" data-anim style={{'--delay':'270ms'}}>
+          <div className="s-city-icon">
+            <svg viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="14" width="12" height="21" rx="1.5" fill="url(#cg1)" opacity="0.9"/>
+              <rect x="3" y="17" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="7" y="17" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="3" y="21" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="7" y="21" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="3" y="25" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="7" y="25" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="14" y="6" width="14" height="29" rx="1.5" fill="url(#cg2)"/>
+              <rect x="17" y="10" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="22" y="10" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="17" y="15" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="22" y="15" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="17" y="20" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="22" y="20" width="2.5" height="2.5" rx="0.4" fill="white" opacity="0.55"/>
+              <rect x="19" y="26" width="4" height="9" rx="0.5" fill="white" opacity="0.2"/>
+              <rect x="29" y="18" width="10" height="17" rx="1.5" fill="url(#cg1)" opacity="0.85"/>
+              <rect x="31" y="21" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="35" y="21" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="31" y="25" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <rect x="35" y="25" width="2" height="2" rx="0.4" fill="white" opacity="0.5"/>
+              <line x1="0" y1="35.5" x2="40" y2="35.5" stroke="white" strokeOpacity="0.15" strokeWidth="1"/>
+              <defs>
+                <linearGradient id="cg1" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                  <stop offset="0%" stopColor="rgba(139,92,246,0.7)"/>
+                  <stop offset="100%" stopColor="rgba(99,102,241,0.5)"/>
+                </linearGradient>
+                <linearGradient id="cg2" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                  <stop offset="0%" stopColor="rgba(160,110,255,0.9)"/>
+                  <stop offset="100%" stopColor="rgba(99,102,241,0.7)"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div className="s-city-name">Gurgaon</div>
+          <div className="s-lbl">Live · Exclusively</div>
+        </div>
       </div>
     </div>
   )
