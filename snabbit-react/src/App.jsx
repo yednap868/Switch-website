@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './App.css'
 import SeoPage from './pages/SeoPage.jsx'
+import PartnerPage from './pages/PartnerPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── DATA ────────────────────────────────────────── */
@@ -136,7 +137,7 @@ function Nav() {
           <a href="#faq" className="nav-link">FAQ</a>
         </div>
         <div className="nav-actions">
-          <a href="https://app.switchlocally.com/partner" className="nav-partner">Become Switch Partner</a>
+          <Link to="/partner" className="nav-partner">Become Switch Partner</Link>
           <a href="https://app.switchlocally.com/employer" className="nav-cta">Book Now</a>
         </div>
       </div>
@@ -796,7 +797,7 @@ function Footer() {
           <ul>
             <li><a href="mailto:careers@switchlocally.com">Careers</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Become a Professional</a></li>
+            <li><Link to="/partner">Become a Professional</Link></li>
           </ul>
         </div>
         <div className="ft-col">
@@ -853,6 +854,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/partner" element={<PartnerPage />} />
       <Route path="/:slug" element={<SeoPage />} />
     </Routes>
   )
