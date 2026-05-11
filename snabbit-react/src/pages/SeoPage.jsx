@@ -128,7 +128,7 @@ function CtaBlock({ service }) {
     <div className="sp-cta">
       <div className="sp-cta-rating">
         <Stars />
-        <span>4.8 · 1,000+ bookings</span>
+        <span>4.8 · 500+ bookings</span>
       </div>
       <h3 className="sp-cta-h">Book a {service} in Gurgaon Today</h3>
       <p className="sp-cta-p">Verified professionals. Flexible hours. Pay only after you're satisfied.</p>

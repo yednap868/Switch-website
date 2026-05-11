@@ -241,7 +241,7 @@ function Stats() {
     <div className="stats">
       <div className="stats-row">
         {[
-          { num: '1,000+', lbl: 'Verified Users' },
+          { num: '500+', lbl: 'Verified Users' },
           { num: '200+',   lbl: 'Jobs Completed' },
           { num: '4.8 ★',  lbl: 'Average Rating' },
         ].map((s, i) => (
@@ -587,7 +587,7 @@ function HomeHead() {
     },
     geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
     areaServed: { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '1000' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '500' },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Blue-Collar &amp; Housekeeping Services in Gurgaon',

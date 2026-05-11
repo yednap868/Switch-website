@@ -36,7 +36,7 @@ export default function SeoHead({ page }) {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
       bestRating: '5',
-      reviewCount: '1000',
+      reviewCount: '500',
     },
     provider: {
       '@type': 'LocalBusiness',

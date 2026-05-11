@@ -6,7 +6,7 @@ import './PartnerPage.css'
 const APP_URL = 'https://app.switchlocally.com/'
 
 const BENEFITS = [
-  { ico: '💰', title: 'Earn ₹20,000–₹50,000/month', desc: 'Flexible bookings — work part-time or full-time. No agency cuts, no middlemen.' },
+  { ico: '💰', title: 'Earn ₹15,000–₹40,000/month', desc: 'Flexible bookings — work part-time or full-time. No agency cuts, no middlemen.' },
   { ico: '⚡', title: 'Daily payouts to your bank', desc: 'Finish work today, money in your account tomorrow. Direct UPI / bank transfers — every single day.' },
   { ico: '📅', title: 'You pick your hours',        desc: 'Choose your availability — 4-hour shifts, full days, or week-long gigs. Total flexibility.' },
   { ico: '🛡️', title: 'Verified, trusted jobs',     desc: 'All customers are app-verified. No fake bookings, no last-minute cancellations, no chasing payments.' },
@@ -24,18 +24,18 @@ const STEPS = [
 ]
 
 const CATEGORIES = [
-  { name: 'Cook',           pay: '₹250–400/hr' },
-  { name: 'Cleaning Staff', pay: '₹200–300/hr' },
-  { name: 'Driver',         pay: '₹250–450/hr' },
-  { name: 'Security Guard', pay: '₹180–280/hr' },
-  { name: 'Factory Helper', pay: '₹200–320/hr' },
-  { name: 'General Helper', pay: '₹200–320/hr' },
-  { name: 'Caretaker',      pay: '₹220–380/hr' },
-  { name: 'Kitchen Helper', pay: '₹200–320/hr' },
-  { name: 'Promoter',       pay: '₹250–450/hr' },
-  { name: 'Bouncer',        pay: '₹300–550/hr' },
-  { name: 'Bartender',      pay: '₹300–600/hr' },
-  { name: 'Waiter',         pay: '₹220–400/hr' },
+  { name: 'Cook',           pay: '₹180–260/hr' },
+  { name: 'Cleaning Staff', pay: '₹150–220/hr' },
+  { name: 'Driver',         pay: '₹180–260/hr' },
+  { name: 'Security Guard', pay: '₹150–220/hr' },
+  { name: 'Factory Helper', pay: '₹160–230/hr' },
+  { name: 'General Helper', pay: '₹150–220/hr' },
+  { name: 'Caretaker',      pay: '₹170–250/hr' },
+  { name: 'Kitchen Helper', pay: '₹150–220/hr' },
+  { name: 'Promoter',       pay: '₹180–260/hr' },
+  { name: 'Bouncer',        pay: '₹200–300/hr' },
+  { name: 'Bartender',      pay: '₹200–300/hr' },
+  { name: 'Waiter',         pay: '₹170–250/hr' },
 ]
 
 const REQUIREMENTS = [
@@ -47,10 +47,10 @@ const REQUIREMENTS = [
 ]
 
 const TRUST = [
-  { val: '1,000+', lbl: 'Active partners' },
-  { val: '₹50K',  lbl: 'Top monthly earner' },
+  { val: '500+',   lbl: 'Active partners' },
+  { val: '₹40K',   lbl: 'Top monthly earner' },
   { val: '24 hrs', lbl: 'Approval time' },
-  { val: '4.9 ★', lbl: 'Partner rating' },
+  { val: '4.9 ★',  lbl: 'Partner rating' },
 ]
 
 const STORIES = [
@@ -61,7 +61,7 @@ const STORIES = [
 ]
 
 const FAQS = [
-  { q: 'How much can I really earn?',           a: 'Most partners earn ₹20,000–₹50,000 per month based on hours, category, and ratings. Top-rated bartenders and bouncers cross ₹60,000.' },
+  { q: 'How much can I really earn?',           a: 'Most partners earn ₹15,000–₹40,000 per month based on hours, category, and ratings. Top-rated bartenders and bouncers can reach the upper end of that range.' },
   { q: 'Do I pay anything to join?',            a: 'No. Joining is 100% free. We only take a small platform fee from each completed booking — never upfront.' },
   { q: 'When do I get paid?',                   a: 'Daily. Finish your booking, get rated, and the money lands in your bank or UPI within 24 hours. No monthly cycles.' },
   { q: 'Can I choose which jobs to accept?',    a: 'Yes. You see every nearby job on the app and decide. Skip what doesn’t fit, accept what does. Full control.' },
@@ -106,15 +106,15 @@ export default function PartnerPage() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const [hours, setHours] = useState(8)
-  const [rate, setRate]   = useState(250)
+  const [rate, setRate]   = useState(200)
   const monthly = hours * rate * 26
   const daily   = hours * rate
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
-    title: 'Switch Partner — Earn ₹20,000–₹50,000/month with Daily Payouts',
-    description: 'Join Switch as a verified partner. Earn ₹20,000–₹50,000 per month with flexible hours and DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bartender, bouncer, or waiter.',
+    title: 'Switch Partner — Earn ₹15,000–₹40,000/month with Daily Payouts',
+    description: 'Join Switch as a verified partner. Earn ₹15,000–₹40,000 per month with flexible hours and DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bartender, bouncer, or waiter.',
     employmentType: ['FULL_TIME', 'PART_TIME', 'CONTRACTOR'],
     hiringOrganization: { '@type': 'Organization', name: 'Switch', sameAs: 'https://switchlocally.com' },
     jobLocation: {
@@ -124,7 +124,7 @@ export default function PartnerPage() {
     baseSalary: {
       '@type': 'MonetaryAmount',
       currency: 'INR',
-      value: { '@type': 'QuantitativeValue', minValue: 20000, maxValue: 50000, unitText: 'MONTH' },
+      value: { '@type': 'QuantitativeValue', minValue: 15000, maxValue: 40000, unitText: 'MONTH' },
     },
     datePosted: '2026-01-01',
     validThrough: '2027-01-01',
@@ -134,8 +134,8 @@ export default function PartnerPage() {
   return (
     <div className="pp-root">
       <Helmet>
-        <title>Become a Switch Partner — Daily Payouts · Earn ₹20K–50K/month in Gurgaon</title>
-        <meta name="description" content="Join Switch as a verified partner. Earn ₹20,000–₹50,000/month with DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bouncer, bartender or waiter in Gurgaon. Free to join, same-day approval." />
+        <title>Become a Switch Partner — Daily Payouts · Earn ₹15K–40K/month in Gurgaon</title>
+        <meta name="description" content="Join Switch as a verified partner. Earn ₹15,000–₹40,000/month with DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bouncer, bartender or waiter in Gurgaon. Free to join, same-day approval." />
         <link rel="canonical" href="https://switchlocally.com/partner" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
@@ -165,10 +165,10 @@ export default function PartnerPage() {
         <div className="pp-hero-inner">
           <div className="pp-tag-row">
             <span className="pp-dot" />
-            <span>Now hiring in Gurgaon · 1,000+ partners onboard</span>
+            <span>Now hiring in Gurgaon · 500+ partners onboard</span>
           </div>
           <h1 className="pp-h1">
-            Earn ₹50,000/month.<br />
+            Earn ₹40,000/month.<br />
             <em>Get paid daily.</em>
           </h1>
           <p className="pp-lead">
@@ -215,16 +215,16 @@ export default function PartnerPage() {
                     <label>Hours per day</label>
                     <span className="pp-ctrl-val">{hours} hrs</span>
                   </div>
-                  <input type="range" min="2" max="12" value={hours} onChange={e => setHours(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>2</span><span>6</span><span>12</span></div>
+                  <input type="range" min="2" max="10" value={hours} onChange={e => setHours(+e.target.value)} />
+                  <div className="pp-ctrl-scale"><span>2</span><span>6</span><span>10</span></div>
                 </div>
                 <div className="pp-ctrl">
                   <div className="pp-ctrl-top">
                     <label>Hourly rate</label>
                     <span className="pp-ctrl-val">₹{rate}</span>
                   </div>
-                  <input type="range" min="150" max="600" step="10" value={rate} onChange={e => setRate(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>₹150</span><span>₹400</span><span>₹600</span></div>
+                  <input type="range" min="150" max="300" step="10" value={rate} onChange={e => setRate(+e.target.value)} />
+                  <div className="pp-ctrl-scale"><span>₹150</span><span>₹225</span><span>₹300</span></div>
                 </div>
               </div>
 
@@ -351,7 +351,7 @@ export default function PartnerPage() {
               ))}
             </div>
             <div className="pp-mid-cta">
-              <CtaPrimary>Join 1,000+ partners</CtaPrimary>
+              <CtaPrimary>Join 500+ partners</CtaPrimary>
             </div>
           </div>
         </section>
@@ -398,7 +398,7 @@ export default function PartnerPage() {
       {/* STICKY MOBILE CTA */}
       <div className="pp-sticky">
         <div className="pp-sticky-info">
-          <strong>Earn ₹20K–50K/month</strong>
+          <strong>Earn ₹15K–40K/month</strong>
           <span>Daily payouts · Free to join</span>
         </div>
         <a href={APP_URL} className="pp-sticky-btn">Apply<Arrow size={14}/></a>
