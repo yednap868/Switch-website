@@ -262,12 +262,12 @@
   font-size:0.6875rem;color:var(--pp-t3);font-weight:600;
 }
 
-.pp-calc-out{display:grid;grid-template-rows:1.4fr 1fr;gap:1.5rem}
+.pp-calc-out{display:flex;flex-direction:column;gap:1.5rem}
 .pp-calc-card{
   background:rgba(255,255,255,0.025);
   border:1px solid var(--pp-bd);
   border-radius:18px;padding:1.75rem;
-  position:relative;overflow:hidden;
+  position:relative;
 }
 .pp-calc-card--hero{
   background:
@@ -277,7 +277,9 @@
   border:1px solid rgba(167,139,250,0.28);
   padding:2.25rem;
   box-shadow:0 30px 80px rgba(99,102,241,0.15);
+  display:flex;flex-direction:column;align-items:flex-start;
 }
+.pp-calc-card--hero .pp-cta-primary{margin-top:0.25rem}
 .pp-calc-side{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .pp-calc-lbl{
   font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;

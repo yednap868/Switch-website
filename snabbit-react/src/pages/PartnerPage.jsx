@@ -24,18 +24,18 @@ const STEPS = [
 ]
 
 const CATEGORIES = [
-  { name: 'Cook',           pay: '₹180–260/hr' },
-  { name: 'Cleaning Staff', pay: '₹150–220/hr' },
-  { name: 'Driver',         pay: '₹180–260/hr' },
-  { name: 'Security Guard', pay: '₹150–220/hr' },
-  { name: 'Factory Helper', pay: '₹160–230/hr' },
-  { name: 'General Helper', pay: '₹150–220/hr' },
-  { name: 'Caretaker',      pay: '₹170–250/hr' },
-  { name: 'Kitchen Helper', pay: '₹150–220/hr' },
-  { name: 'Promoter',       pay: '₹180–260/hr' },
-  { name: 'Bouncer',        pay: '₹200–300/hr' },
-  { name: 'Bartender',      pay: '₹200–300/hr' },
-  { name: 'Waiter',         pay: '₹170–250/hr' },
+  { name: 'Cook',           pay: '₹109–129/hr' },
+  { name: 'Cleaning Staff', pay: '₹99–119/hr' },
+  { name: 'Driver',         pay: '₹109–129/hr' },
+  { name: 'Security Guard', pay: '₹99–119/hr' },
+  { name: 'Factory Helper', pay: '₹99–119/hr' },
+  { name: 'General Helper', pay: '₹99–119/hr' },
+  { name: 'Caretaker',      pay: '₹109–129/hr' },
+  { name: 'Kitchen Helper', pay: '₹99–119/hr' },
+  { name: 'Promoter',       pay: '₹109–129/hr' },
+  { name: 'Bouncer',        pay: '₹119–129/hr' },
+  { name: 'Bartender',      pay: '₹119–129/hr' },
+  { name: 'Waiter',         pay: '₹109–129/hr' },
 ]
 
 const REQUIREMENTS = [
@@ -106,8 +106,8 @@ export default function PartnerPage() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const [hours, setHours] = useState(8)
-  const [rate, setRate]   = useState(200)
-  const monthly = hours * rate * 26
+  const [rate, setRate]   = useState(119)
+  const monthly = hours * rate * 30
   const daily   = hours * rate
 
   const schema = {
@@ -215,16 +215,16 @@ export default function PartnerPage() {
                     <label>Hours per day</label>
                     <span className="pp-ctrl-val">{hours} hrs</span>
                   </div>
-                  <input type="range" min="2" max="10" value={hours} onChange={e => setHours(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>2</span><span>6</span><span>10</span></div>
+                  <input type="range" min="4" max="12" value={hours} onChange={e => setHours(+e.target.value)} />
+                  <div className="pp-ctrl-scale"><span>4</span><span>8</span><span>12</span></div>
                 </div>
                 <div className="pp-ctrl">
                   <div className="pp-ctrl-top">
                     <label>Hourly rate</label>
                     <span className="pp-ctrl-val">₹{rate}</span>
                   </div>
-                  <input type="range" min="150" max="300" step="10" value={rate} onChange={e => setRate(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>₹150</span><span>₹225</span><span>₹300</span></div>
+                  <input type="range" min="99" max="129" step="1" value={rate} onChange={e => setRate(+e.target.value)} />
+                  <div className="pp-ctrl-scale"><span>₹99</span><span>₹114</span><span>₹129</span></div>
                 </div>
               </div>
 
@@ -232,8 +232,8 @@ export default function PartnerPage() {
                 <div className="pp-calc-card pp-calc-card--hero">
                   <div className="pp-calc-lbl">Estimated monthly earnings</div>
                   <div className="pp-calc-big">₹{monthly.toLocaleString('en-IN')}</div>
-                  <div className="pp-calc-note">Based on 26 working days. Paid daily to your bank.</div>
-                  <CtaPrimary big>Start earning today</CtaPrimary>
+                  <div className="pp-calc-note">Based on 30 working days. Paid daily to your bank.</div>
+                  <CtaPrimary big>Apply on the App</CtaPrimary>
                 </div>
                 <div className="pp-calc-side">
                   <div className="pp-calc-card">
@@ -243,8 +243,8 @@ export default function PartnerPage() {
                   </div>
                   <div className="pp-calc-card">
                     <div className="pp-calc-lbl">Weekly total</div>
-                    <div className="pp-calc-mid">₹{(daily*6).toLocaleString('en-IN')}</div>
-                    <div className="pp-calc-note">6-day work week</div>
+                    <div className="pp-calc-mid">₹{(daily*7).toLocaleString('en-IN')}</div>
+                    <div className="pp-calc-note">7-day work week</div>
                   </div>
                 </div>
               </div>
