@@ -808,7 +808,7 @@ export default function SeoPage() {
             <div className="sp-nav-mark" style={{width:28,height:28,fontSize:'0.8125rem',borderRadius:7}}>S</div>
             <span style={{fontWeight:800,fontSize:'1rem',color:'#fff',letterSpacing:'-0.025em'}}>Switch</span>
           </Link>
-          <p>© 2025 Switch · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link> · <Link to="/home-cleaning-gurgaon">Services</Link></p>
+          <p>© 2026 Switch · <a href="tel:+918368828660">+91 83688 28660</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link> · <Link to="/home-cleaning-gurgaon">Services</Link></p>
         </div>
       </footer>
 

@@ -7,20 +7,23 @@ import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
-  'Home Cleaning','Cook','Driver','Store Helper','Painter',
-  'Delivery Worker','Factory / Warehouse','Nanny / Babysitter','Security Guard',
+  'Cook','Cleaning Staff','Driver','Security Guard','Factory Helper',
+  'General Helper','Caretaker','Kitchen Helper','Promoter','Bouncer','Bartender','Waiter',
 ]
 
 const ROLES = [
-  { img: '/house-cleaner.jpg',   name: 'Home Cleaning',      slug: 'home-cleaning-gurgaon',      desc: 'Sweep, mop, dust — full home or specific rooms',       tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/cook-chef.jpg',       name: 'Cook',               slug: 'cook-gurgaon',               desc: 'Daily meals, tiffin prep, or catering support',        tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/driver.jpg',          name: 'Driver',             slug: 'driver-gurgaon',             desc: 'Daily commute, outstation, or airport runs',           tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/store-helper.jpg',    name: 'Store Helper',       slug: 'store-helper-gurgaon',       desc: 'Stacking, billing, customer floor support',            tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/painter.jpg',         name: 'Painter',            slug: 'painter-gurgaon',            desc: 'Interior, exterior painting and touch-ups',            tags: ['8 hrs','2 days','7 days'] },
-{ img: '/delivery-rider.jpg',  name: 'Delivery Worker',    slug: 'delivery-worker-gurgaon',    desc: 'Last-mile delivery, loading and unloading',            tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/warehouse-staff.jpg', name: 'Factory / Warehouse',slug: 'factory-warehouse-gurgaon',  desc: 'Sorting, packing, assembly line support',              tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/baby-care.jpg',       name: 'Nanny / Babysitter', slug: 'nanny-gurgaon',              desc: 'Childcare, school pickup, homework help',              tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/security-guard.jpg',  name: 'Security Guard',     slug: 'security-guard-gurgaon',     desc: 'Gate duty, premises security, night patrol',           tags: ['12 hrs','2 days','7 days'] },
+  { img: '/cook-new.jpg',           name: 'Cook',           slug: 'cook-gurgaon',           desc: 'Daily meals, tiffin prep, or catering support',     tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/cleaning-staff.jpg',     name: 'Cleaning Staff', slug: 'home-cleaning-gurgaon',  desc: 'Sweep, mop, dust — full home or specific rooms',    tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/driver-new.jpg',         name: 'Driver',         slug: 'driver-gurgaon',         desc: 'Daily commute, outstation, or airport runs',        tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/security-guard-new.jpg', name: 'Security Guard', slug: 'security-guard-gurgaon', desc: 'Gate duty, premises security, night patrol',        tags: ['12 hrs','2 days','7 days'] },
+  { img: '/factory-helper.jpg',     name: 'Factory Helper', slug: 'factory-warehouse-gurgaon', desc: 'Sorting, packing, assembly line support',         tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/general-helper.jpg',     name: 'General Helper', slug: 'store-helper-gurgaon',   desc: 'Picking, packing, loading and organizing',          tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/caretaker.jpg',          name: 'Caretaker',      slug: 'nanny-gurgaon',          desc: 'Childcare, elderly care, complete peace of mind',   tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/kitchen-helper.jpg',     name: 'Kitchen Helper', external: 'https://app.switchlocally.com/employer', desc: 'Kitchen prep, chopping, cleaning support', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/promoter.jpg',           name: 'Promoter',       external: 'https://app.switchlocally.com/employer', desc: 'Engage customers and boost brand sales',   tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/bouncer.jpg',            name: 'Bouncer',        external: 'https://app.switchlocally.com/employer', desc: 'Entry management and secure environments', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/bartender.jpg',          name: 'Bartender',      external: 'https://app.switchlocally.com/employer', desc: 'Crafting drinks for events and venues',    tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/waiter.jpg',             name: 'Waiter',         external: 'https://app.switchlocally.com/employer', desc: 'Table service for parties, dine-in, events', tags: ['4 hrs','8 hrs','12 hrs'] },
 ]
 
 const REVIEWS = [
@@ -132,7 +135,10 @@ function Nav() {
           <a href="#reviews" className="nav-link">Reviews</a>
           <a href="#faq" className="nav-link">FAQ</a>
         </div>
-        <a href="https://app.switchlocally.com/employer" className="nav-cta">Book Now</a>
+        <div className="nav-actions">
+          <a href="https://app.switchlocally.com/partner" className="nav-partner">Become Switch Partner</a>
+          <a href="https://app.switchlocally.com/employer" className="nav-cta">Book Now</a>
+        </div>
       </div>
     </nav>
   )
@@ -205,7 +211,14 @@ function Hero() {
 
       {/* RIGHT */}
       <div className="hero-r">
-        <img src="/hero-workers.png" alt="Switch verified professionals" />
+        <img
+          src="/hero-workers.jpg"
+          alt="Switch verified blue-collar professionals — cooks, drivers, cleaners, security guards in Gurgaon"
+          width="1000"
+          height="650"
+          fetchpriority="high"
+          decoding="async"
+        />
         <div className="hero-r-fade" />
         <div className="hero-booking-card">
           <div className="hbc-head">
@@ -291,45 +304,149 @@ function Roles() {
           <p className="lead">From a 4-hour cook to a 7-day warehouse team — book the right skill for exactly as long as you need it.</p>
         </div>
         <div className="roles-grid">
-          {ROLES.map((r, i) => (
-            <Link to={`/${r.slug}`} className="role" key={i} data-anim style={{'--delay':`${(i%4)*65}ms`}}>
-              <img src={r.img} alt={r.name} className="role-img" />
-              <div className="role-body">
-                <div className="r-name">{r.name}</div>
-                <div className="r-desc">{r.desc}</div>
-                <div className="r-tags">
-                  {r.tags.map(t => <span className="r-tag" key={t}>{t}</span>)}
+          {ROLES.map((r, i) => {
+            const inner = (
+              <>
+                <img
+                  src={r.img}
+                  alt={`Hire verified ${r.name.toLowerCase()} in Gurgaon — ${r.desc}`}
+                  className="role-img"
+                  width="720"
+                  height="720"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="role-body">
+                  <div className="r-name">{r.name}</div>
+                  <div className="r-desc">{r.desc}</div>
+                  <div className="r-tags">
+                    {r.tags.map(t => <span className="r-tag" key={t}>{t}</span>)}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </>
+            )
+            const style = {'--delay':`${(i%4)*65}ms`}
+            return r.external ? (
+              <a href={r.external} className="role" key={i} data-anim style={style}>{inner}</a>
+            ) : (
+              <Link to={`/${r.slug}`} className="role" key={i} data-anim style={style}>{inner}</Link>
+            )
+          })}
         </div>
       </div>
     </section>
   )
 }
 
-/* ─── HOW IT WORKS ────────────────────────────────── */
+/* ─── EASY PROCESS ────────────────────────────────── */
+function IllChoose() {
+  return (
+    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="ipg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="rgba(160,140,255,0.9)"/>
+          <stop offset="100%" stopColor="rgba(99,102,241,0.6)"/>
+        </linearGradient>
+      </defs>
+      <rect x="14" y="16" width="92" height="72" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.45)" strokeWidth="1.2"/>
+      <rect x="22" y="26" width="22" height="22" rx="5" fill="url(#ipg1)"/>
+      <rect x="49" y="26" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+      <rect x="76" y="26" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+      <rect x="22" y="54" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+      <rect x="49" y="54" width="22" height="22" rx="5" fill="url(#ipg1)" opacity="0.55"/>
+      <rect x="76" y="54" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
+      <circle cx="33" cy="37" r="3.4" fill="#fff" opacity="0.95"/>
+      <path d="M28 39 c0-3.4 2.4-5.2 5-5.2 s5 1.8 5 5.2" stroke="#fff" strokeWidth="1.4" opacity="0.95" fill="none"/>
+    </svg>
+  )
+}
+function IllHours() {
+  return (
+    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="ipg2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
+          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="50" r="34" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.5)" strokeWidth="1.3"/>
+      <circle cx="60" cy="50" r="28" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
+      <path d="M60 22 A28 28 0 0 1 88 50" stroke="url(#ipg2)" strokeWidth="4" strokeLinecap="round" fill="none"/>
+      <line x1="60" y1="50" x2="60" y2="30" stroke="#fff" strokeWidth="2.4" strokeLinecap="round"/>
+      <line x1="60" y1="50" x2="76" y2="58" stroke="#fff" strokeWidth="2.4" strokeLinecap="round"/>
+      <circle cx="60" cy="50" r="2.6" fill="#fff"/>
+      <text x="60" y="13" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">12</text>
+      <text x="103" y="53" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">3</text>
+      <text x="60" y="93" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">6</text>
+      <text x="17" y="53" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">9</text>
+    </svg>
+  )
+}
+function IllVerify() {
+  return (
+    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="ipg3" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
+          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
+        </linearGradient>
+      </defs>
+      <rect x="36" y="14" width="48" height="72" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.5)" strokeWidth="1.3"/>
+      <circle cx="60" cy="44" r="13" fill="rgba(255,255,255,0.08)" stroke="url(#ipg3)" strokeWidth="1.5"/>
+      <circle cx="60" cy="40" r="5" fill="#fff" opacity="0.9"/>
+      <path d="M50 54 c0-6 4-9 10-9 s10 3 10 9" stroke="#fff" strokeWidth="1.6" fill="none" opacity="0.9"/>
+      <line x1="44" y1="22" x2="50" y2="22" stroke="url(#ipg3)" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="70" y1="22" x2="76" y2="22" stroke="url(#ipg3)" strokeWidth="2" strokeLinecap="round"/>
+      <line x1="44" y1="78" x2="76" y2="78" stroke="rgba(255,255,255,0.15)" strokeWidth="1"/>
+      <rect x="44" y="64" width="32" height="8" rx="2" fill="rgba(99,102,241,0.2)" stroke="rgba(160,140,255,0.4)"/>
+      <text x="60" y="70.5" textAnchor="middle" fontSize="7" fontWeight="800" fill="#fff" letterSpacing="1.5">4 2 8 1</text>
+    </svg>
+  )
+}
+function IllRelax() {
+  return (
+    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="ipg4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
+          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
+        </linearGradient>
+      </defs>
+      <rect x="10" y="20" width="100" height="60" rx="9" fill="rgba(99,102,241,0.06)" stroke="rgba(160,140,255,0.45)" strokeWidth="1.2"/>
+      <path d="M28 64 v-10 a6 6 0 0 1 6-6 h52 a6 6 0 0 1 6 6 v10" fill="url(#ipg4)"/>
+      <rect x="22" y="60" width="76" height="14" rx="3" fill="url(#ipg4)" opacity="0.85"/>
+      <rect x="22" y="60" width="76" height="14" rx="3" fill="none" stroke="rgba(255,255,255,0.18)"/>
+      <rect x="22" y="73" width="6" height="6" rx="1" fill="rgba(255,255,255,0.4)"/>
+      <rect x="92" y="73" width="6" height="6" rx="1" fill="rgba(255,255,255,0.4)"/>
+      <rect x="34" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
+      <rect x="52" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
+      <rect x="70" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
+      <circle cx="60" cy="32" r="4" fill="#fff"/>
+      <path d="M52 32 q8 -10 16 0" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" fill="none"/>
+    </svg>
+  )
+}
+
 function HowItWorks() {
   const items = [
-    { n:'1', title:'Choose the service',         desc:'Pick from 12+ verified blue-collar services — from home cleaning to security guards. Done in seconds.' },
-    { n:'2', title:'Add details & select time',  desc:'Tell us what you need and pick a time that works for you. Done in under 2 minutes, no calls needed.' },
-    { n:'3', title:'Confirm & relax',            desc:'We\'ll match you with a verified, nearby worker. Sit back and relax — they\'ll handle the rest.' },
+    { n:'01', title:'Choose the service',           desc:'Easily book through our user-friendly platform. Pick from 12+ verified blue-collar services — done in seconds.', Ill: IllChoose },
+    { n:'02', title:'Choose the no. of hours',      desc:'Select the perfect slot — 4 hrs, 8 hrs, or up to 7 days — and let our expert take care of the rest.', Ill: IllHours },
+    { n:'03', title:'Verify expert at your doorstep', desc:'A fast face scan and OTP verification ensure you receive trusted service every single time.', Ill: IllVerify },
+    { n:'04', title:'Enjoy your space',             desc:'Now just rest and enjoy a smooth, hassle-free service experience from start to finish.', Ill: IllRelax },
   ]
   return (
     <section className="sec" id="how-it-works">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag">How it works</span>
-          <h2 className="h2">Simple steps to get<br />the right worker.</h2>
-          <p className="lead">Quick. Easy. Reliable. Get help in just a few taps.</p>
+          <span className="tag">Easy process</span>
+          <h2 className="h2">How to use<br />our service?</h2>
+          <p className="lead">A simple guide to help you use our service effortlessly.</p>
         </div>
-        <img src="/how-it-works.png" alt="How Switch works" className="hiw-img" data-anim />
-        <div className="steps">
+        <div className="steps steps--4">
           {items.map((s, i) => (
-            <div className="step" key={i} data-anim style={{'--delay':`${i*130}ms`}}>
+            <div className="step step--ill" key={i} data-anim style={{'--delay':`${i*120}ms`}}>
               <div className="step-n">Step {s.n}</div>
-              <div className="step-num">{s.n}</div>
+              <div className="step-ill"><s.Ill /></div>
               <div className="step-title">{s.title}</div>
               <p className="step-desc">{s.desc}</p>
             </div>
@@ -430,9 +547,9 @@ function CTA() {
           </div>
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
-          <img src="/screen-2.png" alt="" className="ph ph-s" />
-          <img src="/screen-home.png" alt="Switch app" className="ph ph-c" />
-          <img src="/screen-3.png" alt="" className="ph ph-s" />
+          <img src="/screen-2.png" alt="" className="ph ph-s" width="280" height="580" loading="lazy" decoding="async" />
+          <img src="/screen-home.png" alt="Switch app — book verified workers in Gurgaon" className="ph ph-c" width="320" height="640" loading="lazy" decoding="async" />
+          <img src="/screen-3.png" alt="" className="ph ph-s" width="280" height="580" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -441,37 +558,94 @@ function CTA() {
 
 /* ─── HOME SEO HEAD ───────────────────────────────── */
 function HomeHead() {
+  const allServices = [
+    'Housekeeping','Maid','House Cleaning','Cook','Driver','Cleaning Staff',
+    'Security Guard','Bouncer','Bartender','Waiter','Kitchen Helper','Promoter',
+    'Factory Helper','General Helper','Caretaker','Nanny','Painter','Delivery Worker',
+  ]
   const localBusiness = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
-    description: 'Book verified blue-collar workers in Gurgaon instantly. Home cleaners, cooks, drivers, painters, security guards, delivery workers and more.',
+    alternateName: 'Switch Locally',
+    description: 'Hire verified housekeeping staff, maids, cooks, drivers, cleaners, helpers, security guards, bouncers, bartenders and waiters in Gurgaon. All workers are Aadhaar-verified and background-checked.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
+    telephone: '+91-8368828660',
+    image: 'https://switchlocally.com/hero-workers.jpg',
+    logo: 'https://switchlocally.com/hero-workers.jpg',
+    priceRange: '₹200-₹250 per hour',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '5th Floor, WeWork, Cyber Hub',
+      addressLocality: 'Gurgaon',
+      addressRegion: 'Haryana',
+      postalCode: '122002',
+      addressCountry: 'IN',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
     areaServed: { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '1000' },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Blue-Collar Services in Gurgaon',
-      itemListElement: SERVICE_LIST.map(s => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: `${s.name} in Gurgaon`, url: `https://switchlocally.com/${s.slug}` },
-      })),
+      name: 'Blue-Collar &amp; Housekeeping Services in Gurgaon',
+      itemListElement: [
+        ...SERVICE_LIST.map(s => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: `${s.name} in Gurgaon`, url: `https://switchlocally.com/${s.slug}` },
+        })),
+        ...allServices.map(name => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: `${name} in Gurgaon`, areaServed: 'Gurgaon' },
+        })),
+      ],
     },
+    sameAs: [],
   }
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Switch',
     url: 'https://switchlocally.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://switchlocally.com/{search_term_string}-gurgaon',
+      'query-input': 'required name=search_term_string',
+    },
+  }
+  const orgSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Switch',
+    url: 'https://switchlocally.com',
+    logo: 'https://switchlocally.com/hero-workers.jpg',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+91-8368828660',
+      contactType: 'customer service',
+      areaServed: 'IN',
+      availableLanguage: ['en', 'hi'],
+    },
+  }
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   }
   return (
     <Helmet>
-      <title>Book Verified Blue-Collar Workers in Gurgaon | Switch</title>
-      <meta name="description" content="Switch is Gurgaon's fastest platform to hire verified home cleaners, cooks, drivers, painters, security guards, delivery workers and more. Aadhaar-verified workers. Book in 2 minutes. Pay only after work is done." />
+      <title>Hire Housekeeping, Maid &amp; Verified Workers in Gurgaon | Switch</title>
+      <meta name="description" content="Hire verified housekeeping staff, maids, cooks, drivers, cleaning staff, helpers, security guards, bouncers, bartenders and waiters in Gurgaon. Background-checked, Aadhaar-verified workers — book in 2 minutes. Pay only after work is done." />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
     </Helmet>
   )
 }
@@ -592,6 +766,17 @@ function Footer() {
               >View on Google Maps →</a>
             </div>
           </div>
+          <a href="tel:+918368828660" className="ft-phone">
+            <span className="ft-phone-ico">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 3.5C3 3 3.4 2.5 4 2.5h2c.5 0 .9.4 1 .9l.5 2.4c.1.4-.1.8-.4 1L5.7 8a10 10 0 0 0 4.4 4.4l1.1-1.4c.2-.3.7-.4 1-.3l2.4.5c.5.1.9.5.9 1v2c0 .6-.5 1-1 1A12 12 0 0 1 3 3.5Z"/>
+              </svg>
+            </span>
+            <span>
+              <span className="ft-phone-lbl">Call us</span>
+              <span className="ft-phone-num">+91 83688 28660</span>
+            </span>
+          </a>
           <div className="ft-social">
             <a href="#" title="LinkedIn">in</a>
             <a href="#" title="X.com">𝕏</a>
@@ -599,7 +784,7 @@ function Footer() {
           </div>
         </div>
         <div className="ft-col">
-          <h5>Support</h5>
+          <h3 className="ft-col-title">Support</h3>
           <ul>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Help Centre</a></li>
@@ -607,7 +792,7 @@ function Footer() {
           </ul>
         </div>
         <div className="ft-col">
-          <h5>Company</h5>
+          <h3 className="ft-col-title">Company</h3>
           <ul>
             <li><a href="mailto:careers@switchlocally.com">Careers</a></li>
             <li><a href="#">About Us</a></li>
@@ -615,7 +800,7 @@ function Footer() {
           </ul>
         </div>
         <div className="ft-col">
-          <h5>Legal</h5>
+          <h3 className="ft-col-title">Legal</h3>
           <ul>
             <li><a href="#">Terms &amp; Conditions</a></li>
             <li><a href="#">Privacy Policy</a></li>
@@ -624,7 +809,7 @@ function Footer() {
         </div>
       </div>
       <div className="ft-bot">
-        <span className="ft-copy">© 2025 Switch. All rights reserved.</span>
+        <span className="ft-copy">© 2026 Switch. All rights reserved.</span>
         <span className="ft-copy">Made in India 🇮🇳</span>
       </div>
     </footer>
@@ -647,15 +832,17 @@ function HomePage() {
     <>
       <HomeHead />
       <Nav />
-      <Hero />
-      <Stats />
-      <Roles />
-      <HowItWorks />
-      <Pricing />
-      <Reviews />
-      <FAQ />
-      <CTA />
-      <AllServicesDirectory />
+      <main>
+        <Hero />
+        <Stats />
+        <Roles />
+        <HowItWorks />
+        <Pricing />
+        <Reviews />
+        <FAQ />
+        <CTA />
+        <AllServicesDirectory />
+      </main>
       <Footer />
     </>
   )
