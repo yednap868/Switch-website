@@ -20,11 +20,11 @@ const ROLES = [
   { img: '/factory-helper.jpg',     name: 'Factory Helper', slug: 'factory-warehouse-gurgaon', desc: 'Sorting, packing, assembly line support',         tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/general-helper.jpg',     name: 'General Helper', slug: 'store-helper-gurgaon',   desc: 'Picking, packing, loading and organizing',          tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/caretaker.jpg',          name: 'Caretaker',      slug: 'nanny-gurgaon',          desc: 'Childcare, elderly care, complete peace of mind',   tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/kitchen-helper.jpg',     name: 'Kitchen Helper', external: 'https://app.switchlocally.com/employer', desc: 'Kitchen prep, chopping, cleaning support', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/promoter.jpg',           name: 'Promoter',       external: 'https://app.switchlocally.com/employer', desc: 'Engage customers and boost brand sales',   tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/bouncer.jpg',            name: 'Bouncer',        external: 'https://app.switchlocally.com/employer', desc: 'Entry management and secure environments', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/bartender.jpg',          name: 'Bartender',      external: 'https://app.switchlocally.com/employer', desc: 'Crafting drinks for events and venues',    tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/waiter.jpg',             name: 'Waiter',         external: 'https://app.switchlocally.com/employer', desc: 'Table service for parties, dine-in, events', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/kitchen-helper.jpg',     name: 'Kitchen Helper', external: 'https://app.switchlocally.com', desc: 'Kitchen prep, chopping, cleaning support', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/promoter.jpg',           name: 'Promoter',       external: 'https://app.switchlocally.com', desc: 'Engage customers and boost brand sales',   tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/bouncer.jpg',            name: 'Bouncer',        external: 'https://app.switchlocally.com', desc: 'Entry management and secure environments', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/bartender.jpg',          name: 'Bartender',      external: 'https://app.switchlocally.com', desc: 'Crafting drinks for events and venues',    tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/waiter.jpg',             name: 'Waiter',         external: 'https://app.switchlocally.com', desc: 'Table service for parties, dine-in, events', tags: ['4 hrs','8 hrs','12 hrs'] },
 ]
 
 const REVIEWS = [
@@ -138,7 +138,7 @@ function Nav() {
         </div>
         <div className="nav-actions">
           <Link to="/partner" className="nav-partner">Become Switch Partner</Link>
-          <a href="https://app.switchlocally.com/employer" className="nav-cta">Book Now</a>
+          <a href="https://app.switchlocally.com" className="nav-cta">Book Now</a>
         </div>
       </div>
     </nav>
@@ -183,14 +183,14 @@ function Hero() {
           </div>
 
           <div className="hero-ctas">
-            <a href="https://app.switchlocally.com/employer" className="btn-book">
+            <a href="https://app.switchlocally.com" className="btn-book">
               <IcoBolt />
               <span>
                 <span className="btn-main">Book Instant</span>
                 <span className="btn-sub">Help in under 60 mins</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com/employer" className="btn-schedule">
+            <a href="https://app.switchlocally.com" className="btn-schedule">
               <IcoCal />
               <span>
                 <span className="btn-main">Schedule Later</span>
@@ -531,14 +531,14 @@ function CTA() {
           <p className="cta-p">12 job categories. Flexible slots from 4 hours to 7 days. Aadhaar-verified workers, guaranteed results.</p>
           <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com</a>
           <div className="cta-btns">
-            <a href="https://app.switchlocally.com/employer" className="btn-book">
+            <a href="https://app.switchlocally.com" className="btn-book">
               <IcoApple />
               <span>
                 <span className="btn-sub" style={{opacity:0.55}}>Download on the</span>
                 <span className="btn-main">App Store</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com/employer" className="btn-book">
+            <a href="https://app.switchlocally.com" className="btn-book">
               <IcoPlay />
               <span>
                 <span className="btn-sub" style={{opacity:0.55}}>Get it on</span>
@@ -709,7 +709,7 @@ function Pricing() {
               <li><IcoCheck />Free cancellation (2 hrs notice)</li>
               <li><IcoCheck />All durations: 4 hrs – 7 days</li>
             </ul>
-            <a href="https://app.switchlocally.com/employer" className="price-cta price-cta--primary">
+            <a href="https://app.switchlocally.com" className="price-cta price-cta--primary">
               <IcoBolt />Claim Early Bird Rate
             </a>
             <p className="price-note">Limited to first 5 bookings per account</p>
@@ -729,7 +729,7 @@ function Pricing() {
               <li><IcoCheck />Free cancellation (2 hrs notice)</li>
               <li><IcoCheck />All durations: 4 hrs – 7 days</li>
             </ul>
-            <a href="https://app.switchlocally.com/employer" className="price-cta price-cta--secondary">
+            <a href="https://app.switchlocally.com" className="price-cta price-cta--secondary">
               Book a Worker
             </a>
           </div>
