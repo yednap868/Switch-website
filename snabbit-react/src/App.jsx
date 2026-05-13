@@ -130,6 +130,7 @@ function Nav() {
           <span className="nav-name">Switch</span>
         </a>
         <div className="nav-links">
+          <a href="#offers" className="nav-link nav-link--hot">Offers 🔥</a>
           <a href="#roles" className="nav-link">Services</a>
           <a href="#how-it-works" className="nav-link">How it works</a>
           <a href="#pricing" className="nav-link">Pricing</a>
@@ -680,6 +681,107 @@ function AllServicesDirectory() {
   )
 }
 
+/* ─── PROMOS ──────────────────────────────────────── */
+function Promos() {
+  const [copied, setCopied] = useState(false)
+  const copyCoupon = () => {
+    navigator.clipboard?.writeText('SAVE50')
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1800)
+  }
+  return (
+    <section className="sec promo-sec sec-border-t" id="offers">
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag promo-tag-hd">🔥 Limited Launch Offers</span>
+          <h2 className="h2">Hire pros for as low as<br /><em className="promo-em">₹99.</em></h2>
+          <p className="lead">Two flat-rate launch deals to get you on the platform. No surprises, no hidden fees.</p>
+        </div>
+
+        <div className="promo-grid" data-anim style={{'--delay':'80ms'}}>
+
+          {/* Card 1 — Kitchen Helper / Maid */}
+          <div className="promo-card promo-card--featured">
+            <div className="promo-ribbon">SAVE 50%</div>
+            <div className="promo-icon">🧹</div>
+            <div className="promo-eyebrow">FIRST BOOKING DEAL</div>
+            <h3 className="promo-title">Kitchen Helper &amp; Maid</h3>
+            <div className="promo-price-row">
+              <div className="promo-price-block">
+                <span className="promo-currency">₹</span>
+                <span className="promo-price">99</span>
+                <span className="promo-per">/hr</span>
+              </div>
+              <div className="promo-strike">
+                <span className="promo-strike-old">₹199</span>
+                <span className="promo-strike-save">Save ₹100</span>
+              </div>
+            </div>
+            <ul className="promo-perks">
+              <li><IcoCheck />Trained &amp; verified staff</li>
+              <li><IcoCheck />Same-day availability</li>
+              <li><IcoCheck />4 hrs · 8 hrs · 12 hrs slots</li>
+              <li><IcoCheck />Free cancellation up to 2 hrs</li>
+            </ul>
+            <button type="button" className={`promo-coupon${copied ? ' promo-coupon--copied' : ''}`} onClick={copyCoupon}>
+              <span className="promo-coupon-lbl">Use code</span>
+              <span className="promo-coupon-code">SAVE50</span>
+              <span className="promo-coupon-cta">{copied ? '✓ Copied' : 'Tap to copy'}</span>
+            </button>
+            <a href="https://app.switchlocally.com" className="promo-cta">
+              <IcoBolt />Book Now at ₹99/hr
+            </a>
+            <p className="promo-fine">*Valid on your first booking. Auto-applies at checkout.</p>
+          </div>
+
+          {/* Card 2 — Washroom Cleaning */}
+          <div className="promo-card">
+            <div className="promo-ribbon promo-ribbon--alt">FLAT RATE</div>
+            <div className="promo-icon">🚿</div>
+            <div className="promo-eyebrow">PER-BATHROOM PRICING</div>
+            <h3 className="promo-title">Washroom Deep Clean</h3>
+            <div className="promo-price-row">
+              <div className="promo-price-block">
+                <span className="promo-currency">₹</span>
+                <span className="promo-price">300</span>
+                <span className="promo-per">/bath</span>
+              </div>
+              <div className="promo-strike">
+                <span className="promo-strike-old">₹500</span>
+                <span className="promo-strike-save">Flat &amp; final</span>
+              </div>
+            </div>
+            <ul className="promo-perks">
+              <li><IcoCheck />Tiles, basin, toilet &amp; floor</li>
+              <li><IcoCheck />Anti-bacterial deep scrub</li>
+              <li><IcoCheck />All supplies included</li>
+              <li><IcoCheck />Per-bathroom flat pricing</li>
+            </ul>
+            <div className="promo-pack">
+              <div className="promo-pack-row"><span>1 Bathroom</span><strong>₹300</strong></div>
+              <div className="promo-pack-row"><span>2 Bathrooms</span><strong>₹600</strong></div>
+              <div className="promo-pack-row"><span>3 Bathrooms</span><strong>₹900</strong></div>
+            </div>
+            <a href="https://app.switchlocally.com" className="promo-cta promo-cta--alt">
+              <IcoBolt />Book Washroom Clean
+            </a>
+            <p className="promo-fine">*Includes all cleaning supplies. 90-min average per bathroom.</p>
+          </div>
+
+        </div>
+
+        <div className="promo-trust" data-anim style={{'--delay':'180ms'}}>
+          <span><IcoShield /> Aadhaar-verified workers</span>
+          <span className="trust-sep" />
+          <span><IcoStar /> 4.8 ★ average rating</span>
+          <span className="trust-sep" />
+          <span><IcoCheck /> Pay after service</span>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── FOOTER ──────────────────────────────────────── */
 /* ─── PRICING ─────────────────────────────────────── */
 function Pricing() {
@@ -836,6 +938,7 @@ function HomePage() {
       <main>
         <Hero />
         <Stats />
+        <Promos />
         <Roles />
         <HowItWorks />
         <Pricing />
