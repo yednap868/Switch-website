@@ -3,18 +3,18 @@
 
 export const BLOG_POSTS = [
   {
-    slug: 'hire-verified-maid-gurgaon-2025-guide',
-    title: 'How to Hire a Verified Maid in Gurgaon — The Complete 2025 Guide',
-    description: 'Looking to hire a verified maid in Gurgaon? Read our complete 2025 guide covering background checks, pricing, areas served, and how to book on switchlocally.com in minutes.',
-    excerpt: 'From background checks and Aadhaar verification to part-time vs full-time vs live-in — everything you need to know to hire a maid in Gurgaon in 2025.',
+    slug: 'hire-verified-maid-gurgaon-2026-guide',
+    title: 'How to Hire a Verified Maid in Gurgaon — The Complete 2026 Guide',
+    description: 'Looking to hire a verified maid in Gurgaon? Read our complete 2026 guide covering background checks, pricing, areas served, and how to book on switchlocally.com in minutes.',
+    excerpt: 'From background checks and Aadhaar verification to part-time vs full-time vs live-in — everything you need to know to hire a maid in Gurgaon in 2026.',
     category: 'Maid & Housekeeping',
     hero: '/cleaning-staff.jpg',
     date: '2026-04-12',
     readMins: 9,
-    keywords: 'how to hire verified maid Gurgaon, maid service Gurgaon, part-time maid vs full-time maid, maid cost in Gurgaon 2025, Aadhaar-verified maid Gurgaon, maid agency Gurgaon, switchlocally.com',
+    keywords: 'how to hire verified maid Gurgaon, maid service Gurgaon, part-time maid vs full-time maid, maid cost in Gurgaon 2026, Aadhaar-verified maid Gurgaon, maid agency Gurgaon, switchlocally.com',
     blocks: [
       { type: 'p', content: 'Finding a reliable, trustworthy maid in Gurgaon is one of the most common challenges faced by working professionals, nuclear families and busy households across the city. With so many options available — from local agencies to online platforms — it can be confusing to know where to start, what to look for, and how to make sure the person you invite into your home is actually safe.' },
-      { type: 'p', content: 'This complete guide walks you through everything you need to know about hiring a verified maid in Gurgaon in 2025 — and how Switch makes the entire process simple, safe and stress-free.' },
+      { type: 'p', content: 'This complete guide walks you through everything you need to know about hiring a verified maid in Gurgaon in 2026 — and how Switch makes the entire process simple, safe and stress-free.' },
 
       { type: 'h2', content: 'Why finding a good maid in Gurgaon is so difficult' },
       { type: 'p', content: 'Gurgaon is one of India\'s busiest corporate cities. With thousands of working couples, nuclear families and senior citizens living across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and countless other neighbourhoods — the demand for reliable domestic help has never been higher.' },
@@ -54,7 +54,7 @@ export const BLOG_POSTS = [
         'Best suited for households with newborns or elderly members needing constant care',
       ]},
 
-      { type: 'h2', content: 'How much does a maid cost in Gurgaon in 2025?' },
+      { type: 'h2', content: 'How much does a maid cost in Gurgaon in 2026?' },
       { type: 'p', content: 'Costs vary by service type, hours and tasks. A general guide:' },
       { type: 'ul', content: [
         'Part-time maid: ₹3,000 to ₹8,000 per month',
@@ -83,9 +83,9 @@ export const BLOG_POSTS = [
 
   {
     slug: 'home-cook-gurgaon-10-reasons',
-    title: 'Top 10 Reasons Why Every Home in Gurgaon Needs a Home Cook in 2025',
+    title: 'Top 10 Reasons Why Every Home in Gurgaon Needs a Home Cook in 2026',
     description: 'Thinking of hiring a home cook in Gurgaon? Here are 10 compelling reasons a verified home cook from Switch can transform your daily life — health, time, money and more.',
-    excerpt: 'Fresh meals, hours back in your day and healthier eating without trying. Here\'s why every Gurgaon home needs a verified cook in 2025.',
+    excerpt: 'Fresh meals, hours back in your day and healthier eating without trying. Here\'s why every Gurgaon home needs a verified cook in 2026.',
     category: 'Cook & Kitchen',
     hero: '/cook-new.jpg',
     date: '2026-04-08',
@@ -275,8 +275,8 @@ export const BLOG_POSTS = [
 
   {
     slug: 'hire-verified-personal-driver-gurgaon',
-    title: 'How to Hire a Verified Personal Driver in Gurgaon — Everything You Need to Know in 2025',
-    description: 'Looking to hire a personal or corporate driver in Gurgaon? Read this complete 2025 guide covering verification, costs, tips and how to book a verified driver in minutes.',
+    title: 'How to Hire a Verified Personal Driver in Gurgaon — Everything You Need to Know in 2026',
+    description: 'Looking to hire a personal or corporate driver in Gurgaon? Read this complete 2026 guide covering verification, costs, tips and how to book a verified driver in minutes.',
     excerpt: 'Cyber City to Palam Vihar, Udyog Vihar to Sohna Road — a verified personal driver can completely change your daily life. Here\'s how to hire one in Gurgaon.',
     category: 'Driver',
     hero: '/driver-new.jpg',
@@ -285,7 +285,7 @@ export const BLOG_POSTS = [
     keywords: 'hire personal driver Gurgaon, corporate driver Gurgaon, full-time driver cost Gurgaon, verify driver license India, family driver Gurgaon, switchlocally.com',
     blocks: [
       { type: 'p', content: 'Whether you\'re a busy professional in Cyber City, a family in Palam Vihar or a corporate business in Udyog Vihar — a reliable, verified personal driver in Gurgaon can completely change the quality of your daily life. No more traffic stress, parking hassle or road safety worries.' },
-      { type: 'p', content: 'But hiring the wrong driver can be a costly mistake. This guide covers everything you need to know about hiring a trusted, verified driver in Gurgaon in 2025.' },
+      { type: 'p', content: 'But hiring the wrong driver can be a costly mistake. This guide covers everything you need to know about hiring a trusted, verified driver in Gurgaon in 2026.' },
 
       { type: 'h2', content: 'Why you need a verified personal driver in Gurgaon' },
       { type: 'ul', content: [
@@ -328,7 +328,7 @@ export const BLOG_POSTS = [
         'Must be professionally presented and reliable',
       ]},
 
-      { type: 'h2', content: 'How much does a personal driver cost in Gurgaon in 2025?' },
+      { type: 'h2', content: 'How much does a personal driver cost in Gurgaon in 2026?' },
       { type: 'ul', content: [
         'Part-Time Driver: ₹8,000 to ₹12,000 per month',
         'Full-Time Driver: ₹12,000 to ₹18,000 per month',
@@ -349,8 +349,8 @@ export const BLOG_POSTS = [
   },
 
   {
-    slug: 'event-staff-gurgaon-2025-guide',
-    title: 'Planning an Event in Gurgaon? Here\'s How to Get the Perfect Staff in 2025',
+    slug: 'event-staff-gurgaon-2026-guide',
+    title: 'Planning an Event in Gurgaon? Here\'s How to Get the Perfect Staff in 2026',
     description: 'Planning a party, corporate event or wedding in Gurgaon? Learn how to hire verified bartenders, waiters, bouncers and promoters through Switch — Gurgaon\'s trusted event staff provider.',
     excerpt: 'Bartenders, waiters, bouncers, promoters — the right event staff makes or breaks the night. Here\'s how to hire verified staff in Gurgaon.',
     category: 'Events & Hospitality',

@@ -598,7 +598,7 @@ function makePricingPage(s) {
     service: s.name,
     serviceId: s.id,
     serviceImg: s.img,
-    title: `${s.name} Cost in Gurgaon – Rates & Pricing 2025 | Switch`,
+    title: `${s.name} Cost in Gurgaon – Rates & Pricing 2026 | Switch`,
     description: `Transparent ${s.name.toLowerCase()} pricing in Gurgaon. Compare 4-hour, 8-hour, 2-day and 7-day rates. No hidden charges. Book verified workers from Switch.`,
     h1: `${s.name} Cost in Gurgaon — Pricing & Rates`,
     intro: `Wondering how much a ${s.name.toLowerCase()} costs in Gurgaon? Switch offers transparent, all-in pricing with no hidden fees. Pay only after the work is done and you are satisfied.`,

@@ -111,7 +111,7 @@ export default function AboutPage() {
     '@type': 'AboutPage',
     name: 'About Switch — Gurgaon\'s Trusted Home & Business Staffing Platform',
     url: 'https://switchlocally.com/about',
-    description: 'Switch is Gurgaon\'s most trusted home and business staffing platform. Founded in 2025, we connect families and businesses across Gurgaon with Aadhaar-verified, background-checked domestic workers and business staff.',
+    description: 'Switch is Gurgaon\'s most trusted home and business staffing platform. Founded in 2026, we connect families and businesses across Gurgaon with Aadhaar-verified, background-checked domestic workers and business staff.',
     publisher: {
       '@type': 'Organization',
       name: 'Switch',
@@ -132,11 +132,11 @@ export default function AboutPage() {
     <>
       <Helmet>
         <title>About Switch — Gurgaon's Trusted Home & Business Staffing Platform</title>
-        <meta name="description" content="Switch is Gurgaon's most trusted home and business staffing platform. Founded in 2025, we connect 500+ Aadhaar-verified workers with families and businesses across DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. Book maids, cooks, caretakers, drivers, security guards, bouncers, bartenders and waiters in minutes." />
+        <meta name="description" content="Switch is Gurgaon's most trusted home and business staffing platform. Founded in 2026, we connect 500+ Aadhaar-verified workers with families and businesses across DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. Book maids, cooks, caretakers, drivers, security guards, bouncers, bartenders and waiters in minutes." />
         <meta name="keywords" content="about Switch, trusted home staffing agency Gurgaon, verified manpower agency Gurgaon, verified domestic workers Gurgaon, Aadhaar-verified workers Gurgaon, hire domestic help Gurgaon, professional home staffing Gurgaon, on-demand home staff Gurgaon, switchlocally.com, Switch App" />
         <link rel="canonical" href="https://switchlocally.com/about" />
         <meta property="og:title" content="About Switch — Gurgaon's Trusted Home & Business Staffing Platform" />
-        <meta property="og:description" content="Founded in 2025. 500+ verified partners. 1000+ bookings served. Verified maids, cooks, caretakers, drivers, security guards, bouncers and bartenders across Gurgaon." />
+        <meta property="og:description" content="Founded in 2026. 500+ verified partners. 1000+ bookings served. Verified maids, cooks, caretakers, drivers, security guards, bouncers and bartenders across Gurgaon." />
         <meta property="og:url" content="https://switchlocally.com/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -160,7 +160,7 @@ export default function AboutPage() {
                 platform.
               </h1>
               <p className="ab-lead">
-                Born in 2025 with one simple idea — finding the right worker should never be hard.
+                Born in 2026 with one simple idea — finding the right worker should never be hard.
                 Whether you need someone to cook your meals, clean your home, care for your loved ones,
                 or manage security at your business, we are just one click away.
               </p>
@@ -190,7 +190,7 @@ export default function AboutPage() {
             <div className="ab-text" data-anim style={{'--delay':'80ms'}}>
               <p>
                 We are <strong>Switch</strong> — Gurgaon's most trusted and friendly home and business staffing platform.
-                Born in 2025, we set out to fix one of the most frustrating problems in any household or business:
+                Born in 2026, we set out to fix one of the most frustrating problems in any household or business:
                 <em> finding the right worker, when you need them, without the hassle.</em>
               </p>
               <p>
@@ -288,7 +288,7 @@ export default function AboutPage() {
               <span className="ab-tag">Our story</span>
               <h2 className="ab-h2">From a real problem to a real platform.</h2>
               <p>
-                Switch was founded in 2025 with a very real problem in mind — finding verified, trustworthy
+                Switch was founded in 2026 with a very real problem in mind — finding verified, trustworthy
                 domestic and business staff in Gurgaon was unnecessarily complicated. Too many middlemen,
                 too many delays, too little trust.
               </p>
