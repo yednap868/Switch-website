@@ -4,6 +4,9 @@ import { Helmet } from 'react-helmet-async'
 import './App.css'
 import SeoPage from './pages/SeoPage.jsx'
 import PartnerPage from './pages/PartnerPage.jsx'
+import AboutPage from './pages/AboutPage.jsx'
+import BlogIndex from './pages/BlogIndex.jsx'
+import BlogPost from './pages/BlogPost.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── DATA ────────────────────────────────────────── */
@@ -115,7 +118,7 @@ function StarRow() {
 }
 
 /* ─── NAV ─────────────────────────────────────────── */
-function Nav() {
+export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10)
@@ -130,12 +133,12 @@ function Nav() {
           <span className="nav-name">Switch</span>
         </a>
         <div className="nav-links">
-          <a href="#offers" className="nav-link nav-link--hot">Offers 🔥</a>
-          <a href="#roles" className="nav-link">Services</a>
-          <a href="#how-it-works" className="nav-link">How it works</a>
-          <a href="#pricing" className="nav-link">Pricing</a>
-          <a href="#reviews" className="nav-link">Reviews</a>
-          <a href="#faq" className="nav-link">FAQ</a>
+          <a href="/#offers" className="nav-link nav-link--hot">Offers 🔥</a>
+          <a href="/#roles" className="nav-link">Services</a>
+          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/blog" className="nav-link">Blog</Link>
+          <a href="/#pricing" className="nav-link">Pricing</a>
+          <a href="/#faq" className="nav-link">FAQ</a>
         </div>
         <div className="nav-actions">
           <Link to="/partner" className="nav-partner">Become Switch Partner</Link>
@@ -570,14 +573,14 @@ function HomeHead() {
     '@type': 'LocalBusiness',
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
-    alternateName: 'Switch Locally',
-    description: 'Hire verified housekeeping staff, maids, cooks, drivers, cleaners, helpers, security guards, bouncers, bartenders and waiters in Gurgaon. All workers are Aadhaar-verified and background-checked.',
+    alternateName: ['Switch Locally', 'Switch App'],
+    description: 'Switch is Gurgaon\'s most trusted and friendly home and business staffing platform. Hire Aadhaar-verified, background-checked maids, cooks, kitchen helpers, caretakers, nannies, security guards, drivers, bouncers, bartenders, waiters, promoters and general helpers across all major areas and pincodes of Gurgaon.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     telephone: '+91-8368828660',
     image: 'https://switchlocally.com/hero-workers.jpg',
     logo: 'https://switchlocally.com/hero-workers.jpg',
-    priceRange: '₹200-₹250 per hour',
+    priceRange: '₹149-₹199 per hour',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '5th Floor, WeWork, Cyber Hub',
@@ -587,7 +590,12 @@ function HomeHead() {
       addressCountry: 'IN',
     },
     geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
-    areaServed: { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
+    areaServed: [
+      { '@type': 'City', name: 'Gurgaon', sameAs: 'https://en.wikipedia.org/wiki/Gurugram' },
+      { '@type': 'City', name: 'Gurugram' },
+      ...['DLF Phase 1','DLF Phase 3','DLF Phase 4','DLF Queens Enclave','Sushant Lok Phase 1','Sushant Lok Phase 2','Sushant Lok Phase 3','Palam Vihar','Udyog Vihar','Sohna Road','Cyber City','MG Road','Galleria Market','Sector 14','Sector 17','Sector 23','Sector 31','Sector 40','Sector 47','Sector 49','Chakkarpur','Sikanderpur','Nathupur','Greenwood City','Malibu Towne','Sun City'].map(n => ({ '@type': 'Place', name: `${n}, Gurgaon` })),
+      ...['122001','122002','122006','122009','122010','122017','122018','122022'].map(p => ({ '@type': 'PostalAddress', postalCode: p, addressLocality: 'Gurgaon', addressRegion: 'Haryana', addressCountry: 'IN' })),
+    ],
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '500' },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -641,8 +649,9 @@ function HomeHead() {
   }
   return (
     <Helmet>
-      <title>Hire Housekeeping, Maid &amp; Verified Workers in Gurgaon | Switch</title>
-      <meta name="description" content="Hire verified housekeeping staff, maids, cooks, drivers, cleaning staff, helpers, security guards, bouncers, bartenders and waiters in Gurgaon. Background-checked, Aadhaar-verified workers — book in 2 minutes. Pay only after work is done." />
+      <title>Verified Maids, Cooks, Drivers &amp; Workers in Gurgaon | Switch</title>
+      <meta name="description" content="Switch is Gurgaon's most trusted home &amp; business staffing platform. Hire Aadhaar-verified maids, cooks, caretakers, drivers, security guards, bouncers, bartenders &amp; waiters across DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. Book in 2 minutes. Pay after work is done." />
+      <meta name="keywords" content="verified domestic workers Gurgaon, Aadhaar-verified maid Gurgaon, hire cook Gurgaon, kitchen helper Gurgaon, caretaker agency Gurgaon, elderly care Gurgaon, nanny agency Gurgaon, security guard Gurgaon, driver hire Gurgaon, bouncer Gurgaon, bartender hire Gurgaon, waiter for events Gurgaon, promoter Gurgaon, blue-collar staffing Gurgaon, maid 122001, maid 122002, maid 122006, maid 122009, maid 122010, maid 122017, maid 122018, maid 122022, DLF maid, Sushant Lok maid, Udyog Vihar staff, Cyber City home help, Palam Vihar caretaker, Sohna Road maid, switchlocally.com, Switch App, same-day worker booking Gurgaon, replacement guarantee maid Gurgaon, pay after work done Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
@@ -800,7 +809,7 @@ function Pricing() {
             <div className="price-badge">First 5 Bookings</div>
             <div className="price-tag-wrap">
               <span className="price-currency">₹</span>
-              <span className="price-amount">200</span>
+              <span className="price-amount">149</span>
               <span className="price-per">/hr</span>
             </div>
             <div className="price-name">Early Bird Rate</div>
@@ -820,7 +829,7 @@ function Pricing() {
           <div className="price-card">
             <div className="price-tag-wrap">
               <span className="price-currency">₹</span>
-              <span className="price-amount">250</span>
+              <span className="price-amount">199</span>
               <span className="price-per">/hr</span>
             </div>
             <div className="price-name">Standard Rate</div>
@@ -846,7 +855,7 @@ function Pricing() {
   )
 }
 
-function Footer() {
+export function Footer() {
   return (
     <footer className="footer">
       <div className="ft-grid">
@@ -897,8 +906,9 @@ function Footer() {
         <div className="ft-col">
           <h3 className="ft-col-title">Company</h3>
           <ul>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
             <li><a href="mailto:careers@switchlocally.com">Careers</a></li>
-            <li><a href="#">About Us</a></li>
             <li><Link to="/partner">Become a Professional</Link></li>
           </ul>
         </div>
@@ -958,6 +968,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/partner" element={<PartnerPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/blog" element={<BlogIndex />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/:slug" element={<SeoPage />} />
     </Routes>
   )
