@@ -220,7 +220,7 @@ function Hero() {
           src="/hero-workers.jpg"
           alt="Switch verified blue-collar professionals — cooks, drivers, cleaners, security guards in Gurgaon"
           width="1000"
-          height="650"
+          height="789"
           fetchpriority="high"
           decoding="async"
         />
@@ -552,9 +552,9 @@ function CTA() {
           </div>
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
-          <img src="/screen-2.png" alt="" className="ph ph-s" width="280" height="580" loading="lazy" decoding="async" />
-          <img src="/screen-home.png" alt="Switch app — book verified workers in Gurgaon" className="ph ph-c" width="320" height="640" loading="lazy" decoding="async" />
-          <img src="/screen-3.png" alt="" className="ph ph-s" width="280" height="580" loading="lazy" decoding="async" />
+          <img src="/screen-2.png"    alt="Switch app — service categories" className="ph ph-s ph-l" width="390" height="844" loading="lazy" decoding="async" />
+          <img src="/screen-home.png" alt="Switch app — book verified workers in Gurgaon" className="ph ph-c" width="390" height="844" loading="lazy" decoding="async" />
+          <img src="/screen-3.png"    alt="Switch app — verified worker profiles" className="ph ph-s ph-r" width="390" height="844" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
