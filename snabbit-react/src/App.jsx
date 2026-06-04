@@ -9,45 +9,61 @@ import BlogIndex from './pages/BlogIndex.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
+/* ─── CONTACT ─────────────────────────────────────── */
+const APP_URL = 'https://app.switchlocally.com'
+const PHONE = '+918368828660'
+const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
+const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
+const CALL_URL = `tel:${PHONE}`
+
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
-  'Cook','Cleaning Staff','Driver','Security Guard','Factory Helper',
-  'General Helper','Caretaker','Kitchen Helper','Promoter','Bouncer','Bartender','Waiter',
+  'Store Helper','Security Guard','Factory Worker','Waiter','Bouncer','Bartender',
+  'Promoter','Housekeeping','Driver','Cook','Kitchen Helper','Loading Staff',
 ]
 
 const ROLES = [
-  { img: '/cook-new.jpg',           name: 'Cook',           slug: 'cook-gurgaon',           desc: 'Daily meals, tiffin prep, or catering support',     tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/cleaning-staff.jpg',     name: 'Cleaning Staff', slug: 'home-cleaning-gurgaon',  desc: 'Sweep, mop, dust — full home or specific rooms',    tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/driver-new.jpg',         name: 'Driver',         slug: 'driver-gurgaon',         desc: 'Daily commute, outstation, or airport runs',        tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/security-guard-new.jpg', name: 'Security Guard', slug: 'security-guard-gurgaon', desc: 'Gate duty, premises security, night patrol',        tags: ['12 hrs','2 days','7 days'] },
-  { img: '/factory-helper.jpg',     name: 'Factory Helper', slug: 'factory-warehouse-gurgaon', desc: 'Sorting, packing, assembly line support',         tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/general-helper.jpg',     name: 'General Helper', slug: 'store-helper-gurgaon',   desc: 'Picking, packing, loading and organizing',          tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/caretaker.jpg',          name: 'Caretaker',      slug: 'nanny-gurgaon',          desc: 'Childcare, elderly care, complete peace of mind',   tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/kitchen-helper.jpg',     name: 'Kitchen Helper', external: 'https://app.switchlocally.com', desc: 'Kitchen prep, chopping, cleaning support', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/promoter.jpg',           name: 'Promoter',       external: 'https://app.switchlocally.com', desc: 'Engage customers and boost brand sales',   tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/bouncer.jpg',            name: 'Bouncer',        external: 'https://app.switchlocally.com', desc: 'Entry management and secure environments', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/bartender.jpg',          name: 'Bartender',      external: 'https://app.switchlocally.com', desc: 'Crafting drinks for events and venues',    tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/waiter.jpg',             name: 'Waiter',         external: 'https://app.switchlocally.com', desc: 'Table service for parties, dine-in, events', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/general-helper.jpg',     name: 'Store / General Helper', slug: 'store-helper-gurgaon',  desc: 'Billing support, stocking, loading & shop-floor help', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: 'https://images.unsplash.com/photo-1614854262318-831574f15f1f?w=720&h=720&fit=crop&q=80', name: 'Security Guard', slug: 'security-guard-gurgaon', desc: 'Gate duty, premises security, night patrol for your site', tags: ['12 hrs','2 days','7 days'] },
+  { img: '/factory-helper.jpg',     name: 'Factory / Warehouse Worker', slug: 'factory-warehouse-gurgaon', desc: 'Sorting, packing, assembly line & dispatch support', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/waiter.jpg',             name: 'Waiter / Steward', external: APP_URL, desc: 'Table service for restaurants, banquets & events', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/bouncer.jpg',            name: 'Bouncer',        external: APP_URL, desc: 'Entry management & crowd control for venues', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/bartender.jpg',          name: 'Bartender',      external: APP_URL, desc: 'Bar service for restaurants, clubs & events', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/promoter.jpg',           name: 'Promoter',       external: APP_URL, desc: 'Engage customers & drive in-store sales', tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/driver-new.jpg',         name: 'Driver',         slug: 'driver-gurgaon',         desc: 'Deliveries, commercial runs & staff transport', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=720&h=720&fit=crop&q=80', name: 'Cook / Chef',    slug: 'cook-gurgaon',           desc: 'Kitchen production for cafés, messes & catering', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=720&h=720&fit=crop&q=80', name: 'Kitchen Helper', external: APP_URL, desc: 'Prep, chopping & dishwashing for commercial kitchens', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=720&h=720&fit=crop&q=80', name: 'Housekeeping',   slug: 'home-cleaning-gurgaon',  desc: 'Daily upkeep for offices, shops & premises', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=720&h=720&fit=crop&q=80', name: 'Caretaker / Nanny', slug: 'nanny-gurgaon',       desc: 'For your home — childcare & elderly care', tags: ['4 hrs','8 hrs','2 days'] },
+]
+
+const INDUSTRIES = [
+  { ico: '🛍️', name: 'Retail & Shops',         roles: 'Store helpers · Billing support · Security · Loaders' },
+  { ico: '🍽️', name: 'Restaurants & Cafés',    roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
+  { ico: '📦', name: 'Warehouses & Factories', roles: 'Packers · Loaders · Line workers · Helpers' },
+  { ico: '🎉', name: 'Events & Banquets',      roles: 'Waiters · Bartenders · Bouncers · Promoters' },
+  { ico: '🏢', name: 'Offices & Co-working',   roles: 'Housekeeping · Security · Pantry · Office boys' },
+  { ico: '💈', name: 'Salons & Clinics',       roles: 'Front desk · Housekeeping · Helpers · Attendants' },
 ]
 
 const REVIEWS = [
-  { name: 'Kirti S.',   loc: 'DLF Phase 2',     text: 'Found a reliable cook in minutes. Punctual, skilled, and the food was excellent every single day.' },
-  { name: 'Neha P.',    loc: 'Sector 52',        text: 'Booked a driver for 7 days straight. Always professional, always on time. Will definitely rebook.' },
-  { name: 'Pradnyesh', loc: 'Udyog Vihar',      text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our business.' },
-  { name: 'Ridhi S.',   loc: 'Golf Course Road', text: 'Hired a painter for 2 days. Clean work, no mess, finished ahead of schedule. Effortless experience.' },
-  { name: 'Ritika M.',  loc: 'Sector 23',        text: 'Cook prepared amazing meals for our family event. Booked at 9 PM, arrived 8 AM sharp. Incredible service.' },
-  { name: 'Sameer K.',  loc: 'DLF Phase 5',      text: 'Our store needed part-time help during Diwali. Switch sent 3 experienced hands within just a few hours.' },
-  { name: 'Karishma',  loc: 'Sikanderpur',      text: 'Switch is our weekly go-to for home cleaning. Always trained, always polite, always thorough. Love it.' },
-  { name: 'Rabia A.',   loc: 'Sector 45',        text: 'Got a nanny for 2 weeks. She was wonderful with my kids — completely reliable and trusted.' },
+  { name: 'Pradnyesh', loc: 'Warehouse · Udyog Vihar', text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our dispatch team.' },
+  { name: 'Sameer K.',  loc: 'Retail Store · DLF Phase 5', text: 'Our store needed extra hands during Diwali. Switch sent 3 experienced helpers within just a few hours.' },
+  { name: 'Rohit M.',   loc: 'Restaurant · Sector 29',   text: 'We staff weekend banquets through Switch — waiters and a bartender, every time on time. Replacement was instant when one fell sick.' },
+  { name: 'Neha P.',    loc: 'Logistics · Sector 52',     text: 'Booked drivers for 7 days straight. Always professional, always on time. Now our default for staffing.' },
+  { name: 'Aman G.',    loc: 'Café · Golf Course Road',   text: 'Two kitchen helpers for a full week during our launch. Verified, skilled, and no agency drama.' },
+  { name: 'Ritika M.',  loc: 'Event · Sector 23',         text: 'Hired waiters for a corporate event. Booked at 9 PM, reported 8 AM sharp. Incredible reliability.' },
+  { name: 'Vivek S.',   loc: 'Office · Cyber City',       text: 'Daily housekeeping and a security guard for our office floor. Set up in a day, billing was clean.' },
+  { name: 'Kirti S.',   loc: 'Home · DLF Phase 2',        text: 'Also used them for a home cook — punctual, skilled, excellent food every single day.' },
 ]
 
 const FAQS = [
-  { q: 'What types of workers can I book?',       a: 'Switch covers multiple blue-collar categories — cooks, drivers, cleaners, security guards, factory workers, store helpers, nannies, painters, delivery workers, and more.' },
-  { q: 'What booking durations are available?',   a: 'Book for 4 hours, 8 hours, 12 hours, 2 days, or up to 7 days. Mix and match based on your exact requirement.' },
-  { q: 'Are all workers background verified?',    a: 'Yes. Every worker is Aadhaar-verified, background-checked, and skills-assessed before they are approved to take bookings on the platform.' },
-  { q: 'How quickly can I get someone?',          a: 'Most bookings are confirmed within 6 hours. For urgent needs, same-day availability is shown in real time within the app.' },
-  { q: 'Can I reschedule or cancel?',             a: 'Yes — cancel or reschedule at no charge up to 2 hours before the booking start time, directly from the app.' },
-  { q: 'How does payment work?',                  a: 'Pay securely via UPI, cards, or wallets. You are only charged after the work is completed and confirmed by you.' },
+  { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse workers, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
+  { q: 'Can I hire multiple workers or a full team?', a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more workers, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.' },
+  { q: 'What if a worker doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a worker is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
+  { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the per-worker rate. Talk to us on WhatsApp for exact rates for your business.' },
+  { q: 'Are all workers verified?', a: 'Yes. Every worker is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
+  { q: 'Do you provide GST invoices and how is payment handled?', a: 'No advance — you pay on arrival. Pay via UPI, cards or bank transfer, and we can provide proper invoices for your business records. Ask our team to set up a business account.' },
 ]
 
 /* ─── ICONS ───────────────────────────────────────── */
@@ -133,16 +149,15 @@ export function Nav() {
           <span className="nav-name">Switch</span>
         </a>
         <div className="nav-links">
-          <a href="/#offers" className="nav-link nav-link--hot">Offers 🔥</a>
-          <a href="/#roles" className="nav-link">Services</a>
+          <a href="/#industries" className="nav-link">Industries</a>
+          <a href="/#roles" className="nav-link">Staff</a>
+          <a href="/#pricing" className="nav-link">Pricing</a>
           <Link to="/about" className="nav-link">About</Link>
           <Link to="/blog" className="nav-link">Blog</Link>
-          <a href="/#pricing" className="nav-link">Pricing</a>
-          <a href="/#faq" className="nav-link">FAQ</a>
         </div>
         <div className="nav-actions">
-          <Link to="/partner" className="nav-partner">Become Switch Partner</Link>
-          <a href="https://app.switchlocally.com" className="nav-cta">Book Now</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner">💬 WhatsApp</a>
+          <a href={`${APP_URL}`} className="nav-cta">Hire Staff</a>
         </div>
       </div>
     </nav>
@@ -164,18 +179,18 @@ function Hero() {
 
           <div className="hero-live">
             <span className="hero-dot" />
-            <span>Now live · Gurgaon</span>
+            <span>Staffing Gurgaon businesses · Now live</span>
           </div>
 
           <h1 className="hero-h1">
-            The right<br />
-            worker,<br />
-            right when<br />
-            <em>you need.</em>
+            Staff your<br />
+            business with<br />
+            workers who<br />
+            <em>show up.</em>
           </h1>
 
           <p className="hero-lead">
-            Hire verified blue-collar professionals in minutes. No agencies, no calls — just book and get it done.
+            Verified cooks, helpers, guards, waiters &amp; more for shops, restaurants, warehouses and offices across Gurgaon. Replacement guaranteed — no agency, no hassle.
           </p>
 
           <div className="hero-marquee-wrap">
@@ -187,18 +202,18 @@ function Hero() {
           </div>
 
           <div className="hero-ctas">
-            <a href="https://app.switchlocally.com" className="btn-book">
+            <a href={APP_URL} className="btn-book">
               <IcoBolt />
               <span>
-                <span className="btn-main">Book Instant</span>
-                <span className="btn-sub">Help in under 60 mins</span>
+                <span className="btn-main">Hire Staff Now</span>
+                <span className="btn-sub">Workers in as little as a day</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com" className="btn-schedule">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-schedule">
               <IcoCal />
               <span>
-                <span className="btn-main">Schedule Later</span>
-                <span className="btn-sub">Pick your date &amp; time</span>
+                <span className="btn-main">Talk to our team</span>
+                <span className="btn-sub">WhatsApp for a quote</span>
               </span>
             </a>
           </div>
@@ -206,9 +221,9 @@ function Hero() {
           <div className="hero-trust">
             <div className="trust-item"><IcoShield />Aadhaar Verified</div>
             <span className="trust-sep" />
-            <div className="trust-item"><IcoStar />4.8 ★ Rating</div>
+            <div className="trust-item"><IcoCheck />Replacement Guarantee</div>
             <span className="trust-sep" />
-            <div className="trust-item"><IcoCheck />On-time Guarantee</div>
+            <div className="trust-item"><IcoStar />4.8 ★ Rating</div>
           </div>
 
         </div>
@@ -230,8 +245,8 @@ function Hero() {
             <span className="hbc-dot" />
             <span className="hbc-status">Just Confirmed</span>
           </div>
-          <div className="hbc-role">Home Cleaning · 8 hrs</div>
-          <div className="hbc-info">Worker arriving tomorrow at 9:00 AM</div>
+          <div className="hbc-role">2 Store Helpers · 7 days</div>
+          <div className="hbc-info">Reporting to shop tomorrow at 9:00 AM</div>
         </div>
       </div>
 
@@ -245,9 +260,9 @@ function Stats() {
     <div className="stats">
       <div className="stats-row">
         {[
-          { num: '500+', lbl: 'Verified Users' },
-          { num: '200+',   lbl: 'Jobs Completed' },
-          { num: '4.8 ★',  lbl: 'Average Rating' },
+          { num: '500+', lbl: 'Verified Workers' },
+          { num: '200+',   lbl: 'Businesses Served' },
+          { num: '24h',  lbl: 'Replacement Time' },
         ].map((s, i) => (
           <div className="s-cell" key={i} data-anim style={{'--delay':`${i*90}ms`}}>
             <div className="s-num">{s.num}</div>
@@ -298,15 +313,46 @@ function Stats() {
   )
 }
 
+/* ─── INDUSTRIES ──────────────────────────────────── */
+function Industries() {
+  return (
+    <section className="sec sec-border-t" id="industries">
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag">Built for business</span>
+          <h2 className="h2">Staffing for every<br />kind of business.</h2>
+          <p className="lead">Whatever you run, we have the verified hands to keep it running — from a single shift to a full team for 7 days.</p>
+        </div>
+        <div className="ind-grid" data-anim style={{'--delay':'80ms'}}>
+          {INDUSTRIES.map((ind, i) => (
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ind-card" key={i} style={{'--delay':`${(i%3)*70}ms`}}>
+              <div className="ind-ico">{ind.ico}</div>
+              <div className="ind-body">
+                <div className="ind-name">{ind.name}</div>
+                <div className="ind-roles">{ind.roles}</div>
+              </div>
+              <span className="ind-arr">→</span>
+            </a>
+          ))}
+        </div>
+        <div className="ind-cta" data-anim style={{'--delay':'160ms'}}>
+          <span>Don't see your business? We staff almost anything.</span>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ind-cta-btn">💬 Tell us what you need</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── ROLES ───────────────────────────────────────── */
 function Roles() {
   return (
     <section className="sec sec-alt sec-border-t" id="roles">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag">All categories</span>
-          <h2 className="h2">Every blue-collar role,<br />one platform.</h2>
-          <p className="lead">From a 4-hour cook to a 7-day warehouse team — book the right skill for exactly as long as you need it.</p>
+          <span className="tag">The workers</span>
+          <h2 className="h2">Every role your<br />business runs on.</h2>
+          <p className="lead">From a single store helper to a 7-day warehouse team — hire the right skill for exactly as long as you need it.</p>
         </div>
         <div className="roles-grid">
           {ROLES.map((r, i) => {
@@ -434,18 +480,18 @@ function IllRelax() {
 
 function HowItWorks() {
   const items = [
-    { n:'01', title:'Choose the service',           desc:'Easily book through our user-friendly platform. Pick from 12+ verified blue-collar services — done in seconds.', Ill: IllChoose },
-    { n:'02', title:'Choose the no. of hours',      desc:'Select the perfect slot — 4 hrs, 8 hrs, or up to 7 days — and let our expert take care of the rest.', Ill: IllHours },
-    { n:'03', title:'Verify expert at your doorstep', desc:'A fast face scan and OTP verification ensure you receive trusted service every single time.', Ill: IllVerify },
-    { n:'04', title:'Enjoy your space',             desc:'Now just rest and enjoy a smooth, hassle-free service experience from start to finish.', Ill: IllRelax },
+    { n:'01', title:'Tell us your requirement',     desc:'Pick the role and how many workers you need — for a few hours, a full shift, or up to 7 days. Bulk needs? Just WhatsApp us.', Ill: IllChoose },
+    { n:'02', title:'We match verified staff',      desc:'We assign Aadhaar-verified, skill-checked workers suited to your business — usually within hours.', Ill: IllHours },
+    { n:'03', title:'They report to your site',     desc:'OTP verification on arrival confirms the right person. No-show? A replacement is dispatched fast.', Ill: IllVerify },
+    { n:'04', title:'Scale up or down anytime',     desc:'Need more hands for a sale or festival? Add staff in minutes. Pay only after the work is done.', Ill: IllRelax },
   ]
   return (
     <section className="sec" id="how-it-works">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag">Easy process</span>
-          <h2 className="h2">How to use<br />our service?</h2>
-          <p className="lead">A simple guide to help you use our service effortlessly.</p>
+          <span className="tag">How it works</span>
+          <h2 className="h2">Staff your business<br />in four steps.</h2>
+          <p className="lead">From request to reporting — built to keep your business covered without the agency runaround.</p>
         </div>
         <div className="steps steps--4">
           {items.map((s, i) => (
@@ -470,8 +516,8 @@ function Reviews() {
       <div className="w">
         <div className="sec-hd" data-anim>
           <span className="tag">Customer reviews</span>
-          <h2 className="h2">Trusted by thousands<br />across India.</h2>
-          <p className="lead">Real bookings, real workers, real results — every single day.</p>
+          <h2 className="h2">Trusted by businesses<br />across Gurgaon.</h2>
+          <p className="lead">Shops, restaurants, warehouses and offices — staffed and running, every single day.</p>
         </div>
       </div>
       <div className="rev-outer">
@@ -530,25 +576,30 @@ function CTA() {
     <section className="cta-sec" id="download">
       <div className="cta-inner">
         <div data-anim>
-          <span className="tag">Get the app</span>
-          <h2 className="cta-h2">Book any worker,<br />anytime, anywhere.</h2>
-          <p className="cta-p">12 job categories. Flexible slots from 4 hours to 7 days. Aadhaar-verified workers, guaranteed results.</p>
-          <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com</a>
+          <span className="tag">Staff your business</span>
+          <h2 className="cta-h2">Tell us what you<br />need. We'll staff it.</h2>
+          <p className="cta-p">From one worker to a full team — verified, reliable, replacement-guaranteed. Message us on WhatsApp and we'll get back with availability and a quote.</p>
+          <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com · ☎ +91 83688 28660</a>
           <div className="cta-btns">
-            <a href="https://app.switchlocally.com" className="btn-book">
-              <IcoApple />
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-book">
+              <IcoBolt />
               <span>
-                <span className="btn-sub" style={{opacity:0.55}}>Download on the</span>
-                <span className="btn-main">App Store</span>
+                <span className="btn-sub" style={{opacity:0.55}}>Fastest way to start</span>
+                <span className="btn-main">Hire on WhatsApp</span>
               </span>
             </a>
-            <a href="https://app.switchlocally.com" className="btn-book">
-              <IcoPlay />
+            <a href={CALL_URL} className="btn-schedule">
+              <IcoCal />
               <span>
-                <span className="btn-sub" style={{opacity:0.55}}>Get it on</span>
-                <span className="btn-main">Google Play</span>
+                <span className="btn-sub" style={{opacity:0.55}}>Prefer to talk?</span>
+                <span className="btn-main">Call our team</span>
               </span>
             </a>
+          </div>
+          <div className="cta-applinks">
+            <span className="cta-applinks-lbl">Or hire from the app:</span>
+            <a href={APP_URL} className="cta-applink"><IcoApple /> App Store</a>
+            <a href={APP_URL} className="cta-applink"><IcoPlay /> Google Play</a>
           </div>
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
@@ -574,7 +625,7 @@ function HomeHead() {
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
     alternateName: ['Switch Locally', 'Switch App'],
-    description: 'Switch is Gurgaon\'s most trusted and friendly home and business staffing platform. Hire Aadhaar-verified, background-checked maids, cooks, kitchen helpers, caretakers, nannies, security guards, drivers, bouncers, bartenders, waiters, promoters and general helpers across all major areas and pincodes of Gurgaon.',
+    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse workers, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     telephone: '+91-8368828660',
@@ -649,9 +700,9 @@ function HomeHead() {
   }
   return (
     <Helmet>
-      <title>Verified Maids, Cooks, Drivers &amp; Workers in Gurgaon | Switch</title>
-      <meta name="description" content="Switch is Gurgaon's most trusted home &amp; business staffing platform. Hire Aadhaar-verified maids, cooks, caretakers, drivers, security guards, bouncers, bartenders &amp; waiters across DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. Book in 2 minutes. Pay after work is done." />
-      <meta name="keywords" content="verified domestic workers Gurgaon, Aadhaar-verified maid Gurgaon, hire cook Gurgaon, kitchen helper Gurgaon, caretaker agency Gurgaon, elderly care Gurgaon, nanny agency Gurgaon, security guard Gurgaon, driver hire Gurgaon, bouncer Gurgaon, bartender hire Gurgaon, waiter for events Gurgaon, promoter Gurgaon, blue-collar staffing Gurgaon, maid 122001, maid 122002, maid 122006, maid 122009, maid 122010, maid 122017, maid 122018, maid 122022, DLF maid, Sushant Lok maid, Udyog Vihar staff, Cyber City home help, Palam Vihar caretaker, Sohna Road maid, switchlocally.com, Switch App, same-day worker booking Gurgaon, replacement guarantee maid Gurgaon, pay after work done Gurgaon" />
+      <title>Staffing for Business in Gurgaon — Hire Verified Workers | Switch</title>
+      <meta name="description" content="Switch is Gurgaon's business staffing platform. Hire Aadhaar-verified store helpers, security guards, factory &amp; warehouse workers, waiters, bartenders, cooks &amp; housekeeping for shops, restaurants, warehouses, offices and events. Bulk hiring, 7-day teams, replacement guaranteed. Pay after work is done." />
+      <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse workers Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire workers Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day worker hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
@@ -690,91 +741,69 @@ function AllServicesDirectory() {
   )
 }
 
-/* ─── PROMOS ──────────────────────────────────────── */
+/* ─── OFFERS (B2B) ────────────────────────────────── */
 function Promos() {
-  const [copied, setCopied] = useState(false)
-  const copyCoupon = () => {
-    navigator.clipboard?.writeText('SAVE50')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 1800)
-  }
   return (
     <section className="sec promo-sec sec-border-t" id="offers">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag promo-tag-hd">🔥 Limited Launch Offers</span>
-          <h2 className="h2">Hire pros for as low as<br /><em className="promo-em">₹99.</em></h2>
-          <p className="lead">Two flat-rate launch deals to get you on the platform. No surprises, no hidden fees.</p>
+          <span className="tag promo-tag-hd">🔥 For new businesses</span>
+          <h2 className="h2">Try Switch with<br /><em className="promo-em">zero risk.</em></h2>
+          <p className="lead">Onboard your business with a trial shift, then scale to a full team. No long contracts, no agency lock-in.</p>
         </div>
 
         <div className="promo-grid" data-anim style={{'--delay':'80ms'}}>
 
-          {/* Card 1 — Kitchen Helper / Maid */}
+          {/* Card 1 — Trial shift */}
           <div className="promo-card promo-card--featured">
-            <div className="promo-ribbon">SAVE 50%</div>
-            <div className="promo-icon">🧹</div>
-            <div className="promo-eyebrow">FIRST BOOKING DEAL</div>
-            <h3 className="promo-title">Kitchen Helper &amp; Maid</h3>
+            <div className="promo-ribbon">MOST POPULAR</div>
+            <div className="promo-icon">🤝</div>
+            <div className="promo-eyebrow">FIRST-TIME BUSINESSES</div>
+            <h3 className="promo-title">Trial Shift</h3>
             <div className="promo-price-row">
               <div className="promo-price-block">
-                <span className="promo-currency">₹</span>
-                <span className="promo-price">99</span>
-                <span className="promo-per">/hr</span>
+                <span className="promo-price promo-price--word">Try first</span>
               </div>
               <div className="promo-strike">
-                <span className="promo-strike-old">₹199</span>
-                <span className="promo-strike-save">Save ₹100</span>
+                <span className="promo-strike-save">Then decide</span>
               </div>
             </div>
             <ul className="promo-perks">
-              <li><IcoCheck />Trained &amp; verified staff</li>
-              <li><IcoCheck />Same-day availability</li>
-              <li><IcoCheck />4 hrs · 8 hrs · 12 hrs slots</li>
-              <li><IcoCheck />Free cancellation up to 2 hrs</li>
+              <li><IcoCheck />One verified worker for a full shift</li>
+              <li><IcoCheck />See the quality before you commit</li>
+              <li><IcoCheck />Replacement if they're not a fit</li>
+              <li><IcoCheck />No advance — pay on arrival</li>
             </ul>
-            <button type="button" className={`promo-coupon${copied ? ' promo-coupon--copied' : ''}`} onClick={copyCoupon}>
-              <span className="promo-coupon-lbl">Use code</span>
-              <span className="promo-coupon-code">SAVE50</span>
-              <span className="promo-coupon-cta">{copied ? '✓ Copied' : 'Tap to copy'}</span>
-            </button>
-            <a href="https://app.switchlocally.com" className="promo-cta">
-              <IcoBolt />Book Now at ₹99/hr
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="promo-cta">
+              <IcoBolt />Start a Trial Shift
             </a>
-            <p className="promo-fine">*Valid on your first booking. Auto-applies at checkout.</p>
+            <p className="promo-fine">*Talk to us on WhatsApp to set up your business account.</p>
           </div>
 
-          {/* Card 2 — Washroom Cleaning */}
+          {/* Card 2 — Bulk / weekly teams */}
           <div className="promo-card">
-            <div className="promo-ribbon promo-ribbon--alt">FLAT RATE</div>
-            <div className="promo-icon">🚿</div>
-            <div className="promo-eyebrow">PER-BATHROOM PRICING</div>
-            <h3 className="promo-title">Washroom Deep Clean</h3>
+            <div className="promo-ribbon promo-ribbon--alt">BEST VALUE</div>
+            <div className="promo-icon">👥</div>
+            <div className="promo-eyebrow">TEAMS &amp; LONG DURATION</div>
+            <h3 className="promo-title">Bulk &amp; Weekly Staffing</h3>
             <div className="promo-price-row">
               <div className="promo-price-block">
-                <span className="promo-currency">₹</span>
-                <span className="promo-price">300</span>
-                <span className="promo-per">/bath</span>
+                <span className="promo-price promo-price--word">Custom</span>
               </div>
               <div className="promo-strike">
-                <span className="promo-strike-old">₹500</span>
-                <span className="promo-strike-save">Flat &amp; final</span>
+                <span className="promo-strike-save">Volume pricing</span>
               </div>
             </div>
             <ul className="promo-perks">
-              <li><IcoCheck />Tiles, basin, toilet &amp; floor</li>
-              <li><IcoCheck />Anti-bacterial deep scrub</li>
-              <li><IcoCheck />All supplies included</li>
-              <li><IcoCheck />Per-bathroom flat pricing</li>
+              <li><IcoCheck />3+ workers or 7-day teams</li>
+              <li><IcoCheck />Lower per-worker rates at scale</li>
+              <li><IcoCheck />Dedicated point of contact</li>
+              <li><IcoCheck />Priority replacement &amp; coverage</li>
             </ul>
-            <div className="promo-pack">
-              <div className="promo-pack-row"><span>1 Bathroom</span><strong>₹300</strong></div>
-              <div className="promo-pack-row"><span>2 Bathrooms</span><strong>₹600</strong></div>
-              <div className="promo-pack-row"><span>3 Bathrooms</span><strong>₹900</strong></div>
-            </div>
-            <a href="https://app.switchlocally.com" className="promo-cta promo-cta--alt">
-              <IcoBolt />Book Washroom Clean
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="promo-cta promo-cta--alt">
+              <IcoBolt />Get a Bulk Quote
             </a>
-            <p className="promo-fine">*Includes all cleaning supplies. 90-min average per bathroom.</p>
+            <p className="promo-fine">*Pricing scales with team size and duration. Ask us.</p>
           </div>
 
         </div>
@@ -782,9 +811,9 @@ function Promos() {
         <div className="promo-trust" data-anim style={{'--delay':'180ms'}}>
           <span><IcoShield /> Aadhaar-verified workers</span>
           <span className="trust-sep" />
-          <span><IcoStar /> 4.8 ★ average rating</span>
+          <span><IcoCheck /> Replacement guarantee</span>
           <span className="trust-sep" />
-          <span><IcoCheck /> Pay after service</span>
+          <span><IcoCheck /> Pay on arrival</span>
         </div>
       </div>
     </section>
@@ -798,57 +827,71 @@ function Pricing() {
     <section className="sec sec-alt sec-border-t" id="pricing">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag">Pricing · Transparent</span>
-          <h2 className="h2">Simple, honest pricing.</h2>
-          <p className="lead">No hidden fees. Pay only for the hours you need — with an early-bird deal for your first bookings.</p>
+          <span className="tag">Pricing · Flexible</span>
+          <h2 className="h2">Hire by the hour,<br />day, or week.</h2>
+          <p className="lead">Pay only for what you use. The longer you book, the lower the per-worker rate — built for how businesses actually staff.</p>
         </div>
 
-        <div className="pricing-grid" data-anim style={{'--delay':'80ms'}}>
+        <div className="pricing-grid pricing-grid--3" data-anim style={{'--delay':'80ms'}}>
 
-          <div className="price-card price-card--featured">
-            <div className="price-badge">First 5 Bookings</div>
+          <div className="price-card">
             <div className="price-tag-wrap">
-              <span className="price-currency">₹</span>
-              <span className="price-amount">149</span>
-              <span className="price-per">/hr</span>
+              <span className="price-name price-name--top">Hourly</span>
             </div>
-            <div className="price-name">Early Bird Rate</div>
-            <p className="price-desc">Lock in our launch price for your first 5 bookings. All worker categories included.</p>
+            <div className="price-name">Quick &amp; short tasks</div>
+            <p className="price-desc">For a few hours of extra hands — rush hours, a quick cleanup, peak footfall.</p>
             <ul className="price-perks">
+              <li><IcoCheck />1, 2 &amp; 4-hour slots</li>
               <li><IcoCheck />Aadhaar-verified workers</li>
               <li><IcoCheck />Same-day availability</li>
-              <li><IcoCheck />Free cancellation (2 hrs notice)</li>
-              <li><IcoCheck />All durations: 4 hrs – 7 days</li>
+              <li><IcoCheck />Pay after the work is done</li>
             </ul>
-            <a href="https://app.switchlocally.com" className="price-cta price-cta--primary">
-              <IcoBolt />Claim Early Bird Rate
+            <a href={APP_URL} className="price-cta price-cta--secondary">
+              Book Hourly
             </a>
-            <p className="price-note">Limited to first 5 bookings per account</p>
+          </div>
+
+          <div className="price-card price-card--featured">
+            <div className="price-badge">Most businesses</div>
+            <div className="price-tag-wrap">
+              <span className="price-name price-name--top">Full Day</span>
+            </div>
+            <div className="price-name">A full shift, covered</div>
+            <p className="price-desc">One worker for a complete working day — the everyday way to staff a shop, kitchen or site.</p>
+            <ul className="price-perks">
+              <li><IcoCheck />Full 8–12 hour shifts</li>
+              <li><IcoCheck />Cheaper per hour than hourly</li>
+              <li><IcoCheck />Replacement guarantee</li>
+              <li><IcoCheck />Same verified worker each day</li>
+            </ul>
+            <a href={APP_URL} className="price-cta price-cta--primary">
+              <IcoBolt />Book a Full Day
+            </a>
+            <p className="price-note">Best balance of cost and reliability</p>
           </div>
 
           <div className="price-card">
             <div className="price-tag-wrap">
-              <span className="price-currency">₹</span>
-              <span className="price-amount">199</span>
-              <span className="price-per">/hr</span>
+              <span className="price-name price-name--top">Weekly Team</span>
             </div>
-            <div className="price-name">Standard Rate</div>
-            <p className="price-desc">Our regular rate after the early-bird period. Still the most competitive rate in the market.</p>
+            <div className="price-name">Up to 7 days · bulk</div>
+            <p className="price-desc">Continuous cover for sales, festivals, leave gaps or a steady team — at our best per-worker rate.</p>
             <ul className="price-perks">
-              <li><IcoCheck />Aadhaar-verified workers</li>
-              <li><IcoCheck />Same-day availability</li>
-              <li><IcoCheck />Free cancellation (2 hrs notice)</li>
-              <li><IcoCheck />All durations: 4 hrs – 7 days</li>
+              <li><IcoCheck />2-day &amp; 7-day blocks</li>
+              <li><IcoCheck />Lowest per-worker pricing</li>
+              <li><IcoCheck />Priority replacement &amp; coverage</li>
+              <li><IcoCheck />Dedicated point of contact</li>
             </ul>
-            <a href="https://app.switchlocally.com" className="price-cta price-cta--secondary">
-              Book a Worker
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="price-cta price-cta--secondary">
+              Get a Weekly Quote
             </a>
           </div>
 
         </div>
 
         <div className="pricing-note" data-anim style={{'--delay':'180ms'}}>
-          All prices are per worker per hour. Multi-day bookings billed at hourly rate × hours worked. No platform fee.
+          Per-worker rates drop as you book longer. No platform fee, no advance — pay on arrival.
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="pricing-note-link"> Talk to us for exact rates →</a>
         </div>
       </div>
     </section>
@@ -864,7 +907,7 @@ export function Footer() {
             <div className="nav-mark">S</div>
             <span className="ft-name">Switch</span>
           </div>
-          <p className="ft-desc">India's trusted platform for booking verified blue-collar professionals — fast, flexible, and reliable.</p>
+          <p className="ft-desc">Gurgaon's staffing partner for shops, restaurants, warehouses, offices and events — verified workers, fast, flexible and replacement-guaranteed.</p>
           <div className="ft-address">
             <IcoPin />
             <div>
@@ -896,11 +939,12 @@ export function Footer() {
           </div>
         </div>
         <div className="ft-col">
-          <h3 className="ft-col-title">Support</h3>
+          <h3 className="ft-col-title">For Business</h3>
           <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Help Centre</a></li>
-            <li><a href="#">Delete Account</a></li>
+            <li><a href="/#industries">Industries</a></li>
+            <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Bulk Hiring</a></li>
+            <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Request Staff</a></li>
+            <li><a href={CALL_URL}>Contact Sales</a></li>
           </ul>
         </div>
         <div className="ft-col">
@@ -948,9 +992,10 @@ function HomePage() {
       <main>
         <Hero />
         <Stats />
-        <Promos />
+        <Industries />
         <Roles />
         <HowItWorks />
+        <Promos />
         <Pricing />
         <Reviews />
         <FAQ />

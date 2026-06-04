@@ -54,9 +54,10 @@ ul{list-style:none}
 }
 .nav-logo{display:flex;align-items:center;gap:0.625rem}
 .nav-mark{
-  width:38px;height:38px;background:#fff;border-radius:10px;
+  width:38px;height:38px;background:#0a0a0a;border-radius:10px;
+  border:1.5px solid #2a2a2a;
   display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:1.0625rem;color:#000;flex-shrink:0;
+  font-weight:900;font-size:1.0625rem;color:#fff;flex-shrink:0;
   letter-spacing:-0.02em;
 }
 .nav-name{font-weight:800;font-size:1.4375rem;color:#fff;letter-spacing:-0.03em}
@@ -871,6 +872,10 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   display:grid;grid-template-columns:1fr 1fr;
   gap:1.5rem;max-width:860px;
 }
+.pricing-grid--3{
+  grid-template-columns:repeat(3,1fr);max-width:1080px;
+}
+@media(max-width:900px){.pricing-grid--3{grid-template-columns:1fr;max-width:480px}}
 .price-card{
   background:var(--s1);border:1px solid var(--bd);
   border-radius:20px;padding:2.5rem 2.25rem;
@@ -1281,3 +1286,75 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   .promo-coupon-code{font-size:1rem}
   .promo-coupon-lbl,.promo-coupon-cta{font-size:0.6875rem}
 }
+
+/* ─── INDUSTRIES ──────────────────────────────────── */
+.ind-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+}
+.ind-card{
+  display:flex;align-items:center;gap:1.125rem;
+  background:var(--s1);border:1px solid var(--bd);border-radius:16px;
+  padding:1.5rem 1.625rem;
+  transition:border-color .25s,background .25s,transform .25s;
+  opacity:0;transform:translateY(14px);
+  animation:indIn .5s ease forwards;animation-delay:var(--delay,0ms);
+}
+@keyframes indIn{to{opacity:1;transform:translateY(0)}}
+.ind-card:hover{
+  border-color:rgba(99,102,241,0.4);background:var(--s2);transform:translateY(-3px);
+}
+.ind-ico{
+  width:52px;height:52px;flex-shrink:0;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;font-size:1.625rem;
+  background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.22);
+}
+.ind-body{flex:1;min-width:0}
+.ind-name{font-size:1.0625rem;font-weight:700;color:#fff;letter-spacing:-0.02em;margin-bottom:0.25rem}
+.ind-roles{font-size:0.8125rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.ind-arr{color:rgba(255,255,255,0.3);font-size:1.125rem;transition:color .2s,transform .2s}
+.ind-card:hover .ind-arr{color:rgba(160,140,255,0.95);transform:translateX(3px)}
+.ind-cta{
+  display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;
+  margin-top:2.5rem;padding:1.5rem 1.75rem;
+  background:var(--s1);border:1px solid var(--bd);border-radius:16px;
+  font-size:0.9375rem;color:rgba(255,255,255,0.6);
+}
+.ind-cta-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:#fff;color:#000;font-weight:700;font-size:0.9375rem;
+  padding:0.7rem 1.375rem;border-radius:10px;
+  transition:transform .2s,box-shadow .2s;
+}
+.ind-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,0.15)}
+@media(max-width:900px){.ind-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.ind-grid{grid-template-columns:1fr}}
+
+/* ─── WORD-STYLE PRICE / PROMO LABELS ─────────────── */
+.price-name--top{
+  font-size:2rem;font-weight:900;letter-spacing:-0.04em;
+  background:linear-gradient(135deg,#fff 20%,rgba(200,205,255,0.85) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:0;
+}
+.promo-price--word{
+  font-size:2.5rem;font-weight:900;letter-spacing:-0.04em;
+  background:linear-gradient(135deg,#fff 20%,rgba(200,205,255,0.85) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.pricing-note-link{color:rgba(160,140,255,0.95);font-weight:600;white-space:nowrap}
+.pricing-note-link:hover{color:#fff}
+
+/* ─── CTA APP LINKS (secondary) ───────────────────── */
+.cta-applinks{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.75rem;
+  font-size:0.875rem;color:rgba(255,255,255,0.45);
+}
+.cta-applinks-lbl{color:rgba(255,255,255,0.4)}
+.cta-applink{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  color:rgba(255,255,255,0.75);font-weight:600;
+  padding:0.4rem 0.75rem;border:1px solid var(--bd);border-radius:8px;
+  transition:border-color .2s,color .2s;
+}
+.cta-applink:hover{color:#fff;border-color:var(--bd2)}
+.cta-applink svg{width:16px;height:16px}
