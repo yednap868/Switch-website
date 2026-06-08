@@ -5,37 +5,40 @@ import { Nav, Footer } from '../App.jsx'
 import './AboutPage.css'
 
 const APP_URL = 'https://app.switchlocally.com/'
+const PHONE = '+918368828660'
+const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
+const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
 
 const WHAT_WE_DO = [
   {
-    ico: '🏠',
-    title: 'Home Services',
-    desc: 'Verified home cooks, kitchen helpers, maids, caretakers and nannies — everything inside your home, handled by people you can trust.',
-  },
-  {
     ico: '💼',
-    title: 'Business Services',
-    desc: 'Trained security guards, drivers, bouncers, bartenders, waiters, promoters and general helpers for offices, events, restaurants and businesses of all sizes.',
+    title: 'Business Staffing',
+    desc: 'Store helpers, security guards, factory & warehouse workers, waiters, bartenders, bouncers, cooks and housekeeping — for shops, restaurants, warehouses, offices and events of every size.',
   },
   {
-    ico: '📍',
-    title: 'All of Gurgaon',
-    desc: 'Serving every major sector and locality across pincodes 122001, 122002, 122006, 122009, 122010, 122017, 122018 and 122022.',
+    ico: '👥',
+    title: 'Bulk & Weekly Teams',
+    desc: 'Need 3, 5 or a full team for 7 days straight? We deploy verified workers at scale, with a dedicated point of contact and priority coverage.',
+  },
+  {
+    ico: '🔁',
+    title: 'Replacement Guarantee',
+    desc: 'A no-show shouldn’t stop your business. If a worker doesn’t turn up or isn’t the right fit, we dispatch a replacement fast — usually within 24 hours.',
   },
   {
     ico: '🛡️',
     title: 'Verified at Every Step',
-    desc: 'Every worker on Switch is Aadhaar-verified, document-checked and personally interviewed before being assigned to you.',
+    desc: 'Every worker on Switch is Aadhaar-verified, document-checked and personally interviewed before being assigned to your site.',
   },
   {
     ico: '💳',
     title: 'Simple & Transparent',
-    desc: 'Book in minutes on switchlocally.com or the Switch App. No advance payment — you only pay after the work is done.',
+    desc: 'Hire in minutes on WhatsApp, switchlocally.com or the Switch App. No advance — you pay on arrival, with proper invoices for your records.',
   },
   {
-    ico: '⚡',
-    title: 'On-Demand, Same-Day',
-    desc: 'Most bookings are confirmed within hours. Get verified workers at your door the same day, across Gurgaon and Gurugram.',
+    ico: '🏠',
+    title: 'Home Services Too',
+    desc: 'Beyond business, we also place trusted cooks, maids, caretakers and nannies for your home — the same verification, the same reliability.',
   },
 ]
 
@@ -131,12 +134,12 @@ export default function AboutPage() {
   return (
     <>
       <Helmet>
-        <title>About Switch — Gurgaon's Trusted Home & Business Staffing Platform</title>
-        <meta name="description" content="Switch is Gurgaon's most trusted home and business staffing platform. Founded in 2026, we connect 500+ Aadhaar-verified workers with families and businesses across DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. Book maids, cooks, caretakers, drivers, security guards, bouncers, bartenders and waiters in minutes." />
-        <meta name="keywords" content="about Switch, trusted home staffing agency Gurgaon, verified manpower agency Gurgaon, verified domestic workers Gurgaon, Aadhaar-verified workers Gurgaon, hire domestic help Gurgaon, professional home staffing Gurgaon, on-demand home staff Gurgaon, switchlocally.com, Switch App" />
+        <title>About Switch — Gurgaon's Business Staffing Platform</title>
+        <meta name="description" content="Switch is Gurgaon's business staffing platform. Founded in 2026, we connect 500+ Aadhaar-verified workers with shops, restaurants, warehouses, offices and events across DLF, Udyog Vihar, Cyber City, Sohna Road and all pincodes 122001–122022. Hire store helpers, guards, waiters, cooks, housekeeping — bulk and weekly teams, replacement guaranteed." />
+        <meta name="keywords" content="about Switch, staffing agency Gurgaon, manpower supply Gurgaon, verified workers Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse workers Gurgaon, store helper Gurgaon, on-demand staffing Gurgaon, switchlocally.com, Switch App" />
         <link rel="canonical" href="https://switchlocally.com/about" />
-        <meta property="og:title" content="About Switch — Gurgaon's Trusted Home & Business Staffing Platform" />
-        <meta property="og:description" content="Founded in 2026. 500+ verified partners. 1000+ bookings served. Verified maids, cooks, caretakers, drivers, security guards, bouncers and bartenders across Gurgaon." />
+        <meta property="og:title" content="About Switch — Gurgaon's Business Staffing Platform" />
+        <meta property="og:description" content="Founded in 2026. 500+ verified workers. Staffing shops, restaurants, warehouses, offices and events across Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk & weekly teams." />
         <meta property="og:url" content="https://switchlocally.com/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -155,17 +158,17 @@ export default function AboutPage() {
             <div className="ab-hero-inner" data-anim>
               <span className="ab-tag">About Switch</span>
               <h1 className="ab-h1">
-                Gurgaon's most trusted<br />
-                <em>home &amp; business staffing</em><br />
-                platform.
+                Gurgaon's staffing<br />
+                partner for <em>shops,<br />
+                restaurants &amp; offices.</em>
               </h1>
               <p className="ab-lead">
-                Born in 2026 with one simple idea — finding the right worker should never be hard.
-                Whether you need someone to cook your meals, clean your home, care for your loved ones,
-                or manage security at your business, we are just one click away.
+                Born in 2026 with one simple idea — staffing your business should never be hard.
+                Whether you run a shop, a kitchen, a warehouse or an event, Switch puts verified,
+                reliable workers on your floor — for a shift, a day, or a full week.
               </p>
               <div className="ab-hero-ctas">
-                <a href={APP_URL} className="ab-cta-primary">Book a verified worker →</a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Hire staff for your business →</a>
                 <Link to="/partner" className="ab-cta-secondary">Become a Partner</Link>
               </div>
               <div className="ab-stats">
@@ -189,16 +192,16 @@ export default function AboutPage() {
             </div>
             <div className="ab-text" data-anim style={{'--delay':'80ms'}}>
               <p>
-                We are <strong>Switch</strong> — Gurgaon's most trusted and friendly home and business staffing platform.
-                Born in 2026, we set out to fix one of the most frustrating problems in any household or business:
-                <em> finding the right worker, when you need them, without the hassle.</em>
+                We are <strong>Switch</strong> — Gurgaon's business staffing platform.
+                Born in 2026, we set out to fix one of the most frustrating problems any business owner faces:
+                <em> finding reliable workers who actually show up, without the agency runaround.</em>
               </p>
               <p>
-                Whether you need a verified maid in DLF Phase 3, a cook in Sushant Lok, an elderly caretaker
-                in Palam Vihar, a security guard in Udyog Vihar, or a bartender for an event in Cyber City —
-                Switch has someone ready for you. With <strong>500+ verified partners</strong> on our platform
-                and a fast-growing community of happy customers across Gurgaon, Switch is fast becoming the go-to name
-                for reliable domestic and business staffing across the city.
+                Whether you need store helpers for a shop in DLF, packers for a warehouse in Udyog Vihar,
+                waiters and a bartender for an event in Cyber City, or a 7-day team during a sale —
+                Switch has verified workers ready for you. With <strong>500+ verified workers</strong> on our platform
+                and a fast-growing base of businesses across Gurgaon, Switch is becoming the go-to name
+                for dependable staffing across the city.
               </p>
             </div>
           </div>
@@ -229,12 +232,12 @@ export default function AboutPage() {
           <div className="ab-w">
             <div className="ab-mission" data-anim>
               <span className="ab-tag">Our mission</span>
-              <h2 className="ab-h2">Good help shouldn't be hard to find.</h2>
+              <h2 className="ab-h2">Good staff shouldn't be hard to find.</h2>
               <p className="ab-mission-text">
-                Our mission is simple — to make sure every home and every business in Gurgaon has access to
-                the right help, at the right time, without any hassle. We have built a platform where verified
-                maids, cooks, kitchen helpers, caretakers, security guards, drivers, helpers, promoters, bouncers,
-                bartenders and waiters are available to you at the click of a button —
+                Our mission is simple — to make sure every business in Gurgaon can staff up at the right time,
+                without the hassle. We have built a platform where verified store helpers, security guards,
+                factory and warehouse workers, waiters, bartenders, bouncers, cooks, drivers and housekeeping
+                are available at the click of a button —
                 <strong> background-checked, Aadhaar-verified, and ready to work.</strong>
               </p>
             </div>
@@ -246,8 +249,8 @@ export default function AboutPage() {
           <div className="ab-w">
             <div className="ab-sec-hd" data-anim>
               <span className="ab-tag">Why Switch</span>
-              <h2 className="ab-h2">Six reasons families &amp; businesses<br />trust Switch.</h2>
-              <p className="ab-sub">There are plenty of options out there — here's why thousands of homes and businesses in Gurgaon choose us.</p>
+              <h2 className="ab-h2">Six reasons businesses<br />trust Switch.</h2>
+              <p className="ab-sub">There are plenty of options out there — here's why shops, restaurants, warehouses and offices across Gurgaon choose us.</p>
             </div>
             <div className="ab-grid">
               {WHY_SWITCH.map((w, i) => (
@@ -309,16 +312,16 @@ export default function AboutPage() {
         <section className="ab-cta-sec">
           <div className="ab-w">
             <div className="ab-cta" data-anim>
-              <h2 className="ab-cta-h">Let's Switch — to better help.</h2>
+              <h2 className="ab-cta-h">Let's Switch — to staff that shows up.</h2>
               <p className="ab-cta-p">
-                Whether you're a busy family in DLF Phase 3 looking for a reliable maid, a restaurant in Udyog Vihar
-                needing a bartender, or a startup in Cyber City needing a security guard — Switch has someone ready for you.
+                Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters,
+                or a warehouse needing a 7-day team — Switch has verified workers ready for you.
               </p>
               <div className="ab-cta-btns">
-                <a href={APP_URL} className="ab-cta-primary">Book a verified worker →</a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Hire staff for your business →</a>
                 <Link to="/blog" className="ab-cta-secondary">Read our guides</Link>
               </div>
-              <p className="ab-cta-fine">No advance. No hassle. Just Switch.</p>
+              <p className="ab-cta-fine">No advance. Pay on arrival. Just Switch.</p>
             </div>
           </div>
         </section>
