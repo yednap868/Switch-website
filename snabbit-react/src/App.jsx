@@ -11,6 +11,7 @@ import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
 const APP_URL = 'https://app.switchlocally.com'
+const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
 const PHONE = '+918368828660'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
@@ -150,14 +151,23 @@ export function Nav() {
         </a>
         <div className="nav-links">
           <a href="/#industries" className="nav-link">Industries</a>
-          <a href="/#roles" className="nav-link">Staff</a>
+          <div className="nav-dd">
+            <a href="/#roles" className="nav-link nav-dd-trigger">Services <span className="nav-dd-caret">▾</span></a>
+            <div className="nav-dd-menu">
+              {SERVICE_LIST.map(svc => (
+                <Link key={svc.id} to={`/${svc.slug}`} className="nav-dd-item">{svc.name}</Link>
+              ))}
+              <a href="/#roles" className="nav-dd-item nav-dd-item--all">View all staff →</a>
+            </div>
+          </div>
+          <a href="/#why" className="nav-link">Why Us</a>
+          <a href="/#how-it-works" className="nav-link">How It Works</a>
           <a href="/#pricing" className="nav-link">Pricing</a>
           <Link to="/about" className="nav-link">About</Link>
-          <Link to="/blog" className="nav-link">Blog</Link>
         </div>
         <div className="nav-actions">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner">💬 WhatsApp</a>
-          <a href={`${APP_URL}`} className="nav-cta">Hire Staff</a>
+          <a href={APP_URL} className="nav-cta">Hire Staff</a>
         </div>
       </div>
     </nav>
@@ -338,6 +348,38 @@ function Industries() {
         <div className="ind-cta" data-anim style={{'--delay':'160ms'}}>
           <span>Don't see your business? We staff almost anything.</span>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ind-cta-btn">💬 Tell us what you need</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── WHY US ──────────────────────────────────────── */
+const WHY_US = [
+  { ico: '🔁', title: 'Replacement Guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
+  { ico: '🆔', title: 'Aadhaar-Verified Staff', desc: 'Every worker is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
+  { ico: '⚡', title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right workers within hours.' },
+  { ico: '👥', title: 'Bulk & Weekly Teams', desc: 'Need 3, 5 or a full team for 7 days? We deploy at scale with a dedicated point of contact.' },
+  { ico: '💸', title: 'No Advance — Pay on Arrival', desc: 'No upfront payment. Clean invoices for your business records, pay as the work happens.' },
+  { ico: '📞', title: '24/7 Support', desc: 'Our team is always available to find the right person and sort out any issue, fast.' },
+]
+function WhyUs() {
+  return (
+    <section className="sec sec-alt sec-border-t" id="why">
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag">Why us</span>
+          <h2 className="h2">Why businesses<br />choose Switch.</h2>
+          <p className="lead">Shops, restaurants, warehouses and offices across Gurgaon rely on us to stay staffed — here’s why.</p>
+        </div>
+        <div className="why-grid" data-anim style={{'--delay':'80ms'}}>
+          {WHY_US.map((w, i) => (
+            <div className="why-card" key={i} style={{'--delay':`${(i%3)*70}ms`}}>
+              <div className="why-ico">{w.ico}</div>
+              <h3 className="why-title">{w.title}</h3>
+              <p className="why-desc">{w.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -598,14 +640,36 @@ function CTA() {
           </div>
           <div className="cta-applinks">
             <span className="cta-applinks-lbl">Or hire from the app:</span>
-            <a href={APP_URL} className="cta-applink"><IcoApple /> App Store</a>
-            <a href={APP_URL} className="cta-applink"><IcoPlay /> Google Play</a>
+            <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="cta-applink"><IcoPlay /> Google Play</a>
+            <span className="cta-applink cta-applink--soon"><IcoApple /> App Store · Available Soon</span>
           </div>
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
           <img src="/screen-2.png"    alt="Switch app — service categories" className="ph ph-s ph-l" width="390" height="844" loading="lazy" decoding="async" />
           <img src="/screen-home.png" alt="Switch app — book verified workers in Gurgaon" className="ph ph-c" width="390" height="844" loading="lazy" decoding="async" />
           <img src="/screen-3.png"    alt="Switch app — verified worker profiles" className="ph ph-s ph-r" width="390" height="844" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── WORKER POSTER (supply side) ─────────────────── */
+function WorkerPoster() {
+  return (
+    <section className="sec poster-sec sec-border-t" id="work-with-us">
+      <div className="w poster-w">
+        <div className="poster-copy" data-anim>
+          <span className="tag">Looking for work?</span>
+          <h2 className="h2">Your next job is<br /><em>ghar ke paas.</em></h2>
+          <p className="lead">Verified employers, fast placement, zero cost. Get a blue-collar job near your home across Gurgaon — apply in a few taps.</p>
+          <div className="poster-ctas">
+            <Link to="/partner" className="price-cta price-cta--primary poster-cta"><IcoBolt />Become a Switch Partner</Link>
+            <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="cta-applink"><IcoPlay /> Get the app</a>
+          </div>
+        </div>
+        <div className="poster-img-wrap" data-anim style={{'--delay':'120ms'}}>
+          <img src="/instagram-poster.svg" alt="Switch — find blue-collar jobs near your home in Gurgaon, fast placement, free" className="poster-img" width="1080" height="1080" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -994,12 +1058,14 @@ function HomePage() {
         <Stats />
         <Industries />
         <Roles />
+        <WhyUs />
         <HowItWorks />
         <Promos />
         <Pricing />
         <Reviews />
         <FAQ />
         <CTA />
+        <WorkerPoster />
         <AllServicesDirectory />
       </main>
       <Footer />

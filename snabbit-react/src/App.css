@@ -1358,3 +1358,57 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 }
 .cta-applink:hover{color:#fff;border-color:var(--bd2)}
 .cta-applink svg{width:16px;height:16px}
+.cta-applink--soon{color:rgba(255,255,255,0.4);cursor:default;border-style:dashed}
+.cta-applink--soon:hover{color:rgba(255,255,255,0.4);border-color:var(--bd)}
+
+/* ─── NAV DROPDOWN ────────────────────────────────── */
+.nav-dd{position:relative}
+.nav-dd-trigger{display:inline-flex;align-items:center;gap:0.3rem;cursor:pointer}
+.nav-dd-caret{font-size:0.7rem;opacity:0.7;transition:transform .2s}
+.nav-dd:hover .nav-dd-caret{transform:rotate(180deg)}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);
+  min-width:230px;background:#0c0c0c;border:1px solid var(--bd2);border-radius:14px;
+  padding:0.5rem;display:grid;grid-template-columns:1fr 1fr;gap:0.125rem;
+  opacity:0;visibility:hidden;pointer-events:none;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);transition:opacity .2s,transform .2s,visibility .2s;z-index:400;
+}
+.nav-dd:hover .nav-dd-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dd-menu::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px}
+.nav-dd-item{
+  font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.7);
+  padding:0.5rem 0.75rem;border-radius:8px;transition:color .15s,background .15s;white-space:nowrap;
+}
+.nav-dd-item:hover{color:#fff;background:rgba(255,255,255,0.07)}
+.nav-dd-item--all{grid-column:1 / -1;color:rgba(160,140,255,0.95);font-weight:600;border-top:1px solid var(--bd);margin-top:0.25rem;padding-top:0.6rem;border-radius:0 0 8px 8px}
+
+/* ─── WHY US ──────────────────────────────────────── */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.why-card{
+  background:var(--bg);border:1px solid var(--bd);border-radius:16px;padding:2rem 1.75rem;
+  transition:border-color .25s,transform .25s;
+  opacity:0;transform:translateY(14px);animation:indIn .5s ease forwards;animation-delay:var(--delay,0ms);
+}
+.why-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-3px)}
+.why-ico{
+  width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.22);margin-bottom:1.25rem;
+}
+.why-title{font-size:1.0625rem;font-weight:700;color:#fff;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.why-desc{font-size:0.9375rem;color:rgba(255,255,255,0.5);line-height:1.65}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+
+/* ─── WORKER POSTER ───────────────────────────────── */
+.poster-w{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.poster-ctas{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-top:2rem}
+.poster-cta{align-self:flex-start}
+.poster-img-wrap{
+  border-radius:24px;overflow:hidden;border:1px solid var(--bd2);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);max-width:480px;justify-self:center;
+}
+.poster-img{width:100%;height:auto;display:block}
+@media(max-width:900px){
+  .poster-w{grid-template-columns:1fr;gap:2.5rem}
+  .poster-img-wrap{order:-1;max-width:380px}
+}
