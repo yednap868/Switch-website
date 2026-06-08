@@ -19,23 +19,23 @@ const CALL_URL = `tel:${PHONE}`
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
-  'Store Helper','Security Guard','Factory Worker','Waiter','Bouncer','Bartender',
-  'Promoter','Housekeeping','Driver','Cook','Kitchen Helper','Loading Staff',
+  'Store Helper','Security Guard','Picker / Packer','Driver','Delivery Rider','Cook / Chef',
+  'Housekeeping','Caretaker','Painter','Electrician','Plumber','Carpenter',
 ]
 
 const ROLES = [
-  { img: '/general-helper.jpg',     name: 'Store / General Helper', slug: 'store-helper-gurgaon',  desc: 'Billing support, stocking, loading & shop-floor help', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: 'https://images.unsplash.com/photo-1614854262318-831574f15f1f?w=720&h=720&fit=crop&q=80', name: 'Security Guard', slug: 'security-guard-gurgaon', desc: 'Gate duty, premises security, night patrol for your site', tags: ['12 hrs','2 days','7 days'] },
-  { img: '/factory-helper.jpg',     name: 'Factory / Warehouse Worker', slug: 'factory-warehouse-gurgaon', desc: 'Sorting, packing, assembly line & dispatch support', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/waiter.jpg',             name: 'Waiter / Steward', external: APP_URL, desc: 'Table service for restaurants, banquets & events', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/bouncer.jpg',            name: 'Bouncer',        external: APP_URL, desc: 'Entry management & crowd control for venues', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/bartender.jpg',          name: 'Bartender',      external: APP_URL, desc: 'Bar service for restaurants, clubs & events', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/promoter.jpg',           name: 'Promoter',       external: APP_URL, desc: 'Engage customers & drive in-store sales', tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/driver-new.jpg',         name: 'Driver',         slug: 'driver-gurgaon',         desc: 'Deliveries, commercial runs & staff transport', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=720&h=720&fit=crop&q=80', name: 'Cook / Chef',    slug: 'cook-gurgaon',           desc: 'Kitchen production for cafés, messes & catering', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=720&h=720&fit=crop&q=80', name: 'Kitchen Helper', external: APP_URL, desc: 'Prep, chopping & dishwashing for commercial kitchens', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=720&h=720&fit=crop&q=80', name: 'Housekeeping',   slug: 'home-cleaning-gurgaon',  desc: 'Daily upkeep for offices, shops & premises', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=720&h=720&fit=crop&q=80', name: 'Caretaker / Nanny', slug: 'nanny-gurgaon',       desc: 'For your home — childcare & elderly care', tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/store-helper.jpg',    name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/security-guard.jpg',  name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', tags: ['12 hrs','2 days','7 days'] },
+  { img: '/store-helper.jpg',    name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/driver.jpg',          name: 'Driver',                 slug: 'driver-gurgaon',           desc: 'Commercial runs, deliveries & staff transport', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/cook-chef.jpg',       name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/house-cleaner.jpg',   name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/baby-care.jpg',       name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/painter.jpg',         name: 'Painter',                slug: 'painter-gurgaon',          desc: 'Wall painting, touch-ups & site finishing', tags: ['8 hrs','12 hrs','2 days'] },
+  { img: '/electrician.jpg',     name: 'Electrician',            external: APP_URL, desc: 'Wiring, repairs & electrical maintenance', tags: ['Visit','4 hrs','8 hrs'] },
+  { img: '/plumber.jpg',         name: 'Plumber',                external: APP_URL, desc: 'Fittings, leak repairs & plumbing work', tags: ['Visit','4 hrs','8 hrs'] },
+  { img: '/carpenter.jpg',       name: 'Carpenter',              external: APP_URL, desc: 'Furniture, fittings & on-site woodwork', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
 const INDUSTRIES = [
@@ -398,33 +398,24 @@ function Roles() {
           <h2 className="h2">Every role your<br />business runs on.</h2>
           <p className="lead">From a single store helper to a 7-day warehouse team — hire the right skill for exactly as long as you need it.</p>
         </div>
-        <div className="roles-grid">
+        <div className="roles-grid roles-grid--app">
           {ROLES.map((r, i) => {
             const inner = (
-              <>
-                <img
-                  src={r.img}
-                  alt={`Hire verified ${r.name.toLowerCase()} in Gurgaon — ${r.desc}`}
-                  className="role-img"
-                  width="720"
-                  height="720"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="role-body">
-                  <div className="r-name">{r.name}</div>
-                  <div className="r-desc">{r.desc}</div>
-                  <div className="r-tags">
-                    {r.tags.map(t => <span className="r-tag" key={t}>{t}</span>)}
-                  </div>
-                </div>
-              </>
+              <img
+                src={r.img}
+                alt={`Hire verified ${r.name.toLowerCase()} in Gurgaon — ${r.desc}`}
+                className="role-app-img"
+                width="350"
+                height="374"
+                loading="lazy"
+                decoding="async"
+              />
             )
             const style = {'--delay':`${(i%4)*65}ms`}
             return r.external ? (
-              <a href={r.external} className="role" key={i} data-anim style={style}>{inner}</a>
+              <a href={r.external} className="role-app" key={i} data-anim style={style}>{inner}</a>
             ) : (
-              <Link to={`/${r.slug}`} className="role" key={i} data-anim style={style}>{inner}</Link>
+              <Link to={`/${r.slug}`} className="role-app" key={i} data-anim style={style}>{inner}</Link>
             )
           })}
         </div>

@@ -366,6 +366,24 @@ ul{list-style:none}
   padding:0.25rem 0.625rem;border-radius:99px;
 }
 
+/* ─── ROLES (app service cards) ──────────────────── */
+.roles-grid--app{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
+  border:none;border-radius:0;overflow:visible;
+}
+.role-app{
+  display:block;border-radius:18px;overflow:hidden;
+  background:#fff;border:1px solid var(--bd);
+  box-shadow:0 6px 24px rgba(0,0,0,0.35);
+  opacity:0;transform:translateY(14px);
+  animation:indIn .5s ease forwards;animation-delay:var(--delay,0ms);
+  transition:transform .25s,box-shadow .25s;
+}
+.role-app:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(0,0,0,0.5)}
+.role-app-img{width:100%;height:auto;display:block}
+@media(max-width:900px){.roles-grid--app{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.roles-grid--app{grid-template-columns:1fr}}
+
 /* ─── HOW IT WORKS ───────────────────────────────── */
 .hiw-img{
   width:100%;border-radius:16px;margin-bottom:3.5rem;
