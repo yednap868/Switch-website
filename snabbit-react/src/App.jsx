@@ -65,6 +65,8 @@ const FAQS = [
   { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the per-worker rate. Talk to us on WhatsApp for exact rates for your business.' },
   { q: 'Are all workers verified?', a: 'Yes. Every worker is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
   { q: 'Do you provide GST invoices and how is payment handled?', a: 'No advance — you pay on arrival. Pay via UPI, cards or bank transfer, and we can provide proper invoices for your business records. Ask our team to set up a business account.' },
+  { q: 'Can I try a worker before committing to a longer booking?', a: 'Yes. Start with a trial shift to see the quality before you scale to a full day, a 7-day team or an ongoing arrangement. If the worker isn’t the right fit, we replace them — no questions asked.' },
+  { q: 'Which areas of Gurgaon do you cover?', a: 'All major sectors and localities — DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Cyber City, Sohna Road, MG Road and Sectors 1–49 — across pincodes 122001 to 122022. Tell us your location and we’ll confirm availability.' },
 ]
 
 /* ─── ICONS ───────────────────────────────────────── */
