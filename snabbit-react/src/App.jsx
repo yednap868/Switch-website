@@ -24,8 +24,7 @@ const ALL_ROLES_MARQUEE = [
 ]
 
 // Branded "switch" service photos (sw-*.jpg) — the same set the Switch app
-// displays on its service cards. Trades with no dedicated branded photo
-// (Painter/Electrician/Plumber/Carpenter) keep their existing stock images.
+// displays on its service cards.
 const ROLES = [
   { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', tags: ['12 hrs','2 days','7 days'] },
@@ -35,10 +34,6 @@ const ROLES = [
   { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', tags: ['4 hrs','8 hrs','12 hrs'] },
   { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', tags: ['4 hrs','8 hrs','2 days'] },
-  { img: '/painter.jpg',         name: 'Painter',                slug: 'painter-gurgaon',          desc: 'Wall painting, touch-ups & site finishing', tags: ['8 hrs','12 hrs','2 days'] },
-  { img: '/electrician.jpg',     name: 'Electrician',            external: APP_URL, desc: 'Wiring, repairs & electrical maintenance', tags: ['Visit','4 hrs','8 hrs'] },
-  { img: '/plumber.jpg',         name: 'Plumber',                external: APP_URL, desc: 'Fittings, leak repairs & plumbing work', tags: ['Visit','4 hrs','8 hrs'] },
-  { img: '/carpenter.jpg',       name: 'Carpenter',              external: APP_URL, desc: 'Furniture, fittings & on-site woodwork', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
 const INDUSTRIES = [
