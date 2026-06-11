@@ -717,7 +717,7 @@ function HomeHead() {
         })),
       ],
     },
-    sameAs: [],
+    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/'],
   }
   const websiteSchema = {
     '@context': 'https://schema.org',
@@ -743,6 +743,7 @@ function HomeHead() {
       areaServed: 'IN',
       availableLanguage: ['en', 'hi'],
     },
+    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/'],
   }
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -756,7 +757,7 @@ function HomeHead() {
   return (
     <Helmet>
       <title>Staffing for Business in Gurgaon — Hire Verified Workers | Switch</title>
-      <meta name="description" content="Switch is Gurgaon's business staffing platform. Hire Aadhaar-verified store helpers, security guards, factory &amp; warehouse workers, waiters, bartenders, cooks &amp; housekeeping for shops, restaurants, warehouses, offices and events. Bulk hiring, 7-day teams, replacement guaranteed. Pay after work is done." />
+      <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
       <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse workers Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire workers Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day worker hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
@@ -988,9 +989,8 @@ export function Footer() {
             </span>
           </a>
           <div className="ft-social">
-            <a href="#" title="LinkedIn">in</a>
-            <a href="#" title="X.com">𝕏</a>
-            <a href="#" title="Instagram">ig</a>
+            <a href="https://www.linkedin.com/company/switchlocal" target="_blank" rel="noopener noreferrer" title="Switch on LinkedIn">in</a>
+            <a href="https://www.instagram.com/switchlocally/" target="_blank" rel="noopener noreferrer" title="Switch on Instagram">ig</a>
           </div>
         </div>
         <div className="ft-col">
@@ -1024,6 +1024,19 @@ export function Footer() {
         <span className="ft-copy">© 2026 Switch. All rights reserved.</span>
         <span className="ft-copy">Made in India 🇮🇳</span>
       </div>
+      <a
+        href={APP_URL}
+        className="ft-banner"
+        aria-label="Switch — India's first on-demand staffing platform. Get the app."
+      >
+        <img
+          src="/switch-banner.jpg"
+          alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 10,000+ happy customers."
+          loading="lazy"
+          width="1600"
+          height="879"
+        />
+      </a>
     </footer>
   )
 }
