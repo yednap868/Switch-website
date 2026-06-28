@@ -1,0 +1,167 @@
+/* ─── APP DOWNLOAD PAGE ───────────────────────────── */
+.ap{background:var(--bg);color:var(--tx);overflow-x:clip}
+
+.ap [data-anim]{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);transition-delay:var(--delay,0ms)}
+.ap [data-anim].anim-in{opacity:1;transform:none}
+
+/* ─── HERO ─────────────────────────────────────────── */
+.ap-hero{position:relative;padding:9.5rem 2.5rem 5rem;overflow:hidden}
+.ap-hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.ap-hero-glow{
+  position:absolute;top:-10%;left:50%;transform:translateX(-50%);
+  width:900px;height:600px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(124,92,246,0.20),transparent 70%);
+  filter:blur(20px);
+}
+.ap-hero-inner{
+  position:relative;z-index:1;max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:1.05fr 0.95fr;gap:3.5rem;align-items:center;
+}
+
+.ap-live{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  padding:0.4rem 0.9rem;border:1px solid var(--bd);border-radius:999px;
+  background:var(--s1);font-size:0.8125rem;color:var(--t2);margin-bottom:1.5rem;
+}
+.ap-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,0.18)}
+
+.ap-h1{
+  font-size:clamp(2.4rem,5.5vw,3.9rem);line-height:1.04;letter-spacing:-0.03em;
+  font-weight:800;margin:0 0 1.25rem;
+}
+.ap-h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,#c4b5fd 0%,#8b5cf6 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.ap-lead{font-size:1.0625rem;line-height:1.65;color:#b4b4b4;max-width:30rem;margin:0 0 2rem}
+
+/* store buttons */
+.ap-stores{display:flex;flex-wrap:wrap;gap:0.9rem;margin-bottom:1.5rem}
+.ap-stores--center{justify-content:center}
+.ap-store{
+  display:inline-flex;align-items:center;gap:0.7rem;position:relative;
+  padding:0.7rem 1.25rem;border-radius:13px;text-decoration:none;
+  border:1px solid var(--bd2);min-width:185px;
+}
+.ap-store--live{background:#fff;color:#000;transition:transform .2s ease,box-shadow .2s ease}
+.ap-store--live:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,255,255,0.16)}
+.ap-store--soon{background:var(--s1);color:#6f6f6f;cursor:not-allowed}
+.ap-store-txt{display:flex;flex-direction:column;line-height:1.15;text-align:left}
+.ap-store-sm{font-size:0.7rem;opacity:0.7;letter-spacing:0.02em}
+.ap-store-lg{font-size:1.0625rem;font-weight:700}
+.ap-soon-badge{
+  position:absolute;top:-8px;right:-8px;
+  background:linear-gradient(135deg,#a78bfa,#6366f1);color:#fff;
+  font-size:0.625rem;font-weight:700;letter-spacing:0.04em;
+  padding:0.15rem 0.5rem;border-radius:999px;text-transform:uppercase;
+}
+
+.ap-trust{display:flex;align-items:center;gap:0.65rem;font-size:0.9375rem;color:var(--t2);margin-bottom:1.5rem}
+.ap-trust strong{color:#fff}
+.ap-trust-stars{display:inline-flex;gap:2px}
+
+.ap-ios-note{
+  font-size:0.875rem;line-height:1.6;color:#9a9a9a;
+  background:var(--s1);border:1px solid var(--bd);border-radius:12px;
+  padding:0.85rem 1.05rem;max-width:32rem;margin:0;
+}
+.ap-ios-note a{color:#c4b5fd;text-decoration:none;font-weight:600}
+.ap-ios-note a:hover{text-decoration:underline}
+
+/* phones */
+.ap-hero-phones{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:480px}
+.ap-ph{
+  border-radius:30px;border:1px solid #1d1d1d;
+  box-shadow:0 30px 70px rgba(0,0,0,0.6);background:#000;
+}
+.ap-ph-main{width:248px;height:auto;position:relative;z-index:2}
+.ap-ph-side{width:200px;height:auto;position:absolute;bottom:18px;opacity:0.92;z-index:1}
+.ap-ph-left{left:-2%;transform:rotate(-7deg)}
+.ap-ph-right{right:-2%;transform:rotate(7deg)}
+
+/* ─── SECTIONS ─────────────────────────────────────── */
+.ap-sec{padding:6.5rem 2.5rem;background:var(--bg)}
+.ap-sec-alt{background:#070707}
+.ap-sec-border{border-top:1px solid var(--bd)}
+.ap-w{max-width:1180px;margin:0 auto}
+.ap-hd{text-align:center;max-width:42rem;margin:0 auto 3rem}
+.ap-tag{
+  display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:#a78bfa;
+  border:1px solid rgba(167,139,250,0.3);background:rgba(124,92,246,0.08);
+  padding:0.35rem 0.85rem;border-radius:999px;margin-bottom:1.1rem;
+}
+.ap-h2{font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;letter-spacing:-0.025em;font-weight:800;margin:0 0 1rem}
+.ap-sub{font-size:1.0625rem;line-height:1.6;color:#9a9a9a;margin:0}
+
+/* features */
+.ap-feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.ap-feat{
+  background:var(--s1);border:1px solid var(--bd);border-radius:18px;
+  padding:1.85rem 1.6rem;transition:border-color .25s ease,transform .25s ease;
+  transition-delay:var(--delay,0ms);
+}
+.ap-feat:hover{border-color:var(--bd2);transform:translateY(-3px)}
+.ap-feat-ico{font-size:1.7rem;margin-bottom:0.9rem}
+.ap-feat-title{font-size:1.0625rem;font-weight:700;margin:0 0 0.5rem}
+.ap-feat-desc{font-size:0.9375rem;line-height:1.6;color:#9a9a9a;margin:0}
+
+/* steps */
+.ap-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.ap-step{
+  position:relative;padding:2rem 1.6rem;border:1px solid var(--bd);border-radius:18px;
+  background:var(--s1);transition-delay:var(--delay,0ms);
+}
+.ap-step-n{
+  font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:0.9rem;
+  background:linear-gradient(135deg,#c4b5fd,#7c5cf6);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.ap-step-title{font-size:1.125rem;font-weight:700;margin:0 0 0.5rem}
+.ap-step-desc{font-size:0.9375rem;line-height:1.6;color:#9a9a9a;margin:0}
+
+/* ─── CTA ──────────────────────────────────────────── */
+.ap-cta{
+  padding:7rem 2.5rem;border-top:1px solid var(--bd);
+  background:
+    radial-gradient(900px 380px at 50% 0%,rgba(124,92,246,0.16),transparent 70%),
+    var(--bg);
+  text-align:center;
+}
+.ap-cta-inner{max-width:46rem;margin:0 auto}
+.ap-cta-h{font-size:clamp(2rem,4.2vw,2.9rem);line-height:1.08;letter-spacing:-0.025em;font-weight:800;margin:0 0 1rem}
+.ap-cta-p{font-size:1.0625rem;line-height:1.6;color:#b4b4b4;margin:0 0 2rem}
+.ap-cta .ap-stores{margin-bottom:1.5rem}
+.ap-cta-alt{display:flex;align-items:center;justify-content:center;gap:0.85rem;flex-wrap:wrap;color:var(--t2);font-size:0.9375rem;margin-bottom:2rem}
+.ap-cta-wa{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.55rem 1.1rem;border:1px solid var(--bd2);border-radius:11px;
+  color:#fff;text-decoration:none;background:var(--s2);transition:border-color .2s ease;
+}
+.ap-cta-wa:hover{border-color:#3a3a3a}
+.ap-cta-perks{
+  list-style:none;padding:0;margin:0;display:flex;justify-content:center;flex-wrap:wrap;
+  gap:1.5rem;font-size:0.9375rem;color:var(--t2);
+}
+.ap-cta-perks li{display:inline-flex;align-items:center;gap:0.45rem}
+.ap-cta-perks svg{color:#22c55e}
+
+/* ─── RESPONSIVE ───────────────────────────────────── */
+@media (max-width:900px){
+  .ap-hero{padding:7.5rem 1.5rem 3.5rem}
+  .ap-hero-inner{grid-template-columns:1fr;gap:2.5rem;text-align:center}
+  .ap-lead{margin-left:auto;margin-right:auto}
+  .ap-stores{justify-content:center}
+  .ap-trust{justify-content:center}
+  .ap-ios-note{margin-left:auto;margin-right:auto;text-align:center}
+  .ap-hero-phones{min-height:420px;margin-top:0.5rem}
+  .ap-feat-grid,.ap-steps{grid-template-columns:1fr}
+  .ap-sec{padding:4.5rem 1.5rem}
+  .ap-cta{padding:5rem 1.5rem}
+}
+@media (max-width:560px){
+  .ap-store{min-width:160px;flex:1}
+  .ap-ph-main{width:208px}
+  .ap-ph-side{width:160px}
+}

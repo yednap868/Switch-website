@@ -1434,3 +1434,62 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   .poster-w{grid-template-columns:1fr;gap:2.5rem}
   .poster-img-wrap{order:-1;max-width:380px}
 }
+
+/* ─── REQUEST STAFF FORM ──────────────────────────── */
+.reqstaff-sec{padding:5rem 0;background:var(--s1)}
+.reqstaff-w{
+  max-width:1100px;margin:0 auto;padding:0 1.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;
+}
+.reqstaff-copy .lead{margin-top:0.5rem}
+.reqstaff-form{
+  background:var(--s2);border:1px solid var(--bd);border-radius:18px;
+  padding:1.75rem;display:flex;flex-direction:column;gap:1rem;
+}
+.reqstaff-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.reqstaff-form label{
+  display:flex;flex-direction:column;gap:0.4rem;
+  font-size:0.8125rem;font-weight:600;color:rgba(255,255,255,0.62);letter-spacing:0.01em;
+}
+.reqstaff-opt{color:var(--t3);font-weight:400}
+.reqstaff-form input,
+.reqstaff-form select,
+.reqstaff-form textarea{
+  background:var(--bg);border:1px solid var(--bd2);border-radius:10px;
+  padding:0.7rem 0.85rem;color:var(--tx);font:inherit;font-size:0.9375rem;font-weight:500;
+  transition:border-color .15s;
+}
+.reqstaff-form input::placeholder,
+.reqstaff-form textarea::placeholder{color:var(--t3)}
+.reqstaff-form input:focus,
+.reqstaff-form select:focus,
+.reqstaff-form textarea:focus{outline:none;border-color:rgba(99,102,241,0.7)}
+.reqstaff-form textarea{resize:vertical;min-height:48px}
+.reqstaff-submit{
+  margin-top:0.25rem;background:#fff;color:#000;border:none;cursor:pointer;
+  padding:0.95rem 1.5rem;border-radius:12px;font:inherit;font-size:1rem;font-weight:800;
+  transition:transform .15s,box-shadow .15s;
+}
+.reqstaff-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 30px rgba(99,102,241,0.25)}
+.reqstaff-submit:disabled{opacity:0.6;cursor:default}
+.reqstaff-fine{font-size:0.75rem;color:var(--t3);text-align:center;margin:0}
+.reqstaff-err{font-size:0.8125rem;color:#f87171;margin:0}
+.reqstaff-thanks{
+  background:var(--s2);border:1px solid rgba(99,102,241,0.35);border-radius:18px;
+  padding:2.5rem 1.75rem;text-align:center;
+}
+.reqstaff-tick{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:56px;height:56px;border-radius:50%;margin-bottom:1rem;
+  background:rgba(99,102,241,0.15);color:#a5b4fc;font-size:1.75rem;font-weight:900;
+}
+.reqstaff-thanks h3{font-size:1.5rem;font-weight:800;color:var(--tx);margin-bottom:0.5rem}
+.reqstaff-thanks p{color:rgba(255,255,255,0.6);font-size:0.9375rem;margin-bottom:1.25rem}
+.reqstaff-wa{display:inline-flex}
+@media (max-width:860px){
+  .reqstaff-w{grid-template-columns:1fr;gap:2rem}
+  .reqstaff-sec{padding:3.5rem 0}
+}
+@media (max-width:520px){
+  .reqstaff-row{grid-template-columns:1fr}
+}

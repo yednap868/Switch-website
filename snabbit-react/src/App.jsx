@@ -7,6 +7,7 @@ import PartnerPage from './pages/PartnerPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import BlogIndex from './pages/BlogIndex.jsx'
 import BlogPost from './pages/BlogPost.jsx'
+import AppPage from './pages/AppPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
@@ -163,6 +164,7 @@ export function Nav() {
           <a href="/#why" className="nav-link">Why Us</a>
           <a href="/#how-it-works" className="nav-link">How It Works</a>
           <a href="/#pricing" className="nav-link">Pricing</a>
+          <Link to="/app" className="nav-link">Get App</Link>
           <Link to="/about" className="nav-link">About</Link>
         </div>
         <div className="nav-actions">
@@ -645,6 +647,79 @@ function CTA() {
   )
 }
 
+/* ─── REQUEST STAFF FORM (lead capture) ───────────── */
+const FORM_ROLES = [
+  'Store / General Helper','Waiter','Kitchen Helper','Cook / Chef','Dishwasher',
+  'Housekeeping','Security Guard','Picker / Packer','Loader','Driver','Delivery Rider',
+  'Receptionist / Front Desk','Bartender','Bouncer','Promoter','Other / Multiple',
+]
+
+const encodeForm = (data) =>
+  Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&')
+
+function RequestStaff() {
+  const [form, setForm] = useState({ business: '', phone: '', role: '', count: '', area: '', message: '' })
+  const [status, setStatus] = useState('idle') // idle | sending | done | error
+  const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
+
+  const submit = (e) => {
+    e.preventDefault()
+    setStatus('sending')
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeForm({ 'form-name': 'request-staff', 'bot-field': '', ...form }),
+    })
+      .then(() => setStatus('done'))
+      .catch(() => setStatus('error'))
+  }
+
+  return (
+    <section className="reqstaff-sec sec-border-t" id="request-staff">
+      <div className="reqstaff-w" data-anim>
+        <div className="reqstaff-copy">
+          <span className="tag">Request staff</span>
+          <h2 className="h2">Prefer not to chat?<br />Send your requirement.</h2>
+          <p className="lead">Fill this and our team calls you back with availability and a quote — usually within the hour. Pay only after the worker reports. Replacement guaranteed.</p>
+        </div>
+        {status === 'done' ? (
+          <div className="reqstaff-thanks">
+            <span className="reqstaff-tick">✓</span>
+            <h3>Got it{form.business ? `, ${form.business}` : ''}!</h3>
+            <p>Our team will call you on <strong>{form.phone || 'your number'}</strong> shortly. For anything urgent, WhatsApp us now.</p>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-book reqstaff-wa"><IcoBolt /><span><span className="btn-main">WhatsApp us now</span></span></a>
+          </div>
+        ) : (
+          <form className="reqstaff-form" name="request-staff" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submit}>
+            <input type="hidden" name="form-name" value="request-staff" />
+            <p hidden><label>Don't fill this: <input name="bot-field" onChange={set('bot-field')} /></label></p>
+            <div className="reqstaff-row">
+              <label>Business name<input type="text" name="business" required value={form.business} onChange={set('business')} placeholder="e.g. Yum Yum Cha" /></label>
+              <label>Phone / WhatsApp<input type="tel" name="phone" required value={form.phone} onChange={set('phone')} placeholder="10-digit mobile" /></label>
+            </div>
+            <div className="reqstaff-row">
+              <label>Role needed
+                <select name="role" required value={form.role} onChange={set('role')}>
+                  <option value="" disabled>Select a role</option>
+                  {FORM_ROLES.map(r => <option key={r} value={r}>{r}</option>)}
+                </select>
+              </label>
+              <label>How many?<input type="text" name="count" value={form.count} onChange={set('count')} placeholder="e.g. 2" /></label>
+            </div>
+            <label>Area / locality<input type="text" name="area" value={form.area} onChange={set('area')} placeholder="e.g. DLF Phase 2, Udyog Vihar" /></label>
+            <label>Anything else? <span className="reqstaff-opt">(optional)</span><textarea name="message" rows="2" value={form.message} onChange={set('message')} placeholder="Shift timing, start date, etc." /></label>
+            <button type="submit" className="reqstaff-submit" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Sending…' : 'Request staff →'}
+            </button>
+            {status === 'error' && <p className="reqstaff-err">Couldn't send — please WhatsApp or call us instead.</p>}
+            <p className="reqstaff-fine">No advance payment. We call you back to confirm.</p>
+          </form>
+        )}
+      </div>
+    </section>
+  )
+}
+
 /* ─── WORKER POSTER (supply side) ─────────────────── */
 function WorkerPoster() {
   return (
@@ -1069,6 +1144,7 @@ function HomePage() {
         <Reviews />
         <FAQ />
         <CTA />
+        <RequestStaff />
         <WorkerPoster />
         <AllServicesDirectory />
       </main>
@@ -1086,6 +1162,7 @@ export default function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/blog" element={<BlogIndex />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/app" element={<AppPage />} />
       <Route path="/:slug" element={<SeoPage />} />
     </Routes>
   )
