@@ -138,13 +138,20 @@ function StarRow() {
 /* ─── NAV ─────────────────────────────────────────── */
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
   }, [])
+  // lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+  const close = () => setMenuOpen(false)
   return (
-    <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
+    <nav className={`nav${scrolled || menuOpen ? ' nav--scrolled' : ''}${menuOpen ? ' nav--open' : ''}`}>
       <div className="nav-inner">
         <a href="/" className="nav-logo">
           <div className="nav-mark">S</div>
@@ -170,8 +177,41 @@ export function Nav() {
         <div className="nav-actions">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner">💬 WhatsApp</a>
           <a href={APP_URL} className="nav-cta">Hire Staff</a>
+          <button
+            type="button"
+            className={`nav-burger${menuOpen ? ' is-open' : ''}`}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(o => !o)}
+          >
+            <span /><span /><span />
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <div className={`nav-mobile${menuOpen ? ' is-open' : ''}`}>
+        <div className="nav-mobile-links">
+          <a href="/#industries" className="nav-mobile-link" onClick={close}>Industries</a>
+          <a href="/#roles" className="nav-mobile-link" onClick={close}>Services</a>
+          <a href="/#why" className="nav-mobile-link" onClick={close}>Why Us</a>
+          <a href="/#how-it-works" className="nav-mobile-link" onClick={close}>How It Works</a>
+          <a href="/#pricing" className="nav-mobile-link" onClick={close}>Pricing</a>
+          <Link to="/app" className="nav-mobile-link" onClick={close}>Get the App</Link>
+          <Link to="/about" className="nav-mobile-link" onClick={close}>About</Link>
+        </div>
+        <div className="nav-mobile-actions">
+          <a href={APP_URL} className="nav-mobile-cta" onClick={close}>Hire Staff Now</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-mobile-wa" onClick={close}>💬 Chat on WhatsApp</a>
+        </div>
+      </div>
+      <button
+        type="button"
+        className={`nav-scrim${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}
+        tabIndex={-1}
+        onClick={close}
+      />
     </nav>
   )
 }
