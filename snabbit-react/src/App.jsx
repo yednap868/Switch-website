@@ -832,7 +832,7 @@ function HomeHead() {
         })),
       ],
     },
-    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/'],
+    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/', 'https://www.facebook.com/switchlocally'],
   }
   const websiteSchema = {
     '@context': 'https://schema.org',
@@ -858,7 +858,7 @@ function HomeHead() {
       areaServed: 'IN',
       availableLanguage: ['en', 'hi'],
     },
-    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/'],
+    sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/', 'https://www.facebook.com/switchlocally'],
   }
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -1106,6 +1106,7 @@ export function Footer() {
           <div className="ft-social">
             <a href="https://www.linkedin.com/company/switchlocal" target="_blank" rel="noopener noreferrer" title="Switch on LinkedIn">in</a>
             <a href="https://www.instagram.com/switchlocally/" target="_blank" rel="noopener noreferrer" title="Switch on Instagram">ig</a>
+            <a href="https://www.facebook.com/switchlocally" target="_blank" rel="noopener noreferrer" title="Switch on Facebook">fb</a>
           </div>
         </div>
         <div className="ft-col">

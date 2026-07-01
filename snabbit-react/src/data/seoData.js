@@ -797,20 +797,138 @@ function makeVerifiedPage(s) {
   }
 }
 
-// ─── GENERATE ALL 120 PAGES ───────────────────────
+// ─── COMPETITOR-KEYWORD ALIAS PAGES ───────────────
+// Exact-match landing pages for the head terms consumers actually type
+// ("house help", "maid", "bai", "domestic help") — the vocabulary that
+// Snabbit ("House Help in 10 Mins") and Pronto rank for and that our
+// "Home Cleaning" pages were invisible to. Each maps onto existing service
+// content, so there's no separate copy tree to maintain.
+const ALIAS_KEYWORDS =
+  'house help gurgaon, maid in gurgaon, bai, kaam wali bai, kamwali, domestic help gurgaon, ' +
+  'house help near me, maid near me, part time maid gurgaon, full time maid gurgaon, ' +
+  'house maid service, housemaid gurgaon, maid service near me, home maid gurgaon'
 
-export const SEO_PAGES = SERVICES.flatMap(s => [
-  makeLandingPage(s),
-  makePricingPage(s),
-  makeHowToHirePage(s),
-  makeBenefitsPage(s),
-  makeChecklistPage(s),
-  makeFaqPage(s),
-  makeNearMePage(s),
-  makeSameDayPage(s),
-  makeReviewsPage(s),
-  makeVerifiedPage(s),
-])
+const ALIASES = [
+  // home-help cluster (the Snabbit / Pronto battleground)
+  { serviceId: 'home-cleaning', term: 'House Help',         slug: 'house-help-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Maid',               slug: 'maid-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Domestic Help',      slug: 'domestic-help-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Maid Near Me',       slug: 'maid-near-me-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'House Help Near Me', slug: 'house-help-near-me-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Part Time Maid',     slug: 'part-time-maid-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Full Time Maid',     slug: 'full-time-maid-gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Bathroom Cleaning',  slug: 'bathroom-cleaning-gurgaon',
+    kw: 'bathroom cleaning gurgaon, toilet cleaning service, washroom cleaning near me, bathroom deep cleaning gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Kitchen Cleaning',   slug: 'kitchen-cleaning-gurgaon',
+    kw: 'kitchen cleaning gurgaon, kitchen deep cleaning, chimney cleaning, dishwashing help gurgaon' },
+  { serviceId: 'home-cleaning', term: 'Deep Cleaning',      slug: 'deep-cleaning-gurgaon',
+    kw: 'deep cleaning gurgaon, home deep cleaning service, full house deep clean near me' },
+  // cook cluster
+  { serviceId: 'cook', term: 'Bawarchi',                    slug: 'bawarchi-gurgaon',
+    kw: 'bawarchi gurgaon, cook for home gurgaon, house cook, khana banane wali, kitchen cook near me' },
+  { serviceId: 'cook', term: 'Cook For Home',               slug: 'cook-for-home-gurgaon',
+    kw: 'cook for home gurgaon, home cook, daily cook, tiffin cook, house cook near me' },
+  // childcare cluster
+  { serviceId: 'nanny', term: 'Babysitter',                 slug: 'babysitter-gurgaon',
+    kw: 'babysitter gurgaon, baby sitter near me, child care, baby care taker, creche help gurgaon' },
+  { serviceId: 'nanny', term: 'Japa Maid',                  slug: 'japa-maid-gurgaon',
+    kw: 'japa maid gurgaon, jappa maid, newborn care, post delivery maid, mother care maid near me' },
+]
+
+function makeAliasPage(a) {
+  const s = SERVICES.find(x => x.id === a.serviceId)
+  const bare = a.term.replace(/ near me$/i, '').toLowerCase()
+  return {
+    slug: a.slug,
+    type: 'landing',
+    service: a.term,
+    serviceId: s.id,
+    serviceImg: s.img,
+    title: `${a.term} in Gurgaon — Verified & Same-Day | Switch`,
+    description: `Book a verified ${bare} in Gurgaon instantly. Aadhaar-verified, background-checked house help for cleaning, mopping, dishwashing, laundry & daily chores. Pay after work, replacement guaranteed.`,
+    h1: `${a.term} in Gurgaon`,
+    intro: `Looking for a trusted ${bare} in Gurgaon? Switch connects you with verified, Aadhaar-checked workers for cleaning, mopping, dishwashing, laundry, cooking and everyday household needs. Book in the app in under 2 minutes and pay only after the work is done — no agency, no advance.`,
+    keywords: a.kw || ALIAS_KEYWORDS,
+    tasks: s.tasks,
+    prices: s.prices,
+    faqs: s.faqs,
+    reviews: s.reviews,
+    benefits: s.benefits,
+    areas: s.areas,
+    longDesc: s.longDesc,
+  }
+}
+
+export const ALIAS_PAGES = ALIASES.map(makeAliasPage)
+
+// ─── HYPERLOCAL SERVICE × LOCALITY PAGES ──────────
+// Gurgaon-exclusive is our edge: national players (Snabbit, Pronto) rank at
+// the city level; we go one level deeper — "maid in DLF Phase 3", "cook in
+// Sushant Lok" — capturing high-intent local searches they don't target.
+function slugify(t) {
+  return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+}
+
+const HYPERLOCAL_TERMS = [
+  { term: 'Maid',          serviceId: 'home-cleaning' },
+  { term: 'House Help',    serviceId: 'home-cleaning' },
+  { term: 'Home Cleaning', serviceId: 'home-cleaning' },
+  { term: 'Cook',          serviceId: 'cook' },
+  { term: 'Nanny',         serviceId: 'nanny' },
+  { term: 'Driver',        serviceId: 'driver' },
+]
+
+const HYPERLOCAL_AREAS = [
+  'DLF Phase 1', 'DLF Phase 2', 'DLF Phase 3', 'DLF Phase 4', 'Sushant Lok',
+  'Palam Vihar', 'South City', 'Sohna Road', 'Golf Course Road', 'Nirvana Country',
+  'Malibu Towne', 'Sector 14', 'Sector 29', 'Sector 45', 'Sector 52', 'Sector 56',
+]
+
+function makeAreaPage(t, area) {
+  const s = SERVICES.find(x => x.id === t.serviceId)
+  const bare = t.term.toLowerCase()
+  const al = area.toLowerCase()
+  return {
+    slug: `${slugify(t.term)}-in-${slugify(area)}-gurgaon`,
+    type: 'landing',
+    service: t.term,
+    serviceId: s.id,
+    serviceImg: s.img,
+    title: `${t.term} in ${area}, Gurgaon — Verified & Same-Day | Switch`,
+    description: `Book a verified ${bare} in ${area}, Gurgaon. Aadhaar-checked, background-verified workers available in ${area} today. Pay after work, replacement guaranteed — no agency.`,
+    h1: `${t.term} in ${area}, Gurgaon`,
+    intro: `Need a reliable ${bare} in ${area}? Switch has verified, Aadhaar-checked workers serving ${area} and the surrounding Gurgaon localities, available today. Book in the app in under 2 minutes — no agency, no advance, pay only after the work is done.`,
+    keywords: `${bare} in ${al}, ${bare} ${al} gurgaon, ${bare} near me ${al}, ${bare} service ${al}, hire ${bare} ${al}`,
+    tasks: s.tasks,
+    prices: s.prices,
+    faqs: s.faqs,
+    reviews: s.reviews,
+    benefits: s.benefits,
+    areas: HYPERLOCAL_AREAS.filter(a => a !== area),
+    longDesc: s.longDesc,
+  }
+}
+
+export const AREA_PAGES = HYPERLOCAL_TERMS.flatMap(t => HYPERLOCAL_AREAS.map(a => makeAreaPage(t, a)))
+
+// ─── GENERATE ALL PAGES ───────────────────────────
+
+export const SEO_PAGES = [
+  ...SERVICES.flatMap(s => [
+    makeLandingPage(s),
+    makePricingPage(s),
+    makeHowToHirePage(s),
+    makeBenefitsPage(s),
+    makeChecklistPage(s),
+    makeFaqPage(s),
+    makeNearMePage(s),
+    makeSameDayPage(s),
+    makeReviewsPage(s),
+    makeVerifiedPage(s),
+  ]),
+  ...ALIAS_PAGES,
+  ...AREA_PAGES,
+]
 
 export function getPageBySlug(slug) {
   return SEO_PAGES.find(p => p.slug === slug) || null
