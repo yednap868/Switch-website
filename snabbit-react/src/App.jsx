@@ -1140,19 +1140,45 @@ export function Footer() {
         <span className="ft-copy">© 2026 Switch. All rights reserved.</span>
         <span className="ft-copy">Made in India 🇮🇳</span>
       </div>
-      <a
-        href={APP_URL}
-        className="ft-banner"
-        aria-label="Switch — India's first on-demand staffing platform. Get the app."
-      >
-        <img
-          src="/switch-banner.jpg"
-          alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 10,000+ happy customers."
-          loading="lazy"
-          width="1600"
-          height="879"
-        />
-      </a>
+      <div className="ft-banner">
+        <a
+          href={APP_URL}
+          className="ft-banner-art"
+          aria-label="Switch — India's first on-demand staffing platform. Get the app."
+        >
+          <img
+            src="/switch-banner.jpg"
+            alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 10,000+ happy customers."
+            loading="lazy"
+            width="1600"
+            height="879"
+          />
+        </a>
+        {/* Real, clickable store buttons overlaid on top of the badges baked
+            into the banner art. Sized in cqw so they scale with the banner. */}
+        <div className="ft-banner-stores">
+          <a
+            href={PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ftb-store ftb-store--play"
+            aria-label="Get Switch on Google Play"
+          >
+            <IcoPlay />
+            <span className="ftb-txt"><small>GET IT ON</small><b>Google Play</b></span>
+          </a>
+          <span className="ftb-divider" aria-hidden="true" />
+          <span
+            className="ftb-store ftb-store--soon"
+            role="button"
+            aria-disabled="true"
+            title="iOS app coming soon"
+          >
+            <IcoApple />
+            <span className="ftb-txt"><small>COMING SOON</small><b>App Store</b></span>
+          </span>
+        </div>
+      </div>
     </footer>
   )
 }

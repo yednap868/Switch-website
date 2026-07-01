@@ -684,9 +684,33 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 .ft-col a:hover{color:#fff}
 .ft-bot{max-width:1240px;margin:0 auto;padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 .ft-copy{font-size:0.8125rem;color:rgba(255,255,255,0.35)}
-.ft-banner{display:block;max-width:1240px;margin:2.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--bd);line-height:0;transition:transform .25s ease,box-shadow .25s ease}
-.ft-banner:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,0.35)}
+.ft-banner{position:relative;container-type:inline-size;max-width:1240px;margin:2.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--bd);line-height:0}
+.ft-banner-art{display:block;transition:transform .25s ease,box-shadow .25s ease}
+.ft-banner:hover .ft-banner-art{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,0.35)}
 .ft-banner img{display:block;width:100%;height:auto}
+
+/* Real store buttons overlaid over the badges painted into the banner art.
+   All sizing is in cqw (% of banner width) so it tracks the responsive image
+   and fully covers the baked-in badges at every screen size. */
+.ft-banner-stores{
+  position:absolute;left:49.2%;top:81.7%;transform:translate(-50%,-50%);
+  display:flex;align-items:center;gap:2.4cqw;
+  background:#000;border:0.15cqw solid rgba(255,255,255,0.22);
+  border-radius:2.2cqw;padding:1.5cqw 2.6cqw;
+  box-shadow:0 1cqw 3cqw rgba(0,0,0,0.5);line-height:normal;z-index:2;
+}
+.ftb-store{
+  display:inline-flex;align-items:center;gap:1.2cqw;
+  text-decoration:none;color:#fff;transition:opacity .18s ease,transform .18s ease;
+}
+.ftb-store svg{width:4cqw;height:4cqw;flex:none}
+.ftb-txt{display:flex;flex-direction:column;text-align:left}
+.ftb-txt small{font-size:1.35cqw;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;opacity:0.82;line-height:1.2}
+.ftb-txt b{font-size:2.5cqw;font-weight:700;line-height:1.1;margin-top:0.1cqw}
+.ftb-divider{width:0.15cqw;align-self:stretch;background:rgba(255,255,255,0.2);margin:0.3cqw 0;flex:none}
+.ftb-store--play:hover{transform:translateY(-1px);opacity:0.85}
+.ftb-store--soon{cursor:default}
+.ftb-store--soon .ftb-txt small{color:#5EE08A;opacity:1}
 
 /* ─── SCROLL REVEAL ──────────────────────────────── */
 [data-anim]{
