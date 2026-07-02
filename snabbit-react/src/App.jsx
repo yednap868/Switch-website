@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './App.css'
@@ -133,6 +133,89 @@ function IcoPin() {
 
 function StarRow() {
   return <div className="rev-stars">{[0,1,2,3,4].map(i=><IcoStar key={i}/>)}</div>
+}
+
+/* ─── INTRO SPLASH ────────────────────────────────── */
+/* Branded reveal on first load. Plays once per browser session so returning
+   business users aren't slowed down. Respects prefers-reduced-motion. */
+function Splash() {
+  const [phase, setPhase] = useState(() => {
+    if (typeof window === 'undefined') return 'done'
+    if (sessionStorage.getItem('switch-splash') === '1') return 'done'
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sessionStorage.setItem('switch-splash', '1')
+      return 'done'
+    }
+    return 'in'
+  })
+  useEffect(() => {
+    if (phase !== 'in') return
+    sessionStorage.setItem('switch-splash', '1')
+    document.body.style.overflow = 'hidden'
+    const t1 = setTimeout(() => setPhase('out'), 1500)
+    const t2 = setTimeout(() => { setPhase('done'); document.body.style.overflow = '' }, 2150)
+    return () => { clearTimeout(t1); clearTimeout(t2); document.body.style.overflow = '' }
+  }, [phase])
+  if (phase === 'done') return null
+  return (
+    <div className={`splash${phase === 'out' ? ' splash--out' : ''}`} role="presentation" aria-hidden="true">
+      <div className="splash-inner">
+        <div className="splash-mark">S</div>
+        <div className="splash-word">Switch</div>
+        <div className="splash-tag">Staffing your business — on demand</div>
+        <div className="splash-bar"><span /></div>
+      </div>
+    </div>
+  )
+}
+
+/* ─── SCROLL PROGRESS ─────────────────────────────── */
+function ScrollProgress() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const fn = () => {
+      const h = document.documentElement
+      const max = (h.scrollHeight - h.clientHeight) || 1
+      const p = Math.min(1, Math.max(0, h.scrollTop / max))
+      if (ref.current) ref.current.style.transform = `scaleX(${p})`
+    }
+    fn()
+    window.addEventListener('scroll', fn, { passive: true })
+    window.addEventListener('resize', fn)
+    return () => { window.removeEventListener('scroll', fn); window.removeEventListener('resize', fn) }
+  }, [])
+  return <div className="scroll-prog" ref={ref} aria-hidden="true" />
+}
+
+/* ─── COUNT-UP STAT ───────────────────────────────── */
+/* Animates a number (e.g. "500+", "24h") up from zero when scrolled into view. */
+function StatNum({ value }) {
+  const m = String(value).match(/^(\d+)(.*)$/)
+  const target = m ? parseInt(m[1], 10) : 0
+  const suffix = m ? m[2] : String(value)
+  const ref = useRef(null)
+  const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [n, setN] = useState(reduce ? target : 0)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !m || reduce) return
+    let raf
+    const obs = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return
+      obs.disconnect()
+      const dur = 1200, start = performance.now()
+      const tick = (t) => {
+        const p = Math.min(1, (t - start) / dur)
+        const eased = 1 - Math.pow(1 - p, 3)
+        setN(Math.round(target * eased))
+        if (p < 1) raf = requestAnimationFrame(tick)
+      }
+      raf = requestAnimationFrame(tick)
+    }, { threshold: 0.4 })
+    obs.observe(el)
+    return () => { obs.disconnect(); if (raf) cancelAnimationFrame(raf) }
+  }, [target, m, reduce])
+  return <span ref={ref}>{m ? n : ''}{suffix}</span>
 }
 
 /* ─── NAV ─────────────────────────────────────────── */
@@ -317,7 +400,7 @@ function Stats() {
           { num: '24h',  lbl: 'Replacement Time' },
         ].map((s, i) => (
           <div className="s-cell" key={i} data-anim style={{'--delay':`${i*90}ms`}}>
-            <div className="s-num">{s.num}</div>
+            <div className="s-num"><StatNum value={s.num} /></div>
             <div className="s-lbl">{s.lbl}</div>
           </div>
         ))}
@@ -1072,6 +1155,45 @@ function Pricing() {
 export function Footer() {
   return (
     <footer className="footer">
+      <div className="ft-banner ft-banner--top">
+        <a
+          href={APP_URL}
+          className="ft-banner-art"
+          aria-label="Switch — India's first on-demand staffing platform. Get the app."
+        >
+          <img
+            src="/switch-banner.jpg"
+            alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 1000+ happy customers."
+            loading="lazy"
+            width="1600"
+            height="879"
+          />
+        </a>
+        {/* Real, clickable store buttons overlaid on top of the badges baked
+            into the banner art. Sized in cqw so they scale with the banner. */}
+        <div className="ft-banner-stores">
+          <a
+            href={PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ftb-store ftb-store--play"
+            aria-label="Get Switch on Google Play"
+          >
+            <IcoPlay />
+            <span className="ftb-txt"><small>GET IT ON</small><b>Google Play</b></span>
+          </a>
+          <span className="ftb-divider" aria-hidden="true" />
+          <span
+            className="ftb-store ftb-store--soon"
+            role="button"
+            aria-disabled="true"
+            title="iOS app coming soon"
+          >
+            <IcoApple />
+            <span className="ftb-txt"><small>COMING SOON</small><b>App Store</b></span>
+          </span>
+        </div>
+      </div>
       <div className="ft-grid">
         <div>
           <div className="ft-brand">
@@ -1140,45 +1262,6 @@ export function Footer() {
         <span className="ft-copy">© 2026 Switch. All rights reserved.</span>
         <span className="ft-copy">Made in India 🇮🇳</span>
       </div>
-      <div className="ft-banner">
-        <a
-          href={APP_URL}
-          className="ft-banner-art"
-          aria-label="Switch — India's first on-demand staffing platform. Get the app."
-        >
-          <img
-            src="/switch-banner.jpg"
-            alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 10,000+ happy customers."
-            loading="lazy"
-            width="1600"
-            height="879"
-          />
-        </a>
-        {/* Real, clickable store buttons overlaid on top of the badges baked
-            into the banner art. Sized in cqw so they scale with the banner. */}
-        <div className="ft-banner-stores">
-          <a
-            href={PLAY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ftb-store ftb-store--play"
-            aria-label="Get Switch on Google Play"
-          >
-            <IcoPlay />
-            <span className="ftb-txt"><small>GET IT ON</small><b>Google Play</b></span>
-          </a>
-          <span className="ftb-divider" aria-hidden="true" />
-          <span
-            className="ftb-store ftb-store--soon"
-            role="button"
-            aria-disabled="true"
-            title="iOS app coming soon"
-          >
-            <IcoApple />
-            <span className="ftb-txt"><small>COMING SOON</small><b>App Store</b></span>
-          </span>
-        </div>
-      </div>
     </footer>
   )
 }
@@ -1223,14 +1306,18 @@ function HomePage() {
 /* ─── APP ─────────────────────────────────────────── */
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/partner" element={<PartnerPage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/blog" element={<BlogIndex />} />
-      <Route path="/blog/:slug" element={<BlogPost />} />
-      <Route path="/app" element={<AppPage />} />
-      <Route path="/:slug" element={<SeoPage />} />
-    </Routes>
+    <>
+      <Splash />
+      <ScrollProgress />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/partner" element={<PartnerPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/app" element={<AppPage />} />
+        <Route path="/:slug" element={<SeoPage />} />
+      </Routes>
+    </>
   )
 }

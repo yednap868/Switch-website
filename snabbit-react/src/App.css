@@ -685,6 +685,7 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 .ft-bot{max-width:1240px;margin:0 auto;padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 .ft-copy{font-size:0.8125rem;color:rgba(255,255,255,0.35)}
 .ft-banner{position:relative;container-type:inline-size;max-width:1240px;margin:2.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--bd);line-height:0}
+.ft-banner--top{margin:0 auto 3.5rem}
 .ft-banner-art{display:block;transition:transform .25s ease,box-shadow .25s ease}
 .ft-banner:hover .ft-banner-art{transform:translateY(-2px);box-shadow:0 14px 40px rgba(0,0,0,0.35)}
 .ft-banner img{display:block;width:100%;height:auto}
@@ -728,6 +729,73 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   .hero-glow{animation:none}
   .hero-booking-card{animation:none}
   .btn-book::after{display:none}
+  .splash,.splash *{animation:none!important}
+  .scroll-prog{display:none}
+}
+
+/* ─── INTRO SPLASH ───────────────────────────────── */
+.splash{
+  position:fixed;inset:0;z-index:10000;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(120% 120% at 50% 40%,#111 0%,#000 70%);
+  overflow:hidden;
+  animation:splash-fade .5s ease both;
+}
+.splash::before{
+  /* soft violet glow behind the mark */
+  content:'';position:absolute;top:50%;left:50%;
+  width:520px;height:520px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(139,92,246,0.22) 0%,transparent 60%);
+  filter:blur(10px);opacity:0;animation:splash-glow 1.6s ease both;
+}
+.splash--out{
+  animation:splash-out .6s cubic-bezier(0.7,0,0.3,1) both;
+}
+.splash-inner{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.splash-mark{
+  width:88px;height:88px;border-radius:22px;
+  background:linear-gradient(150deg,#1a1a1a,#0a0a0a);
+  border:1.5px solid rgba(160,140,255,0.4);
+  box-shadow:0 0 0 6px rgba(139,92,246,0.06),0 20px 60px rgba(99,102,241,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:2.75rem;color:#fff;letter-spacing:-0.03em;
+  opacity:0;transform:scale(.7) translateY(12px);
+  animation:splash-mark .8s cubic-bezier(0.22,1,0.36,1) .1s both;
+}
+.splash-word{
+  margin-top:1.25rem;font-size:2rem;font-weight:800;letter-spacing:-0.04em;color:#fff;
+  opacity:0;transform:translateY(14px);
+  animation:splash-up .7s cubic-bezier(0.22,1,0.36,1) .4s both;
+}
+.splash-tag{
+  margin-top:.35rem;font-size:.875rem;font-weight:500;color:rgba(255,255,255,0.5);
+  opacity:0;transform:translateY(10px);
+  animation:splash-up .7s cubic-bezier(0.22,1,0.36,1) .55s both;
+}
+.splash-bar{
+  margin-top:1.75rem;width:150px;height:3px;border-radius:3px;
+  background:rgba(255,255,255,0.08);overflow:hidden;
+  opacity:0;animation:splash-up .6s ease .6s both;
+}
+.splash-bar span{
+  display:block;height:100%;width:100%;border-radius:3px;transform-origin:left;
+  background:linear-gradient(90deg,rgba(99,102,241,0.9),rgba(139,92,246,1));
+  transform:scaleX(0);animation:splash-load 1.15s cubic-bezier(0.4,0,0.2,1) .55s both;
+}
+@keyframes splash-fade{from{opacity:0}to{opacity:1}}
+@keyframes splash-out{to{opacity:0;transform:scale(1.06);visibility:hidden}}
+@keyframes splash-glow{0%{opacity:0}40%{opacity:1}100%{opacity:.7}}
+@keyframes splash-mark{to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes splash-up{to{opacity:1;transform:translateY(0)}}
+@keyframes splash-load{to{transform:scaleX(1)}}
+
+/* ─── SCROLL PROGRESS BAR ────────────────────────── */
+.scroll-prog{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:10001;
+  transform-origin:left;transform:scaleX(0);pointer-events:none;
+  background:linear-gradient(90deg,rgba(99,102,241,0.9),rgba(139,92,246,1),rgba(180,140,255,0.9));
+  box-shadow:0 0 10px rgba(139,92,246,0.6);
+  will-change:transform;
 }
 
 /* hero h1 accent — italic line shows indigo/violet */
