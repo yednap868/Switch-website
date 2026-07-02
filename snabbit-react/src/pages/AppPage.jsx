@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Nav, Footer } from '../App.jsx'
 import './AppPage.css'
 
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
+const APP_URL = 'https://app.switchlocally.com'
 const PHONE = '+918368828660'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
@@ -151,7 +151,7 @@ export default function AppPage() {
               <p className="ap-ios-note">
                 📱 On an iPhone? The iOS app isn’t out yet — you can still hire instantly on{' '}
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a> or at{' '}
-                <Link to="/">switchlocally.com</Link>.
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer">app.switchlocally.com</a>.
               </p>
             </div>
 
