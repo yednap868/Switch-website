@@ -85,6 +85,16 @@ ul{list-style:none}
   white-space:nowrap;
 }
 .nav-partner:hover{background:rgba(160,140,255,0.12);border-color:rgba(160,140,255,0.55);transform:translateY(-1px)}
+/* job-seeker (supply-side) entry point — kept small so the B2B nav stays primary */
+.nav-jobs{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  color:rgba(255,255,255,0.72);font-size:0.8125rem;font-weight:600;
+  padding:0.5rem 0.9rem;border-radius:999px;white-space:nowrap;
+  border:1px solid rgba(160,140,255,0.28);background:rgba(160,140,255,0.06);
+  transition:color .2s,background .2s,border-color .2s,transform .2s;
+}
+.nav-jobs:hover{color:#fff;background:rgba(160,140,255,0.16);border-color:rgba(160,140,255,0.55);transform:translateY(-1px)}
+.nav-mobile-link--jobs{color:#c9b8ff;font-weight:700}
 
 /* hamburger — hidden on desktop */
 .nav-burger{
@@ -818,6 +828,7 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 @media(max-width:1100px){
   .nav-links{display:none}
   .nav-partner{display:none}
+  .nav-jobs{display:none}
   .nav-burger{display:flex}
   .nav-mobile{display:flex}
   .nav-scrim{display:block}

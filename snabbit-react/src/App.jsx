@@ -135,40 +135,6 @@ function StarRow() {
   return <div className="rev-stars">{[0,1,2,3,4].map(i=><IcoStar key={i}/>)}</div>
 }
 
-/* ─── INTRO SPLASH ────────────────────────────────── */
-/* Branded reveal on first load. Plays once per browser session so returning
-   business users aren't slowed down. Respects prefers-reduced-motion. */
-function Splash() {
-  const [phase, setPhase] = useState(() => {
-    if (typeof window === 'undefined') return 'done'
-    if (sessionStorage.getItem('switch-splash') === '1') return 'done'
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      sessionStorage.setItem('switch-splash', '1')
-      return 'done'
-    }
-    return 'in'
-  })
-  useEffect(() => {
-    if (phase !== 'in') return
-    sessionStorage.setItem('switch-splash', '1')
-    document.body.style.overflow = 'hidden'
-    const t1 = setTimeout(() => setPhase('out'), 1500)
-    const t2 = setTimeout(() => { setPhase('done'); document.body.style.overflow = '' }, 2150)
-    return () => { clearTimeout(t1); clearTimeout(t2); document.body.style.overflow = '' }
-  }, [phase])
-  if (phase === 'done') return null
-  return (
-    <div className={`splash${phase === 'out' ? ' splash--out' : ''}`} role="presentation" aria-hidden="true">
-      <div className="splash-inner">
-        <div className="splash-mark">S</div>
-        <div className="splash-word">Switch</div>
-        <div className="splash-tag">Staffing your business — on demand</div>
-        <div className="splash-bar"><span /></div>
-      </div>
-    </div>
-  )
-}
-
 /* ─── SCROLL PROGRESS ─────────────────────────────── */
 function ScrollProgress() {
   const ref = useRef(null)
@@ -258,6 +224,7 @@ export function Nav() {
           <Link to="/about" className="nav-link">About</Link>
         </div>
         <div className="nav-actions">
+          <Link to="/partner" className="nav-jobs">👷 Looking for work?</Link>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner">💬 WhatsApp</a>
           <a href={APP_URL} className="nav-cta">Hire Staff</a>
           <button
@@ -282,6 +249,7 @@ export function Nav() {
           <a href="/#pricing" className="nav-mobile-link" onClick={close}>Pricing</a>
           <Link to="/app" className="nav-mobile-link" onClick={close}>Get the App</Link>
           <Link to="/about" className="nav-mobile-link" onClick={close}>About</Link>
+          <Link to="/partner" className="nav-mobile-link nav-mobile-link--jobs" onClick={close}>👷 Looking for work? →</Link>
         </div>
         <div className="nav-mobile-actions">
           <a href={APP_URL} className="nav-mobile-cta" onClick={close}>Hire Staff Now</a>
@@ -843,28 +811,6 @@ function RequestStaff() {
   )
 }
 
-/* ─── WORKER POSTER (supply side) ─────────────────── */
-function WorkerPoster() {
-  return (
-    <section className="sec poster-sec sec-border-t" id="work-with-us">
-      <div className="w poster-w">
-        <div className="poster-copy" data-anim>
-          <span className="tag">Looking for work?</span>
-          <h2 className="h2">Your next job is<br /><em>ghar ke paas.</em></h2>
-          <p className="lead">Verified employers, fast placement, zero cost. Get a blue-collar job near your home across Gurgaon — apply in a few taps.</p>
-          <div className="poster-ctas">
-            <Link to="/partner" className="price-cta price-cta--primary poster-cta"><IcoBolt />Become a Switch Partner</Link>
-            <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="cta-applink"><IcoPlay /> Get the app</a>
-          </div>
-        </div>
-        <div className="poster-img-wrap" data-anim style={{'--delay':'120ms'}}>
-          <img src="/instagram-poster.svg" alt="Switch — find blue-collar jobs near your home in Gurgaon, fast placement, free" className="poster-img" width="1080" height="1080" loading="lazy" decoding="async" />
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* ─── HOME SEO HEAD ───────────────────────────────── */
 function HomeHead() {
   const allServices = [
@@ -1295,7 +1241,6 @@ function HomePage() {
         <FAQ />
         <CTA />
         <RequestStaff />
-        <WorkerPoster />
         <AllServicesDirectory />
       </main>
       <Footer />
@@ -1307,7 +1252,6 @@ function HomePage() {
 export default function App() {
   return (
     <>
-      <Splash />
       <ScrollProgress />
       <Routes>
         <Route path="/" element={<HomePage />} />
