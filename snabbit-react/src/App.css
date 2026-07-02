@@ -490,6 +490,61 @@ ul{list-style:none}
 .step-title{font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:0.625rem;letter-spacing:-0.02em}
 .step-desc{font-size:1rem;color:var(--t2);line-height:1.75}
 
+/* ─── HOW IT WORKS (app-screenshot steps) ─────────── */
+.how-app-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem;
+}
+.how-app-step{display:flex;flex-direction:column}
+.how-app-phone{
+  position:relative;overflow:hidden;border-radius:22px;
+  height:360px;display:flex;justify-content:center;padding-top:2rem;
+  background:
+    radial-gradient(120% 85% at 50% -12%, rgba(160,110,255,0.42), transparent 60%),
+    linear-gradient(165deg, rgba(139,92,246,0.30) 0%, rgba(99,102,241,0.11) 55%, rgba(99,102,241,0.04) 100%);
+  border:1px solid rgba(160,140,255,0.28);
+}
+.how-app-glow{
+  position:absolute;top:-28%;left:50%;transform:translateX(-50%);
+  width:78%;height:58%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side, rgba(160,110,255,0.55), transparent);
+  filter:blur(34px);
+}
+.how-app-shot{
+  position:absolute;top:2rem;left:50%;z-index:1;
+  height:112%;width:auto;
+  transform:translateX(-50%);
+  border:5px solid #0c0c0f;border-bottom:none;border-radius:28px 28px 0 0;
+  box-shadow:0 24px 55px rgba(0,0,0,0.55);
+  opacity:0;transition:opacity .9s ease;
+}
+.how-app-shot.is-active{opacity:1}
+/* little "LIVE" recording chip, like a screen capture in progress */
+.how-app-rec{
+  position:absolute;top:0.85rem;right:0.85rem;z-index:2;
+  display:inline-flex;align-items:center;gap:0.35rem;
+  padding:0.25rem 0.55rem;border-radius:999px;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);
+  font-size:0.625rem;font-weight:800;letter-spacing:0.1em;color:#fff;
+  border:1px solid rgba(255,255,255,0.14);
+}
+.how-app-rec i{
+  width:6px;height:6px;border-radius:50%;background:#ff4d4d;
+  box-shadow:0 0 0 0 rgba(255,77,77,0.6);animation:rec-pulse 1.6s ease-out infinite;
+}
+@keyframes rec-pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,77,77,0.55)}
+  70%{box-shadow:0 0 0 7px rgba(255,77,77,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .how-app-shot{transition:none}
+  .how-app-rec i{animation:none}
+}
+.how-app-body{padding:1.6rem 0.4rem 0}
+.how-app-n{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#a78bfa}
+.how-app-title{margin-top:0.5rem;font-size:1.375rem;font-weight:800;color:#fff;letter-spacing:-0.025em;line-height:1.15}
+.how-app-desc{margin-top:0.6rem;font-size:0.9375rem;color:var(--t2);line-height:1.6}
+
 /* ─── HOW IT WORKS TRUST ROW ─────────────────────── */
 .hw-trust{
   display:grid;grid-template-columns:repeat(4,1fr);
@@ -885,6 +940,8 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
   .h2{font-size:2.25rem}
   .lead{font-size:1rem}
   .steps--4{grid-template-columns:repeat(2,1fr)}
+  .how-app-grid{grid-template-columns:1fr;gap:2.75rem;max-width:400px;margin-inline:auto}
+  .how-app-phone{height:400px}
   .roles-grid{grid-template-columns:repeat(2,1fr)}
   .role:nth-child(3n){border-right:1px solid var(--bd)}
   .role:nth-child(2n){border-right:none}

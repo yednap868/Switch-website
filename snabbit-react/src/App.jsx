@@ -516,116 +516,63 @@ function Roles() {
 }
 
 /* ─── EASY PROCESS ────────────────────────────────── */
-function IllChoose() {
+/* App screens that each phone cycles through — gives the "live recording"
+   feel of the app updating in real time. */
+const HOW_SHOTS = ['/screen-2.png', '/screen-home.png', '/screen-3.png']
+
+/* A single phone frame that crossfades through the app screens on a loop.
+   `start` offsets each phone so they're never showing the same screen. */
+function PhoneReel({ start }) {
+  const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [idx, setIdx] = useState(start % HOW_SHOTS.length)
+  useEffect(() => {
+    if (reduce) return
+    const t = setInterval(() => setIdx(i => (i + 1) % HOW_SHOTS.length), 2600)
+    return () => clearInterval(t)
+  }, [reduce])
   return (
-    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="ipg1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="rgba(160,140,255,0.9)"/>
-          <stop offset="100%" stopColor="rgba(99,102,241,0.6)"/>
-        </linearGradient>
-      </defs>
-      <rect x="14" y="16" width="92" height="72" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.45)" strokeWidth="1.2"/>
-      <rect x="22" y="26" width="22" height="22" rx="5" fill="url(#ipg1)"/>
-      <rect x="49" y="26" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-      <rect x="76" y="26" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-      <rect x="22" y="54" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-      <rect x="49" y="54" width="22" height="22" rx="5" fill="url(#ipg1)" opacity="0.55"/>
-      <rect x="76" y="54" width="22" height="22" rx="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)"/>
-      <circle cx="33" cy="37" r="3.4" fill="#fff" opacity="0.95"/>
-      <path d="M28 39 c0-3.4 2.4-5.2 5-5.2 s5 1.8 5 5.2" stroke="#fff" strokeWidth="1.4" opacity="0.95" fill="none"/>
-    </svg>
-  )
-}
-function IllHours() {
-  return (
-    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="ipg2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
-          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="50" r="34" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.5)" strokeWidth="1.3"/>
-      <circle cx="60" cy="50" r="28" fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1"/>
-      <path d="M60 22 A28 28 0 0 1 88 50" stroke="url(#ipg2)" strokeWidth="4" strokeLinecap="round" fill="none"/>
-      <line x1="60" y1="50" x2="60" y2="30" stroke="#fff" strokeWidth="2.4" strokeLinecap="round"/>
-      <line x1="60" y1="50" x2="76" y2="58" stroke="#fff" strokeWidth="2.4" strokeLinecap="round"/>
-      <circle cx="60" cy="50" r="2.6" fill="#fff"/>
-      <text x="60" y="13" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">12</text>
-      <text x="103" y="53" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">3</text>
-      <text x="60" y="93" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">6</text>
-      <text x="17" y="53" textAnchor="middle" fontSize="8" fontWeight="700" fill="rgba(255,255,255,0.6)">9</text>
-    </svg>
-  )
-}
-function IllVerify() {
-  return (
-    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="ipg3" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
-          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
-        </linearGradient>
-      </defs>
-      <rect x="36" y="14" width="48" height="72" rx="10" fill="rgba(99,102,241,0.08)" stroke="rgba(160,140,255,0.5)" strokeWidth="1.3"/>
-      <circle cx="60" cy="44" r="13" fill="rgba(255,255,255,0.08)" stroke="url(#ipg3)" strokeWidth="1.5"/>
-      <circle cx="60" cy="40" r="5" fill="#fff" opacity="0.9"/>
-      <path d="M50 54 c0-6 4-9 10-9 s10 3 10 9" stroke="#fff" strokeWidth="1.6" fill="none" opacity="0.9"/>
-      <line x1="44" y1="22" x2="50" y2="22" stroke="url(#ipg3)" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="70" y1="22" x2="76" y2="22" stroke="url(#ipg3)" strokeWidth="2" strokeLinecap="round"/>
-      <line x1="44" y1="78" x2="76" y2="78" stroke="rgba(255,255,255,0.15)" strokeWidth="1"/>
-      <rect x="44" y="64" width="32" height="8" rx="2" fill="rgba(99,102,241,0.2)" stroke="rgba(160,140,255,0.4)"/>
-      <text x="60" y="70.5" textAnchor="middle" fontSize="7" fontWeight="800" fill="#fff" letterSpacing="1.5">4 2 8 1</text>
-    </svg>
-  )
-}
-function IllRelax() {
-  return (
-    <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="ipg4" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(160,140,255,0.85)"/>
-          <stop offset="100%" stopColor="rgba(99,102,241,0.55)"/>
-        </linearGradient>
-      </defs>
-      <rect x="10" y="20" width="100" height="60" rx="9" fill="rgba(99,102,241,0.06)" stroke="rgba(160,140,255,0.45)" strokeWidth="1.2"/>
-      <path d="M28 64 v-10 a6 6 0 0 1 6-6 h52 a6 6 0 0 1 6 6 v10" fill="url(#ipg4)"/>
-      <rect x="22" y="60" width="76" height="14" rx="3" fill="url(#ipg4)" opacity="0.85"/>
-      <rect x="22" y="60" width="76" height="14" rx="3" fill="none" stroke="rgba(255,255,255,0.18)"/>
-      <rect x="22" y="73" width="6" height="6" rx="1" fill="rgba(255,255,255,0.4)"/>
-      <rect x="92" y="73" width="6" height="6" rx="1" fill="rgba(255,255,255,0.4)"/>
-      <rect x="34" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
-      <rect x="52" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
-      <rect x="70" y="50" width="14" height="10" rx="3" fill="rgba(255,255,255,0.85)"/>
-      <circle cx="60" cy="32" r="4" fill="#fff"/>
-      <path d="M52 32 q8 -10 16 0" stroke="rgba(255,255,255,0.5)" strokeWidth="1.2" fill="none"/>
-    </svg>
+    <div className="how-app-phone">
+      <span className="how-app-glow" aria-hidden="true" />
+      <span className="how-app-rec" aria-hidden="true"><i />LIVE</span>
+      {HOW_SHOTS.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt="Switch app preview"
+          className={`how-app-shot${i === idx ? ' is-active' : ''}`}
+          width="390"
+          height="844"
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+    </div>
   )
 }
 
 function HowItWorks() {
   const items = [
-    { n:'01', title:'Tell us your requirement',     desc:'Pick the role and how many workers you need — for a few hours, a full shift, or up to 7 days. Bulk needs? Just WhatsApp us.', Ill: IllChoose },
-    { n:'02', title:'We match verified staff',      desc:'We assign Aadhaar-verified, skill-checked workers suited to your business — usually within hours.', Ill: IllHours },
-    { n:'03', title:'They report to your site',     desc:'OTP verification on arrival confirms the right person. No-show? A replacement is dispatched fast.', Ill: IllVerify },
-    { n:'04', title:'Scale up or down anytime',     desc:'Need more hands for a sale or festival? Add staff in minutes. Pay only after the work is done.', Ill: IllRelax },
+    { n:'01', title:'Pick from verified staff',  desc:'Browse workers by role — helpers, guards, cooks, waiters, drivers & more. Book by the hour, day or a full 7-day team.' },
+    { n:'02', title:'Book in a few taps',        desc:'Set how many workers and how long you need them. We match Aadhaar-verified, skill-checked staff — usually within hours.' },
+    { n:'03', title:'They report. You pay on arrival.', desc:'OTP verification confirms the right person on site. No-show? Instant replacement. Pay only after the work is done.' },
   ]
   return (
-    <section className="sec" id="how-it-works">
+    <section className="sec how-app" id="how-it-works">
       <div className="w">
         <div className="sec-hd" data-anim>
           <span className="tag">How it works</span>
-          <h2 className="h2">Staff your business<br />in four steps.</h2>
+          <h2 className="h2">Staff your business<br />in three taps.</h2>
           <p className="lead">From request to reporting — built to keep your business covered without the agency runaround.</p>
         </div>
-        <div className="steps steps--4">
+        <div className="how-app-grid">
           {items.map((s, i) => (
-            <div className="step step--ill" key={i} data-anim style={{'--delay':`${i*120}ms`}}>
-              <div className="step-n">Step {s.n}</div>
-              <div className="step-ill"><s.Ill /></div>
-              <div className="step-title">{s.title}</div>
-              <p className="step-desc">{s.desc}</p>
+            <div className="how-app-step" key={i} data-anim style={{'--delay':`${i*130}ms`}}>
+              <PhoneReel start={i} />
+              <div className="how-app-body">
+                <div className="how-app-n">Step {s.n}</div>
+                <h3 className="how-app-title">{s.title}</h3>
+                <p className="how-app-desc">{s.desc}</p>
+              </div>
             </div>
           ))}
         </div>
