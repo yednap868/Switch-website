@@ -55,11 +55,12 @@ ul{list-style:none}
 }
 .nav-logo{display:flex;align-items:center;gap:0.625rem}
 .nav-mark{
-  width:38px;height:38px;background:#0a0a0a;border-radius:10px;
-  border:1.5px solid #2a2a2a;
+  width:38px;height:38px;border-radius:11px;border:none;
+  background:linear-gradient(145deg,#8b5cf6 0%,#6366f1 100%);
   display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:1.0625rem;color:#fff;flex-shrink:0;
+  font-weight:900;font-size:1.125rem;color:#fff;flex-shrink:0;
   letter-spacing:-0.02em;
+  box-shadow:0 4px 14px -2px rgba(139,92,246,0.6),inset 0 1px 0 rgba(255,255,255,0.28);
 }
 .nav-name{font-weight:800;font-size:1.4375rem;color:#fff;letter-spacing:-0.03em}
 .nav-links{display:flex;align-items:center}
@@ -78,12 +79,15 @@ ul{list-style:none}
 .nav-cta:hover{background:#f0f0f0;transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,255,255,0.18)}
 .nav-actions{display:flex;align-items:center;gap:0.625rem}
 .nav-partner{
+  display:inline-flex;align-items:center;gap:0.45rem;
   background:transparent;color:#fff;padding:0.625rem 1.125rem;
   border-radius:8px;font-size:0.875rem;font-weight:600;
   border:1px solid rgba(255,255,255,0.18);
   transition:background .2s,border-color .2s,transform .2s;
   white-space:nowrap;
 }
+.nav-wa-ico{display:inline-flex;color:#25d366}
+.nmj-lbl{display:inline-flex;align-items:center;gap:0.55rem}
 .nav-partner:hover{background:rgba(160,140,255,0.12);border-color:rgba(160,140,255,0.55);transform:translateY(-1px)}
 /* job-seeker (supply-side) entry point — kept small so the B2B nav stays primary */
 .nav-jobs{
@@ -1627,8 +1631,18 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 }
 .why-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-3px)}
 .why-ico{
-  width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;
-  background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.22);margin-bottom:1.25rem;
+  width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  color:#c9b8ff;
+  background:linear-gradient(150deg,rgba(139,92,246,0.24) 0%,rgba(99,102,241,0.07) 100%);
+  border:1px solid rgba(160,140,255,0.30);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 10px 22px -10px rgba(139,92,246,0.55);
+  margin-bottom:1.35rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s,color .25s;
+}
+.why-ico svg{width:25px;height:25px}
+.why-card:hover .why-ico{
+  transform:translateY(-2px);color:#fff;border-color:rgba(160,140,255,0.55);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.12),0 14px 28px -10px rgba(139,92,246,0.75);
 }
 .why-title{font-size:1.0625rem;font-weight:700;color:#fff;letter-spacing:-0.02em;margin-bottom:0.5rem}
 .why-desc{font-size:0.9375rem;color:rgba(255,255,255,0.5);line-height:1.65}

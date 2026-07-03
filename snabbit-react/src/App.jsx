@@ -135,6 +135,37 @@ function StarRow() {
   return <div className="rev-stars">{[0,1,2,3,4].map(i=><IcoStar key={i}/>)}</div>
 }
 
+/* ─── LINE ICONS (nav + why-us) ───────────────────── */
+const LINE = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }
+function IcoRefresh() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><path d="M20.5 12a8.5 8.5 0 0 1-14.4 6.2L3.5 15.5"/><path d="M3.5 12a8.5 8.5 0 0 1 14.4-6.2L20.5 8.5"/><path d="M20.5 4v4.5H16"/><path d="M3.5 20v-4.5H8"/></svg>)
+}
+function IcoIdCheck() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8" cy="10.5" r="2"/><path d="M5 16c.5-1.7 1.6-2.6 3-2.6s2.5.9 3 2.6"/><path d="M14.3 10.6l1.4 1.4 2.8-3"/></svg>)
+}
+function IcoBoltLine() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><path d="M13 2.5 5 13.4a.6.6 0 0 0 .5 1H10l-1 7 8-11a.6.6 0 0 0-.5-1H12l1-6.9z"/></svg>)
+}
+function IcoTeam() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><circle cx="9" cy="8" r="3"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M16 5.4a3 3 0 0 1 0 5.8"/><path d="M17.6 14.3a6 6 0 0 1 3.4 5.2"/></svg>)
+}
+function IcoWallet() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><path d="M3 8.3A2.3 2.3 0 0 1 5.3 6H16.5a1 1 0 0 1 1 1v1.5"/><rect x="3" y="8" width="18" height="11.5" rx="2.5"/><path d="M21 12.5h-3.6a1.75 1.75 0 0 0 0 3.5H21"/></svg>)
+}
+function IcoHeadset() {
+  return (<svg viewBox="0 0 24 24" {...LINE}><path d="M4 13.5v-1.5a8 8 0 0 1 16 0v1.5"/><rect x="2.5" y="12.8" width="4" height="6.4" rx="1.8"/><rect x="17.5" y="12.8" width="4" height="6.4" rx="1.8"/><path d="M20 19.2a3.5 3.5 0 0 1-3.5 3H13"/></svg>)
+}
+function IcoBriefcase() {
+  return (<svg viewBox="0 0 24 24" {...LINE} width="15" height="15"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M3 12.5h18"/></svg>)
+}
+function IcoWhatsApp() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+      <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.25-.13-1.5-.74-1.73-.82-.23-.09-.4-.13-.57.13-.17.25-.65.82-.8.99-.15.17-.3.19-.55.06a6.7 6.7 0 0 1-2-1.23 7.4 7.4 0 0 1-1.36-1.7c-.14-.25-.01-.38.11-.5.11-.11.25-.3.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.38-.79-1.88-.2-.48-.42-.42-.57-.43h-.49c-.17 0-.44.06-.67.32-.23.25-.88.86-.88 2.1 0 1.23.9 2.42 1.03 2.59.13.17 1.77 2.7 4.3 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.5-.61 1.71-1.2.21-.6.21-1.1.15-1.2-.06-.11-.23-.17-.48-.3Z"/>
+    </svg>
+  )
+}
+
 /* ─── SCROLL PROGRESS ─────────────────────────────── */
 function ScrollProgress() {
   const ref = useRef(null)
@@ -224,8 +255,8 @@ export function Nav() {
           <Link to="/about" className="nav-link">About</Link>
         </div>
         <div className="nav-actions">
-          <Link to="/partner" className="nav-jobs">👷 Looking for work?</Link>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner">💬 WhatsApp</a>
+          <Link to="/partner" className="nav-jobs"><IcoBriefcase />Looking for work?</Link>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="nav-partner"><span className="nav-wa-ico"><IcoWhatsApp /></span>WhatsApp</a>
           <a href={APP_URL} className="nav-cta">Hire Staff</a>
           <button
             type="button"
@@ -249,7 +280,10 @@ export function Nav() {
           <a href="/#pricing" className="nav-mobile-link" onClick={close}>Pricing</a>
           <Link to="/app" className="nav-mobile-link" onClick={close}>Get the App</Link>
           <Link to="/about" className="nav-mobile-link" onClick={close}>About</Link>
-          <Link to="/partner" className="nav-mobile-link nav-mobile-link--jobs" onClick={close}>👷 Looking for work? →</Link>
+          <Link to="/partner" className="nav-mobile-link nav-mobile-link--jobs" onClick={close}>
+            <span className="nmj-lbl"><IcoBriefcase /> Looking for work?</span>
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
         <div className="nav-mobile-actions">
           <a href={APP_URL} className="nav-mobile-cta" onClick={close}>Hire Staff Now</a>
@@ -449,12 +483,12 @@ function Industries() {
 
 /* ─── WHY US ──────────────────────────────────────── */
 const WHY_US = [
-  { ico: '🔁', title: 'Replacement Guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
-  { ico: '🆔', title: 'Aadhaar-Verified Staff', desc: 'Every worker is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
-  { ico: '⚡', title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right workers within hours.' },
-  { ico: '👥', title: 'Bulk & Weekly Teams', desc: 'Need 3, 5 or a full team for 7 days? We deploy at scale with a dedicated point of contact.' },
-  { ico: '💸', title: 'No Advance — Pay on Arrival', desc: 'No upfront payment. Clean invoices for your business records, pay as the work happens.' },
-  { ico: '📞', title: '24/7 Support', desc: 'Our team is always available to find the right person and sort out any issue, fast.' },
+  { Ico: IcoRefresh,  title: 'Replacement Guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
+  { Ico: IcoIdCheck,  title: 'Aadhaar-Verified Staff', desc: 'Every worker is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
+  { Ico: IcoBoltLine, title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right workers within hours.' },
+  { Ico: IcoTeam,     title: 'Bulk & Weekly Teams', desc: 'Need 3, 5 or a full team for 7 days? We deploy at scale with a dedicated point of contact.' },
+  { Ico: IcoWallet,   title: 'No Advance — Pay on Arrival', desc: 'No upfront payment. Clean invoices for your business records, pay as the work happens.' },
+  { Ico: IcoHeadset,  title: '24/7 Support', desc: 'Our team is always available to find the right person and sort out any issue, fast.' },
 ]
 function WhyUs() {
   return (
@@ -468,7 +502,7 @@ function WhyUs() {
         <div className="why-grid" data-anim style={{'--delay':'80ms'}}>
           {WHY_US.map((w, i) => (
             <div className="why-card" key={i} style={{'--delay':`${(i%3)*70}ms`}}>
-              <div className="why-ico">{w.ico}</div>
+              <div className="why-ico"><w.Ico /></div>
               <h3 className="why-title">{w.title}</h3>
               <p className="why-desc">{w.desc}</p>
             </div>
