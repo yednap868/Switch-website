@@ -188,6 +188,7 @@ function ScrollProgress() {
 /* Animates a number (e.g. "500+", "24h") up from zero when scrolled into view. */
 function StatNum({ value }) {
   const m = String(value).match(/^(\d+)(.*)$/)
+  const hasNum = !!m
   const target = m ? parseInt(m[1], 10) : 0
   const suffix = m ? m[2] : String(value)
   const ref = useRef(null)
@@ -195,10 +196,11 @@ function StatNum({ value }) {
   const [n, setN] = useState(reduce ? target : 0)
   useEffect(() => {
     const el = ref.current
-    if (!el || !m || reduce) return
-    let raf
+    if (!el || !hasNum || reduce) return
+    let raf, started = false
     const obs = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return
+      if (!e.isIntersecting || started) return   // run exactly once
+      started = true
       obs.disconnect()
       const dur = 1200, start = performance.now()
       const tick = (t) => {
@@ -211,8 +213,10 @@ function StatNum({ value }) {
     }, { threshold: 0.4 })
     obs.observe(el)
     return () => { obs.disconnect(); if (raf) cancelAnimationFrame(raf) }
-  }, [target, m, reduce])
-  return <span ref={ref}>{m ? n : ''}{suffix}</span>
+    // deps are primitives only — using the `m` array here re-ran the effect
+    // every frame and spawned overlapping animations (the flicker).
+  }, [target, hasNum, reduce])
+  return <span ref={ref}>{hasNum ? n : ''}{suffix}</span>
 }
 
 /* ─── NAV ─────────────────────────────────────────── */

@@ -361,6 +361,7 @@ ul{list-style:none}
 .s-cell:hover{background:rgba(99,102,241,0.04)}
 .s-num{
   font-size:3rem;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:0.5rem;
+  font-variant-numeric:tabular-nums;
   background:linear-gradient(135deg,#fff 10%,rgba(255,255,255,0.7) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
