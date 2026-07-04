@@ -561,9 +561,13 @@ function PhoneReel({ start }) {
   const [idx, setIdx] = useState(start % HOW_SHOTS.length)
   useEffect(() => {
     if (reduce) return
-    const t = setInterval(() => setIdx(i => (i + 1) % HOW_SHOTS.length), 2600)
+    const t = setInterval(() => setIdx(i => (i + 1) % HOW_SHOTS.length), 3000)
     return () => clearInterval(t)
   }, [reduce])
+  // We always advance by 1, so the outgoing screen is idx-1. Keeping it fully
+  // opaque *underneath* the incoming screen means the crossfade never dips to
+  // the background (that dip was the "flicker").
+  const prev = (idx + HOW_SHOTS.length - 1) % HOW_SHOTS.length
   return (
     <div className="how-app-phone">
       <span className="how-app-glow" aria-hidden="true" />
@@ -573,7 +577,7 @@ function PhoneReel({ start }) {
           key={src}
           src={src}
           alt="Switch app preview"
-          className={`how-app-shot${i === idx ? ' is-active' : ''}`}
+          className={`how-app-shot${i === idx ? ' is-active' : i === prev ? ' is-prev' : ''}`}
           width="390"
           height="844"
           loading="lazy"
