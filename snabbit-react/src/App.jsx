@@ -21,7 +21,7 @@ const CALL_URL = `tel:${PHONE}`
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
   'Store Helper','Security Guard','Picker / Packer','Driver','Delivery Rider','Cook / Chef',
-  'Housekeeping','Caretaker','Painter','Electrician','Plumber','Carpenter',
+  'Housekeeping','Caretaker',
 ]
 
 // Branded "switch" service photos (sw-*.jpg) — the same set the Switch app
@@ -40,14 +40,14 @@ const ROLES = [
 const INDUSTRIES = [
   { ico: '🛍️', name: 'Retail & Shops',         roles: 'Store helpers · Billing support · Security · Loaders' },
   { ico: '🍽️', name: 'Restaurants & Cafés',    roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
-  { ico: '📦', name: 'Warehouses & Factories', roles: 'Packers · Loaders · Line workers · Helpers' },
+  { ico: '📦', name: 'Warehouses & Factories', roles: 'Packers · Loaders · Line Switch Players · Helpers' },
   { ico: '🎉', name: 'Events & Banquets',      roles: 'Waiters · Bartenders · Bouncers · Promoters' },
   { ico: '🏢', name: 'Offices & Co-working',   roles: 'Housekeeping · Security · Pantry · Office boys' },
   { ico: '💈', name: 'Salons & Clinics',       roles: 'Front desk · Housekeeping · Helpers · Attendants' },
 ]
 
 const REVIEWS = [
-  { name: 'Pradnyesh', loc: 'Warehouse · Udyog Vihar', text: 'Needed 4 warehouse workers urgently. Got verified staff same-day. Absolute lifesaver for our dispatch team.' },
+  { name: 'Pradnyesh', loc: 'Warehouse · Udyog Vihar', text: 'Needed 4 warehouse Switch Players urgently. Got verified staff same-day. Absolute lifesaver for our dispatch team.' },
   { name: 'Sameer K.',  loc: 'Retail Store · DLF Phase 5', text: 'Our store needed extra hands during Diwali. Switch sent 3 experienced helpers within just a few hours.' },
   { name: 'Rohit M.',   loc: 'Restaurant · Sector 29',   text: 'We staff weekend banquets through Switch — waiters and a bartender, every time on time. Replacement was instant when one fell sick.' },
   { name: 'Neha P.',    loc: 'Logistics · Sector 52',     text: 'Booked drivers for 7 days straight. Always professional, always on time. Now our default for staffing.' },
@@ -58,13 +58,13 @@ const REVIEWS = [
 ]
 
 const FAQS = [
-  { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse workers, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
-  { q: 'Can I hire multiple workers or a full team?', a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more workers, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.' },
-  { q: 'What if a worker doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a worker is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
-  { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the per-worker rate. Talk to us on WhatsApp for exact rates for your business.' },
-  { q: 'Are all workers verified?', a: 'Yes. Every worker is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
+  { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
+  { q: 'Can I hire multiple Switch Players or a full team?', a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more Switch Players, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.' },
+  { q: 'What if a Switch Player doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
+  { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the rate per Switch Player. Talk to us on WhatsApp for exact rates for your business.' },
+  { q: 'Are all Switch Players verified?', a: 'Yes. Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
   { q: 'Do you provide GST invoices and how is payment handled?', a: 'No advance — you pay on arrival. Pay via UPI, cards or bank transfer, and we can provide proper invoices for your business records. Ask our team to set up a business account.' },
-  { q: 'Can I try a worker before committing to a longer booking?', a: 'Yes. Start with a trial shift to see the quality before you scale to a full day, a 7-day team or an ongoing arrangement. If the worker isn’t the right fit, we replace them — no questions asked.' },
+  { q: 'Can I try a Switch Player before committing to a longer booking?', a: 'Yes. Start with a trial shift to see the quality before you scale to a full day, a 7-day team or an ongoing arrangement. If the Switch Player isn’t the right fit, we replace them — no questions asked.' },
   { q: 'Which areas of Gurgaon do you cover?', a: 'All major sectors and localities — DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Cyber City, Sohna Road, MG Road and Sectors 1–49 — across pincodes 122001 to 122022. Tell us your location and we’ll confirm availability.' },
 ]
 
@@ -326,12 +326,12 @@ function Hero() {
           <h1 className="hero-h1">
             Staff your<br />
             business with<br />
-            workers who<br />
-            <em>show up.</em>
+            Switch Players<br />
+            who <em>show up.</em>
           </h1>
 
           <p className="hero-lead">
-            Verified cooks, helpers, guards, waiters &amp; more for shops, restaurants, warehouses and offices across Gurgaon. Replacement guaranteed — no agency, no hassle.
+            Verified Switch Players — cooks, helpers, guards, waiters &amp; more — for shops, restaurants, warehouses and offices across Gurgaon. Replacement guaranteed, no agency, no hassle.
           </p>
 
           <div className="hero-marquee-wrap">
@@ -347,7 +347,7 @@ function Hero() {
               <IcoBolt />
               <span>
                 <span className="btn-main">Hire Staff Now</span>
-                <span className="btn-sub">Workers in as little as a day</span>
+                <span className="btn-sub">Switch Players in as little as a day</span>
               </span>
             </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-schedule">
@@ -401,7 +401,7 @@ function Stats() {
     <div className="stats">
       <div className="stats-row">
         {[
-          { num: '500+', lbl: 'Verified Workers' },
+          { num: '500+', lbl: 'Verified Switch Players' },
           { num: '200+',   lbl: 'Businesses Served' },
           { num: '24h',  lbl: 'Replacement Time' },
         ].map((s, i) => (
@@ -488,8 +488,8 @@ function Industries() {
 /* ─── WHY US ──────────────────────────────────────── */
 const WHY_US = [
   { Ico: IcoRefresh,  title: 'Replacement Guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
-  { Ico: IcoIdCheck,  title: 'Aadhaar-Verified Staff', desc: 'Every worker is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
-  { Ico: IcoBoltLine, title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right workers within hours.' },
+  { Ico: IcoIdCheck,  title: 'Aadhaar-Verified Staff', desc: 'Every Switch Player is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
+  { Ico: IcoBoltLine, title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right Switch Players within hours.' },
   { Ico: IcoTeam,     title: 'Bulk & Weekly Teams', desc: 'Need 3, 5 or a full team for 7 days? We deploy at scale with a dedicated point of contact.' },
   { Ico: IcoWallet,   title: 'No Advance — Pay on Arrival', desc: 'No upfront payment. Clean invoices for your business records, pay as the work happens.' },
   { Ico: IcoHeadset,  title: '24/7 Support', desc: 'Our team is always available to find the right person and sort out any issue, fast.' },
@@ -523,7 +523,7 @@ function Roles() {
     <section className="sec sec-alt sec-border-t" id="roles">
       <div className="w">
         <div className="sec-hd" data-anim>
-          <span className="tag">The workers</span>
+          <span className="tag">The Switch Players</span>
           <h2 className="h2">Every role your<br />business runs on.</h2>
           <p className="lead">From a single store helper to a 7-day warehouse team — hire the right skill for exactly as long as you need it.</p>
         </div>
@@ -594,8 +594,8 @@ function PhoneReel({ start }) {
 
 function HowItWorks() {
   const items = [
-    { n:'01', title:'Pick from verified staff',  desc:'Browse workers by role — helpers, guards, cooks, waiters, drivers & more. Book by the hour, day or a full 7-day team.' },
-    { n:'02', title:'Book in a few taps',        desc:'Set how many workers and how long you need them. We match Aadhaar-verified, skill-checked staff — usually within hours.' },
+    { n:'01', title:'Pick from verified staff',  desc:'Browse Switch Players by role — helpers, guards, cooks, waiters, drivers & more. Book by the hour, day or a full 7-day team.' },
+    { n:'02', title:'Book in a few taps',        desc:'Set how many Switch Players and how long you need them. We match Aadhaar-verified, skill-checked staff — usually within hours.' },
     { n:'03', title:'They report. You pay on arrival.', desc:'OTP verification confirms the right person on site. No-show? Instant replacement. Pay only after the work is done.' },
   ]
   return (
@@ -693,7 +693,7 @@ function CTA() {
         <div data-anim>
           <span className="tag">Staff your business</span>
           <h2 className="cta-h2">Tell us what you<br />need. We'll staff it.</h2>
-          <p className="cta-p">From one worker to a full team — verified, reliable, replacement-guaranteed. Message us on WhatsApp and we'll get back with availability and a quote.</p>
+          <p className="cta-p">From one Switch Player to a full team — verified, reliable, replacement-guaranteed. Message us on WhatsApp and we'll get back with availability and a quote.</p>
           <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com · ☎ +91 83688 28660</a>
           <div className="cta-btns">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-book">
@@ -719,8 +719,8 @@ function CTA() {
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
           <img src="/screen-2.png"    alt="Switch app — service categories" className="ph ph-s ph-l" width="390" height="844" loading="lazy" decoding="async" />
-          <img src="/screen-home.png" alt="Switch app — book verified workers in Gurgaon" className="ph ph-c" width="390" height="844" loading="lazy" decoding="async" />
-          <img src="/screen-3.png"    alt="Switch app — verified worker profiles" className="ph ph-s ph-r" width="390" height="844" loading="lazy" decoding="async" />
+          <img src="/screen-home.png" alt="Switch app — book verified Switch Players in Gurgaon" className="ph ph-c" width="390" height="844" loading="lazy" decoding="async" />
+          <img src="/screen-3.png"    alt="Switch app — verified Switch Player profiles" className="ph ph-s ph-r" width="390" height="844" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -760,7 +760,7 @@ function RequestStaff() {
         <div className="reqstaff-copy">
           <span className="tag">Request staff</span>
           <h2 className="h2">Prefer not to chat?<br />Send your requirement.</h2>
-          <p className="lead">Fill this and our team calls you back with availability and a quote — usually within the hour. Pay only after the worker reports. Replacement guaranteed.</p>
+          <p className="lead">Fill this and our team calls you back with availability and a quote — usually within the hour. Pay only after your Switch Player reports. Replacement guaranteed.</p>
         </div>
         {status === 'done' ? (
           <div className="reqstaff-thanks">
@@ -805,7 +805,7 @@ function HomeHead() {
   const allServices = [
     'Housekeeping','Maid','House Cleaning','Cook','Driver','Cleaning Staff',
     'Security Guard','Bouncer','Bartender','Waiter','Kitchen Helper','Promoter',
-    'Factory Helper','General Helper','Caretaker','Nanny','Painter','Delivery Worker',
+    'Factory Helper','General Helper','Caretaker','Nanny','Delivery Switch Player',
   ]
   const localBusiness = {
     '@context': 'https://schema.org',
@@ -813,7 +813,7 @@ function HomeHead() {
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
     alternateName: ['Switch Locally', 'Switch App'],
-    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse workers, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
+    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     telephone: '+91-8368828660',
@@ -889,9 +889,9 @@ function HomeHead() {
   }
   return (
     <Helmet>
-      <title>Staffing for Business in Gurgaon — Hire Verified Workers | Switch</title>
+      <title>Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch</title>
       <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
-      <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse workers Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire workers Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day worker hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
+      <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
@@ -908,7 +908,7 @@ function AllServicesDirectory() {
       <div className="svc-dir-inner">
         <div className="svc-dir-hd" data-anim>
           <h2 className="svc-dir-h2">Browse by service</h2>
-          <p className="svc-dir-sub">Every worker type available in Gurgaon — pricing, hiring guides, and verified professionals.</p>
+          <p className="svc-dir-sub">Every Switch Player type available in Gurgaon — pricing, hiring guides, and verified professionals.</p>
         </div>
         <div className="svc-dir-grid" data-anim style={{'--delay':'100ms'}}>
           {SERVICE_LIST.map(svc => (
@@ -958,7 +958,7 @@ function Promos() {
               </div>
             </div>
             <ul className="promo-perks">
-              <li><IcoCheck />One verified worker for a full shift</li>
+              <li><IcoCheck />One verified Switch Player for a full shift</li>
               <li><IcoCheck />See the quality before you commit</li>
               <li><IcoCheck />Replacement if they're not a fit</li>
               <li><IcoCheck />No advance — pay on arrival</li>
@@ -984,8 +984,8 @@ function Promos() {
               </div>
             </div>
             <ul className="promo-perks">
-              <li><IcoCheck />3+ workers or 7-day teams</li>
-              <li><IcoCheck />Lower per-worker rates at scale</li>
+              <li><IcoCheck />3+ Switch Players or 7-day teams</li>
+              <li><IcoCheck />Lower rates per Switch Player at scale</li>
               <li><IcoCheck />Dedicated point of contact</li>
               <li><IcoCheck />Priority replacement &amp; coverage</li>
             </ul>
@@ -998,7 +998,7 @@ function Promos() {
         </div>
 
         <div className="promo-trust" data-anim style={{'--delay':'180ms'}}>
-          <span><IcoShield /> Aadhaar-verified workers</span>
+          <span><IcoShield /> Aadhaar-verified Switch Players</span>
           <span className="trust-sep" />
           <span><IcoCheck /> Replacement guarantee</span>
           <span className="trust-sep" />
@@ -1018,7 +1018,7 @@ function Pricing() {
         <div className="sec-hd" data-anim>
           <span className="tag">Pricing · Flexible</span>
           <h2 className="h2">Hire by the hour,<br />day, or week.</h2>
-          <p className="lead">Pay only for what you use. The longer you book, the lower the per-worker rate — built for how businesses actually staff.</p>
+          <p className="lead">Pay only for what you use. The longer you book, the lower the rate per Switch Player — built for how businesses actually staff.</p>
         </div>
 
         <div className="pricing-grid pricing-grid--3" data-anim style={{'--delay':'80ms'}}>
@@ -1031,7 +1031,7 @@ function Pricing() {
             <p className="price-desc">For a few hours of extra hands — rush hours, a quick cleanup, peak footfall.</p>
             <ul className="price-perks">
               <li><IcoCheck />1, 2 &amp; 4-hour slots</li>
-              <li><IcoCheck />Aadhaar-verified workers</li>
+              <li><IcoCheck />Aadhaar-verified Switch Players</li>
               <li><IcoCheck />Same-day availability</li>
               <li><IcoCheck />Pay after the work is done</li>
             </ul>
@@ -1046,12 +1046,12 @@ function Pricing() {
               <span className="price-name price-name--top">Full Day</span>
             </div>
             <div className="price-name">A full shift, covered</div>
-            <p className="price-desc">One worker for a complete working day — the everyday way to staff a shop, kitchen or site.</p>
+            <p className="price-desc">One Switch Player for a complete working day — the everyday way to staff a shop, kitchen or site.</p>
             <ul className="price-perks">
               <li><IcoCheck />Full 8–12 hour shifts</li>
               <li><IcoCheck />Cheaper per hour than hourly</li>
               <li><IcoCheck />Replacement guarantee</li>
-              <li><IcoCheck />Same verified worker each day</li>
+              <li><IcoCheck />Same verified Switch Player each day</li>
             </ul>
             <a href={APP_URL} className="price-cta price-cta--primary">
               <IcoBolt />Book a Full Day
@@ -1064,10 +1064,10 @@ function Pricing() {
               <span className="price-name price-name--top">Weekly Team</span>
             </div>
             <div className="price-name">Up to 7 days · bulk</div>
-            <p className="price-desc">Continuous cover for sales, festivals, leave gaps or a steady team — at our best per-worker rate.</p>
+            <p className="price-desc">Continuous cover for sales, festivals, leave gaps or a steady team — at our best rate per Switch Player.</p>
             <ul className="price-perks">
               <li><IcoCheck />2-day &amp; 7-day blocks</li>
-              <li><IcoCheck />Lowest per-worker pricing</li>
+              <li><IcoCheck />Lowest rate per Switch Player</li>
               <li><IcoCheck />Priority replacement &amp; coverage</li>
               <li><IcoCheck />Dedicated point of contact</li>
             </ul>
@@ -1094,11 +1094,11 @@ export function Footer() {
         <a
           href={APP_URL}
           className="ft-banner-art"
-          aria-label="Switch — India's first on-demand staffing platform. Get the app."
+          aria-label="Switch — on-demand staffing platform in Gurgaon. Get the app."
         >
           <img
             src="/switch-banner.jpg"
-            alt="Switch — India's first on-demand staffing platform. Instant staffing, verified professionals, trusted by 1000+ businesses, 4.8 rating from 1000+ happy customers."
+            alt="Switch — on-demand staffing platform in Gurgaon. Instant staffing, verified professionals, trusted by 200+ businesses, 4.8 rating."
             loading="lazy"
             width="1600"
             height="879"
@@ -1135,7 +1135,7 @@ export function Footer() {
             <div className="nav-mark">S</div>
             <span className="ft-name">Switch</span>
           </div>
-          <p className="ft-desc">Gurgaon's staffing partner for shops, restaurants, warehouses, offices and events — verified workers, fast, flexible and replacement-guaranteed.</p>
+          <p className="ft-desc">Gurgaon's staffing partner for shops, restaurants, warehouses, offices and events — verified Switch Players, fast, flexible and replacement-guaranteed.</p>
           <div className="ft-address">
             <IcoPin />
             <div>
