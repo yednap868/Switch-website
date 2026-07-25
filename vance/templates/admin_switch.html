@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Analytics Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; line-height: 1.6; }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 1rem 2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-left { display: flex; align-items: center; gap: 2rem; }
+        .header h1 { font-size: 1.5rem; font-weight: 600; }
+        .navbar { display: flex; gap: 1rem; }
+        .nav-link {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.3s; font-size: 0.9rem;
+        }
+        .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.2); color: white; }
+        .header-right { display: flex; align-items: center; gap: 0.75rem; }
+        .range-btn {
+            background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); padding: 0.4rem 0.8rem;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; cursor: pointer;
+            font-size: 0.82rem; transition: all 0.2s;
+        }
+        .range-btn:hover { background: rgba(255,255,255,0.25); color: white; }
+        .range-btn.active { background: rgba(255,255,255,0.35); color: white; border-color: rgba(255,255,255,0.5); font-weight: 600; }
+        .refresh-btn {
+            background: rgba(255,255,255,0.2); color: white; padding: 0.4rem 0.8rem;
+            border: none; border-radius: 6px; cursor: pointer; font-size: 0.82rem;
+        }
+        .refresh-btn:hover { background: rgba(255,255,255,0.3); }
+        .logout-btn {
+            background: rgba(255,255,255,0.2); color: white; padding: 0.4rem 0.8rem;
+            border: none; border-radius: 6px; text-decoration: none; font-size: 0.82rem; cursor: pointer;
+        }
+        .logout-btn:hover { background: rgba(255,255,255,0.3); }
+
+        .container { max-width: 1400px; margin: 1.5rem auto; padding: 0 2rem; }
+
+        /* KPI Cards */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: white; border-radius: 12px; padding: 1.25rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid;
+        }
+        .stat-card.purple { border-left-color: #764ba2; }
+        .stat-card.blue { border-left-color: #3b82f6; }
+        .stat-card.green { border-left-color: #10b981; }
+        .stat-card.orange { border-left-color: #f59e0b; }
+        .stat-card.red { border-left-color: #ef4444; }
+        .stat-card.teal { border-left-color: #14b8a6; }
+        .stat-card.indigo { border-left-color: #6366f1; }
+        .stat-card.pink { border-left-color: #ec4899; }
+        .stat-label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: #1e293b; margin-top: 0.15rem; }
+        .stat-sub { font-size: 0.8rem; color: #94a3b8; margin-top: 0.15rem; }
+
+        /* Section titles */
+        .section-title {
+            font-size: 1rem; font-weight: 600; color: #334155;
+            margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        /* Funnel */
+        .funnel-card {
+            background: white; border-radius: 12px; padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 1.5rem;
+        }
+        .funnel-row {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 0.6rem;
+        }
+        .funnel-label { width: 160px; font-size: 0.85rem; color: #475569; flex-shrink: 0; text-align: right; }
+        .funnel-bar-bg {
+            flex: 1; height: 28px; background: #f1f5f9; border-radius: 6px; overflow: hidden; position: relative;
+        }
+        .funnel-bar-fill {
+            height: 100%; border-radius: 6px; transition: width 0.6s ease;
+            display: flex; align-items: center; padding-left: 10px;
+            font-size: 0.78rem; font-weight: 600; color: white; min-width: 36px;
+        }
+        .funnel-count { width: 50px; text-align: right; font-size: 0.85rem; font-weight: 600; color: #1e293b; }
+        .funnel-rate { width: 55px; text-align: right; font-size: 0.78rem; color: #94a3b8; }
+
+        /* Breakdowns grid */
+        .breakdowns-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+        }
+        .breakdown-card {
+            background: white; border-radius: 12px; padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .breakdown-row {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;
+        }
+        .breakdown-label { width: 140px; font-size: 0.82rem; color: #475569; flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .breakdown-bar-bg { flex: 1; height: 20px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+        .breakdown-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+        .breakdown-count { width: 36px; text-align: right; font-size: 0.82rem; font-weight: 600; color: #334155; }
+
+        /* Daily Activity Chart */
+        .daily-card {
+            background: white; border-radius: 12px; padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 1.5rem;
+        }
+        .chart-container { display: flex; align-items: flex-end; gap: 0.75rem; height: 140px; padding-top: 1rem; }
+        .chart-day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+        .chart-bars { display: flex; gap: 3px; align-items: flex-end; width: 100%; justify-content: center; }
+        .chart-bar {
+            width: 18px; border-radius: 3px 3px 0 0; transition: height 0.5s ease; min-height: 2px;
+        }
+        .chart-bar.sessions { background: #667eea; }
+        .chart-bar.bridges { background: #10b981; }
+        .chart-day-label { font-size: 0.7rem; color: #94a3b8; }
+        .chart-legend { display: flex; gap: 1.5rem; margin-top: 0.75rem; justify-content: center; }
+        .chart-legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: #64748b; }
+        .chart-legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+        /* Tabs */
+        .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid #e2e8f0; overflow-x: auto; }
+        .tab {
+            padding: 0.75rem 1.25rem; cursor: pointer; background: none; border: none;
+            font-size: 0.9rem; color: #64748b; border-bottom: 2px solid transparent;
+            margin-bottom: -2px; transition: all 0.2s; white-space: nowrap;
+        }
+        .tab:hover { color: #334155; }
+        .tab.active { color: #764ba2; border-bottom-color: #764ba2; font-weight: 600; }
+        .tab-count {
+            display: inline-block; background: #f1f5f9; color: #64748b; font-size: 0.7rem;
+            padding: 0.1rem 0.45rem; border-radius: 9999px; margin-left: 0.35rem; font-weight: 600;
+        }
+        .tab.active .tab-count { background: #f3e8ff; color: #764ba2; }
+
+        /* Panel */
+        .panel {
+            background: white; border-radius: 0 0 12px 12px; padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); display: none;
+        }
+        .panel.active { display: block; }
+
+        .search-bar {
+            width: 100%; padding: 0.65rem 1rem; border: 1px solid #e2e8f0;
+            border-radius: 8px; font-size: 0.88rem; margin-bottom: 1rem; outline: none;
+        }
+        .search-bar:focus { border-color: #764ba2; box-shadow: 0 0 0 3px rgba(118,75,162,0.1); }
+
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            text-align: left; padding: 0.65rem 0.75rem; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.05em; color: #64748b;
+            border-bottom: 2px solid #e2e8f0; white-space: nowrap;
+        }
+        td {
+            padding: 0.65rem 0.75rem; border-bottom: 1px solid #f1f5f9;
+            font-size: 0.85rem; color: #334155; vertical-align: top;
+        }
+        tr:hover { background: #f8fafc; }
+
+        .badge {
+            display: inline-block; padding: 0.15rem 0.55rem; border-radius: 9999px;
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+        }
+        .badge-green { background: #dcfce7; color: #166534; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-orange { background: #fef3c7; color: #92400e; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+        .badge-purple { background: #f3e8ff; color: #6b21a8; }
+        .badge-teal { background: #ccfbf1; color: #115e59; }
+
+        .profile-detail { font-size: 0.8rem; color: #64748b; line-height: 1.5; }
+        .profile-detail strong { color: #334155; }
+        .profile-bar {
+            display: inline-block; height: 6px; border-radius: 3px; background: #e2e8f0;
+            width: 60px; vertical-align: middle; margin-left: 4px;
+        }
+        .profile-bar-fill { height: 100%; border-radius: 3px; }
+
+        .time-ago { color: #94a3b8; font-size: 0.8rem; }
+        .loading { text-align: center; padding: 3rem; color: #94a3b8; font-size: 1rem; }
+        .empty-state { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.9rem; }
+        .recording-link { color: #764ba2; text-decoration: none; font-size: 0.82rem; }
+        .recording-link:hover { text-decoration: underline; }
+
+        /* Rates table */
+        .rates-table { max-width: 600px; }
+        .rates-table td:last-child { font-weight: 600; font-size: 1rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .breakdowns-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 0.75rem; }
+            .header-left { flex-direction: column; gap: 0.5rem; }
+            .header-right { flex-wrap: wrap; justify-content: center; }
+            .funnel-label { width: 100px; font-size: 0.75rem; }
+            table { font-size: 0.78rem; }
+            td, th { padding: 0.4rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>Switch Analytics</h1>
+            <nav class="navbar">
+                <a href="/admin/dashboard" class="nav-link">Analytics</a>
+                <a href="/admin/profiles" class="nav-link">Profiles</a>
+                <a href="/admin/messages" class="nav-link">Messages</a>
+                <a href="/admin/switch" class="nav-link active">Switch</a>
+                <a href="/admin/orders" class="nav-link">📦 Orders</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="range-btn" data-range="today" onclick="setRange('today')">Today</button>
+            <button class="range-btn" data-range="7d" onclick="setRange('7d')">7 Days</button>
+            <button class="range-btn" data-range="30d" onclick="setRange('30d')">30 Days</button>
+            <button class="range-btn active" data-range="all" onclick="setRange('all')">All Time</button>
+            <button class="refresh-btn" onclick="loadData()">Refresh</button>
+            <a href="/admin/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- KPI Cards -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card purple">
+                <div class="stat-label">Candidates Talked</div>
+                <div class="stat-value" id="statCandidatesTalked">-</div>
+                <div class="stat-sub" id="subCandidatePool">-</div>
+            </div>
+            <div class="stat-card blue">
+                <div class="stat-label">Businesses Talked</div>
+                <div class="stat-value" id="statBusinessesTalked">-</div>
+                <div class="stat-sub" id="subBusinessRoster">-</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-label">Telephonic Interviews</div>
+                <div class="stat-value" id="statInterviews">-</div>
+                <div class="stat-sub" id="subAvgDuration">-</div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-label">Interviews Confirmed</div>
+                <div class="stat-value" id="statConfirmed">-</div>
+                <div class="stat-sub" id="subConfirmRate">-</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-label">Switches (Joined)</div>
+                <div class="stat-value" id="statSwitches">-</div>
+                <div class="stat-sub">Placements</div>
+            </div>
+            <div class="stat-card teal">
+                <div class="stat-label">LC Sessions</div>
+                <div class="stat-value" id="statSessions">-</div>
+                <div class="stat-sub" id="subBridges">-</div>
+            </div>
+            <div class="stat-card indigo">
+                <div class="stat-label">Candidate Pool</div>
+                <div class="stat-value" id="statCandidatePool">-</div>
+                <div class="stat-sub">Registered candidates</div>
+            </div>
+            <div class="stat-card pink">
+                <div class="stat-label">Open Jobs</div>
+                <div class="stat-value" id="statOpenJobs">-</div>
+                <div class="stat-sub">Active listings</div>
+            </div>
+        </div>
+
+        <!-- Conversion Funnel -->
+        <div class="funnel-card">
+            <div class="section-title">Conversion Funnel</div>
+            <div id="funnelContainer"></div>
+        </div>
+
+        <!-- Breakdowns -->
+        <div class="breakdowns-grid">
+            <div class="breakdown-card">
+                <div class="section-title">Session Status</div>
+                <div id="statusBreakdown"></div>
+            </div>
+            <div class="breakdown-card">
+                <div class="section-title">Session Outcomes</div>
+                <div id="outcomeBreakdown"></div>
+            </div>
+        </div>
+
+        <!-- Daily Activity -->
+        <div class="daily-card">
+            <div class="section-title">Daily Activity (Last 7 Days)</div>
+            <div class="chart-container" id="dailyChart"></div>
+            <div class="chart-legend">
+                <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#667eea"></div> Sessions</div>
+                <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#10b981"></div> Bridges</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-tab="sessions" onclick="switchTab('sessions')">Sessions <span class="tab-count" id="countSessions">0</span></button>
+            <button class="tab" data-tab="candidates" onclick="switchTab('candidates')">Candidates <span class="tab-count" id="countCandidates">0</span></button>
+            <button class="tab" data-tab="interviews" onclick="switchTab('interviews')">Telephonic Interviews <span class="tab-count" id="countInterviews">0</span></button>
+            <button class="tab" data-tab="scheduled" onclick="switchTab('scheduled')">Scheduled <span class="tab-count" id="countScheduled">0</span></button>
+            <button class="tab" data-tab="rates" onclick="switchTab('rates')">Rates</button>
+        </div>
+
+        <!-- Sessions Panel -->
+        <div class="panel active" id="sessionsPanel">
+            <input class="search-bar" placeholder="Search sessions by phone, name, status..." id="sessionSearch" oninput="filterSessions()">
+            <div id="sessionsLoading" class="loading">Loading sessions...</div>
+            <table id="sessionsTable" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Candidate</th>
+                        <th>Direction</th>
+                        <th>Status</th>
+                        <th>City / Category</th>
+                        <th>Business</th>
+                        <th>Attempts</th>
+                        <th>Bridge</th>
+                        <th>Outcome</th>
+                    </tr>
+                </thead>
+                <tbody id="sessionsBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Candidates Panel -->
+        <div class="panel" id="candidatesPanel">
+            <input class="search-bar" placeholder="Search by name, phone, city, role..." id="candidateSearch" oninput="filterCandidates()">
+            <div id="candidatesLoading" class="loading">Loading candidates...</div>
+            <table id="candidatesTable" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Phone</th>
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Calls</th>
+                        <th>Last Call</th>
+                        <th>Last Outcome</th>
+                        <th>Completeness</th>
+                    </tr>
+                </thead>
+                <tbody id="candidatesBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Telephonic Interviews Panel -->
+        <div class="panel" id="interviewsPanel">
+            <input class="search-bar" placeholder="Search interviews by candidate, business, job..." id="interviewSearch" oninput="filterInterviews()">
+            <div id="interviewsLoading" class="loading">Loading interviews...</div>
+            <table id="interviewsTable" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Candidate</th>
+                        <th>Business</th>
+                        <th>Job</th>
+                        <th>Duration</th>
+                        <th>Confirmed</th>
+                        <th>Interview Details</th>
+                        <th>Recording</th>
+                    </tr>
+                </thead>
+                <tbody id="interviewsBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Scheduled Interviews Panel -->
+        <div class="panel" id="scheduledPanel">
+            <div id="scheduledLoading" class="loading">Loading scheduled interviews...</div>
+            <table id="scheduledTable" style="display:none">
+                <thead>
+                    <tr>
+                        <th>Created</th>
+                        <th>Candidate</th>
+                        <th>Business</th>
+                        <th>Role</th>
+                        <th>Step</th>
+                        <th>Date/Time</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduledBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Rates Panel -->
+        <div class="panel" id="ratesPanel">
+            <table class="rates-table" id="ratesTable">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+                <tbody id="ratesBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let allSessions = [];
+        let allCandidates = [];
+        let allInterviews = [];
+        let currentRange = 'all';
+
+        function setRange(range) {
+            currentRange = range;
+            document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.range-btn[data-range="${range}"]`).classList.add('active');
+            loadData();
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+            document.getElementById(tab + 'Panel').classList.add('active');
+        }
+
+        function timeAgo(ts) {
+            if (!ts) return '-';
+            const diff = Date.now() / 1000 - ts;
+            if (diff < 60) return 'just now';
+            if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+            if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+            return Math.floor(diff / 86400) + 'd ago';
+        }
+
+        function formatTime(ts) {
+            if (!ts) return '-';
+            const d = new Date(ts * 1000);
+            return d.toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function formatDuration(seconds) {
+            if (!seconds) return '-';
+            const m = Math.floor(seconds / 60);
+            const s = Math.round(seconds % 60);
+            return m > 0 ? `${m}m ${s}s` : `${s}s`;
+        }
+
+        function statusBadge(status) {
+            const map = {
+                'BRIDGED': ['BRIDGED', 'badge-green'],
+                'COMPLETED': ['COMPLETED', 'badge-green'],
+                'CANDIDATE_HOLD': ['HOLD', 'badge-orange'],
+                'BUSINESS_HOLD': ['BIZ HOLD', 'badge-orange'],
+                'SCREENING_CANDIDATE': ['SCREENING', 'badge-blue'],
+                'CALLING_BUSINESS': ['CALLING BIZ', 'badge-blue'],
+                'PITCHING_BUSINESS': ['PITCHING BIZ', 'badge-blue'],
+                'CALLING_CANDIDATE': ['CALLING', 'badge-blue'],
+                'CALLING_CANDIDATES': ['CALLING CANDS', 'badge-blue'],
+                'PITCHING_CANDIDATE': ['PITCHING CAND', 'badge-blue'],
+                'FAILED': ['FAILED', 'badge-red'],
+                'BUSINESS_NO_ANSWER': ['BIZ NO ANS', 'badge-red'],
+                'CANDIDATE_NO_ANSWER': ['CAND NO ANS', 'badge-red'],
+                'BUSINESS_DECLINED': ['BIZ DECLINED', 'badge-red'],
+                'CANDIDATE_DECLINED': ['CAND DECLINED', 'badge-red'],
+            };
+            const [label, cls] = map[status] || [status || 'UNKNOWN', 'badge-gray'];
+            return `<span class="badge ${cls}">${label}</span>`;
+        }
+
+        function outcomeBadge(outcome) {
+            if (!outcome) return '-';
+            const lower = outcome.toLowerCase();
+            if (lower.includes('connected') || lower.includes('success') || lower.includes('bridge')) return `<span class="badge badge-green">${outcome}</span>`;
+            if (lower.includes('no matching') || lower.includes('unreachable') || lower.includes('fail')) return `<span class="badge badge-red">${outcome}</span>`;
+            if (lower.includes('sms') || lower.includes('hold')) return `<span class="badge badge-orange">${outcome}</span>`;
+            return `<span class="badge badge-gray">${outcome}</span>`;
+        }
+
+        function stepBadge(step) {
+            const map = {
+                'awaiting_datetime': ['AWAITING DATE', 'badge-orange'],
+                'awaiting_location': ['AWAITING LOC', 'badge-blue'],
+                'completed': ['DONE', 'badge-green'],
+            };
+            const [label, cls] = map[step] || [step || '-', 'badge-gray'];
+            return `<span class="badge ${cls}">${label}</span>`;
+        }
+
+        function completenessBar(pct) {
+            pct = pct || 0;
+            let color = '#ef4444';
+            if (pct >= 70) color = '#10b981';
+            else if (pct >= 40) color = '#f59e0b';
+            return `${pct}% <span class="profile-bar"><span class="profile-bar-fill" style="width:${pct}%;background:${color}"></span></span>`;
+        }
+
+        function buildProfileSummary(profile, known) {
+            if (!profile || Object.keys(profile).length === 0) {
+                if (known && Object.keys(known).length > 0) {
+                    return '<div class="profile-detail">' + Object.entries(known).map(([k,v]) => v ? `<strong>${k}:</strong> ${v}` : '').filter(Boolean).join(' | ') + '</div>';
+                }
+                return '<span class="time-ago">No profile data</span>';
+            }
+            const parts = [];
+            if (profile.desired_role) parts.push(`<strong>Wants:</strong> ${profile.desired_role}`);
+            if (profile.city) parts.push(`<strong>City:</strong> ${profile.city}`);
+            if (profile.experience_years) parts.push(`<strong>Exp:</strong> ${profile.experience_years}`);
+            if (profile.experience_level) parts.push(`<strong>Level:</strong> ${profile.experience_level}`);
+            if (profile.education) parts.push(`<strong>Edu:</strong> ${profile.education}`);
+            if (profile.salary_min || profile.salary_max) {
+                const min = profile.salary_min ? `₹${profile.salary_min.toLocaleString()}` : '';
+                const max = profile.salary_max ? `₹${profile.salary_max.toLocaleString()}` : '';
+                parts.push(`<strong>Salary:</strong> ${min}${min && max ? '-' : ''}${max}`);
+            }
+            if (profile.previous_roles && profile.previous_roles.length) parts.push(`<strong>Past:</strong> ${profile.previous_roles.join(', ')}`);
+            if (profile.languages && profile.languages.length) parts.push(`<strong>Lang:</strong> ${profile.languages.join(', ')}`);
+            return '<div class="profile-detail">' + parts.join(' | ') + '</div>';
+        }
+
+        // --- Funnel Rendering ---
+        function renderFunnel(funnel, rates) {
+            const steps = [
+                { key: 'calls_fired', label: 'Calls Fired', color: '#667eea' },
+                { key: 'candidate_picked_up', label: 'Candidate Picked Up', color: '#818cf8' },
+                { key: 'screening_completed', label: 'Screening Done', color: '#6366f1' },
+                { key: 'business_called', label: 'Business Called', color: '#3b82f6' },
+                { key: 'business_picked_up', label: 'Business Picked Up', color: '#0ea5e9' },
+                { key: 'bridge_completed', label: 'Bridge Completed', color: '#14b8a6' },
+                { key: 'interview_confirmed', label: 'Interview Confirmed', color: '#10b981' },
+                { key: 'joined', label: 'Joined / Switched', color: '#059669' },
+            ];
+            const maxVal = Math.max(...steps.map(s => funnel[s.key] || 0), 1);
+            const container = document.getElementById('funnelContainer');
+            container.innerHTML = steps.map((step, i) => {
+                const count = funnel[step.key] || 0;
+                const pct = Math.max((count / maxVal) * 100, 2);
+                const prevCount = i > 0 ? (funnel[steps[i-1].key] || 0) : 0;
+                const rate = i > 0 && prevCount > 0 ? ((count / prevCount) * 100).toFixed(1) + '%' : '';
+                return `<div class="funnel-row">
+                    <div class="funnel-label">${step.label}</div>
+                    <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:${pct}%;background:${step.color}">${count}</div></div>
+                    <div class="funnel-rate">${rate}</div>
+                </div>`;
+            }).join('');
+        }
+
+        // --- Breakdown Rendering ---
+        function renderBreakdown(containerId, data, colorFn) {
+            const container = document.getElementById(containerId);
+            const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+            if (entries.length === 0) {
+                container.innerHTML = '<div class="empty-state">No data</div>';
+                return;
+            }
+            const maxVal = Math.max(...entries.map(e => e[1]), 1);
+            container.innerHTML = entries.map(([label, count]) => {
+                const pct = (count / maxVal) * 100;
+                const color = colorFn ? colorFn(label) : '#667eea';
+                return `<div class="breakdown-row">
+                    <div class="breakdown-label" title="${label}">${label}</div>
+                    <div class="breakdown-bar-bg"><div class="breakdown-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+                    <div class="breakdown-count">${count}</div>
+                </div>`;
+            }).join('');
+        }
+
+        function statusColor(status) {
+            const colors = {
+                'COMPLETED': '#10b981', 'BRIDGED': '#10b981',
+                'FAILED': '#ef4444', 'BUSINESS_NO_ANSWER': '#ef4444', 'CANDIDATE_NO_ANSWER': '#ef4444',
+                'BUSINESS_DECLINED': '#f59e0b', 'CANDIDATE_DECLINED': '#f59e0b',
+                'CALLING_BUSINESS': '#3b82f6', 'PITCHING_BUSINESS': '#3b82f6', 'SCREENING_CANDIDATE': '#3b82f6',
+                'CANDIDATE_HOLD': '#f59e0b', 'BUSINESS_HOLD': '#f59e0b',
+            };
+            return colors[status] || '#94a3b8';
+        }
+
+        function outcomeColor(outcome) {
+            if (!outcome) return '#94a3b8';
+            const lower = outcome.toLowerCase();
+            if (lower.includes('connect') || lower.includes('success') || lower.includes('bridge')) return '#10b981';
+            if (lower.includes('fail') || lower.includes('unreachable')) return '#ef4444';
+            if (lower.includes('sms') || lower.includes('hold')) return '#f59e0b';
+            return '#94a3b8';
+        }
+
+        // --- Daily Activity Chart ---
+        function renderDailyChart(dailyActivity) {
+            const container = document.getElementById('dailyChart');
+            if (!dailyActivity || dailyActivity.length === 0) {
+                container.innerHTML = '<div class="empty-state">No data</div>';
+                return;
+            }
+            const maxVal = Math.max(...dailyActivity.map(d => Math.max(d.sessions, d.bridges)), 1);
+            container.innerHTML = dailyActivity.map(d => {
+                const sH = Math.max((d.sessions / maxVal) * 110, 2);
+                const bH = Math.max((d.bridges / maxVal) * 110, d.bridges > 0 ? 2 : 0);
+                const dayLabel = new Date(d.date + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric' });
+                return `<div class="chart-day">
+                    <div class="chart-bars">
+                        <div class="chart-bar sessions" style="height:${sH}px" title="${d.sessions} sessions"></div>
+                        <div class="chart-bar bridges" style="height:${bH}px" title="${d.bridges} bridges"></div>
+                    </div>
+                    <div class="chart-day-label">${dayLabel}</div>
+                </div>`;
+            }).join('');
+        }
+
+        // --- Table Renderers ---
+        function renderSessions(sessions) {
+            const tbody = document.getElementById('sessionsBody');
+            if (sessions.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="empty-state">No sessions found</td></tr>';
+                return;
+            }
+            tbody.innerHTML = sessions.map(s => {
+                const sd = s.screening_data || {};
+                const cityCategory = [sd.candidate_city, sd.candidate_category].filter(Boolean).join(' / ') || '-';
+                const att = s.attempts_summary || {};
+                const attText = att.total ? `${att.total} called, ${att.answered || 0} ans` : '-';
+                const bizInfo = s.business_name ? s.business_name : (s.business_phone || '-');
+                const dir = s.direction === 'business_to_candidate'
+                    ? '<span class="badge badge-purple">BIZ&rarr;CAND</span>'
+                    : (s.inbound ? '<span class="badge badge-blue">INBOUND</span>' : '<span class="badge badge-gray">OUTBOUND</span>');
+                const bridgeInfo = s.bridge_started_at ? formatDuration(s.bridge_duration_seconds) : '-';
+                return `<tr>
+                    <td><div>${formatTime(s.created_at)}</div><div class="time-ago">${timeAgo(s.created_at)}</div></td>
+                    <td><div><strong>${s.candidate_name || '-'}</strong></div><div class="time-ago">${s.candidate_phone}</div></td>
+                    <td>${dir}</td>
+                    <td>${statusBadge(s.status)}</td>
+                    <td>${cityCategory}</td>
+                    <td>${bizInfo}</td>
+                    <td><div class="profile-detail">${attText}</div></td>
+                    <td>${bridgeInfo}</td>
+                    <td>${outcomeBadge(s.outcome)}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderCandidates(candidates) {
+            const tbody = document.getElementById('candidatesBody');
+            if (candidates.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No candidates found</td></tr>';
+                return;
+            }
+            tbody.innerHTML = candidates.map(c => {
+                const profile = c.profile || {};
+                const completeness = profile.profile_completeness || 0;
+                return `<tr>
+                    <td><strong>${c.phone}</strong></td>
+                    <td>${c.name || '<span class="time-ago">Unknown</span>'}</td>
+                    <td>${buildProfileSummary(profile, c.known_details)}</td>
+                    <td>${c.total_calls}</td>
+                    <td><div>${formatTime(c.last_call_at)}</div><div class="time-ago">${timeAgo(c.last_call_at)}</div></td>
+                    <td>${outcomeBadge(c.last_outcome)}</td>
+                    <td>${completenessBar(completeness)}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderInterviews(interviews) {
+            const tbody = document.getElementById('interviewsBody');
+            if (interviews.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No telephonic interviews yet</td></tr>';
+                return;
+            }
+            tbody.innerHTML = interviews.map(iv => {
+                const confirmed = iv.interview_confirmed
+                    ? '<span class="badge badge-green">YES</span>'
+                    : '<span class="badge badge-gray">NO</span>';
+                const details = [iv.interview_date, iv.interview_time, iv.interview_location].filter(Boolean).join(', ') || '-';
+                const rec = iv.recording_url
+                    ? `<a href="${iv.recording_url}" target="_blank" class="recording-link">Listen</a>`
+                    : '-';
+                return `<tr>
+                    <td><div>${formatTime(iv.created_at)}</div><div class="time-ago">${timeAgo(iv.created_at)}</div></td>
+                    <td><div><strong>${iv.candidate_name || '-'}</strong></div><div class="time-ago">${iv.candidate_phone}</div></td>
+                    <td><div><strong>${iv.business_name || '-'}</strong></div><div class="time-ago">${iv.business_phone}</div></td>
+                    <td>${iv.job_title || '-'}</td>
+                    <td>${formatDuration(iv.bridge_duration_seconds)}</td>
+                    <td>${confirmed}</td>
+                    <td><div class="profile-detail">${details}</div></td>
+                    <td>${rec}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderScheduled(scheduled) {
+            const tbody = document.getElementById('scheduledBody');
+            if (scheduled.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No pending scheduled interviews</td></tr>';
+                return;
+            }
+            tbody.innerHTML = scheduled.map(s => {
+                return `<tr>
+                    <td><div>${formatTime(s.created_at)}</div><div class="time-ago">${timeAgo(s.created_at)}</div></td>
+                    <td><div><strong>${s.candidate_name || '-'}</strong></div><div class="time-ago">${s.candidate_phone}</div></td>
+                    <td><div><strong>${s.business_name || '-'}</strong></div><div class="time-ago">${s.business_phone}</div></td>
+                    <td>${s.job_role || '-'}</td>
+                    <td>${stepBadge(s.step)}</td>
+                    <td>${s.interview_datetime || '-'}</td>
+                    <td>${s.interview_location || '-'}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function renderRates(funnel, rates, avgBridgeDuration) {
+            const tbody = document.getElementById('ratesBody');
+            const rows = [
+                ['Candidate Pickup', 'Calls Fired (' + funnel.calls_fired + ')', 'Picked Up (' + funnel.candidate_picked_up + ')', rates.candidate_pickup_rate + '%'],
+                ['Screening Rate', 'Picked Up (' + funnel.candidate_picked_up + ')', 'Screened (' + funnel.screening_completed + ')', rates.screening_rate + '%'],
+                ['Bridge Rate', 'Business Called (' + funnel.business_called + ')', 'Bridged (' + funnel.bridge_completed + ')', rates.bridge_rate + '%'],
+                ['Interview Confirm', 'Bridged (' + funnel.bridge_completed + ')', 'Confirmed (' + funnel.interview_confirmed + ')', rates.interview_confirm_rate + '%'],
+                ['Avg Bridge Duration', '-', '-', formatDuration(avgBridgeDuration)],
+            ];
+            tbody.innerHTML = rows.map(r => `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+        }
+
+        // --- Filters ---
+        function filterSessions() {
+            const q = document.getElementById('sessionSearch').value.toLowerCase();
+            const filtered = allSessions.filter(s => {
+                const searchable = [s.candidate_phone, s.candidate_name, s.status, s.business_name, s.business_phone, s.outcome,
+                    (s.screening_data || {}).candidate_city, (s.screening_data || {}).candidate_category].join(' ').toLowerCase();
+                return searchable.includes(q);
+            });
+            renderSessions(filtered);
+        }
+
+        function filterCandidates() {
+            const q = document.getElementById('candidateSearch').value.toLowerCase();
+            const filtered = allCandidates.filter(c => {
+                const p = c.profile || {};
+                const searchable = [c.phone, c.name, p.city, p.desired_role, p.experience_level,
+                    ...(p.previous_roles || []), ...(p.languages || []), c.last_outcome].join(' ').toLowerCase();
+                return searchable.includes(q);
+            });
+            renderCandidates(filtered);
+        }
+
+        function filterInterviews() {
+            const q = document.getElementById('interviewSearch').value.toLowerCase();
+            const filtered = allInterviews.filter(iv => {
+                const searchable = [iv.candidate_phone, iv.candidate_name, iv.business_phone, iv.business_name, iv.job_title].join(' ').toLowerCase();
+                return searchable.includes(q);
+            });
+            renderInterviews(filtered);
+        }
+
+        // --- Data Loading ---
+        async function loadData() {
+            try {
+                const resp = await fetch(`/admin/api/switch-dashboard?range=${currentRange}`);
+                if (resp.status === 401) { window.location.href = '/admin/'; return; }
+                const data = await resp.json();
+                const s = data.stats;
+                const f = data.funnel;
+                const r = data.rates;
+
+                // KPI Cards
+                document.getElementById('statCandidatesTalked').textContent = s.total_candidates_talked;
+                document.getElementById('subCandidatePool').textContent = `${s.candidate_pool} in pool`;
+                document.getElementById('statBusinessesTalked').textContent = s.total_businesses_talked;
+                document.getElementById('subBusinessRoster').textContent = `${s.total_businesses_roster} in roster`;
+                document.getElementById('statInterviews').textContent = s.telephonic_interviews;
+                document.getElementById('subAvgDuration').textContent = `Avg ${formatDuration(data.avg_bridge_duration_seconds)}`;
+                document.getElementById('statConfirmed').textContent = s.interviews_confirmed;
+                document.getElementById('subConfirmRate').textContent = `${r.interview_confirm_rate}% confirm rate`;
+                document.getElementById('statSwitches').textContent = s.total_switches;
+                document.getElementById('statSessions').textContent = s.total_lc_sessions;
+                document.getElementById('subBridges').textContent = `${f.bridge_completed} bridged`;
+                document.getElementById('statCandidatePool').textContent = s.candidate_pool;
+                document.getElementById('statOpenJobs').textContent = s.open_jobs;
+
+                // Funnel
+                renderFunnel(f, r);
+
+                // Breakdowns
+                renderBreakdown('statusBreakdown', data.breakdowns.status, statusColor);
+                renderBreakdown('outcomeBreakdown', data.breakdowns.outcome, outcomeColor);
+
+                // Daily Activity
+                renderDailyChart(data.daily_activity);
+
+                // Tab counts
+                document.getElementById('countSessions').textContent = data.sessions.length;
+                document.getElementById('countCandidates').textContent = data.candidates.length;
+                document.getElementById('countInterviews').textContent = data.interviews.length;
+                document.getElementById('countScheduled').textContent = data.scheduled_interviews.length;
+
+                // Sessions table
+                allSessions = data.sessions;
+                renderSessions(allSessions);
+                document.getElementById('sessionsLoading').style.display = 'none';
+                document.getElementById('sessionsTable').style.display = 'table';
+
+                // Candidates table
+                allCandidates = data.candidates;
+                renderCandidates(allCandidates);
+                document.getElementById('candidatesLoading').style.display = 'none';
+                document.getElementById('candidatesTable').style.display = 'table';
+
+                // Interviews table
+                allInterviews = data.interviews;
+                renderInterviews(allInterviews);
+                document.getElementById('interviewsLoading').style.display = 'none';
+                document.getElementById('interviewsTable').style.display = 'table';
+
+                // Scheduled table
+                renderScheduled(data.scheduled_interviews);
+                document.getElementById('scheduledLoading').style.display = 'none';
+                document.getElementById('scheduledTable').style.display = 'table';
+
+                // Rates table
+                renderRates(f, r, data.avg_bridge_duration_seconds);
+
+            } catch (e) {
+                console.error('Failed to load dashboard data:', e);
+                document.querySelectorAll('.loading').forEach(el => el.textContent = 'Failed to load data. Please refresh.');
+            }
+        }
+
+        loadData();
+        setInterval(loadData, 60000);
+    </script>
+</body>
+</html>

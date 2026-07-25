@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Manager — Switch</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 1rem 2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-left { display: flex; align-items: center; gap: 2rem; }
+        .header h1 { font-size: 1.4rem; font-weight: 600; }
+        .navbar { display: flex; gap: 0.5rem; }
+        .nav-link {
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            padding: 0.5rem 1rem; border-radius: 6px; transition: all 0.2s; font-size: 0.9rem;
+        }
+        .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.22); color: white; }
+        .header-right { display: flex; align-items: center; gap: 0.75rem; }
+        .btn-ghost {
+            background: rgba(255,255,255,0.2); color: white; padding: 0.45rem 0.9rem;
+            border: none; border-radius: 6px; cursor: pointer; font-size: 0.82rem; text-decoration: none;
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.32); }
+
+        .container { max-width: 1500px; margin: 1.5rem auto; padding: 0 2rem; }
+
+        /* KPI Cards */
+        .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card { background: white; border-radius: 12px; padding: 1rem 1.15rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #cbd5e1; }
+        .stat-card.purple { border-left-color: #764ba2; }
+        .stat-card.blue { border-left-color: #3b82f6; }
+        .stat-card.green { border-left-color: #10b981; }
+        .stat-card.orange { border-left-color: #f59e0b; }
+        .stat-card.red { border-left-color: #ef4444; }
+        .stat-card.teal { border-left-color: #14b8a6; }
+        .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #64748b; font-weight: 600; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+        .stat-sub { font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem; }
+
+        /* Toolbar */
+        .toolbar { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+        .toolbar input[type=text], .toolbar select {
+            padding: 0.55rem 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; background: white;
+        }
+        .toolbar input[type=text] { flex: 1; min-width: 220px; }
+        .btn-primary { background: #764ba2; color: white; border: none; padding: 0.55rem 1.1rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-primary:hover { background: #633d8c; }
+        .spacer { flex: 1; }
+
+        /* Table */
+        .card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+        thead th {
+            text-align: left; padding: 0.75rem 0.9rem; background: #f1f5f9; color: #475569;
+            font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.03em;
+            border-bottom: 1px solid #e2e8f0; white-space: nowrap;
+        }
+        thead th.sortable { cursor: pointer; user-select: none; }
+        thead th.sortable:hover { background: #e2e8f0; }
+        thead th .arrow { color: #764ba2; font-size: 0.7rem; margin-left: 0.2rem; }
+        tbody td { padding: 0.7rem 0.9rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        tbody tr:hover { background: #f8fafc; cursor: pointer; }
+        .num { text-align: right; font-variant-numeric: tabular-nums; }
+        .center { text-align: center; }
+        .company { font-weight: 600; color: #1e293b; }
+        .sub { color: #94a3b8; font-size: 0.76rem; }
+
+        /* Workers-needed pill */
+        .need-pill { display: inline-flex; align-items: center; gap: 0.3rem; background: #eef2ff; color: #4338ca; padding: 0.15rem 0.55rem; border-radius: 999px; font-weight: 700; font-size: 0.82rem; }
+        .fill { font-size: 0.76rem; color: #64748b; }
+        .fill b { color: #059669; }
+
+        /* Badges */
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; text-transform: capitalize; }
+        .s-open { background: #dbeafe; color: #1d4ed8; }
+        .s-reviewing { background: #fef3c7; color: #b45309; }
+        .s-in_progress { background: #e0e7ff; color: #4338ca; }
+        .s-hired { background: #dcfce7; color: #15803d; }
+        .s-completed { background: #d1fae5; color: #047857; }
+        .s-closed { background: #f1f5f9; color: #64748b; }
+        .s-cancelled { background: #fee2e2; color: #b91c1c; }
+        .pay-unpaid { background: #fee2e2; color: #b91c1c; }
+        .pay-partial { background: #fef3c7; color: #b45309; }
+        .pay-paid { background: #dcfce7; color: #15803d; }
+        .prio-urgent { color: #dc2626; font-weight: 700; }
+        .prio-high { color: #ea580c; font-weight: 600; }
+        .prio-normal { color: #64748b; }
+        .prio-low { color: #94a3b8; }
+
+        .empty { padding: 3rem; text-align: center; color: #94a3b8; }
+
+        /* Drawer */
+        .overlay { position: fixed; inset: 0; background: rgba(15,23,42,0.5); display: none; z-index: 50; }
+        .overlay.open { display: block; }
+        .drawer {
+            position: fixed; top: 0; right: 0; height: 100%; width: 480px; max-width: 92vw;
+            background: white; box-shadow: -8px 0 24px rgba(0,0,0,0.15); z-index: 60;
+            transform: translateX(100%); transition: transform 0.25s ease; overflow-y: auto;
+        }
+        .drawer.open { transform: translateX(0); }
+        .drawer-head { padding: 1.1rem 1.4rem; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-start; position: sticky; top: 0; background: white; }
+        .drawer-head h2 { font-size: 1.1rem; }
+        .drawer-head .sub { font-size: 0.78rem; margin-top: 0.15rem; }
+        .close-x { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #94a3b8; line-height: 1; }
+        .drawer-body { padding: 1.2rem 1.4rem 2rem; }
+        .field { margin-bottom: 1rem; }
+        .field label { display: block; font-size: 0.76rem; font-weight: 600; color: #475569; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.02em; }
+        .field input, .field select, .field textarea {
+            width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; font-family: inherit;
+        }
+        .field textarea { min-height: 70px; resize: vertical; }
+        .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .section-title { font-size: 0.78rem; font-weight: 700; color: #764ba2; text-transform: uppercase; letter-spacing: 0.04em; margin: 1.4rem 0 0.7rem; border-top: 1px solid #f1f5f9; padding-top: 1rem; }
+        .worker-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0.7rem; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 0.5rem; }
+        .worker-item .wname { font-weight: 600; font-size: 0.88rem; }
+        .worker-item .wsub { font-size: 0.75rem; color: #94a3b8; }
+        .btn-assign { background: #10b981; color: white; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.78rem; font-weight: 600; }
+        .btn-assign:hover { background: #059669; }
+        .drawer-actions { position: sticky; bottom: 0; background: white; border-top: 1px solid #e2e8f0; padding: 1rem 1.4rem; display: flex; gap: 0.6rem; }
+        .drawer-actions .btn-primary { flex: 1; }
+        .assigned-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.7rem 0.8rem; font-size: 0.85rem; }
+        .assigned-box b { color: #15803d; }
+        .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 0.7rem 1.3rem; border-radius: 8px; font-size: 0.88rem; z-index: 100; opacity: 0; transition: opacity 0.2s; }
+        .toast.show { opacity: 1; }
+        @media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>📦 Order Manager</h1>
+            <nav class="navbar">
+                <a class="nav-link" href="/admin/switch">Analytics</a>
+                <a class="nav-link active" href="/admin/orders">Orders</a>
+                <a class="nav-link" href="/admin/employer-outbound">Outbound</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <span id="who" style="font-size:0.8rem;opacity:0.85;"></span>
+            <button class="btn-ghost" onclick="loadOrders()">↻ Refresh</button>
+            <a class="btn-ghost" href="/admin/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid" id="stats"></div>
+
+        <div class="toolbar">
+            <input type="text" id="search" placeholder="Search company, role, location, worker…" oninput="render()">
+            <select id="statusFilter" onchange="render()">
+                <option value="">All statuses</option>
+            </select>
+            <select id="payFilter" onchange="render()">
+                <option value="">All payments</option>
+                <option value="unpaid">Unpaid</option>
+                <option value="partial">Partial</option>
+                <option value="paid">Paid</option>
+            </select>
+            <select id="assignFilter" onchange="render()">
+                <option value="">Assigned + Unassigned</option>
+                <option value="unassigned">Unassigned only</option>
+                <option value="assigned">Assigned only</option>
+            </select>
+            <button class="btn-ghost" style="background:#e2e8f0;color:#475569;" onclick="exportCSV()">⬇ Export CSV</button>
+            <div class="spacer"></div>
+            <span class="sub" id="count"></span>
+            <span class="sub" id="updated" style="margin-left:0.75rem;"></span>
+        </div>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="company">Order</th>
+                        <th class="sortable" data-sort="role_label">Role</th>
+                        <th class="sortable" data-sort="location">Location</th>
+                        <th class="center sortable" data-sort="headcount">Workers&nbsp;needed</th>
+                        <th class="center">Filled</th>
+                        <th class="center sortable" data-sort="interested_count">Interested</th>
+                        <th class="num">Salary&nbsp;/&nbsp;worker</th>
+                        <th class="num sortable" data-sort="order_value">Order&nbsp;value</th>
+                        <th class="center sortable" data-sort="payment_status">Payment</th>
+                        <th class="sortable" data-sort="status">Status</th>
+                        <th class="sortable" data-sort="created_at">Created</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+            <div class="empty" id="empty" style="display:none;">No orders match your filters.</div>
+        </div>
+    </div>
+
+    <!-- Edit drawer -->
+    <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <div class="drawer-head">
+            <div>
+                <h2 id="d-title">Order</h2>
+                <div class="sub" id="d-sub"></div>
+            </div>
+            <button class="close-x" onclick="closeDrawer()">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <div class="row2">
+                <div class="field"><label>Company</label><input id="f-company"></div>
+                <div class="field"><label>Location</label><input id="f-location"></div>
+            </div>
+            <div class="field"><label>Role / Title</label><input id="f-role_label"></div>
+            <div class="row2">
+                <div class="field"><label>Workers needed</label><input type="number" min="1" id="f-headcount"></div>
+                <div class="field"><label>When needed</label><input id="f-when_needed"></div>
+            </div>
+            <div class="row2">
+                <div class="field">
+                    <label>Status</label>
+                    <select id="f-status"></select>
+                </div>
+                <div class="field">
+                    <label>Priority</label>
+                    <select id="f-priority">
+                        <option value="low">Low</option>
+                        <option value="normal">Normal</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-title">Commercials</div>
+            <div class="field"><label>Salary per worker (worker pay)</label><input id="f-salary" placeholder="e.g. ₹15,000/month"></div>
+            <div class="row2">
+                <div class="field"><label>Order value (₹)</label><input type="number" id="f-order_value" placeholder="0"></div>
+                <div class="field"><label>Amount collected (₹)</label><input type="number" id="f-amount_collected" placeholder="0"></div>
+            </div>
+            <div class="field">
+                <label>Payment status</label>
+                <select id="f-payment_status">
+                    <option value="unpaid">Unpaid</option>
+                    <option value="partial">Partial</option>
+                    <option value="paid">Paid</option>
+                </select>
+            </div>
+
+            <div class="section-title">Assigned worker</div>
+            <div id="assigned-display"></div>
+            <div class="row2">
+                <div class="field"><label>Worker name</label><input id="f-assigned_worker_name"></div>
+                <div class="field"><label>Worker phone</label><input id="f-assigned_worker_phone"></div>
+            </div>
+
+            <div class="section-title" id="interested-title">Interested workers</div>
+            <div id="interested-list"></div>
+
+            <div class="section-title">Notes</div>
+            <div class="field"><textarea id="f-notes" placeholder="Ops notes, instructions, follow-ups…"></textarea></div>
+            <div class="sub" id="audit"></div>
+        </div>
+        <div class="drawer-actions">
+            <button class="btn-primary" onclick="saveOrder()">Save changes</button>
+            <button class="btn-ghost" style="background:#e2e8f0;color:#475569;" onclick="closeDrawer()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+<script>
+let ORDERS = [];
+let STATUSES = [];
+let CURRENT = null;
+let SORT = { key: 'created_at', dir: -1 };
+let FILTERED = [];
+
+const money = n => '₹' + (Number(n) || 0).toLocaleString('en-IN');
+const esc = s => (s == null ? '' : String(s)).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function fmtDate(iso) {
+    if (!iso) return '—';
+    try { const d = new Date(iso); return d.toLocaleDateString('en-IN', {day:'2-digit', month:'short'}) + ' ' + d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}); }
+    catch (e) { return '—'; }
+}
+
+async function loadOrders() {
+    try {
+        const res = await fetch('/admin/api/orders', { credentials: 'same-origin' });
+        if (res.status === 401) { window.location.href = '/admin/'; return; }
+        const data = await res.json();
+        if (data.error) { toast(data.error); return; }
+        ORDERS = data.orders || [];
+        STATUSES = data.statuses || [];
+        renderStats(data.stats || {});
+        buildStatusSelects();
+        render();
+        const now = new Date();
+        document.getElementById('updated').textContent = 'Updated ' + now.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
+    } catch (e) { toast('Failed to load orders'); }
+}
+
+function renderStats(s) {
+    const cards = [
+        ['purple', 'Total orders', s.total ?? 0, ''],
+        ['blue', 'Active', s.active ?? 0, (s.unassigned ?? 0) + ' unassigned'],
+        ['green', 'Completed', s.completed ?? 0, 'Fill rate ' + (s.fill_rate ?? 0) + '%'],
+        ['teal', 'Order value', money(s.total_value), 'Collected ' + money(s.collected)],
+        ['orange', 'Outstanding', money(s.outstanding), 'to collect'],
+        ['red', 'Interested workers', s.interested_total ?? 0, 'awaiting assignment'],
+    ];
+    document.getElementById('stats').innerHTML = cards.map(c =>
+        `<div class="stat-card ${c[0]}"><div class="stat-label">${c[1]}</div><div class="stat-value">${c[2]}</div><div class="stat-sub">${c[3]}</div></div>`
+    ).join('');
+}
+
+function buildStatusSelects() {
+    const opts = STATUSES.map(s => `<option value="${s}">${s.replace('_',' ')}</option>`).join('');
+    document.getElementById('f-status').innerHTML = opts;
+    const filt = document.getElementById('statusFilter');
+    filt.innerHTML = '<option value="">All statuses</option>' + opts;
+}
+
+function render() {
+    const q = document.getElementById('search').value.toLowerCase().trim();
+    const sf = document.getElementById('statusFilter').value;
+    const pf = document.getElementById('payFilter').value;
+    const af = document.getElementById('assignFilter').value;
+
+    const rows = ORDERS.filter(o => {
+        if (sf && o.status !== sf) return false;
+        if (pf && o.payment_status !== pf) return false;
+        if (af === 'assigned' && !o.assigned_worker_phone) return false;
+        if (af === 'unassigned' && o.assigned_worker_phone) return false;
+        if (q) {
+            const hay = [o.company, o.role_label, o.location, o.assigned_worker_name, o.employer_phone].join(' ').toLowerCase();
+            if (!hay.includes(q)) return false;
+        }
+        return true;
+    });
+
+    const k = SORT.key;
+    rows.sort((a, b) => {
+        let va = a[k], vb = b[k];
+        if (typeof va === 'number' || typeof vb === 'number') { va = Number(va) || 0; vb = Number(vb) || 0; }
+        else { va = (va == null ? '' : String(va)).toLowerCase(); vb = (vb == null ? '' : String(vb)).toLowerCase(); }
+        if (va < vb) return -1 * SORT.dir;
+        if (va > vb) return 1 * SORT.dir;
+        return 0;
+    });
+    FILTERED = rows;
+
+    document.querySelectorAll('thead th.sortable').forEach(th => {
+        const base = th.textContent.replace(/[▲▼]/g, '').trim();
+        th.innerHTML = base + (th.dataset.sort === SORT.key ? ' <span class="arrow">' + (SORT.dir === 1 ? '▲' : '▼') + '</span>' : '');
+    });
+
+    document.getElementById('count').textContent = rows.length + ' of ' + ORDERS.length + ' orders';
+    document.getElementById('empty').style.display = rows.length ? 'none' : 'block';
+
+    document.getElementById('tbody').innerHTML = rows.map(o => {
+        const filled = o.assigned_worker_phone ? 1 : 0;
+        const fillTxt = `<b>${filled}</b>/${o.headcount}`;
+        return `<tr onclick="openDrawer('${o.id}')">
+            <td><div class="company">${esc(o.company) || 'Unknown'}</div><div class="sub">${esc(o.id).slice(0,8)}</div></td>
+            <td>${esc(o.role_label) || '—'}<div class="sub prio-${o.priority}">${o.priority !== 'normal' ? '● ' + o.priority : ''}</div></td>
+            <td>${esc(o.location) || '—'}</td>
+            <td class="center"><span class="need-pill">👷 ${o.headcount}</span></td>
+            <td class="center fill">${fillTxt}${o.assigned_worker_name ? '<div class="sub">'+esc(o.assigned_worker_name)+'</div>' : ''}</td>
+            <td class="center">${o.interested_count > 0 ? '<b style="color:#b45309;">'+o.interested_count+'</b>' : '0'}</td>
+            <td class="num">${esc(o.salary) || '—'}</td>
+            <td class="num">${o.order_value ? money(o.order_value) : '—'}</td>
+            <td class="center"><span class="badge pay-${o.payment_status}">${o.payment_status}</span></td>
+            <td><span class="badge s-${o.status}">${o.status.replace('_',' ')}</span></td>
+            <td class="sub">${fmtDate(o.created_at)}</td>
+        </tr>`;
+    }).join('');
+}
+
+function openDrawer(id) {
+    const o = ORDERS.find(x => x.id === id);
+    if (!o) return;
+    CURRENT = o;
+    document.getElementById('d-title').textContent = o.company || 'Order';
+    document.getElementById('d-sub').textContent = 'ID ' + o.id.slice(0,8) + ' · employer ' + (o.employer_phone || '—');
+
+    const set = (f, v) => { document.getElementById('f-' + f).value = v ?? ''; };
+    set('company', o.company); set('location', o.location); set('role_label', o.role_label);
+    set('headcount', o.headcount); set('when_needed', o.when_needed);
+    set('status', o.status); set('priority', o.priority);
+    set('salary', o.salary); set('order_value', o.order_value || '');
+    set('amount_collected', o.amount_collected || ''); set('payment_status', o.payment_status);
+    set('assigned_worker_name', o.assigned_worker_name); set('assigned_worker_phone', o.assigned_worker_phone);
+    set('notes', o.notes);
+
+    const ad = document.getElementById('assigned-display');
+    if (o.assigned_worker_phone) {
+        ad.innerHTML = `<div class="assigned-box">✅ Assigned to <b>${esc(o.assigned_worker_name) || 'worker'}</b> · ${esc(o.assigned_worker_phone)}</div>`;
+    } else {
+        ad.innerHTML = `<div class="sub" style="margin-bottom:0.6rem;">No worker assigned yet.</div>`;
+    }
+
+    document.getElementById('interested-title').textContent = 'Interested workers (' + o.interested_count + ')';
+    const il = document.getElementById('interested-list');
+    if (o.interested && o.interested.length) {
+        il.innerHTML = o.interested.map(w => `
+            <div class="worker-item">
+                <div>
+                    <div class="wname">${esc(w.name) || 'Worker'} <span class="sub">${esc(w.phone)}</span></div>
+                    <div class="wsub">${[esc(w.location), esc(w.experience), esc(w.expected_salary)].filter(Boolean).join(' · ') || '—'}</div>
+                </div>
+                <button class="btn-assign" onclick="assignWorker('${esc(w.phone)}','${esc(w.name).replace(/'/g,"")}')">Assign</button>
+            </div>`).join('');
+    } else {
+        il.innerHTML = '<div class="sub">No workers have raised their hand yet.</div>';
+    }
+
+    document.getElementById('audit').textContent = o.last_edited_by ? ('Last edited by ' + o.last_edited_by + ' · ' + fmtDate(o.last_edited_at)) : '';
+
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('drawer').classList.add('open');
+}
+
+function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('drawer').classList.remove('open');
+    CURRENT = null;
+}
+
+async function saveOrder() {
+    if (!CURRENT) return;
+    const get = f => document.getElementById('f-' + f).value;
+    const payload = {
+        company: get('company'), location: get('location'), role_label: get('role_label'),
+        headcount: get('headcount'), when_needed: get('when_needed'),
+        status: get('status'), priority: get('priority'),
+        salary: get('salary'), order_value: get('order_value'),
+        amount_collected: get('amount_collected'), payment_status: get('payment_status'),
+        assigned_worker_name: get('assigned_worker_name'), assigned_worker_phone: get('assigned_worker_phone'),
+        notes: get('notes'),
+    };
+    try {
+        const res = await fetch('/admin/api/orders/' + CURRENT.id, {
+            method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.error) { toast(data.error); return; }
+        mergeOrder(data.order);
+        toast('Saved ✓');
+        closeDrawer();
+        render();
+        loadOrders();
+    } catch (e) { toast('Save failed'); }
+}
+
+async function assignWorker(phone, name) {
+    if (!CURRENT) return;
+    try {
+        const res = await fetch('/admin/api/orders/' + CURRENT.id + '/assign', {
+            method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ phone, name }),
+        });
+        const data = await res.json();
+        if (data.error) { toast(data.error); return; }
+        mergeOrder(data.order);
+        toast('Assigned ' + (name || phone) + ' ✓');
+        openDrawer(CURRENT.id);
+        loadOrders();
+    } catch (e) { toast('Assign failed'); }
+}
+
+function mergeOrder(updated) {
+    if (!updated) return;
+    const i = ORDERS.findIndex(o => o.id === updated.id);
+    if (i >= 0) ORDERS[i] = updated;
+}
+
+let toastTimer;
+function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function sortBy(key) {
+    if (SORT.key === key) SORT.dir *= -1;
+    else SORT = { key, dir: key === 'created_at' ? -1 : 1 };
+    render();
+}
+
+function exportCSV() {
+    const cols = [
+        ['id', 'Order ID'], ['company', 'Company'], ['role_label', 'Role'], ['location', 'Location'],
+        ['headcount', 'Workers needed'], ['assigned_worker_name', 'Assigned worker'], ['assigned_worker_phone', 'Worker phone'],
+        ['interested_count', 'Interested'], ['salary', 'Salary/worker'], ['order_value', 'Order value'],
+        ['amount_collected', 'Collected'], ['payment_status', 'Payment'], ['priority', 'Priority'],
+        ['status', 'Status'], ['when_needed', 'When needed'], ['employer_phone', 'Employer'], ['created_at', 'Created'],
+    ];
+    const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+    const lines = [cols.map(c => q(c[1])).join(',')];
+    (FILTERED.length ? FILTERED : ORDERS).forEach(o => lines.push(cols.map(c => q(o[c[0]])).join(',')));
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'switch-orders.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('Exported ' + (FILTERED.length || ORDERS.length) + ' orders');
+}
+
+document.querySelectorAll('thead th.sortable').forEach(th => {
+    th.addEventListener('click', () => sortBy(th.dataset.sort));
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+loadOrders();
+</script>
+</body>
+</html>
