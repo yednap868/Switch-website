@@ -32,7 +32,7 @@
         .container { max-width: 1500px; margin: 1.5rem auto; padding: 0 2rem; }
 
         /* KPI Cards */
-        .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
         .stat-card { background: white; border-radius: 12px; padding: 1rem 1.15rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #cbd5e1; }
         .stat-card.purple { border-left-color: #764ba2; }
         .stat-card.blue { border-left-color: #3b82f6; }
@@ -79,6 +79,7 @@
 
         /* Badges */
         .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; text-transform: capitalize; }
+        .s-placed { background: #fae8ff; color: #a21caf; }
         .s-open { background: #dbeafe; color: #1d4ed8; }
         .s-reviewing { background: #fef3c7; color: #b45309; }
         .s-in_progress { background: #e0e7ff; color: #4338ca; }
@@ -127,6 +128,17 @@
         .drawer-actions .btn-primary { flex: 1; }
         .assigned-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.7rem 0.8rem; font-size: 0.85rem; }
         .assigned-box b { color: #15803d; }
+        /* Create modal */
+        .modal {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%) scale(0.98);
+            width: 560px; max-width: 94vw; max-height: 90vh; overflow-y: auto;
+            background: white; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+            z-index: 70; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+        }
+        .modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+        .modal-head { padding: 1.2rem 1.5rem; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: flex-start; }
+        .modal-head h2 { font-size: 1.15rem; }
+        .modal-body { padding: 1.3rem 1.5rem; }
         .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 0.7rem 1.3rem; border-radius: 8px; font-size: 0.88rem; z-index: 100; opacity: 0; transition: opacity 0.2s; }
         .toast.show { opacity: 1; }
         @media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -143,7 +155,7 @@
             </nav>
         </div>
         <div class="header-right">
-            <span id="who" style="font-size:0.8rem;opacity:0.85;"></span>
+            <button class="btn-ghost" style="background:#fff;color:#764ba2;font-weight:700;" onclick="openCreate()">＋ Place Order</button>
             <button class="btn-ghost" onclick="loadOrders()">↻ Refresh</button>
             <a class="btn-ghost" href="/admin/logout">Logout</a>
         </div>
@@ -268,6 +280,44 @@
         </div>
     </div>
 
+    <!-- Place Order modal (manager) -->
+    <div class="overlay" id="createOverlay" onclick="closeCreate()"></div>
+    <div class="modal" id="createModal">
+        <div class="modal-head">
+            <div>
+                <h2>Place a new order</h2>
+                <div class="sub">Manager places it → ops decides the worker &amp; approves.</div>
+            </div>
+            <button class="close-x" onclick="closeCreate()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="row2">
+                <div class="field"><label>Company *</label><input id="c-company" placeholder="e.g. Cyber Hub Cloud Kitchen"></div>
+                <div class="field"><label>Location</label><input id="c-location" placeholder="e.g. Gurgaon Sector 29"></div>
+            </div>
+            <div class="field"><label>Role / Title *</label><input id="c-role_label" placeholder="e.g. Cook, Delivery Rider"></div>
+            <div class="row2">
+                <div class="field"><label>Workers needed</label><input type="number" min="1" id="c-headcount" value="1"></div>
+                <div class="field"><label>When needed</label><input id="c-when_needed" placeholder="Immediately"></div>
+            </div>
+            <div class="row2">
+                <div class="field"><label>Salary per worker</label><input id="c-salary" placeholder="e.g. ₹15,000/month"></div>
+                <div class="field"><label>Order value (₹)</label><input type="number" id="c-order_value" placeholder="0"></div>
+            </div>
+            <div class="row2">
+                <div class="field"><label>Priority</label>
+                    <select id="c-priority"><option value="low">Low</option><option value="normal" selected>Normal</option><option value="high">High</option><option value="urgent">Urgent</option></select>
+                </div>
+                <div class="field"><label>Employer phone (optional)</label><input id="c-employer_phone" placeholder="+91…"></div>
+            </div>
+            <div class="field"><label>Notes</label><textarea id="c-notes" placeholder="Any details for ops…"></textarea></div>
+        </div>
+        <div class="drawer-actions">
+            <button class="btn-primary" onclick="submitCreate()">Place order</button>
+            <button class="btn-ghost" style="background:#e2e8f0;color:#475569;" onclick="closeCreate()">Cancel</button>
+        </div>
+    </div>
+
     <div class="toast" id="toast"></div>
 
 <script>
@@ -305,6 +355,7 @@ async function loadOrders() {
 function renderStats(s) {
     const cards = [
         ['purple', 'Total orders', s.total ?? 0, ''],
+        ['orange', 'Awaiting ops', s.awaiting_ops ?? 0, 'need a decision'],
         ['blue', 'Active', s.active ?? 0, (s.unassigned ?? 0) + ' unassigned'],
         ['green', 'Completed', s.completed ?? 0, 'Fill rate ' + (s.fill_rate ?? 0) + '%'],
         ['teal', 'Order value', money(s.total_value), 'Collected ' + money(s.collected)],
@@ -384,7 +435,8 @@ function openDrawer(id) {
     if (!o) return;
     CURRENT = o;
     document.getElementById('d-title').textContent = o.company || 'Order';
-    document.getElementById('d-sub').textContent = 'ID ' + o.id.slice(0,8) + ' · employer ' + (o.employer_phone || '—');
+    const src = o.source === 'manager_dashboard' ? ('placed by ' + (o.placed_by || 'manager')) : 'from employer app';
+    document.getElementById('d-sub').textContent = 'ID ' + o.id.slice(0,8) + ' · ' + src + ' · ' + (o.employer_phone || 'no phone');
 
     const set = (f, v) => { document.getElementById('f-' + f).value = v ?? ''; };
     set('company', o.company); set('location', o.location); set('role_label', o.role_label);
@@ -486,6 +538,45 @@ function toast(msg) {
     toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+function openCreate() {
+    ['company','location','role_label','when_needed','salary','order_value','employer_phone','notes'].forEach(f => {
+        const el = document.getElementById('c-' + f); if (el) el.value = '';
+    });
+    document.getElementById('c-headcount').value = 1;
+    document.getElementById('c-priority').value = 'normal';
+    document.getElementById('createOverlay').classList.add('open');
+    document.getElementById('createModal').classList.add('open');
+    setTimeout(() => document.getElementById('c-company').focus(), 60);
+}
+
+function closeCreate() {
+    document.getElementById('createOverlay').classList.remove('open');
+    document.getElementById('createModal').classList.remove('open');
+}
+
+async function submitCreate() {
+    const get = f => (document.getElementById('c-' + f).value || '').trim();
+    const company = get('company'), role = get('role_label');
+    if (!company || !role) { toast('Company and role are required'); return; }
+    const payload = {
+        company, role_label: role, location: get('location'),
+        headcount: get('headcount'), when_needed: get('when_needed'),
+        salary: get('salary'), order_value: get('order_value'),
+        priority: get('priority'), employer_phone: get('employer_phone'), notes: get('notes'),
+    };
+    try {
+        const res = await fetch('/admin/api/orders/create', {
+            method: 'POST', credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.error) { toast(data.error); return; }
+        toast('Order placed ✓ — awaiting ops decision');
+        closeCreate();
+        loadOrders();
+    } catch (e) { toast('Failed to place order'); }
+}
+
 function sortBy(key) {
     if (SORT.key === key) SORT.dir *= -1;
     else SORT = { key, dir: key === 'created_at' ? -1 : 1 };
@@ -515,7 +606,7 @@ function exportCSV() {
 document.querySelectorAll('thead th.sortable').forEach(th => {
     th.addEventListener('click', () => sortBy(th.dataset.sort));
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeCreate(); } });
 loadOrders();
 </script>
 </body>

@@ -7,6 +7,7 @@ import json
 import os
 import secrets
 import time
+import uuid
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 
@@ -120,7 +121,7 @@ ORDER_EDITABLE_FIELDS = {
     "assigned_worker_name", "assigned_worker_phone",
 }
 
-ORDER_STATUSES = ["open", "reviewing", "in_progress", "hired", "completed", "closed", "cancelled"]
+ORDER_STATUSES = ["placed", "open", "reviewing", "in_progress", "hired", "completed", "closed", "cancelled"]
 
 
 def _to_number(val) -> float:
@@ -182,6 +183,9 @@ def _shape_order(order: dict) -> dict:
         "assigned_worker_phone": order.get("assigned_worker_phone") or "",
         "last_edited_by":   order.get("last_edited_by") or "",
         "last_edited_at":   order.get("last_edited_at") or "",
+        # Placement / workflow provenance
+        "source":           order.get("source") or "employer_app",
+        "placed_by":        order.get("placed_by") or "",
     }
 
 
@@ -205,11 +209,12 @@ async def admin_orders_list(request: Request, admin: bool = Depends(get_current_
 
     orders.sort(key=lambda o: o.get("created_at") or "", reverse=True)
 
-    active_statuses = {"open", "reviewing", "in_progress", "hired"}
+    active_statuses = {"placed", "open", "reviewing", "in_progress", "hired"}
     done_statuses = {"completed", "hired"}
     stats = {
         "total":            len(orders),
         "active":           sum(1 for o in orders if o["status"] in active_statuses),
+        "awaiting_ops":     sum(1 for o in orders if o["status"] == "placed"),
         "completed":        sum(1 for o in orders if o["status"] == "completed"),
         "unassigned":       sum(1 for o in orders if not o["assigned_worker_phone"] and o["status"] in active_statuses),
         "total_value":      round(sum(o["order_value"] for o in orders), 2),
@@ -266,6 +271,55 @@ async def admin_order_update(order_id: str, request: Request, admin: bool = Depe
     fresh = doc_ref.get().to_dict() or {}
     fresh.setdefault("id", order_id)
     return {"success": True, "order": _shape_order(fresh)}
+
+
+@router.post("/api/orders/create")
+async def admin_order_create(request: Request, admin: bool = Depends(get_current_admin)):
+    """Manager places a new order from the dashboard. Starts as 'placed' — awaiting an ops decision."""
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse({"error": "Invalid JSON body"}, status_code=400)
+
+    company = (body.get("company") or "").strip()
+    role = (body.get("role_label") or body.get("role") or "").strip()
+    if not company or not role:
+        return JSONResponse({"error": "Company and role are required"}, status_code=400)
+
+    try:
+        headcount = max(1, int(body.get("headcount") or 1))
+    except (ValueError, TypeError):
+        headcount = 1
+
+    order_id = str(uuid.uuid4())
+    order = {
+        "id":               order_id,
+        "company":          company,
+        "role":             role,
+        "role_label":       role,
+        "location":         body.get("location") or "",
+        "headcount":        headcount,
+        "salary":           body.get("salary") or "",
+        "when_needed":      body.get("when_needed") or "Immediately",
+        "notes":            body.get("notes") or "",
+        "order_value":      _to_number(body.get("order_value")),
+        "amount_collected": 0.0,
+        "payment_status":   "unpaid",
+        "priority":         body.get("priority") or "normal",
+        "status":           "placed",
+        "employer_phone":   body.get("employer_phone") or "",
+        "source":           "manager_dashboard",
+        "placed_by":        ADMIN_USERNAME,
+        "created_at":       datetime.utcnow().isoformat() + "Z",
+        "pinged_workers":   {},
+        "workers_notified": 0,
+    }
+    try:
+        fs.collection(ORDERS_COLLECTION).document(order_id).set(order)
+    except Exception as exc:
+        return JSONResponse({"error": f"Failed to place order: {exc}"}, status_code=500)
+
+    return {"success": True, "order": _shape_order(order)}
 
 
 @router.post("/api/orders/{order_id}/assign")
