@@ -154,17 +154,50 @@ def _interested_workers(order: dict) -> list:
     return out
 
 
+def _assigned_list(order: dict) -> list:
+    """Return the list of assigned workers, migrating legacy single-worker orders."""
+    raw = order.get("assigned_workers")
+    if raw is None:
+        if order.get("assigned_worker_phone"):
+            return [{
+                "phone":       order.get("assigned_worker_phone"),
+                "name":        order.get("assigned_worker_name") or "",
+                "assigned_at": order.get("last_edited_at") or "",
+                "assigned_by": order.get("last_edited_by") or "",
+            }]
+        return []
+    out = []
+    for w in raw:
+        if isinstance(w, dict) and w.get("phone"):
+            out.append({
+                "phone":       w.get("phone"),
+                "name":        w.get("name") or "",
+                "assigned_at": w.get("assigned_at") or "",
+                "assigned_by": w.get("assigned_by") or "",
+            })
+    return out
+
+
+def _headcount(order: dict) -> int:
+    try:
+        return max(1, int(order.get("headcount") or 1))
+    except (ValueError, TypeError):
+        return 1
+
+
 def _shape_order(order: dict) -> dict:
     """Normalise a raw Firestore order doc into the manager's view model."""
     pinged = order.get("pinged_workers") or {}
     interested = _interested_workers(order)
+    assigned = _assigned_list(order)
+    headcount = _headcount(order)
     return {
         "id":               order.get("id", ""),
         "company":          order.get("company") or "",
         "role":             order.get("role") or "",
         "role_label":       order.get("role_label") or order.get("role") or "",
         "location":         order.get("location") or "",
-        "headcount":        order.get("headcount") or 1,
+        "headcount":        headcount,
         "salary":           order.get("salary") or "",
         "when_needed":      order.get("when_needed") or "",
         "notes":            order.get("notes") or "",
@@ -179,8 +212,12 @@ def _shape_order(order: dict) -> dict:
         "order_value":       _to_number(order.get("order_value")),
         "amount_collected":  _to_number(order.get("amount_collected")),
         "payment_status":    order.get("payment_status") or "unpaid",
-        "assigned_worker_name":  order.get("assigned_worker_name") or "",
-        "assigned_worker_phone": order.get("assigned_worker_phone") or "",
+        # Multi-worker assignment (capped at headcount)
+        "assigned_workers":  assigned,
+        "assigned_count":    len(assigned),
+        "slots_remaining":   max(headcount - len(assigned), 0),
+        "assigned_worker_name":  assigned[0]["name"] if assigned else "",
+        "assigned_worker_phone": assigned[0]["phone"] if assigned else "",
         "last_edited_by":   order.get("last_edited_by") or "",
         "last_edited_at":   order.get("last_edited_at") or "",
         # Placement / workflow provenance
@@ -216,11 +253,13 @@ async def admin_orders_list(request: Request, admin: bool = Depends(get_current_
         "active":           sum(1 for o in orders if o["status"] in active_statuses),
         "awaiting_ops":     sum(1 for o in orders if o["status"] == "placed"),
         "completed":        sum(1 for o in orders if o["status"] == "completed"),
-        "unassigned":       sum(1 for o in orders if not o["assigned_worker_phone"] and o["status"] in active_statuses),
+        "unassigned":       sum(1 for o in orders if o["assigned_count"] == 0 and o["status"] in active_statuses),
+        "understaffed":     sum(1 for o in orders if o["slots_remaining"] > 0 and o["status"] in active_statuses),
         "total_value":      round(sum(o["order_value"] for o in orders), 2),
         "collected":        round(sum(o["amount_collected"] for o in orders), 2),
         "outstanding":      round(sum(max(o["order_value"] - o["amount_collected"], 0) for o in orders), 2),
         "interested_total": sum(o["interested_count"] for o in orders),
+        "positions_open":   sum(o["slots_remaining"] for o in orders if o["status"] in active_statuses),
     }
     filled = sum(1 for o in orders if o["status"] in done_statuses)
     stats["fill_rate"] = round(100 * filled / len(orders), 1) if orders else 0.0

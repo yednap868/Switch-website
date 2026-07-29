@@ -1,0 +1,30 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+relay-15824-firebase-adminsdk-fbsvc-bc0efb42d8.json
+hearus-4f2fe-firebase.json
+*firebase*.json
+.env
+env_vars.sh
+env.sh
+
+.cursor/
+
+logs/ 
+venv/
+linkdin.csv
+
+linkdin_backup.csv
+linkdin_withintents.csv
+
+*.json
+
+# Switch frontend (separate repo: switch-app)
+Switch/

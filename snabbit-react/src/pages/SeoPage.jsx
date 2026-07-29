@@ -178,7 +178,7 @@ function LandingPage({ page }) {
       <section className="sp-hero">
         <div className="sp-hero-inner">
           <div className="sp-hero-text">
-            <span className="sp-tag">Gurgaon · Book Instantly · Verified Workers</span>
+            <span className="sp-tag">Gurgaon · Book Instantly · Verified Switch Players</span>
             <h1 className="sp-h1">{page.h1}</h1>
             <p className="sp-intro">{page.intro}</p>
             <TrustBadges />
@@ -188,7 +188,7 @@ function LandingPage({ page }) {
             </div>
           </div>
           <div className="sp-hero-img">
-            <img src={page.serviceImg} alt={`${page.service} in Gurgaon`} />
+            <img src={page.serviceImg} alt={`Hire a verified ${page.service.toLowerCase()} in Gurgaon`} width="360" height="300" loading="lazy" decoding="async" />
             <div className="sp-hero-badge">
               <span className="sp-hero-badge-dot" />
               <span>Available today in Gurgaon</span>
@@ -231,7 +231,7 @@ function LandingPage({ page }) {
             </div>
             <div className="sp-step">
               <div className="sp-step-n">Step 3</div>
-              <h3 className="sp-step-title">Worker arrives & you pay after</h3>
+              <h3 className="sp-step-title">Switch Player arrives & you pay after</h3>
               <p className="sp-step-desc">Your verified {page.service.toLowerCase()} arrives on time. Pay securely in-app only after the job is done.</p>
             </div>
           </div>
@@ -241,7 +241,7 @@ function LandingPage({ page }) {
       <section className="sp-section sp-alt">
         <div className="sp-w">
           <h2 className="sp-h2">Switch vs Other Options</h2>
-          <p className="sp-body">See why Gurgaon residents book through Switch instead of agencies or finding workers themselves.</p>
+          <p className="sp-body">See why Gurgaon residents book through Switch instead of agencies or finding Switch Players themselves.</p>
           <ComparisonTable service={page.service} />
         </div>
       </section>
@@ -561,10 +561,10 @@ function NearMePage({ page }) {
         <div className="sp-w">
           <h2 className="sp-h2">Why Location Matters</h2>
           <ul className="sp-tasks">
-            <li><span className="sp-check">✓</span>Nearby workers arrive faster — less waiting time</li>
+            <li><span className="sp-check">✓</span>Nearby Switch Players arrive faster — less waiting time</li>
             <li><span className="sp-check">✓</span>Lower travel overhead means better value for you</li>
-            <li><span className="sp-check">✓</span>Workers familiar with your area navigate easily</li>
-            <li><span className="sp-check">✓</span>Same-day slots more likely when worker is local to your sector</li>
+            <li><span className="sp-check">✓</span>Switch Players familiar with your area navigate easily</li>
+            <li><span className="sp-check">✓</span>Same-day slots more likely when Switch Player is local to your sector</li>
           </ul>
         </div>
       </section>
@@ -699,7 +699,7 @@ function VerifiedPage({ page }) {
       </section>
       <section className="sp-section sp-alt">
         <div className="sp-w">
-          <h2 className="sp-h2">How We Verify Every Worker</h2>
+          <h2 className="sp-h2">How We Verify Every Switch Player</h2>
           <div className="sp-vsteps">
             {page.verificationSteps.map((v, i) => (
               <div className="sp-vstep" key={i}>
@@ -715,7 +715,7 @@ function VerifiedPage({ page }) {
       </section>
       <section className="sp-section">
         <div className="sp-w">
-          <h2 className="sp-h2">What Verified Workers Can Do</h2>
+          <h2 className="sp-h2">What Verified Switch Players Can Do</h2>
           <ul className="sp-tasks">
             {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
           </ul>

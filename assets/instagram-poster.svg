@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <!-- Deep black background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000" />
+      <stop offset="100%" style="stop-color:#0d0d0d" />
+    </linearGradient>
+
+    <!-- White to light-gray text gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff" />
+      <stop offset="100%" style="stop-color:#cccccc" />
+    </linearGradient>
+
+    <!-- Accent white glow gradient -->
+    <radialGradient id="glowTop" cx="85%" cy="10%" r="45%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glowBot" cx="15%" cy="90%" r="45%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.06" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Card glass gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.03" />
+    </linearGradient>
+
+    <!-- Button fill -->
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff" />
+      <stop offset="100%" style="stop-color:#e5e5e5" />
+    </linearGradient>
+
+    <!-- Dot pattern -->
+    <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#ffffff" opacity="0.06"/>
+    </pattern>
+
+    <!-- Glow filter -->
+    <filter id="whiteGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Card shadow -->
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Text glow -->
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="1080" height="1080" fill="url(#bgGrad)"/>
+
+  <!-- Dot texture overlay -->
+  <rect width="1080" height="1080" fill="url(#dots)"/>
+
+  <!-- Ambient white glow blobs -->
+  <ellipse cx="918" cy="108" rx="520" ry="520" fill="url(#glowTop)"/>
+  <ellipse cx="162" cy="972" rx="520" ry="520" fill="url(#glowBot)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="270" x2="1080" y2="270"/>
+    <line x1="0" y1="540" x2="1080" y2="540"/>
+    <line x1="0" y1="810" x2="1080" y2="810"/>
+    <line x1="270" y1="0" x2="270" y2="1080"/>
+    <line x1="540" y1="0" x2="540" y2="1080"/>
+    <line x1="810" y1="0" x2="810" y2="1080"/>
+  </g>
+
+  <!-- ── DECORATIVE RING top-right ── -->
+  <circle cx="950" cy="110" r="130" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.12"/>
+  <circle cx="950" cy="110" r="88" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.08"/>
+
+  <!-- ── DECORATIVE RING bottom-left ── -->
+  <circle cx="100" cy="970" r="110" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.1"/>
+  <circle cx="100" cy="970" r="66" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.06"/>
+
+  <!-- ── LOGO BADGE top-left ── -->
+  <rect x="60" y="60" width="210" height="58" rx="29" fill="#ffffff"/>
+  <text x="165" y="99" font-family="'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="3">SWITCH</text>
+
+  <!-- ── TRENDING BADGE top-right ── -->
+  <rect x="812" y="60" width="208" height="50" rx="25" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5"/>
+  <text x="830" y="94" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" fill="white">🔥</text>
+  <text x="862" y="94" font-family="'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="700" fill="white" letter-spacing="1">TRENDING</text>
+
+  <!-- ── EYEBROW ── -->
+  <rect x="60" y="184" width="90" height="4" rx="2" fill="#ffffff"/>
+  <text x="60" y="232" font-family="'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="600" fill="#888888" letter-spacing="5">YOUR NEXT JOB IS</text>
+
+  <!-- ── HERO HEADLINE ── -->
+  <text x="60" y="334" font-family="'Helvetica Neue', Arial, sans-serif" font-size="118" font-weight="900" fill="#ffffff" letter-spacing="-5" filter="url(#textGlow)">GHAR</text>
+  <text x="60" y="450" font-family="'Helvetica Neue', Arial, sans-serif" font-size="118" font-weight="900" fill="url(#textGrad)" letter-spacing="-5">KE PAAS</text>
+
+  <!-- ── SUBHEADING ── -->
+  <text x="60" y="516" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="400" fill="#777777">24 घंटे में नौकरी पाओ —</text>
+  <text x="60" y="564" font-family="'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="700" fill="#ffffff">बस एक Swipe दूर!</text>
+
+  <!-- Horizontal divider -->
+  <line x1="60" y1="596" x2="560" y2="596" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- ── STAT CARDS ── -->
+  <!-- Card 1 -->
+  <rect x="60" y="622" width="294" height="142" rx="20" fill="url(#cardGrad)" stroke="#ffffff" stroke-width="1" stroke-opacity="0.14" filter="url(#cardShadow)"/>
+  <text x="207" y="682" font-family="'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="900" fill="#ffffff" text-anchor="middle">10K+</text>
+  <text x="207" y="714" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#aaaaaa" text-anchor="middle" font-weight="600">Jobs Available</text>
+  <text x="207" y="738" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#555555" text-anchor="middle">Across India</text>
+
+  <!-- Card 2 -->
+  <rect x="378" y="622" width="294" height="142" rx="20" fill="url(#cardGrad)" stroke="#ffffff" stroke-width="1" stroke-opacity="0.14" filter="url(#cardShadow)"/>
+  <text x="525" y="682" font-family="'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="900" fill="#ffffff" text-anchor="middle">24H</text>
+  <text x="525" y="714" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#aaaaaa" text-anchor="middle" font-weight="600">Fast Placement</text>
+  <text x="525" y="738" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#555555" text-anchor="middle">Guaranteed Response</text>
+
+  <!-- Card 3 -->
+  <rect x="696" y="622" width="324" height="142" rx="20" fill="url(#cardGrad)" stroke="#ffffff" stroke-width="1" stroke-opacity="0.14" filter="url(#cardShadow)"/>
+  <text x="858" y="682" font-family="'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="900" fill="#ffffff" text-anchor="middle">FREE</text>
+  <text x="858" y="714" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="#aaaaaa" text-anchor="middle" font-weight="600">Zero Cost</text>
+  <text x="858" y="738" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#555555" text-anchor="middle">No Hidden Charges</text>
+
+  <!-- ── FEATURE PILLS ── -->
+  <rect x="60" y="796" width="210" height="52" rx="26" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <text x="165" y="829" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">📍 Nearby Jobs</text>
+
+  <rect x="292" y="796" width="240" height="52" rx="26" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <text x="412" y="829" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">✅ Verified Employers</text>
+
+  <rect x="554" y="796" width="218" height="52" rx="26" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <text x="663" y="829" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">⚡ Instant Apply</text>
+
+  <rect x="794" y="796" width="226" height="52" rx="26" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.35"/>
+  <text x="907" y="829" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="600">🎯 Skill Matched</text>
+
+  <!-- ── CTA BUTTON ── -->
+  <rect x="60" y="874" width="490" height="86" rx="43" fill="url(#btnGrad)" filter="url(#whiteGlow)"/>
+  <text x="305" y="926" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="#000000" text-anchor="middle" letter-spacing="0.5">Download Now — It's FREE 🚀</text>
+
+  <!-- ── APP STORE BADGE AREA ── -->
+  <rect x="592" y="868" width="428" height="98" rx="20" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-width="1" stroke-dasharray="5,4" stroke-opacity="0.25"/>
+  <text x="806" y="906" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#666666" text-anchor="middle">Available on</text>
+  <text x="806" y="932" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">App Store &amp; Play Store</text>
+  <text x="806" y="956" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#444444" text-anchor="middle">switch.jobs</text>
+
+  <!-- ── BOTTOM STRIP ── -->
+  <rect x="0" y="1032" width="1080" height="48" fill="#111111"/>
+  <line x1="0" y1="1032" x2="1080" y2="1032" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.2"/>
+  <text x="540" y="1063" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#555555" text-anchor="middle" letter-spacing="2">#SwitchJob  #GharKePaasJob  #JobsInIndia  #NaukariMilo  #SwitchNow</text>
+</svg>

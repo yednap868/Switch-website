@@ -116,7 +116,7 @@ export default function BlogIndex() {
             <div className="bl-sec-hd" data-anim>
               <span className="bl-tag">More guides</span>
               <h2 className="bl-h2">Read every guide.</h2>
-              <p className="bl-sub">Everything we know about hiring verified workers in Gurgaon — straight to the point.</p>
+              <p className="bl-sub">Everything we know about hiring verified Switch Players in Gurgaon — straight to the point.</p>
             </div>
             <div className="bl-grid">
               {rest.map((p, i) => (
@@ -143,7 +143,7 @@ export default function BlogIndex() {
         <section className="bl-cta-sec">
           <div className="bl-w">
             <div className="bl-cta" data-anim>
-              <h2 className="bl-cta-h">Ready to hire a verified worker?</h2>
+              <h2 className="bl-cta-h">Ready to hire a verified Switch Player?</h2>
               <p className="bl-cta-p">
                 Skip the reading and skip ahead. Book a verified maid, cook, caretaker, driver,
                 security guard or event staff member in minutes.

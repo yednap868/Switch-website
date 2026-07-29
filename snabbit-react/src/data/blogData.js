@@ -18,7 +18,7 @@ export const BLOG_POSTS = [
 
       { type: 'h2', content: 'Why finding a good maid in Gurgaon is so difficult' },
       { type: 'p', content: 'Gurgaon is one of India\'s busiest corporate cities. With thousands of working couples, nuclear families and senior citizens living across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and countless other neighbourhoods — the demand for reliable domestic help has never been higher.' },
-      { type: 'p', content: 'But finding a maid who is punctual, honest, skilled and trustworthy is easier said than done. Most traditional maid agencies in Gurgaon work through middlemen, charge hefty advance fees and offer little to no verification of the workers they send. This is exactly the problem Switch was built to solve.' },
+      { type: 'p', content: 'But finding a maid who is punctual, honest, skilled and trustworthy is easier said than done. Most traditional maid agencies in Gurgaon work through middlemen, charge hefty advance fees and offer little to no verification of the Switch Players they send. This is exactly the problem Switch was built to solve.' },
 
       { type: 'h2', content: 'What to look for when hiring a maid in Gurgaon' },
       { type: 'h3', content: '1. Aadhaar verification' },
@@ -30,7 +30,7 @@ export const BLOG_POSTS = [
       { type: 'h3', content: '4. Trial period' },
       { type: 'p', content: 'A good maid service in Gurgaon will always offer a trial period. This lets you assess work quality, punctuality and attitude before committing long-term.' },
       { type: 'h3', content: '5. Replacement guarantee' },
-      { type: 'p', content: 'What happens if your maid stops coming or isn\'t a good fit? Make sure the platform offers a fast replacement guarantee. At Switch, we replace unsatisfactory workers quickly — no questions asked.' },
+      { type: 'p', content: 'What happens if your maid stops coming or isn\'t a good fit? Make sure the platform offers a fast replacement guarantee. At Switch, we replace unsatisfactory Switch Players quickly — no questions asked.' },
 
       { type: 'h2', content: 'Part-time vs full-time vs live-in maid — which is right for you?' },
       { type: 'h3', content: 'Part-time maid in Gurgaon' },
@@ -412,31 +412,31 @@ export const BLOG_POSTS = [
     hero: '/security-guard-new.jpg',
     date: '2026-03-15',
     readMins: 7,
-    keywords: 'Aadhaar verification domestic workers Gurgaon, background check maid Gurgaon, verified domestic help Gurgaon, criminal background check maid, police-verified domestic help Gurgaon, switchlocally.com',
+    keywords: 'Aadhaar verification domestic Switch Players Gurgaon, background check maid Gurgaon, verified domestic help Gurgaon, criminal background check maid, police-verified domestic help Gurgaon, switchlocally.com',
     blocks: [
-      { type: 'p', content: 'Every day, thousands of families across Gurgaon invite domestic workers into their homes — maids, cooks, kitchen helpers, caretakers, drivers and more. These are people with access to your home, your family, your children and your valuables. And yet, a surprisingly large number of households hire with little to no verification.' },
+      { type: 'p', content: 'Every day, thousands of families across Gurgaon invite domestic Switch Players into their homes — maids, cooks, kitchen helpers, caretakers, drivers and more. These are people with access to your home, your family, your children and your valuables. And yet, a surprisingly large number of households hire with little to no verification.' },
       { type: 'p', content: 'This is a serious risk — and Aadhaar verification is the single most important step you can take to protect yourself, your family and your home.' },
 
       { type: 'h2', content: 'What is Aadhaar verification?' },
       { type: 'p', content: 'Aadhaar is India\'s government-issued unique identity system. Every Indian citizen\'s Aadhaar card contains their name, date of birth, address, photograph and a unique 12-digit identification number linked to biometric data.' },
-      { type: 'p', content: 'Aadhaar verification means cross-checking a worker\'s Aadhaar details against the government\'s database to confirm:' },
+      { type: 'p', content: 'Aadhaar verification means cross-checking a Switch Player\'s Aadhaar details against the government\'s database to confirm:' },
       { type: 'ul', content: [
         'The person is who they claim to be',
         'Their address is genuine and on record',
         'Their identity has not been fabricated or forged',
       ]},
 
-      { type: 'h2', content: 'Why Aadhaar verification matters for domestic workers in Gurgaon' },
+      { type: 'h2', content: 'Why Aadhaar verification matters for domestic Switch Players in Gurgaon' },
       { type: 'h3', content: '1. Confirms real identity' },
-      { type: 'p', content: 'Aadhaar verification eliminates the risk of a worker using a fake name or false identity. With Aadhaar, you know exactly who the person is — real name, real address, real background.' },
+      { type: 'p', content: 'Aadhaar verification eliminates the risk of a Switch Player using a fake name or false identity. With Aadhaar, you know exactly who the person is — real name, real address, real background.' },
       { type: 'h3', content: '2. Provides a traceable address' },
-      { type: 'p', content: 'In the unfortunate event of theft, misconduct or any issue — an Aadhaar-verified worker can be located and held accountable. An unverified worker can simply disappear.' },
-      { type: 'h3', content: '3. Deters dishonest workers' },
-      { type: 'p', content: 'When workers know they are being Aadhaar-verified, it acts as a natural deterrent. Verified workers are inherently more accountable.' },
+      { type: 'p', content: 'In the unfortunate event of theft, misconduct or any issue — an Aadhaar-verified Switch Player can be located and held accountable. An unverified Switch Player can simply disappear.' },
+      { type: 'h3', content: '3. Deters dishonest Switch Players' },
+      { type: 'p', content: 'When Switch Players know they are being Aadhaar-verified, it acts as a natural deterrent. Verified Switch Players are inherently more accountable.' },
       { type: 'h3', content: '4. Protects your children and elderly' },
       { type: 'p', content: 'For caretakers and nannies, Aadhaar verification is absolutely non-negotiable. The most vulnerable members of your household deserve the highest level of protection.' },
       { type: 'h3', content: '5. Gives you complete peace of mind' },
-      { type: 'p', content: 'Knowing your worker is Aadhaar-verified gives you a confidence that cannot be replaced by any other measure.' },
+      { type: 'p', content: 'Knowing your Switch Player is Aadhaar-verified gives you a confidence that cannot be replaced by any other measure.' },
 
       { type: 'h2', content: 'What else should you check beyond Aadhaar?' },
       { type: 'ul', content: [
@@ -447,18 +447,18 @@ export const BLOG_POSTS = [
         'Replacement guarantee — ensures you are not stuck with the wrong person',
       ]},
 
-      { type: 'h2', content: 'How Switch ensures every worker is verified in Gurgaon' },
+      { type: 'h2', content: 'How Switch ensures every Switch Player is verified in Gurgaon' },
       { type: 'ol', content: [
-        'Aadhaar verification — every worker\'s Aadhaar is verified against government records',
+        'Aadhaar verification — every Switch Player\'s Aadhaar is verified against government records',
         'Document check — all related address documents are collected and verified',
-        'Face-to-face interview — every worker is personally interviewed by our team',
+        'Face-to-face interview — every Switch Player is personally interviewed by our team',
         'Background check — criminal and employment background checks conducted',
-        'Ongoing monitoring — records of all platform workers maintained',
+        'Ongoing monitoring — records of all platform Switch Players maintained',
       ]},
       { type: 'callout', content: 'This is why Switch is trusted by families across Gurgaon as the most reliable and safe domestic help platform — across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022.' },
 
       { type: 'h2', content: 'Always choose verified — always choose Switch' },
-      { type: 'p', content: 'Whether you\'re hiring a maid, home cook, kitchen helper, elderly caretaker, nanny, security guard, driver or any other worker — always make Aadhaar verification your first requirement. At Switch, we\'ve already done all of that for you. Visit switchlocally.com or the Switch App and book a verified worker today.' },
+      { type: 'p', content: 'Whether you\'re hiring a maid, home cook, kitchen helper, elderly caretaker, nanny, security guard, driver or any other Switch Player — always make Aadhaar verification your first requirement. At Switch, we\'ve already done all of that for you. Visit switchlocally.com or the Switch App and book a verified Switch Player today.' },
     ],
   },
 ]

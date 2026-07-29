@@ -129,7 +129,7 @@ export default function BlogPost() {
             {/* Inline CTA */}
             <div className="bp-inline-cta" data-anim>
               <h3 className="bp-inline-h">Need help right now?</h3>
-              <p>Book a verified worker in Gurgaon in minutes. Aadhaar-verified, background-checked, pay after work is done.</p>
+              <p>Book a verified Switch Player in Gurgaon in minutes. Aadhaar-verified, background-checked, pay after work is done.</p>
               <a href="https://app.switchlocally.com/" className="bp-cta-primary">Book on Switch →</a>
             </div>
           </div>

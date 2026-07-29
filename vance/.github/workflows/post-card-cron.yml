@@ -1,0 +1,89 @@
+name: Post-Card Placement Pipeline Crons
+
+on:
+  schedule:
+    # 6:30 AM IST = 01:00 UTC — morning wake-up
+    - cron: '0 1 * * *'
+    # 8:30 AM IST = 03:00 UTC — en-route check (30 min before 9 AM joining)
+    - cron: '0 3 * * *'
+    # 8:45 AM IST = 03:15 UTC — en-route timeout (mark no-shows, trigger replacements)
+    - cron: '15 3 * * *'
+    # 8:00 PM IST = 14:30 UTC — evening confirmation + Day-1 retention
+    - cron: '30 14 * * *'
+    # 10:00 PM IST = 16:30 UTC — evening follow-up (AT_RISK check)
+    - cron: '30 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  morning-nudge:
+    if: github.event.schedule == '0 1 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Morning wake-up (6:30 AM IST)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/morning-nudge?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "morning-nudge: $code"
+          [ "$code" = "200" ] || exit 1
+
+  enroute-check:
+    if: github.event.schedule == '0 3 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: En-route check (8:30 AM IST)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/enroute-check?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "enroute-check: $code"
+          [ "$code" = "200" ] || exit 1
+
+  enroute-timeout:
+    if: github.event.schedule == '15 3 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: En-route timeout (8:45 AM IST)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/enroute-timeout?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "enroute-timeout: $code"
+          [ "$code" = "200" ] || exit 1
+
+  evening-confirm-and-retention:
+    if: github.event.schedule == '30 14 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Evening confirmation (8 PM IST)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/evening-confirm?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "evening-confirm: $code"
+          [ "$code" = "200" ] || exit 1
+      - name: Retention Day-1 (8 PM IST — same run)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/retention-day1?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "retention-day1: $code"
+          [ "$code" = "200" ] || exit 1
+      - name: Retention Day-3
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/retention-day3?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "retention-day3: $code"
+          [ "$code" = "200" ] || exit 1
+      - name: Retention Day-7
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/retention-day7?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "retention-day7: $code"
+          [ "$code" = "200" ] || exit 1
+
+  evening-followup:
+    if: github.event.schedule == '30 16 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Evening follow-up AT_RISK check (10 PM IST)
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/evening-followup?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "evening-followup: $code"
+          [ "$code" = "200" ] || exit 1

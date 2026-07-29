@@ -45,12 +45,6 @@ export default function SeoHead({ page }) {
       ...GURGAON_AREAS.map(n => ({ '@type': 'Place', name: `${n}, Gurgaon` })),
       ...PINCODES.map(p => ({ '@type': 'PostalAddress', postalCode: p, addressLocality: 'Gurgaon', addressRegion: 'Haryana', addressCountry: 'IN' })),
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      bestRating: '5',
-      reviewCount: '500',
-    },
     provider: {
       '@type': 'LocalBusiness',
       name: 'Switch',
@@ -58,6 +52,18 @@ export default function SeoHead({ page }) {
       email: 'hello@switchlocally.com',
       areaServed: { '@type': 'City', name: 'Gurgaon' },
     },
+  }
+
+  // Only attach a rating where genuine reviews are actually rendered on the
+  // page (landing / reviews / alias / area pages). Stamping a rating on pages
+  // that show no reviews is a Google rich-result policy violation.
+  if (page.reviews?.length) {
+    serviceSchema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      bestRating: '5',
+      reviewCount: String(page.reviews.length),
+    }
   }
 
   const webPageSchema = {

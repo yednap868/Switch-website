@@ -36,6 +36,9 @@ add('app', 'monthly', '0.9')
 add('about', 'monthly', '0.7')
 add('partner', 'monthly', '0.7')
 add('blog', 'weekly', '0.7')
+add('terms', 'yearly', '0.3')
+add('privacy', 'yearly', '0.3')
+add('cancellation', 'yearly', '0.3')
 
 // blog posts
 for (const post of BLOG_POSTS) add(`blog/${post.slug}`, 'monthly', '0.6')

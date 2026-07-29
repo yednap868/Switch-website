@@ -1,0 +1,11 @@
+{
+  "_comment": "Web-search-verified phone numbers. Each key is the exact `name` as it appears in b2b-leads.csv. `phone` = listed business line, `source` = where it was found, `note` = caveats. Add more entries and re-run merge-enrich.mjs to grow coverage.",
+  "Gulati": { "phone": "+91 124 428 1929", "source": "Tripadvisor/Zomato", "note": "" },
+  "Gulati Indian Food": { "phone": "+91 124 428 1929", "source": "Tripadvisor/Zomato", "note": "same venue as Gulati" },
+  "Mukesh Dhaba": { "phone": "+91 99114 17700", "source": "LBB/Zomato", "note": "24hr, a.k.a. Convergys Dhaba" },
+  "Sikka Maternity And Surgical Center": { "phone": "0124-2351329", "source": "Medindia/Grotal", "note": "Dr. Vijay Kumar Sikka" },
+  "The Golden Dragon": { "phone": "0124-4058000", "source": "Justdial/AskLaila", "note": "DT Mega Mall" },
+  "Knite Ryder": { "phone": "+91 90150 60921", "source": "Justdial/Zomato", "note": "lounge bar, alt 07735 353502" },
+  "Dermapuritys Aesthetic Clinic": { "phone": "+91 73039 10800", "source": "dermapuritys.com", "note": "alt 8766310130" },
+  "Asha Multispeciality Clinic": { "phone": "+91 80109 94994", "source": "Credihealth/Justdial", "note": "branch is U-Block DLF Phase 3, not Phase 2" }
+}

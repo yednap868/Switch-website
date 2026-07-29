@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1131" width="800" height="1131">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+      .serif{font-family:'Playfair Display','Times New Roman',Georgia,serif}
+      .sans{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+      .mono{font-family:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace}
+    ]]></style>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0.6">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#161616"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.6" fill="#000" fill-opacity="0.025"/>
+    </pattern>
+  </defs>
+
+  <!-- Paper -->
+  <rect width="800" height="1131" fill="#ffffff"/>
+  <rect width="800" height="1131" fill="url(#dots)"/>
+
+  <!-- Subtle "S" watermark -->
+  <g opacity="0.04" transform="translate(620,820)">
+    <circle cx="80" cy="80" r="78" fill="none" stroke="#000" stroke-width="2"/>
+    <circle cx="80" cy="80" r="62" fill="none" stroke="#000" stroke-width="1"/>
+    <text x="80" y="80" text-anchor="middle" dominant-baseline="central" class="serif" font-size="100" font-weight="900" fill="#000" letter-spacing="-4">S</text>
+  </g>
+
+  <!-- ─── HEADER ─── -->
+  <rect x="0" y="0" width="800" height="120" fill="url(#hdr)"/>
+  <rect x="0" y="120" width="800" height="3" fill="#000"/>
+
+  <rect x="60" y="35" width="54" height="54" rx="13" fill="#ffffff"/>
+  <text x="87" y="62" text-anchor="middle" dominant-baseline="central" class="sans" font-size="30" font-weight="900" fill="#000" letter-spacing="-1.2">S</text>
+
+  <text x="128" y="56" class="sans" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-1">Switch</text>
+  <text x="128" y="80" class="mono" font-size="9" font-weight="500" fill="rgba(255,255,255,0.6)" letter-spacing="3">VERIFIED BLUE-COLLAR WORKFORCE</text>
+
+  <text x="740" y="44" text-anchor="end" class="sans" font-size="11" font-weight="700" fill="#ffffff">switchlocally.com</text>
+  <text x="740" y="61" text-anchor="end" class="sans" font-size="10" fill="rgba(255,255,255,0.7)">hello@switchlocally.com</text>
+  <text x="740" y="76" text-anchor="end" class="sans" font-size="10" fill="rgba(255,255,255,0.7)">+91 92898 77375</text>
+  <text x="740" y="91" text-anchor="end" class="sans" font-size="10" fill="rgba(255,255,255,0.55)">5th Floor, WeWork, Cyber Hub, Gurgaon 122002</text>
+
+  <rect x="0" y="123" width="3" height="972" fill="#000"/>
+
+  <!-- ─── META ROW ─── -->
+  <text x="60" y="170" class="mono" font-size="10" font-weight="700" fill="#000" letter-spacing="2">REF · SWL/INT/2026/0429</text>
+  <text x="740" y="170" text-anchor="end" class="mono" font-size="10" font-weight="500" fill="#666" letter-spacing="1.6">ISSUED · 12 MAY 2026</text>
+
+  <!-- ─── TITLE ─── -->
+  <text x="60" y="220" class="mono" font-size="10" font-weight="700" fill="#000" letter-spacing="4">OFFICIAL · CONFIDENTIAL</text>
+  <text x="60" y="282" class="serif" font-size="52" font-weight="900" fill="#000" letter-spacing="-1.5">Offer of Internship</text>
+  <line x1="60" y1="306" x2="200" y2="306" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ─── SALUTATION ─── -->
+  <text x="60" y="360" class="sans" font-size="15" font-weight="700" fill="#000">Dear Shourya Pandey,</text>
+
+  <!-- ─── BODY ─── -->
+  <text x="60" y="396" class="sans" font-size="13" fill="#1a1a1a">
+    <tspan x="60" dy="0">We are delighted to extend an offer for you to join</tspan>
+    <tspan x="60" dy="22"><tspan font-weight="700">Switch</tspan> as an <tspan font-weight="700">AI Developer Intern</tspan>. Your technical depth</tspan>
+    <tspan x="60" dy="22">and creativity stood out, and we’re excited to have you help build the</tspan>
+    <tspan x="60" dy="22">intelligence layer behind India’s most trusted workforce platform.</tspan>
+  </text>
+
+  <!-- ─── TERMS BOX ─── -->
+  <rect x="60" y="500" width="680" height="232" rx="14" fill="#fafafa" stroke="#0a0a0a" stroke-width="1.2"/>
+  <path d="M 74 500 H 726 A 14 14 0 0 1 740 514 V 538 H 60 V 514 A 14 14 0 0 1 74 500 Z" fill="#000"/>
+  <text x="80" y="519" dominant-baseline="central" class="mono" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="2.4">TERMS OF INTERNSHIP</text>
+  <text x="720" y="519" text-anchor="end" dominant-baseline="central" class="mono" font-size="9" font-weight="500" fill="rgba(255,255,255,0.72)" letter-spacing="1.6">EFFECTIVE 15 MAY 2026</text>
+
+  <text x="80" y="562" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">ROLE</text>
+  <text x="80" y="584" class="sans" font-size="15" font-weight="700" fill="#000">AI Developer Intern</text>
+  <text x="420" y="562" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">DURATION</text>
+  <text x="420" y="584" class="sans" font-size="15" font-weight="700" fill="#000">3 months · Full-time</text>
+  <line x1="80" y1="604" x2="720" y2="604" stroke="#e5e5e5" stroke-width="1"/>
+
+  <text x="80" y="630" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">START DATE</text>
+  <text x="80" y="652" class="sans" font-size="15" font-weight="700" fill="#000">15 May 2026</text>
+  <text x="420" y="630" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">END DATE</text>
+  <text x="420" y="652" class="sans" font-size="15" font-weight="700" fill="#000">14 August 2026</text>
+  <line x1="80" y1="672" x2="720" y2="672" stroke="#e5e5e5" stroke-width="1"/>
+
+  <text x="80" y="698" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">MONTHLY STIPEND</text>
+  <text x="80" y="720" class="serif" font-size="18" font-weight="900" fill="#000" letter-spacing="-0.3">₹15,000 / month</text>
+  <text x="420" y="698" class="mono" font-size="9" font-weight="700" fill="#888" letter-spacing="1.6">LOCATION</text>
+  <text x="420" y="720" class="sans" font-size="15" font-weight="700" fill="#000">Gurgaon · Hybrid</text>
+
+  <!-- ─── RESPONSIBILITIES ─── -->
+  <text x="60" y="780" class="serif" font-size="18" font-weight="800" fill="#000" letter-spacing="-0.3">Responsibilities</text>
+  <line x1="60" y1="790" x2="92" y2="790" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+
+  <circle cx="64" cy="814" r="2.5" fill="#000"/>
+  <text x="78" y="818" class="sans" font-size="12.5" fill="#1a1a1a">Build, train and ship ML models powering matching, ranking and trust.</text>
+  <circle cx="64" cy="836" r="2.5" fill="#000"/>
+  <text x="78" y="840" class="sans" font-size="12.5" fill="#1a1a1a">Integrate LLM and computer-vision pipelines into core product flows.</text>
+  <circle cx="64" cy="858" r="2.5" fill="#000"/>
+  <text x="78" y="862" class="sans" font-size="12.5" fill="#1a1a1a">Design evaluation suites and run rigorous experiments before deploy.</text>
+  <circle cx="64" cy="880" r="2.5" fill="#000"/>
+  <text x="78" y="884" class="sans" font-size="12.5" fill="#1a1a1a">Own a meaningful AI project end-to-end — from research to production.</text>
+
+  <!-- ─── CLOSING ─── -->
+  <text x="60" y="924" class="sans" font-size="12" fill="#1a1a1a">
+    <tspan x="60" dy="0">This internship is subject to our standard code of conduct, confidentiality</tspan>
+    <tspan x="60" dy="20">and IP-assignment terms. Please sign and return this letter by</tspan>
+    <tspan x="60" dy="20"><tspan font-weight="800" fill="#000">14 May 2026</tspan> to confirm your acceptance. We can’t wait to have you on the team.</tspan>
+  </text>
+
+  <!-- ─── SIGNATURE BLOCKS ─── -->
+  <text x="60" y="1000" class="serif" font-size="14" font-style="italic" fill="#1a1a1a">Warmly,</text>
+  <line x1="60" y1="1050" x2="320" y2="1050" stroke="#000" stroke-width="1"/>
+  <text x="60" y="1068" class="sans" font-size="11" font-weight="700" fill="#000" letter-spacing="0.4">Founder · Switch</text>
+
+  <rect x="440" y="985" width="300" height="100" rx="10" fill="#ffffff" stroke="#0a0a0a" stroke-width="1.2"/>
+  <text x="456" y="1010" dominant-baseline="central" class="mono" font-size="10" font-weight="700" fill="#000" letter-spacing="2.4">ACCEPTED &amp; AGREED</text>
+  <line x1="456" y1="1048" x2="588" y2="1048" stroke="#000" stroke-width="1"/>
+  <text x="456" y="1066" class="mono" font-size="8.5" font-weight="500" fill="#888" letter-spacing="1.6">SIGNATURE</text>
+  <line x1="608" y1="1048" x2="724" y2="1048" stroke="#000" stroke-width="1"/>
+  <text x="608" y="1066" class="mono" font-size="8.5" font-weight="500" fill="#888" letter-spacing="1.6">DATE</text>
+
+  <!-- ─── FOOTER ─── -->
+  <rect x="0" y="1095" width="800" height="36" fill="#000"/>
+  <text x="60" y="1113" dominant-baseline="central" class="sans" font-size="10" fill="rgba(255,255,255,0.72)">Switch · Gurgaon, Haryana, India</text>
+  <text x="740" y="1113" text-anchor="end" dominant-baseline="central" class="sans" font-size="10" fill="rgba(255,255,255,0.72)">switchlocally.com</text>
+</svg>

@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1131" width="800" height="1131">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+      .sans{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    ]]></style>
+  </defs>
+
+  <!-- Paper -->
+  <rect width="800" height="1131" fill="#ffffff"/>
+
+  <!-- ─── HEADER ─── -->
+  <text x="50" y="78" class="sans" font-size="38" font-weight="900" fill="#E23744" letter-spacing="1">SWITCH</text>
+  <text x="52" y="100" class="sans" font-size="11" font-weight="600" fill="#444">Hyperlocal Blue-Collar Staffing</text>
+  <text x="52" y="116" class="sans" font-size="11" font-weight="500" fill="#888">switchlocally.com</text>
+
+  <text x="750" y="72" text-anchor="end" class="sans" font-size="30" font-weight="800" fill="#E23744" letter-spacing="1">INVOICE</text>
+  <text x="750" y="96" text-anchor="end" class="sans" font-size="11" font-weight="600" fill="#444">Invoice No: SW-20260717-004</text>
+  <text x="750" y="112" text-anchor="end" class="sans" font-size="11" font-weight="500" fill="#444">Date: 17 July 2026</text>
+  <text x="750" y="128" text-anchor="end" class="sans" font-size="11" font-weight="600" fill="#444">Period: 14–16 July 2026</text>
+
+  <!-- Divider -->
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#e2e2e2" stroke-width="1.5"/>
+
+  <!-- ─── BILL TO ─── -->
+  <text x="50" y="186" class="sans" font-size="11" font-weight="700" fill="#888" letter-spacing="1.5">BILL TO</text>
+  <text x="50" y="210" class="sans" font-size="16" font-weight="800" fill="#111">Bento Box</text>
+  <text x="50" y="232" class="sans" font-size="12.5" fill="#333">Gurugram, Haryana</text>
+
+  <!-- ─── TABLE HEADER ─── -->
+  <rect x="50" y="264" width="700" height="32" fill="#f5f5f5"/>
+  <text x="62" y="285" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">DESCRIPTION</text>
+  <text x="560" y="285" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">HOURS</text>
+  <text x="650" y="285" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">RATE</text>
+  <text x="738" y="285" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">AMOUNT</text>
+
+  <!-- ─── ROW 1 · Avaneesh ─── -->
+  <text x="62" y="324" class="sans" font-size="14" font-weight="700" fill="#111">Avaneesh Kumar — On-demand kitchen staff</text>
+  <text x="62" y="343" class="sans" font-size="11.5" fill="#666">14 Jul: 4 hrs · 15 Jul: 6 hrs · 16 Jul: 6 hrs (morning + evening shifts)</text>
+  <text x="560" y="324" text-anchor="end" class="sans" font-size="13" fill="#222">16</text>
+  <text x="650" y="324" text-anchor="end" class="sans" font-size="13" fill="#222">₹200</text>
+  <text x="738" y="324" text-anchor="end" class="sans" font-size="13" font-weight="600" fill="#111">₹3,200</text>
+
+  <line x1="50" y1="360" x2="750" y2="360" stroke="#ededed" stroke-width="1"/>
+
+  <!-- ─── ROW 2 · Awadesh ─── -->
+  <text x="62" y="392" class="sans" font-size="14" font-weight="700" fill="#111">Awadesh — On-demand kitchen staff</text>
+  <text x="62" y="411" class="sans" font-size="11.5" fill="#666">14 Jul: 6.5 hrs · 15 Jul: 6 hrs · 16 Jul: 6 hrs (morning + evening shifts)</text>
+  <text x="560" y="392" text-anchor="end" class="sans" font-size="13" fill="#222">18.5</text>
+  <text x="650" y="392" text-anchor="end" class="sans" font-size="13" fill="#222">₹200</text>
+  <text x="738" y="392" text-anchor="end" class="sans" font-size="13" font-weight="600" fill="#111">₹3,700</text>
+
+  <line x1="50" y1="428" x2="750" y2="428" stroke="#ededed" stroke-width="1"/>
+
+  <!-- ─── TOTALS ─── -->
+  <text x="600" y="460" text-anchor="end" class="sans" font-size="12.5" fill="#555">Subtotal (34.5 worker-hours)</text>
+  <text x="738" y="460" text-anchor="end" class="sans" font-size="12.5" font-weight="600" fill="#111">₹6,900</text>
+
+  <text x="600" y="484" text-anchor="end" class="sans" font-size="12.5" fill="#555">Less: Advance received</text>
+  <text x="738" y="484" text-anchor="end" class="sans" font-size="12.5" font-weight="600" fill="#1a9c54">– ₹12,000</text>
+
+  <line x1="470" y1="500" x2="750" y2="500" stroke="#ededed" stroke-width="1"/>
+
+  <rect x="470" y="512" width="280" height="42" fill="#eef7f1"/>
+  <text x="486" y="539" class="sans" font-size="13" font-weight="800" fill="#111" letter-spacing="0.5">BALANCE DUE</text>
+  <text x="738" y="539" text-anchor="end" class="sans" font-size="17" font-weight="900" fill="#1a7a45">₹0</text>
+
+  <!-- ─── ADVANCE NOTE ─── -->
+  <rect x="50" y="580" width="700" height="50" rx="6" fill="#eef7f1"/>
+  <text x="66" y="604" class="sans" font-size="11.5" font-weight="700" fill="#1a7a45">ADVANCE BALANCE CARRIED FORWARD</text>
+  <text x="66" y="621" class="sans" font-size="11.5" fill="#2c6a47">₹12,000 advance − ₹6,900 billed = ₹5,100 remaining, adjustable against your next Switch invoice.</text>
+
+  <!-- ─── DAILY BREAKDOWN ─── -->
+  <text x="50" y="676" class="sans" font-size="16" font-weight="800" fill="#111">Daily Breakdown</text>
+
+  <rect x="50" y="690" width="700" height="28" fill="#f5f5f5"/>
+  <text x="62" y="709" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">DATE</text>
+  <text x="230" y="709" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">WORKER</text>
+  <text x="420" y="709" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">SHIFTS</text>
+  <text x="640" y="709" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">HRS</text>
+  <text x="738" y="709" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">AMOUNT</text>
+
+  <text x="62" y="738" class="sans" font-size="11.5" font-weight="700" fill="#111">14 Jul</text>
+  <text x="230" y="738" class="sans" font-size="11.5" fill="#333">Avaneesh Kumar</text>
+  <text x="420" y="738" class="sans" font-size="11.5" fill="#666">1–3 PM · 7–9 PM</text>
+  <text x="640" y="738" text-anchor="end" class="sans" font-size="11.5" fill="#333">4</text>
+  <text x="738" y="738" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹800</text>
+
+  <text x="230" y="758" class="sans" font-size="11.5" fill="#333">Awadesh</text>
+  <text x="420" y="758" class="sans" font-size="11.5" fill="#666">1–4 PM · 7–10:30 PM</text>
+  <text x="640" y="758" text-anchor="end" class="sans" font-size="11.5" fill="#333">6.5</text>
+  <text x="738" y="758" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹1,300</text>
+
+  <line x1="50" y1="770" x2="750" y2="770" stroke="#ededed" stroke-width="1"/>
+
+  <text x="62" y="790" class="sans" font-size="11.5" font-weight="700" fill="#111">15 Jul</text>
+  <text x="230" y="790" class="sans" font-size="11.5" fill="#333">Avaneesh Kumar</text>
+  <text x="420" y="790" class="sans" font-size="11.5" fill="#666">1–4 PM · 7–10 PM</text>
+  <text x="640" y="790" text-anchor="end" class="sans" font-size="11.5" fill="#333">6</text>
+  <text x="738" y="790" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹1,200</text>
+
+  <text x="230" y="810" class="sans" font-size="11.5" fill="#333">Awadesh</text>
+  <text x="420" y="810" class="sans" font-size="11.5" fill="#666">1–4 PM · 7–10 PM</text>
+  <text x="640" y="810" text-anchor="end" class="sans" font-size="11.5" fill="#333">6</text>
+  <text x="738" y="810" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹1,200</text>
+
+  <line x1="50" y1="822" x2="750" y2="822" stroke="#ededed" stroke-width="1"/>
+
+  <text x="62" y="842" class="sans" font-size="11.5" font-weight="700" fill="#111">16 Jul</text>
+  <text x="230" y="842" class="sans" font-size="11.5" fill="#333">Avaneesh Kumar</text>
+  <text x="420" y="842" class="sans" font-size="11.5" fill="#666">1–4 PM · 7–10 PM</text>
+  <text x="640" y="842" text-anchor="end" class="sans" font-size="11.5" fill="#333">6</text>
+  <text x="738" y="842" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹1,200</text>
+
+  <text x="230" y="862" class="sans" font-size="11.5" fill="#333">Awadesh</text>
+  <text x="420" y="862" class="sans" font-size="11.5" fill="#666">1–4 PM · 7–10 PM</text>
+  <text x="640" y="862" text-anchor="end" class="sans" font-size="11.5" fill="#333">6</text>
+  <text x="738" y="862" text-anchor="end" class="sans" font-size="11.5" fill="#333">₹1,200</text>
+
+  <line x1="50" y1="874" x2="750" y2="874" stroke="#d8d8d8" stroke-width="1.5"/>
+
+  <text x="420" y="895" class="sans" font-size="11.5" font-weight="800" fill="#111">TOTAL</text>
+  <text x="640" y="895" text-anchor="end" class="sans" font-size="11.5" font-weight="800" fill="#111">34.5</text>
+  <text x="738" y="895" text-anchor="end" class="sans" font-size="11.5" font-weight="800" fill="#111">₹6,900</text>
+
+  <!-- ─── PAYMENT TERMS ─── -->
+  <text x="50" y="946" class="sans" font-size="16" font-weight="800" fill="#111">Notes</text>
+  <circle cx="54" cy="972" r="2.2" fill="#444"/>
+  <text x="68" y="976" class="sans" font-size="12" fill="#333">Billing reflects actual hours worked across morning &amp; evening shifts at ₹200 / hour.</text>
+  <circle cx="54" cy="994" r="2.2" fill="#444"/>
+  <text x="68" y="998" class="sans" font-size="12" fill="#333">Fully covered by the ₹12,000 advance already received — nothing further is due.</text>
+  <circle cx="54" cy="1016" r="2.2" fill="#444"/>
+  <text x="68" y="1020" class="sans" font-size="12" fill="#333">Remaining advance of ₹5,100 will be adjusted against the next staffing invoice.</text>
+
+  <!-- ─── FOOTER ─── -->
+  <line x1="50" y1="1078" x2="750" y2="1078" stroke="#e2e2e2" stroke-width="1.5"/>
+  <text x="50" y="1100" class="sans" font-size="10.5" fill="#999">Switch · switchlocally.com</text>
+  <text x="750" y="1100" text-anchor="end" class="sans" font-size="10.5" fill="#999">Gurugram, Haryana, India</text>
+</svg>

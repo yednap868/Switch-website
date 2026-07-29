@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1131" width="800" height="1131">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+      .sans{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    ]]></style>
+  </defs>
+
+  <!-- Paper -->
+  <rect width="800" height="1131" fill="#ffffff"/>
+
+  <!-- ─── HEADER ─── -->
+  <text x="50" y="78" class="sans" font-size="38" font-weight="900" fill="#E23744" letter-spacing="1">SWITCH</text>
+  <text x="52" y="100" class="sans" font-size="11" font-weight="600" fill="#444">Hyperlocal Blue-Collar Staffing</text>
+  <text x="52" y="116" class="sans" font-size="11" font-weight="500" fill="#888">switchlocally.com</text>
+
+  <text x="750" y="72" text-anchor="end" class="sans" font-size="30" font-weight="800" fill="#E23744" letter-spacing="1">INVOICE</text>
+  <text x="750" y="96" text-anchor="end" class="sans" font-size="11" font-weight="600" fill="#444">Invoice No: SW-20260615-003</text>
+  <text x="750" y="112" text-anchor="end" class="sans" font-size="11" font-weight="500" fill="#444">Date: 15 June 2026</text>
+  <text x="750" y="128" text-anchor="end" class="sans" font-size="11" font-weight="700" fill="#E23744">Payment: Due on receipt</text>
+
+  <!-- Divider -->
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#e2e2e2" stroke-width="1.5"/>
+
+  <!-- ─── BILL TO ─── -->
+  <text x="50" y="186" class="sans" font-size="11" font-weight="700" fill="#888" letter-spacing="1.5">BILL TO</text>
+  <text x="50" y="210" class="sans" font-size="16" font-weight="800" fill="#111">ValueShoppe</text>
+  <text x="50" y="232" class="sans" font-size="12.5" fill="#333">Plot No-31, 3rd Floor, Esskay House,</text>
+  <text x="50" y="250" class="sans" font-size="12.5" fill="#333">Sector 18, Gurugram, Haryana 122015</text>
+
+  <!-- ─── TABLE HEADER ─── -->
+  <rect x="50" y="282" width="700" height="32" fill="#f5f5f5"/>
+  <text x="62" y="303" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">DESCRIPTION</text>
+  <text x="560" y="303" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">QTY</text>
+  <text x="650" y="303" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">RATE</text>
+  <text x="738" y="303" text-anchor="end" class="sans" font-size="10.5" font-weight="700" fill="#666" letter-spacing="1">AMOUNT</text>
+
+  <!-- ─── ROW 1 ─── -->
+  <text x="62" y="342" class="sans" font-size="14" font-weight="700" fill="#111">Picker / Packer</text>
+  <text x="62" y="362" class="sans" font-size="11.5" fill="#666">On-demand warehouse workforce — picking, packing &amp; dispatch</text>
+  <text x="62" y="378" class="sans" font-size="11.5" fill="#666">support for ValueShoppe operations.</text>
+  <text x="62" y="398" class="sans" font-size="11.5" font-weight="600" fill="#1a9c54">✓  6 verified workers · 9 hours each (54 worker-hours)</text>
+
+  <text x="560" y="342" text-anchor="end" class="sans" font-size="13" fill="#222">54</text>
+  <text x="650" y="342" text-anchor="end" class="sans" font-size="13" fill="#222">₹115</text>
+  <text x="738" y="342" text-anchor="end" class="sans" font-size="13" font-weight="600" fill="#111">₹6,210</text>
+
+  <line x1="50" y1="424" x2="750" y2="424" stroke="#ededed" stroke-width="1"/>
+
+  <!-- ─── TOTALS ─── -->
+  <text x="600" y="456" text-anchor="end" class="sans" font-size="12.5" fill="#555">Subtotal</text>
+  <text x="738" y="456" text-anchor="end" class="sans" font-size="12.5" font-weight="600" fill="#111">₹6,210</text>
+
+  <rect x="470" y="476" width="280" height="42" fill="#fdecee"/>
+  <text x="486" y="503" class="sans" font-size="13" font-weight="800" fill="#111" letter-spacing="0.5">TOTAL DUE</text>
+  <text x="738" y="503" text-anchor="end" class="sans" font-size="17" font-weight="900" fill="#E23744">₹6,210</text>
+
+  <!-- ─── SERVICE NOTE ─── -->
+  <rect x="50" y="548" width="700" height="50" rx="6" fill="#eef7f1"/>
+  <text x="66" y="572" class="sans" font-size="11.5" font-weight="700" fill="#1a7a45">VERIFIED WORKFORCE</text>
+  <text x="66" y="589" class="sans" font-size="11.5" fill="#2c6a47">Every picker/packer deployed is ID-verified and screened by the Switch team before joining your floor.</text>
+
+  <!-- ─── PAYMENT TERMS ─── -->
+  <text x="50" y="646" class="sans" font-size="16" font-weight="800" fill="#111">Payment Terms</text>
+  <line x1="50" y1="656" x2="50" y2="656" stroke="#E23744" stroke-width="2"/>
+
+  <circle cx="54" cy="678" r="2.2" fill="#444"/>
+  <text x="68" y="682" class="sans" font-size="12" fill="#333">Payment is due on receipt of this invoice.</text>
+  <circle cx="54" cy="700" r="2.2" fill="#444"/>
+  <text x="68" y="704" class="sans" font-size="12" fill="#333">Billing reflects actual hours worked: 6 workers × 9 hours × ₹115 / hour.</text>
+  <circle cx="54" cy="722" r="2.2" fill="#444"/>
+  <text x="68" y="726" class="sans" font-size="12" fill="#333">Please share payment confirmation with the Switch team upon transfer.</text>
+  <circle cx="54" cy="744" r="2.2" fill="#444"/>
+  <text x="68" y="748" class="sans" font-size="12" fill="#333">For any queries regarding this invoice, please contact the Switch team.</text>
+
+  <!-- ─── THANK YOU ─── -->
+  <text x="50" y="800" class="sans" font-size="14" font-weight="600" fill="#111">Thank you for your business.</text>
+
+  <!-- ─── FOOTER ─── -->
+  <line x1="50" y1="1078" x2="750" y2="1078" stroke="#e2e2e2" stroke-width="1.5"/>
+  <text x="50" y="1100" class="sans" font-size="10.5" fill="#999">Switch · switchlocally.com</text>
+  <text x="750" y="1100" text-anchor="end" class="sans" font-size="10.5" fill="#999">Gurugram, Haryana, India</text>
+</svg>

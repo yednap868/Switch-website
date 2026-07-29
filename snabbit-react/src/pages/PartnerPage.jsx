@@ -257,7 +257,7 @@ export default function PartnerPage() {
           <div className="pp-w">
             <div className="pp-sec-hd">
               <span className="pp-tag">Why Switch</span>
-              <h2 className="pp-h2">Built for workers who want freedom.</h2>
+              <h2 className="pp-h2">Built for Switch Players who want freedom.</h2>
               <p className="pp-sub">No agency cuts. No middlemen. No hidden fees. Just real jobs, real pay, real growth.</p>
             </div>
             <div className="pp-benefits">

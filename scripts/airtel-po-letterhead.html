@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 18mm 18mm 22mm 18mm; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #111;
+    margin: 0;
+    position: relative;
+    min-height: 253mm;
+  }
+  p { margin: 0 0 12px 0; }
+
+  /* ── Letterhead ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #111;
+    margin-bottom: 30px;
+  }
+  .logo {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: -0.5px;
+    color: #111;
+  }
+  .company {
+    text-align: right;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  .company .name { font-weight: 700; letter-spacing: 0.3px; font-size: 11px; }
+
+  /* ── Body ── */
+  .meta { display: flex; justify-content: space-between; margin-bottom: 26px; }
+  .to { margin-bottom: 24px; }
+  .fields { margin-bottom: 24px; }
+  .fields .row { display: flex; }
+  .fields .k { width: 90px; font-weight: 700; }
+  .fields .sep { width: 12px; }
+
+  .sig-block { margin-top: 46px; }
+  .sig-block .nm { font-weight: 700; }
+
+  /* ── Footer ── */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #bbb;
+    padding-top: 8px;
+    font-size: 8.6px;
+    color: #555;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">Switch</div>
+    <div class="company">
+      <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+      <div>R02/06, M3M Woodshire, Sector 107, Gurgaon, Haryana, 122006</div>
+      <div>Switchlocally.com</div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div><strong>PO:</strong> 01</div>
+    <div><strong>Date:</strong> 13/07/2026</div>
+  </div>
+
+  <div class="to">
+    To,<br>
+    Bharti Airtel Limited<br>
+    Gurgaon 122002
+  </div>
+
+  <div class="fields">
+    <div class="row"><span class="k">Subject</span><span class="sep">:</span><span>PURCHASE ORDER</span></div>
+    <div class="row"><span class="k">PLAN</span><span class="sep">:</span><span>Priority Postpaid 349 + 18% GST</span></div>
+    <div class="row"><span class="k">Email ID</span><span class="sep">:</span><span>hello@switchlocally.com</span></div>
+    <div class="row"><span class="k">Number</span><span class="sep">:</span><span>9205617375</span></div>
+  </div>
+
+  <p>Kindly activate 20 NC postpaid connection on the name of Thirdwave Labs Pvt Ltd does not have any objection for the same. The responsibility of the same would be with our company and Saurabh Pandey is the authorized signatory for the firm.</p>
+
+  <div class="sig-block">
+    <div class="nm">Saurabh Pandey</div>
+    <div class="nm">Director</div>
+    <div class="nm">Authorized Signatory</div>
+  </div>
+
+  <div class="footer">
+    THIRD WAVE LABS PRIVATE LIMITED &nbsp;·&nbsp; R02/06, M3M Woodshire, Sector 107, Gurgaon, Haryana 122006 &nbsp;·&nbsp; hello@switchlocally.com &nbsp;·&nbsp; +91 92056 17375 &nbsp;·&nbsp; Switchlocally.com
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Switch Check-in</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0fdf4;
+            min-height: 100vh;
+            color: #1a1a1a;
+        }
+        .header {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .header h1 { font-size: 20px; font-weight: 700; }
+        .header p { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+        .container { max-width: 480px; margin: 0 auto; padding: 16px; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+        .camera-preview {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .camera-preview video, .camera-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .camera-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .camera-btn.capture { background: #22c55e; color: white; }
+        .camera-btn.retake { background: #ef4444; color: white; }
+        .location-status {
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .loc-loading { background: #fef3c7; color: #92400e; }
+        .loc-ok { background: #d1fae5; color: #065f46; }
+        .loc-far { background: #fee2e2; color: #991b1b; }
+        .loc-error { background: #fee2e2; color: #991b1b; }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            margin-top: 8px;
+        }
+        .submit-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+        }
+        .otp-display {
+            text-align: center;
+            padding: 32px 20px;
+        }
+        .otp-display .otp-code {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: 12px;
+            color: #22c55e;
+            margin: 16px 0;
+        }
+        .otp-display p { font-size: 15px; color: #374151; }
+        .error-page, .done-page {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .error-page h2 { color: #dc2626; margin-bottom: 8px; }
+        .done-page h2 { color: #22c55e; margin-bottom: 8px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Switch Check-in</h1>
+        {% if not error %}
+        <p>{{ company }} — {{ role }}</p>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        {% if error %}
+        <div class="error-page">
+            <h2>Link Invalid</h2>
+            <p>{{ message }}</p>
+        </div>
+        {% elif already_done %}
+        <div class="done-page">
+            <h2>Already Checked In ✓</h2>
+            <p>Aap pehle hi check-in kar chuke hain.</p>
+        </div>
+        {% else %}
+        <!-- Step 1: Camera + Location -->
+        <div id="step-checkin">
+            <!-- Camera -->
+            <div class="card">
+                <h3>📸 Selfie lein</h3>
+                <div class="camera-preview" id="camera-box">
+                    <video id="cam-video" autoplay playsinline muted></video>
+                    <img id="cam-photo" class="hidden" alt="Selfie" />
+                </div>
+                <button class="camera-btn capture" id="btn-capture" onclick="capturePhoto()">📷 Photo lein</button>
+                <button class="camera-btn retake hidden" id="btn-retake" onclick="retakePhoto()">🔄 Dobara lein</button>
+            </div>
+
+            <!-- Location -->
+            <div class="card">
+                <h3>📍 Location verify</h3>
+                <div class="location-status loc-loading" id="loc-status">
+                    Location check ho raha hai...
+                </div>
+            </div>
+
+            <button class="submit-btn" id="btn-submit" disabled onclick="submitCheckin()">
+                Check-in karein
+            </button>
+        </div>
+
+        <!-- Step 2: OTP display -->
+        <div id="step-otp" class="hidden">
+            <div class="card otp-display">
+                <p>✅ Check-in ho gaya!</p>
+                <p style="margin-top:8px;">Yeh code employer ko dikhayein:</p>
+                <div class="otp-code" id="otp-value">----</div>
+                <p id="loc-result"></p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if not error and not already_done %}
+    <script>
+        const TOKEN = "{{ token }}";
+        let stream = null;
+        let photoData = null;
+        let userLat = null;
+        let userLng = null;
+        let locationReady = false;
+        let photoReady = false;
+
+        // Start camera
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "user", width: 640, height: 480 }
+                });
+                document.getElementById('cam-video').srcObject = stream;
+            } catch (e) {
+                console.error('Camera error:', e);
+                document.getElementById('camera-box').innerHTML =
+                    '<p style="color:white;text-align:center;padding:40px">Camera access denied</p>';
+            }
+        }
+
+        function capturePhoto() {
+            const video = document.getElementById('cam-video');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            photoData = canvas.toDataURL('image/jpeg', 0.7);
+
+            document.getElementById('cam-photo').src = photoData;
+            document.getElementById('cam-photo').classList.remove('hidden');
+            document.getElementById('cam-video').classList.add('hidden');
+            document.getElementById('btn-capture').classList.add('hidden');
+            document.getElementById('btn-retake').classList.remove('hidden');
+
+            if (stream) stream.getTracks().forEach(t => t.stop());
+            photoReady = true;
+            updateSubmitBtn();
+        }
+
+        function retakePhoto() {
+            photoData = null;
+            photoReady = false;
+            document.getElementById('cam-photo').classList.add('hidden');
+            document.getElementById('cam-video').classList.remove('hidden');
+            document.getElementById('btn-capture').classList.remove('hidden');
+            document.getElementById('btn-retake').classList.add('hidden');
+            updateSubmitBtn();
+            startCamera();
+        }
+
+        // Get location
+        function getLocation() {
+            if (!navigator.geolocation) {
+                showLocStatus('Location not supported', 'loc-error');
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    userLat = pos.coords.latitude;
+                    userLng = pos.coords.longitude;
+                    locationReady = true;
+                    showLocStatus('📍 Location mil gaya ✓', 'loc-ok');
+                    updateSubmitBtn();
+                },
+                (err) => {
+                    console.error('Location error:', err);
+                    showLocStatus('Location access denied. Settings mein allow karein.', 'loc-error');
+                },
+                { enableHighAccuracy: true, timeout: 15000 }
+            );
+        }
+
+        function showLocStatus(text, cls) {
+            const el = document.getElementById('loc-status');
+            el.textContent = text;
+            el.className = 'location-status ' + cls;
+        }
+
+        function updateSubmitBtn() {
+            document.getElementById('btn-submit').disabled = !(photoReady && locationReady);
+        }
+
+        async function submitCheckin() {
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            try {
+                const res = await fetch('/api/switch/checkin/' + TOKEN + '/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ selfie: photoData, lat: userLat, lng: userLng }),
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('step-checkin').classList.add('hidden');
+                    document.getElementById('step-otp').classList.remove('hidden');
+                    document.getElementById('otp-value').textContent = data.otp;
+
+                    let locMsg = data.location_verified
+                        ? '✅ Location verified'
+                        : '⚠️ Location thoda door hai (' + (data.distance_m || '?') + 'm)';
+                    document.getElementById('loc-result').textContent = locMsg;
+                } else {
+                    alert(data.error || 'Something went wrong');
+                    btn.disabled = false;
+                    btn.textContent = 'Check-in karein';
+                }
+            } catch (e) {
+                console.error('Submit error:', e);
+                alert('Network error. Please try again.');
+                btn.disabled = false;
+                btn.textContent = 'Check-in karein';
+            }
+        }
+
+        // Init
+        startCamera();
+        getLocation();
+    </script>
+    {% endif %}
+</body>
+</html>

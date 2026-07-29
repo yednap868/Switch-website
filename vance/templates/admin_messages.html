@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Messaging</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .alert-success {
+            background-color: #f0fff4;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .alert-error {
+            background-color: #fee;
+            color: #c53030;
+            border: 1px solid #feb2b2;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .help-text {
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+        
+        .message-history {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f9fafb;
+        }
+        
+        .message-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .message-meta {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .message-content {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header-left {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>💬 Manual Messaging</h1>
+            <nav class="navbar">
+                <a href="/admin/dashboard" class="nav-link">📊 Dashboard</a>
+                <a href="/admin/profiles" class="nav-link">📤 Profile Sending</a>
+                <a href="/admin/messages" class="nav-link active">💬 Manual Messages</a>
+                <a href="/admin/switch" class="nav-link">📞 Switch</a>
+            </nav>
+        </div>
+        <a href="/admin/logout" class="logout-btn" onclick="handleLogout(event)">Logout</a>
+    </div>
+    
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="messagesSent">0</div>
+                <div class="stat-label">Messages Sent Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="usersMessaged">0</div>
+                <div class="stat-label">Users Messaged</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 Send Template Message</h2>
+            
+            <div id="alertContainer"></div>
+            
+            <form id="templateMessageForm">
+                <div class="form-group">
+                    <label for="templateSelect">Select Template</label>
+                    <select id="templateSelect" name="template_id" required>
+                        <option value="">Choose a template...</option>
+                    </select>
+                    <div class="help-text">Select a pre-defined template message to send.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userId">User ID (WhatsApp Number)</label>
+                    <input type="text" id="userId" name="user_id" placeholder="e.g., 1234567890" required>
+                    <div class="help-text">Enter the user's WhatsApp number with country code (e.g., 1234567890 for US, 919876543210 for India). No + or spaces.</div>
+                </div>
+
+                <div class="form-group" id="variableInputs" style="display:none;">
+                    <label>Template Variables</label>
+                    <div id="variableFields" style="display:flex; flex-direction:column; gap:8px;"></div>
+                    <div class="help-text">You can override values for this send. If left blank, we’ll use the user’s profile.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="messagePreview">Message Preview</label>
+                    <textarea id="messagePreview" readonly placeholder="Select a template to see preview..."></textarea>
+                    <div class="help-text">Preview of the selected template message.</div>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Sending message...</p>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="sendBtn">📤 Send Template Message</button>
+            </form>
+        </div>
+        
+        <!-- Custom and Bulk messaging removed per new policy: use approved templates only -->
+        
+        <div class="card">
+            <h2>🤖 Auto-Detect & Schedule</h2>
+            <p style="color: #666; margin-bottom: 1rem;">Automatically analyze user conversations and take appropriate actions (schedule calls, send prompts, initiate calls).</p>
+            
+            <div id="autoDetectAlerts"></div>
+            
+            <form id="autoDetectForm">
+                <div class="form-group">
+                    <label for="userIdsForDetection">User IDs (one per line)</label>
+                    <textarea id="userIdsForDetection" placeholder="Enter user IDs, one per line&#10;e.g.:&#10;1234567890&#10;9876543210" rows="4"></textarea>
+                    <div class="help-text">Enter WhatsApp numbers (with country code) of users to analyze, one per line.</div>
+                </div>
+                
+                <div class="loading" id="autoDetectLoading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing conversations and scheduling actions...</p>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="autoDetectBtn">🤖 Auto-Detect & Schedule</button>
+            </form>
+            
+            <div id="autoDetectResults" style="margin-top: 1rem; display: none;">
+                <h3>Results</h3>
+                <div id="autoDetectResultsList"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 Recent Messages</h2>
+            <div class="message-history" id="messageHistory">
+                <p style="text-align: center; color: #666; padding: 2rem;">No messages sent yet. Send your first message above!</p>
+            </div>
+        </div>
+    </div>
+    
+    {% raw %}
+    <script>
+        let templates = {};
+        
+        // Load templates on page load
+        async function loadTemplates() {
+            try {
+                const response = await fetch('/admin/templates', {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    templates = result.templates;
+                    populateTemplateSelects();
+                } else {
+                    console.error('Failed to load templates:', result.error);
+                }
+            } catch (error) {
+                console.error('Error loading templates:', error);
+            }
+        }
+        
+        // Populate template select dropdowns
+        function populateTemplateSelects() {
+            const templateSelect = document.getElementById('templateSelect');
+            const bulkTemplateSelect = document.getElementById('bulkTemplateSelect');
+            
+            // Clear existing options
+            templateSelect.innerHTML = '<option value="">Choose a template...</option>';
+            if (bulkTemplateSelect) {
+                bulkTemplateSelect.innerHTML = '<option value="">Choose a template...</option>';
+            }
+            
+            // Add templates from all categories
+            Object.keys(templates).forEach(category => {
+                const categoryTemplates = templates[category];
+                Object.keys(categoryTemplates).forEach(templateId => {
+                    const template = categoryTemplates[templateId];
+                    const option = document.createElement('option');
+                    option.value = templateId;
+                    const waName = template.whatsapp_template_name || template.id || templateId;
+                    option.textContent = `${template.name} (${waName})`;
+                    option.dataset.template = template.template;
+                    option.dataset.description = template.description || '';
+                    // pass variables and name for WA
+                    option.dataset.variables = JSON.stringify(template.variables || []);
+                    
+                    templateSelect.appendChild(option.cloneNode(true));
+                    if (bulkTemplateSelect) {
+                        bulkTemplateSelect.appendChild(option);
+                    }
+                });
+            });
+        }
+        
+        // Show alert
+        function showAlert(message, type = 'success', containerId = 'alertContainer') {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+        
+        // Add message to history
+        function addMessageToHistory(userId, message, timestamp) {
+            const historyContainer = document.getElementById('messageHistory');
+            
+            // Remove placeholder if it exists
+            const placeholder = historyContainer.querySelector('p');
+            if (placeholder && placeholder.textContent.includes('No messages sent yet')) {
+                placeholder.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message-item';
+            messageDiv.innerHTML = `
+                <div class="message-meta">
+                    <strong>To:</strong> ${userId} | <strong>Sent:</strong> ${new Date(timestamp).toLocaleString()}
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            
+            // Insert at the top
+            historyContainer.insertBefore(messageDiv, historyContainer.firstChild);
+            
+            // Keep only last 10 messages
+            const messages = historyContainer.querySelectorAll('.message-item');
+            if (messages.length > 10) {
+                messages[messages.length - 1].remove();
+            }
+        }
+        
+        // Handle template selection change
+        function renderPreviewFromInputs() {
+            const selectEl = document.getElementById('templateSelect');
+            const selectedOption = selectEl.options[selectEl.selectedIndex];
+            const preview = document.getElementById('messagePreview');
+            const varFields = document.getElementById('variableFields');
+            let base = selectedOption?.dataset?.template || '';
+            if (!base) {
+                preview.value = '';
+                return;
+            }
+            // Build map of var_ inputs
+            const inputs = varFields ? Array.from(varFields.querySelectorAll('input[id^="var_"]')) : [];
+            inputs.forEach(inp => {
+                const k = inp.id.replace('var_', '');
+                const val = (inp.value || '').trim();
+                // Replace both {{k}} and {{ k }} styles
+                const re = new RegExp('{{\\s*' + k + '\\s*}}', 'g');
+                base = base.replace(re, val || '{{' + k + '}}');
+            });
+            preview.value = base;
+        }
+
+        document.getElementById('templateSelect').addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const preview = document.getElementById('messagePreview');
+            const varWrap = document.getElementById('variableInputs');
+            const varFields = document.getElementById('variableFields');
+            
+            if (!selectedOption.value) {
+                preview.value = '';
+                varWrap.style.display = 'none';
+                varFields.innerHTML = '';
+                return;
+            }
+
+            preview.value = selectedOption.dataset.template || '';
+
+            // Build variable inputs
+            let vars = [];
+            try { vars = JSON.parse(selectedOption.dataset.variables || '[]'); } catch(e) { vars = []; }
+            varFields.innerHTML = '';
+            if (vars.length > 0) {
+                varWrap.style.display = 'block';
+                vars.forEach(v => {
+                    const id = `var_${v}`;
+                    const label = document.createElement('label');
+                    label.textContent = v.replace(/_/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+                    label.setAttribute('for', id);
+                    label.style.fontWeight = '500';
+                    label.style.marginTop = '4px';
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.id = id;
+                    input.name = id; // will be sent as var_<name>
+                    input.placeholder = `Enter ${v}`;
+                    input.style.padding = '10px';
+                    input.style.border = '2px solid #e1e5e9';
+                    input.style.borderRadius = '8px';
+                    // Update preview as user types
+                    input.addEventListener('input', renderPreviewFromInputs);
+                    varFields.appendChild(label);
+                    varFields.appendChild(input);
+                });
+                // Initial render with empty/overrides
+                renderPreviewFromInputs();
+            } else {
+                varWrap.style.display = 'none';
+            }
+        });
+        
+        // Handle bulk template selection change
+        const bulkSelectEl = document.getElementById('bulkTemplateSelect');
+        if (bulkSelectEl) {
+            bulkSelectEl.addEventListener('change', function() {
+                // Bulk preview removed
+            });
+        }
+        
+        // Handle template message form submission
+        document.getElementById('templateMessageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userId = document.getElementById('userId').value.trim();
+            const templateId = document.getElementById('templateSelect').value;
+            
+            if (!userId) {
+                showAlert('User ID is required', 'error');
+                return;
+            }
+            
+            if (!templateId) {
+                showAlert('Please select a template', 'error');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('sendBtn').disabled = true;
+            
+            try {
+            const formData = new FormData();
+            formData.append('user_id', userId);
+            formData.append('template_id', templateId);
+            // Append variable overrides if present
+            const varFields = document.getElementById('variableFields');
+            if (varFields) {
+                Array.from(varFields.querySelectorAll('input[id^="var_"]')).forEach(input => {
+                    if (input.value && input.value.trim().length > 0) {
+                        formData.append(input.name, input.value.trim());
+                    }
+                });
+            }
+                
+                const response = await fetch('/admin/send-template-message', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAlert(result.message, 'success');
+                    
+                    // Add to message history
+                    const selectedOption = document.getElementById('templateSelect').options[document.getElementById('templateSelect').selectedIndex];
+                    addMessageToHistory(userId, selectedOption.dataset.template, Date.now());
+                    
+                    // Update stats
+                    updateStats();
+                    
+                    // Clear form
+                    document.getElementById('templateMessageForm').reset();
+                    document.getElementById('messagePreview').value = '';
+                } else {
+                    showAlert(result.detail || 'Failed to send template message', 'error');
+                }
+                
+            } catch (error) {
+                showAlert('Network error: ' + error.message, 'error');
+            } finally {
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('sendBtn').disabled = false;
+            }
+        });
+        
+        // Bulk messaging removed per new policy
+        
+        // Custom messaging removed per new policy
+        
+        // Bulk results UI removed
+        
+        // Update stats (placeholder - would connect to your analytics system)
+        function updateStats() {
+            const messagesSent = parseInt(document.getElementById('messagesSent').textContent) + 1;
+            document.getElementById('messagesSent').textContent = messagesSent;
+            
+            // For demo purposes, assume each message is to a different user
+            const usersMessaged = parseInt(document.getElementById('usersMessaged').textContent) + 1;
+            document.getElementById('usersMessaged').textContent = usersMessaged;
+        }
+        
+        // Load message history from localStorage (for demo purposes)
+        function loadMessageHistory() {
+            const history = JSON.parse(localStorage.getItem('adminMessageHistory') || '[]');
+            const historyContainer = document.getElementById('messageHistory');
+            
+            if (history.length === 0) {
+                historyContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No messages sent yet. Send your first message above!</p>';
+                return;
+            }
+            
+            historyContainer.innerHTML = '';
+            history.forEach(msg => {
+                addMessageToHistory(msg.userId, msg.message, msg.timestamp);
+            });
+        }
+        
+        // Save message to localStorage (for demo purposes)
+        function saveMessageToHistory(userId, message, timestamp) {
+            const history = JSON.parse(localStorage.getItem('adminMessageHistory') || '[]');
+            history.unshift({ userId, message, timestamp });
+            
+            // Keep only last 50 messages
+            if (history.length > 50) {
+                history.splice(50);
+            }
+            
+            localStorage.setItem('adminMessageHistory', JSON.stringify(history));
+        }
+        
+        // Override addMessageToHistory to also save to localStorage
+        const originalAddMessageToHistory = addMessageToHistory;
+        addMessageToHistory = function(userId, message, timestamp) {
+            originalAddMessageToHistory(userId, message, timestamp);
+            saveMessageToHistory(userId, message, timestamp);
+        };
+        
+        // Handle auto-detect form submission
+        document.getElementById('autoDetectForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userIdsText = document.getElementById('userIdsForDetection').value.trim();
+            if (!userIdsText) {
+                showAutoDetectAlert('Please enter at least one user ID', 'error');
+                return;
+            }
+            
+            // Parse user IDs (one per line)
+            const userIds = userIdsText.split('\n')
+                .map(id => id.trim())
+                .filter(id => id.length > 0);
+            
+            if (userIds.length === 0) {
+                showAutoDetectAlert('Please enter valid user IDs', 'error');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('autoDetectLoading').style.display = 'block';
+            document.getElementById('autoDetectBtn').disabled = true;
+            document.getElementById('autoDetectResults').style.display = 'none';
+            
+            try {
+                const formData = new FormData();
+                userIds.forEach(id => formData.append('user_ids', id));
+                
+                const response = await fetch('/admin/auto-detect-schedule', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAutoDetectAlert(
+                        `Processed ${result.total_processed} users. ${result.successful} successful actions.`,
+                        'success'
+                    );
+                    displayAutoDetectResults(result.results);
+                } else {
+                    showAutoDetectAlert('Failed to process auto-detection', 'error');
+                }
+                
+            } catch (error) {
+                showAutoDetectAlert('Network error: ' + error.message, 'error');
+            } finally {
+                // Hide loading
+                document.getElementById('autoDetectLoading').style.display = 'none';
+                document.getElementById('autoDetectBtn').disabled = false;
+            }
+        });
+        
+        // Show auto-detect alert
+        function showAutoDetectAlert(message, type = 'success') {
+            const container = document.getElementById('autoDetectAlerts');
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+        
+        // Display auto-detect results
+        function displayAutoDetectResults(results) {
+            const container = document.getElementById('autoDetectResultsList');
+            const resultsDiv = document.getElementById('autoDetectResults');
+            
+            if (!results || results.length === 0) {
+                container.innerHTML = '<p>No results to display.</p>';
+                resultsDiv.style.display = 'block';
+                return;
+            }
+            
+            let html = '';
+            results.forEach(result => {
+                const statusClass = result.success ? 'success' : 'error';
+                const statusIcon = result.success ? '✅' : '❌';
+                
+                html += `
+                    <div class="message-item" style="border-left-color: ${result.success ? '#48bb78' : '#f56565'};">
+                        <div class="message-meta">
+                            <strong>${statusIcon} User:</strong> ${result.user_id} | 
+                            <strong>Action:</strong> ${result.action || 'none'} |
+                            <strong>Status:</strong> ${result.success ? 'Success' : 'Failed'}
+                        </div>
+                        <div class="message-content">
+                            ${result.message || result.error || 'No details'}
+                            ${result.scheduled_time ? `<br><strong>Scheduled for:</strong> ${result.scheduled_time}` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+
+        // Initialize
+        loadTemplates();
+        loadMessageHistory();
+        
+        // Handle logout with JavaScript fallback
+        function handleLogout(event) {
+            event.preventDefault();
+            
+            // Try to logout via fetch first
+            fetch('/admin/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Clear any local storage
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    
+                    // Force redirect to login page
+                    window.location.href = '/admin/';
+                } else {
+                    // Fallback: direct redirect
+                    window.location.href = '/admin/';
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                // Fallback: direct redirect
+                window.location.href = '/admin/';
+            });
+        }
+    </script>
+    {% endraw %}
+</body>
+</html>

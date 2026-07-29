@@ -1,0 +1,22 @@
+name: Daily Attendance Check-in
+
+on:
+  schedule:
+    # 8 AM IST = 2:30 AM UTC
+    - cron: '30 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  send-attendance-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger daily attendance cron
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://api.relayy.world/api/switch/placement/cron/daily-attendance?key=${{ secrets.ADMIN_API_KEY }}")
+          echo "Response code: $response"
+          if [ "$response" != "200" ]; then
+            echo "Cron trigger failed with status $response"
+            exit 1
+          fi
+          echo "Daily attendance links sent successfully"

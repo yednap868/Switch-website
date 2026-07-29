@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Sending</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .btn-danger {
+            background: #e53e3e;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c53030;
+        }
+        
+        .profile-item {
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: #f9fafb;
+        }
+        
+        .profile-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .remove-profile {
+            background: none;
+            border: none;
+            color: #e53e3e;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.25rem;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .alert-success {
+            background-color: #f0fff4;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .alert-error {
+            background-color: #fee;
+            color: #c53030;
+            border: 1px solid #feb2b2;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .conversation-message {
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .conversation-message:hover {
+            transform: translateX(2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .user-message {
+            border-left-color: #4caf50;
+        }
+        
+        .agent-message {
+            border-left-color: #667eea;
+        }
+        
+        .conversation-container {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f9fafb;
+        }
+        
+        .conversation-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .conversation-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .conversation-container::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+        
+        .conversation-container::-webkit-scrollbar-thumb:hover {
+            background: #5a6fd8;
+        }
+        
+            @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header-left {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>📤 Profile Sending</h1>
+            <nav class="navbar">
+                <a href="/admin/dashboard" class="nav-link">📊 Dashboard</a>
+                <a href="/admin/profiles" class="nav-link active">📤 Profile Sending</a>
+                <a href="/admin/messages" class="nav-link">💬 Manual Messages</a>
+                <a href="/admin/switch" class="nav-link">📞 Switch</a>
+            </nav>
+        </div>
+        <a href="/admin/logout" class="logout-btn" onclick="handleLogout(event)">Logout</a>
+    </div>
+    
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="profilesSent">0</div>
+                <div class="stat-label">Profiles Sent Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="usersReached">0</div>
+                <div class="stat-label">Users Reached</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📤 Send Manual Profiles</h2>
+            
+            <div id="alertContainer"></div>
+            
+            <form id="profileForm" action="/admin/send-profile" method="POST">
+                <div class="form-group">
+                    <label for="userPhone">User WhatsApp Number</label>
+                    <input type="text" id="userPhone" name="userPhone" placeholder="e.g., 1234567890" required>
+                    <small style="color: #666; font-size: 0.8rem;">Enter phone number with country code (e.g., 1234567890 for US, 919876543210 for India). No + or spaces.</small>
+                </div>
+                
+                <div id="profilesContainer">
+                    <div class="profile-item" data-profile="1">
+                        <div class="profile-header">
+                            <div class="profile-number">1</div>
+                            <button type="button" class="remove-profile" onclick="removeProfile(1)" style="display: none;">×</button>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Name *</label>
+                                <input type="text" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email (Optional)</label>
+                                <input type="email" name="email" placeholder="john@company.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>LinkedIn URL *</label>
+                            <input type="url" name="linkedin_url" placeholder="https://linkedin.com/in/johnsmith" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Summary *</label>
+                            <textarea name="summary" placeholder="Senior Product Manager at Google with 8+ years in tech. Expert in AI/ML product development..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Why This Match (Optional)</label>
+                            <textarea name="match_reason" placeholder="Perfect match for your AI product development needs and has experience scaling similar products."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="addProfile()">+ Add Another Profile</button>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Sending profiles...</p>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="sendBtn">📤 Send Profiles</button>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2>📋 User Profile History</h2>
+            <div class="form-group">
+                <label for="searchPhone">Search User Profiles</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="searchPhone" placeholder="Enter phone number">
+                    <button type="button" class="btn btn-secondary" onclick="searchUserProfiles()">Search</button>
+                </div>
+            </div>
+            
+            <div id="userProfilesResult"></div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 User Conversations</h2>
+            <div class="form-group">
+                <label for="conversationUserSearch">Search User Conversations</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="conversationUserSearch" placeholder="Enter user ID or phone number">
+                    <button type="button" class="btn btn-secondary" onclick="searchUserConversations()">View Conversations</button>
+                </div>
+            </div>
+            
+            <div id="conversationResult"></div>
+        </div>
+    </div>
+    
+    <script>
+        let profileCount = 1;
+        
+        // Add new profile form
+        function addProfile() {
+            profileCount++;
+            const container = document.getElementById('profilesContainer');
+            
+            const profileDiv = document.createElement('div');
+            profileDiv.className = 'profile-item';
+            profileDiv.setAttribute('data-profile', profileCount);
+            
+            profileDiv.innerHTML = `
+                <div class="profile-header">
+                    <div class="profile-number">${profileCount}</div>
+                    <button type="button" class="remove-profile" onclick="removeProfile(${profileCount})">×</button>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name *</label>
+                        <input type="text" name="name" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (Optional)</label>
+                        <input type="email" name="email" placeholder="john@company.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>LinkedIn URL *</label>
+                    <input type="url" name="linkedin_url" placeholder="https://linkedin.com/in/johnsmith" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Summary *</label>
+                    <textarea name="summary" placeholder="Senior Product Manager at Google with 8+ years in tech..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Why This Match (Optional)</label>
+                    <textarea name="match_reason" placeholder="Perfect match for your needs because..."></textarea>
+                </div>
+            `;
+            
+            container.appendChild(profileDiv);
+            updateRemoveButtons();
+        }
+        
+        // Remove profile
+        function removeProfile(profileId) {
+            const profileDiv = document.querySelector(`[data-profile="${profileId}"]`);
+            if (profileDiv) {
+                profileDiv.remove();
+                updateProfileNumbers();
+                updateRemoveButtons();
+            }
+        }
+        
+        // Update profile numbers after removal
+        function updateProfileNumbers() {
+            const profiles = document.querySelectorAll('.profile-item');
+            profiles.forEach((profile, index) => {
+                const number = index + 1;
+                profile.setAttribute('data-profile', number);
+                profile.querySelector('.profile-number').textContent = number;
+                profile.querySelector('.remove-profile').setAttribute('onclick', `removeProfile(${number})`);
+            });
+            profileCount = profiles.length;
+        }
+        
+        // Show/hide remove buttons
+        function updateRemoveButtons() {
+            const profiles = document.querySelectorAll('.profile-item');
+            profiles.forEach(profile => {
+                const removeBtn = profile.querySelector('.remove-profile');
+                removeBtn.style.display = profiles.length > 1 ? 'block' : 'none';
+            });
+        }
+        
+        // Show alert
+        function showAlert(message, type = 'success') {
+            const container = document.getElementById('alertContainer');
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+        
+        // Handle form submission
+        document.getElementById('profileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userPhone = document.getElementById('userPhone').value.trim();
+            const profiles = [];
+            
+            // Collect profile data
+            document.querySelectorAll('.profile-item').forEach(profileDiv => {
+                const inputs = profileDiv.querySelectorAll('input, textarea');
+                const profile = {};
+                
+                inputs.forEach(input => {
+                    if (input.name) {
+                        profile[input.name] = input.value.trim();
+                    }
+                });
+                
+                profiles.push(profile);
+            });
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('sendBtn').disabled = true;
+            
+            try {
+                const formData = new FormData();
+                formData.append('user_phone', userPhone);
+                formData.append('profiles', JSON.stringify(profiles));
+                
+                const response = await fetch('/admin/send-profile', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showAlert(result.message, 'success');
+                    // Reset form
+                    document.getElementById('profileForm').reset();
+                    // Update stats
+                    updateStats();
+                } else {
+                    showAlert(result.detail || 'Failed to send profiles', 'error');
+                }
+                
+            } catch (error) {
+                showAlert('Network error: ' + error.message, 'error');
+            } finally {
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('sendBtn').disabled = false;
+            }
+        });
+        
+        // Search user conversations
+        async function searchUserConversations() {
+            const userId = document.getElementById('conversationUserSearch').value.trim();
+            if (!userId) return;
+            
+            try {
+                const response = await fetch(`/admin/user-conversations/${userId}`, {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                const container = document.getElementById('conversationResult');
+                
+                if (result.success && result.messages.length > 0) {
+                    let html = `<h3>Conversation History for User: ${userId}</h3>`;
+                    html += `<p><strong>Total Messages:</strong> ${result.total_messages}</p>`;
+                    html += `<div class="conversation-container">`;
+                    
+                    result.messages.forEach((msg, index) => {
+                        const isUser = msg.sender === 'user';
+                        const messageClass = isUser ? 'user-message' : 'agent-message';
+                        const senderLabel = isUser ? '👤 User' : '🤖 Agent';
+                        
+                        html += `
+                            <div class="conversation-message ${messageClass}" style="margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; ${isUser ? 'background: #e3f2fd; margin-left: 2rem;' : 'background: #f3e5f5; margin-right: 2rem;'}">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">
+                                    <strong>${senderLabel}</strong> • ${msg.formatted_time} • ${msg.type.toUpperCase()}
+                                </div>
+                                <div style="color: #333; line-height: 1.4;">
+                                    ${msg.content.replace(/\n/g, '<br>')}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `<p>No conversation history found for user: ${userId}</p>`;
+                }
+                
+            } catch (error) {
+                document.getElementById('conversationResult').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Search user profiles
+        async function searchUserProfiles() {
+            const phone = document.getElementById('searchPhone').value.trim();
+            if (!phone) return;
+            
+            try {
+                const response = await fetch(`/admin/user-profiles/${phone}`, {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                const container = document.getElementById('userProfilesResult');
+                
+                if (result.success && result.profiles.length > 0) {
+                    let html = `<h3>Found ${result.count} profiles for ${phone}:</h3>`;
+                    result.profiles.forEach((profile, index) => {
+                        html += `
+                            <div style="border: 1px solid #e1e5e9; padding: 1rem; margin: 0.5rem 0; border-radius: 6px;">
+                                <strong>${index + 1}. ${profile.name}</strong><br>
+                                <small>Source: ${profile.source || 'unknown'} | Added: ${new Date(profile.suggested_at * 1000).toLocaleDateString()}</small><br>
+                                LinkedIn: <a href="${profile.linkedin_url}" target="_blank">${profile.linkedin_url}</a>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `<p>No profiles found for ${phone}</p>`;
+                }
+                
+            } catch (error) {
+                document.getElementById('userProfilesResult').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Update stats (placeholder)
+        function updateStats() {
+            // This would connect to your analytics/logging system
+            const profilesSent = parseInt(document.getElementById('profilesSent').textContent) + 1;
+            document.getElementById('profilesSent').textContent = profilesSent;
+        }
+        
+        // Initialize
+        updateRemoveButtons();
+        
+        // Handle logout with JavaScript fallback
+        function handleLogout(event) {
+            event.preventDefault();
+            
+            // Try to logout via fetch first
+            fetch('/admin/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Clear any local storage
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    
+                    // Force redirect to login page
+                    window.location.href = '/admin/';
+                } else {
+                    // Fallback: direct redirect
+                    window.location.href = '/admin/';
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                // Fallback: direct redirect
+                window.location.href = '/admin/';
+            });
+        }
+    </script>
+</body>
+</html>

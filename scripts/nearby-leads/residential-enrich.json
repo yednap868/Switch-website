@@ -1,0 +1,14 @@
+{
+  "_comment": "VERIFIED residential phone numbers found via web. Every entry was confirmed on a real source (official site / RWA page). NO guessed numbers. Key = exact `name` in residential-b2b.csv. Re-run build-residential-b2b.mjs to merge.",
+  "Harmony Heaven PG: The 1RK Delight": {
+    "phone": "9310128038, 8076929996",
+    "source": "harmonyheavenpg.com (official site)",
+    "note": "1RK PG, Sector 22"
+  },
+  "Essel Towers": {
+    "phone": "0124-4035848",
+    "contact": "Estate Mgr Kurian Chacko 9654128022; Dy Mgr Pankaj Kumar 9654128173",
+    "source": "etrwa.in/ContactUs.aspx (official RWA site)",
+    "note": "Estate Manager is the staffing decision-maker"
+  }
+}

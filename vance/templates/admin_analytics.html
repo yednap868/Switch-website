@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .dashboard-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 3px solid #e53e3e;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #333;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .filters-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .filters-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filters-note {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filter-group input, .filter-group select {
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        
+        .filter-group input:focus, .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .filter-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .data-table-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px solid #667eea;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .table-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .data-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: 2px solid #667eea;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border: 1px solid #e1e5e9;
+            color: #333;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .data-table tr:hover {
+            background: #e6f3ff;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+            
+            .header-left {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .data-table {
+                font-size: 0.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1>VANCE</h1>
+            <nav class="navbar">
+                <a href="/admin/dashboard" class="nav-link active">📊 Dashboard</a>
+                <a href="/admin/profiles" class="nav-link">📤 Profile Sending</a>
+                <a href="/admin/messages" class="nav-link">💬 Manual Messages</a>
+                <a href="/admin/switch" class="nav-link">📞 Switch</a>
+            </nav>
+        </div>
+        <a href="/admin/logout" class="logout-btn" onclick="handleLogout(event)">Logout</a>
+    </div>
+    
+    <div class="container">
+        <div class="dashboard-title">VANCE</div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="onboardedToday">0</div>
+                <div class="stat-label">Onboarded Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="onboardedYesterday">0</div>
+                <div class="stat-label">Onboarded Yesterday</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="introsMade">0</div>
+                <div class="stat-label">Intros Made</div>
+            </div>
+        </div>
+        
+        <div class="filters-section">
+            <div class="filters-title">Filters...</div>
+            <div class="filters-note">💡 Filters work instantly as you type - no need to click apply!</div>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="dateFromFilter">Date From</label>
+                    <input type="date" id="dateFromFilter" placeholder="Start Date">
+                </div>
+                <div class="filter-group">
+                    <label for="dateToFilter">Date To</label>
+                    <input type="date" id="dateToFilter" placeholder="End Date">
+                </div>
+                <div class="filter-group">
+                    <label for="userIdFilter">User ID</label>
+                    <input type="text" id="userIdFilter" placeholder="Search by User ID">
+                </div>
+                <div class="filter-group">
+                    <label for="nameFilter">Name</label>
+                    <input type="text" id="nameFilter" placeholder="Search by Name">
+                </div>
+                <div class="filter-group">
+                    <label for="needFilter">Need</label>
+                    <select id="needFilter">
+                        <option value="">All Needs</option>
+                        <option value="hiring">Hiring</option>
+                        <option value="job">Job Seeking</option>
+                        <option value="investment">Investment</option>
+                        <option value="fundraising">Fundraising</option>
+                        <option value="sales">Sales</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="networking">Networking</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortByFilter">Sort By</label>
+                    <select id="sortByFilter">
+                        <option value="">Default Order</option>
+                        <option value="profile_complete_asc">Profile Complete (Complete First)</option>
+                        <option value="profile_complete_desc">Profile Complete (Incomplete First)</option>
+                        <option value="missing_fields_asc">Missing Fields (Fewest First)</option>
+                        <option value="missing_fields_desc">Missing Fields (Most First)</option>
+                        <option value="call_count_asc">Call Count (Lowest First)</option>
+                        <option value="call_count_desc">Call Count (Highest First)</option>
+                        <option value="name_asc">Name (A-Z)</option>
+                        <option value="name_desc">Name (Z-A)</option>
+                        <option value="date_asc">Date (Oldest First)</option>
+                        <option value="date_desc">Date (Newest First)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="profileStatusFilter">Profile Status</label>
+                    <select id="profileStatusFilter">
+                        <option value="">All Profiles</option>
+                        <option value="complete">Complete Only</option>
+                        <option value="incomplete">Incomplete Only</option>
+                        <option value="missing_name">Missing Name</option>
+                        <option value="missing_email">Missing Email</option>
+                        <option value="missing_linkedin">Missing LinkedIn</option>
+                        <option value="missing_goal">Missing Goal</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="callStatusFilter">Call Status</label>
+                    <select id="callStatusFilter">
+                        <option value="">All Call Status</option>
+                        <option value="no_call">No Calls</option>
+                        <option value="has_calls">Has Calls</option>
+                        <option value="initiated">Call Initiated</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-secondary" onclick="clearFilters()">Clear Filters</button>
+                <button class="btn btn-secondary" onclick="exportData()">Export CSV</button>
+            </div>
+        </div>
+        
+        <div class="data-table-section">
+            <div class="table-header">
+                <div class="table-title">User Onboarding Data</div>
+                <div id="totalRecords">Total: 0 records</div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading data...</p>
+            </div>
+            
+            <div id="tableContainer">
+                <table class="data-table" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>DATE</th>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Need</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Profile Status</th>
+                            <th>Call Status</th>
+                            <th>Calls Made</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">📊</div>
+                <h3>No Data Found</h3>
+                <p>No users match your current filters. Try adjusting your search criteria.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>💬 User Conversations</h2>
+            <div class="form-group">
+                <label for="conversationUserSearch">Search User Conversations</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="conversationUserSearch" placeholder="Enter user ID or phone number">
+                    <button type="button" class="btn btn-secondary" onclick="searchUserConversations()">View Conversations</button>
+                </div>
+            </div>
+            
+            <div id="conversationResult"></div>
+        </div>
+    </div>
+    
+    <script>
+        let allData = [];
+        let filteredData = [];
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            setupRealTimeFilters();
+        });
+        
+        // Setup real-time filtering
+        function setupRealTimeFilters() {
+            // Add event listeners for instant filtering
+            document.getElementById('dateFromFilter').addEventListener('change', applyFilters);
+            document.getElementById('dateToFilter').addEventListener('change', applyFilters);
+            document.getElementById('userIdFilter').addEventListener('input', applyFilters);
+            document.getElementById('nameFilter').addEventListener('input', applyFilters);
+            document.getElementById('needFilter').addEventListener('change', applyFilters);
+            document.getElementById('sortByFilter').addEventListener('change', applyFilters);
+            document.getElementById('profileStatusFilter').addEventListener('change', applyFilters);
+            document.getElementById('callStatusFilter').addEventListener('change', applyFilters);
+        }
+        
+        // Load dashboard data
+        async function loadDashboardData() {
+            showLoading(true);
+            
+            try {
+                const response = await fetch('/admin/analytics-data', {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    allData = result.data;
+                    filteredData = [...allData];
+                    
+                    updateStats(result.stats);
+                    renderTable(filteredData);
+                } else {
+                    showError('Failed to load dashboard data');
+                }
+            } catch (error) {
+                showError('Network error: ' + error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // Update statistics cards
+        function updateStats(stats) {
+            document.getElementById('onboardedToday').textContent = stats.onboarded_today || 0;
+            document.getElementById('onboardedYesterday').textContent = stats.onboarded_yesterday || 0;
+            document.getElementById('introsMade').textContent = stats.intros_made || 0;
+        }
+        
+        // Render data table
+        function renderTable(data) {
+            const tableBody = document.getElementById('tableBody');
+            const emptyState = document.getElementById('emptyState');
+            const tableContainer = document.getElementById('tableContainer');
+            const totalRecords = document.getElementById('totalRecords');
+            
+            totalRecords.textContent = `Total: ${data.length} records`;
+            
+            if (data.length === 0) {
+                tableContainer.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            tableContainer.style.display = 'block';
+            emptyState.style.display = 'none';
+            
+            tableBody.innerHTML = data.map(user => `
+                <tr>
+                    <td>${formatDate(user.date)}</td>
+                    <td>${user.user_id}</td>
+                    <td>${user.name || 'N/A'}</td>
+                    <td>${formatNeed(user.need)}</td>
+                    <td>${user.email || 'N/A'}</td>
+                    <td>${formatStatus(user.status)}</td>
+                    <td>${formatProfileStatus(user.completion_status, user.profile_complete)}</td>
+                    <td>${formatCallStatus(user.call_status)}</td>
+                    <td>${formatCallCount(user.call_count)}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // Apply filters (now called automatically on input/change)
+        function applyFilters() {
+            // Show a brief loading state for better UX
+            const tableBody = document.getElementById('tableBody');
+            if (tableBody) {
+                tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 2rem; color: #666;">Filtering...</td></tr>';
+            }
+            
+            // Use setTimeout to allow UI to update before filtering
+            setTimeout(() => {
+                const dateFromFilter = document.getElementById('dateFromFilter').value;
+                const dateToFilter = document.getElementById('dateToFilter').value;
+                const userIdFilter = document.getElementById('userIdFilter').value.toLowerCase();
+                const nameFilter = document.getElementById('nameFilter').value.toLowerCase();
+                const needFilter = document.getElementById('needFilter').value;
+                const sortByFilter = document.getElementById('sortByFilter').value;
+                const profileStatusFilter = document.getElementById('profileStatusFilter').value;
+                const callStatusFilter = document.getElementById('callStatusFilter').value;
+                
+                filteredData = allData.filter(user => {
+                    // Date range filter
+                    if (dateFromFilter || dateToFilter) {
+                        const userDate = new Date(user.date);
+                        
+                        if (dateFromFilter) {
+                            const fromDate = new Date(dateFromFilter);
+                            if (userDate < fromDate) return false;
+                        }
+                        
+                        if (dateToFilter) {
+                            const toDate = new Date(dateToFilter);
+                            toDate.setHours(23, 59, 59, 999); // End of day
+                            if (userDate > toDate) return false;
+                        }
+                    }
+                    
+                    // User ID filter (optional)
+                    if (userIdFilter && !user.user_id.toLowerCase().includes(userIdFilter)) return false;
+                    
+                    // Name filter (optional)
+                    if (nameFilter && (!user.name || !user.name.toLowerCase().includes(nameFilter))) return false;
+                    
+                    // Need filter (optional - can filter by need alone)
+                    if (needFilter && needFilter !== 'All Needs' && !user.need.toLowerCase().includes(needFilter.toLowerCase())) return false;
+                    
+                    // Profile status filter
+                    if (profileStatusFilter) {
+                        switch(profileStatusFilter) {
+                            case 'complete':
+                                if (!user.profile_complete) return false;
+                                break;
+                            case 'incomplete':
+                                if (user.profile_complete) return false;
+                                break;
+                            case 'missing_name':
+                                if (!user.missing_fields || !user.missing_fields.includes('Name')) return false;
+                                break;
+                            case 'missing_email':
+                                if (!user.missing_fields || !user.missing_fields.includes('Email')) return false;
+                                break;
+                            case 'missing_linkedin':
+                                if (!user.missing_fields || !user.missing_fields.includes('LinkedIn')) return false;
+                                break;
+                            case 'missing_goal':
+                                if (!user.missing_fields || !user.missing_fields.includes('Goal')) return false;
+                                break;
+                        }
+                    }
+                    
+                    // Call status filter
+                    if (callStatusFilter) {
+                        switch(callStatusFilter) {
+                            case 'no_call':
+                                if (user.call_count > 0) return false;
+                                break;
+                            case 'has_calls':
+                                if (user.call_count === 0) return false;
+                                break;
+                            case 'initiated':
+                                if (!user.call_status || !user.call_status.includes('Initiated')) return false;
+                                break;
+                        }
+                    }
+                    
+                    return true;
+                });
+                
+                // Apply sorting
+                if (sortByFilter) {
+                    filteredData.sort((a, b) => {
+                        switch(sortByFilter) {
+                            case 'profile_complete_asc':
+                                return (b.profile_complete ? 1 : 0) - (a.profile_complete ? 1 : 0);
+                            case 'profile_complete_desc':
+                                return (a.profile_complete ? 1 : 0) - (b.profile_complete ? 1 : 0);
+                            case 'missing_fields_asc':
+                                return (a.missing_fields ? a.missing_fields.length : 0) - (b.missing_fields ? b.missing_fields.length : 0);
+                            case 'missing_fields_desc':
+                                return (b.missing_fields ? b.missing_fields.length : 0) - (a.missing_fields ? a.missing_fields.length : 0);
+                            case 'call_count_asc':
+                                return (a.call_count || 0) - (b.call_count || 0);
+                            case 'call_count_desc':
+                                return (b.call_count || 0) - (a.call_count || 0);
+                            case 'name_asc':
+                                return (a.name || '').localeCompare(b.name || '');
+                            case 'name_desc':
+                                return (b.name || '').localeCompare(a.name || '');
+                            case 'date_asc':
+                                return new Date(a.date) - new Date(b.date);
+                            case 'date_desc':
+                                return new Date(b.date) - new Date(a.date);
+                            default:
+                                return 0;
+                        }
+                    });
+                }
+                
+                renderTable(filteredData);
+            }, 50); // Small delay for smooth UX
+        }
+        
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('dateFromFilter').value = '';
+            document.getElementById('dateToFilter').value = '';
+            document.getElementById('userIdFilter').value = '';
+            document.getElementById('nameFilter').value = '';
+            document.getElementById('needFilter').value = '';
+            document.getElementById('sortByFilter').value = '';
+            document.getElementById('profileStatusFilter').value = '';
+            document.getElementById('callStatusFilter').value = '';
+            
+            // Reset to show all data
+            filteredData = [...allData];
+            renderTable(filteredData);
+        }
+        
+        // Export data to CSV
+        function exportData() {
+            if (filteredData.length === 0) {
+                alert('No data to export');
+                return;
+            }
+            
+            const headers = ['Date', 'User ID', 'Name', 'Need', 'Email', 'Status'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredData.map(user => [
+                    formatDate(user.date),
+                    user.user_id,
+                    user.name || '',
+                    formatNeed(user.need),
+                    user.email || '',
+                    formatStatus(user.status)
+                ].map(field => `"${field}"`).join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `vance-analytics-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+        
+        // Utility functions
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        }
+        
+        function formatNeed(need) {
+            if (!need) return 'N/A';
+            return need.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+        
+        function formatStatus(status) {
+            if (!status) return 'Unknown';
+            return status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+        
+        function formatProfileStatus(completionStatus, isComplete) {
+            if (!completionStatus) return 'Unknown';
+            
+            if (isComplete) {
+                return '<span style="color: #48bb78; font-weight: bold;">✅ Complete</span>';
+            } else {
+                return `<span style="color: #f56565; font-weight: bold;">⚠️ ${completionStatus}</span>`;
+            }
+        }
+        
+        function formatCallStatus(callStatus) {
+            if (!callStatus) return 'Unknown';
+            
+            switch(callStatus) {
+                case 'Call Completed':
+                    return '<span style="color: #48bb78; font-weight: bold;">📞 Completed</span>';
+                case 'Call Scheduled':
+                    return '<span style="color: #ed8936; font-weight: bold;">⏳ Scheduled</span>';
+                case 'Call In Progress':
+                    return '<span style="color: #4299e1; font-weight: bold;">🔄 In Progress</span>';
+                case 'No Call Yet':
+                    return '<span style="color: #a0aec0; font-weight: bold;">❌ No Call</span>';
+                default:
+                    return callStatus;
+            }
+        }
+        
+        function formatCallCount(callCount) {
+            if (callCount === undefined || callCount === null) return '0';
+            
+            if (callCount === 0) {
+                return '<span style="color: #a0aec0; font-weight: bold;">0</span>';
+            } else if (callCount === 1) {
+                return '<span style="color: #48bb78; font-weight: bold;">1</span>';
+            } else {
+                return `<span style="color: #48bb78; font-weight: bold;">${callCount}</span>`;
+            }
+        }
+        
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+        
+        function showError(message) {
+            alert('Error: ' + message);
+        }
+        
+        // Search user conversations
+        async function searchUserConversations() {
+            const userId = document.getElementById('conversationUserSearch').value.trim();
+            if (!userId) return;
+            
+            try {
+                const response = await fetch(`/admin/user-conversations/${userId}`, {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                const container = document.getElementById('conversationResult');
+                
+                if (result.success && result.messages.length > 0) {
+                    let html = `<h3>Conversation History for User: ${userId}</h3>`;
+                    html += `<p><strong>Total Messages:</strong> ${result.total_messages}</p>`;
+                    html += `<div class="conversation-container" style="max-height: 500px; overflow-y: auto; border: 1px solid #e1e5e9; border-radius: 8px; padding: 1rem; background: #f9fafb;">`;
+                    
+                    result.messages.forEach((msg, index) => {
+                        const isUser = msg.sender === 'user';
+                        const messageClass = isUser ? 'user-message' : 'agent-message';
+                        const senderLabel = isUser ? '👤 User' : '🤖 Agent';
+                        
+                        html += `
+                            <div class="conversation-message ${messageClass}" style="margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; border-left: 4px solid ${isUser ? '#4caf50' : '#667eea'}; ${isUser ? 'background: #e3f2fd; margin-left: 2rem;' : 'background: #f3e5f5; margin-right: 2rem;'}">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">
+                                    <strong>${senderLabel}</strong> • ${msg.formatted_time} • ${msg.type.toUpperCase()}
+                                </div>
+                                <div style="color: #333; line-height: 1.4;">
+                                    ${msg.content.replace(/\n/g, '<br>')}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `<p>No conversation history found for user: ${userId}</p>`;
+                }
+                
+            } catch (error) {
+                document.getElementById('conversationResult').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Handle logout with JavaScript fallback
+        function handleLogout(event) {
+            event.preventDefault();
+            
+            // Try to logout via fetch first
+            fetch('/admin/logout', {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Clear any local storage
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    
+                    // Force redirect to login page
+                    window.location.href = '/admin/';
+                } else {
+                    // Fallback: direct redirect
+                    window.location.href = '/admin/';
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                // Fallback: direct redirect
+                window.location.href = '/admin/';
+            });
+        }
+    </script>
+</body>
+</html>

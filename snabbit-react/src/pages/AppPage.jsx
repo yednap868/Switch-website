@@ -41,18 +41,18 @@ function IcoStar() {
 
 /* ─── DATA ────────────────────────────────────────── */
 const FEATURES = [
-  { ico: '⚡', title: 'Hire in a day', desc: 'Post your requirement and get matched with verified workers within hours — no agency runaround.' },
-  { ico: '🆔', title: 'Aadhaar-verified staff', desc: 'Every worker is Aadhaar-verified, background-checked and skill-assessed before they reach your site.' },
+  { ico: '⚡', title: 'Hire in a day', desc: 'Post your requirement and get matched with verified Switch Players within hours — no agency runaround.' },
+  { ico: '🆔', title: 'Aadhaar-verified staff', desc: 'Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they reach your site.' },
   { ico: '🔁', title: 'Replacement guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
-  { ico: '📅', title: 'Hourly, daily or weekly', desc: 'Book a few hours, a full shift, or a 7-day team. The longer you book, the lower the per-worker rate.' },
+  { ico: '📅', title: 'Hourly, daily or weekly', desc: 'Book a few hours, a full shift, or a 7-day team. The longer you book, the lower the rate per Switch Player.' },
   { ico: '💸', title: 'No advance — pay on arrival', desc: 'Track your bookings, pay only after the work is done, and get clean invoices for your records.' },
-  { ico: '📲', title: 'Manage on the go', desc: 'Re-hire favourite workers, scale your team up or down, and chat with support — all from your phone.' },
+  { ico: '📲', title: 'Manage on the go', desc: 'Re-hire favourite Switch Players, scale your team up or down, and chat with support — all from your phone.' },
 ]
 
 const STEPS = [
   { n: '01', title: 'Download & sign up', desc: 'Install the app from Google Play and create your business account in under a minute.' },
-  { n: '02', title: 'Post your requirement', desc: 'Pick the role, how many workers, and how long you need them — hourly to 7 days.' },
-  { n: '03', title: 'Get verified staff', desc: 'Matched workers report to your site with OTP verification. Pay on arrival.' },
+  { n: '02', title: 'Post your requirement', desc: 'Pick the role, how many Switch Players, and how long you need them — hourly to 7 days.' },
+  { n: '03', title: 'Get verified staff', desc: 'Matched Switch Players report to your site with OTP verification. Pay on arrival.' },
 ]
 
 export default function AppPage() {
@@ -77,7 +77,7 @@ export default function AppPage() {
     url: 'https://switchlocally.com/app',
     downloadUrl: PLAY_URL,
     installUrl: PLAY_URL,
-    description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse workers, waiters, cooks, drivers and housekeeping — by the hour, day or week. Replacement guaranteed, pay on arrival.',
+    description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse Switch Players, waiters, cooks, drivers and housekeeping — by the hour, day or week. Replacement guaranteed, pay on arrival.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', ratingCount: '500' },
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
@@ -122,7 +122,7 @@ export default function AppPage() {
               </div>
               <h1 className="ap-h1">Hire verified staff<br /><em>from your phone.</em></h1>
               <p className="ap-lead">
-                Get the Switch app to staff your shop, restaurant, warehouse or office with Aadhaar-verified workers — by the hour, day or week. Replacement guaranteed, pay on arrival.
+                Get the Switch app to staff your shop, restaurant, warehouse or office with Aadhaar-verified Switch Players — by the hour, day or week. Replacement guaranteed, pay on arrival.
               </p>
 
               <div className="ap-stores">
@@ -145,7 +145,7 @@ export default function AppPage() {
 
               <div className="ap-trust">
                 <div className="ap-trust-stars">{[0, 1, 2, 3, 4].map(i => <IcoStar key={i} />)}</div>
-                <span><strong>4.8</strong> rating · <strong>500+</strong> verified workers</span>
+                <span><strong>4.8</strong> rating · <strong>500+</strong> verified Switch Players</span>
               </div>
 
               <p className="ap-ios-note">
@@ -157,8 +157,8 @@ export default function AppPage() {
 
             <div className="ap-hero-phones" data-anim style={{ '--delay': '160ms' }}>
               <img src="/screen-2.png" alt="Switch app — browse staff categories" className="ap-ph ap-ph-side ap-ph-left" width="390" height="844" loading="eager" decoding="async" />
-              <img src="/screen-home.png" alt="Switch app — hire verified workers in Gurgaon" className="ap-ph ap-ph-main" width="390" height="844" loading="eager" decoding="async" fetchpriority="high" />
-              <img src="/screen-3.png" alt="Switch app — verified worker profiles" className="ap-ph ap-ph-side ap-ph-right" width="390" height="844" loading="eager" decoding="async" />
+              <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" className="ap-ph ap-ph-main" width="390" height="844" loading="eager" decoding="async" fetchpriority="high" />
+              <img src="/screen-3.png" alt="Switch app — verified Switch Player profiles" className="ap-ph ap-ph-side ap-ph-right" width="390" height="844" loading="eager" decoding="async" />
             </div>
           </div>
         </section>
@@ -169,7 +169,7 @@ export default function AppPage() {
             <div className="ap-hd" data-anim>
               <span className="ap-tag">Why the app</span>
               <h2 className="ap-h2">Everything you need to<br />staff your business.</h2>
-              <p className="ap-sub">Post a job, track your workers and manage payments — all from one app built for Gurgaon businesses.</p>
+              <p className="ap-sub">Post a job, track your Switch Players and manage payments — all from one app built for Gurgaon businesses.</p>
             </div>
             <div className="ap-feat-grid" data-anim style={{ '--delay': '80ms' }}>
               {FEATURES.map((f, i) => (
@@ -205,8 +205,8 @@ export default function AppPage() {
         {/* CTA */}
         <section className="ap-cta">
           <div className="ap-cta-inner" data-anim>
-            <h2 className="ap-cta-h">Download Switch and<br />hire your first worker today.</h2>
-            <p className="ap-cta-p">Free to download. No advance payment. Verified workers, replacement guaranteed.</p>
+            <h2 className="ap-cta-h">Download Switch and<br />hire your first Switch Player today.</h2>
+            <p className="ap-cta-p">Free to download. No advance payment. Verified Switch Players, replacement guaranteed.</p>
             <div className="ap-stores ap-stores--center">
               <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
                 <IcoPlay />

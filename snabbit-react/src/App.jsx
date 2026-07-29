@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage.jsx'
 import BlogIndex from './pages/BlogIndex.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import AppPage from './pages/AppPage.jsx'
+import LegalPage from './pages/LegalPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
@@ -331,7 +332,7 @@ function Hero() {
           </h1>
 
           <p className="hero-lead">
-            Verified Switch Players — cooks, helpers, guards, waiters &amp; more — for shops, restaurants, warehouses and offices across Gurgaon. Replacement guaranteed, no agency, no hassle.
+            Aadhaar-verified staff, matched to your business often within the day — cooks, helpers, guards, waiters &amp; more for shops, restaurants, warehouses and offices across Gurgaon. Replacement guaranteed. No advance, no agency runaround.
           </p>
 
           <div className="hero-marquee-wrap">
@@ -347,7 +348,7 @@ function Hero() {
               <IcoBolt />
               <span>
                 <span className="btn-main">Hire Staff Now</span>
-                <span className="btn-sub">Switch Players in as little as a day</span>
+                <span className="btn-sub">Verified Switch Players, often within the day</span>
               </span>
             </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-schedule">
@@ -364,7 +365,7 @@ function Hero() {
             <span className="trust-sep" />
             <div className="trust-item"><IcoCheck />Replacement Guarantee</div>
             <span className="trust-sep" />
-            <div className="trust-item"><IcoStar />4.8 ★ Rating</div>
+            <div className="trust-item"><IcoStar />4.8 ★ · 500+ reviews</div>
           </div>
 
         </div>
@@ -401,8 +402,8 @@ function Stats() {
     <div className="stats">
       <div className="stats-row">
         {[
-          { num: '500+', lbl: 'Verified Switch Players' },
-          { num: '200+',   lbl: 'Businesses Served' },
+          { num: '1500+', lbl: 'Verified Switch Players' },
+          { num: '500+',   lbl: 'Businesses Served' },
           { num: '24h',  lbl: 'Replacement Time' },
         ].map((s, i) => (
           <div className="s-cell" key={i} data-anim style={{'--delay':`${i*90}ms`}}>
@@ -1025,8 +1026,9 @@ function Pricing() {
 
           <div className="price-card">
             <div className="price-tag-wrap">
-              <span className="price-name price-name--top">Hourly</span>
+              <span className="price-tier">Hourly</span>
             </div>
+            <div className="price-figure"><b>₹149–199</b><span className="price-unit">/ hour</span></div>
             <div className="price-name">Quick &amp; short tasks</div>
             <p className="price-desc">For a few hours of extra hands — rush hours, a quick cleanup, peak footfall.</p>
             <ul className="price-perks">
@@ -1043,8 +1045,9 @@ function Pricing() {
           <div className="price-card price-card--featured">
             <div className="price-badge">Most businesses</div>
             <div className="price-tag-wrap">
-              <span className="price-name price-name--top">Full Day</span>
+              <span className="price-tier">Full Day</span>
             </div>
+            <div className="price-figure"><b>₹999–1,299</b><span className="price-unit">/ day</span></div>
             <div className="price-name">A full shift, covered</div>
             <p className="price-desc">One Switch Player for a complete working day — the everyday way to staff a shop, kitchen or site.</p>
             <ul className="price-perks">
@@ -1061,8 +1064,9 @@ function Pricing() {
 
           <div className="price-card">
             <div className="price-tag-wrap">
-              <span className="price-name price-name--top">Weekly Team</span>
+              <span className="price-tier">Weekly Team</span>
             </div>
+            <div className="price-figure"><span className="price-from">from</span><b>₹6,500</b><span className="price-unit">/ week</span></div>
             <div className="price-name">Up to 7 days · bulk</div>
             <p className="price-desc">Continuous cover for sales, festivals, leave gaps or a steady team — at our best rate per Switch Player.</p>
             <ul className="price-perks">
@@ -1079,8 +1083,8 @@ function Pricing() {
         </div>
 
         <div className="pricing-note" data-anim style={{'--delay':'180ms'}}>
-          Per-worker rates drop as you book longer. No platform fee, no advance — pay on arrival.
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="pricing-note-link"> Talk to us for exact rates →</a>
+          Indicative rates per Switch Player, GST extra. Exact price depends on role and booking length — the longer you book, the lower the rate. No platform fee, no advance — pay on arrival.
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="pricing-note-link"> Get exact rates on WhatsApp →</a>
         </div>
       </div>
     </section>
@@ -1100,8 +1104,8 @@ export function Footer() {
             src="/switch-banner.jpg"
             alt="Switch — on-demand staffing platform in Gurgaon. Instant staffing, verified professionals, trusted by 200+ businesses, 4.8 rating."
             loading="lazy"
-            width="1600"
-            height="879"
+            width="1440"
+            height="791"
           />
         </a>
         {/* Real, clickable store buttons overlaid on top of the badges baked
@@ -1120,8 +1124,6 @@ export function Footer() {
           <span className="ftb-divider" aria-hidden="true" />
           <span
             className="ftb-store ftb-store--soon"
-            role="button"
-            aria-disabled="true"
             title="iOS app coming soon"
           >
             <IcoApple />
@@ -1187,9 +1189,9 @@ export function Footer() {
         <div className="ft-col">
           <h3 className="ft-col-title">Legal</h3>
           <ul>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Cancellation Policy</a></li>
+            <li><Link to="/terms">Terms &amp; Conditions</Link></li>
+            <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/cancellation">Cancellation Policy</Link></li>
           </ul>
         </div>
       </div>
@@ -1216,8 +1218,9 @@ function HomePage() {
   return (
     <>
       <HomeHead />
+      <a href="#main" className="skip-link">Skip to main content</a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <Stats />
         <Industries />
@@ -1249,6 +1252,9 @@ export default function App() {
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/app" element={<AppPage />} />
+        <Route path="/terms" element={<LegalPage policy="terms" />} />
+        <Route path="/privacy" element={<LegalPage policy="privacy" />} />
+        <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
         <Route path="/:slug" element={<SeoPage />} />
       </Routes>
     </>

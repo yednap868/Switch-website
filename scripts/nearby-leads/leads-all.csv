@@ -1,0 +1,527 @@
+name,category,phone,website,address,distance_m,osm
+Bain & Company,company,+91 124 475 1500,https://www.bain.com/offices/india/en_us/index.aspx,,24,https://www.openstreetmap.org/node/4498883706
+P. F. Chang's,restaurant,,,,55,https://www.openstreetmap.org/node/13293400515
+Farzi Cafe,restaurant,,,,56,https://www.openstreetmap.org/node/13293400518
+Laid Back Cafe,restaurant,,,,56,https://www.openstreetmap.org/node/13293400528
+Chili's,restaurant,,,,58,https://www.openstreetmap.org/node/13293400521
+Cafe Delhi Heights,restaurant,,,,61,https://www.openstreetmap.org/node/13293400524
+Nike,clothes,,,,66,https://www.openstreetmap.org/node/13293400513
+Made In Punjab,restaurant,,,,71,https://www.openstreetmap.org/node/13293400527
+Kings Kulfi,ice_cream,,,,72,https://www.openstreetmap.org/node/13295285678
+Unicorn,electronics,,,,74,https://www.openstreetmap.org/node/13293400506
+Nando's,restaurant,,,,80,https://www.openstreetmap.org/node/13293400555
+Cafeteria & Co,restaurant,,,,85,https://www.openstreetmap.org/node/13293400552
+Copper Chimney,restaurant,+91 8976792319;+91 8976792315,,,90,https://www.openstreetmap.org/node/13293400549
+Tim Hortons,cafe,,,,93,https://www.openstreetmap.org/node/13293400504
+Vietnom,restaurant,,,,98,https://www.openstreetmap.org/node/13293400546
+The Laugh Store,pub,,https://thelaughstore.in/,"4D, Tower 8C, DLF Cyber City, Gurugram",104,https://www.openstreetmap.org/node/13703530369
+The Beer Cafe,bar,,,,105,https://www.openstreetmap.org/node/13295285680
+Punjab Grill,restaurant,,,,107,https://www.openstreetmap.org/node/13293400543
+The Body Shop,cosmetics,,,,112,https://www.openstreetmap.org/node/13295285681
+Tablespoon,restaurant,,https://tbsp.in/,,118,https://www.openstreetmap.org/node/13293400537
+Sunglass Hut,optician,,,,118,https://www.openstreetmap.org/node/13295285682
+Cococart,chocolate,,,,118,https://www.openstreetmap.org/node/13295285683
+Cafe Mez,restaurant,,,,124,https://www.openstreetmap.org/node/13293400534
+The Wine Company,bar,,,,134,https://www.openstreetmap.org/node/13293400531
+KPMG,company,01243074000,https://home.kpmg.com/in/en,"10C, P-5-P-4 Lane, DLF Cyber City, Sector 24, Phase II",160,https://www.openstreetmap.org/node/5550889022
+DSV Air & Sea,company,+91 1247199900,https://www.dsv.com/,"Building No-10A, 3Rd Floor, Cyber City, Phase-2, Gurugram, Delhi-Gurugram Expressway, Gurgaon",181,https://www.openstreetmap.org/node/10310206480
+CEVA Logistics India,company,,,,214,https://www.openstreetmap.org/node/1408740312
+Jawed Habib BeautyXpresso Beauty Salon,hairdresser,,https://www.facebook.com/beauty.xpresso,"K9, Food Court, DLF Phase 2",246,https://www.openstreetmap.org/node/2401099308
+World Laparoscopy Hospital,hospital,,,,278,https://www.openstreetmap.org/way/127245642
+Mukesh Dhaba,restaurant,,,"Service Road, Gurgaon",314,https://www.openstreetmap.org/node/3642197067
+Guavus Network Systems1,it,,,,349,https://www.openstreetmap.org/node/3749005710
+The Body Shop India,supermarket,,,"UGF-B, Unit 4 B Ground Floor, Building No.10, Cyber Hub, Gurugram, Haryana 122002, gurugram",372,https://www.openstreetmap.org/node/8014425488
+English Wine and Beer,alcohol,,,,376,https://www.openstreetmap.org/node/444208659
+Dyninno,company,+91 1244398587,https://dyninno.com/en/offices/india/,,381,https://www.openstreetmap.org/node/13243404915
+Standard Chartered,bank,,,,382,https://www.openstreetmap.org/node/482663982
+ICICI Bank,bank,,https://www.icicibank.com,"Tower A, DLF Cyber Green",383,https://www.openstreetmap.org/node/4496525913
+Ericsson,company,,,,384,https://www.openstreetmap.org/node/13243404917
+DLF OFFICES,company,+91-124-4396000,https://www.dlf.in/offices/,"DLF Gateway Tower, R Block, Gurugram",386,https://www.openstreetmap.org/node/10770868565
+91 Springboard,coworking,,https://www.91springboard.com/co-working-office-space-gurugram/7a-dlf-cyber-city/,,387,https://www.openstreetmap.org/node/13243404916
+McDonald's,fast_food,,,,399,https://www.openstreetmap.org/node/4601388390
+Deutsche Bank,bank,,,"DLF Infinity Towers (A), DLF Phase II, Sector 25A, DLF City, Gurgaon 122002",407,https://www.openstreetmap.org/node/4496534357
+Boston Consulting Group,consulting,+91 124 475 1500,https://www.bcg.com/offices/knowledge-analytics-new-delhi.aspx,,433,https://www.openstreetmap.org/node/6176385343
+barrique,bar,,,GF-03A,449,https://www.openstreetmap.org/node/2334369683
+The God Father,bar,,,,460,https://www.openstreetmap.org/node/6398553785
+Daily Need General Store,confectionery,,,,499,https://www.openstreetmap.org/node/10961015275
+Bravura Solutions,insurance,,,,553,https://www.openstreetmap.org/node/6392418985
+Darpan Skin & Mind Clinic,clinic,,,,594,https://www.openstreetmap.org/node/7622826287
+BlackRock,financial,,,Gurugram,596,https://www.openstreetmap.org/node/5596432684
+RBS Dental Clinic,dentist,,,,617,https://www.openstreetmap.org/node/7622826336
+Protiviti Consulting,consulting,,https://www.protiviti.com/in-pcc,"Tower A Building 5, DLF Phase 3, Gurgaon",624,https://www.openstreetmap.org/node/10836628578
+shandhar momos,fast_food,,,,628,https://www.openstreetmap.org/node/12620813102
+Shri Balaji Medical Store,pharmacy,+124 6470708,,"49-50, U-13, Gurgram",639,https://www.openstreetmap.org/node/4219527516
+Asha Multispeciality Clinic,clinic,,,,651,https://www.openstreetmap.org/node/7622826272
+Indian Oil,fuel,,,,664,https://www.openstreetmap.org/node/249054695
+Relief Physiotherapy Clinic,clinic,,,,686,https://www.openstreetmap.org/node/7622826327
+"Kailash Nursing Home, Gurgaon",clinic,,,,704,https://www.openstreetmap.org/node/6994210829
+Trident Hotel,hotel,,,,715,https://www.openstreetmap.org/node/438035810
+"BraaiCraft - BBQs, Offset Smokers, Grills, Firepits & Outdoor Kitchens",company,+919980851233,https://www.braaicraft.com/,"150, National Media Centre, Gurgaon",748,https://www.openstreetmap.org/node/13234594543
+"Taikisha Engineering PVT, LTD.",company,,,,751,https://www.openstreetmap.org/node/6484791185
+Anvika Professional Salon,beauty,918527470969,https://anvika-professional.grexa.site/,"45,46, Street No. 1, U Block, DLF Phase 3, Sector 24, Gurugram",769,https://www.openstreetmap.org/node/13846314782
+द: NUKKAD,cafe,+919821261643,https://,"M1, DLF City, Phase-2",776,https://www.openstreetmap.org/way/1236528030
+Cosmodentz Dental Clinic,dentist,,,,786,https://www.openstreetmap.org/node/7622826293
+World's Finest Spirits,alcohol,,,Gurgaon,822,https://www.openstreetmap.org/way/351608309
+The Oberoi Patisserie And Delicatessen,bakery,,,,837,https://www.openstreetmap.org/node/4710042089
+RBS Hospital,hospital,,,,862,https://www.openstreetmap.org/way/453862916
+Knite Ryder,restaurant,,,,881,https://www.openstreetmap.org/node/10688625178
+Machaan,pub,,,,888,https://www.openstreetmap.org/node/477905016
+Dental Harbour,dentist,,,,932,https://www.openstreetmap.org/node/7622826289
+R.N Clinic,clinic,,,,1048,https://www.openstreetmap.org/node/7622826364
+Shri Ram Memorial Hospital,hospital,,,,1050,https://www.openstreetmap.org/node/7010125933
+DEL24 Amazon (ADCI),company,,,"Floor 5-8, Block 3, DLF Downtown, Delhi-Gurugram Expressway, Gurugram",1070,https://www.openstreetmap.org/node/11455774482
+Biba,clothes,,,,1164,https://www.openstreetmap.org/node/13296688598
+Aurelia,clothes,,,,1169,https://www.openstreetmap.org/node/13296721109
+Barbeque Nation,restaurant,,,,1171,https://www.openstreetmap.org/node/13296605616
+Delsey Paris,bag,,,,1172,https://www.openstreetmap.org/node/13296721110
+Sabhyata,clothes,,,,1172,https://www.openstreetmap.org/node/13296721127
+Ancestry,clothes,,,,1173,https://www.openstreetmap.org/node/13296688581
+Gola Sizzlers,restaurant,,,,1175,https://www.openstreetmap.org/node/13296680520
+COWI India,company,+91124 409 2500,https://www.cowi.com,"2nd Floor, DLF Downtown, Block 2, Sector 24, Delhi-Gurugram Expressway, Gurugram",1176,https://www.openstreetmap.org/node/11521864528
+Anita Dongre,clothes,,,,1178,https://www.openstreetmap.org/node/13296721114
+Vi-John Tower,company,,,,1181,https://www.openstreetmap.org/node/11160320805
+Sweet Dreams,clothes,,,,1182,https://www.openstreetmap.org/node/13296688592
+Indus Flavour,restaurant,,,,1186,https://www.openstreetmap.org/node/13296605617
+Globaldesi,clothes,,,,1187,https://www.openstreetmap.org/node/13296688596
+Upkar Clinic,clinic,,,,1188,https://www.openstreetmap.org/node/7622826331
+Zambar,restaurant,,,,1189,https://www.openstreetmap.org/node/13296680521
+W,clothes,,,,1192,https://www.openstreetmap.org/node/13296721126
+Breaking Brew,restaurant,,,,1196,https://www.openstreetmap.org/node/13296605614
+Ritu Kumar,clothes,,,,1197,https://www.openstreetmap.org/node/13296688586
+Fabindia,clothes,,,,1197,https://www.openstreetmap.org/node/13296721119
+Haldiram's,fast_food,,,,1202,https://www.openstreetmap.org/node/13296680512
+Jaypor,clothes,,,,1203,https://www.openstreetmap.org/node/13296721107
+Amazone Residency Dlf Phase 3 Gurugram,hotel,+919871237434,https://gurugramhotel.com/,"37/8, V Block, 37 lane, gurugram",1204,https://www.openstreetmap.org/node/10685628359
+Themis Barbeque House,restaurant,,,,1207,https://www.openstreetmap.org/node/13296605622
+Jamie Oliver Kitchen,restaurant,,,,1209,https://www.openstreetmap.org/node/13296673492
+Saundh,clothes,,,,1209,https://www.openstreetmap.org/node/13296688585
+Krishna Family Clinic,clinic,,,,1213,https://www.openstreetmap.org/node/7622826292
+Van Heusen,clothes,,,,1213,https://www.openstreetmap.org/node/13296721101
+TGI Fridays,restaurant,,,,1214,https://www.openstreetmap.org/node/13296680517
+Manbhavan,restaurant,,,,1215,https://www.openstreetmap.org/node/13296605625
+Sun Villa Gurgaon,hotel,+91-1244148104,http://www.sunvillagurgaon.com,"39E, Akashneem Marg, Gurgaon",1216,https://www.openstreetmap.org/node/9246966086
+Anokhi,clothes,,,,1217,https://www.openstreetmap.org/node/13296721117
+Guftagu Cafe,cafe,,,,1219,https://www.openstreetmap.org/node/10209710086
+Sagar Ratna,restaurant,,,,1220,https://www.openstreetmap.org/node/13296673499
+Panna,clothes,,,,1220,https://www.openstreetmap.org/node/13296721129
+Suvasa,clothes,,,,1221,https://www.openstreetmap.org/node/13296688593
+Punjabi By Nature,restaurant,,,,1222,https://www.openstreetmap.org/node/13296605620
+Meena Bazaar,clothes,,,,1225,https://www.openstreetmap.org/node/13296688583
+Go Colors!,clothes,,,,1225,https://www.openstreetmap.org/node/13296721115
+Swagat Restro Bar,restaurant,,,,1226,https://www.openstreetmap.org/node/13296680501
+PizzaExpress,restaurant,,,,1231,https://www.openstreetmap.org/node/13296680526
+Mohanlal Sons,clothes,,,,1231,https://www.openstreetmap.org/node/13296721104
+Shalom Cafe,restaurant,,,,1237,https://www.openstreetmap.org/node/13296680516
+The Chocolate Room,chocolate,,,,1239,https://www.openstreetmap.org/node/13296673496
+Krispy Kreme,fast_food,,,,1242,https://www.openstreetmap.org/node/13296680522
+Reliance Digital,electronics,,,,1242,https://www.openstreetmap.org/node/13296721116
+Daryaganj,restaurant,,,,1243,https://www.openstreetmap.org/node/13296680514
+Pure,interior_decoration,,,,1245,https://www.openstreetmap.org/node/13296688589
+Häagen-Dazs,ice_cream,,,,1247,https://www.openstreetmap.org/node/13296680518
+YouMee,restaurant,,,,1248,https://www.openstreetmap.org/node/13296673498
+Mi Arcus,clothes,,,,1249,https://www.openstreetmap.org/node/13296721108
+Kate & Oscar,clothes,,,,1251,https://www.openstreetmap.org/node/13296721123
+One Friday,clothes,,,,1254,https://www.openstreetmap.org/node/13296688600
+Toy Factory,toys,,,,1262,https://www.openstreetmap.org/node/13296721112
+Mustard,clothes,,,,1262,https://www.openstreetmap.org/node/13296721113
+Spezia Bistro,restaurant,,,,1265,https://www.openstreetmap.org/node/13296673497
+Sony Centre,electronics,,,,1265,https://www.openstreetmap.org/node/13296721111
+Soch,clothes,,,,1267,https://www.openstreetmap.org/node/13296721128
+Pizza Hut,restaurant,,,,1272,https://www.openstreetmap.org/node/13296673490
+Iconic Kids,clothes,,,,1273,https://www.openstreetmap.org/node/13296721118
+Samsonite,bag,,,,1274,https://www.openstreetmap.org/node/13296688594
+KFC,fast_food,,,,1279,https://www.openstreetmap.org/node/13296680511
+Mothercare,baby_goods,,,,1279,https://www.openstreetmap.org/node/13296688587
+Chicco,baby_goods,,,,1285,https://www.openstreetmap.org/node/13296688590
+Andrea's Eatery,restaurant,,,,1288,https://www.openstreetmap.org/node/13296680507
+Ambience Mall,mall,0124-4737123,,"Ambience Island, Gurugram",1289,https://www.openstreetmap.org/way/267001567
+D'Shoe Lounge,shoes,,,,1291,https://www.openstreetmap.org/node/13296688580
+Surgi Center Clinic,clinic,,,,1292,https://www.openstreetmap.org/node/6994253587
+In The Punjab,restaurant,,,,1296,https://www.openstreetmap.org/node/13296673493
+Hush Puppies,shoes,,,,1296,https://www.openstreetmap.org/node/13296721103
+Lenovo,computer,,,,1297,https://www.openstreetmap.org/node/13296721121
+Bluestone,jewelry,,,,1298,https://www.openstreetmap.org/node/13296688582
+"Ambience Mall, Gurugram",mall,,,"NH 8, Ambience Island, DLF Phase 3, Sector 24, Gurugram, Haryana, Gurugram",1301,https://www.openstreetmap.org/node/11436616920
+Mamagoto,restaurant,,,,1304,https://www.openstreetmap.org/node/13296680510
+Narayana multispeciaity hospital,hospital,,,,1307,https://www.openstreetmap.org/node/12609739301
+Adidas,sports,,,,1307,https://www.openstreetmap.org/node/13296688584
+Lenskart,optician,,,,1307,https://www.openstreetmap.org/node/13296688588
+Dhaba,restaurant,,,,1313,https://www.openstreetmap.org/node/13296680523
+Noi Tre,hairdresser,,,,1313,https://www.openstreetmap.org/node/13296721130
+Cromā,electronics,,,,1319,https://www.openstreetmap.org/node/13296688591
+PVR Ambience,cinema,,,,1320,https://www.openstreetmap.org/node/410058757
+Ecco,shoes,,,,1320,https://www.openstreetmap.org/node/13296688597
+H&M,clothes,,,,1335,https://www.openstreetmap.org/node/13296688599
+Nail Edit,beauty,,,,1341,https://www.openstreetmap.org/node/13296673500
+The Nailashes Studio,beauty,,,,1346,https://www.openstreetmap.org/node/13296673495
+Nails & Lashes,beauty,,,,1354,https://www.openstreetmap.org/node/13296721102
+Zara,clothes,,https://zara.com,,1362,https://www.openstreetmap.org/node/10086332517
+Parishram Resources,company,,,,1364,https://www.openstreetmap.org/node/7116650481
+Dr. Khullar's Dental Clinic,dentist,,,,1382,https://www.openstreetmap.org/node/7622826270
+The Leela,hotel,,https://www.theleela.com/,,1412,https://www.openstreetmap.org/node/1801156437
+Garg Dental Care,dentist,,,,1419,https://www.openstreetmap.org/node/7622826314
+State Bank of India,bank,,https://www.sbi.co.in,,1433,https://www.openstreetmap.org/node/484198839
+Nagarro Software Pvt Ltd,it,,https://www.nagarro.com,"13, Sub.Major Laxmi Chand Rd, Gurgaon",1467,https://www.openstreetmap.org/way/142938989
+Dr Lal Pathlabs,hospital,,,,1483,https://www.openstreetmap.org/node/11750077269
+Dex Labs Analytics,educational_institution,,,"K3, Gurugram",1496,https://www.openstreetmap.org/node/6342613017
+DLF City Club Swimming Pool,sports_centre,,,,1504,https://www.openstreetmap.org/way/456875783
+DLF City Club Hotel,hotel,,,,1509,https://www.openstreetmap.org/way/350514135
+Uma Sanjeevani Health Centre And Hospital,hospital,,,,1513,https://www.openstreetmap.org/node/6994228914
+Pure Veg / Mother Dairy,greengrocer,,,,1517,https://www.openstreetmap.org/node/1384029870
+Dental Cure and Care Centre,dentist,,,,1523,https://www.openstreetmap.org/node/7622826279
+DLF City Club Gym,fitness_centre,,,,1528,https://www.openstreetmap.org/node/4531095007
+DLF City Club,hotel,,,,1536,https://www.openstreetmap.org/way/456875786
+Guardian,pharmacy,,,,1543,https://www.openstreetmap.org/node/537994222
+98.4,pharmacy,,,,1568,https://www.openstreetmap.org/node/537994221
+Religare Wellness,pharmacy,,,,1579,https://www.openstreetmap.org/node/537994220
+HSBC,bank,,,,1589,https://www.openstreetmap.org/node/267127244
+Xchanging Gurgaon,company,,,"271, udhyog vihar, phase - 2, Gurgaon, Haryana",1591,https://www.openstreetmap.org/node/2945147133
+GKB Opticals,optician,,,,1592,https://www.openstreetmap.org/node/537994223
+Kotak Mahindra Bank;india,bank,,https://www.kotak.com/,,1609,https://www.openstreetmap.org/node/271336428
+Sikanderpur Fish Market,butcher,,,,1621,https://www.openstreetmap.org/way/1433587273
+Axis Bank,bank,,https://www.axisbank.com,,1643,https://www.openstreetmap.org/node/537979966
+Suchali's Artisan Bakehouse,bakery,,,,1649,https://www.openstreetmap.org/node/13243334783
+Blue Tokai Coffee Roasters,cafe,,,,1650,https://www.openstreetmap.org/node/13243334788
+The Coffee Bean & Tea Leaf,cafe,,,,1654,https://www.openstreetmap.org/node/13243334785
+Spencer's,supermarket,,https://www.spencers.in/,"Mehrauli Gurgaon Road, DELHI",1655,https://www.openstreetmap.org/node/1579182266
+Third Wave Coffee Roasters,coffee,,,,1658,https://www.openstreetmap.org/node/13110400367
+Starbucks,cafe,,,,1661,https://www.openstreetmap.org/node/6071161049
+Dohful,coffee,,,,1665,https://www.openstreetmap.org/node/13243334787
+Chaayos,cafe,,,,1666,https://www.openstreetmap.org/node/13243334782
+Grand Mall,mall,,,,1678,https://www.openstreetmap.org/way/144358732
+JMD Regent Plaza,mall,9625318281,,Gurugram,1689,https://www.openstreetmap.org/way/43022517
+Renault,car,,,,1692,https://www.openstreetmap.org/node/10593661439
+Maruti Suzuki NEXA,car,,,,1693,https://www.openstreetmap.org/node/13243334781
+MGF Mega City,mall,,,,1694,https://www.openstreetmap.org/way/144358733
+Mahindra,car,,,,1701,https://www.openstreetmap.org/node/6071158916
+G-Town Wines,alcohol,,,Gurugram,1703,https://www.openstreetmap.org/node/10690963350
+Jockey,clothes,,,,1714,https://www.openstreetmap.org/node/13890672533
+Qurbat,clothes,,,,1715,https://www.openstreetmap.org/node/13890672585
+Red Orchid Spa MG Road,massage,+91-9899620796,,"Unit no 18, MGF Mega City Mall, Unit No 18, First Floor, Mehrauli-Gurgaon Road, Gurugram",1717,https://www.openstreetmap.org/node/11238183299
+Louis Philippe,clothes,,,,1717,https://www.openstreetmap.org/node/13890672611
+Sahara Mall,mall,,,,1718,https://www.openstreetmap.org/way/144358735
+Linen Club,clothes,,,,1720,https://www.openstreetmap.org/node/13890672540
+Allen Solly,clothes,,,,1724,https://www.openstreetmap.org/node/13890652475
+Carlton,bag,,,,1724,https://www.openstreetmap.org/node/13890672551
+National Highway Authority of India,government,,,,1725,https://www.openstreetmap.org/node/2908667702
+Mumuso,fashion_accessories,,,,1725,https://www.openstreetmap.org/node/13890672587
+Safari,bag,,,,1727,https://www.openstreetmap.org/node/13890672542
+Mokobara,bag,,,,1729,https://www.openstreetmap.org/node/13890672574
+Lacoste,clothes,,,,1730,https://www.openstreetmap.org/node/13890672604
+Crimsoune Club,clothes,,,,1731,https://www.openstreetmap.org/node/13890672523
+Lakshita,clothes,,,,1731,https://www.openstreetmap.org/node/13890672546
+Uppercase,bag,,,,1734,https://www.openstreetmap.org/node/13890672544
+PVR Cinames,cinema,,,,1735,https://www.openstreetmap.org/node/410058755
+Hair Masters,beauty,,,,1735,https://www.openstreetmap.org/node/13890672515
+Sindhi Dry Fruits And Namkeen,confectionery,,,,1735,https://www.openstreetmap.org/node/13890672595
+Manyavar,clothes,,,,1735,https://www.openstreetmap.org/node/13890672622
+Blackberrys,clothes,,,,1737,https://www.openstreetmap.org/node/13890672556
+Big Bazaar,supermarket,,,,1738,https://www.openstreetmap.org/node/537979959
+Shyaway,clothes,,,,1738,https://www.openstreetmap.org/node/13890672508
+Neelkanth Medicos,pharmacy,,,,1739,https://www.openstreetmap.org/node/9703764298
+Cobb,clothes,,,,1739,https://www.openstreetmap.org/node/13890672549
+D Shoe Lounge,shoes,,,,1740,https://www.openstreetmap.org/node/13890652496
+Inc. 5,shoes,,,,1740,https://www.openstreetmap.org/node/13890672570
+Doc. Deepa,clinic,,,,1741,https://www.openstreetmap.org/node/9703790498
+Savvyy,clothes,,,,1741,https://www.openstreetmap.org/node/13890672575
+Regent Mall,mall,,,,1742,https://www.openstreetmap.org/way/144358734
+EMCEE BEAUTY - Customize your own Natural Lipstick at first lip studio in India,cosmetics,+919119304111,https://emceebeauty.com/,"No. 5, Second Floor, MGF Metropolis Mall, Gurgaon",1743,https://www.openstreetmap.org/node/8520868633
+Delsey,bag,,,,1743,https://www.openstreetmap.org/node/13890672511
+Krti Life,gift,,,,1744,https://www.openstreetmap.org/node/13890672530
+Myror,clothes,,,,1744,https://www.openstreetmap.org/node/13890672535
+Being Human,clothes,,,,1745,https://www.openstreetmap.org/node/13890672573
+Wildcraft,bag,,,,1747,https://www.openstreetmap.org/node/13890652492
+VIP,bag,,,,1748,https://www.openstreetmap.org/node/13890652495
+Om Bookshop,books,,,,1748,https://www.openstreetmap.org/node/13890672516
+Liberty Exclusive Showroom,shoes,,,,1749,https://www.openstreetmap.org/node/13890672598
+Flying Machine,clothes,,,,1750,https://www.openstreetmap.org/node/13890672552
+Anganwadi,government,,,,1751,https://www.openstreetmap.org/node/9703790499
+Boton Optician,optician,,,,1753,https://www.openstreetmap.org/node/13890672580
+Vicinxa,bag,,,,1754,https://www.openstreetmap.org/node/13890652487
+Retail Dost,electronics,,,,1754,https://www.openstreetmap.org/node/13890672612
+Dayal Opticals,optician,,,,1755,https://www.openstreetmap.org/node/13890672609
+Speedo,clothes,,,,1755,https://www.openstreetmap.org/node/13890672613
+Louis Stitch,shoes,,,,1755,https://www.openstreetmap.org/node/13890672614
+More and Beyond,clothes,,,,1757,https://www.openstreetmap.org/node/13890672506
+Puma,clothes,,,,1757,https://www.openstreetmap.org/node/13890672541
+PVR Metropolitan,cinema,,,,1758,https://www.openstreetmap.org/node/890699094
+Candy Kindom,confectionery,,,,1758,https://www.openstreetmap.org/node/13890672594
+Mufti,clothes,,,,1758,https://www.openstreetmap.org/node/13890672615
+Belirams,gift,,,,1759,https://www.openstreetmap.org/node/13890672548
+Mochi,shoes,,,,1760,https://www.openstreetmap.org/node/13890672531
+Geetanjali Studio,beauty,,,,1761,https://www.openstreetmap.org/node/13890652498
+Archies,gift,,,,1761,https://www.openstreetmap.org/node/13890672524
+Reid & Taylor,clothes,,,,1761,https://www.openstreetmap.org/node/13890672558
+Baskin-Robbins,ice_cream,,,,1762,https://www.openstreetmap.org/node/13890672539
+American Tourister,bag,,,,1762,https://www.openstreetmap.org/node/13890672571
+Caprese,bag,,,,1762,https://www.openstreetmap.org/node/13890672597
+Dolce Gelat,ice_cream,,,,1763,https://www.openstreetmap.org/node/13890672505
+Raymond,clothes,,,,1763,https://www.openstreetmap.org/node/13890672591
+LogisticMart,company,,,"Office No 309, Vipul Agora Building, Mehrauli-Gurgaon Rd, Gurugram",1764,https://www.openstreetmap.org/node/6494271815
+Ibadat,clothes,,,,1764,https://www.openstreetmap.org/node/13890672503
+Ethnix by Raymond,clothes,,,,1764,https://www.openstreetmap.org/node/13890672504
+Enamor,clothes,,,,1766,https://www.openstreetmap.org/node/13890652489
+Hidesign,leather,,,,1766,https://www.openstreetmap.org/node/13890672565
+Taco Bell,fast_food,,,,1768,https://www.openstreetmap.org/node/13890652500
+Peter England,clothes,,,,1768,https://www.openstreetmap.org/node/13890672584
+Crocs,shoes,,,,1770,https://www.openstreetmap.org/node/13890672620
+Casio,watches,,,,1771,https://www.openstreetmap.org/node/13890672561
+Date the Ramp,clothes,,,,1771,https://www.openstreetmap.org/node/13890672610
+Igadget,electronics,,,,1772,https://www.openstreetmap.org/node/13890652488
+Aafarin,confectionery,,,,1774,https://www.openstreetmap.org/node/13890652481
+Bercos,fast_food,,,,1774,https://www.openstreetmap.org/node/13890652491
+Lenovo,electronics,,,,1775,https://www.openstreetmap.org/node/13890672616
+Indigo,clothes,,,,1776,https://www.openstreetmap.org/node/13890652477
+Pizza By Stone Oven,restaurant,,,,1776,https://www.openstreetmap.org/node/13890672527
+HDFC Bank,bank,,https://www.hdfcbank.com,,1777,https://www.openstreetmap.org/node/537979936
+Subway,fast_food,,,,1777,https://www.openstreetmap.org/node/13890672526
+Dosa Plaza,restaurant,,,,1778,https://www.openstreetmap.org/node/13890672576
+Baggit,bag,,,,1779,https://www.openstreetmap.org/node/13890652486
+My Nail Studio,beauty,,,,1779,https://www.openstreetmap.org/node/13890672600
+The Bristol Hotel,hotel,01244351111,https://www.thebristolhotel.in,Gurugram,1779,https://www.openstreetmap.org/way/144358736
+Levi's,clothes,,,,1782,https://www.openstreetmap.org/node/13890672608
+imagine,electronics,,,,1783,https://www.openstreetmap.org/node/13890672529
+Go Colors,clothes,,,,1783,https://www.openstreetmap.org/node/13890672602
+Reebok,clothes,,,,1785,https://www.openstreetmap.org/node/13890672501
+Rajasthali,restaurant,,,,1786,https://www.openstreetmap.org/node/13890672592
+Bata,shoes,,,,1787,https://www.openstreetmap.org/node/13890672525
+Gianis,ice_cream,,,,1787,https://www.openstreetmap.org/node/13890672550
+MGF Metropolitan,mall,,,,1788,https://www.openstreetmap.org/node/1374529955
+Pan Bangkok,restaurant,,,,1789,https://www.openstreetmap.org/node/9213699811
+The Belgian Waffle co,fast_food,,,,1789,https://www.openstreetmap.org/node/13890672583
+Hp World,electronics,,,,1790,https://www.openstreetmap.org/node/13890672538
+Kushals,jewelry,,,,1790,https://www.openstreetmap.org/node/13890672568
+Street Food By Punjab Grill,restaurant,,,,1792,https://www.openstreetmap.org/node/13890672502
+Square The Coffee Shop,coffee,,,,1792,https://www.openstreetmap.org/node/13890672599
+Genpact,yes,,,,1793,https://www.openstreetmap.org/node/266740748
+Mia by Tanishq,jewelry,,,,1794,https://www.openstreetmap.org/node/13890672509
+Wow China,fast_food,,,,1795,https://www.openstreetmap.org/node/13890672560
+Chaat Ka Chaska,fast_food,,,,1796,https://www.openstreetmap.org/node/13890672586
+Titan Eye+,optician,,,,1798,https://www.openstreetmap.org/node/13890672617
+Wow! Momo,fast_food,,,,1798,https://www.openstreetmap.org/node/13890672619
+Lord Krishna Bank,bank,,,,1799,https://www.openstreetmap.org/node/271336389
+Mad Over Donuts,fast_food,,,,1800,https://www.openstreetmap.org/node/13890672554
+Asus,electronics,,,,1801,https://www.openstreetmap.org/node/13890672521
+Zivame,clothes,,,,1802,https://www.openstreetmap.org/node/13890672601
+Chicago Pizza,fast_food,,,,1806,https://www.openstreetmap.org/node/13890672569
+Jhon Pride,clothes,,,,1808,https://www.openstreetmap.org/node/13890672567
+Park Avenue,clothes,,,,1809,https://www.openstreetmap.org/node/13890652483
+labneh,fast_food,,,,1810,https://www.openstreetmap.org/node/13890672618
+Wow World of Watches,watches,,,,1812,https://www.openstreetmap.org/node/13890652484
+NutrioBox Gurugram,fast_food,,https://www.nutriobox.com/,"Mehrauli-Gurgaon Rd, DLF Phase 2, Sector 25, Gurugram, Haryana 122002, Gurgaon",1815,https://www.openstreetmap.org/node/8130326878
+Khadak Singh Da Dhaba,restaurant,,,,1815,https://www.openstreetmap.org/node/13890672559
+Diamond Lleaf,jewelry,,,,1815,https://www.openstreetmap.org/node/13890672578
+Meena Bagaar,clothes,,,,1815,https://www.openstreetmap.org/node/13890672596
+Columbia,clothes,,,,1816,https://www.openstreetmap.org/node/13890652493
+ABN Amro,bank,,,,1817,https://www.openstreetmap.org/node/537979943
+Malabar,jewelry,,,,1817,https://www.openstreetmap.org/node/10593670010
+D Biryani & More,restaurant,,,,1819,https://www.openstreetmap.org/node/13890672566
+Dr. Khosla's Dental Clinic,dentist,+91-124-4036918,,H-35,1820,https://www.openstreetmap.org/node/9447044303
+Color Plus,clothes,,,,1821,https://www.openstreetmap.org/node/13890672581
+Cut and Style,beauty,,,,1824,https://www.openstreetmap.org/node/13890672532
+Lavie,bag,,,,1826,https://www.openstreetmap.org/node/13890672543
+Rolta Corporate Park,yes,,,"187, Udyog Vihar Phase -1, Gurgaon, Haryana",1827,https://www.openstreetmap.org/node/2507527927
+IndusInd Bank,bank,,https://www.indusind.com,,1829,https://www.openstreetmap.org/node/537979940
+Queens,nightclub,,,,1836,https://www.openstreetmap.org/node/13890672588
+Shoppers Stop,department_store,,,,1839,https://www.openstreetmap.org/node/13890672522
+Coco,nuts,,,,1841,https://www.openstreetmap.org/node/13890652476
+Accessorize,fashion_accessories,,,,1843,https://www.openstreetmap.org/node/13890672589
+Sweet Corn,fast_food,,,,1844,https://www.openstreetmap.org/node/13890672577
+Lord Krishna Hospital,hospital,,,,1855,https://www.openstreetmap.org/node/7009225899
+Anisa Tavisha Villa,hotel,,,,1870,https://www.openstreetmap.org/node/13640172502
+DT Cinemas,cinema,,,,1873,https://www.openstreetmap.org/node/537972377
+St Stephen's Hospital Health Care Facility,hospital,,,,1878,https://www.openstreetmap.org/node/7622826267
+Ranbaxy,yes,,,,1879,https://www.openstreetmap.org/node/266740732
+Spar,supermarket,,https://www.sparindia.com/,"Mehrauli Gurgaon Road, Gurgaon",1900,https://www.openstreetmap.org/node/6342618184
+MGF Megapolis Mall,mall,,,,1917,https://www.openstreetmap.org/way/144358928
+AVL India,company,,,"376-377, UDYOG VIHAR",1936,https://www.openstreetmap.org/node/11909251967
+Bharat Petroleum,fuel,,,,1961,https://www.openstreetmap.org/node/6071158915
+DT City Center,mall,,,,1967,https://www.openstreetmap.org/way/144358926
+Smile Group,yes,,,,1967,https://www.openstreetmap.org/way/1340025697
+Tata Motors,car,,,,1968,https://www.openstreetmap.org/node/13176666796
+SIGN3,company,,,,1986,https://www.openstreetmap.org/node/12395549710
+Kohler,appliance,,,,1997,https://www.openstreetmap.org/node/13176681051
+Vinfast,car,,,,2005,https://www.openstreetmap.org/node/13176681050
+Medklaire,beauty,,,,2005,https://www.openstreetmap.org/node/13176681052
+M2M Cybernetics,company,,http://www.m2mcybernetics.com,"301, 4B, Mehrauli Gurgaon Road, Gurgaon",2019,https://www.openstreetmap.org/node/267122070
+Surabhi Arya,clothes,,,,2024,https://www.openstreetmap.org/node/13246426332
+Rainbow Toys,toys,+91 01244039833,,,2027,https://www.openstreetmap.org/node/13246426333
+Regalo Kitchens,kitchen,,,,2029,https://www.openstreetmap.org/node/13246426334
+Mayuri's Bespoke Studio,tailor,,,,2032,https://www.openstreetmap.org/node/13246426335
+Shutiq,shoes,,,,2034,https://www.openstreetmap.org/node/13246426337
+Fortune Hotel,hotel,,,,2067,https://www.openstreetmap.org/way/144272764
+cult.fit,fitness_centre,,,,2081,https://www.openstreetmap.org/node/13246426339
+House of Lalittya,interior_design,+91 9810318175,https://www.lalittya.com/,,2085,https://www.openstreetmap.org/node/13246426340
+Acer Mall,computer,+91 9513384675,https://acermall.shopacer.co.in/shop/a-one-music&computers-acer-mall-exclusive-store-desktop-shop-computer-showroom-in-haryana-gurgaon-1660,,2086,https://www.openstreetmap.org/node/13246426343
+Smart24x7 Response Services Pvt. Ltd,government,+91,https://www.smart24x7.com/,"10, Gulmohar Marg, DLF CITY, Phase 2",2087,https://www.openstreetmap.org/node/11357405976
+Gurgaon Bikes,bicycle,,,,2088,https://www.openstreetmap.org/node/13246426342
+Sikka Maternity And Surgical Center,hospital,,,,2089,https://www.openstreetmap.org/node/7010378677
+House of Urvashi,clothes,,,,2090,https://www.openstreetmap.org/node/13246426344
+Wooden Street,furniture,,https://www.woodenstreet.com/,,2091,https://www.openstreetmap.org/node/13246426341
+Skoda,car,,,,2097,https://www.openstreetmap.org/node/13176626197
+Gulati Indian Food,restaurant,,,,2102,https://www.openstreetmap.org/node/13176626194
+Divine Look Clinic Centre 1,clinic,,http://www.divinelook.in/,,2110,https://www.openstreetmap.org/node/6993921094
+Seven Barrel Brew Pub,bar,+91-95992-30886;+91-72178-19353,,"Golf Course Road, DLF Phase 1, Gurgaon",2112,https://www.openstreetmap.org/node/13175452494
+Bodycraft Salon,hairdresser,+91 9035723785,https://www.bodycraft.co.in/location-salon/gurgaon/spa-and-salon-in-dlf-phase-1,,2113,https://www.openstreetmap.org/node/13246426345
+Bharat Reshma,clothes,+91 9811035034,https://bharatreshma.com/pages/gurugram-store-haryana,,2116,https://www.openstreetmap.org/node/13246426346
+The Golden Dragon,restaurant,,,,2117,https://www.openstreetmap.org/node/13175500408
+Gulati,restaurant,,https://gulatirestaurant.co,,2117,https://www.openstreetmap.org/node/13175500421
+Chai Town Cafe,fast_food,,,,2123,https://www.openstreetmap.org/node/13175500412
+Gurgaon Central Mall,mall,,,,2133,https://www.openstreetmap.org/node/417741649
+Barista,cafe,,,,2134,https://www.openstreetmap.org/node/13175452489
+Reliance Super,supermarket,,,,2137,https://www.openstreetmap.org/node/482664058
+Gurgaon Central,mall,,,,2140,https://www.openstreetmap.org/way/151993531
+IndiGo Emma Capital Tower 2,company,,,,2145,https://www.openstreetmap.org/node/11750077369
+Capital Diner,restaurant,,,,2147,https://www.openstreetmap.org/node/13175500411
+Mega Mall,mall,,,,2152,https://www.openstreetmap.org/way/42946057
+Sibang Bakery,cafe,,,,2157,https://www.openstreetmap.org/node/13175452490
+DT Mega Mall,supermarket,,,,2162,https://www.openstreetmap.org/node/410058752
+Theme Piano World,musical_instrument,,,,2162,https://www.openstreetmap.org/node/13175500414
+Yo! Dimsum,fast_food,,,,2165,https://www.openstreetmap.org/node/13175500415
+HARSHVIN CHEMICALS,company,,,,2166,https://www.openstreetmap.org/node/12041636100
+Momentz,gift,+91 9818683000,https://momentz.in/,,2170,https://www.openstreetmap.org/node/13176650930
+Mayank Chawla Menswear,clothes,,,,2172,https://www.openstreetmap.org/node/13176653299
+"Uncover Laser, Skin & Hair Clinic",doctors,+91 9752007200;+91 9220504407,https://uncover.co.in/,,2174,https://www.openstreetmap.org/node/13176674137
+Trade Uno Fabrics,fabric,+91 8130554637,https://www.tradeuno.com/,,2177,https://www.openstreetmap.org/node/13176669329
+Privat Hospital,hospital,,https://www.privathospital.org/,Mehrauli-Gurgaon Road,2178,https://www.openstreetmap.org/node/6994248249
+Ruchika Hurria,clothes,,,,2180,https://www.openstreetmap.org/node/13176679633
+Fat Tiger,fast_food,,,,2196,https://www.openstreetmap.org/node/13175452496
+Trooth Dental,dentist,,,,2202,https://www.openstreetmap.org/node/13176658578
+Alimentos,food_court,,,,2205,https://www.openstreetmap.org/way/1433587274
+Anahat Hospital,hospital,,,,2207,https://www.openstreetmap.org/node/6071092569
+PVR Mega Mall,cinema,,,,2220,https://www.openstreetmap.org/node/410058756
+Hyatt Place Gurgaon Udyog Vihar,hotel,,https://www.hyatt.com/en-US/hotel/india/hyatt-place-gurgaon-udyog-vihar/delzo,Old Delhi Gurgaon Road,2220,https://www.openstreetmap.org/way/634074196
+Vipul Motors,car_repair,,,,2229,https://www.openstreetmap.org/node/3567864503
+Neelkanth Hospital Pvt. Ltd,hospital,,https://www.neelkanthhospital.com/,,2239,https://www.openstreetmap.org/way/38106806
+Frontier Kia,car,+91 9619531996;+91 8045888759,,A-14,2246,https://www.openstreetmap.org/node/13176658577
+Recon,beauty,,,,2270,https://www.openstreetmap.org/node/13176643016
+Samsung,electronics,,,,2271,https://www.openstreetmap.org/node/13176643013
+Terragi,clothes,,,,2272,https://www.openstreetmap.org/node/13176704365
+"Sidhesh Hospital, Gurgaon",hospital,,,,2275,https://www.openstreetmap.org/node/6994329594
+Honda Motors,car_repair,,,,2276,https://www.openstreetmap.org/node/1648252763
+Maya Toys and Sports,toys,,,,2276,https://www.openstreetmap.org/node/13176643014
+Gorgia Properties,estate_agent,,,,2276,https://www.openstreetmap.org/node/13176704366
+Apollo Diagnostics,clinic,+91 124100021,,,2277,https://www.openstreetmap.org/node/13176643012
+Sunshine Preschool & Daycate,educational_institution,+91 9811930092,https://www.sunshineeductors.com,"1305, Maruti Vihar, Sector 28, Gurgaon",2299,https://www.openstreetmap.org/node/13028322510
+Bespoke Tailors,tailor,,,,2305,https://www.openstreetmap.org/node/13176667075
+Omaansh By kushal Jain of FAIRDEALS Karolbag,tailor,,,,2308,https://www.openstreetmap.org/node/13176667076
+Nail Story By Nalini,beauty,,,,2309,https://www.openstreetmap.org/node/13176667046
+Zaveri Bros Diamonds and Gold private limited,jeweller,,,,2313,https://www.openstreetmap.org/node/13176667078
+Ornaz,jeweller,,,,2318,https://www.openstreetmap.org/node/13176667047
+Eleve Salon,beauty,,,,2319,https://www.openstreetmap.org/node/13176667051
+Brijhair Artstry,beauty,,,,2321,https://www.openstreetmap.org/node/13176667050
+Seeash,video,,,,2321,https://www.openstreetmap.org/node/13176667064
+The Sleep Company,bed,,,,2338,https://www.openstreetmap.org/node/13176634082
+Verity Lex Legal Consulting,lawyer,+91 81786 72224; +91 95553 40017,,,2339,https://www.openstreetmap.org/node/13176652384
+Truefitt & Hill,hairdresser,,,,2339,https://www.openstreetmap.org/node/13176656902
+Fabuliv,furniture,,,,2339,https://www.openstreetmap.org/node/13176657054
+Tulip Kuchen,kitchen,,https://tulipkuchen.com/,,2339,https://www.openstreetmap.org/node/13176658809
+Kyra By Anita Arya,beauty,,,,2345,https://www.openstreetmap.org/node/13176667060
+Sanjeev Dutta Personality School,educational_institution,,,,2354,https://www.openstreetmap.org/node/13176667044
+Looks Salon,beauty,,,,2354,https://www.openstreetmap.org/node/13176667057
+Studio One,clothes,,,,2354,https://www.openstreetmap.org/node/13176667062
+Unitech Infospace Food Court,restaurant,,,,2357,https://www.openstreetmap.org/way/247672744
+Hair n Shanti Unisex Salon,beauty,,,,2358,https://www.openstreetmap.org/node/13176667045
+Paperfry.com,furniture,,,,2367,https://www.openstreetmap.org/node/13176667077
+Kanishk Mehta,clothes,,,,2369,https://www.openstreetmap.org/node/13176598977
+Dermapuritys Aesthetic Clinic,clinic,,,,2370,https://www.openstreetmap.org/node/13176646904
+Karan & Moin Menswear,clothes,,,,2371,https://www.openstreetmap.org/node/13176646905
+The Barber Salon,hairdresser,,,"524, Old Delhi Gurgaon Road, Gurgaon",2379,https://www.openstreetmap.org/node/5319690219
+Dr Ohris Dental Clinic,dentist,,,,2380,https://www.openstreetmap.org/node/13176653327
+Studio Bespoke: Gentlemen’s Attire,clothes,,,,2383,https://www.openstreetmap.org/node/13176636656
+Jewelounge,jewelry,,,,2383,https://www.openstreetmap.org/node/13176641404
+Doctor Ohris Dental Clinic,dentist,,,,2384,https://www.openstreetmap.org/node/13176641403
+Maruti Suzuki,car_repair,,,,2385,https://www.openstreetmap.org/node/11037384824
+The New Beginning,doctors,+91 124 422 7991; +91 124 422 7838; +91 98103 03336,,,2390,https://www.openstreetmap.org/node/13176643803
+Canteen,restaurant,,,,2390,https://www.openstreetmap.org/way/120110600
+Pause Spa,beauty,,,,2391,https://www.openstreetmap.org/node/13176653325
+Royal Enfield,motorcycle,,,,2394,https://www.openstreetmap.org/node/13176653334
+Evoke Hair Clinic,beauty,,,,2395,https://www.openstreetmap.org/node/13176653337
+Meadows,beauty,,,,2396,https://www.openstreetmap.org/node/13176653324
+Om Electrical,electrical,,,"12, A55",2426,https://www.openstreetmap.org/node/10925506088
+Shri Balaji Store,dairy,,,,2431,https://www.openstreetmap.org/node/10688307095
+The Cake Company,pastry,,,,2440,https://www.openstreetmap.org/node/10688316841
+Le Meridien Gurgaon,hotel,+91 124-4992000,https://www.marriott.com/en-us/hotels/deldm-le-meridien-gurgaon-delhi-ncr/overview/,"Sector 26, M.G. Road, Gurgaon Delhi Gurgaon Border, Gurgaon, Haryana, India, 122002",2442,https://www.openstreetmap.org/way/144272841
+GV Hair Unisex,beauty,,,,2447,https://www.openstreetmap.org/node/13176667049
+Hotel Luxe And Stayz,hotel,,,,2447,https://www.openstreetmap.org/node/13176694652
+Megha Darjeeling Restaurant,restaurant,7428205724,,"A55/14, DLF Phase 1, Sector 28",2448,https://www.openstreetmap.org/node/10908640655
+Bblunt Salon,beauty,,,,2449,https://www.openstreetmap.org/node/13176667056
+Heads Up for Tails,pet,,,,2451,https://www.openstreetmap.org/node/13176667055
+DuckDuckBaby,baby_goods,,,,2454,https://www.openstreetmap.org/node/13176619916
+Essel Towers Shopping Complex,convenience,,,,2458,https://www.openstreetmap.org/node/1375860397
+VLCC,beauty,,,,2460,https://www.openstreetmap.org/node/13176624280
+Aesthetics Redefined,beauty,,,,2465,https://www.openstreetmap.org/node/13176653336
+Le Meridien Hotel,hotel,,,"Sector 26, Gurgaon",2467,https://www.openstreetmap.org/way/266679859
+Red Orchid Spa Gurgaon,massage,+91-124-4287808,,"A 26/14, 2nd Floor, A 26, 14, Golf Course Rd, DLF Phase 1, Sector 28,, Gurugram",2472,https://www.openstreetmap.org/node/11238180264
+Geetanjali Salon,beauty,,,,2475,https://www.openstreetmap.org/node/10704460406
+RBL Bank,bank,,,,2505,https://www.openstreetmap.org/node/11930060342
+Grofers Supply Chain & CRM,company,,https://grofers.com/,GP43 Sector 18,2517,https://www.openstreetmap.org/node/7051812586
+Lakeforest Wines,alcohol,,,,2531,https://www.openstreetmap.org/node/11929097616
+Skechers,shoes,,,,2538,https://www.openstreetmap.org/node/9714358890
+GINNI Food,fast_food,,,,2557,https://www.openstreetmap.org/node/11688160110
+The BombayKery,bakery,,,,2561,https://www.openstreetmap.org/node/4709907892
+Barbecue Grill,restaurant,,,,2568,https://www.openstreetmap.org/node/2345064572
+Rarity Dental,dentist,+91 78994 18483,https://raritydental.com,,2572,https://www.openstreetmap.org/node/13176612124
+Bazar,convenience,,,,2576,https://www.openstreetmap.org/node/11025724805
+Kendriya Vidyalya AFS Rajokari,educational_institution,,,,2616,https://www.openstreetmap.org/node/11688160202
+บ้านโบว์,hotel,,,,2627,https://www.openstreetmap.org/node/4417125694
+Oriental Bank of Commerce,bank,,https://www.obcindia.co.in,,2650,https://www.openstreetmap.org/node/4068249294
+MK Yoga classes,fitness_centre,,,,2678,https://www.openstreetmap.org/way/1257188606
+DGD Rajokari,clinic,011-25063937,,,2681,https://www.openstreetmap.org/node/7138493186
+Westin,hotel,,,,2682,https://www.openstreetmap.org/way/75437811
+Dream Education Centre,stationery,,,,2684,https://www.openstreetmap.org/node/11688160118
+Orison Car rental,car_rental,,,,2686,https://www.openstreetmap.org/node/11688160116
+DS tatto art,tattoo,,,,2701,https://www.openstreetmap.org/node/11688160117
+EdOn Globals,educational_institution,,,,2701,https://www.openstreetmap.org/node/11688160125
+The Vidya Mandir Institute,educational_institution,,,,2717,https://www.openstreetmap.org/node/11688160123
+Shankar Ki Dukaan,yes,,,,2727,https://www.openstreetmap.org/node/11688160127
+marble market,marketplace,,,,2728,https://www.openstreetmap.org/way/143050456
+Skinfinity Derma,doctors,+91 8591110110,,,2731,https://www.openstreetmap.org/node/13246707608
+BabyJoy IVF,clinic,+91 9555044044,,,2734,https://www.openstreetmap.org/node/13246707609
+Kailash Hotal,motel,,,,2735,https://www.openstreetmap.org/node/11688160129
+DP Cloth,yes,,,,2736,https://www.openstreetmap.org/node/11688160126
+Thukral Hospital,hospital,,,,2739,https://www.openstreetmap.org/node/6997568727
+Daily Dose,alcohol,,,,2740,https://www.openstreetmap.org/node/10869059264
+VK Bachat Bazaar,mall,,,,2747,https://www.openstreetmap.org/node/11688160167
+Super Mart Fashion Hub,clothes,,,,2756,https://www.openstreetmap.org/node/11688160159
+Vinod Bag Manufacturing House,bag,,,,2757,https://www.openstreetmap.org/node/11688160160
+Air Force School,educational_institution,,,,2761,https://www.openstreetmap.org/node/11688160115
+Krishna Healthcare Centre,yes,,,,2763,https://www.openstreetmap.org/node/11688160163
+Vikas stationary and gift centre,gift,,,,2764,https://www.openstreetmap.org/node/11688160166
+Hindustan Petroleum,fuel,,,,2769,https://www.openstreetmap.org/node/10869059265
+Karara Mujassme India (Garden Furniture Store),furniture,,,,2773,https://www.openstreetmap.org/node/11688160144
+Delhi-38,restaurant,,,,2773,https://www.openstreetmap.org/node/11688160145
+Shayora Foot Wear,shoes,,,,2778,https://www.openstreetmap.org/node/11688160147
+Corporation Bank,bank,,,,2782,https://www.openstreetmap.org/node/11688160164
+Maa Ganga Vidyalaya,educational_institution,,,,2788,https://www.openstreetmap.org/node/11688160128
+Nisha General Store,yes,,,,2793,https://www.openstreetmap.org/node/11688160143
+Shree Shyam Automobile,car_repair,,,,2798,https://www.openstreetmap.org/node/11688160142
+BraaiCraft Smokehouse,restaurant,+919816461233,https://www.smokehousebybraaicraft.com/,"#17, inside Lotus Villas, Gurgaon",2799,https://www.openstreetmap.org/way/414381107
+Rahul Auto Cabs,car_rental,,,,2800,https://www.openstreetmap.org/node/11688160150
+Kashgar,restaurant,+916230401233,,"17, Inside Lotus Villas, DLF IV, Gurgaon",2803,https://www.openstreetmap.org/node/13238895997
+Shivam Enterprises,hardware,,,,2806,https://www.openstreetmap.org/node/11688160140
+MetalTechMotors Pvt. Ltd. (ISUZU dealer),car,,,,2808,https://www.openstreetmap.org/node/11688160161
+Indian Bank,bank,,,,2826,https://www.openstreetmap.org/node/11688160175
+Superfit Gym,fitness_centre,,,,2827,https://www.openstreetmap.org/node/11688160148
+Sector 21 Shopping Complex,supermarket,,,,2829,https://www.openstreetmap.org/node/2407092862
+Suman Store,yes,,,,2832,https://www.openstreetmap.org/node/11688160141
+Ganga Nursery,garden_centre,,,,2846,https://www.openstreetmap.org/node/11688160149
+Neha Store,yes,,,,2848,https://www.openstreetmap.org/node/11688160134
+Manish Dhaba,restaurant,,,,2850,https://www.openstreetmap.org/node/11688160131
+Real Estate Consultant EMAAR MGF Palm,consulting,,,,2852,https://www.openstreetmap.org/node/11688160154
+Rajiv Gandhi Renewable Energy Park,government,,https://www.hareda.gov.in/,"Leisure Valley Road, Sector 29, Gurugram",2857,https://www.openstreetmap.org/node/4794693957
+Shree Balaji General Store,general,,,,2866,https://www.openstreetmap.org/node/11688160151
+Grocery4All,greengrocer,,,,2867,https://www.openstreetmap.org/node/11688160132
+Computer Education Point,educational_institution,,,,2877,https://www.openstreetmap.org/node/11688160168
+Ajay Store,yes,,,,2878,https://www.openstreetmap.org/node/11688160136
+Pradeep Chicken Shop,yes,,,,2896,https://www.openstreetmap.org/node/11688160138
+Queen's Homemade Bakery,bakery,,,,2900,https://www.openstreetmap.org/node/11688160139
+Binge,bakery,,,,2901,https://www.openstreetmap.org/node/4710027589
+Air Force Station Rajokri,guest_house,,,,2902,https://www.openstreetmap.org/node/12584379622
+EURO Cars,car,,,,2917,https://www.openstreetmap.org/node/11688160137
+Chirag Medicos,medical_supply,,,,2944,https://www.openstreetmap.org/node/11688160169
+BilawatMarble,stonemason,,,,2945,https://www.openstreetmap.org/node/11888519886
+GYAN SAGAR CONVENT SCHOOL,educational_institution,,,,2962,https://www.openstreetmap.org/node/11688160170
+HP,fuel,,,,2966,https://www.openstreetmap.org/node/728300538
+The Pizza Club,restaurant,,,,2969,https://www.openstreetmap.org/node/11688160171
+Mukesh Family Friendly restaurant,restaurant,,,,2985,https://www.openstreetmap.org/node/11694035169

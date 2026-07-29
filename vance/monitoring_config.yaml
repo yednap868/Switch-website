@@ -1,0 +1,112 @@
+# Message Processing Monitoring Configuration
+# This file configures monitoring, alerting, and metrics collection for the message deduplication system
+
+monitoring:
+  # Message processing metrics
+  metrics:
+    - name: "message_processing_time"
+      description: "Time taken to process a message (seconds)"
+      type: "histogram"
+      buckets: [0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 30.0]
+
+    - name: "message_processing_success_rate"
+      description: "Percentage of successfully processed messages"
+      type: "gauge"
+
+    - name: "duplicate_message_attempts"
+      description: "Number of duplicate message attempts blocked"
+      type: "counter"
+
+    - name: "redis_connection_failures"
+      description: "Number of Redis connection failures"
+      type: "counter"
+
+    - name: "agent_processing_errors"
+      description: "Number of agent processing errors"
+      type: "counter"
+
+  # Health checks
+  health_checks:
+    - name: "redis_health"
+      endpoint: "/api/whatsapp/redis-status"
+      interval: 30  # seconds
+      timeout: 5  # seconds
+
+    - name: "message_processing_health"
+      endpoint: "/api/whatsapp/cache-status"
+      interval: 60  # seconds
+      timeout: 10  # seconds
+
+  # Alerting rules
+  alerts:
+    - name: "high_duplicate_rate"
+      condition: "duplicate_message_attempts > 10 per minute"
+      severity: "warning"
+      description: "High number of duplicate message attempts detected"
+
+    - name: "redis_connection_issues"
+      condition: "redis_connection_failures > 5 in 5 minutes"
+      severity: "critical"
+      description: "Redis connection failures detected - deduplication may be compromised"
+
+    - name: "agent_processing_failures"
+      condition: "agent_processing_errors > 10 in 10 minutes"
+      severity: "critical"
+      description: "Agent processing errors detected - messages may not be processed"
+
+    - name: "slow_processing"
+      condition: "message_processing_time_p95 > 10 seconds"
+      severity: "warning"
+      description: "Message processing taking longer than expected"
+
+  # Logging configuration
+  logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+    # Structured logging for better searchability
+    structured:
+      message_id: "%(message_id)s"
+      user_id: "%(user_id)s"
+      processing_time: "%(processing_time)s"
+      status: "%(status)s"
+
+  # Performance monitoring
+  performance:
+    # Track these metrics for performance analysis
+    track:
+      - "memory_usage"
+      - "cpu_usage"
+      - "redis_latency"
+      - "message_queue_size"
+
+    # Profiling settings
+    profiling:
+      enabled: false  # Enable for debugging slow requests
+      sample_rate: 0.1  # Sample 10% of requests
+
+  # Dashboard configuration
+  dashboards:
+    - name: "Message Processing Overview"
+      panels:
+        - title: "Message Processing Rate"
+          type: "line_chart"
+          metrics: ["message_processing_success_rate", "duplicate_message_attempts"]
+
+        - title: "Processing Time Distribution"
+          type: "histogram"
+          metrics: ["message_processing_time"]
+
+        - title: "Redis Health"
+          type: "status_indicator"
+          metrics: ["redis_connection_failures"]
+
+    - name: "Error Analysis"
+      panels:
+        - title: "Error Types"
+          type: "pie_chart"
+          metrics: ["agent_processing_errors"]
+
+        - title: "Error Rate Over Time"
+          type: "line_chart"
+          metrics: ["agent_processing_errors"]

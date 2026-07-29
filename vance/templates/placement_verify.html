@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Verify Candidate — Switch</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            color: #1a1a1a;
+        }
+        .header {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .header h1 { font-size: 20px; font-weight: 700; }
+        .header p { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+        .container { max-width: 480px; margin: 0 auto; padding: 16px; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+        .selfie-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .loc-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .loc-ok { background: #d1fae5; color: #065f46; }
+        .loc-far { background: #fee2e2; color: #991b1b; }
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 16px 0;
+        }
+        .otp-inputs input {
+            width: 56px;
+            height: 64px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .otp-inputs input:focus { border-color: #3b82f6; }
+        .verify-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+        .verify-btn:disabled { background: #d1d5db; cursor: not-allowed; }
+        .pay-section { text-align: center; }
+        .pay-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1e40af;
+            margin: 16px 0 8px;
+        }
+        .pay-note {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        .pay-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: none;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+        .success-page {
+            text-align: center;
+            padding: 48px 20px;
+        }
+        .success-page .check {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #d1fae5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 40px;
+        }
+        .error-page, .done-page {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .error-page h2 { color: #dc2626; margin-bottom: 8px; }
+        .done-page h2 { color: #22c55e; margin-bottom: 8px; }
+        .hidden { display: none !important; }
+        .error-msg { color: #dc2626; font-size: 14px; text-align: center; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Verify Candidate Arrival</h1>
+        {% if not error %}
+        <p>{{ company }}{% if role %} — {{ role }}{% endif %}</p>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        {% if error %}
+        <div class="error-page">
+            <h2>Link Invalid</h2>
+            <p>{{ message }}</p>
+        </div>
+        {% elif already_verified %}
+        <div class="done-page">
+            <h2>Already Verified ✓</h2>
+            <p>Candidate pehle se verify ho chuka hai.</p>
+        </div>
+        {% else %}
+
+        <!-- Step 1: OTP Verification -->
+        <div id="step-verify">
+            {% if selfie %}
+            <div class="card">
+                <h3>Candidate Photo</h3>
+                <img class="selfie-img" src="{{ selfie }}" alt="Candidate selfie" />
+                {% if location_verified %}
+                <span class="loc-badge loc-ok">📍 Location Verified</span>
+                {% else %}
+                <span class="loc-badge loc-far">⚠️ Location Not Verified</span>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="card">
+                <h3>Candidate se OTP lein</h3>
+                <p style="font-size:14px;color:#6b7280;margin-bottom:12px;">
+                    Candidate ke phone pe 4-digit code aaya hai. Woh yahan enter karein:
+                </p>
+                <div class="otp-inputs">
+                    <input type="tel" maxlength="1" id="otp1" oninput="otpNext(this, 'otp2')" autofocus />
+                    <input type="tel" maxlength="1" id="otp2" oninput="otpNext(this, 'otp3')" />
+                    <input type="tel" maxlength="1" id="otp3" oninput="otpNext(this, 'otp4')" />
+                    <input type="tel" maxlength="1" id="otp4" oninput="otpFilled()" />
+                </div>
+                <div class="error-msg hidden" id="otp-error"></div>
+                <button class="verify-btn" id="btn-verify" disabled onclick="verifyOtp()">
+                    Verify Candidate
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Payment -->
+        <div id="step-payment" class="hidden">
+            <div class="card pay-section">
+                <div style="font-size:48px;margin-bottom:8px;">✅</div>
+                <h3>Candidate Verified!</h3>
+                <p class="pay-note" style="margin-top:8px;">Ab placement fee pay karein</p>
+                <div class="pay-amount">₹2,000</div>
+                <p class="pay-note">
+                    Agar worker 30 din mein chhod de toh free replacement milega.
+                </p>
+                <button class="pay-btn" id="btn-pay" onclick="startPayment()">
+                    Pay ₹2,000
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div id="step-success" class="hidden">
+            <div class="card success-page">
+                <div class="check">✓</div>
+                <h2 style="color:#065f46;margin-bottom:8px;">Payment Complete!</h2>
+                <p style="color:#374151;">Candidate kal se kaam pe aayega. Aapko daily attendance updates milenge.</p>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+
+    {% if not error and not already_verified %}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        const TOKEN = "{{ token }}";
+        const RAZORPAY_KEY = "{{ razorpay_key }}";
+        let paymentOrderId = null;
+        let paymentAmount = 0;
+
+        function otpNext(current, nextId) {
+            if (current.value.length === 1) {
+                const next = document.getElementById(nextId);
+                if (next) next.focus();
+            }
+            checkOtpFilled();
+        }
+
+        function otpFilled() {
+            checkOtpFilled();
+        }
+
+        function checkOtpFilled() {
+            const otp = getOtp();
+            document.getElementById('btn-verify').disabled = otp.length !== 4;
+        }
+
+        function getOtp() {
+            return (
+                (document.getElementById('otp1').value || '') +
+                (document.getElementById('otp2').value || '') +
+                (document.getElementById('otp3').value || '') +
+                (document.getElementById('otp4').value || '')
+            );
+        }
+
+        async function verifyOtp() {
+            const otp = getOtp();
+            if (otp.length !== 4) return;
+
+            const btn = document.getElementById('btn-verify');
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+            document.getElementById('otp-error').classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/switch/verify/' + TOKEN + '/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ otp: otp }),
+                });
+                const data = await res.json();
+
+                if (data.verified) {
+                    paymentOrderId = data.order_id;
+                    paymentAmount = data.amount;
+                    document.getElementById('step-verify').classList.add('hidden');
+
+                    if (paymentOrderId && RAZORPAY_KEY) {
+                        document.getElementById('step-payment').classList.remove('hidden');
+                    } else {
+                        document.getElementById('step-success').classList.remove('hidden');
+                    }
+                } else {
+                    const errEl = document.getElementById('otp-error');
+                    errEl.textContent = data.error || 'Incorrect OTP';
+                    errEl.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.textContent = 'Verify Candidate';
+                    // Clear inputs
+                    ['otp1','otp2','otp3','otp4'].forEach(id => document.getElementById(id).value = '');
+                    document.getElementById('otp1').focus();
+                }
+            } catch (e) {
+                console.error('Verify error:', e);
+                alert('Network error. Please try again.');
+                btn.disabled = false;
+                btn.textContent = 'Verify Candidate';
+            }
+        }
+
+        function startPayment() {
+            if (!paymentOrderId || !RAZORPAY_KEY) {
+                alert('Payment not configured');
+                return;
+            }
+
+            const options = {
+                key: RAZORPAY_KEY,
+                amount: paymentAmount,
+                currency: 'INR',
+                name: 'Switch',
+                description: 'Placement Fee',
+                order_id: paymentOrderId,
+                handler: async function (response) {
+                    try {
+                        const res = await fetch('/api/switch/placement-payment/verify', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                order_id: response.razorpay_order_id,
+                                payment_id: response.razorpay_payment_id,
+                                signature: response.razorpay_signature,
+                            }),
+                        });
+                        const data = await res.json();
+                        if (data.success) {
+                            document.getElementById('step-payment').classList.add('hidden');
+                            document.getElementById('step-success').classList.remove('hidden');
+                        } else {
+                            alert('Payment verification failed. Contact support.');
+                        }
+                    } catch (e) {
+                        console.error('Payment verify error:', e);
+                        alert('Payment recorded but verification failed. Contact support.');
+                    }
+                },
+                theme: { color: '#22c55e' },
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.on('payment.failed', function (response) {
+                alert('Payment failed: ' + (response.error.description || 'Unknown error'));
+            });
+            rzp.open();
+        }
+
+        // Handle backspace on OTP inputs
+        document.querySelectorAll('.otp-inputs input').forEach((input, i) => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !input.value && i > 0) {
+                    const prev = document.querySelectorAll('.otp-inputs input')[i - 1];
+                    prev.focus();
+                    prev.value = '';
+                }
+            });
+        });
+    </script>
+    {% endif %}
+</body>
+</html>
