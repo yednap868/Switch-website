@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    width: 210mm; min-height: 297mm;
+    padding: 16mm 14mm 12mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .glow { position: absolute; border-radius: 50%; filter: blur(70px); z-index: 0; }
+  .glow1 { width: 340px; height: 340px; background: rgba(99,102,241,0.28); top: -120px; right: -80px; }
+  .glow2 { width: 300px; height: 300px; background: rgba(168,85,247,0.22); bottom: -100px; left: -90px; }
+  .wrap { position: relative; z-index: 1; }
+
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+  .logo { font-weight: 800; font-size: 30px; letter-spacing: -0.5px; }
+  .pill { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 14px; border: 1px solid rgba(255,255,255,0.22); border-radius: 100px; color: #c9b8ff; }
+
+  .hero { text-align: center; margin-bottom: 30px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #a78bfa; margin-bottom: 12px; }
+  .hero h1 { font-size: 40px; line-height: 1.08; font-weight: 800; letter-spacing: -0.5px; }
+  .hero h1 .grad { background: linear-gradient(135deg,#818cf8 0%,#a855f7 60%,#c084fc 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { color: #b9b9c4; font-size: 13.5px; margin-top: 14px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
+  .cards { display: flex; gap: 12px; margin-bottom: 26px; }
+  .card { flex: 1; background: linear-gradient(160deg,#17171d 0%,#111116 100%); border: 1px solid rgba(255,255,255,0.09); border-radius: 16px; padding: 20px 16px; position: relative; }
+  .card.feat { border-color: transparent; background:
+      linear-gradient(#141019,#141019) padding-box,
+      linear-gradient(135deg,#6366f1,#a855f7) border-box;
+    border: 1.5px solid transparent; box-shadow: 0 0 34px rgba(124,92,246,0.35); }
+  .badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,#6366f1,#a855f7);
+    font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; white-space: nowrap; }
+  .card .plan { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #9aa; margin-bottom: 12px; }
+  .card.feat .plan { color: #c9b8ff; }
+  .price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 3px; }
+  .price .cur { font-size: 18px; font-weight: 700; }
+  .price .amt { font-size: 34px; font-weight: 800; letter-spacing: -1px; }
+  .price .per { font-size: 11px; color: #8a8a95; font-weight: 600; }
+  .price.small .amt { font-size: 24px; }
+  .subline { font-size: 10.5px; color: #8a8a95; margin-bottom: 14px; min-height: 14px; }
+  .roles { list-style: none; }
+  .roles li { font-size: 11px; color: #d6d6de; padding: 5px 0 5px 20px; position: relative; line-height: 1.35; border-top: 1px solid rgba(255,255,255,0.055); }
+  .roles li:first-child { border-top: none; }
+  .roles li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 800; font-size: 11px; }
+
+  .includes { background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px 18px; margin-bottom: 24px; }
+  .includes h3 { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 12px; text-align: center; }
+  .inc-grid { display: flex; flex-wrap: wrap; gap: 8px 4px; }
+  .inc-item { width: 33.33%; font-size: 11px; color: #d6d6de; padding-left: 20px; position: relative; }
+  .inc-item::before { content: "✓"; position: absolute; left: 4px; color: #fbbf24; font-weight: 800; }
+
+  .how { display: flex; gap: 10px; margin-bottom: 26px; }
+  .step { flex: 1; text-align: center; }
+  .step .n { width: 30px; height: 30px; line-height: 30px; border-radius: 50%; margin: 0 auto 8px;
+    background: linear-gradient(135deg,#6366f1,#a855f7); font-weight: 800; font-size: 13px; }
+  .step .t { font-size: 11px; color: #c4c4cd; line-height: 1.35; }
+
+  .cta { background: linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%); border-radius: 16px; padding: 18px 22px;
+    display: flex; justify-content: space-between; align-items: center; }
+  .cta .big { font-size: 17px; font-weight: 800; }
+  .cta .sm { font-size: 11px; color: rgba(255,255,255,0.85); margin-top: 3px; }
+  .cta .num { text-align: right; font-size: 15px; font-weight: 800; }
+  .cta .num span { display: block; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.85); }
+
+  .fineprint { text-align: center; font-size: 9px; color: #6a6a75; margin-top: 12px; line-height: 1.5; }
+</style>
+</head>
+<body>
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="logo">Switch</div>
+      <div class="pill">Staffing Subscription</div>
+    </div>
+
+    <div class="hero">
+      <div class="eyebrow">Staff, on subscription</div>
+      <h1>Verified staff for your business,<br><span class="grad">from ₹12,999/month.</span></h1>
+      <p>Subscribe to a full-time, Aadhaar-verified Switch Player. Billed monthly, replacement guaranteed, no advance. Scale up or cancel anytime.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="plan">Essential</div>
+        <div class="price"><span class="cur">₹</span><span class="amt">12,999</span><span class="per">/mo</span></div>
+        <div class="subline">per staff · billed monthly</div>
+        <ul class="roles">
+          <li>Housekeeping</li>
+          <li>General Helper</li>
+          <li>Picker &amp; Packer</li>
+          <li>Cleaner · Office Boy</li>
+          <li>Loader · Gardener</li>
+        </ul>
+      </div>
+
+      <div class="card feat">
+        <div class="badge">Most Popular</div>
+        <div class="plan">Security</div>
+        <div class="price"><span class="cur">₹</span><span class="amt">13,999</span><span class="per">/mo</span></div>
+        <div class="subline">per guard · trained &amp; verified</div>
+        <ul class="roles">
+          <li>Security Guard</li>
+          <li>Background &amp; Aadhaar verified</li>
+          <li>Day / night shift cover</li>
+          <li>Instant replacement</li>
+          <li>Uniformed &amp; briefed</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="plan">Skilled · Custom</div>
+        <div class="price small"><span class="amt">On request</span></div>
+        <div class="subline">priced per role &amp; volume</div>
+        <ul class="roles">
+          <li>Cook · Chef</li>
+          <li>Waiter · Bartender</li>
+          <li>Delivery Rider · Driver</li>
+          <li>Cashier</li>
+          <li>Bulk / team hiring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="includes">
+      <h3>Every subscription includes</h3>
+      <div class="inc-grid">
+        <div class="inc-item">Aadhaar-verified staff</div>
+        <div class="inc-item">Replacement guarantee</div>
+        <div class="inc-item">No advance payment</div>
+        <div class="inc-item">Dedicated ops manager</div>
+        <div class="inc-item">Monthly billing</div>
+        <div class="inc-item">Cancel anytime*</div>
+      </div>
+    </div>
+
+    <div class="how">
+      <div class="step"><div class="n">1</div><div class="t">Tell us the role you need</div></div>
+      <div class="step"><div class="n">2</div><div class="t">We deploy a verified Switch Player</div></div>
+      <div class="step"><div class="n">3</div><div class="t">Pay monthly — no advance</div></div>
+      <div class="step"><div class="n">4</div><div class="t">Not a fit? Instant replacement</div></div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <div class="big">Start your staffing subscription today.</div>
+        <div class="sm">Gurgaon-wide · same-day deployment available</div>
+      </div>
+      <div class="num">+91 83688 28660<span>WhatsApp · switchlocally.com</span></div>
+    </div>
+
+    <div class="fineprint">
+      Prices are per staff, per month, exclusive of GST (18%). *Monthly subscription with a 1-month minimum; cancel with 15 days' notice.
+      Rates indicative and subject to role, shift and location. Third Wave Labs Private Limited · UJ Tower, Sikanderpur, Gurgaon.
+    </div>
+
+  </div>
+</body>
+</html>

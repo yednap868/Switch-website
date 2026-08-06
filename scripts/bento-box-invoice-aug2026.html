@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 16mm 16mm 16mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 11.5px; color: #111; margin: 0; line-height: 1.5; }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #111; padding-bottom: 14px; margin-bottom: 18px; }
+  .logo { font-weight: 800; font-size: 38px; letter-spacing: -0.5px; }
+  .from { text-align: right; font-size: 10px; line-height: 1.5; }
+  .from .name { font-weight: 700; font-size: 11px; }
+  .inv-title { text-align: center; font-size: 20px; letter-spacing: 4px; font-weight: 700; color: #333; margin: 6px 0 20px 0; }
+  .meta-row { display: flex; justify-content: space-between; margin-bottom: 18px; }
+  .box { font-size: 11px; line-height: 1.6; }
+  .box .label { color: #666; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .box .bill-name { font-weight: 700; font-size: 12.5px; }
+  .section-h { font-weight: 700; font-size: 11px; margin: 16px 0 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 0 0; font-size: 10.5px; }
+  th { background: #111; color: #fff; padding: 7px 8px; text-align: left; font-weight: 600; }
+  td { padding: 7px 8px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  td.num, th.num { text-align: right; }
+  .charges th { background: #333; }
+  .totals { width: 55%; margin-left: auto; margin-top: 8px; font-size: 11.5px; }
+  .totals td { padding: 6px 10px; border: none; }
+  .totals .grand { border-top: 2px solid #111; font-weight: 700; font-size: 13px; }
+  .note { margin-top: 18px; font-size: 10px; color: #444; background: #f6f6f6; padding: 10px 12px; border-left: 3px solid #111; }
+  .pay { margin-top: 16px; font-size: 10.5px; line-height: 1.7; }
+  .pay .h { font-weight: 700; margin-bottom: 2px; }
+  .foot { margin-top: 26px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .sign { text-align: right; font-size: 10.5px; }
+  .sign .line { margin-top: 40px; border-top: 1px solid #111; padding-top: 4px; width: 200px; margin-left: auto; }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="logo">Switch</div>
+    <div class="from">
+      <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+      <div>Shop No R-02/06, Tower A3, M3M Woodshire,</div>
+      <div>Sector 107, Gurugram – 122006, Haryana</div>
+      <div>CIN: U62099HR2026PTC146360</div>
+      <div>PAN: AAHCT2237Q</div>
+      <div>Email: info@switchlocally.com</div>
+    </div>
+  </div>
+
+  <div class="inv-title">INVOICE</div>
+
+  <div class="meta-row">
+    <div class="box">
+      <div class="label">Bill To</div>
+      <div class="bill-name">Bento Box</div>
+      <div>[Client Address Line 1]</div>
+      <div>[City, State – PIN]</div>
+    </div>
+    <div class="box" style="text-align:right;">
+      <div><span class="label">Invoice No.:</span> &nbsp; TWL/2026-27/002</div>
+      <div><span class="label">Invoice Date:</span> &nbsp; 04 August 2026</div>
+      <div><span class="label">Billing Period:</span> &nbsp; 21 – 24 July 2026</div>
+      <div><span class="label">Batches:</span> &nbsp; #3553, #3532, #3524, #3552, #3547, #3543, #3569, #3562</div>
+      <div><span class="label">Service:</span> &nbsp; Rider Deployment (Delivery)</div>
+    </div>
+  </div>
+
+  <div class="section-h">Delivery Details — Batch #3553 &nbsp;|&nbsp; Rider: Mohan Kumar Rajak &nbsp;|&nbsp; 21 July 2026</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Neha</td><td>4375</td><td class="num">2.82 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Umesh</td><td>4380</td><td class="num">2.45 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>J</td><td>4370</td><td class="num">3.60 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Mahak</td><td>3689</td><td class="num">8.82 km</td><td class="num">₹12.00</td><td class="num">₹28.20</td><td class="num">₹40.20</td></tr>
+      <tr><td>5</td><td>Yuvraj Singh Tanwar</td><td>3686</td><td class="num">7.98 km</td><td class="num">₹12.00</td><td class="num">₹19.80</td><td class="num">₹31.80</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3532 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; 23 July 2026</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Pallav Sen</td><td>3653</td><td class="num">2.30 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Hardik Mehta</td><td>4333</td><td class="num">3.32 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3524 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; 23 July 2026</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Katyayan Tilak</td><td>4328</td><td class="num">0.86 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Ashis</td><td>4319</td><td class="num">3.82 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Akanksha</td><td>3647</td><td class="num">1.51 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Suvir</td><td>3648</td><td class="num">0.79 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Raj</td><td>4316</td><td class="num">4.60 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Priyanshi Uniyal</td><td>3657</td><td class="num">2.29 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>7</td><td>Karina Arora</td><td>3646</td><td class="num">4.20 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3552 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; 24 July 2026</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Katyayan Tilak</td><td>4379</td><td class="num">0.87 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Sagnik</td><td>4362</td><td class="num">0.88 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Priyanshi Uniyal</td><td>3685</td><td class="num">3.97 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Suvir</td><td>3678</td><td class="num">4.68 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Ashis</td><td>3688</td><td class="num">1.80 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Ankit</td><td>3687</td><td class="num">3.30 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>7</td><td>Roshan Yadav</td><td>4390</td><td class="num">1.34 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>8</td><td>Tanmay</td><td>3679</td><td class="num">6.63 km</td><td class="num">₹12.00</td><td class="num">₹6.30</td><td class="num">₹18.30</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3547 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; Order charges only (no hourly)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Pallav Sen</td><td>3670</td><td class="num">2.32 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Nikunj</td><td>4366</td><td class="num">4.00 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3543 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; Order charges only (no hourly)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ruchi</td><td>3668</td><td class="num">5.59 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Vishal Sherawat</td><td>4356</td><td class="num">2.61 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Tushar</td><td>4359</td><td class="num">6.08 km</td><td class="num">₹12.00</td><td class="num">₹0.80</td><td class="num">₹12.80</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3569 &nbsp;|&nbsp; Rider: Sunil Kumar &nbsp;|&nbsp; Evening (~7:56–8:46 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Manika Singhal</td><td>4427</td><td class="num">4.72 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Suvir</td><td>3710</td><td class="num">5.05 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Akanksha</td><td>3709</td><td class="num">0.80 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Ayush</td><td>3708</td><td class="num">0.53 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Ashis</td><td>3719</td><td class="num">0.93 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Ankit</td><td>3718</td><td class="num">3.30 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #3562 &nbsp;|&nbsp; Rider: Sumit &nbsp;|&nbsp; Afternoon (~1:57–3:17 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Shikhar Bhatia</td><td>4398</td><td class="num">3.71 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Sarvagya</td><td>4397</td><td class="num">4.63 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Krrisha Narang</td><td>4410</td><td class="num">5.57 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Pallav Sen</td><td>3697</td><td class="num">2.03 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Ruchi</td><td>3695</td><td class="num">3.16 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Hardik Mehta</td><td>4419</td><td class="num">0.16 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-1] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~7:34–8:28 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sheetal Suwalka</td><td>3737</td><td class="num">1.51 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Ayush</td><td>3740</td><td class="num">5.39 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Akanksha</td><td>3741</td><td class="num">0.53 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Suvir</td><td>3742</td><td class="num">0.79 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Radhika Bansal</td><td>4481</td><td class="num">1.56 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-2] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~8:49 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tanmay</td><td>3743</td><td class="num">3.91 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-3] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~7:45–7:59 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ayush</td><td>3768</td><td class="num">2.39 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Akanksha</td><td>3770</td><td class="num">0.53 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Ashis</td><td>3775</td><td class="num">1.52 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-4] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~8:38 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tanmay</td><td>3771</td><td class="num">5.98 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Shivam Dalmia</td><td>3780</td><td class="num">5.95 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-5] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~7:13 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sheetal Suwalka</td><td>4536</td><td class="num">1.54 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Gautam Dhamija</td><td>4539</td><td class="num">5.91 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Vibhum Dixit</td><td>4541</td><td class="num">4.88 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-6] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~7:39–8:52 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ayush</td><td>3827</td><td class="num">2.40 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Ashis</td><td>3833</td><td class="num">0.93 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Mohit</td><td>4609</td><td class="num">2.17 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Shivam Dalmia</td><td>3839</td><td class="num">2.34 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Ankit</td><td>3832</td><td class="num">1.88 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Shubha</td><td>4603</td><td class="num">5.33 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-7] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~8:41 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Tanmay</td><td>3829</td><td class="num">2.07 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-8] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Order charges only (1 refunded, excluded)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Bipin Verma</td><td>4658</td><td class="num">2.36 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Azhar Ali</td><td>4648</td><td class="num">0.00 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Rohan Mishra</td><td>3850</td><td class="num">1.14 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Virendra Yadav</td><td>4668</td><td class="num">7.19 km</td><td class="num">₹12.00</td><td class="num">₹11.90</td><td class="num">₹23.90</td></tr>
+      <tr><td>5</td><td>Charu</td><td>4643</td><td class="num">7.60 km</td><td class="num">₹12.00</td><td class="num">₹16.00</td><td class="num">₹28.00</td></tr>
+      <tr><td>6</td><td>Shivam</td><td>4646</td><td class="num">3.27 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td style="color:#999;">7</td><td style="color:#999;">Aashu Gupta <i>(Refunded)</i></td><td style="color:#999;">4649</td><td class="num" style="color:#999;">5.97 km</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">₹0.00</td></tr>
+      <tr><td>8</td><td>Ruchi</td><td>3855</td><td class="num">3.60 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-9] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~8:09–9:14 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Karina Arora</td><td>3860</td><td class="num">5.73 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Ankit</td><td>3864</td><td class="num">6.43 km</td><td class="num">₹12.00</td><td class="num">₹4.30</td><td class="num">₹16.30</td></tr>
+      <tr><td>3</td><td>Shubha</td><td>4674</td><td class="num">5.33 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Ashis</td><td>3865</td><td class="num">4.68 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Anushree</td><td>3872</td><td class="num">2.24 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-10] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Evening (~9:17–11:30 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ankit</td><td>3897</td><td class="num">4.77 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Ashis</td><td>3898</td><td class="num">2.82 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Arpit Yadav</td><td>3899</td><td class="num">3.84 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Pranav Vij</td><td>3900</td><td class="num">3.28 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Shivam Dalmia</td><td>3901</td><td class="num">2.36 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Anushree</td><td>3906</td><td class="num">2.10 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>7</td><td>Pallav Sen</td><td>3908</td><td class="num">4.30 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>8</td><td>Himanshu</td><td>4742</td><td class="num">3.36 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>9</td><td>Sahil</td><td>4751</td><td class="num">4.44 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>10</td><td>Vishwajeet Saharan</td><td>4753</td><td class="num">3.39 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>11</td><td>Shreeya</td><td>4755</td><td class="num">0.72 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-11] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Afternoon (~1:40–2:20 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Aurin Bose</td><td>3723</td><td class="num">2.41 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Shreeya</td><td>4453</td><td class="num">1.11 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Tushar</td><td>4466</td><td class="num">4.32 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Hardik Mehta</td><td>4468</td><td class="num">6.96 km</td><td class="num">₹12.00</td><td class="num">₹9.60</td><td class="num">₹21.60</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-12] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Afternoon (~1:31–2:43 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sheetal Suwalka</td><td>4501</td><td class="num">1.54 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Priyansh</td><td>4502</td><td class="num">3.89 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Ruchi</td><td>3762</td><td class="num">4.47 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Hritik Sharma</td><td>4507</td><td class="num">3.91 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-13] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Afternoon (~1:17–2:58 pm)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sheetal Suwalka</td><td>4589</td><td class="num">1.52 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Rahul</td><td>3818</td><td class="num">6.66 km</td><td class="num">₹12.00</td><td class="num">₹6.60</td><td class="num">₹18.60</td></tr>
+      <tr><td>3</td><td>Aurin Bose</td><td>3814</td><td class="num">3.02 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Akshay</td><td>4586</td><td class="num">0.91 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Srijan</td><td>4595</td><td class="num">1.34 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>6</td><td>Vishal Sherawat</td><td>4588</td><td class="num">5.30 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Delivery Details — Batch #[TBC-14] &nbsp;|&nbsp; Rider: [TBC] &nbsp;|&nbsp; Order charges only (2 cancelled, excluded)</div>
+  <table>
+    <thead>
+      <tr><th style="width:30px;">#</th><th>Customer</th><th>Order ID</th><th class="num">Distance</th><th class="num">Per-Order (₹12)</th><th class="num">&gt;6 km @ ₹10/km</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Aurin Bose</td><td>3844</td><td class="num">2.39 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>2</td><td>Rahul</td><td>3848</td><td class="num">3.04 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>3</td><td>Shubh Gupta</td><td>3856</td><td class="num">2.72 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>4</td><td>Avanti Das</td><td>4650</td><td class="num">5.33 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td>5</td><td>Poonam</td><td>4651</td><td class="num">2.75 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td style="color:#999;">6</td><td style="color:#999;">Aashish <i>(Cancelled)</i></td><td style="color:#999;">4653</td><td class="num" style="color:#999;">1.52 km</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">₹0.00</td></tr>
+      <tr><td>7</td><td>Mahi</td><td>4662</td><td class="num">4.67 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+      <tr><td style="color:#999;">8</td><td style="color:#999;">Shiny <i>(Cancelled)</i></td><td style="color:#999;">4665</td><td class="num" style="color:#999;">5.61 km</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">—</td><td class="num" style="color:#999;">₹0.00</td></tr>
+      <tr><td>9</td><td>Hardik Mehta</td><td>4670</td><td class="num">8.03 km</td><td class="num">₹12.00</td><td class="num">₹20.30</td><td class="num">₹32.30</td></tr>
+      <tr><td>10</td><td>Priyansh</td><td>3858</td><td class="num">3.85 km</td><td class="num">₹12.00</td><td class="num">—</td><td class="num">₹12.00</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-h">Charges Summary</div>
+  <table class="charges">
+    <thead>
+      <tr><th>#</th><th>Description</th><th class="num">Rate</th><th class="num">Qty</th><th class="num">Amount (₹)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><b>Mohan Kumar Rajak — Hourly</b> (8:00 pm – 10:30 pm)</td><td class="num">₹70.00 / hr</td><td class="num">2.5 hrs</td><td class="num">₹175.00</td></tr>
+      <tr><td>2</td><td>Mohan — Per-Order Charge (up to 6 km)</td><td class="num">₹12.00 / order</td><td class="num">5 orders</td><td class="num">₹60.00</td></tr>
+      <tr><td>3</td><td>Mohan — Additional Distance (beyond 6 km)</td><td class="num">₹10.00 / km</td><td class="num">4.80 km</td><td class="num">₹48.00</td></tr>
+      <tr><td>4</td><td><b>Sunil Kumar — Hourly</b> (8:00 pm – 10:30 pm, single shift covering Batches #3532 &amp; #3524)</td><td class="num">₹70.00 / hr</td><td class="num">2.5 hrs</td><td class="num">₹175.00</td></tr>
+      <tr><td>5</td><td>Sunil — Per-Order Charge (up to 6 km) — Batches #3532 &amp; #3524</td><td class="num">₹12.00 / order</td><td class="num">9 orders</td><td class="num">₹108.00</td></tr>
+      <tr><td>6</td><td><b>Sunil Kumar — Hourly</b> (24 Jul, 8:00 pm – 10:30 pm, Batch #3552)</td><td class="num">₹70.00 / hr</td><td class="num">2.5 hrs</td><td class="num">₹175.00</td></tr>
+      <tr><td>7</td><td>Sunil — Per-Order Charge (up to 6 km) — Batch #3552</td><td class="num">₹12.00 / order</td><td class="num">8 orders</td><td class="num">₹96.00</td></tr>
+      <tr><td>8</td><td>Sunil — Additional Distance (beyond 6 km) — Batch #3552</td><td class="num">₹10.00 / km</td><td class="num">0.63 km</td><td class="num">₹6.30</td></tr>
+      <tr><td>9</td><td>Sunil — Per-Order Charge (up to 6 km) — Batch #3547</td><td class="num">₹12.00 / order</td><td class="num">2 orders</td><td class="num">₹24.00</td></tr>
+      <tr><td>10</td><td>Sunil — Per-Order Charge (up to 6 km) — Batch #3543</td><td class="num">₹12.00 / order</td><td class="num">3 orders</td><td class="num">₹36.00</td></tr>
+      <tr><td>11</td><td>Sunil — Additional Distance (beyond 6 km) — Batch #3543</td><td class="num">₹10.00 / km</td><td class="num">0.08 km</td><td class="num">₹0.80</td></tr>
+      <tr><td>12</td><td>Sunil — Per-Order Charge (up to 6 km) — Batch #3569</td><td class="num">₹12.00 / order</td><td class="num">6 orders</td><td class="num">₹72.00</td></tr>
+      <tr><td>13</td><td>Sumit — Per-Order Charge (up to 6 km) — Batch #3562</td><td class="num">₹12.00 / order</td><td class="num">6 orders</td><td class="num">₹72.00</td></tr>
+      <tr><td>14</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-1]</td><td class="num">₹12.00 / order</td><td class="num">5 orders</td><td class="num">₹60.00</td></tr>
+      <tr><td>15</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-2]</td><td class="num">₹12.00 / order</td><td class="num">1 order</td><td class="num">₹12.00</td></tr>
+      <tr><td>16</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-3]</td><td class="num">₹12.00 / order</td><td class="num">3 orders</td><td class="num">₹36.00</td></tr>
+      <tr><td>17</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-4]</td><td class="num">₹12.00 / order</td><td class="num">2 orders</td><td class="num">₹24.00</td></tr>
+      <tr><td>18</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-5]</td><td class="num">₹12.00 / order</td><td class="num">3 orders</td><td class="num">₹36.00</td></tr>
+      <tr><td>19</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-6]</td><td class="num">₹12.00 / order</td><td class="num">6 orders</td><td class="num">₹72.00</td></tr>
+      <tr><td>20</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-7]</td><td class="num">₹12.00 / order</td><td class="num">1 order</td><td class="num">₹12.00</td></tr>
+      <tr><td>21</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-8] (7 billed, 1 refunded)</td><td class="num">₹12.00 / order</td><td class="num">7 orders</td><td class="num">₹84.00</td></tr>
+      <tr><td>22</td><td>Additional Distance (beyond 6 km) — Batch #[TBC-8]</td><td class="num">₹10.00 / km</td><td class="num">2.79 km</td><td class="num">₹27.90</td></tr>
+      <tr><td>23</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-9]</td><td class="num">₹12.00 / order</td><td class="num">5 orders</td><td class="num">₹60.00</td></tr>
+      <tr><td>24</td><td>Additional Distance (beyond 6 km) — Batch #[TBC-9]</td><td class="num">₹10.00 / km</td><td class="num">0.43 km</td><td class="num">₹4.30</td></tr>
+      <tr><td>25</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-10]</td><td class="num">₹12.00 / order</td><td class="num">11 orders</td><td class="num">₹132.00</td></tr>
+      <tr><td>26</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-11]</td><td class="num">₹12.00 / order</td><td class="num">4 orders</td><td class="num">₹48.00</td></tr>
+      <tr><td>27</td><td>Additional Distance (beyond 6 km) — Batch #[TBC-11]</td><td class="num">₹10.00 / km</td><td class="num">0.96 km</td><td class="num">₹9.60</td></tr>
+      <tr><td>28</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-12]</td><td class="num">₹12.00 / order</td><td class="num">4 orders</td><td class="num">₹48.00</td></tr>
+      <tr><td>29</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-13]</td><td class="num">₹12.00 / order</td><td class="num">6 orders</td><td class="num">₹72.00</td></tr>
+      <tr><td>30</td><td>Additional Distance (beyond 6 km) — Batch #[TBC-13]</td><td class="num">₹10.00 / km</td><td class="num">0.66 km</td><td class="num">₹6.60</td></tr>
+      <tr><td>31</td><td>Per-Order Charge (up to 6 km) — Batch #[TBC-14] (8 billed, 2 cancelled)</td><td class="num">₹12.00 / order</td><td class="num">8 orders</td><td class="num">₹96.00</td></tr>
+      <tr><td>32</td><td>Additional Distance (beyond 6 km) — Batch #[TBC-14]</td><td class="num">₹10.00 / km</td><td class="num">2.03 km</td><td class="num">₹20.30</td></tr>
+      <tr><td colspan="4"><i>Hourly charges (all riders / all shifts) — to be reconciled per day at finalisation</i></td><td class="num"><i>Pending</i></td></tr>
+    </tbody>
+  </table>
+
+  <table class="totals">
+    <tr><td>Subtotal (excl. pending hourly to be reconciled)</td><td class="num">₹1,908.80</td></tr>
+    <tr><td>GST @ 18% (SAC 998513)</td><td class="num">Not applicable*</td></tr>
+    <tr class="grand"><td>Total Payable (interim)</td><td class="num">₹1,908.80</td></tr>
+  </table>
+
+  <div style="margin-top:8px; font-size:11px;"><b>Amount in words:</b> Rupees One Thousand Nine Hundred Eight and Eighty Paise Only (interim, subject to hourly reconciliation).</div>
+
+  <div class="note">
+    <b>Rate Scheme:</b> ₹70 per hour + ₹12 per order (deliveries up to 6 km). For deliveries beyond 6 km, an additional ₹10 per km applies on the distance exceeding 6 km.<br><br>
+    *GST is not charged as GST registration of Third Wave Labs Private Limited is currently under process and a GSTIN has not yet been allotted. GST @ 18% (SAC 998513) will apply on invoices raised after the GSTIN is active.
+  </div>
+
+  <div class="pay">
+    <div class="h">Payment Details</div>
+    <div>Payment Terms: [__________]</div>
+  </div>
+
+  <div class="foot">
+    <div style="font-size:10px; color:#666;">This is a computer-generated invoice.</div>
+    <div class="sign">
+      <div>For <b>Third Wave Labs Private Limited</b></div>
+      <div class="line">Authorised Signatory</div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import SeoPage from './pages/SeoPage.jsx'
 import PartnerPage from './pages/PartnerPage.jsx'
@@ -18,6 +19,7 @@ const PHONE = '+918368828660'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
 const CALL_URL = `tel:${PHONE}`
+const waLink = (msg) => `https://wa.me/${PHONE.replace('+','')}?text=${encodeURIComponent(msg)}`
 
 /* ─── DATA ────────────────────────────────────────── */
 const ALL_ROLES_MARQUEE = [
@@ -45,6 +47,12 @@ const INDUSTRIES = [
   { ico: '🎉', name: 'Events & Banquets',      roles: 'Waiters · Bartenders · Bouncers · Promoters' },
   { ico: '🏢', name: 'Offices & Co-working',   roles: 'Housekeeping · Security · Pantry · Office boys' },
   { ico: '💈', name: 'Salons & Clinics',       roles: 'Front desk · Housekeeping · Helpers · Attendants' },
+]
+
+// Businesses currently staffed by Switch. Add new client names here.
+const BRANDS = [
+  'Ivory Stayz', 'Dr Diet Restaurant', 'Foressta Cafe', 'Crax',
+  'Blinkit', 'ValueShoppe', 'BentoBox',
 ]
 
 const REVIEWS = [
@@ -625,6 +633,29 @@ function HowItWorks() {
 }
 
 /* ─── REVIEWS ─────────────────────────────────────── */
+/* ─── BRANDS (Businesses we serve) ────────────────── */
+function Brands() {
+  const doubled = [...BRANDS, ...BRANDS]
+  return (
+    <section className="sec sec-border-t" id="brands">
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag">Businesses we serve</span>
+          <h2 className="h2">Trusted by teams<br />across Gurgaon.</h2>
+          <p className="lead">Restaurants, cafés, cloud kitchens, quick-commerce and retail — staffed by Switch, every day.</p>
+        </div>
+      </div>
+      <div className="brand-marquee-wrap" aria-label="Businesses served by Switch">
+        <div className="brand-marquee">
+          {doubled.map((b, i) => (
+            <span className="brand-pill" key={i} aria-hidden={i >= BRANDS.length ? 'true' : undefined}>{b}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Reviews() {
   const doubled = [...REVIEWS, ...REVIEWS]
   return (
@@ -820,7 +851,7 @@ function HomeHead() {
     telephone: '+91-8368828660',
     image: 'https://switchlocally.com/hero-workers.jpg',
     logo: 'https://switchlocally.com/hero-workers.jpg',
-    priceRange: '₹149-₹199 per hour',
+    priceRange: '₹99-₹199 per hour',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '5th Floor, WeWork, Cyber Hub',
@@ -890,7 +921,7 @@ function HomeHead() {
   }
   return (
     <Helmet>
-      <title>Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch</title>
+      <title>Hire Verified Staff for Business in Gurgaon | Switch</title>
       <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
       <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
@@ -1010,7 +1041,58 @@ function Promos() {
   )
 }
 
-/* ─── FOOTER ──────────────────────────────────────── */
+/* ─── OFFER POPUP ─────────────────────────────────── */
+function OfferPopup() {
+  const [open, setOpen] = useState(false)
+  const close = () => {
+    setOpen(false)
+    try { sessionStorage.setItem('switch_offer_dismissed', '1') } catch { /* ignore */ }
+  }
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    try { if (sessionStorage.getItem('switch_offer_dismissed')) return } catch { /* ignore */ }
+    const t = setTimeout(() => setOpen(true), 1200)
+    return () => clearTimeout(t)
+  }, [])
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => { if (e.key === 'Escape') close() }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+  }, [open])
+  if (!open) return null
+  return (
+    <div className="offer-pop-overlay" onClick={close}>
+      <div className="offer-pop" role="dialog" aria-modal="true" aria-label="Special staffing offer" onClick={(e) => e.stopPropagation()}>
+        <button className="offer-pop-close" onClick={close} aria-label="Close offer">×</button>
+        <span className="offer-pop-badge">Limited-time offer</span>
+        <h3 className="offer-pop-title">Hire verified staff at just <span className="grad-txt">₹11,999<span className="offer-pop-mo">/mo</span></span></h3>
+        <p className="offer-pop-sub">Full-time, Aadhaar-verified Switch Players — a simple monthly plan, paid in advance, with replacement guaranteed.</p>
+        <ul className="offer-pop-list">
+          <li><IcoCheck />Housekeeping, helpers, guards, pickers &amp; more</li>
+          <li><IcoCheck />Replacement guarantee</li>
+          <li><IcoCheck />Cancel anytime · GST extra</li>
+        </ul>
+        <div className="offer-pop-cta">
+          <a href={waLink("Hi Switch — I want to hire staff on the ₹11,999/mo subscription. Please share the details.")} target="_blank" rel="noopener noreferrer" className="offer-pop-btn offer-pop-btn--primary" onClick={close}><IcoBolt />Hire now on WhatsApp</a>
+          <a href="#subscription" className="offer-pop-btn offer-pop-btn--ghost" onClick={close}>View plans</a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ─── MOBILE STICKY CTA BAR ───────────────────────── */
+function MobileCTABar() {
+  return (
+    <div className="mcta" aria-label="Quick actions">
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="mcta-btn mcta-btn--wa"><IcoWhatsApp />WhatsApp</a>
+      <a href={APP_URL} className="mcta-btn mcta-btn--hire"><IcoBolt />Hire Staff</a>
+    </div>
+  )
+}
+
 /* ─── PRICING ─────────────────────────────────────── */
 function Pricing() {
   return (
@@ -1028,7 +1110,7 @@ function Pricing() {
             <div className="price-tag-wrap">
               <span className="price-tier">Hourly</span>
             </div>
-            <div className="price-figure"><b>₹149–199</b><span className="price-unit">/ hour</span></div>
+            <div className="price-figure"><b>₹99–199</b><span className="price-unit">/ hour</span></div>
             <div className="price-name">Quick &amp; short tasks</div>
             <p className="price-desc">For a few hours of extra hands — rush hours, a quick cleanup, peak footfall.</p>
             <ul className="price-perks">
@@ -1085,6 +1167,93 @@ function Pricing() {
         <div className="pricing-note" data-anim style={{'--delay':'180ms'}}>
           Indicative rates per Switch Player, GST extra. Exact price depends on role and booking length — the longer you book, the lower the rate. No platform fee, no advance — pay on arrival.
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="pricing-note-link"> Get exact rates on WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── SUBSCRIPTION OFFER ───────────────────────────── */
+function SubscriptionOffer() {
+  return (
+    <section className="sec sub-sec sec-border-t" id="subscription">
+      <div className="sub-glow sub-glow--1" aria-hidden="true" />
+      <div className="sub-glow sub-glow--2" aria-hidden="true" />
+      <div className="w">
+        <div className="sec-hd" data-anim>
+          <span className="tag tag--grad">New · Staffing Subscription</span>
+          <h2 className="h2">Staff your business,<br />on subscription.</h2>
+          <p className="lead">A full-time, Aadhaar-verified Switch Player — paid monthly in advance, replacement guaranteed. Scale up or cancel anytime.</p>
+        </div>
+
+        <div className="sub-grid" data-anim style={{'--delay':'80ms'}}>
+
+          <div className="sub-card">
+            <div className="sub-plan">Essential</div>
+            <div className="sub-price"><span className="sub-cur">₹</span><span className="sub-amt">11,999</span><span className="sub-per">/mo</span></div>
+            <div className="sub-sub">per staff · billed monthly</div>
+            <ul className="sub-roles">
+              <li><IcoCheck />Housekeeping</li>
+              <li><IcoCheck />General Helper</li>
+              <li><IcoCheck />Picker &amp; Packer</li>
+              <li><IcoCheck />Cleaner · Office Boy</li>
+              <li><IcoCheck />Loader · Gardener</li>
+            </ul>
+            <a href={waLink("Hi Switch — I'd like to subscribe to the Essential staffing plan (₹11,999/mo). Please share the details.")} target="_blank" rel="noopener noreferrer" className="sub-cta sub-cta--ghost">Subscribe</a>
+          </div>
+
+          <div className="sub-card sub-card--feat">
+            <div className="sub-badge">Most Popular</div>
+            <div className="sub-plan">Security</div>
+            <div className="sub-price"><span className="sub-cur">₹</span><span className="sub-amt">13,999</span><span className="sub-per">/mo</span></div>
+            <div className="sub-sub">per guard · trained &amp; verified</div>
+            <ul className="sub-roles">
+              <li><IcoCheck />Security Guard</li>
+              <li><IcoCheck />Background &amp; Aadhaar verified</li>
+              <li><IcoCheck />Day / night shift cover</li>
+              <li><IcoCheck />Instant replacement</li>
+              <li><IcoCheck />Uniformed &amp; briefed</li>
+            </ul>
+            <a href={waLink("Hi Switch — I'd like to subscribe to the Security guard plan (₹13,999/mo). Please share the details.")} target="_blank" rel="noopener noreferrer" className="sub-cta sub-cta--primary"><IcoBolt />Subscribe now</a>
+          </div>
+
+          <div className="sub-card">
+            <div className="sub-plan">Skilled · Custom</div>
+            <div className="sub-price"><span className="sub-amt sub-amt--sm">On request</span></div>
+            <div className="sub-sub">priced per role &amp; volume</div>
+            <ul className="sub-roles">
+              <li><IcoCheck />Cook · Chef</li>
+              <li><IcoCheck />Waiter · Bartender</li>
+              <li><IcoCheck />Delivery Rider · Driver</li>
+              <li><IcoCheck />Cashier</li>
+              <li><IcoCheck />Bulk / team hiring</li>
+            </ul>
+            <a href={waLink("Hi Switch — I need skilled / custom staff on subscription (cook, chef, waiter, rider, driver, etc.). Please share pricing.")} target="_blank" rel="noopener noreferrer" className="sub-cta sub-cta--ghost">Talk to us</a>
+          </div>
+
+        </div>
+
+        <div className="sub-includes" data-anim style={{'--delay':'140ms'}}>
+          <h3 className="sub-includes-t">Every subscription includes</h3>
+          <div className="sub-inc-grid">
+            <div className="sub-inc"><IcoCheck />Aadhaar-verified staff</div>
+            <div className="sub-inc"><IcoCheck />Replacement guarantee</div>
+            <div className="sub-inc"><IcoCheck />Same staff, every day</div>
+            <div className="sub-inc"><IcoCheck />Dedicated ops manager</div>
+            <div className="sub-inc"><IcoCheck />Paid monthly in advance</div>
+            <div className="sub-inc"><IcoCheck />Cancel anytime*</div>
+          </div>
+        </div>
+
+        <div className="sub-how" data-anim style={{'--delay':'180ms'}}>
+          <div className="sub-step"><span className="sub-step-n">1</span><span className="sub-step-t">Tell us the role you need</span></div>
+          <div className="sub-step"><span className="sub-step-n">2</span><span className="sub-step-t">We deploy a verified Switch Player</span></div>
+          <div className="sub-step"><span className="sub-step-n">3</span><span className="sub-step-t">Pay monthly, in advance</span></div>
+          <div className="sub-step"><span className="sub-step-n">4</span><span className="sub-step-t">Not a fit? Instant replacement</span></div>
+        </div>
+
+        <div className="sub-note" data-anim>
+          Prices are per staff, per month, exclusive of GST (18%). *Monthly subscription with a 1-month minimum; cancel with 15 days' notice. Rates indicative and subject to role, shift and location.
         </div>
       </div>
     </section>
@@ -1220,6 +1389,7 @@ function HomePage() {
       <HomeHead />
       <a href="#main" className="skip-link">Skip to main content</a>
       <Nav />
+      <OfferPopup />
       <main id="main">
         <Hero />
         <Stats />
@@ -1229,6 +1399,8 @@ function HomePage() {
         <HowItWorks />
         <Promos />
         <Pricing />
+        <SubscriptionOffer />
+        <Brands />
         <Reviews />
         <FAQ />
         <CTA />
@@ -1236,6 +1408,7 @@ function HomePage() {
         <AllServicesDirectory />
       </main>
       <Footer />
+      <MobileCTABar />
     </>
   )
 }
@@ -1257,6 +1430,7 @@ export default function App() {
         <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
         <Route path="/:slug" element={<SeoPage />} />
       </Routes>
+      <Analytics />
     </>
   )
 }
