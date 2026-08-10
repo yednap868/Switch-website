@@ -73,7 +73,9 @@ export default function BlogPost() {
   return (
     <>
       <Helmet>
-        <title>{post.title} | Switch</title>
+        {/* Must be one template string: React cannot serialise an array of
+            children inside <title>. */}
+        <title>{`${post.title} | Switch`}</title>
         <meta name="description" content={post.description} />
         <meta name="keywords" content={post.keywords} />
         <link rel="canonical" href={canonical} />

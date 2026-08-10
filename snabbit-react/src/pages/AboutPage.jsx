@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async'
 import { Nav, Footer } from '../App.jsx'
 import './AboutPage.css'
 
-const APP_URL = 'https://app.switchlocally.com/'
 const PHONE = '+918368828660'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`

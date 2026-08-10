@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, Navigate } from 'react-router-dom'
-import { getPageBySlug, SEO_PAGES } from '../data/seoData'
+import { useParams, Link } from 'react-router-dom'
+import {
+  getPageBySlug,
+  SEO_PAGES,
+  AREA_PAGES,
+  getAreaPageSlug,
+  getAliasPages,
+} from '../data/seoData'
 import SeoHead from '../components/SeoHead'
+import NotFoundPage from './NotFoundPage.jsx'
 import './SeoPage.css'
 
 /* ─── MICRO COMPONENTS ─── */
@@ -67,7 +74,7 @@ function PricingTable({ prices }) {
   )
 }
 
-function ComparisonTable({ service }) {
+function ComparisonTable() {
   const rows = [
     ['Booking time',         'Under 2 min',     '24–48 hrs',    'Hours or days'],
     ['Background verified',  '✓ Aadhaar',       'Sometimes',    'Never'],
@@ -137,20 +144,60 @@ function CtaBlock({ service }) {
   )
 }
 
-function RelatedPages({ serviceId, currentSlug }) {
-  const related = SEO_PAGES
-    .filter(p => p.serviceId === serviceId && p.slug !== currentSlug)
-    .slice(0, 9)
-  if (!related.length) return null
+/**
+ * Renders the localities a page serves as real links to the matching hyperlocal
+ * page ("Maid in DLF Phase 3"), falling back to plain text where no such page
+ * exists. This is what pulls the 96 area pages out of orphan status.
+ */
+function AreaLinks({ areas, term, serviceId }) {
+  if (!areas?.length) return null
+  return (
+    <div className="sp-areas">
+      {areas.map((a, i) => {
+        const slug = getAreaPageSlug(a, term, serviceId)
+        return slug
+          ? <Link className="sp-area sp-area--link" key={i} to={`/${slug}`}>{a}</Link>
+          : <span className="sp-area" key={i}>{a}</span>
+      })}
+    </div>
+  )
+}
+
+function RelatedPages({ serviceId, currentSlug, term }) {
+  // This previously took the first 9 same-service pages, which were always the
+  // intent pages — so alias and hyperlocal pages were linked from nowhere at
+  // all. Now we deliberately surface all three families.
+  const intents = SEO_PAGES
+    .filter(p => p.serviceId === serviceId && p.slug !== currentSlug && p.type !== 'landing')
+    .slice(0, 8)
+  // Not sliced: aliases are the highest-value head terms ("maid", "house help",
+  // "deep cleaning"), and truncating left some of them orphaned.
+  const aliases = getAliasPages(serviceId, currentSlug)
+  const areaPages = AREA_PAGES
+    .filter(p => p.serviceId === serviceId && p.slug !== currentSlug && (!term || p.service === term))
+    .slice(0, 8)
+
+  const groups = [
+    { h: 'More pages for this service', items: intents },
+    { h: 'Also searched for', items: aliases },
+    { h: 'Browse by locality', items: areaPages },
+  ].filter(g => g.items.length)
+
+  if (!groups.length) return null
+
   return (
     <div className="sp-related">
       <div className="sp-related-inner">
-        <h3 className="sp-related-h">More {related[0].service} pages</h3>
-        <div className="sp-related-links">
-          {related.map(p => (
-            <Link key={p.slug} to={`/${p.slug}`} className="sp-related-link">{p.h1}</Link>
-          ))}
-        </div>
+        {groups.map(g => (
+          <div className="sp-related-group" key={g.h}>
+            <h3 className="sp-related-h">{g.h}</h3>
+            <div className="sp-related-links">
+              {g.items.map(p => (
+                <Link key={p.slug} to={`/${p.slug}`} className="sp-related-link">{p.h1}</Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -274,9 +321,7 @@ function LandingPage({ page }) {
         <div className="sp-w">
           <h2 className="sp-h2">Areas We Serve in Gurgaon</h2>
           <p className="sp-body">Switch {page.service.toLowerCase()} bookings are available across all major sectors and localities in Gurgaon. Check the app for real-time availability in your area.</p>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
+          <AreaLinks areas={page.areas} term={page.service} serviceId={page.serviceId} />
         </div>
       </section>
 
@@ -338,9 +383,7 @@ function PricingPage({ page }) {
       <section className="sp-section sp-alt">
         <div className="sp-w">
           <h2 className="sp-h2">Available in These Areas</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
+          <AreaLinks areas={page.areas} term={page.service} serviceId={page.serviceId} />
           <CtaBlock service={page.service} />
         </div>
       </section>
@@ -526,9 +569,7 @@ function FaqPage({ page }) {
       <section className="sp-section sp-alt">
         <div className="sp-w">
           <h2 className="sp-h2">Serving These Areas in Gurgaon</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
+          <AreaLinks areas={page.areas} term={page.service} serviceId={page.serviceId} />
           <CtaBlock service={page.service} />
         </div>
       </section>
@@ -551,9 +592,7 @@ function NearMePage({ page }) {
       <section className="sp-section sp-alt">
         <div className="sp-w">
           <h2 className="sp-h2">Areas We Cover in Gurgaon</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
+          <AreaLinks areas={page.areas} term={page.service} serviceId={page.serviceId} />
           <p className="sp-body" style={{marginTop:'1.5rem'}}>Don't see your area? Open the Switch app — we are expanding coverage across Gurgaon every week. Enter your location to check real-time availability in your sector.</p>
         </div>
       </section>
@@ -771,7 +810,10 @@ export default function SeoPage() {
   const { slug } = useParams()
   const page = getPageBySlug(slug)
 
-  if (!page) return <Navigate to="/" replace />
+  // Render a real, noindex 404 rather than silently redirecting to the homepage.
+  // The old `<Navigate to="/" />` produced soft 404s: unlimited junk URLs all
+  // returning HTTP 200 with homepage content.
+  if (!page) return <NotFoundPage />
 
   const Renderer = PAGE_RENDERERS[page.type]
 
@@ -800,7 +842,7 @@ export default function SeoPage() {
         <Renderer page={page} />
       </main>
 
-      <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} />
+      <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} term={page.service} />
 
       <footer className="sp-footer">
         <div className="sp-footer-inner">

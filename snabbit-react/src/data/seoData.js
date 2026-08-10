@@ -837,7 +837,20 @@ const ALIASES = [
 
 function makeAliasPage(a) {
   const s = SERVICES.find(x => x.id === a.serviceId)
+  const isNearMe = / near me$/i.test(a.term)
   const bare = a.term.replace(/ near me$/i, '').toLowerCase()
+
+  // "Maid" and "Maid Near Me" both reduce to the same `bare` term, so they used
+  // to ship byte-identical meta descriptions and intros. Near-me variants now
+  // get copy that actually reflects the proximity intent.
+  const aliasDescription = isNearMe
+    ? `Looking for a ${bare} near you in Gurgaon? Switch has Aadhaar-verified ${bare}s available in your sector today — usually reporting within hours. Pay after work, replacement guaranteed.`
+    : `Book a verified ${bare} in Gurgaon instantly. Aadhaar-verified, background-checked help for cleaning, mopping, dishwashing, laundry & daily chores. Pay after work, replacement guaranteed.`
+
+  const aliasIntro = isNearMe
+    ? `Searching for a ${bare} near you? Switch matches you with verified, Aadhaar-checked Switch Players already active in your part of Gurgaon — DLF, Sushant Lok, Sohna Road, Golf Course Road and every major sector — so someone nearby can usually reach you the same day. Book in under 2 minutes and pay only after the work is done.`
+    : `Looking for a trusted ${bare} in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for cleaning, mopping, dishwashing, laundry, cooking and everyday household needs. Book in the app in under 2 minutes and pay only after the work is done — no agency, no advance.`
+
   return {
     slug: a.slug,
     type: 'landing',
@@ -845,9 +858,9 @@ function makeAliasPage(a) {
     serviceId: s.id,
     serviceImg: s.img,
     title: `${a.term} in Gurgaon — Verified & Same-Day | Switch`,
-    description: `Book a verified ${bare} in Gurgaon instantly. Aadhaar-verified, background-checked house help for cleaning, mopping, dishwashing, laundry & daily chores. Pay after work, replacement guaranteed.`,
+    description: aliasDescription,
     h1: `${a.term} in Gurgaon`,
-    intro: `Looking for a trusted ${bare} in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for cleaning, mopping, dishwashing, laundry, cooking and everyday household needs. Book in the app in under 2 minutes and pay only after the work is done — no agency, no advance.`,
+    intro: aliasIntro,
     keywords: a.kw || ALIAS_KEYWORDS,
     tasks: s.tasks,
     prices: s.prices,
@@ -910,6 +923,37 @@ function makeAreaPage(t, area) {
 }
 
 export const AREA_PAGES = HYPERLOCAL_TERMS.flatMap(t => HYPERLOCAL_AREAS.map(a => makeAreaPage(t, a)))
+
+// ─── LOOKUPS FOR INTERNAL LINKING ─────────────────
+// Without these, the 96 hyperlocal pages and 14 alias pages were orphans:
+// present in sitemap.xml but linked from nowhere, so they accumulated no
+// internal authority and were barely crawled. Exporting the index lets
+// SeoPage turn its plain-text locality chips into real links.
+export { HYPERLOCAL_AREAS, HYPERLOCAL_TERMS }
+
+/** Map of `"<term>|<area>"` -> slug, e.g. `"Maid|DLF Phase 3"`. */
+const AREA_PAGE_INDEX = new Map(
+  HYPERLOCAL_TERMS.flatMap(t =>
+    HYPERLOCAL_AREAS.map(a => [`${t.term}|${a}`, `${slugify(t.term)}-in-${slugify(a)}-gurgaon`])
+  )
+)
+
+/**
+ * Resolve the hyperlocal page for a locality.
+ * Prefers the caller's own term (so a "Maid" page links to "Maid in X"), then
+ * falls back to any hyperlocal term sharing the same service.
+ */
+export function getAreaPageSlug(area, term, serviceId) {
+  const direct = AREA_PAGE_INDEX.get(`${term}|${area}`)
+  if (direct) return direct
+  const fallback = HYPERLOCAL_TERMS.find(t => t.serviceId === serviceId)
+  return fallback ? AREA_PAGE_INDEX.get(`${fallback.term}|${area}`) || null : null
+}
+
+/** Alias pages belonging to a service (e.g. maid / house-help for cleaning). */
+export function getAliasPages(serviceId, excludeSlug) {
+  return ALIAS_PAGES.filter(p => p.serviceId === serviceId && p.slug !== excludeSlug)
+}
 
 // ─── GENERATE ALL PAGES ───────────────────────────
 

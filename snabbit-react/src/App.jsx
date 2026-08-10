@@ -1,4 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+
+/* Layout effects warn during server rendering, so fall back to useEffect on the
+   server (where it never fires). Used by StatNum to keep prerendered HTML honest. */
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Analytics } from '@vercel/analytics/react'
@@ -10,6 +14,7 @@ import BlogIndex from './pages/BlogIndex.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import AppPage from './pages/AppPage.jsx'
 import LegalPage from './pages/LegalPage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
@@ -202,7 +207,13 @@ function StatNum({ value }) {
   const suffix = m ? m[2] : String(value)
   const ref = useRef(null)
   const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const [n, setN] = useState(reduce ? target : 0)
+  // Start at the FINAL value so prerendered HTML shows "500+" rather than "0+"
+  // to crawlers and no-JS visitors. On the client a layout effect resets it to 0
+  // before first paint, so the count-up still runs with no visible flash.
+  const [n, setN] = useState(target)
+  useIsoLayoutEffect(() => {
+    if (hasNum && !reduce) setN(0)
+  }, [hasNum, reduce])
   useEffect(() => {
     const el = ref.current
     if (!el || !hasNum || reduce) return
@@ -386,7 +397,7 @@ function Hero() {
           alt="Switch verified blue-collar professionals — cooks, drivers, cleaners, security guards in Gurgaon"
           width="1000"
           height="789"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
         />
         <div className="hero-r-fade" />
@@ -850,7 +861,7 @@ function HomeHead() {
     email: 'hello@switchlocally.com',
     telephone: '+91-8368828660',
     image: 'https://switchlocally.com/hero-workers.jpg',
-    logo: 'https://switchlocally.com/hero-workers.jpg',
+    logo: 'https://switchlocally.com/favicon-512.png',
     priceRange: '₹99-₹199 per hour',
     address: {
       '@type': 'PostalAddress',
@@ -867,7 +878,19 @@ function HomeHead() {
       ...['DLF Phase 1','DLF Phase 3','DLF Phase 4','DLF Queens Enclave','Sushant Lok Phase 1','Sushant Lok Phase 2','Sushant Lok Phase 3','Palam Vihar','Udyog Vihar','Sohna Road','Cyber City','MG Road','Galleria Market','Sector 14','Sector 17','Sector 23','Sector 31','Sector 40','Sector 47','Sector 49','Chakkarpur','Sikanderpur','Nathupur','Greenwood City','Malibu Towne','Sun City'].map(n => ({ '@type': 'Place', name: `${n}, Gurgaon` })),
       ...['122001','122002','122006','122009','122010','122017','122018','122022'].map(p => ({ '@type': 'PostalAddress', postalCode: p, addressLocality: 'Gurgaon', addressRegion: 'Haryana', addressCountry: 'IN' })),
     ],
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '500' },
+    // NOTE: aggregateRating intentionally omitted. Google treats ratings shown
+    // on your own site about your own business as "self-serving" and ineligible
+    // for LocalBusiness/Organization rich results, and a hard-coded 4.8/500 that
+    // isn't backed by auditable records risks a manual spam action. Re-add only
+    // when driven by real review data (ideally Google Business Profile).
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'UPI, Credit Card, Debit Card, Bank Transfer, Cash',
+    openingHoursSpecification: [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+      opens: '00:00',
+      closes: '23:59',
+    }],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Blue-Collar &amp; Housekeeping Services in Gurgaon',
@@ -900,7 +923,7 @@ function HomeHead() {
     '@type': 'Organization',
     name: 'Switch',
     url: 'https://switchlocally.com',
-    logo: 'https://switchlocally.com/hero-workers.jpg',
+    logo: 'https://switchlocally.com/favicon-512.png',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+91-8368828660',
@@ -925,6 +948,25 @@ function HomeHead() {
       <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
       <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
+      {/* These were previously hard-coded in index.html. Now that index.html is
+          the template for all 215 prerendered pages, homepage-specific tags
+          have to live here or every page would inherit them. */}
+      <link rel="preload" as="image" href="/hero-workers.jpg" fetchPriority="high" />
+      <meta property="og:title" content="Hire Verified Staff for Business in Gurgaon | Switch" />
+      <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, pay on arrival." />
+      <meta property="og:url" content="https://switchlocally.com/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Switch" />
+      <meta property="og:locale" content="en_IN" />
+      <meta property="og:image" content="https://switchlocally.com/hero-workers.jpg" />
+      <meta property="og:image:width" content="1000" />
+      <meta property="og:image:height" content="789" />
+      <meta property="og:image:alt" content="Switch verified blue-collar professionals — cooks, drivers, cleaners and security guards in Gurgaon" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Hire Verified Staff for Business in Gurgaon | Switch" />
+      <meta name="twitter:description" content="Hire verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon. Store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams." />
+      <meta name="twitter:image" content="https://switchlocally.com/hero-workers.jpg" />
+      <meta name="twitter:image:alt" content="Switch verified blue-collar professionals in Gurgaon" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
@@ -1429,6 +1471,8 @@ export default function App() {
         <Route path="/privacy" element={<LegalPage policy="privacy" />} />
         <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
         <Route path="/:slug" element={<SeoPage />} />
+        {/* Genuine 404 for anything unmatched, instead of a soft 404. */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Analytics />
     </>

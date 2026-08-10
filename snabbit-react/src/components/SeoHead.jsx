@@ -45,8 +45,12 @@ export default function SeoHead({ page }) {
       ...GURGAON_AREAS.map(n => ({ '@type': 'Place', name: `${n}, Gurgaon` })),
       ...PINCODES.map(p => ({ '@type': 'PostalAddress', postalCode: p, addressLocality: 'Gurgaon', addressRegion: 'Haryana', addressCountry: 'IN' })),
     ],
+    serviceType: page.service,
     provider: {
       '@type': 'LocalBusiness',
+      // Same @id as the LocalBusiness node in index.html so Google merges these
+      // into one business entity rather than treating them as separate orgs.
+      '@id': `${BASE_URL}/#business`,
       name: 'Switch',
       url: BASE_URL,
       email: 'hello@switchlocally.com',
@@ -81,11 +85,8 @@ export default function SeoHead({ page }) {
     <Helmet>
       <title>{page.title}</title>
       <meta name="description" content={page.description} />
-      <meta name="robots" content="index, follow" />
-      <meta name="geo.region" content="IN-HR" />
-      <meta name="geo.placename" content="Gurgaon" />
-      <meta name="geo.position" content="28.4595;77.0266" />
-      <meta name="ICBM" content="28.4595, 77.0266" />
+      {/* robots + geo.* are emitted globally in index.html. Repeating them here
+          would produce duplicate meta tags on every prerendered page. */}
       {page.keywords && <meta name="keywords" content={page.keywords} />}
       <link rel="canonical" href={canonical} />
       <meta property="og:title" content={page.title} />
@@ -93,7 +94,9 @@ export default function SeoHead({ page }) {
       <meta property="og:url" content={canonical} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Switch" />
+      <meta property="og:locale" content="en_IN" />
       {page.serviceImg && <meta property="og:image" content={`${BASE_URL}${page.serviceImg}`} />}
+      {page.serviceImg && <meta property="og:image:alt" content={`${page.service} in Gurgaon — verified by Switch`} />}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={page.title} />
       <meta name="twitter:description" content={page.description} />

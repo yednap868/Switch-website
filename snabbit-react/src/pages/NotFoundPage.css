@@ -1,0 +1,46 @@
+/* ─── 404 / NOT FOUND ────────────────────────────── */
+.nf {
+  padding: 130px 24px 90px;
+  background: #0a0a0a;
+  color: rgba(255, 255, 255, 0.78);
+  min-height: 60vh;
+}
+.nf-wrap { max-width: 820px; margin: 0 auto; }
+
+.nf-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38); margin: 0 0 12px;
+}
+.nf-h1 {
+  font-size: clamp(32px, 5vw, 46px); line-height: 1.1; letter-spacing: -0.02em;
+  font-weight: 800; color: #fff; margin: 0 0 14px;
+}
+.nf-intro {
+  font-size: 17px; line-height: 1.7; color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 44px; padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.nf-sec { margin-bottom: 38px; }
+.nf-h2 {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42); margin: 0 0 14px;
+}
+.nf-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.nf-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 18px; border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px; background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+.nf-link:hover {
+  border-color: rgba(160, 110, 255, 0.5);
+  background: rgba(160, 110, 255, 0.1);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .nf { padding: 108px 18px 70px; }
+}

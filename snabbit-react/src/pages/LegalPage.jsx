@@ -64,7 +64,9 @@ export default function LegalPage({ policy }) {
   return (
     <>
       <Helmet>
-        <title>{data.title} | Switch</title>
+        {/* Must be one template string: React cannot serialise an array of
+            children inside <title>. */}
+        <title>{`${data.title} | Switch`}</title>
         <meta name="description" content={data.intro} />
         <link rel="canonical" href={url} />
         <meta property="og:title" content={`${data.title} | Switch`} />
