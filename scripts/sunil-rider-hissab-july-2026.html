@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color:#111; margin:0; }
+  .header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; }
+  .logo { font-weight:800; font-size:32px; letter-spacing:-0.5px; }
+  .company { text-align:right; font-size:9.5px; line-height:1.45; }
+  .company .name { font-weight:700; }
+  .doc-title { text-align:center; text-decoration:underline; font-size:14px; margin:2px 0 4px; font-weight:700; }
+  .sub { text-align:center; font-size:10.5px; color:#444; margin-bottom:14px; }
+  .meta { font-size:10.5px; margin-bottom:12px; line-height:1.7; }
+  .meta b { display:inline-block; min-width:120px; }
+  table { width:100%; border-collapse:collapse; margin-bottom:14px; }
+  th,td { border:1px solid #bbb; padding:5px 8px; font-size:10px; }
+  th { background:#f2f2f2; text-align:left; }
+  td.c { text-align:center; } td.num { text-align:right; }
+  tr.total td { font-weight:700; background:#f7f7f7; }
+  .settle { width:55%; margin-left:auto; border-collapse:collapse; }
+  .settle td { border:1px solid #bbb; padding:6px 10px; font-size:11px; }
+  .settle td.num { text-align:right; }
+  .settle tr.bal td { font-weight:800; background:#eef6ee; font-size:12px; }
+  .rate { background:#fafafa; border:1px solid #ddd; padding:8px 10px; margin-bottom:14px; font-size:10.5px; }
+  .note { font-size:9px; color:#555; margin-top:10px; line-height:1.5; }
+  .sign { margin-top:40px; display:flex; justify-content:space-between; font-size:10.5px; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Switch</div>
+    <div class="company">
+      <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+      <div>R02/06, M3M Woodshire, Sector 107, Gurgaon, Haryana, 122006</div>
+      <div>Switchlocally.com</div>
+    </div>
+  </div>
+
+  <div class="doc-title">Rider Payment Statement (Hissab)</div>
+  <div class="sub">Delivery Partner Settlement</div>
+
+  <div class="meta">
+    <div><b>Rider Name:</b> Sunil</div>
+    <div><b>Period:</b> 20 July – 29 July 2026</div>
+    <div><b>Pay Rate:</b> INR 200 per hour</div>
+  </div>
+
+  <div class="rate"><b>Basis:</b> Payment is on an hourly basis at INR 200/hour. Each shift's duration is rounded up to the next 30 minutes (1–30 min &rarr; half hour; 31–59 min &rarr; full hour).</div>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Date</th><th>Timing Slot</th><th class="c">Actual</th><th class="c">Billed Hrs</th><th class="num">Amount (INR)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="c">1</td><td>20 Jul (Mon)</td><td>8:15 PM – 10:37 PM</td><td class="c">2:21</td><td class="c">2.5</td><td class="num">500</td></tr>
+      <tr><td class="c">2</td><td>21 Jul</td><td>2:40 PM – 5:00 PM</td><td class="c">2:20</td><td class="c">2.5</td><td class="num">500</td></tr>
+      <tr><td class="c">3</td><td>22 Jul</td><td>7:56 PM – 8:46 PM</td><td class="c">0:50</td><td class="c">1.0</td><td class="num">200</td></tr>
+      <tr><td class="c">4</td><td>23 Jul</td><td>7:22 PM – 8:50 PM</td><td class="c">1:28</td><td class="c">1.5</td><td class="num">300</td></tr>
+      <tr><td class="c">5</td><td>24 Jul</td><td>7:25 PM – 8:40 PM</td><td class="c">1:15</td><td class="c">1.5</td><td class="num">300</td></tr>
+      <tr><td class="c">6</td><td>25 Jul</td><td>1:15 PM – 2:40 PM</td><td class="c">1:25</td><td class="c">1.5</td><td class="num">300</td></tr>
+      <tr><td class="c">7</td><td>27 Jul</td><td>7:12 PM – 8:50 PM</td><td class="c">1:38</td><td class="c">2.0</td><td class="num">400</td></tr>
+      <tr><td class="c">8</td><td>28 Jul</td><td>1:56 PM – 4:30 PM</td><td class="c">2:34</td><td class="c">3.0</td><td class="num">600</td></tr>
+      <tr><td class="c">9</td><td>28 Jul</td><td>7:20 PM – 9:15 PM</td><td class="c">1:55</td><td class="c">2.0</td><td class="num">400</td></tr>
+      <tr><td class="c">10</td><td>29 Jul</td><td>8:30 PM – 11:30 PM</td><td class="c">3:00</td><td class="c">3.0</td><td class="num">600</td></tr>
+      <tr class="total"><td colspan="4" class="c">TOTAL</td><td class="c">20.5</td><td class="num">4,100</td></tr>
+    </tbody>
+  </table>
+
+  <table class="settle">
+    <tr><td>Total Earnings (20.5 hrs × INR 200)</td><td class="num">INR 4,100</td></tr>
+    <tr><td>Less: Paid on 30 July 2026 (advance)</td><td class="num">– INR 1,200</td></tr>
+    <tr class="bal"><td>Balance Payable</td><td class="num">INR 2,900</td></tr>
+  </table>
+
+  <div class="note">
+    Notes: 20 &amp; 21 July slots are merged shifts (multiple batches on the same day counted as one continuous slot). 28 July has two separate shifts (afternoon and evening). Payment is for time only, at INR 200/hour.
+  </div>
+
+  <div class="sign">
+    <div>Prepared by: ______________________</div>
+    <div>Received by (Sunil): ______________________</div>
+  </div>
+</body>
+</html>

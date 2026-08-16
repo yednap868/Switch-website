@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #14202e;
+    width: 297mm; height: 210mm;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cert {
+    position: relative;
+    width: 277mm; height: 190mm;
+    padding: 18mm 22mm;
+    border: 2px solid #0f6e63;
+    outline: 8px solid #0f6e63;
+    outline-offset: 6px;
+    background:
+      radial-gradient(120% 120% at 50% -10%, #f4fbfa 0%, #ffffff 55%);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  }
+  .corner { position: absolute; width: 34px; height: 34px; border: 3px solid #0f6e63; }
+  .corner.tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+  .corner.br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+  .brand { font-family: Arial, sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.5px; color: #111; }
+  .company { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 1px; color: #5a6b76; margin-top: 2px; text-transform: uppercase; }
+  .rule { width: 70px; height: 3px; background: #0f6e63; margin: 14px auto 10px; border-radius: 2px; }
+
+  .title { font-size: 30px; letter-spacing: 3px; text-transform: uppercase; color: #0f6e63; margin: 6px 0 2px; font-weight: 700; }
+  .subtitle { font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: #7d8b95; margin-bottom: 18px; }
+
+  .presented { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7d8b95; }
+  .name { font-size: 40px; font-style: italic; color: #14202e; margin: 8px 0 4px; }
+  .name-underline { width: 320px; height: 1px; background: #cdd7dd; margin: 0 auto 18px; }
+
+  .body { font-size: 14px; line-height: 1.9; max-width: 200mm; color: #2b3a45; }
+  .body b { color: #14202e; }
+
+  .foot { margin-top: auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 22px; }
+  .sig { text-align: center; width: 240px; }
+  .sig .ln { border-top: 1.5px solid #14202e; margin-bottom: 4px; }
+  .sig .who { font-weight: 700; font-size: 13px; }
+  .sig .role { font-size: 11px; color: #5a6b76; }
+  .seal {
+    width: 92px; height: 92px; border-radius: 50%;
+    border: 2px solid #0f6e63; color: #0f6e63;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-family: Arial, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    line-height: 1.3; text-transform: uppercase;
+  }
+  .meta { font-size: 10px; color: #7d8b95; }
+</style>
+</head>
+<body>
+  <div class="cert">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+
+    <div class="brand">Switch</div>
+    <div class="company">Third Wave Labs Private Limited</div>
+    <div class="rule"></div>
+
+    <div class="title">Certificate of Completion</div>
+    <div class="subtitle">Internship Program</div>
+
+    <div class="presented">This certificate is proudly presented to</div>
+    <div class="name">Saksham Batra</div>
+    <div class="name-underline"></div>
+
+    <div class="body">
+      for the successful completion of a <b>seven (7) day</b> internship as an
+      <b>Operations Intern</b> at <b>Switch (Third Wave Labs Private Limited)</b>,
+      from <b>30 July 2026</b> to <b>05 August 2026</b>.<br>
+      During this period, Saksham demonstrated commendable dedication, a strong
+      work ethic and a willingness to learn. We appreciate the contribution made
+      during the internship and wish continued success in all future endeavours.
+    </div>
+
+    <div class="foot">
+      <div class="sig">
+        <div class="ln"></div>
+        <div class="who">Saurabh Pandey</div>
+        <div class="role">Chief Executive Officer</div>
+      </div>
+
+      <div class="seal">Switch<br>Verified</div>
+
+      <div class="sig">
+        <div class="ln"></div>
+        <div class="who">Date of Issue</div>
+        <div class="role">06 August 2026 · Gurugram</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
