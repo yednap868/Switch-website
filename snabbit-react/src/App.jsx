@@ -10,6 +10,7 @@ import BlogIndex from './pages/BlogIndex.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import AppPage from './pages/AppPage.jsx'
 import LegalPage from './pages/LegalPage.jsx'
+import StaffingPage from './pages/StaffingPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
@@ -1340,6 +1341,7 @@ export function Footer() {
         <div className="ft-col">
           <h3 className="ft-col-title">For Business</h3>
           <ul>
+            <li><Link to="/staffing-gurgaon">Staffing in Gurgaon</Link></li>
             <li><a href="/#industries">Industries</a></li>
             <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Bulk Hiring</a></li>
             <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Request Staff</a></li>
@@ -1428,6 +1430,7 @@ export default function App() {
         <Route path="/terms" element={<LegalPage policy="terms" />} />
         <Route path="/privacy" element={<LegalPage policy="privacy" />} />
         <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
+        <Route path="/staffing-gurgaon" element={<StaffingPage />} />
         <Route path="/:slug" element={<SeoPage />} />
       </Routes>
       <Analytics />

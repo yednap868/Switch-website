@@ -32,6 +32,7 @@ const add = (path, c, p) => {
 
 // static routes
 add('', 'weekly', '1.0')
+add('staffing-gurgaon', 'weekly', '0.9')
 add('app', 'monthly', '0.9')
 add('about', 'monthly', '0.7')
 add('partner', 'monthly', '0.7')
