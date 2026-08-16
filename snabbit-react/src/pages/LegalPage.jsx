@@ -4,7 +4,7 @@ import { Nav, Footer } from '../App.jsx'
 import './LegalPage.css'
 
 const CONTACT_EMAIL = 'hello@switchlocally.com'
-const PHONE_DISPLAY = '+91 83688 28660'
+const PHONE_DISPLAY = '+91 92056 17375'
 const LAST_UPDATED = '24 July 2026'
 
 /* ─── POLICY CONTENT ──────────────────────────────────

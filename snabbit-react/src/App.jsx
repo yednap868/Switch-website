@@ -15,7 +15,7 @@ import { SERVICE_LIST } from './data/seoData.js'
 /* ─── CONTACT ─────────────────────────────────────── */
 const APP_URL = 'https://app.switchlocally.com'
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
-const PHONE = '+918368828660'
+const PHONE = '+919205617375'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
 const CALL_URL = `tel:${PHONE}`
@@ -726,7 +726,7 @@ function CTA() {
           <span className="tag">Staff your business</span>
           <h2 className="cta-h2">Tell us what you<br />need. We'll staff it.</h2>
           <p className="cta-p">From one Switch Player to a full team — verified, reliable, replacement-guaranteed. Message us on WhatsApp and we'll get back with availability and a quote.</p>
-          <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com · ☎ +91 83688 28660</a>
+          <a href="mailto:hello@switchlocally.com" className="cta-mail">✉ hello@switchlocally.com · ☎ +91 92056 17375</a>
           <div className="cta-btns">
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-book">
               <IcoBolt />
@@ -848,7 +848,7 @@ function HomeHead() {
     description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
-    telephone: '+91-8368828660',
+    telephone: '+91-9205617375',
     image: 'https://switchlocally.com/hero-workers.jpg',
     logo: 'https://switchlocally.com/hero-workers.jpg',
     priceRange: '₹99-₹199 per hour',
@@ -903,7 +903,7 @@ function HomeHead() {
     logo: 'https://switchlocally.com/hero-workers.jpg',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+91-8368828660',
+      telephone: '+91-9205617375',
       contactType: 'customer service',
       areaServed: 'IN',
       availableLanguage: ['en', 'hi'],
@@ -1320,7 +1320,7 @@ export function Footer() {
               >View on Google Maps →</a>
             </div>
           </div>
-          <a href="tel:+918368828660" className="ft-phone">
+          <a href="tel:+919205617375" className="ft-phone">
             <span className="ft-phone-ico">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 3.5C3 3 3.4 2.5 4 2.5h2c.5 0 .9.4 1 .9l.5 2.4c.1.4-.1.8-.4 1L5.7 8a10 10 0 0 0 4.4 4.4l1.1-1.4c.2-.3.7-.4 1-.3l2.4.5c.5.1.9.5.9 1v2c0 .6-.5 1-1 1A12 12 0 0 1 3 3.5Z"/>
@@ -1328,7 +1328,7 @@ export function Footer() {
             </span>
             <span>
               <span className="ft-phone-lbl">Call us</span>
-              <span className="ft-phone-num">+91 83688 28660</span>
+              <span className="ft-phone-num">+91 92056 17375</span>
             </span>
           </a>
           <div className="ft-social">

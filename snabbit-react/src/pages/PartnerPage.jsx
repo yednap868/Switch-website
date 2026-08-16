@@ -322,7 +322,7 @@ export default function PartnerPage() {
                 ))}
               </ul>
               <CtaPrimary>Apply on the App</CtaPrimary>
-              <a href="tel:+918368828660" className="pp-req-call">or call · +91 83688 28660</a>
+              <a href="tel:+919205617375" className="pp-req-call">or call · +91 92056 17375</a>
             </div>
           </div>
         </section>
@@ -383,7 +383,7 @@ export default function PartnerPage() {
             <p className="pp-final-p">Download the Switch Partner app, submit your Aadhaar, and we’ll approve you within 24 hours. Daily payouts begin from your very first booking.</p>
             <div className="pp-final-ctas">
               <CtaPrimary big>Apply on the App</CtaPrimary>
-              <a href="tel:+918368828660" className="pp-cta-secondary">📞 Call +91 83688 28660</a>
+              <a href="tel:+919205617375" className="pp-cta-secondary">📞 Call +91 92056 17375</a>
             </div>
             <div className="pp-final-row">
               <span><Check/> Free to join</span>
@@ -406,7 +406,7 @@ export default function PartnerPage() {
 
       {/* FOOTER */}
       <footer className="pp-footer">
-        <p>© 2026 Switch · <a href="tel:+918368828660">+91 83688 28660</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link></p>
+        <p>© 2026 Switch · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link></p>
       </footer>
     </div>
   )

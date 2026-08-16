@@ -5,7 +5,7 @@ import './AppPage.css'
 
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
 const APP_URL = 'https://app.switchlocally.com'
-const PHONE = '+918368828660'
+const PHONE = '+919205617375'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
 
