@@ -157,7 +157,7 @@ export default function AppPage() {
 
             <div className="ap-hero-phones" data-anim style={{ '--delay': '160ms' }}>
               <img src="/screen-2.png" alt="Switch app — browse staff categories" className="ap-ph ap-ph-side ap-ph-left" width="390" height="844" loading="eager" decoding="async" />
-              <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" className="ap-ph ap-ph-main" width="390" height="844" loading="eager" decoding="async" fetchpriority="high" />
+              <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" className="ap-ph ap-ph-main" width="390" height="844" loading="eager" decoding="async" fetchPriority="high" />
               <img src="/screen-3.png" alt="Switch app — verified Switch Player profiles" className="ap-ph ap-ph-side ap-ph-right" width="390" height="844" loading="eager" decoding="async" />
             </div>
           </div>

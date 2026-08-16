@@ -387,7 +387,7 @@ function Hero() {
           alt="Switch verified blue-collar professionals — cooks, drivers, cleaners, security guards in Gurgaon"
           width="1000"
           height="789"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
         />
         <div className="hero-r-fade" />
@@ -926,6 +926,17 @@ function HomeHead() {
       <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
       <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
+      <meta property="og:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
+      <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, pay on arrival." />
+      <meta property="og:url" content="https://switchlocally.com/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Switch" />
+      <meta property="og:image" content="https://switchlocally.com/hero-workers.jpg" />
+      <meta property="og:locale" content="en_IN" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
+      <meta name="twitter:description" content="Hire verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon. Store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams." />
+      <meta name="twitter:image" content="https://switchlocally.com/hero-workers.jpg" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>

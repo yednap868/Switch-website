@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "sitemap": "node scripts/gen-sitemap.mjs",
-    "build": "node scripts/gen-sitemap.mjs && vite build",
+    "build": "node scripts/gen-sitemap.mjs && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build:client": "node scripts/gen-sitemap.mjs && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
