@@ -1,9 +1,14 @@
 .verify {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+  background: linear-gradient(180deg, #f4fbfa 0%, #ffffff 40%);
+  color: #14202e;
+}
+.verify-wrap {
   max-width: 720px;
   margin: 0 auto;
-  padding: 120px 20px 80px;
+  text-align: center;
 }
-.verify-wrap { text-align: center; }
 .verify-eyebrow {
   text-transform: uppercase;
   letter-spacing: 3px;
