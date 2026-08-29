@@ -35,6 +35,7 @@ const routes = [
   '/terms',
   '/privacy',
   '/cancellation',
+  '/verify',
   ...BLOG_POSTS.map(p => `/blog/${p.slug}`),
   ...SEO_PAGES.map(p => `/${p.slug}`),
 ]

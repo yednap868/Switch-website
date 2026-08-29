@@ -11,6 +11,7 @@ import BlogPost from './pages/BlogPost.jsx'
 import AppPage from './pages/AppPage.jsx'
 import LegalPage from './pages/LegalPage.jsx'
 import StaffingPage from './pages/StaffingPage.jsx'
+import VerifyPage from './pages/VerifyPage.jsx'
 import { SERVICE_LIST } from './data/seoData.js'
 
 /* ─── CONTACT ─────────────────────────────────────── */
@@ -1442,6 +1443,7 @@ export default function App() {
         <Route path="/privacy" element={<LegalPage policy="privacy" />} />
         <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
         <Route path="/staffing-gurgaon" element={<StaffingPage />} />
+        <Route path="/verify" element={<VerifyPage />} />
         <Route path="/:slug" element={<SeoPage />} />
       </Routes>
       <Analytics />

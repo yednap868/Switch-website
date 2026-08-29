@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 10px; color:#111; margin:0; line-height:1.4; }
+  .top { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px solid #111; padding-bottom:10px; margin-bottom:12px; }
+  .logo { font-weight:800; font-size:32px; letter-spacing:-0.5px; }
+  .from { text-align:right; font-size:9px; line-height:1.4; }
+  .from .name { font-weight:700; font-size:10px; }
+  .title { text-align:center; font-size:15px; font-weight:700; letter-spacing:1px; margin:2px 0; }
+  .sub { text-align:center; font-size:9.5px; color:#444; margin-bottom:10px; }
+  .meta { display:flex; justify-content:space-between; font-size:9.5px; margin-bottom:8px; }
+  .meta .label { color:#666; text-transform:uppercase; font-size:8.5px; letter-spacing:0.5px; }
+  table { width:100%; border-collapse:collapse; margin:3px 0 6px; }
+  th,td { border:1px solid #bbb; padding:3px 5px; font-size:8.8px; vertical-align:top; }
+  th { background:#111; color:#fff; text-align:center; font-weight:600; }
+  td.day { font-weight:700; white-space:nowrap; }
+  td.c { text-align:center; }
+  i { color:#777; font-style:italic; }
+  .P { color:#1a7f37; font-weight:700; }
+  .V { color:#1a7f37; }
+  .L { color:#b26a00; font-weight:700; }
+  .A { color:#c0392b; font-weight:700; }
+  .N { color:#aaa; }
+  .worker-h { font-weight:700; font-size:11px; margin:12px 0 2px; padding:4px 8px; background:#eee; border-left:4px solid #111; }
+  .worker-h span { font-weight:400; color:#555; font-size:9.5px; }
+  .legend { font-size:8.8px; color:#444; margin:5px 0; }
+  .note { font-size:8.6px; color:#555; background:#f6f6f6; border-left:3px solid #111; padding:7px 9px; margin-top:10px; }
+  .foot { margin-top:16px; display:flex; justify-content:space-between; align-items:flex-end; font-size:9px; }
+  .sign .line { margin-top:28px; border-top:1px solid #111; padding-top:3px; width:190px; text-align:center; }
+  .tot td { font-weight:700; background:#f2f2f2; }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="logo">Switch</div>
+    <div class="from">
+      <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+      <div>Shop No R-02/06, Tower A3, M3M Woodshire,</div>
+      <div>Sector 107, Gurugram – 122006, Haryana</div>
+      <div>Email: info@switchlocally.com</div>
+    </div>
+  </div>
+
+  <div class="title">DAILY STAFF ATTENDANCE RECORD</div>
+  <div class="sub">Client: Foressta Cafe &nbsp;|&nbsp; Housekeeping (Day) + UT (Night, on-demand) &nbsp;|&nbsp; Period: 25 July – 20 August 2026</div>
+
+  <div class="meta">
+    <div>
+      <div><span class="label">Client:</span> Foressta Cafe, Gurugram (Sector 54 &amp; Sector 7 / New Colony)</div>
+      <div><span class="label">Coordinators:</span> Nasir Khan (Sec 54), Ajay Yadav (Sec 7)</div>
+    </div>
+    <div style="text-align:right;">
+      <div><span class="label">Salary basis:</span> ₹16,000 / placement / month</div>
+      <div><span class="label">Prepared:</span> 20 August 2026</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <b>Legend:</b> <span class="P">P</span> = Present (times logged in chat) &nbsp; <span class="V">✓</span> = Present, routine day &nbsp;
+    <span class="L">L</span> = Late / short shift &nbsp; <span class="A">A</span> = Absent &nbsp; | &nbsp; <i>italic times</i> = scheduled shift (routine day, not individually logged); normal times = logged/actual.
+  </div>
+
+  <div class="worker-h">Worker: SUJIT &nbsp; <span>— Sector 54 (Day Shift) · scheduled 12:00–20:00</span></div>
+  <table>
+    <thead>
+      <tr><th style="width:66px;">Date</th><th class="c" style="width:60px;">Check-in</th><th class="c" style="width:60px;">Check-out</th><th class="c" style="width:44px;">Hours</th><th class="c" style="width:44px;">Status</th><th>Remarks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="day">Fri 25 Jul</td><td class="c">11:30</td><td class="c">19:30</td><td class="c">8.0</td><td class="c P">P</td><td>Placement start (initially Dilip/Mohan before Sujit made permanent).</td></tr>
+      <tr><td class="day">Sat 26 Jul</td><td class="c">11:30</td><td class="c">19:30</td><td class="c">8.0</td><td class="c P">P</td><td>2 workers deployed.</td></tr>
+      <tr><td class="day">Sun 27 Jul</td><td class="c">11:30</td><td class="c">20:00</td><td class="c">8.5</td><td class="c P">P</td><td>Handover to night shift at 8:00 pm.</td></tr>
+      <tr><td class="day">Mon 28 Jul</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 29 Jul</td><td class="c">12:00</td><td class="c">20:00</td><td class="c">8.0</td><td class="c P">P</td><td>Logged 12:00–8:00.</td></tr>
+      <tr><td class="day">Wed 30 Jul</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Thu 31 Jul</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Fri 01 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 02 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sun 03 Aug</td><td class="c">12:00</td><td class="c">20:00</td><td class="c">8.0</td><td class="c P">P</td><td>Logged 12:00–8:00.</td></tr>
+      <tr><td class="day">Mon 04 Aug</td><td class="c">12:40</td><td class="c"><i>20:00</i></td><td class="c">7.3</td><td class="c L">L</td><td>Reported no-show initially; checked in 12:40.</td></tr>
+      <tr><td class="day">Tue 05 Aug</td><td class="c">14:38</td><td class="c">15:52</td><td class="c">1.2</td><td class="c L">L</td><td>Very late, left early; replacement sent.</td></tr>
+      <tr><td class="day">Wed 06 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Thu 07 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Fri 08 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 09 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sun 10 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Mon 11 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 12 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 13 Aug</td><td class="c">13:20</td><td class="c">20:00</td><td class="c">6.7</td><td class="c L">L</td><td>Came 1:20 pm, left 8:00 pm without informing.</td></tr>
+      <tr><td class="day">Thu 14 Aug</td><td class="c">10:00</td><td class="c"><i>20:00</i></td><td class="c">10.0</td><td class="c P">P</td><td>Sujit sent at 10:00 am as requested.</td></tr>
+      <tr><td class="day">Fri 15 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 16 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c P">P</td><td>Covered by replacement (Sujit resumes next day).</td></tr>
+      <tr><td class="day">Sun 17 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c P">P</td><td>Sujit on sick leave (fever) — slot covered by replacement.</td></tr>
+      <tr><td class="day">Mon 18 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 19 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 20 Aug</td><td class="c"><i>12:00</i></td><td class="c"><i>20:00</i></td><td class="c">8.0</td><td class="c V">✓</td><td>Record up to date.</td></tr>
+      <tr class="tot"><td colspan="4">Days present: 27 &nbsp;|&nbsp; Late/short: 3 &nbsp;|&nbsp; Absent: 0</td><td class="c">27</td><td>Billable days</td></tr>
+    </tbody>
+  </table>
+
+  <div class="worker-h">Worker: HARENDAR KUMAR &nbsp; <span>— Sector 7 / New Colony (Day Shift) · scheduled 10:00–19:00 · from 27 Jul</span></div>
+  <table>
+    <thead>
+      <tr><th style="width:66px;">Date</th><th class="c" style="width:60px;">Check-in</th><th class="c" style="width:60px;">Check-out</th><th class="c" style="width:44px;">Hours</th><th class="c" style="width:44px;">Status</th><th>Remarks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="day">Sun 27 Jul</td><td class="c">11:00</td><td class="c"><i>19:00</i></td><td class="c">8.0</td><td class="c P">P</td><td>Sector 7 outlet started; worker reached ~11:00 am.</td></tr>
+      <tr><td class="day">Mon 28 Jul</td><td class="c A">—</td><td class="c A">—</td><td class="c">0</td><td class="c A">A</td><td>"No person reached Sector 7 outlet" — absent (not billed).</td></tr>
+      <tr><td class="day">Tue 29 Jul</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 30 Jul</td><td class="c">10:30</td><td class="c"><i>19:00</i></td><td class="c">8.5</td><td class="c L">L</td><td>Late — not arrived by requested 10:00 am.</td></tr>
+      <tr><td class="day">Thu 31 Jul</td><td class="c">11:00</td><td class="c"><i>19:00</i></td><td class="c">8.0</td><td class="c L">L</td><td>Started ~11:00 am (late).</td></tr>
+      <tr><td class="day">Fri 01 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 02 Aug</td><td class="c">12:32</td><td class="c"><i>19:00</i></td><td class="c">6.5</td><td class="c L">L</td><td>Arrived ~12:32 (late). Target 9:00 am–7:00 pm.</td></tr>
+      <tr><td class="day">Sun 03 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Mon 04 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 05 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 06 Aug</td><td class="c">Late</td><td class="c"><i>19:00</i></td><td class="c">—</td><td class="c L">L</td><td>Auto-booking delay due to waterlogging/rain.</td></tr>
+      <tr><td class="day">Thu 07 Aug</td><td class="c">11:00</td><td class="c"><i>19:00</i></td><td class="c">8.0</td><td class="c L">L</td><td>Late — stuck in traffic.</td></tr>
+      <tr><td class="day">Fri 08 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 09 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sun 10 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Mon 11 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 12 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 13 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Thu 14 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Fri 15 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sat 16 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Sun 17 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Mon 18 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Tue 19 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Routine.</td></tr>
+      <tr><td class="day">Wed 20 Aug</td><td class="c"><i>10:00</i></td><td class="c"><i>19:00</i></td><td class="c">9.0</td><td class="c V">✓</td><td>Record up to date.</td></tr>
+      <tr class="tot"><td colspan="4">Days present: 24 &nbsp;|&nbsp; Late/short: 5 &nbsp;|&nbsp; Absent: 1 (28 Jul)</td><td class="c">24</td><td>Billable days</td></tr>
+    </tbody>
+  </table>
+
+  <div class="worker-h">Night — UT (on-demand) &nbsp; <span>— business window ~6:00 pm–4:30 am · billed hourly</span></div>
+  <table>
+    <thead>
+      <tr><th style="width:66px;">Date</th><th class="c" style="width:60px;">Check-in</th><th class="c" style="width:60px;">Check-out</th><th class="c" style="width:44px;">Hours</th><th class="c" style="width:44px;">Status</th><th>Remarks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="day">Sun 27 Jul</td><td class="c">20:00</td><td class="c">04:00</td><td class="c">8.0</td><td class="c P">P</td><td>Night shift; checked out 4:00 am (28 Jul).</td></tr>
+      <tr><td class="day">Thu 14 Aug</td><td class="c">19:00</td><td class="c"><i>04:30</i></td><td class="c">9.5</td><td class="c P">P</td><td>UT requested 7:00 pm; checkout taken as end of window.</td></tr>
+      <tr><td class="day">Fri 15 Aug</td><td class="c">19:00</td><td class="c"><i>04:30</i></td><td class="c">9.5</td><td class="c P">P</td><td>Permanent UT requested, Sec 54, 7:00 pm.</td></tr>
+      <tr><td class="day">Tue 19 Aug</td><td class="c A">—</td><td class="c A">—</td><td class="c">0</td><td class="c A">A</td><td>UT requested 7:00 pm but not sent — not billed.</td></tr>
+      <tr class="tot"><td colspan="3">Nights present: 3 &nbsp;|&nbsp; Absent: 1 (19 Aug)</td><td class="c">27.0</td><td class="c">—</td><td>Billable hours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>How to read this:</b> Day-shift housekeeping is a permanent daily placement; the coordination group records only exceptions, so routine days show the <i>scheduled shift time (italic)</i> and <span class="P">P</span> days show logged times. Late/short days are billed as present (slot filled). UT is an on-demand night shift billed hourly.<br><br>
+    <b>Please verify</b> the italic (scheduled) times and the 14–15 Aug UT check-outs against the Switch app / on-site register before salary settlement. Reconstructed from WhatsApp group "Forestta cafe &lt;&gt; SWITCH" (24 Jul – 20 Aug 2026).<br><br>
+    <b>Billing:</b> Sujit (Sec 54) 27 days + Harendar Kumar (Sec 7) 24 days @ ₹15,000/month ÷ 26 = ₹576.92/day; UT 27.0 hrs @ ₹119/hr. Total ₹32,636.07; less ₹5,000 paid; balance due ₹27,636.07. See Invoice TWL/2026-27/004.
+  </div>
+
+  <div class="foot">
+    <div style="color:#666;">Computer-generated record.</div>
+    <div class="sign">
+      <div>For <b>Third Wave Labs Private Limited</b></div>
+      <div class="line">Authorised Signatory</div>
+    </div>
+  </div>
+
+</body>
+</html>

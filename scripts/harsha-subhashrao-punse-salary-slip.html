@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #111;
+    margin: 0;
+  }
+  .sheet { max-width: 720px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #111;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+  }
+  .logo { font-weight: 800; font-size: 34px; letter-spacing: -0.5px; color: #111; }
+  .company { text-align: right; font-size: 10px; line-height: 1.5; }
+  .company .name { font-weight: 700; letter-spacing: 0.3px; }
+
+  .doc-title {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+  }
+  .doc-sub { text-align: center; font-size: 11px; color: #444; margin-bottom: 18px; }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  .meta { margin-bottom: 18px; border: 1px solid #d8d8d8; }
+  .meta td { padding: 7px 12px; border: 1px solid #e6e6e6; vertical-align: top; }
+  .meta .lbl { width: 20%; color: #555; font-weight: 600; background: #fafafa; }
+  .meta .val { width: 30%; font-weight: 600; }
+
+  .cols { display: flex; gap: 0; border: 1px solid #cfcfcf; }
+  .col { width: 50%; }
+  .col + .col { border-left: 1px solid #cfcfcf; }
+  .col table { width: 100%; }
+  .col th {
+    text-align: left;
+    background: #f2f2f2;
+    padding: 8px 12px;
+    font-size: 11px;
+    border-bottom: 1px solid #cfcfcf;
+  }
+  .col th.amt, .col td.amt { text-align: right; }
+  .col td { padding: 7px 12px; border-bottom: 1px solid #eee; }
+  .col tr.total td {
+    font-weight: 700;
+    border-top: 1px solid #cfcfcf;
+    border-bottom: none;
+    background: #fafafa;
+  }
+
+  .net {
+    margin-top: 16px;
+    border: 1px solid #111;
+    background: #f7f7f7;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .net .label { font-weight: 700; font-size: 12px; }
+  .net .amount { font-weight: 800; font-size: 18px; }
+  .words { font-size: 10.5px; color: #333; margin-top: 6px; font-style: italic; }
+
+  .sign { margin-top: 40px; display: flex; justify-content: space-between; }
+  .sign .box { width: 45%; }
+  .sign .line { border-top: 1px solid #999; padding-top: 4px; font-size: 10px; color: #555; }
+
+  .foot {
+    margin-top: 26px;
+    text-align: center;
+    font-size: 9px;
+    color: #888;
+    border-top: 1px solid #e6e6e6;
+    padding-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <div class="header">
+      <div class="logo">Switch</div>
+      <div class="company">
+        <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+        <div>R02/06, M3M Woodshire, Sector 107, Gurgaon, Haryana, 122006</div>
+        <div>Switchlocally.com</div>
+      </div>
+    </div>
+
+    <div class="doc-title">Salary Slip</div>
+    <div class="doc-sub">For the month of July 2026</div>
+
+    <table class="meta">
+      <tr>
+        <td class="lbl">Employee Name</td>
+        <td class="val">Harsha Subhashrao Punse</td>
+        <td class="lbl">Employee ID</td>
+        <td class="val">TWL-&mdash;&mdash;&mdash;</td>
+      </tr>
+      <tr>
+        <td class="lbl">Designation</td>
+        <td class="val">Operations Manager</td>
+        <td class="lbl">Pay Period</td>
+        <td class="val">01 &ndash; 31 July 2026</td>
+      </tr>
+      <tr>
+        <td class="lbl">Date of Joining</td>
+        <td class="val">&mdash;</td>
+        <td class="lbl">Pay Date</td>
+        <td class="val">31 July 2026</td>
+      </tr>
+      <tr>
+        <td class="lbl">Paid Days</td>
+        <td class="val">31</td>
+        <td class="lbl">LOP Days</td>
+        <td class="val">0</td>
+      </tr>
+      <tr>
+        <td class="lbl">Bank Name</td>
+        <td class="val">Canara Bank</td>
+        <td class="lbl">IFSC Code</td>
+        <td class="val">CNRB0007611</td>
+      </tr>
+      <tr>
+        <td class="lbl">Account No.</td>
+        <td class="val">110212205620</td>
+        <td class="lbl">Payment Mode</td>
+        <td class="val">Bank Transfer (NEFT)</td>
+      </tr>
+    </table>
+
+    <div class="cols">
+      <div class="col">
+        <table>
+          <tr><th>Earnings</th><th class="amt">Amount (INR)</th></tr>
+          <tr><td>Basic Salary</td><td class="amt">21,000.00</td></tr>
+          <tr><td>House Rent Allowance</td><td class="amt">8,400.00</td></tr>
+          <tr><td>Conveyance Allowance</td><td class="amt">3,000.00</td></tr>
+          <tr><td>Special Allowance</td><td class="amt">9,600.00</td></tr>
+          <tr class="total"><td>Total Earnings</td><td class="amt">42,000.00</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <table>
+          <tr><th>Deductions</th><th class="amt">Amount (INR)</th></tr>
+          <tr><td>Provident Fund (PF)</td><td class="amt">0.00</td></tr>
+          <tr><td>ESI</td><td class="amt">0.00</td></tr>
+          <tr><td>Professional Tax</td><td class="amt">0.00</td></tr>
+          <tr><td>TDS</td><td class="amt">0.00</td></tr>
+          <tr class="total"><td>Total Deductions</td><td class="amt">0.00</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="net">
+      <div>
+        <div class="label">Net Pay for July 2026</div>
+        <div class="words">Rupees Forty-Two Thousand Only</div>
+      </div>
+      <div class="amount">&#8377; 42,000.00</div>
+    </div>
+
+    <div class="sign">
+      <div class="box">
+        <div class="line">Employee Signature</div>
+      </div>
+      <div class="box" style="text-align:right;">
+        <div class="line" style="text-align:right;">For Third Wave Labs Private Limited<br>Authorised Signatory</div>
+      </div>
+    </div>
+
+    <div class="foot">
+      This is a computer-generated salary slip and does not require a physical signature unless specified.
+      &nbsp;&bull;&nbsp; Third Wave Labs Private Limited &nbsp;&bull;&nbsp; Switchlocally.com
+    </div>
+
+  </div>
+</body>
+</html>

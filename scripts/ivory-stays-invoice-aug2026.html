@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 11.5px; color: #111; margin: 0; line-height: 1.5; }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #111; padding-bottom: 14px; margin-bottom: 18px; }
+  .logo { font-weight: 800; font-size: 38px; letter-spacing: -0.5px; }
+  .from { text-align: right; font-size: 10px; line-height: 1.5; }
+  .from .name { font-weight: 700; font-size: 11px; }
+  .inv-title { text-align: center; font-size: 20px; letter-spacing: 4px; font-weight: 700; color: #333; margin: 6px 0 20px 0; }
+  .meta-row { display: flex; justify-content: space-between; margin-bottom: 18px; }
+  .box { font-size: 11px; line-height: 1.6; }
+  .box .label { color: #666; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .box .bill-name { font-weight: 700; font-size: 12.5px; }
+  .section-h { font-weight: 700; font-size: 11px; margin: 16px 0 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 0 0; font-size: 10.5px; }
+  th { background: #111; color: #fff; padding: 7px 8px; text-align: left; font-weight: 600; }
+  td { padding: 7px 8px; border-bottom: 1px solid #ddd; vertical-align: top; }
+  td.num, th.num { text-align: right; }
+  td.c, th.c { text-align: center; }
+  .totals { width: 58%; margin-left: auto; margin-top: 8px; font-size: 11.5px; }
+  .totals td { padding: 6px 10px; border: none; }
+  .totals .grand { border-top: 2px solid #111; font-weight: 700; font-size: 13px; }
+  .note { margin-top: 18px; font-size: 10px; color: #444; background: #f6f6f6; padding: 10px 12px; border-left: 3px solid #111; }
+  .pay { margin-top: 16px; font-size: 10.5px; line-height: 1.7; }
+  .pay .h { font-weight: 700; margin-bottom: 2px; }
+  .foot { margin-top: 26px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .sign { text-align: right; font-size: 10.5px; }
+  .sign .line { margin-top: 40px; border-top: 1px solid #111; padding-top: 4px; width: 200px; margin-left: auto; }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="logo">Switch</div>
+    <div class="from">
+      <div class="name">THIRD WAVE LABS PRIVATE LIMITED</div>
+      <div>Shop No R-02/06, Tower A3, M3M Woodshire,</div>
+      <div>Sector 107, Gurugram – 122006, Haryana</div>
+      <div>CIN: U62099HR2026PTC146360</div>
+      <div>PAN: AAHCT2237Q</div>
+      <div>Email: info@switchlocally.com</div>
+    </div>
+  </div>
+
+  <div class="inv-title">INVOICE</div>
+
+  <div class="meta-row">
+    <div class="box">
+      <div class="label">Bill To</div>
+      <div class="bill-name">Ivory Stays</div>
+      <div>Gurugram, Haryana</div>
+    </div>
+    <div class="box" style="text-align:right;">
+      <div><span class="label">Invoice No.:</span> &nbsp; TWL/2026-27/007</div>
+      <div><span class="label">Invoice Date:</span> &nbsp; 29 August 2026</div>
+      <div><span class="label">Billing Period:</span> &nbsp; 5 August – 29 August 2026</div>
+      <div><span class="label">Service:</span> &nbsp; Cook Staffing</div>
+    </div>
+  </div>
+
+  <div class="section-h">Charges</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30px;">#</th><th>Description</th>
+        <th class="num">Rate</th><th class="c">Days</th><th class="num">Amount (₹)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><b>Cook — Vinod</b><br><span style="color:#666;">Deployed 5 Aug – 18 Aug 2026. ₹33,000/month prorated (₹33,000 ÷ 26 = ₹1,269.23/day). 14 days worked (12 hrs/day, 168 hrs).</span></td>
+        <td class="num">₹1,269.23 / day</td><td class="c">14 days</td><td class="num">₹17,769.00</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><b>Cook — Prashant Sunchari</b><br><span style="color:#666;">Deployed from 19 Aug 2026. ₹25,000/month prorated (₹25,000 ÷ 26 = ₹961.54/day). 11 days worked (10 hrs/day, 110 hrs).</span></td>
+        <td class="num">₹961.54 / day</td><td class="c">11 days</td><td class="num">₹10,577.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="totals">
+    <tr><td>Subtotal</td><td class="num">₹28,346.00</td></tr>
+    <tr><td>GST @ 18% (SAC 998513)</td><td class="num">Not applicable*</td></tr>
+    <tr><td>Total Payable</td><td class="num">₹28,346.00</td></tr>
+    <tr><td>Less: Amount Received</td><td class="num">– ₹10,000.00</td></tr>
+    <tr class="grand"><td>Balance Due</td><td class="num">₹18,346.00</td></tr>
+  </table>
+
+  <div style="margin-top:8px; font-size:11px;"><b>Amount in words (balance due):</b> Rupees Eighteen Thousand Three Hundred Forty Six Only.</div>
+
+  <div class="note">
+    <b>Basis:</b> Cook staffing billed at the agreed monthly salary per cook, prorated per day (monthly salary ÷ 26) for the number of days worked. Vinod: ₹33,000/month, 14 days = ₹17,769. Prashant Sunchari: ₹25,000/month, 11 days = ₹10,577. ₹10,000 received against this invoice; balance due ₹18,346.<br><br>
+    *GST is not charged as GST registration of Third Wave Labs Private Limited is currently under process and a GSTIN has not yet been allotted. GST @ 18% (SAC 998513) will apply on invoices raised after the GSTIN is active.
+  </div>
+
+  <div class="pay">
+    <div class="h">Payment Details</div>
+    <div>Payment Terms: [__________]</div>
+  </div>
+
+  <div class="foot">
+    <div style="font-size:10px; color:#666;">This is a computer-generated invoice.</div>
+    <div class="sign">
+      <div>For <b>Third Wave Labs Private Limited</b></div>
+      <div class="line">Authorised Signatory</div>
+    </div>
+  </div>
+
+</body>
+</html>
