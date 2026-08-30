@@ -83,6 +83,17 @@ export const CERTIFICATES = {
     issued: '21 August 2026',
     location: 'Gurugram',
   },
+  'SWITCH-INT-2026-0013': {
+    displayId: 'SWITCH/INT/2026/0013',
+    name: 'Ayush Kukrety',
+    type: 'Internship',
+    role: 'Backend Developer Intern',
+    duration: 'One (1) month',
+    start: '20 July 2026',
+    end: '20 August 2026',
+    issued: '21 August 2026',
+    location: 'Gurugram',
+  },
 }
 
 /* Normalise any user/QR-supplied id to the registry key:
