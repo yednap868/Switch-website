@@ -17,6 +17,7 @@ import { SERVICE_LIST } from './data/seoData.js'
 /* ─── CONTACT ─────────────────────────────────────── */
 const APP_URL = 'https://app.switchlocally.com'
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
+const APPLE_URL = 'https://apps.apple.com/in/app/switch-hire-verified-staff/id6798368902'
 const PHONE = '+919205617375'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
@@ -748,7 +749,7 @@ function CTA() {
           <div className="cta-applinks">
             <span className="cta-applinks-lbl">Or hire from the app:</span>
             <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="cta-applink"><IcoPlay /> Google Play</a>
-            <span className="cta-applink cta-applink--soon"><IcoApple /> App Store · Available Soon</span>
+            <a href={APPLE_URL} target="_blank" rel="noopener noreferrer" className="cta-applink"><IcoApple /> App Store</a>
           </div>
         </div>
         <div className="phones" data-anim style={{'--delay':'180ms'}}>
@@ -1080,7 +1081,7 @@ function OfferPopup() {
       <div className="offer-pop" role="dialog" aria-modal="true" aria-label="Special staffing offer" onClick={(e) => e.stopPropagation()}>
         <button className="offer-pop-close" onClick={close} aria-label="Close offer">×</button>
         <span className="offer-pop-badge">Limited-time offer</span>
-        <h3 className="offer-pop-title">Hire verified staff at just <span className="grad-txt">₹11,999<span className="offer-pop-mo">/mo</span></span></h3>
+        <h3 className="offer-pop-title">Hire verified staff at just <span className="grad-txt">₹13,999<span className="offer-pop-mo">/mo</span></span></h3>
         <p className="offer-pop-sub">Full-time, Aadhaar-verified Switch Players — a simple monthly plan, paid in advance, with replacement guaranteed.</p>
         <ul className="offer-pop-list">
           <li><IcoCheck />Housekeeping, helpers, guards, pickers &amp; more</li>
@@ -1088,7 +1089,7 @@ function OfferPopup() {
           <li><IcoCheck />Cancel anytime · GST extra</li>
         </ul>
         <div className="offer-pop-cta">
-          <a href={waLink("Hi Switch — I want to hire staff on the ₹11,999/mo subscription. Please share the details.")} target="_blank" rel="noopener noreferrer" className="offer-pop-btn offer-pop-btn--primary" onClick={close}><IcoBolt />Hire now on WhatsApp</a>
+          <a href={waLink("Hi Switch — I want to hire staff on the ₹13,999/mo subscription. Please share the details.")} target="_blank" rel="noopener noreferrer" className="offer-pop-btn offer-pop-btn--primary" onClick={close}><IcoBolt />Hire now on WhatsApp</a>
           <a href="#subscription" className="offer-pop-btn offer-pop-btn--ghost" onClick={close}>View plans</a>
         </div>
       </div>
@@ -1203,7 +1204,7 @@ function SubscriptionOffer() {
 
           <div className="sub-card">
             <div className="sub-plan">Essential</div>
-            <div className="sub-price"><span className="sub-cur">₹</span><span className="sub-amt">11,999</span><span className="sub-per">/mo</span></div>
+            <div className="sub-price"><span className="sub-cur">₹</span><span className="sub-amt">13,999</span><span className="sub-per">/mo</span></div>
             <div className="sub-sub">per staff · billed monthly</div>
             <ul className="sub-roles">
               <li><IcoCheck />Housekeeping</li>
@@ -1212,7 +1213,7 @@ function SubscriptionOffer() {
               <li><IcoCheck />Cleaner · Office Boy</li>
               <li><IcoCheck />Loader · Gardener</li>
             </ul>
-            <a href={waLink("Hi Switch — I'd like to subscribe to the Essential staffing plan (₹11,999/mo). Please share the details.")} target="_blank" rel="noopener noreferrer" className="sub-cta sub-cta--ghost">Subscribe</a>
+            <a href={waLink("Hi Switch — I'd like to subscribe to the Essential staffing plan (₹13,999/mo). Please share the details.")} target="_blank" rel="noopener noreferrer" className="sub-cta sub-cta--ghost">Subscribe</a>
           </div>
 
           <div className="sub-card sub-card--feat">
@@ -1304,13 +1305,16 @@ export function Footer() {
             <span className="ftb-txt"><small>GET IT ON</small><b>Google Play</b></span>
           </a>
           <span className="ftb-divider" aria-hidden="true" />
-          <span
-            className="ftb-store ftb-store--soon"
-            title="iOS app coming soon"
+          <a
+            href={APPLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ftb-store ftb-store--apple"
+            aria-label="Download Switch on the App Store"
           >
             <IcoApple />
-            <span className="ftb-txt"><small>COMING SOON</small><b>App Store</b></span>
-          </span>
+            <span className="ftb-txt"><small>DOWNLOAD ON THE</small><b>App Store</b></span>
+          </a>
         </div>
       </div>
       <div className="ft-grid">
