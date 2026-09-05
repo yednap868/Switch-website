@@ -197,6 +197,23 @@ function LandingPage({ page }) {
         </div>
       </section>
 
+      {page.uniqueSection && (
+        <section className="sp-section sp-alt">
+          <div className="sp-w">
+            <h2 className="sp-h2">{page.uniqueSection.heading}</h2>
+            {page.uniqueSection.paragraphs.map((p, i) => <p className="sp-body" key={i}>{p}</p>)}
+            {page.uniqueSection.chipGroups?.map((g, i) => (
+              <div key={i} style={{marginTop:'1.5rem'}}>
+                <h3 className="sp-cat-title">{g.title}</h3>
+                <div className="sp-areas">
+                  {g.chips.map((c, j) => <span className="sp-area" key={j}>{c}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="sp-section">
         <div className="sp-w">
           <h2 className="sp-h2">What a {page.service} Does for You</h2>
