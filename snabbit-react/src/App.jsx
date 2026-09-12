@@ -1383,7 +1383,10 @@ export function Footer() {
         </div>
       </div>
       <div className="ft-bot">
-        <span className="ft-copy">© 2026 Switch. All rights reserved.</span>
+        <div className="ft-legal">
+          <span className="ft-copy">© 2026 Third Wave Labs Private Limited. All rights reserved.</span>
+          <span className="ft-copy">Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana, India</span>
+        </div>
         <span className="ft-copy">Made in India 🇮🇳</span>
       </div>
     </footer>

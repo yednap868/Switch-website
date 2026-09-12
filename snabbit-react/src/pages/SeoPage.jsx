@@ -825,7 +825,7 @@ export default function SeoPage() {
             <div className="sp-nav-mark" style={{width:28,height:28,fontSize:'0.8125rem',borderRadius:7}}>S</div>
             <span style={{fontWeight:800,fontSize:'1rem',color:'#fff',letterSpacing:'-0.025em'}}>Switch</span>
           </Link>
-          <p>© 2026 Switch · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link> · <Link to="/home-cleaning-gurgaon">Services</Link></p>
+          <p>© 2026 Third Wave Labs Private Limited · Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link> · <Link to="/home-cleaning-gurgaon">Services</Link></p>
         </div>
       </footer>
 

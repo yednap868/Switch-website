@@ -406,7 +406,8 @@ export default function PartnerPage() {
 
       {/* FOOTER */}
       <footer className="pp-footer">
-        <p>© 2026 Switch · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link></p>
+        <p>© 2026 Third Wave Labs Private Limited · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link></p>
+        <p>Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana, India</p>
       </footer>
     </div>
   )

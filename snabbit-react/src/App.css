@@ -798,6 +798,7 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 .ft-col a:hover{color:#fff}
 .ft-bot{max-width:1240px;margin:0 auto;padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
 .ft-copy{font-size:0.8125rem;color:rgba(255,255,255,0.35)}
+.ft-legal{display:flex;flex-direction:column;gap:0.25rem}
 .ft-banner{position:relative;container-type:inline-size;max-width:1240px;margin:2.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid var(--bd);line-height:0}
 .ft-banner--top{margin:0 auto 3.5rem}
 .ft-banner-art{display:block;transition:transform .25s ease,box-shadow .25s ease}
