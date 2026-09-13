@@ -824,9 +824,8 @@ a.role:hover .r-name{color:rgba(255,255,255,0.7)}
 .ftb-txt small{font-size:1.35cqw;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;opacity:0.82;line-height:1.2}
 .ftb-txt b{font-size:2.5cqw;font-weight:700;line-height:1.1;margin-top:0.1cqw}
 .ftb-divider{width:0.15cqw;align-self:stretch;background:rgba(255,255,255,0.2);margin:0.3cqw 0;flex:none}
-.ftb-store--play:hover{transform:translateY(-1px);opacity:0.85}
-.ftb-store--soon{cursor:default}
-.ftb-store--soon .ftb-txt small{color:#5EE08A;opacity:1}
+.ftb-store--play:hover,
+.ftb-store--apple:hover{transform:translateY(-1px);opacity:0.85}
 
 /* ─── SCROLL REVEAL ──────────────────────────────── */
 [data-anim]{

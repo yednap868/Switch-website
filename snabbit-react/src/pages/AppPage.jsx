@@ -4,6 +4,7 @@ import { Nav, Footer } from '../App.jsx'
 import './AppPage.css'
 
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
+const APPLE_URL = 'https://apps.apple.com/in/app/switch-hire-verified-staff/id6798368902'
 const APP_URL = 'https://app.switchlocally.com'
 const PHONE = '+919205617375'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
@@ -72,11 +73,11 @@ export default function AppPage() {
     '@context': 'https://schema.org',
     '@type': 'MobileApplication',
     name: 'Switch — Hire Verified Staff in Gurgaon',
-    operatingSystem: 'ANDROID',
+    operatingSystem: 'ANDROID, IOS',
     applicationCategory: 'BusinessApplication',
     url: 'https://switchlocally.com/app',
-    downloadUrl: PLAY_URL,
-    installUrl: PLAY_URL,
+    downloadUrl: [PLAY_URL, APPLE_URL],
+    installUrl: [PLAY_URL, APPLE_URL],
     description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse Switch Players, waiters, cooks, drivers and housekeeping — by the hour, day or week. Replacement guaranteed, pay on arrival.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', ratingCount: '500' },
@@ -96,11 +97,11 @@ export default function AppPage() {
     <>
       <Helmet>
         <title>Download the Switch App — Hire Verified Staff in Gurgaon</title>
-        <meta name="description" content="Download the Switch app to hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters & more. Available on Google Play. iOS coming soon." />
+        <meta name="description" content="Download the Switch app to hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters & more. Available on Google Play and the App Store." />
         <meta name="keywords" content="Switch app download, Switch app Gurgaon, hire staff app, staffing app Gurgaon, Switch Google Play, download Switch app, business staffing app India" />
         <link rel="canonical" href="https://switchlocally.com/app" />
         <meta property="og:title" content="Download the Switch App — Hire Verified Staff in Gurgaon" />
-        <meta property="og:description" content="Hire Aadhaar-verified staff for your business in a day. Available now on Google Play — iOS coming soon." />
+        <meta property="og:description" content="Hire Aadhaar-verified staff for your business in a day. Available now on Google Play and the App Store." />
         <meta property="og:url" content="https://switchlocally.com/app" />
         <meta property="og:image" content="https://switchlocally.com/switch-banner.jpg" />
         <script type="application/ld+json">{JSON.stringify(appSchema)}</script>
@@ -133,14 +134,13 @@ export default function AppPage() {
                     <span className="ap-store-lg">Google Play</span>
                   </span>
                 </a>
-                <span className="ap-store ap-store--soon" aria-disabled="true" title="iOS app coming soon">
+                <a href={APPLE_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
                   <IcoApple />
                   <span className="ap-store-txt">
-                    <span className="ap-store-sm">Coming soon to</span>
+                    <span className="ap-store-sm">Download on the</span>
                     <span className="ap-store-lg">App Store</span>
                   </span>
-                  <span className="ap-soon-badge">Soon</span>
-                </span>
+                </a>
               </div>
 
               <div className="ap-trust">
@@ -149,8 +149,9 @@ export default function AppPage() {
               </div>
 
               <p className="ap-ios-note">
-                📱 On an iPhone? The iOS app isn’t out yet — you can still hire instantly on{' '}
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a> or at{' '}
+                📱 On an iPhone? The Switch app is now live on the{' '}
+                <a href={APPLE_URL} target="_blank" rel="noopener noreferrer">App Store</a> — or hire instantly on{' '}
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a> and at{' '}
                 <a href={APP_URL} target="_blank" rel="noopener noreferrer">app.switchlocally.com</a>.
               </p>
             </div>
@@ -215,14 +216,13 @@ export default function AppPage() {
                   <span className="ap-store-lg">Google Play</span>
                 </span>
               </a>
-              <span className="ap-store ap-store--soon" aria-disabled="true" title="iOS app coming soon">
+              <a href={APPLE_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
                 <IcoApple />
                 <span className="ap-store-txt">
-                  <span className="ap-store-sm">Coming soon to</span>
+                  <span className="ap-store-sm">Download on the</span>
                   <span className="ap-store-lg">App Store</span>
                 </span>
-                <span className="ap-soon-badge">Soon</span>
-              </span>
+              </a>
             </div>
             <div className="ap-cta-alt">
               <span>Prefer not to download?</span>
