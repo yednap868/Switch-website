@@ -94,6 +94,28 @@ export const CERTIFICATES = {
     issued: '21 August 2026',
     location: 'Gurugram',
   },
+  'SWITCH-INT-2026-0014': {
+    displayId: 'SWITCH/INT/2026/0014',
+    name: 'Prachi Kukrety',
+    type: 'Internship',
+    role: 'Supply Chain & Logistics Management Intern',
+    duration: 'Two (2) months',
+    start: '15 July 2026',
+    end: '15 September 2026',
+    issued: '17 September 2026',
+    location: 'Gurugram',
+  },
+  'SWITCH-INT-2026-0015': {
+    displayId: 'SWITCH/INT/2026/0015',
+    name: 'Deepika Sharma',
+    type: 'Internship',
+    role: 'Operations Intern',
+    duration: 'Two (2) months',
+    start: '15 July 2026',
+    end: '15 September 2026',
+    issued: '17 September 2026',
+    location: 'Gurugram',
+  },
 }
 
 /* Normalise any user/QR-supplied id to the registry key:

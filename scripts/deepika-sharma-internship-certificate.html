@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #16232f;
+    width: 297mm; height: 210mm;
+    display: flex; align-items: center; justify-content: center;
+    background: #ffffff;
+  }
+
+  .cert {
+    position: relative;
+    width: 287mm; height: 200mm;
+    padding: 16mm 20mm;
+    background:
+      radial-gradient(150% 120% at 50% -30%, #f3faf8 0%, #ffffff 60%);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  /* layered frames */
+  .frame-outer { position: absolute; top: 8mm; left: 10mm; right: 10mm; bottom: 8mm; border: 3px solid #0f6e63; }
+  .frame-inner { position: absolute; top: 10mm; left: 12mm; right: 12mm; bottom: 10mm; border: 1px solid #b8912f; }
+
+  /* corner flourishes */
+  .flourish { position: absolute; width: 58px; height: 58px; z-index: 3; }
+  .flourish::before, .flourish::after { content:""; position:absolute; background:#b8912f; }
+  .flourish::before { width: 58px; height: 3px; }
+  .flourish::after { width: 3px; height: 58px; }
+  .flourish.tl { top: 8mm; left: 10mm; }
+  .flourish.tr { top: 8mm; right: 10mm; }
+  .flourish.tr::before { right: 0; } .flourish.tr::after { right: 0; }
+  .flourish.bl { bottom: 8mm; left: 10mm; }
+  .flourish.bl::before { bottom: 0; } .flourish.bl::after { bottom: 0; }
+  .flourish.br { bottom: 8mm; right: 10mm; }
+  .flourish.br::before { right: 0; bottom: 0; } .flourish.br::after { right: 0; bottom: 0; }
+
+  /* giant watermark */
+  .watermark {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -46%);
+    font-family: Arial, sans-serif; font-weight: 800; font-size: 210px;
+    color: #0f6e63; opacity: 0.04; letter-spacing: -4px; z-index: 0; white-space: nowrap;
+  }
+
+  .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%; padding-bottom: 20mm; }
+
+  .brand { font-family: Arial, sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.5px; color: #111; margin-top: 4px; }
+  .company { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 3px; color: #5a6b76; margin-top: 3px; text-transform: uppercase; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 8px; }
+  .divider .l { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #b8912f); }
+  .divider .r { width: 60px; height: 2px; background: linear-gradient(90deg, #b8912f, transparent); }
+  .divider .dot { width: 7px; height: 7px; background: #b8912f; transform: rotate(45deg); }
+
+  .title { font-size: 33px; letter-spacing: 5px; text-transform: uppercase; color: #0f6e63; margin: 4px 0 2px; font-weight: 700; }
+  .subtitle { font-size: 12px; letter-spacing: 6px; text-transform: uppercase; color: #9aa6ae; margin-bottom: 16px; }
+
+  .presented { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #9aa6ae; }
+  .name { font-size: 46px; font-style: italic; color: #14202e; margin: 6px 0 2px; font-weight: 700; }
+  .name-underline { width: 380px; height: 1px; background: linear-gradient(90deg, transparent, #b8912f, transparent); margin: 4px auto 16px; }
+
+  .body { font-size: 14.5px; line-height: 2.0; max-width: 210mm; color: #3a4a55; }
+  .body b { color: #14202e; }
+
+  .foot { margin-top: auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 20px 6mm 0; }
+  .sig { text-align: center; width: 230px; }
+  .sig .ln { border-top: 1.5px solid #14202e; margin-bottom: 5px; }
+  .sig .who { font-weight: 700; font-size: 13px; }
+  .sig .role { font-size: 10.5px; color: #5a6b76; }
+
+  /* gold medallion seal with ribbon */
+  .seal-wrap { position: relative; width: 110px; display: flex; flex-direction: column; align-items: center; }
+  .medallion {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #e7c86a 0%, #c9a53f 45%, #a9821f 100%);
+    border: 3px solid #f0d793;
+    box-shadow: 0 0 0 3px #b8912f;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    font-family: Arial, sans-serif; color: #4a3608;
+  }
+  .medallion .m1 { font-size: 15px; font-weight: 800; letter-spacing: 0.5px; }
+  .medallion .m2 { font-size: 7.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .ribbon { display: flex; gap: 26px; margin-top: -6px; }
+  .ribbon span { width: 14px; height: 34px; background: #0f6e63; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%); }
+  .ribbon span.gold { background: #b8912f; }
+
+  /* verification strip with QR */
+  .verifystrip { position: absolute; z-index: 3; bottom: 12mm; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .verifystrip img { width: 70px; height: 70px; display: block; }
+  .verifystrip .vtext { text-align: left; font-family: Arial, sans-serif; }
+  .verifystrip .vt1 { font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #0f6e63; text-transform: uppercase; }
+  .verifystrip .vt2 { font-size: 9px; color: #5a6b76; margin-top: 2px; }
+  .verifystrip .vt3 { font-size: 9px; color: #9aa6ae; margin-top: 1px; }
+</style>
+</head>
+<body>
+  <div class="cert">
+    <div class="frame-outer"></div>
+    <div class="frame-inner"></div>
+    <div class="flourish tl"></div><div class="flourish tr"></div>
+    <div class="flourish bl"></div><div class="flourish br"></div>
+    <div class="watermark">Switch</div>
+
+    <div class="content">
+      <div class="brand">Switch</div>
+      <div class="company">Third Wave Labs Private Limited</div>
+      <div class="divider"><span class="l"></span><span class="dot"></span><span class="r"></span></div>
+
+      <div class="title">Certificate of Completion</div>
+      <div class="subtitle">Internship Program</div>
+
+      <div class="presented">This certificate is proudly presented to</div>
+      <div class="name">Deepika Sharma</div>
+      <div class="name-underline"></div>
+
+      <div class="body">
+        for the successful completion of a <b>two (2) months</b> internship as a
+        <b>Operations Intern</b> at <b>Switch (Third Wave Labs Private Limited)</b>,
+        from <b>15 July 2026</b> to <b>15 September 2026</b>.<br>
+        During this period, Deepika demonstrated commendable dedication, a strong
+        work ethic and a keen willingness to learn. We appreciate the valuable
+        contribution made during the internship and wish continued success in all future endeavours.
+      </div>
+
+      <div class="foot">
+        <div class="sig">
+          <div class="ln"></div>
+          <div class="who">Saurabh Pandey</div>
+          <div class="role">Chief Executive Officer</div>
+        </div>
+
+        <div class="seal-wrap">
+          <div class="medallion">
+            <div class="m1">Switch</div>
+            <div class="m2">Verified</div>
+          </div>
+          <div class="ribbon"><span></span><span class="gold"></span></div>
+        </div>
+
+        <div class="sig">
+          <div class="ln"></div>
+          <div class="who">Date of Issue</div>
+          <div class="role">17 September 2026 · Gurugram</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verifystrip">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADAklEQVR4nO2cS4rkOBCGvxgbailDHqCOorzBHGmYI/UN7KPUAQrsZYHMP4uQH9Xd0zUNOYkFEYvEtr5FQBBSvJQmfkemP34Lh+CDD/5/5RercvdPq9VvAzANsK33z9En+AfznSRJVNP2mL0WpLce+2sGsiRpfpY+wT+ar865vKiadga7pw/T376we/c19Q/+36T/9LaaGxk6MQ2zLM+3p+oT/GP5z/btipHeTdOf70aeQSzP1Sf4x/Ju3y1JWo08Ilh6BGuv6d4BSeCWvpr+wf9aenxXdumKsdyK5flWLH+71f15cqB7gj7BP5ZHJ5k7AZ0gSWQVNG7Rtct4Nf2D/0I2qwJZBUjlvJBPq2Hf9viTGTWm4q+HJ2tMktvckavpH/wX4nWLvBvUt2E6kSWRj9UU/tse30MqHmSJZTA8yALEMiCPrRcvbJXr6R/8f+OTZDaARkBjKl6khMWM6bX4wnX1D/7n0sNyE5N1RbD2lgUGfRHLiyAJI21B1uX0D/4L2eIr8J96CJdzOF2f4vxtj2cLqPZIy6Oqrn4bodo38qMW+Z4aRoFBV8xrVenDlAWWtfaarBMst4ivmuP7WlymK7AMVi29DHgQPQ3vGOndiPpkizznhHdLcyEVJBW2xn9Nh2N/bo3f6pOpdvVPT3mrZNXUKOKrBvnqpnvB6nBnL1eOBxf1yQZ5j6/IWk3TMHuQBcn7+2IvZ1n+9gx9gn8svzcUAG8NshWx/OhN2psMsT+3x3OcsLXXu/cSdLQLvR0c9m2PP9evSIXqq2z+W2ta+ELYtzX++/kNaT56/p1+aAdfTf/gv+SP+wupYPdU/NYCeV7N7y/cgbpTX1D/4H8l1UOPvXif1dhLG6d0OPy3Md7nY2tWBAhWIBUsj97k9+FJTa/hv+3xP86304nJ3NI+3SFPkd9ifqN1fjU/dfO+NY/bdTM/mC+uf/A/57dct3aC7b70AKvZPUnkt5eY32iT/3R/YbnV2WfSh0Ga5Yfw9FrQNMxP0Cf4x/IW/88QfPDN8v8AoLRCb6YDxdQAAAAASUVORK5CYII=" alt="Scan to verify">
+      <div class="vtext">
+        <div class="vt1">Scan to verify</div>
+        <div class="vt2">switchlocally.com/verify</div>
+        <div class="vt3">Certificate No. SWITCH/INT/2026/0015</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
