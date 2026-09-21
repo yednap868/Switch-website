@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import { lookupCertificate } from '../data/certificates'
 import './VerifyPage.css'
 
@@ -11,9 +12,15 @@ export default function VerifyPage() {
   const [params] = useSearchParams()
   const idFromUrl = params.get('id') || ''
   const [query, setQuery] = useState(idFromUrl)
+  const [syncedId, setSyncedId] = useState(idFromUrl)
 
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-  useEffect(() => { setQuery(idFromUrl) }, [idFromUrl])
+  // Re-seed the input when the ?id= in the URL changes, without an effect.
+  if (syncedId !== idFromUrl) {
+    setSyncedId(idFromUrl)
+    setQuery(idFromUrl)
+  }
+
+  useEffect(() => { if (!window.location.hash) window.scrollTo(0, 0) }, [])
 
   const cert = lookupCertificate(idFromUrl)
   const searched = idFromUrl.trim().length > 0

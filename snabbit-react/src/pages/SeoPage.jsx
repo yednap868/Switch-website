@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { getPageBySlug, SEO_PAGES } from '../data/seoData'
 import SeoHead from '../components/SeoHead'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import './SeoPage.css'
 
 /* ─── MICRO COMPONENTS ─── */
@@ -83,7 +85,7 @@ function ComparisonTable({ service }) {
         <table>
           <thead>
             <tr>
-              <th className="sp-comp-feature"></th>
+              <th className="sp-comp-feature">Hiring a {service.toLowerCase()}</th>
               <th className="sp-comp-switch">Switch</th>
               <th>Agency / Broker</th>
               <th>Find Yourself</th>
@@ -796,20 +798,7 @@ export default function SeoPage() {
     <div className="sp-root">
       <SeoHead page={page} />
 
-      <nav className="sp-nav">
-        <div className="sp-nav-inner">
-          <Link to="/" className="sp-nav-logo">
-            <div className="sp-nav-mark">S</div>
-            <span className="sp-nav-name">Switch</span>
-          </Link>
-          <div className="sp-nav-links">
-            <Link to="/#roles" className="sp-nav-link">Services</Link>
-            <Link to="/#how-it-works" className="sp-nav-link">How it works</Link>
-            <Link to="/#reviews" className="sp-nav-link">Reviews</Link>
-          </div>
-          <a href="https://app.switchlocally.com" className="sp-nav-cta">Get the App</a>
-        </div>
-      </nav>
+      <Nav />
 
       <Breadcrumb page={page} />
 
@@ -819,15 +808,7 @@ export default function SeoPage() {
 
       <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} />
 
-      <footer className="sp-footer">
-        <div className="sp-footer-inner">
-          <Link to="/" className="sp-footer-logo">
-            <div className="sp-nav-mark" style={{width:28,height:28,fontSize:'0.8125rem',borderRadius:7}}>S</div>
-            <span style={{fontWeight:800,fontSize:'1rem',color:'#fff',letterSpacing:'-0.025em'}}>Switch</span>
-          </Link>
-          <p>© 2026 Third Wave Labs Private Limited · Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link> · <Link to="/home-cleaning-gurgaon">Services</Link></p>
-        </div>
-      </footer>
+      <Footer />
 
       <StickyCTA service={page.service} />
     </div>

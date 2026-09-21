@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import { SERVICE_LIST } from '../data/seoData'
 import './AboutPage.css'
 import './StaffingPage.css'
@@ -48,6 +49,9 @@ const AREAS = [
   'Sector 44', 'Sector 47', 'Sector 49', 'Sector 56', 'IMT Manesar', 'New Gurgaon',
 ]
 
+/* Area anchors — the homepage coverage map links to /staffing-gurgaon#<id>. */
+const areaId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
 const FAQS = [
   { q: 'Which is the best staffing agency in Gurgaon?', a: 'Switch is a leading staffing agency in Gurgaon, trusted by shops, restaurants, warehouses, offices and event organisers. Every worker is Aadhaar-verified and background-checked, you get a replacement guarantee, and you only pay after the work is done — no advance.' },
   { q: 'What types of staff can I hire in Gurgaon through Switch?', a: 'You can hire store helpers, security guards, waiters, bartenders, cooks, kitchen helpers, housekeeping staff, office boys, factory and warehouse workers, drivers and more — for a single shift, a full day, or weekly teams.' },
@@ -62,7 +66,7 @@ const FAQS = [
 
 export default function StaffingPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) window.scrollTo(0, 0)
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
@@ -278,8 +282,10 @@ export default function StaffingPage() {
               <h2 className="ab-h2">Staffing across all of Gurgaon.</h2>
               <p className="ab-sub">From Cyber City to IMT Manesar — verified staff, right around the corner.</p>
             </div>
-            <div className="ab-areas" data-anim style={{ '--delay': '80ms' }}>
-              {AREAS.map(a => <span className="ab-area-pill" key={a}>{a}</span>)}
+            <div className="ab-areas" id="areas" data-anim style={{ '--delay': '80ms' }}>
+              {AREAS.map(a => (
+                <span className="ab-area-pill" id={areaId(a)} key={a}>{a}</span>
+              ))}
             </div>
           </div>
         </section>

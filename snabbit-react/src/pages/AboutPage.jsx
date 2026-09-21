@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import './AboutPage.css'
 
-const APP_URL = 'https://app.switchlocally.com/'
 const PHONE = '+919205617375'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
@@ -98,7 +98,7 @@ const STATS = [
 
 export default function AboutPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) window.scrollTo(0, 0)
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }

@@ -13,7 +13,7 @@
   letter-spacing: 0.14em;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #a78bfa;
+  color: #55d57b;
   margin-bottom: 0.75rem;
 }
 .legal-title {
@@ -50,5 +50,5 @@
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
 }
-.legal-updated a { color: #a78bfa; text-decoration: none; }
+.legal-updated a { color: #55d57b; text-decoration: none; }
 .legal-updated a:hover { text-decoration: underline; }

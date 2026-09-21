@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import './PartnerPage.css'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 
 const APP_URL = 'https://app.switchlocally.com/'
 
@@ -103,7 +104,7 @@ function CtaPrimary({ children, big = false }) {
 }
 
 export default function PartnerPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
+  useEffect(() => { if (!window.location.hash) window.scrollTo(0, 0) }, [])
 
   const [hours, setHours] = useState(8)
   const [rate, setRate]   = useState(119)
@@ -140,20 +141,7 @@ export default function PartnerPage() {
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
 
-      {/* NAV */}
-      <nav className="pp-nav">
-        <div className="pp-nav-inner">
-          <Link to="/" className="pp-nav-logo">
-            <div className="pp-nav-mark">S</div>
-            <span className="pp-nav-name">Switch</span>
-            <span className="pp-nav-pill">Partner</span>
-          </Link>
-          <div className="pp-nav-right">
-            <Link to="/" className="pp-nav-back">← Home</Link>
-            <a href={APP_URL} className="pp-nav-cta">Apply<Arrow size={14}/></a>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       {/* HERO */}
       <header className="pp-hero">
@@ -404,11 +392,7 @@ export default function PartnerPage() {
         <a href={APP_URL} className="pp-sticky-btn">Apply<Arrow size={14}/></a>
       </div>
 
-      {/* FOOTER */}
-      <footer className="pp-footer">
-        <p>© 2026 Third Wave Labs Private Limited · <a href="tel:+919205617375">+91 92056 17375</a> · <a href="mailto:hello@switchlocally.com">hello@switchlocally.com</a> · <Link to="/">Home</Link></p>
-        <p>Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana, India</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

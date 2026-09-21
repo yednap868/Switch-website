@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import { BLOG_POSTS, getBlogPost } from '../data/blogData.js'
 import './Blog.css'
 
@@ -26,7 +27,7 @@ export default function BlogPost() {
   const post = getBlogPost(slug)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) window.scrollTo(0, 0)
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
@@ -73,7 +74,7 @@ export default function BlogPost() {
   return (
     <>
       <Helmet>
-        <title>{post.title} | Switch</title>
+        <title>{`${post.title} | Switch`}</title>
         <meta name="description" content={post.description} />
         <meta name="keywords" content={post.keywords} />
         <link rel="canonical" href={canonical} />

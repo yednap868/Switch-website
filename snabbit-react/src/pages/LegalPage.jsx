@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import './LegalPage.css'
 
 const CONTACT_EMAIL = 'hello@switchlocally.com'
@@ -58,13 +59,13 @@ const POLICIES = {
 
 export default function LegalPage({ policy }) {
   const data = POLICIES[policy]
-  useEffect(() => { window.scrollTo(0, 0) }, [policy])
+  useEffect(() => { if (!window.location.hash) window.scrollTo(0, 0) }, [policy])
   if (!data) return null
   const url = `https://switchlocally.com/${data.slug}`
   return (
     <>
       <Helmet>
-        <title>{data.title} | Switch</title>
+        <title>{`${data.title} | Switch`}</title>
         <meta name="description" content={data.intro} />
         <link rel="canonical" href={url} />
         <meta property="og:title" content={`${data.title} | Switch`} />

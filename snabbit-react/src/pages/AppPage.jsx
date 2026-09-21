@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Nav, Footer } from '../App.jsx'
+import Nav from '../components/chrome/Header.jsx'
+import Footer from '../components/chrome/Footer.jsx'
 import './AppPage.css'
 
 const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
@@ -58,7 +59,7 @@ const STEPS = [
 
 export default function AppPage() {
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) window.scrollTo(0, 0)
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }

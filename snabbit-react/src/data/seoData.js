@@ -4,7 +4,7 @@ const SERVICES = [
     name: 'Home Cleaning',
     plural: 'Home Cleaners',
     verb: 'clean',
-    img: '/house-cleaner.jpg',
+    img: '/sw-maid.jpg',
     shortDesc: 'Professional home cleaning services in Gurgaon.',
     longDesc: 'Switch connects you with verified, background-checked home cleaning professionals in Gurgaon. Whether you need a one-time deep clean, regular weekly service, or a quick tidy-up before guests arrive — we have the right Switch Player for you.',
     tasks: [
@@ -67,7 +67,7 @@ const SERVICES = [
     name: 'Cook',
     plural: 'Cooks',
     verb: 'cook',
-    img: '/cook-chef.jpg',
+    img: '/sw-cook.jpg',
     shortDesc: 'Experienced cooks for daily meals, tiffin prep and catering in Gurgaon.',
     longDesc: 'Switch lets you hire skilled cooks in Gurgaon for daily meal preparation, tiffin service, party cooking, and catering support. All cooks are background-verified and experienced in a variety of Indian and regional cuisines.',
     tasks: [
@@ -130,7 +130,7 @@ const SERVICES = [
     name: 'Driver',
     plural: 'Drivers',
     verb: 'drive',
-    img: '/driver.jpg',
+    img: '/sw-driver.jpg',
     shortDesc: 'Reliable, verified drivers for daily commute, outstation trips and airport runs in Gurgaon.',
     longDesc: 'Switch connects you with experienced, background-verified drivers in Gurgaon for daily office commutes, airport transfers, outstation trips, and event travel. All drivers carry a valid license and are verified through Aadhaar and a driving record check.',
     tasks: [
@@ -319,7 +319,7 @@ const SERVICES = [
     name: 'Nanny',
     plural: 'Nannies',
     verb: 'care',
-    img: '/baby-care.jpg',
+    img: '/sw-caretaker.jpg',
     shortDesc: 'Trusted nannies and babysitters for childcare, school pickup and homework help in Gurgaon.',
     longDesc: 'Switch connects you with experienced, background-verified nannies and babysitters in Gurgaon for full-day childcare, after-school supervision, school pickup and drop, and homework assistance. All nannies are Aadhaar-verified and child-safety trained.',
     tasks: [
@@ -382,7 +382,7 @@ const SERVICES = [
     name: 'Security Guard',
     plural: 'Security Guards',
     verb: 'secure',
-    img: '/security-guard.jpg',
+    img: '/sw-security-guard.jpg',
     shortDesc: 'Trained security guards for residential, commercial and event security in Gurgaon.',
     longDesc: 'Switch connects you with trained, background-verified security guards in Gurgaon for gate duty, premises security, night patrol, and event security. All guards hold a security licence, are Aadhaar-verified, and are trained in access control and emergency response.',
     tasks: [
@@ -445,7 +445,7 @@ const SERVICES = [
     name: 'Store Helper',
     plural: 'Store Helpers',
     verb: 'assist',
-    img: '/store-helper.jpg',
+    img: '/sw-general-helper.jpg',
     shortDesc: 'Reliable store helpers for stacking, billing and customer floor support in Gurgaon.',
     longDesc: 'Switch connects you with experienced store helpers in Gurgaon for shelf stacking, inventory management, billing counter support, and customer floor assistance. All Switch Players are Aadhaar-verified and trained for retail environments.',
     tasks: [
@@ -508,7 +508,7 @@ const SERVICES = [
     name: 'Factory / Warehouse',
     plural: 'Factory & Warehouse Switch Players',
     verb: 'operate',
-    img: '/warehouse-staff.jpg',
+    img: '/sw-factory-helper.jpg',
     shortDesc: 'Trained factory and warehouse Switch Players for sorting, packing and assembly line support in Gurgaon.',
     longDesc: 'Switch connects you with experienced factory and warehouse Switch Players in Gurgaon for sorting, packing, assembly line operations, inventory management, and loading and unloading. All Switch Players are Aadhaar-verified and familiar with industrial safety protocols.',
     tasks: [

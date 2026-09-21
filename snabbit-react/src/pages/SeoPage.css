@@ -76,7 +76,7 @@
   font-size: 0.8125rem; font-weight: 600; color: rgba(255,255,255,0.6);
 }
 .sp-hero-badge-dot {
-  width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
+  width: 7px; height: 7px; background: #32c967; border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(34,197,94,.2); flex-shrink: 0;
   animation: spDot 2.5s ease-in-out infinite;
 }
@@ -110,7 +110,7 @@
 
 /* ─── SECTIONS ──────────────────────────────────── */
 .sp-section { padding: 4.5rem 2rem; }
-.sp-alt { background: #0a0a0a; }
+.sp-alt { background: #070a08; }
 
 /* ─── TRUST BADGES ──────────────────────────────── */
 .sp-trust { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 2rem; }
@@ -123,11 +123,11 @@
 /* ─── PRICING ───────────────────────────────────── */
 .sp-prices {
   display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1px; background: #1e1e1e;
-  border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden;
+  gap: 1px; background: #151f18;
+  border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
 }
 .sp-price-card {
-  background: #0a0a0a; padding: 2rem 1.5rem; text-align: center; transition: background .2s;
+  background: #070a08; padding: 2rem 1.5rem; text-align: center; transition: background .2s;
 }
 .sp-price-card:hover { background: #111; }
 .sp-price-label { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 0.75rem; }
@@ -137,14 +137,14 @@
 /* ─── TASKS / LISTS ─────────────────────────────── */
 .sp-tasks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem 2rem; }
 .sp-tasks li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9375rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
-.sp-check { color: #22c55e; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.sp-check { color: #32c967; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
 /* ─── BENEFITS ──────────────────────────────────── */
 .sp-benefits { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
 .sp-benefits li {
   display: flex; align-items: flex-start; gap: 0.75rem;
   font-size: 0.9375rem; color: rgba(255,255,255,0.65); line-height: 1.6;
-  padding: 1rem 1.25rem; background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 10px;
+  padding: 1rem 1.25rem; background: #0b0f0d; border: 1px solid #151f18; border-radius: 10px;
 }
 
 /* ─── AREAS ─────────────────────────────────────── */
@@ -158,11 +158,11 @@
 /* ─── REVIEWS ───────────────────────────────────── */
 .sp-reviews { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-bottom: 2rem; }
 .sp-review {
-  background: #0d0d0d; border: 1px solid #1e1e1e; border-radius: 14px;
+  background: #0b0f0d; border: 1px solid #151f18; border-radius: 14px;
   padding: 1.75rem; display: flex; flex-direction: column; gap: 0.875rem;
   transition: border-color .2s;
 }
-.sp-review:hover { border-color: #2a2a2a; }
+.sp-review:hover { border-color: #193322; }
 .sp-stars { display: flex; gap: 2px; }
 .sp-rev-text { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-style: italic; flex: 1; }
 .sp-rev-name { font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,0.7); }
@@ -171,8 +171,8 @@
 .sp-rating-label { font-size: 0.875rem; color: #555; margin-top: 0.5rem; }
 
 /* ─── FAQ ───────────────────────────────────────── */
-.sp-faqs { border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden; margin-bottom: 2rem; }
-.sp-faq-item { background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+.sp-faqs { border: 1px solid #151f18; border-radius: 14px; overflow: hidden; margin-bottom: 2rem; }
+.sp-faq-item { background: #070a08; border-bottom: 1px solid #1a1a1a; }
 .sp-faq-item:last-child { border-bottom: none; }
 .sp-faq-btn {
   width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 1.25rem;
@@ -195,10 +195,10 @@
 /* ─── STEPS ─────────────────────────────────────── */
 .sp-steps {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-  background: #1e1e1e; border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden;
+  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
 }
-.sp-step { background: #0a0a0a; padding: 2.25rem 2rem; transition: background .2s; }
-.sp-step:hover { background: #0f0f0f; }
+.sp-step { background: #070a08; padding: 2.25rem 2rem; transition: background .2s; }
+.sp-step:hover { background: #0b0f0d; }
 .sp-step-n { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #444; margin-bottom: 1.125rem; }
 .sp-step-title { font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
 .sp-step-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
@@ -227,30 +227,30 @@
 
 /* ─── COMPARISON TABLE ──────────────────────────── */
 .sp-comparison { margin-top: 0.5rem; }
-.sp-comparison-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; border: 1px solid #1e1e1e; }
+.sp-comparison-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; border: 1px solid #151f18; }
 .sp-comparison table { width: 100%; border-collapse: collapse; min-width: 560px; }
-.sp-comparison thead tr { background: #0d0d0d; border-bottom: 1px solid #1e1e1e; }
+.sp-comparison thead tr { background: #0b0f0d; border-bottom: 1px solid #151f18; }
 .sp-comparison th {
   padding: 1rem 1.25rem; font-size: 0.8125rem; font-weight: 700; text-align: center;
   color: #555; letter-spacing: 0.06em; text-transform: uppercase;
 }
 .sp-comp-switch { color: #fff !important; background: rgba(255,255,255,0.04) !important; }
-.sp-comparison tbody tr { border-bottom: 1px solid #141414; }
+.sp-comparison tbody tr { border-bottom: 1px solid #111713; }
 .sp-comparison tbody tr:last-child { border-bottom: none; }
 .sp-comparison td {
   padding: 0.875rem 1.25rem; font-size: 0.9375rem; text-align: center;
-  color: rgba(255,255,255,0.35); background: #0a0a0a;
+  color: rgba(255,255,255,0.35); background: #070a08;
 }
 .sp-comp-feature { text-align: left !important; font-weight: 600; color: rgba(255,255,255,0.55) !important; }
-.sp-comp-good { color: #22c55e !important; font-weight: 600; background: rgba(34,197,94,0.04) !important; }
+.sp-comp-good { color: #32c967 !important; font-weight: 600; background: rgba(34,197,94,0.04) !important; }
 .sp-comp-neutral { color: rgba(255,255,255,0.25) !important; }
 
 /* ─── CHECKLIST GRID ─────────────────────────────── */
 .sp-checklist-grid {
   display: grid; grid-template-columns: repeat(2,1fr); gap: 1px;
-  background: #1e1e1e; border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden; margin-bottom: 2rem;
+  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden; margin-bottom: 2rem;
 }
-.sp-checklist-cat { background: #0a0a0a; padding: 2rem; }
+.sp-checklist-cat { background: #070a08; padding: 2rem; }
 .sp-cat-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #444; margin-bottom: 1.125rem; }
 .sp-checklist-cat ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; }
 .sp-checklist-cat li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
@@ -258,12 +258,12 @@
 /* ─── VERIFICATION STEPS ─────────────────────────── */
 .sp-vsteps {
   display: flex; flex-direction: column; gap: 1px;
-  background: #1e1e1e; border: 1px solid #1e1e1e; border-radius: 14px; overflow: hidden;
+  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
 }
-.sp-vstep { display: flex; align-items: flex-start; gap: 1.5rem; background: #0a0a0a; padding: 2rem 2.25rem; transition: background .2s; }
-.sp-vstep:hover { background: #0f0f0f; }
+.sp-vstep { display: flex; align-items: flex-start; gap: 1.5rem; background: #070a08; padding: 2rem 2.25rem; transition: background .2s; }
+.sp-vstep:hover { background: #0b0f0d; }
 .sp-vstep-n {
-  width: 44px; height: 44px; flex-shrink: 0; background: #141414; border: 1px solid #2a2a2a;
+  width: 44px; height: 44px; flex-shrink: 0; background: #111713; border: 1px solid #193322;
   border-radius: 10px; display: flex; align-items: center; justify-content: center;
   font-size: 1.125rem; font-weight: 900; color: #fff;
 }
@@ -271,9 +271,9 @@
 .sp-vstep-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
 
 /* ─── RELATED PAGES ──────────────────────────────── */
-.sp-related { padding: 2.5rem 2rem; background: #050505; border-top: 1px solid #141414; }
+.sp-related { padding: 2.5rem 2rem; background: #050505; border-top: 1px solid #111713; }
 .sp-related-inner { max-width: 1100px; margin: 0 auto; }
-.sp-related-h { font-size: 0.75rem; font-weight: 700; color: #3a3a3a; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+.sp-related-h { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.18); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
 .sp-related-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .sp-related-link {
   font-size: 0.8125rem; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03);
@@ -286,7 +286,7 @@
 .sp-footer { background: #000; border-top: 1px solid #111; padding: 1.5rem 2rem; }
 .sp-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
 .sp-footer-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-.sp-footer p { font-size: 0.8125rem; color: #3a3a3a; }
+.sp-footer p { font-size: 0.8125rem; color: rgba(255,255,255,0.18); }
 .sp-footer a { color: #444; text-decoration: none; transition: color .15s; }
 .sp-footer a:hover { color: rgba(255,255,255,0.5); }
 

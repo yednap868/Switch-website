@@ -1,8 +1,8 @@
 .verify {
   min-height: 100vh;
   padding: 120px 20px 80px;
-  background: linear-gradient(180deg, #f4fbfa 0%, #ffffff 40%);
-  color: #14202e;
+  background: linear-gradient(180deg, #eefaf1 0%, #ffffff 40%);
+  color: #101a14;
 }
 .verify-wrap {
   max-width: 720px;
@@ -14,14 +14,14 @@
   letter-spacing: 3px;
   font-size: 12px;
   font-weight: 700;
-  color: #0f6e63;
+  color: #16a34a;
   margin: 0 0 10px;
 }
 .verify-title {
   font-size: 34px;
   line-height: 1.2;
   margin: 0 0 12px;
-  color: #14202e;
+  color: #101a14;
 }
 .verify-intro {
   font-size: 15px;
@@ -46,13 +46,13 @@
   outline: none;
   transition: border-color .15s ease;
 }
-.verify-input:focus { border-color: #0f6e63; }
+.verify-input:focus { border-color: #16a34a; }
 .verify-btn {
   padding: 13px 24px;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
-  background: #0f6e63;
+  background: #16a34a;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -69,7 +69,7 @@
   border: 1px solid #e2e8ec;
   box-shadow: 0 8px 30px rgba(20, 32, 46, 0.06);
 }
-.verify-ok { border-top: 4px solid #0f6e63; }
+.verify-ok { border-top: 4px solid #16a34a; }
 .verify-bad { border-top: 4px solid #c0392b; }
 
 .verify-badge {
@@ -78,7 +78,7 @@
   gap: 8px;
   font-weight: 700;
   font-size: 15px;
-  color: #0f6e63;
+  color: #16a34a;
   margin-bottom: 16px;
 }
 .verify-badge-bad { color: #c0392b; }
@@ -89,7 +89,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #0f6e63;
+  background: #16a34a;
   color: #fff;
   font-size: 14px;
 }
@@ -116,7 +116,7 @@
   flex: 1;
   margin: 0;
   font-size: 14.5px;
-  color: #14202e;
+  color: #101a14;
   font-weight: 600;
 }
 .verify-foot-note {
@@ -126,7 +126,7 @@
 }
 .verify-bad p { font-size: 14.5px; line-height: 1.7; color: #3a4a55; }
 .verify-contact { font-size: 13px; color: #7d8b95; }
-.verify-contact a, .verify-bad a { color: #0f6e63; }
+.verify-contact a, .verify-bad a { color: #16a34a; }
 
 .verify-hint {
   font-size: 13.5px;
@@ -136,7 +136,7 @@
   line-height: 1.6;
 }
 .verify-back { margin-top: 34px; }
-.verify-back a { color: #0f6e63; font-weight: 600; text-decoration: none; }
+.verify-back a { color: #16a34a; font-weight: 600; text-decoration: none; }
 .verify-back a:hover { text-decoration: underline; }
 
 @media (max-width: 560px) {

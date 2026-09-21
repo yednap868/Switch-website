@@ -10,7 +10,7 @@
 .ap-hero-glow{
   position:absolute;top:-10%;left:50%;transform:translateX(-50%);
   width:900px;height:600px;border-radius:50%;
-  background:radial-gradient(closest-side,rgba(124,92,246,0.20),transparent 70%);
+  background:radial-gradient(closest-side,rgba(22,163,74,0.20),transparent 70%);
   filter:blur(20px);
 }
 .ap-hero-inner{
@@ -31,7 +31,7 @@
 }
 .ap-h1 em{
   font-style:normal;
-  background:linear-gradient(135deg,#c4b5fd 0%,#8b5cf6 100%);
+  background:linear-gradient(135deg,#8fe8ab 0%,#16a34a 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 .ap-lead{font-size:1.0625rem;line-height:1.65;color:#b4b4b4;max-width:30rem;margin:0 0 2rem}
@@ -52,7 +52,7 @@
 .ap-store-lg{font-size:1.0625rem;font-weight:700}
 .ap-soon-badge{
   position:absolute;top:-8px;right:-8px;
-  background:linear-gradient(135deg,#a78bfa,#6366f1);color:#fff;
+  background:linear-gradient(135deg,#55d57b,#16a34a);color:#fff;
   font-size:0.625rem;font-weight:700;letter-spacing:0.04em;
   padding:0.15rem 0.5rem;border-radius:999px;text-transform:uppercase;
 }
@@ -66,7 +66,7 @@
   background:var(--s1);border:1px solid var(--bd);border-radius:12px;
   padding:0.85rem 1.05rem;max-width:32rem;margin:0;
 }
-.ap-ios-note a{color:#c4b5fd;text-decoration:none;font-weight:600}
+.ap-ios-note a{color:#8fe8ab;text-decoration:none;font-weight:600}
 .ap-ios-note a:hover{text-decoration:underline}
 
 /* phones */
@@ -88,8 +88,8 @@
 .ap-hd{text-align:center;max-width:42rem;margin:0 auto 3rem}
 .ap-tag{
   display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:#a78bfa;
-  border:1px solid rgba(167,139,250,0.3);background:rgba(124,92,246,0.08);
+  text-transform:uppercase;color:#55d57b;
+  border:1px solid rgba(85,213,123,0.3);background:rgba(22,163,74,0.08);
   padding:0.35rem 0.85rem;border-radius:999px;margin-bottom:1.1rem;
 }
 .ap-h2{font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.1;letter-spacing:-0.025em;font-weight:800;margin:0 0 1rem}
@@ -115,7 +115,7 @@
 }
 .ap-step-n{
   font-size:2.4rem;font-weight:800;line-height:1;margin-bottom:0.9rem;
-  background:linear-gradient(135deg,#c4b5fd,#7c5cf6);
+  background:linear-gradient(135deg,#8fe8ab,#16a34a);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 .ap-step-title{font-size:1.125rem;font-weight:700;margin:0 0 0.5rem}
@@ -125,7 +125,7 @@
 .ap-cta{
   padding:7rem 2.5rem;border-top:1px solid var(--bd);
   background:
-    radial-gradient(900px 380px at 50% 0%,rgba(124,92,246,0.16),transparent 70%),
+    radial-gradient(900px 380px at 50% 0%,rgba(22,163,74,0.16),transparent 70%),
     var(--bg);
   text-align:center;
 }
