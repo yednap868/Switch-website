@@ -189,69 +189,6 @@ const SERVICES = [
     ],
   },
   {
-    id: 'painter',
-    name: 'Painter',
-    plural: 'Painters',
-    verb: 'paint',
-    img: '/painter.jpg',
-    shortDesc: 'Professional painters for interior, exterior and touch-up work in Gurgaon.',
-    longDesc: 'Switch connects you with skilled painters in Gurgaon for interior walls, exterior surfaces, texture painting, and touch-up jobs. All painters are verified, experienced, and come equipped with the right tools and surface preparation know-how.',
-    tasks: [
-      'Interior wall painting (emulsion, distemper)',
-      'Exterior wall painting (weatherproof)',
-      'Texture and designer wall finishes',
-      'Ceiling painting',
-      'Wood and furniture painting or varnishing',
-      'Wall putty application and surface levelling',
-      'Touch-up and patch work on damaged walls',
-      'Anti-corrosion metal painting',
-      'Removal of old paint before fresh coat',
-      'Primer application for better finish',
-    ],
-    checklistCategories: [
-      { cat: 'Surface Prep', items: ['Sand rough surfaces', 'Fill cracks with putty', 'Apply primer coat', 'Protect floors with sheets'] },
-      { cat: 'Painting', items: ['First coat application', 'Drying time', 'Second coat for full coverage', 'Edge finishing'] },
-      { cat: 'Finish & Clean-Up', items: ['Remove masking tape', 'Clean paint drips', 'Restore furniture positions', 'Dispose paint waste safely'] },
-      { cat: 'Materials Needed', items: ['Paint (customer supplies)', 'Brushes and rollers', 'Putty and primer', 'Drop sheets'] },
-    ],
-    prices: [
-      { label: '8 Hours', price: '₹899', desc: 'One room or touch-up' },
-      { label: '2 Days', price: '₹1,699', desc: '2–3 room apartment' },
-      { label: '7 Days', price: '₹5,999', desc: 'Full home painting' },
-      { label: 'Custom', price: 'Quote', desc: 'Large projects' },
-    ],
-    benefits: [
-      'Professional finish — no streaks, drips or uneven coverage',
-      'Switch Players bring all tools; you supply the paint',
-      'Surface prep included — no extra charge for putty/primer work',
-      'On-time completion with a clear day-wise plan',
-      'Zero mess left behind — full clean-up after job',
-      'Experienced in textures, designs and special finishes',
-      'Flexible multi-day bookings for large projects',
-    ],
-    useCases: [
-      'Freshening up a flat before listing or renting',
-      'Full home repaint during Diwali or relocation',
-      'New home painting before moving in',
-      'Office interior or commercial space painting',
-      'Spot repairs and touch-ups on accent walls',
-    ],
-    faqs: [
-      { q: 'Do I need to buy the paint?', a: 'Yes, you supply the paint. The painter brings all application tools — brushes, rollers, sheets and putty.' },
-      { q: 'How many rooms can a painter cover in a day?', a: 'One experienced painter can typically complete one large room (with two coats) in a full 8-hour day.' },
-      { q: 'Is putty and primer work included?', a: 'Yes. Surface preparation including putty and primer is part of the standard service — no hidden charges.' },
-      { q: 'Can I get texture or designer wall painting?', a: 'Yes. Mention the type of finish (texture, stencil, two-tone) at booking and we match with a specialist.' },
-      { q: 'Will they protect my furniture?', a: 'All Switch painters use drop sheets and masking tape to protect floors and furniture.' },
-      { q: 'How do I estimate the number of days needed?', a: 'A 2-BHK typically needs 3–5 days for a full two-coat paint job including drying time.' },
-    ],
-    areas: ['DLF Phase 1', 'DLF Phase 2', 'Sector 29', 'Sector 45', 'Golf Course Road', 'Sohna Road', 'Palam Vihar', 'Udyog Vihar', 'Sector 56', 'South City', 'Nirvana Country', 'Sector 14'],
-    reviews: [
-      { name: 'Ridhi S.', text: 'Hired a painter for 2 days. Clean work, no mess, finished ahead of schedule.', rating: 5 },
-      { name: 'Kirti S.', text: 'They did texture walls in my living room. The finish is better than what a contractor quoted for 3× the price.', rating: 5 },
-      { name: 'Sameer K.', text: 'Full 3-BHK in 5 days. Very professional and the walls look brand new.', rating: 5 },
-    ],
-  },
-  {
     id: 'delivery-worker',
     name: 'Delivery Switch Player',
     plural: 'Delivery Switch Players',
@@ -601,14 +538,14 @@ function makePricingPage(s) {
     title: `${s.name} Cost in Gurgaon – Rates & Pricing 2026 | Switch`,
     description: `Transparent ${s.name.toLowerCase()} pricing in Gurgaon. Compare 4-hour, 8-hour, 2-day and 7-day rates. No hidden charges. Book verified Switch Players from Switch.`,
     h1: `${s.name} Cost in Gurgaon — Pricing & Rates`,
-    intro: `Wondering how much a ${s.name.toLowerCase()} costs in Gurgaon? Switch offers transparent, all-in pricing with no hidden fees. Pay only after the work is done and you are satisfied.`,
+    intro: `Wondering how much a ${s.name.toLowerCase()} costs in Gurgaon? Switch offers transparent, all-in pricing with no hidden fees. Pay against a clear invoice, with no hidden charges.`,
     prices: s.prices,
     faqs: s.faqs.slice(0, 4),
     pricingNotes: [
       'All rates include Switch Player time and standard tools',
       'Materials and parts are billed at cost separately',
       'No booking or platform fees',
-      'Pay after work completion — in-app via UPI, card or wallet',
+      'Clear invoices — pay in-app via UPI, card or wallet',
       'Cancel or reschedule free up to 2 hours before start',
     ],
     tasks: s.tasks.slice(0, 5),
@@ -630,7 +567,7 @@ function makeHowToHirePage(s) {
     steps: [
       { n: '1', title: 'Open Switch & choose the service', desc: `Select "${s.name}" from the service menu. Browse Switch Player profiles, read ratings and choose your slot duration — from 4 hours to 7 days.` },
       { n: '2', title: 'Set your time and address', desc: 'Pick the date, start time and enter your Gurgaon address. The app shows you real-time availability so you can confirm on the spot.' },
-      { n: '3', title: 'Switch Player arrives — pay after', desc: `Your verified ${s.name.toLowerCase()} arrives at the confirmed time. Once the work is done and you are satisfied, pay securely in-app.` },
+      { n: '3', title: 'Switch Player arrives — work gets done', desc: `Your verified ${s.name.toLowerCase()} arrives at the confirmed time. Pay securely in-app against a clear invoice.` },
     ],
     tips: [
       `Book at least 6 hours in advance for guaranteed same-day availability`,
@@ -653,7 +590,7 @@ function makeBenefitsPage(s) {
     serviceId: s.id,
     serviceImg: s.img,
     title: `Benefits of Hiring a ${s.name} in Gurgaon from Switch`,
-    description: `Discover the top benefits of booking a verified ${s.name.toLowerCase()} in Gurgaon through Switch. Save time, get quality work, and pay only after satisfaction.`,
+    description: `Discover the top benefits of booking a verified ${s.name.toLowerCase()} in Gurgaon through Switch. Save time, get quality work, and pay transparent, fixed rates.`,
     h1: `Benefits of Hiring a ${s.name} in Gurgaon`,
     intro: `Hiring a ${s.name.toLowerCase()} through Switch in Gurgaon means more than just getting the job done — it means getting it done right, on time, and at a fair price. Here is why thousands of Gurgaon residents choose Switch.`,
     benefits: s.benefits,
@@ -740,7 +677,7 @@ function makeSameDayPage(s) {
     steps: [
       { n: '1', title: 'Open the app and select urgent', desc: `Tap "${s.name}" and filter for today's availability. Real-time slots are shown so you know immediately.` },
       { n: '2', title: 'Confirm in under 2 minutes', desc: 'Enter your address and preferred time. Our system matches the nearest available verified Switch Player.' },
-      { n: '3', title: 'Switch Player arrives same day', desc: `Your ${s.name.toLowerCase()} arrives at the confirmed time. Pay only after the work is complete.` },
+      { n: '3', title: 'Switch Player arrives same day', desc: `Your ${s.name.toLowerCase()} arrives at the confirmed time. Pay against a clear invoice.` },
     ],
     faqs: [
       { q: `How fast can I get a ${s.name.toLowerCase()} today?`, a: 'Same-day slots are available and most bookings are confirmed within 6 hours of request.' },
@@ -812,10 +749,10 @@ const ALIASES = [
   // home-help cluster (the Snabbit / Pronto battleground)
   {
     serviceId: 'home-cleaning', term: 'House Help', slug: 'house-help-gurgaon',
-    intro: `Looking for reliable house help in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for the everyday running of your home — jhadu-pocha, dusting, utensils, laundry and general tidying. Book part-time or full-time in under 2 minutes and pay only after the work is done — no agency, no advance.`,
+    intro: `Looking for reliable house help in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for the everyday running of your home — jhadu-pocha, dusting, utensils, laundry and general tidying. Book part-time or full-time in under 2 minutes and pay against a clear invoice — no agency, no hidden charges.`,
     about: [
       `A Switch house help handles the daily running of your Gurgaon home — sweeping and mopping (jhadu-pocha), dusting, washing utensils, laundry, and keeping the kitchen and bathrooms tidy. You choose the exact tasks and hours; the Switch Player fits your routine, not the other way round.`,
-      `Unlike a broker-supplied bai, every Switch house help is Aadhaar-verified and background-checked, so you know exactly who is entering your home. Book part-time for a couple of hours a day or full-time for the whole day, and pay only after the work is done.`,
+      `Unlike a broker-supplied bai, every Switch house help is Aadhaar-verified and background-checked, so you know exactly who is entering your home. Book part-time for a couple of hours a day or full-time for the whole day, and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What is the difference between house help and a maid on Switch?', a: 'They cover the same work — cleaning, mopping, dishwashing, laundry and general chores. "House help" and "maid" are just different words Gurgaon customers use for the same Switch Player.' },
@@ -824,10 +761,10 @@ const ALIASES = [
   },
   {
     serviceId: 'home-cleaning', term: 'Maid', slug: 'maid-gurgaon',
-    intro: `Need a kaam wali bai in Gurgaon? Switch connects you with verified, Aadhaar-checked maids for daily jhadu-pocha, bartan, dusting, laundry and cleaning. Set timings that suit you, keep the same maid each day, and pay only after the work is done — no agency, no advance.`,
+    intro: `Need a kaam wali bai in Gurgaon? Switch connects you with verified, Aadhaar-checked maids for daily jhadu-pocha, bartan, dusting, laundry and cleaning. Set timings that suit you, keep the same maid each day, and pay against a clear invoice — no agency, no hidden charges.`,
     about: [
       `A Switch maid takes care of daily jhadu-pocha, bartan (utensils), dusting, laundry and general cleaning across your flat or kothi. Set the timings that suit you — early morning before work, or afternoon while you're out.`,
-      `Every maid on Switch is Aadhaar-verified and background-checked, and you can request the same maid each day for consistency. No advance and no agency cut — you pay in the app only after the work is finished.`,
+      `Every maid on Switch is Aadhaar-verified and background-checked, and you can request the same maid each day for consistency. No agency cut — you pay securely in the app againsr the work is finished.`,
     ],
     faqExtra: [
       { q: 'Can I request the same maid every day?', a: 'Yes. Set up a recurring booking in the app and the same verified maid will be assigned wherever possible.' },
@@ -836,10 +773,10 @@ const ALIASES = [
   },
   {
     serviceId: 'home-cleaning', term: 'Domestic Help', slug: 'domestic-help-gurgaon',
-    intro: `Looking for domestic help in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for cleaning, mopping, dishwashing, laundry, dusting and light kitchen help — part-time or full-time. Book in under 2 minutes and pay only after the work is done.`,
+    intro: `Looking for domestic help in Gurgaon? Switch connects you with verified, Aadhaar-checked Switch Players for cleaning, mopping, dishwashing, laundry, dusting and light kitchen help — part-time or full-time. Book in under 2 minutes and pay against a clear invoice.`,
     about: [
       `Domestic help on Switch covers the full range of household work in Gurgaon — cleaning, mopping, dishwashing, laundry, dusting and light kitchen help. Hire one Switch Player for everyday chores or build a small routine across the week.`,
-      `All domestic helpers are Aadhaar-verified and background-checked, available part-time or full-time, and booked by the hour or day. You track them in the app and pay only after the work is complete.`,
+      `All domestic helpers are Aadhaar-verified and background-checked, available part-time or full-time, and booked by the hour or day. You track them in the app and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What tasks does domestic help cover?', a: 'Sweeping, mopping, dishwashing, laundry, dusting, bathroom and kitchen cleaning, and general tidying. Tell us your priorities at booking.' },
@@ -848,7 +785,7 @@ const ALIASES = [
   },
   {
     serviceId: 'home-cleaning', term: 'Maid Near Me', slug: 'maid-near-me-gurgaon',
-    intro: `Need a maid near you in Gurgaon? Switch uses location matching to connect you with the closest available verified maid — for faster arrivals and easier same-day slots. Book in under 2 minutes and pay only after the work is done.`,
+    intro: `Need a maid near you in Gurgaon? Switch uses location matching to connect you with the closest available verified maid — for faster arrivals and easier same-day slots. Book in under 2 minutes and pay against a clear invoice.`,
     about: [
       `Need a maid near you in Gurgaon right now? Switch matches you with the closest available verified maid using location matching, so arrival times are shorter and same-day slots are easier to fill.`,
       `You get a background-checked Switch Player for daily cleaning, mopping, dishwashing and laundry — booked in under two minutes, tracked in the app, and paid only after the work is done.`,
@@ -860,10 +797,10 @@ const ALIASES = [
   },
   {
     serviceId: 'home-cleaning', term: 'House Help Near Me', slug: 'house-help-near-me-gurgaon',
-    intro: `Searching for house help near you in Gurgaon? Switch shows verified Switch Players matched to your location for daily chores — sweeping, mopping, utensils and laundry. Book in under 2 minutes and pay only after you're satisfied.`,
+    intro: `Searching for house help near you in Gurgaon? Switch shows verified Switch Players matched to your location for daily chores — sweeping, mopping, utensils and laundry. Book in under 2 minutes and transparent rates, no hidden charges.`,
     about: [
       `Switch shows you verified house help available near your Gurgaon address, matched by location so the Switch Player can reach you quickly for daily chores — sweeping, mopping, utensils and laundry.`,
-      `Every house help near you is Aadhaar-verified and background-checked. Book by the hour or day, part-time or full-time, and pay only after you're satisfied.`,
+      `Every house help near you is Aadhaar-verified and background-checked. Book by the hour or day, part-time or full-time, and transparent rates, no hidden charges.`,
     ],
     faqExtra: [
       { q: 'Is there house help available near me right now?', a: 'Open the Switch app and enter your location — real-time availability for house help in your sector is shown instantly.' },
@@ -884,10 +821,10 @@ const ALIASES = [
   },
   {
     serviceId: 'home-cleaning', term: 'Full Time Maid', slug: 'full-time-maid-gurgaon',
-    intro: `Need a full-time maid in Gurgaon? Switch connects you with verified Switch Players who cover your household for the whole working day — cleaning, mopping, dishwashing, laundry and kitchen help. Book for a day, a week or an ongoing routine and pay only after the work is done.`,
+    intro: `Need a full-time maid in Gurgaon? Switch connects you with verified Switch Players who cover your household for the whole working day — cleaning, mopping, dishwashing, laundry and kitchen help. Book for a day, a week or an ongoing routine and pay against a clear invoice.`,
     about: [
       `A full-time maid on Switch covers your household for the whole working day — cleaning, mopping, dishwashing, laundry, dusting and kitchen help across all rooms of your Gurgaon home.`,
-      `Full-time maids are Aadhaar-verified and background-checked. Book for a single day, a week, or an ongoing routine with the same trusted Switch Player, and pay only after the work is done.`,
+      `Full-time maids are Aadhaar-verified and background-checked. Book for a single day, a week, or an ongoing routine with the same trusted Switch Player, and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What hours does a full-time maid work?', a: 'A full-time maid typically covers an 8–12 hour day. Choose the plan that matches your household needs.' },
@@ -897,10 +834,10 @@ const ALIASES = [
   {
     serviceId: 'home-cleaning', term: 'Bathroom Cleaning', slug: 'bathroom-cleaning-gurgaon',
     kw: 'bathroom cleaning gurgaon, toilet cleaning service, washroom cleaning near me, bathroom deep cleaning gurgaon',
-    intro: `Book bathroom deep cleaning in Gurgaon with Switch. Verified Switch Players scrub toilets, basins, tiles, taps and floors — removing hard-water stains, soap scum and grime. Pay only after the bathroom is spotless.`,
+    intro: `Book bathroom deep cleaning in Gurgaon with Switch. Verified Switch Players scrub toilets, basins, tiles, taps and floors — removing hard-water stains, soap scum and grime. Pay against a clear invoice.`,
     about: [
       `Switch bathroom cleaning in Gurgaon covers a thorough scrub of toilets, basins, tiles, taps, mirrors and floors — removing the hard-water stains, soap scum and grime that daily cleaning misses.`,
-      `Book a verified Switch Player for a one-time deep clean or add bathroom cleaning to a regular schedule. You pay only after the bathroom is spotless.`,
+      `Book a verified Switch Player for a one-time deep clean or add bathroom cleaning to a regular schedule. You pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What does bathroom deep cleaning include?', a: 'Scrubbing the toilet, basin, tiles, fittings and floor, descaling taps and glass, and disinfecting all surfaces.' },
@@ -910,10 +847,10 @@ const ALIASES = [
   {
     serviceId: 'home-cleaning', term: 'Kitchen Cleaning', slug: 'kitchen-cleaning-gurgaon',
     kw: 'kitchen cleaning gurgaon, kitchen deep cleaning, chimney cleaning, dishwashing help gurgaon',
-    intro: `Book kitchen deep cleaning in Gurgaon with Switch. Verified Switch Players degrease the stovetop and chimney, wipe counters and cabinets, scrub the sink and mop the floor. Pay only after the kitchen is done.`,
+    intro: `Book kitchen deep cleaning in Gurgaon with Switch. Verified Switch Players degrease the stovetop and chimney, wipe counters and cabinets, scrub the sink and mop the floor. Pay against a clear invoice.`,
     about: [
       `Kitchen cleaning on Switch tackles the greasy jobs — stovetop and chimney degreasing, counter and cabinet wiping, sink scrubbing, backsplash tiles and floor mopping — for a genuinely clean Gurgaon kitchen.`,
-      `Book a verified Switch Player for a one-time kitchen deep clean or as part of a regular routine. You provide the supplies; pay only after the work is done.`,
+      `Book a verified Switch Player for a one-time kitchen deep clean or as part of a regular routine. You provide the supplies; pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'Does kitchen cleaning include the chimney and stovetop?', a: 'Yes — degreasing the stovetop, chimney exterior, tiles and counters is part of a kitchen deep clean.' },
@@ -923,10 +860,10 @@ const ALIASES = [
   {
     serviceId: 'home-cleaning', term: 'Deep Cleaning', slug: 'deep-cleaning-gurgaon',
     kw: 'deep cleaning gurgaon, home deep cleaning service, full house deep clean near me',
-    intro: `Book a full-home deep clean in Gurgaon with Switch — floors, bathrooms, kitchen, dusting, glass and fans, top to bottom. Ideal before moving in, after renovation or ahead of a festival. Pay only after you've inspected the result.`,
+    intro: `Book a full-home deep clean in Gurgaon with Switch — floors, bathrooms, kitchen, dusting, glass and fans, top to bottom. Ideal before moving in, after renovation or ahead of a festival. Inspect the result, then pay against a clear invoice.`,
     about: [
       `Switch deep cleaning covers the whole home end-to-end — floors, bathrooms, kitchen, dusting, glass, fans and hard-to-reach corners — ideal before moving in, after renovation, or ahead of a festival or party.`,
-      `Book one verified Switch Player or a team for larger homes. Everything follows a room-by-room checklist, and you pay only after you've inspected the result.`,
+      `Book one verified Switch Player or a team for larger homes. Everything follows a room-by-room checklist, and you inspect the result before the invoice is raised.`,
     ],
     faqExtra: [
       { q: 'How is deep cleaning different from regular cleaning?', a: 'Deep cleaning is a thorough, top-to-bottom clean including scrubbing, degreasing and detailing — far beyond daily sweeping and mopping.' },
@@ -937,10 +874,10 @@ const ALIASES = [
   {
     serviceId: 'cook', term: 'Bawarchi', slug: 'bawarchi-gurgaon',
     kw: 'bawarchi gurgaon, cook for home gurgaon, house cook, khana banane wali, kitchen cook near me',
-    intro: `Need a bawarchi in Gurgaon? Switch connects you with verified home cooks for daily roti, sabzi and dal, rice and pulao, and full spreads for parties — North Indian, Punjabi, South Indian or Mughlai. Pay only after the food is served.`,
+    intro: `Need a bawarchi in Gurgaon? Switch connects you with verified home cooks for daily roti, sabzi and dal, rice and pulao, and full spreads for parties — North Indian, Punjabi, South Indian or Mughlai. Pay against a clear invoice.`,
     about: [
       `A bawarchi on Switch is a home cook for your Gurgaon kitchen — daily roti, sabzi and dal, rice and pulao, and full spreads for parties. Choose North Indian, Punjabi, South Indian or Mughlai as you like.`,
-      `Every bawarchi is Aadhaar-verified and health-screened. You provide the groceries; the cook brings the skill. Book by the meal, day or week and pay only after the food is served.`,
+      `Every bawarchi is Aadhaar-verified and health-screened. You provide the groceries; the cook brings the skill. Book by the meal, day or week and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'Can a bawarchi cook for a party or function?', a: 'Yes. Mention the headcount and menu at booking and we match you with a cook experienced in bulk and party cooking.' },
@@ -950,10 +887,10 @@ const ALIASES = [
   {
     serviceId: 'cook', term: 'Cook For Home', slug: 'cook-for-home-gurgaon',
     kw: 'cook for home gurgaon, home cook, daily cook, tiffin cook, house cook near me',
-    intro: `Looking for a cook for home in Gurgaon? Switch connects you with verified home cooks for fresh, home-style breakfast, lunch, dinner or tiffin — made to your family's taste. Keep the same cook daily and pay only after the meal is done.`,
+    intro: `Looking for a cook for home in Gurgaon? Switch connects you with verified home cooks for fresh, home-style breakfast, lunch, dinner or tiffin — made to your family's taste. Keep the same cook daily and pay against a clear invoice.`,
     about: [
       `A cook for home on Switch prepares fresh, home-style meals in your Gurgaon kitchen — breakfast, lunch, dinner or tiffin — to your family's taste and dietary needs.`,
-      `All home cooks are Aadhaar-verified and health-screened, and you can request the same cook daily. Book by the meal, day or week and pay only after the meal is done.`,
+      `All home cooks are Aadhaar-verified and health-screened, and you can request the same cook daily. Book by the meal, day or week and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'Can I hire the same cook for home every day?', a: 'Yes. Set up a recurring booking and request your preferred cook for a consistent daily routine.' },
@@ -964,10 +901,10 @@ const ALIASES = [
   {
     serviceId: 'nanny', term: 'Babysitter', slug: 'babysitter-gurgaon',
     kw: 'babysitter gurgaon, baby sitter near me, child care, baby care taker, creche help gurgaon',
-    intro: `Need a babysitter in Gurgaon? Switch connects you with verified, child-safety-trained Switch Players for feeding, play, naps, homework help and safe supervision — for a few hours or a full day. Pay only after the session.`,
+    intro: `Need a babysitter in Gurgaon? Switch connects you with verified, child-safety-trained Switch Players for feeding, play, naps, homework help and safe supervision — for a few hours or a full day. Pay against a clear invoice.`,
     about: [
       `A babysitter on Switch looks after your child in Gurgaon while you work, run errands or step out for the evening — feeding, play, naps, homework help and safe supervision.`,
-      `Every babysitter is Aadhaar-verified with an enhanced background check for childcare, and trained in basic child safety. Book for a few hours or a full day and pay only after the session.`,
+      `Every babysitter is Aadhaar-verified with an enhanced background check for childcare, and trained in basic child safety. Book for a few hours or a full day and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What ages can a Switch babysitter care for?', a: 'From newborns through school-age children. Mention your child\'s age at booking so we match the right experience.' },
@@ -977,10 +914,10 @@ const ALIASES = [
   {
     serviceId: 'nanny', term: 'Japa Maid', slug: 'japa-maid-gurgaon',
     kw: 'japa maid gurgaon, jappa maid, newborn care, post delivery maid, mother care maid near me',
-    intro: `Looking for a japa maid in Gurgaon? Switch connects you with verified Switch Players experienced in post-delivery care — baby bathing and massage, feeding support, and mother's recovery care. Book day or extended care and pay only after the service.`,
+    intro: `Looking for a japa maid in Gurgaon? Switch connects you with verified Switch Players experienced in post-delivery care — baby bathing and massage, feeding support, and mother's recovery care. Book day or extended care and pay against a clear invoice.`,
     about: [
       `A japa maid on Switch provides specialised post-delivery care for new mothers and newborns in Gurgaon — baby bathing and massage, feeding support, mother's diet and recovery care, and help settling the newborn routine.`,
-      `Japa maids are Aadhaar-verified and experienced in newborn and post-natal care. Book for day support or extended live-out care and pay only after the service.`,
+      `Japa maids are Aadhaar-verified and experienced in newborn and post-natal care. Book for day support or extended live-out care and pay against a clear invoice.`,
     ],
     faqExtra: [
       { q: 'What does a japa maid do?', a: 'Newborn bathing and massage, feeding and burping support, mother\'s post-delivery care and diet help, and settling the baby\'s routine.' },
@@ -999,7 +936,7 @@ function makeAliasPage(a) {
     serviceId: s.id,
     serviceImg: s.img,
     title: `${a.term} in Gurgaon — Verified & Same-Day | Switch`,
-    description: `Book a verified ${bare} in Gurgaon instantly. Aadhaar-verified, background-checked Switch Players — pay after work, replacement guaranteed. ${a.about[0].slice(0, 70)}…`,
+    description: `Book a verified ${bare} in Gurgaon instantly. Aadhaar-verified, background-checked Switch Players — transparent rates, replacement guaranteed. ${a.about[0].slice(0, 70)}…`,
     h1: `${a.term} in Gurgaon`,
     intro: a.intro,
     keywords: a.kw || ALIAS_KEYWORDS,
@@ -1079,15 +1016,15 @@ function makeAreaPage(t, area) {
     serviceId: s.id,
     serviceImg: s.img,
     title: `${t.term} in ${area}, Gurgaon — Verified & Same-Day | Switch`,
-    description: `Book a verified ${bare} in ${area}, Gurgaon${pin}. Aadhaar-checked Switch Players serving ${twoLm || area} — same-day, pay after work, replacement guaranteed. No agency.`,
+    description: `Book a verified ${bare} in ${area}, Gurgaon${pin}. Aadhaar-checked Switch Players serving ${twoLm || area} — same-day, transparent rates, replacement guaranteed. No agency.`,
     h1: `${t.term} in ${area}, Gurgaon`,
-    intro: `Need a reliable ${bare} in ${area}? Switch has verified, Aadhaar-checked Switch Players living in and around ${area} — ${loc.blurb}. Whether you're near ${twoLm || area}, a Switch Player can reach you the same day. Book in the app in under 2 minutes — no agency, no advance, pay only after the work is done.`,
+    intro: `Need a reliable ${bare} in ${area}? Switch has verified, Aadhaar-checked Switch Players living in and around ${area} — ${loc.blurb}. Whether you're near ${twoLm || area}, a Switch Player can reach you the same day. Book in the app in under 2 minutes — no agency, no hidden charges, pay against a clear invoice.`,
     keywords: `${bare} in ${al}, ${bare} ${al} gurgaon, ${bare} near me ${al}, ${bare} service ${al}, hire ${bare} ${al}${lm[0] ? `, ${bare} near ${lm[0].toLowerCase()}` : ''}`,
     uniqueSection: {
       heading: `${t.term} in ${area} — Local Coverage`,
       paragraphs: [
         `${area}${pin} is ${loc.blurb}. Switch ${s.plural.toLowerCase()} regularly take bookings across ${area}, so most requests near ${twoLm || area} are matched with a Switch Player who already works in the neighbourhood.`,
-        `Because our ${bare}s are local to ${area} and adjoining ${loc.nearby.slice(0, 2).join(' and ')}, arrival times are shorter and same-day slots are easier to fill than with a city-wide agency. Book by the hour or day, track the Switch Player in the app, and pay only after the job is done.`,
+        `Because our ${bare}s are local to ${area} and adjoining ${loc.nearby.slice(0, 2).join(' and ')}, arrival times are shorter and same-day slots are easier to fill than with a city-wide agency. Book by the hour or day, track the Switch Player in the app, and pay against a clear invoice.`,
       ],
       chipGroups: [
         ...(lm.length ? [{ title: `Spots we cover in ${area}`, chips: lm }] : []),

@@ -7,14 +7,14 @@ export const ALL_ROLES_MARQUEE = [
 ]
 
 export const ROLES = [
-  { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', tags: ['12 hrs','2 days','7 days'] },
-  { img: '/sw-factory-helper.jpg', name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-driver.jpg',         name: 'Driver',                 slug: 'driver-gurgaon',           desc: 'Commercial runs, deliveries & staff transport', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', focus: '46% 3%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', focus: '50% 8%', tags: ['12 hrs','2 days','7 days'] },
+  { img: '/sw-factory-helper.jpg', name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', focus: '51% 0%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/sw-driver.jpg',         name: 'Driver',                 slug: 'driver-gurgaon',           desc: 'Commercial runs, deliveries & staff transport', focus: '42% 14%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', focus: '45% 10%', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', focus: '51% 4%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', focus: '54% 6%', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', focus: '49% 6%', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
 export const INDUSTRIES = [
@@ -26,9 +26,22 @@ export const INDUSTRIES = [
   { ico: '💈', name: 'Salons & Clinics',       roles: 'Front desk · Housekeeping · Helpers · Attendants' },
 ]
 
+/* Client logo wall. `logo` is a file in public/logos/. `h` is its display
+   height in px: these marks range from a 3:1 wordmark to a taller-than-wide
+   crest, so a single height makes the wide ones shout and the tall ones vanish.
+   Each h is set to give every logo roughly the same optical area
+   (h ~= sqrt(1600 / aspect)), which is what makes a logo wall look even.
+   A brand with no logo file falls back to a styled wordmark, so the row stays
+   complete — drop a file in public/logos/ and add `logo` + `h` to swap it. */
 export const BRANDS = [
-  'Ivory Stayz', 'Dr Diet Restaurant', 'Foressta Cafe', 'Crax',
-  'Blinkit', 'ValueShoppe', 'BentoBox',
+  { name: 'Ivory Stayz',        logo: '/logos/ivory-stayz.svg', h: 24 },
+  { name: 'Dr Diet Restaurant', logo: '/logos/dr-diet.png',     h: 42 },
+  { name: 'Foressta Cafe',      logo: '/logos/foressta.png',    h: 22 },
+  { name: 'Crax',               logo: '/logos/crax.png',        h: 38 },
+  { name: 'ValueShoppe',        logo: '/logos/valueshoppe.png', h: 42 },
+  { name: 'BentoBox'                                                  },
+  { name: 'Fairdeal'                                                  },
+  { name: 'Inamo',              logo: '/logos/inamo.png',       h: 24 },
 ]
 
 export const REVIEWS = [
@@ -48,7 +61,7 @@ export const FAQS = [
   { q: 'What if a Switch Player doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
   { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the rate per Switch Player. Talk to us on WhatsApp for exact rates for your business.' },
   { q: 'Are all Switch Players verified?', a: 'Yes. Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
-  { q: 'Do you provide GST invoices and how is payment handled?', a: 'No advance — you pay on arrival. Pay via UPI, cards or bank transfer, and we can provide proper invoices for your business records. Ask our team to set up a business account.' },
+  { q: 'Do you provide GST invoices and how is payment handled?', a: 'Monthly plans are billed in advance; hourly and daily bookings are invoiced against the hours worked. Pay via UPI, cards or bank transfer, and we provide proper invoices for your business records. Ask our team to set up a business account.' },
   { q: 'Can I try a Switch Player before committing to a longer booking?', a: 'Yes. Start with a trial shift to see the quality before you scale to a full day, a 7-day team or an ongoing arrangement. If the Switch Player isn’t the right fit, we replace them — no questions asked.' },
   { q: 'Which areas of Gurgaon do you cover?', a: 'All major sectors and localities — DLF, Sushant Lok, Palam Vihar, Udyog Vihar, Cyber City, Sohna Road, MG Road and Sectors 1–49 — across pincodes 122001 to 122022. Tell us your location and we’ll confirm availability.' },
 ]
@@ -58,7 +71,7 @@ export const WHY_US = [
   { title: 'Aadhaar-Verified Staff', desc: 'Every Switch Player is Aadhaar-verified, document-checked and interviewed before they reach your site.' },
   { title: 'Staff in a Day', desc: 'No agency runaround. Tell us your need and get matched with the right Switch Players within hours.' },
   { title: 'Bulk & Weekly Teams', desc: 'Need 3, 5 or a full team for 7 days? We deploy at scale with a dedicated point of contact.' },
-  { title: 'No Advance — Pay on Arrival', desc: 'No upfront payment. Clean invoices for your business records, pay as the work happens.' },
+  { title: 'Simple, Transparent Billing', desc: 'One clear rate, no agency commissions or hidden charges. Clean invoices for your business records.' },
   { title: '24/7 Support', desc: 'Our team is always available to find the right person and sort out any issue, fast.' },
 ]
 
@@ -70,17 +83,19 @@ export const FORM_ROLES = [
 
 export const HOW_SHOTS = ['/screen-2.png', '/screen-home.png', '/screen-3.png']
 
-/* The nine service tiles of the editorial grid, in the order the CSS expects —
-   tiles 5 and 9 span two columns via :nth-child, so do not reorder. Names and
-   descriptions are the live site's; images are the branded sw-* set. */
+/* The eight service tiles of the editorial grid. The grid spans tiles via
+   :nth-child, so do not reorder. `focus` is the object-position for the photo.
+   These are square/portrait shots with the subject's head near the top edge, so
+   a plain `center` crop decapitates them in a wide two-column tile. The X is the
+   subject's centre; the Y is set from the headroom above the hair, not the face,
+   so the head survives the shallowest crop. Re-measure if an image changes. */
 export const SERVICE_TILES = [
-  { slug: 'home-cleaning-gurgaon',    name: 'Housekeeping',            img: '/sw-maid.jpg',            desc: 'Daily upkeep for offices, shops & premises.' },
-  { slug: 'cook-gurgaon',             name: 'Cook / Chef',             img: '/sw-cook.jpg',            desc: 'Kitchen production for cafés, messes & catering.' },
-  { slug: 'driver-gurgaon',           name: 'Driver',                  img: '/sw-driver.jpg',          desc: 'Commercial runs, deliveries & staff transport.' },
-  { slug: 'painter-gurgaon',          name: 'Painter',                 img: '/painter.jpg',            desc: 'Skilled painters for homes and offices.' },
-  { slug: 'delivery-worker-gurgaon',  name: 'Delivery Rider',          img: '/delivery-rider.jpg',     desc: 'Last-mile delivery, loading & movers.' },
-  { slug: 'nanny-gurgaon',            name: 'Caretaker / Elder Care',  img: '/sw-caretaker.jpg',       desc: 'Baby care, elder care & home assistance.' },
-  { slug: 'security-guard-gurgaon',   name: 'Security Guard',          img: '/sw-security-guard.jpg',  desc: 'Gate duty, premises security & night patrol.' },
-  { slug: 'store-helper-gurgaon',     name: 'General / Store Helper',  img: '/sw-general-helper.jpg',  desc: 'Billing support, stocking, loading & shop-floor help.' },
-  { slug: 'factory-warehouse-gurgaon',name: 'Picker / Packer',         img: '/sw-factory-helper.jpg',  desc: 'Warehouse picking, packing, sorting & dispatch.' },
+  { slug: 'home-cleaning-gurgaon',    name: 'Housekeeping',            img: '/sw-maid.jpg',            desc: 'Daily upkeep for offices, shops & premises.', focus: '54% 6%' },
+  { slug: 'cook-gurgaon',             name: 'Cook / Chef',             img: '/sw-cook.jpg',            desc: 'Kitchen production for cafés, messes & catering.', focus: '51% 4%' },
+  { slug: 'driver-gurgaon',           name: 'Driver',                  img: '/sw-driver.jpg',          desc: 'Commercial runs, deliveries & staff transport.', focus: '42% 14%' },
+  { slug: 'delivery-worker-gurgaon',  name: 'Delivery Rider',          img: '/delivery-rider.jpg',     desc: 'Last-mile delivery, loading & movers.', focus: '45% 10%' },
+  { slug: 'nanny-gurgaon',            name: 'Caretaker / Elder Care',  img: '/sw-caretaker.jpg',       desc: 'Baby care, elder care & home assistance.', focus: '49% 6%' },
+  { slug: 'security-guard-gurgaon',   name: 'Security Guard',          img: '/sw-security-guard.jpg',  desc: 'Gate duty, premises security & night patrol.', focus: '50% 8%' },
+  { slug: 'store-helper-gurgaon',     name: 'General / Store Helper',  img: '/sw-general-helper.jpg',  desc: 'Billing support, stocking, loading & shop-floor help.', focus: '46% 3%' },
+  { slug: 'factory-warehouse-gurgaon',name: 'Picker / Packer',         img: '/sw-factory-helper.jpg',  desc: 'Warehouse picking, packing, sorting & dispatch.', focus: '51% 0%' },
 ]

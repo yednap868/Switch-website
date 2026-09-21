@@ -464,3 +464,272 @@
   display: block;
   color: #55d57b;
 }
+
+/* ── Service grid: eight tiles ─────────────────────────────────────────────
+   The grid was authored for nine tiles (spans on :nth-child 5 and 9). Painter
+   was retired, so those spans left a one-cell hole in the last row at every
+   width above the phone breakpoint. These rules re-derive the span pattern for
+   eight tiles at each column count, so the block always ends flush:
+
+     4 columns  →  [ 1 1 ][2][3] / [4][ 5 5 ][6] / [ 7 7 ][ 8 8 ]
+     3 columns  →  [ 1 1 ][2] / [3][4][5] / [6][7][8]
+     2 columns  →  [ 1 1 ] / [2][3] / [ 4 4 ] / [5][6] / [7][8]
+
+   Everything is driven off the tile index, so reordering SERVICE_TILES changes
+   which photo gets a wide tile — check the crops if you do. */
+
+/* 4 columns — desktop and laptop */
+@media (min-width: 901px) {
+  .service-grid .service-tile {
+    grid-column: span 1;
+  }
+  .service-grid .service-tile:nth-child(1),
+  .service-grid .service-tile:nth-child(5),
+  .service-grid .service-tile:nth-child(7),
+  .service-grid .service-tile:nth-child(8) {
+    grid-column: span 2;
+  }
+}
+
+/* 3 columns — small laptop and tablet, where four columns squeezed the tile
+   labels onto three lines. */
+@media (max-width: 900px) and (min-width: 641px) {
+  .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 210px);
+  }
+  .service-grid .service-tile {
+    grid-column: span 1;
+  }
+  .service-grid .service-tile:nth-child(1) {
+    grid-column: span 2;
+  }
+}
+
+/* 2 columns — phone. The existing rules already span tiles 1 and 4; tile 9 is
+   gone, so drop that selector's leftover span and keep the pattern flush. */
+@media (max-width: 640px) {
+  .service-grid .service-tile:nth-child(1),
+  .service-grid .service-tile:nth-child(4) {
+    grid-column: span 2 !important;
+  }
+  .service-grid .service-tile:nth-child(5),
+  .service-grid .service-tile:nth-child(7),
+  .service-grid .service-tile:nth-child(8) {
+    grid-column: span 1 !important;
+  }
+}
+
+/* The reveal animation is staggered per tile and stopped at the fifth; with
+   eight tiles the last three popped in together. */
+.service-editorial .in-view .service-tile:nth-child(6) { animation-delay: .3s; }
+.service-editorial .in-view .service-tile:nth-child(7) { animation-delay: .36s; }
+.service-editorial .in-view .service-tile:nth-child(8) { animation-delay: .42s; }
+
+/* ── Client logo wall ──────────────────────────────────────────────────────
+   Was a row of plain text names; now real brand marks. The logos come from
+   each company at wildly different proportions, so they are normalised by
+   height (never width) inside a fixed-height box — that keeps the optical
+   weight even without distorting anyone's mark. They sit slightly dimmed and
+   come up to full strength on hover, the usual treatment for a client wall.
+   Brands with no logo file render as a wordmark and are styled to match. */
+.trust-logo-list {
+  gap: 18px 34px;
+}
+.trust-logo-list .trust-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  opacity: .72;
+  transition: opacity .22s, filter .22s;
+}
+.trust-logo-list .trust-logo img {
+  /* height comes from the brand's `h`; width follows the mark's own ratio */
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+}
+.trust-logo-list .trust-logo:hover {
+  opacity: 1;
+}
+/* Wordmark fallback, sized to sit level with the real logos. */
+.trust-logo-list .trust-logo b {
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  /* dimmed to sit at the same optical weight as the logo images */
+  color: #c3cdc5;
+  white-space: nowrap;
+}
+.trust-logo-more {
+  font-size: .62rem;
+  letter-spacing: .05em;
+  color: #55d57b;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .trust-logo-list { gap: 16px 26px; }
+  .trust-logo-list .trust-logo { height: 38px; }
+  .trust-logo-list .trust-logo img { max-width: 104px; transform: scale(.86); }
+  .trust-logo-list .trust-logo b { font-size: .76rem; }
+}
+@media (max-width: 560px) {
+  /* Two even columns beat a ragged wrap at phone width. */
+  .trust-logo-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+    justify-items: center;
+  }
+  .trust-logo-list .trust-logo { height: 40px; }
+  .trust-logo-list .trust-logo img { max-width: 100%; transform: scale(.9); }
+  .trust-logo-list .trust-logo b { font-size: .78rem; }
+  .trust-logo-more { grid-column: 1 / -1; }
+}
+
+/* ── Header wordmark ───────────────────────────────────────────────────────
+   Now real text instead of the particle canvas, so the fixed 59×19 box the
+   canvas needed is dropped and the word sizes itself. */
+.logo-wordmark {
+  width: auto;
+  height: auto;
+  font-weight: 800;
+  font-size: 1.02rem;
+  letter-spacing: -.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* ── ₹999 offer banner ─────────────────────────────────────────────────────
+   Slim strip above the sticky header. It is a single link so the whole bar is
+   tappable, and it degrades to two lines on a phone rather than shrinking the
+   type below readable size. */
+.offer-banner {
+  background: var(--green);
+  color: #06210f;
+}
+.offer-banner-inner {
+  max-width: var(--max);
+  margin: auto;
+  padding: 9px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: inherit;
+  text-align: center;
+}
+.offer-banner-tag {
+  font-family: DM Mono, monospace;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  padding: 3px 7px;
+  border: 1px solid rgba(6, 33, 15, .45);
+  border-radius: 2px;
+}
+.offer-banner strong {
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.offer-banner strong em {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.04rem;
+}
+.offer-banner-tc {
+  font-size: .64rem;
+  opacity: .72;
+  letter-spacing: .02em;
+}
+.offer-banner-cta {
+  font-size: .76rem;
+  font-weight: 800;
+  border-bottom: 1.5px solid rgba(6, 33, 15, .5);
+  transition: border-color .2s;
+}
+.offer-banner-inner:hover .offer-banner-cta {
+  border-color: #06210f;
+}
+
+@media (max-width: 900px) {
+  .offer-banner-inner { padding: 8px 22px; gap: 10px; }
+  .offer-banner strong { font-size: .84rem; }
+  .offer-banner strong em { font-size: .95rem; }
+}
+@media (max-width: 560px) {
+  .offer-banner-inner { padding: 8px 18px; gap: 6px 9px; }
+  .offer-banner-tag { display: none; }
+  .offer-banner strong { font-size: .8rem; }
+  .offer-banner strong em { font-size: .92rem; }
+  .offer-banner-tc { font-size: .6rem; }
+  .offer-banner-cta { font-size: .72rem; }
+}
+
+/* ── Phone polish: legibility and tap targets ──────────────────────────────
+   Audited at 390px and 360px. Two classes of problem: body copy that fell
+   below ~10px, and links/buttons whose hit area was ~24-26px tall against the
+   44px minimum. Sizes here only grow type and padding — no layout is moved. */
+
+/* Role chips under the hero, and the service tile captions. */
+.hero-service span {
+  font-size: .74rem;
+}
+.service-tile-copy small {
+  font-size: .7rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 560px) {
+  .service-tile-copy strong { font-size: .92rem; }
+  .service-tile-copy small  { font-size: .69rem; }
+  /* Decorative mono stamp was 8px — below the point of being readable at all. */
+  .hero-corner { font-size: .58rem; }
+}
+
+@media (max-width: 480px) {
+  /* Hit areas. Padding does the work so nothing reflows; where an element is
+     inline the min-height needs a flex/inline-flex box to apply. */
+  .header .logo {
+    min-height: 44px;
+    align-items: center;
+  }
+  .header .menu {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .svc-dir-card-head {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .svc-dir-chip {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Rail proof copy sat at 10.2px — real sentences, not a label, so it reads
+   at body size on small screens. */
+@media (max-width: 900px) {
+  .service-proof strong { font-size: .8rem; }
+  .service-proof small  { font-size: .72rem; line-height: 1.45; }
+}

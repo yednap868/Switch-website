@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ParticleWordmark from '../fx/ParticleWordmark.jsx'
 import { EMPLOYER_LOGIN } from '../../data/site.js'
 
 const LINKS = [
@@ -50,14 +49,11 @@ export default function Header() {
             <i />
             <i />
           </span>
-          <ParticleWordmark
-            className="logo-wordmark"
-            text="SWITCH"
-            color="#f5f7f4"
-            density={3}
-            size={0.9}
-            dispersion={10}
-          />
+          {/* Plain text, not the particle canvas. At the header's 19px cap the
+              particle sampler only lands a few dots per glyph, so the wordmark
+              read as noise rather than "SWITCH". The footer mark is 80px and
+              still uses ParticleWordmark, where the effect actually resolves. */}
+          <span className="logo-wordmark">SWITCH</span>
         </Link>
 
         <nav className={`nav-links${open ? ' open' : ''}`}>

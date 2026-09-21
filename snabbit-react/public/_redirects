@@ -1,1 +1,15 @@
-/* /index.html 200
+# Painter was retired as a service. These ten pages were indexed, so send their
+# traffic and link equity to the services hub rather than letting them 404.
+/painter-gurgaon            /staffing-gurgaon  301
+/painter-cost-gurgaon       /staffing-gurgaon  301
+/hire-painter-gurgaon       /staffing-gurgaon  301
+/painter-benefits-gurgaon   /staffing-gurgaon  301
+/painter-checklist-gurgaon  /staffing-gurgaon  301
+/painter-faq-gurgaon        /staffing-gurgaon  301
+/painter-near-me-gurgaon    /staffing-gurgaon  301
+/same-day-painter-gurgaon   /staffing-gurgaon  301
+/painter-reviews-gurgaon    /staffing-gurgaon  301
+/verified-painter-gurgaon   /staffing-gurgaon  301
+
+# SPA fallback — must stay last.
+/*  /index.html  200

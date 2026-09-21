@@ -86,7 +86,7 @@ export default function FinalCta({ onToast }) {
                 <b>↻</b> Replacement guarantee
               </span>
               <span>
-                <b>₹</b> Pay on arrival
+                <b>₹</b> Transparent billing
               </span>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function FinalCta({ onToast }) {
                       Couldn&apos;t send — please WhatsApp or call us instead.
                     </p>
                   )}
-                  <p className="form-fine">No advance payment. We call you back to confirm.</p>
+                  <p className="form-fine">No obligation. We call you back to confirm.</p>
                 </form>
               )}
             </div>

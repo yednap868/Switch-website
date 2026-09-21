@@ -37,18 +37,18 @@ const PLANS = [
     index: '01 / ESSENTIAL',
     badge: 'CORE TEAM',
     name: 'Essential',
-    price: '₹13,999',
+    price: '₹999',
     per: '/mo',
     description: 'Reliable everyday support for your operations.',
     items: ['Housekeeping', 'General Helper', 'Picker & Packer', 'Cleaner · Office Boy', 'Loader · Gardener'],
     cta: 'Ask about Essential',
-    msg: "Hi Switch — I'd like to subscribe to the Essential staffing plan (₹13,999/mo). Please share the details.",
+    msg: "Hi Switch — I'd like to subscribe to the Essential staffing plan (₹999/mo). Please share the details.",
   },
   {
     index: '02 / SECURITY',
     badge: 'PEACE OF MIND',
     name: 'Security',
-    price: '₹13,999',
+    price: '₹999',
     per: '/mo',
     featured: true,
     description: 'Consistent security cover with replacement support.',
@@ -59,7 +59,7 @@ const PLANS = [
       'Uniformed & briefed',
     ],
     cta: 'Ask about Security',
-    msg: "Hi Switch — I'd like to subscribe to the Security guard plan (₹13,999/mo). Please share the details.",
+    msg: "Hi Switch — I'd like to subscribe to the Security guard plan (₹999/mo). Please share the details.",
   },
   {
     index: '03 / SKILLED',
@@ -223,9 +223,21 @@ export default function TrustEditorial() {
           <span className="mono">BUSINESSES WE STAFF</span>
           <div className="trust-logo-list">
             {BRANDS.map((brand) => (
-              <span key={brand}>{brand}</span>
+              <span className="trust-logo" key={brand.name} title={brand.name}>
+                {brand.logo ? (
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    style={{ height: `${brand.h}px` }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <b>{brand.name}</b>
+                )}
+              </span>
             ))}
-            <span>AND 500+ MORE</span>
+            <span className="trust-logo-more">AND 500+ MORE</span>
           </div>
         </div>
 
@@ -322,7 +334,7 @@ export default function TrustEditorial() {
               <p className="subscription-fineprint">
                 Prices are per staff, per month, exclusive of GST (18%). Monthly subscription with a
                 1-month minimum; cancel with 15 days&apos; notice. Rates indicative and subject to
-                role, shift and location.
+                role, shift and location. T&amp;C apply.
               </p>
             </div>
           </div>

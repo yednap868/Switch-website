@@ -25,7 +25,7 @@ function TrustBadges() {
     <div className="sp-trust">
       <span>✓ Aadhaar Verified</span>
       <span>✓ Background Checked</span>
-      <span>✓ Pay After Work</span>
+      <span>✓ Transparent Billing</span>
       <span>✓ Same-Day Available</span>
     </div>
   )
@@ -74,7 +74,7 @@ function ComparisonTable({ service }) {
     ['Booking time',         'Under 2 min',     '24–48 hrs',    'Hours or days'],
     ['Background verified',  '✓ Aadhaar',       'Sometimes',    'Never'],
     ['Transparent pricing',  '✓ Fixed rate',    '+ Commission', 'Variable'],
-    ['Pay after work',       '✓',               '✗',            '✗'],
+    ['Transparent billing',  '✓',               '✗',            '✗'],
     ['Same-day available',   '✓',               'Rare',         'Rare'],
     ['Free cancellation',    '✓ Up to 2 hrs',   'Fee charged',  'N/A'],
     ['Rated & reviewed',     '✓ 4.8 ★',        '✗',            '✗'],
@@ -133,7 +133,7 @@ function CtaBlock({ service }) {
         <span>4.8 · 500+ bookings</span>
       </div>
       <h3 className="sp-cta-h">Book a {service} in Gurgaon Today</h3>
-      <p className="sp-cta-p">Verified professionals. Flexible hours. Pay only after you're satisfied.</p>
+      <p className="sp-cta-p">Verified professionals. Flexible hours. Transparent rates, no hidden charges.</p>
       <a href="https://app.switchlocally.com" className="sp-cta-btn">Get the App — It's Free</a>
     </div>
   )
@@ -229,7 +229,7 @@ function LandingPage({ page }) {
       <section className="sp-section sp-alt">
         <div className="sp-w">
           <h2 className="sp-h2">Transparent Pricing — No Hidden Fees</h2>
-          <p className="sp-body">All rates are fixed and shown upfront. No agency commission, no call-out fees, no surprises. You pay only after the work is completed to your satisfaction.</p>
+          <p className="sp-body">All rates are fixed and shown upfront. No agency commission, no call-out fees, no surprises. You pay against a clear invoiced to your satisfaction.</p>
           <PricingTable prices={page.prices} />
         </div>
       </section>
@@ -250,7 +250,7 @@ function LandingPage({ page }) {
             </div>
             <div className="sp-step">
               <div className="sp-step-n">Step 3</div>
-              <h3 className="sp-step-title">Switch Player arrives & you pay after</h3>
+              <h3 className="sp-step-title">Switch Player arrives & the work gets done</h3>
               <p className="sp-step-desc">Your verified {page.service.toLowerCase()} arrives on time. Pay securely in-app only after the job is done.</p>
             </div>
           </div>
@@ -320,7 +320,7 @@ function PricingPage({ page }) {
     <>
       <section className="sp-hero sp-hero-sm">
         <div className="sp-w">
-          <span className="sp-tag">Transparent Pricing · No Hidden Fees · Pay After Work</span>
+          <span className="sp-tag">Transparent Pricing · No Hidden Fees · Clean Invoices</span>
           <h1 className="sp-h1">{page.h1}</h1>
           <p className="sp-intro">{page.intro}</p>
         </div>

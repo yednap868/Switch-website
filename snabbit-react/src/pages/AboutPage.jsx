@@ -33,7 +33,7 @@ const WHAT_WE_DO = [
   {
     ico: '💳',
     title: 'Simple & Transparent',
-    desc: 'Hire in minutes on WhatsApp, switchlocally.com or the Switch App. No advance — you pay on arrival, with proper invoices for your records.',
+    desc: 'Hire in minutes on WhatsApp, switchlocally.com or the Switch App. Transparent rates, with proper invoices for your records.',
   },
   {
     ico: '🏠',
@@ -60,8 +60,8 @@ const WHY_SWITCH = [
   },
   {
     ico: '💸',
-    title: 'Pay After Work is Done',
-    desc: 'We never ask for advance payments. You pay only after you are satisfied with the service.',
+    title: 'Transparent, Honest Billing',
+    desc: 'One clear rate agreed up front — no hidden charges, no agency commissions, no surprises on the invoice.',
   },
   {
     ico: '🔁',
@@ -321,7 +321,7 @@ export default function AboutPage() {
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Hire staff for your business →</a>
                 <Link to="/blog" className="ab-cta-secondary">Read our guides</Link>
               </div>
-              <p className="ab-cta-fine">No advance. Pay on arrival. Just Switch.</p>
+              <p className="ab-cta-fine">Verified staff. Transparent rates. Just Switch.</p>
             </div>
           </div>
         </section>

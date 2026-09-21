@@ -1,5 +1,60 @@
 {
+  "redirects": [
+    {
+      "source": "/painter-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-cost-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/hire-painter-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-benefits-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-checklist-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-faq-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-near-me-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/same-day-painter-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/painter-reviews-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/verified-painter-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

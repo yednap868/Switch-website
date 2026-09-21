@@ -125,11 +125,11 @@ function HomeHead() {
   return (
     <Helmet>
       <title>Hire Verified Staff for Business in Gurgaon | Switch</title>
-      <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, pay after work." />
-      <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, pay after work done Gurgaon, weekly staff hire Gurgaon" />
+      <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, transparent rates." />
+      <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, transparent staffing rates Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
       <meta property="og:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
-      <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, pay on arrival." />
+      <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, transparent rates." />
       <meta property="og:url" content="https://switchlocally.com/" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Switch" />
@@ -258,7 +258,7 @@ function OfferPopup() {
         </button>
         <span className="offer-pop-badge">LIMITED-TIME OFFER</span>
         <h3 className="offer-pop-title">
-          Hire verified staff at just <span>₹13,999/mo</span>
+          Hire verified staff at just <span>₹999/mo</span>
         </h3>
         <p className="offer-pop-sub">
           Full-time, Aadhaar-verified Switch Players — a simple monthly plan, paid in advance, with
@@ -272,13 +272,13 @@ function OfferPopup() {
             <b>✓</b> Replacement guarantee
           </li>
           <li>
-            <b>✓</b> Cancel anytime · GST extra
+            <b>✓</b> Cancel anytime · GST extra · T&amp;C apply
           </li>
         </ul>
         <div className="offer-pop-cta">
           <a
             href={waLink(
-              'Hi Switch — I want to hire staff on the ₹13,999/mo subscription. Please share the details.',
+              'Hi Switch — I want to hire staff on the ₹999/mo subscription. Please share the details.',
             )}
             target="_blank"
             rel="noreferrer"
@@ -293,6 +293,29 @@ function OfferPopup() {
         </div>
       </div>
     </div>
+  )
+}
+
+/* ─── ₹999 OFFER BANNER ───────────────────────────── */
+/* Site-wide strip above the sticky header. Scrolls away with the page rather
+   than eating viewport height on every screen; the sticky header takes over. */
+function OfferBanner() {
+  return (
+    <aside className="offer-banner">
+      <a
+        className="offer-banner-inner"
+        href={waLink('Hi Switch — I want to hire staff at ₹999 for a month. Please share the details.')}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span className="offer-banner-tag">OFFER</span>
+        <strong>
+          Hire staff at just <em>₹999</em> for a month
+        </strong>
+        <span className="offer-banner-tc">T&amp;C apply</span>
+        <b className="offer-banner-cta">Hire now ↗</b>
+      </a>
+    </aside>
   )
 }
 
@@ -347,6 +370,7 @@ export default function App() {
   return (
     <>
       <HashScroll />
+      <OfferBanner />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/partner" element={<PartnerPage />} />

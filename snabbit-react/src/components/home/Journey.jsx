@@ -34,11 +34,11 @@ const STEPS = [
   {
     number: '04',
     title: 'REPORT',
-    line: 'They report. You pay on arrival.',
+    line: 'They report. You get a clean invoice.',
     note: 'OTP verification on site.',
     meta: 'FIELD / ON ARRIVAL',
     status: 'READY TO WORK',
-    caption: 'OTP confirms the right person reached your site. No-show? Instant replacement. Pay only after the work is done.',
+    caption: 'OTP confirms the right person reached your site. No-show? Instant replacement. Pay against a clear invoice.',
   },
 ]
 
@@ -290,7 +290,7 @@ export default function Journey() {
             <b>↻</b> Replacement guarantee
           </span>
           <span>
-            <b>₹</b> Pay on arrival
+            <b>₹</b> Transparent billing
           </span>
         </div>
       </div>

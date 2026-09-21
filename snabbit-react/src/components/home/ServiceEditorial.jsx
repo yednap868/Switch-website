@@ -38,7 +38,12 @@ export default function ServiceEditorial() {
                 to={`/${tile.slug}`}
                 data-service-index={i}
               >
-                <img src={tile.img} alt={`${tile.name} Switch Player`} loading="lazy" />
+                <img
+                  src={tile.img}
+                  alt={`${tile.name} Switch Player`}
+                  style={{ objectPosition: tile.focus }}
+                  loading="lazy"
+                />
                 <span className="service-shade" />
                 <span className="service-tile-copy">
                   <strong>{tile.name}</strong>

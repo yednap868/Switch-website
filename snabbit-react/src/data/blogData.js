@@ -61,7 +61,7 @@ export const BLOG_POSTS = [
         'Full-time maid: ₹10,000 to ₹18,000 per month',
         'Live-in maid: ₹12,000 to ₹20,000 per month including accommodation',
       ]},
-      { type: 'callout', content: 'At Switch, maid services start at ₹149/hr for early-bird bookings — transparent, no hidden charges and zero advance payment. You pay only after the work is done.' },
+      { type: 'callout', content: 'At Switch, maid services start at ₹149/hr for early-bird bookings — transparent, with no hidden charges and no agency commission. Every booking is invoiced clearly. The work is done.' },
 
       { type: 'h2', content: 'Areas in Gurgaon where Switch provides verified maids' },
       { type: 'p', content: 'DLF Phase 1, DLF Phase 3, DLF Phase 4, DLF Queens Enclave, Sushant Lok Phase 1, 2 & 3, Palam Vihar, Palam Vihar Extension, Udyog Vihar, Sohna Road, Sector 14, 15, 17, 17B, 23, 23A, 24, 25, 26, 27, 28, 31, 40, 47, 48, 49, Chakkarpur, Sikanderpur, Nathupur, Galleria Market, Railway Road, Basai, Greenwood City, Malibu Towne and Sun City — covering pincodes 122001, 122002, 122006, 122009, 122010, 122017, 122018 and 122022.' },
@@ -73,7 +73,7 @@ export const BLOG_POSTS = [
         'Enter your location and requirements',
         'Get matched with a verified, Aadhaar-checked maid',
         'Meet the maid and confirm the arrangement',
-        'Pay only after you are satisfied — zero advance payment',
+        'Transparent rates — no hidden charges or agency commission',
       ]},
 
       { type: 'h2', content: 'Final thoughts' },
@@ -108,7 +108,7 @@ export const BLOG_POSTS = [
       { type: 'p', content: 'Every family is different. A Switch cook prepares menus that suit your family\'s tastes, preferences and health requirements — from traditional Indian meals to regional cuisines and special dietary needs.' },
 
       { type: 'h2', content: '5. More affordable than you think' },
-      { type: 'p', content: 'When you compare a part-time cook\'s monthly cost with what you spend on restaurant deliveries, eating out and packaged food, a home cook is almost always cheaper. And at Switch, you only pay after the work is done.' },
+      { type: 'p', content: 'When you compare a part-time cook\'s monthly cost with what you spend on restaurant deliveries, eating out and packaged food, a home cook is almost always cheaper. And at Switch, every booking is invoiced clearly.' },
 
       { type: 'h2', content: '6. Perfect for working couples and nuclear families' },
       { type: 'p', content: 'Gurgaon is full of double-income households. A verified Switch cook ensures fresh, healthy meals on the table without either partner having to rush home from work to cook.' },
@@ -125,7 +125,7 @@ export const BLOG_POSTS = [
       { type: 'h2', content: '10. Verified, Aadhaar-checked cooks you can trust' },
       { type: 'p', content: 'The biggest concern most families have is safety. At Switch, every cook is Aadhaar-verified, background-checked and personally interviewed. Great food and complete peace of mind.' },
 
-      { type: 'callout', content: 'Book a verified cook on switchlocally.com or the Switch App across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. No advance. No middlemen.' },
+      { type: 'callout', content: 'Book a verified cook on switchlocally.com or the Switch App across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022. No hidden charges. No middlemen.' },
     ],
   },
 
@@ -181,7 +181,7 @@ export const BLOG_POSTS = [
         'Full-Time Caretaker (8–10 hours/day): ₹12,000 to ₹18,000 per month',
         'Live-In Caretaker (24 hours): ₹15,000 to ₹25,000 per month',
       ]},
-      { type: 'callout', content: 'Switch offers transparent pricing with no advance payment. You pay only after you are satisfied with the service.' },
+      { type: 'callout', content: 'Switch offers transparent pricing with no hidden charges and no agency commission — every booking comes with a clear invoice.' },
 
       { type: 'h2', content: 'Where Switch provides elderly caretakers in Gurgaon' },
       { type: 'p', content: 'DLF Phase 1, 3, 4, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road, Sector 14, 17, 23, 31, 40, 47, 49, Chakkarpur, Greenwood City, Malibu Towne, Sun City and all pincodes 122001, 122002, 122006, 122009, 122010, 122017, 122018, 122022.' },
@@ -193,7 +193,7 @@ export const BLOG_POSTS = [
         'Describe your care requirements in detail',
         'Get matched with a verified, compassionate caretaker',
         'Meet the caretaker and confirm the arrangement',
-        'Pay only after you are satisfied — zero advance payment',
+        'Transparent rates — no hidden charges or agency commission',
       ]},
     ],
   },
@@ -267,7 +267,7 @@ export const BLOG_POSTS = [
         'Enter your location and specific requirements',
         'Get matched with verified, trained security staff',
         'Confirm the arrangement after meeting the staff',
-        'Pay only after the service begins — zero advance payment',
+        'Transparent rates — no hidden charges or agency commission',
       ]},
       { type: 'callout', content: 'Switch serves Udyog Vihar, DLF Cyber City, Sushant Lok, Sector 14, 17, 31, Palam Vihar, Sohna Road and all pincodes 122001–122022.' },
     ],
@@ -334,7 +334,7 @@ export const BLOG_POSTS = [
         'Full-Time Driver: ₹12,000 to ₹18,000 per month',
         'Corporate Driver: ₹15,000 to ₹22,000 per month',
       ]},
-      { type: 'callout', content: 'All Switch driver pricing is transparent — no hidden charges and no advance payment.' },
+      { type: 'callout', content: 'All Switch driver pricing is transparent — no hidden charges and no agency commission.' },
 
       { type: 'h2', content: 'How to book a verified driver in Gurgaon through Switch' },
       { type: 'ol', content: [
@@ -343,7 +343,7 @@ export const BLOG_POSTS = [
         'Enter your location, hours and requirements',
         'Get matched with a verified, experienced driver',
         'Meet the driver and do a trial run',
-        'Pay only after you are satisfied — zero advance payment',
+        'Transparent rates — no hidden charges or agency commission',
       ]},
     ],
   },
@@ -397,7 +397,7 @@ export const BLOG_POSTS = [
         'Enter event details — date, location, guest count and requirements',
         'Get matched with verified, experienced event staff',
         'Confirm the booking and brief your team',
-        'Pay only after the event — zero advance payment',
+        'Transparent rates — no hidden charges or agency commission',
       ]},
       { type: 'callout', content: 'Switch provides verified event staff across DLF Phase, Sushant Lok, Udyog Vihar, Cyber City, Palam Vihar, Sohna Road, Sector 14, 17, 31 and all pincodes 122001–122022.' },
     ],

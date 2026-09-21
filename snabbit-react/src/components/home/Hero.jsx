@@ -20,7 +20,7 @@ export default function Hero() {
           <p>
             Aadhaar-verified staff, matched to your business often within the day — cooks, helpers,
             guards, waiters &amp; more for shops, restaurants, warehouses and offices across
-            Gurgaon. Replacement guaranteed. No advance, no agency runaround.
+            Gurgaon. Replacement guaranteed. Transparent rates, no agency runaround.
           </p>
           <div className="hero-actions">
             <a className="btn primary" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
@@ -34,7 +34,7 @@ export default function Hero() {
             <strong>01</strong>
             <span>
               Book hourly, daily, weekly or monthly staff.{' '}
-              <Annotate kind="circle">Pay on arrival</Annotate> for on-demand shifts.
+              <Annotate kind="circle">Transparent rates</Annotate> on every shift.
             </span>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function Hero() {
           <span className="mono hero-services-label">FIND YOUR PEOPLE</span>
           {ROLES.map((role) => (
             <Link className="hero-service" to={`/${role.slug}`} key={role.slug}>
-              <img src={role.img} alt="" loading="lazy" />
+              <img src={role.img} alt="" style={{ objectPosition: role.focus }} loading="lazy" />
               <span>{role.name}</span>
               <b>↗</b>
             </Link>
