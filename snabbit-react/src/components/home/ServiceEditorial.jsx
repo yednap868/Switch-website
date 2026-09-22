@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom'
 import Annotate from '../fx/Annotate.jsx'
 import CascadeLabel from '../fx/CascadeLabel.jsx'
 import { INDUSTRIES, SERVICE_TILES, WHY_US } from '../../data/homeContent.js'
+
+/* Quoted twice in this section, and the same pair appears in TrustEditorial's
+   metrics — keep the three in step when they change. */
+const INDUSTRY_STATS = { players: '20,000+', businesses: '1,000+' }
 import { waLink } from '../../data/site.js'
 
 export default function ServiceEditorial() {
@@ -84,27 +88,60 @@ export default function ServiceEditorial() {
           </aside>
         </div>
 
-        {/* Industries — live-site content the prototype dropped, in its
-            hairline-grid idiom. */}
-        <div className="industry-block">
-          <div className="section-head industry-head">
-            <div>
+        {/* Sectors. The heading, the figures and the CTA live inside the grid
+            as a 2x2 feature cell rather than sitting above it, which is what
+            keeps twelve cards from reading as a wall of identical boxes.
+
+            Cell arithmetic, because it is what breaks first when the list
+            changes: the feature occupies 4 cells of a 4x4 grid and the twelve
+            cards take the other 12. At three columns the feature goes full
+            width and the cards run 4 rows; at two, 6 rows. Twelve divides by
+            4, 3 and 2, so no tier leaves a hole. */}
+        <div className="sector-block">
+          <div className="sector-grid">
+            <div className="sector-feature">
               <span className="eyebrow">WHO WE STAFF</span>
               <h3>Built for the businesses that run Gurgaon.</h3>
+              <p>
+                From a four-table café to a warehouse floor on dispatch deadline — one verified
+                bench, the same replacement guarantee, the same day.
+              </p>
+              <dl className="sector-stats">
+                <div>
+                  <dt>{INDUSTRY_STATS.players}</dt>
+                  <dd>Verified Switch Players</dd>
+                </div>
+                <div>
+                  <dt>{INDUSTRY_STATS.businesses}</dt>
+                  <dd>Businesses served</dd>
+                </div>
+                <div>
+                  <dt>{INDUSTRIES.length}</dt>
+                  <dd>Sectors staffed</dd>
+                </div>
+              </dl>
+              <a
+                className="sector-feature-cta"
+                href={waLink('Hi Switch — I need staff for my business in Gurgaon.')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Not on the list? Tell us the role <b>↗</b>
+              </a>
             </div>
-          </div>
-          <div className="reasons industry-grid">
+
             {INDUSTRIES.map((ind, i) => (
               <a
-                className="reason industry-card"
+                className="sector-card"
                 key={ind.name}
                 href={waLink(`Hi Switch — I need staff for my ${ind.name} business in Gurgaon.`)}
                 target="_blank"
                 rel="noreferrer"
               >
-                <span className="eyebrow">{String(i + 1).padStart(2, '0')}</span>
-                <b>{ind.name}</b>
-                <p>{ind.roles}</p>
+                <span className="sector-num mono">{String(i + 1).padStart(2, '0')}</span>
+                <span className="sector-name">{ind.name}</span>
+                <span className="sector-roles">{ind.roles}</span>
+                <span className="sector-go" aria-hidden="true">↗</span>
               </a>
             ))}
           </div>

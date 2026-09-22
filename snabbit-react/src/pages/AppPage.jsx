@@ -146,7 +146,7 @@ export default function AppPage() {
 
               <div className="ap-trust">
                 <div className="ap-trust-stars">{[0, 1, 2, 3, 4].map(i => <IcoStar key={i} />)}</div>
-                <span><strong>4.8</strong> rating · <strong>500+</strong> verified Switch Players</span>
+                <span><strong>4.8</strong> rating · <strong>20,000+</strong> verified Switch Players</span>
               </div>
 
               <p className="ap-ios-note">

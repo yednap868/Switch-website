@@ -17,13 +17,24 @@ export const ROLES = [
   { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', focus: '49% 6%', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
+/* Twelve sectors, not six. The count is deliberate: the grid runs four across
+   on desktop, three on tablet and two on phone, and twelve divides evenly by
+   all three, so no breakpoint leaves a hole in the last row.
+   `ico` is carried for the interior pages; the homepage cards are numbered
+   rather than illustrated. */
 export const INDUSTRIES = [
-  { ico: '🛍️', name: 'Retail & Shops',         roles: 'Store helpers · Billing support · Security · Loaders' },
-  { ico: '🍽️', name: 'Restaurants & Cafés',    roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
-  { ico: '📦', name: 'Warehouses & Factories', roles: 'Packers · Loaders · Line Switch Players · Helpers' },
-  { ico: '🎉', name: 'Events & Banquets',      roles: 'Waiters · Bartenders · Bouncers · Promoters' },
-  { ico: '🏢', name: 'Offices & Co-working',   roles: 'Housekeeping · Security · Pantry · Office boys' },
-  { ico: '💈', name: 'Salons & Clinics',       roles: 'Front desk · Housekeeping · Helpers · Attendants' },
+  { ico: '🛍️', name: 'Retail & Shops',          roles: 'Store helpers · Billing support · Loaders · Security' },
+  { ico: '🍽️', name: 'Restaurants & Cafés',     roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
+  { ico: '📦', name: 'Warehouses & Logistics',  roles: 'Pickers · Packers · Loaders · Dispatch help' },
+  { ico: '🏭', name: 'Factories & Production',  roles: 'Factory helpers · Loaders · Packers · Shift hands' },
+  { ico: '🏢', name: 'Offices & Co-working',    roles: 'Office boys · Housekeeping · Pantry · Front desk' },
+  { ico: '🎉', name: 'Events & Banquets',       roles: 'Waiters · Bartenders · Bouncers · Promoters' },
+  { ico: '🏨', name: 'Hotels & Guest Houses',   roles: 'Housekeeping · Stewards · Kitchen helpers · Security' },
+  { ico: '🛒', name: 'Grocery & Q-Commerce',   roles: 'Pickers · Packers · Delivery riders · Store helpers' },
+  { ico: '🏘️', name: 'Societies & Facilities',  roles: 'Guards · Gardeners · Cleaners · Caretakers' },
+  { ico: '💈', name: 'Salons, Gyms & Clinics',  roles: 'Front desk · Housekeeping · Attendants · Helpers' },
+  { ico: '🎓', name: 'Schools & Institutes',    roles: 'Housekeeping · Security · Attendants · Support staff' },
+  { ico: '🏠', name: 'Homes & Residences',      roles: 'Cooks · House cleaners · Caretakers · Baby care' },
 ]
 
 /* Client logo wall. `logo` is a file in public/logos/. `h` is its display

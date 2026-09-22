@@ -48,7 +48,7 @@ const REQUIREMENTS = [
 ]
 
 const TRUST = [
-  { val: '500+',   lbl: 'Active partners' },
+  { val: '20,000+', lbl: 'Active partners' },
   { val: '₹40K',   lbl: 'Top monthly earner' },
   { val: '24 hrs', lbl: 'Approval time' },
   { val: '4.9 ★',  lbl: 'Partner rating' },
@@ -153,7 +153,7 @@ export default function PartnerPage() {
         <div className="pp-hero-inner">
           <div className="pp-tag-row">
             <span className="pp-dot" />
-            <span>Now hiring in Gurgaon · 500+ partners onboard</span>
+            <span>Now hiring in Gurgaon · 20,000+ partners onboard</span>
           </div>
           <h1 className="pp-h1">
             Earn ₹40,000/month.<br />
@@ -339,7 +339,7 @@ export default function PartnerPage() {
               ))}
             </div>
             <div className="pp-mid-cta">
-              <CtaPrimary>Join 500+ partners</CtaPrimary>
+              <CtaPrimary>Join 20,000+ partners</CtaPrimary>
             </div>
           </div>
         </section>

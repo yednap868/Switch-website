@@ -6,8 +6,8 @@ import { BRANDS, FAQS, REVIEWS, WHY_US } from '../../data/homeContent.js'
 import { EMPLOYER_LOGIN, waLink } from '../../data/site.js'
 
 const METRICS = [
-  { value: '1500+', label: 'Verified Switch Players' },
-  { value: '500+', label: 'Businesses served' },
+  { value: '20,000+', label: 'Verified Switch Players' },
+  { value: '1,000+', label: 'Businesses served' },
   { value: '24h', label: 'Replacement time' },
 ]
 
@@ -220,7 +220,15 @@ export default function TrustEditorial() {
         </div>
 
         <div className="trust-logos">
-          <span className="mono">BUSINESSES WE STAFF</span>
+          {/* Label and lead are wrapped: .trust-logos is a `180px 1fr` grid, so
+              a third child would take the logo wall's cell and push the wall
+              into the narrow column. */}
+          <div className="trust-logos-head">
+            <span className="mono">BUSINESSES WE STAFF</span>
+            <p className="trust-logos-lead">
+              Cafés, warehouses, showrooms, offices and event floors — one verified bench.
+            </p>
+          </div>
           <div className="trust-logo-list">
             {BRANDS.map((brand) => (
               <span className="trust-logo" key={brand.name} title={brand.name}>
@@ -237,7 +245,7 @@ export default function TrustEditorial() {
                 )}
               </span>
             ))}
-            <span className="trust-logo-more">AND 500+ MORE</span>
+            <span className="trust-logo-more">AND 1,000+ MORE</span>
           </div>
         </div>
 

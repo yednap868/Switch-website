@@ -90,7 +90,7 @@ const AREAS = [
 const PINCODES = ['122001','122002','122006','122009','122010','122017','122018','122022']
 
 const STATS = [
-  { num: '500+', lbl: 'Verified Partners' },
+  { num: '20,000+', lbl: 'Verified Partners' },
   { num: '1000+', lbl: 'Bookings Served' },
   { num: '12+', lbl: 'Service Categories' },
   { num: '4.8 ★', lbl: 'Average Rating' },
@@ -135,11 +135,11 @@ export default function AboutPage() {
     <>
       <Helmet>
         <title>About Switch — Gurgaon's Business Staffing Platform</title>
-        <meta name="description" content="Switch is Gurgaon's business staffing platform. Founded in 2026, we connect 500+ Aadhaar-verified Switch Players with shops, restaurants, warehouses, offices and events across DLF, Udyog Vihar, Cyber City, Sohna Road and all pincodes 122001–122022. Hire store helpers, guards, waiters, cooks, housekeeping — bulk and weekly teams, replacement guaranteed." />
+        <meta name="description" content="Switch is Gurgaon's business staffing platform. Founded in 2026, we connect 20,000+ Aadhaar-verified Switch Players with shops, restaurants, warehouses, offices and events across DLF, Udyog Vihar, Cyber City, Sohna Road and all pincodes 122001–122022. Hire store helpers, guards, waiters, cooks, housekeeping — bulk and weekly teams, replacement guaranteed." />
         <meta name="keywords" content="about Switch, staffing agency Gurgaon, manpower supply Gurgaon, verified Switch Players Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, store helper Gurgaon, on-demand staffing Gurgaon, switchlocally.com, Switch App" />
         <link rel="canonical" href="https://switchlocally.com/about" />
         <meta property="og:title" content="About Switch — Gurgaon's Business Staffing Platform" />
-        <meta property="og:description" content="Founded in 2026. 500+ verified Switch Players. Staffing shops, restaurants, warehouses, offices and events across Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk & weekly teams." />
+        <meta property="og:description" content="Founded in 2026. 20,000+ verified Switch Players. Staffing shops, restaurants, warehouses, offices and events across Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk & weekly teams." />
         <meta property="og:url" content="https://switchlocally.com/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -199,7 +199,7 @@ export default function AboutPage() {
               <p>
                 Whether you need store helpers for a shop in DLF, packers for a warehouse in Udyog Vihar,
                 waiters and a bartender for an event in Cyber City, or a 7-day team during a sale —
-                Switch has verified Switch Players ready for you. With <strong>500+ verified Switch Players</strong> on our platform
+                Switch has verified Switch Players ready for you. With <strong>20,000+ verified Switch Players</strong> on our platform
                 and a fast-growing base of businesses across Gurgaon, Switch is becoming the go-to name
                 for dependable staffing across the city.
               </p>
@@ -301,7 +301,7 @@ export default function AboutPage() {
                 after the work is done.
               </p>
               <p>
-                Today, with 500+ verified partners and a fast-growing customer base across Gurgaon —
+                Today, with 20,000+ verified partners and a fast-growing customer base across Gurgaon —
                 <strong> we are just getting started.</strong> Gurgaon is our home, and we are here to make yours run better.
               </p>
             </div>

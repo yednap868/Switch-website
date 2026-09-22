@@ -54,7 +54,7 @@ export default function Coverage() {
           </div>
           <div className="coverage-data">
             <div>
-              <strong>500+</strong>
+              <strong>1,000+</strong>
               <span>Businesses served</span>
             </div>
             <div>

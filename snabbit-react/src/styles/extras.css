@@ -38,40 +38,254 @@
   box-shadow: 0 0 0 5px #16a34a1a;
 }
 
-/* ── Industries ──────────────────────────────────── */
-.industry-block {
+/* ── Sectors ─────────────────────────────────────────
+   Hairline grid: the 1px gap over a --line background draws every rule, so
+   cells share borders instead of doubling them. The feature cell is part of
+   the grid, not a header above it — twelve equal boxes in a row read as a
+   list to skim past, and one large cell gives the eye somewhere to land. */
+.sector-block {
   margin-top: 82px;
 }
-.industry-head {
-  margin-bottom: 26px;
+.sector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(158px, auto);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
 }
-.industry-head h3 {
-  margin: 10px 0 0;
-  font-size: clamp(1.9rem, 3.2vw, 3rem);
-  letter-spacing: -0.06em;
-  line-height: 0.98;
+
+/* Feature cell: 2x2 of the 4x4. */
+.sector-feature {
+  grid-column: span 2;
+  grid-row: span 2;
+  /* Tinted a step off the card surface so the cell reads as the anchor of the
+     grid rather than a thirteenth sector. */
+  position: relative;
+  background: #14211a;
+  padding: 26px 26px 24px;
+  display: flex;
+  flex-direction: column;
 }
-.industry-grid {
-  grid-template-columns: repeat(3, 1fr);
+.sector-feature:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 84px;
+  height: 2px;
+  background: var(--active);
 }
-.industry-card {
-  display: block;
-  transition: background 0.24s var(--ease);
+.sector-feature h3 {
+  margin: 11px 0 0;
+  font-size: clamp(1.6rem, 2.1vw, 2.05rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  max-width: 19ch;
 }
-.industry-card:hover {
-  background: #151f18;
+.sector-feature > p {
+  margin: 12px 0 0;
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
 }
-.industry-card p {
+.sector-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  /* Pushes the figures and the CTA to the bottom of the cell so they line up
+     with the last row of cards beside them. */
+  margin: auto 0 0;
+  padding-top: 20px;
+}
+.sector-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sector-stats dt {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--ink);
+}
+.sector-stats dd {
+  margin: 0;
+  font-family: DM Mono, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
 }
-@media (max-width: 900px) {
-  .industry-grid {
-    grid-template-columns: repeat(2, 1fr);
+.sector-feature-cta {
+  margin-top: 16px;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.sector-feature-cta:hover {
+  color: var(--active);
+  border-color: var(--active);
+}
+
+/* Cards. The whole cell is the link; the roles line is the payload, so it
+   carries the colour shift on hover rather than the title. */
+.sector-card {
+  position: relative;
+  background: var(--surface);
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background 0.24s var(--ease);
+}
+.sector-card:hover {
+  background: #172019;
+}
+/* Accent rule that draws itself across the top on hover. */
+.sector-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--active);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s var(--ease);
+}
+.sector-card:hover:before,
+.sector-card:focus-visible:before {
+  transform: scaleX(1);
+}
+.sector-num {
+  color: var(--active);
+  font-size: 0.62rem;
+}
+.sector-name {
+  margin-top: auto;
+  padding-top: 26px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+.sector-roles {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  min-height: calc(0.74rem * 1.6 * 2);
+}
+.sector-go {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 0.9rem;
+  color: var(--active);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.24s var(--ease), transform 0.24s var(--ease);
+}
+.sector-card:hover .sector-go,
+.sector-card:focus-visible .sector-go {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sector-card:before,
+  .sector-go {
+    transition: none;
   }
 }
-@media (max-width: 560px) {
-  .industry-grid {
-    grid-template-columns: 1fr;
+
+/* Three columns: the feature goes full width, cards run 4 rows. */
+@media (max-width: 1100px) {
+  .sector-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* Full width, so the copy column alone would leave the right half empty.
+     The children are flat, so they are placed explicitly: copy left, figures
+     stacked right. */
+  .sector-feature {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    column-gap: 40px;
+    align-content: start;
+  }
+  .sector-feature .eyebrow {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .sector-feature h3 {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: 18ch;
+  }
+  .sector-feature > p {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .sector-stats {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding-top: 2px;
+  }
+  .sector-feature-cta {
+    grid-column: 1;
+    grid-row: 4;
+    /* align-self: flex-start does nothing to width in a grid; the underline
+       would otherwise run the full column. */
+    justify-self: start;
+  }
+}
+
+/* Two columns: cards run 6 rows. */
+@media (max-width: 780px) {
+  .sector-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+  }
+  .sector-feature {
+    display: flex;
+    padding: 24px 20px 22px;
+  }
+  .sector-stats {
+    flex-direction: row;
+    gap: 20px;
+    margin: auto 0 0;
+    padding-top: 22px;
+  }
+  .sector-stats dt {
+    font-size: 1.3rem;
+  }
+  .sector-card {
+    padding: 18px 16px 16px;
+  }
+  .sector-name {
+    font-size: 1rem;
+    padding-top: 20px;
+  }
+  .sector-roles {
+    font-size: 0.7rem;
+  }
+  /* The arrow is a hover affordance; on touch it never resolves, so it sits
+     visible instead of waiting for a pointer that will not arrive. */
+  .sector-go {
+    opacity: 0.55;
+    transform: none;
   }
 }
 
@@ -606,6 +820,20 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+}
+
+/* Lead line under the logo-wall label: the wall shows eight marks and claims
+   a thousand, so it needs a sentence saying what kind of businesses those are. */
+/* The label column was sized for a label alone; the lead needs a little more
+   before it wraps to five lines. */
+.trust-logos {
+  grid-template-columns: 215px 1fr;
+}
+.trust-logos-lead {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 /* ── Header S monogram ─────────────────────────────────────────────────────

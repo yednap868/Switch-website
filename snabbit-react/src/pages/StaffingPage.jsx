@@ -166,7 +166,7 @@ export default function StaffingPage() {
                 <a href={`tel:${PHONE}`} className="ab-cta-secondary">Call +91 92056 17375</a>
               </div>
               <div className="ab-stats">
-                <div className="ab-stat"><div className="ab-stat-num">500+</div><div className="ab-stat-lbl">Verified Workers</div></div>
+                <div className="ab-stat"><div className="ab-stat-num">20,000+</div><div className="ab-stat-lbl">Verified Workers</div></div>
                 <div className="ab-stat"><div className="ab-stat-num">Same-day</div><div className="ab-stat-lbl">Deployment</div></div>
                 <div className="ab-stat"><div className="ab-stat-num">12+</div><div className="ab-stat-lbl">Staff Categories</div></div>
                 <div className="ab-stat"><div className="ab-stat-num">4.8 ★</div><div className="ab-stat-lbl">Average Rating</div></div>
