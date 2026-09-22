@@ -605,7 +605,61 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
+}
+
+/* ── Header S monogram ─────────────────────────────────────────────────────
+   Replaces the three skewed bars, which read as a generic chart glyph and
+   carried nothing of the brand. It is the same rounded-square S as
+   favicon.svg and the touch icon; ink-on-paper flips it to a light chip here
+   because the shipped :root is the dark one, which is the correct inversion
+   rather than a second mark.
+
+   Not green: the accent is already carrying the offer banner directly above
+   and the primary button to the right, and a third green block in the same
+   60px of header flattened the hierarchy. */
+.logo-mark {
+  /* editorial.css lays this out as flex-end for the old bars; the glyph needs
+     to sit centred in both axes. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: -.04em;
+  /* Optical, not box, centring: the cap sits high in the line box, so a flat
+     centre leaves the S looking one pixel low. */
+  padding-top: 1px;
+  transform: none;
+  transition: background .22s var(--ease), transform .22s var(--ease);
+}
+.logo:hover .logo-mark {
+  background: var(--green);
+  transform: translateY(-1px);
+}
+.logo-wordmark {
+  font-size: 1.08rem;
+  transition: color .22s var(--ease);
+}
+.logo:hover .logo-wordmark { color: var(--green); }
+
+/* .header.scrolled .logo-mark wins on specificity, so the hover state has to
+   be restated at that weight for the compact header. */
+.header.scrolled .logo-mark { transform: scale(.92); }
+.header.scrolled .logo:hover .logo-mark { transform: scale(.92) translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-mark,
+  .logo-wordmark { transition: none; }
+  .logo:hover .logo-mark,
+  .header.scrolled .logo:hover .logo-mark { transform: none; }
 }
 
 /* ── ₹999 offer banner ─────────────────────────────────────────────────────

@@ -44,16 +44,15 @@ export default function Header() {
     <header className={`header${scrolled ? ' scrolled' : ''}`}>
       <div className="shell nav">
         <Link to="/" className="logo" aria-label="Switch home">
-          <span className="logo-mark" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </span>
+          {/* The S monogram the favicon and touch icon already carry, so the
+              tab, the home-screen icon and the header all show one mark. The
+              three skewed bars it replaces were a generic chart glyph. */}
+          <span className="logo-mark" aria-hidden="true">S</span>
           {/* Plain text, not the particle canvas. At the header's 19px cap the
               particle sampler only lands a few dots per glyph, so the wordmark
-              read as noise rather than "SWITCH". The footer mark is 80px and
+              read as noise rather than the word. The footer mark is 80px and
               still uses ParticleWordmark, where the effect actually resolves. */}
-          <span className="logo-wordmark">SWITCH</span>
+          <span className="logo-wordmark">Switch</span>
         </Link>
 
         <nav className={`nav-links${open ? ' open' : ''}`}>
