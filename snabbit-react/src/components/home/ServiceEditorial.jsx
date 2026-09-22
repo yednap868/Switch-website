@@ -92,11 +92,8 @@ export default function ServiceEditorial() {
             as a 2x2 feature cell rather than sitting above it, which is what
             keeps twelve cards from reading as a wall of identical boxes.
 
-            Cell arithmetic, because it is what breaks first when the list
-            changes: the feature occupies 4 cells of a 4x4 grid and the twelve
-            cards take the other 12. At three columns the feature goes full
-            width and the cards run 4 rows; at two, 6 rows. Twelve divides by
-            4, 3 and 2, so no tier leaves a hole. */}
+            The cell arithmetic that keeps every tier full is in extras.css
+            next to the grid it governs. */}
         <div className="sector-block">
           <div className="sector-grid">
             <div className="sector-feature">

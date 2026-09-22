@@ -38,32 +38,96 @@
   box-shadow: 0 0 0 5px #16a34a1a;
 }
 
+/* ── Coverage: area index ────────────────────────────
+   Two defects at >=901px, where editorial.css pulls the map block out of flow
+   (`position:absolute; width:53%`) and leaves the area index in a 230px
+   column beside it.
+
+   1. The index kept the full-width layout's `repeat(8, 1fr)`, so eight cells
+      needed 715px in a 230px box. The row ran off the right of the page and
+      body's overflow-x:hidden clipped it — five of the eight areas were
+      simply not on screen at any desktop size. A narrow column wants a
+      vertical list, which is also the natural form for a map legend.
+   2. `.coverage-data` is pinned at `top:410px`, an offset that assumed a
+      shorter heading; at 1440 the h2 wraps to four lines and the stats row
+      landed on top of the "See all coverage areas" link. It flows again. */
+@media (min-width: 901px) {
+  .coverage-area-list {
+    grid-template-columns: 1fr;
+    border-bottom: 0;
+  }
+  .coverage-area {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    min-height: 0;
+    padding: 9px 2px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .coverage-area strong {
+    flex: 1;
+    font-size: 0.9rem;
+    letter-spacing: -0.02em;
+  }
+  .coverage-area i {
+    font-style: normal;
+    opacity: 0.5;
+  }
+  .coverage-area.is-active i,
+  .coverage-area:hover i {
+    opacity: 1;
+  }
+
+  /* Third: the head is a space-between flex of two labels. Side by side they
+     are wider than the 230px column, and the overflow pushed the first label
+     out to the left, under the map. Stacked, they fit. */
+  .coverage-index-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .coverage-data {
+    position: static;
+    width: 100%;
+    margin: 38px 0 0;
+  }
+}
+
 /* ── Sectors ─────────────────────────────────────────
    Hairline grid: the 1px gap over a --line background draws every rule, so
-   cells share borders instead of doubling them. The feature cell is part of
-   the grid, not a header above it — twelve equal boxes in a row read as a
-   list to skim past, and one large cell gives the eye somewhere to land. */
+   cells share borders instead of doubling them.
+
+   Cell arithmetic, because it is what breaks first when the list changes.
+   Nine cards:
+     4 cols x 3 rows = 12  — feature takes column 1 for all 3 rows, cards 3x3
+     3 cols x 4 rows = 12  — feature spans the top row, cards 3x3
+     2 cols x 6 rows = 12  — feature spans a row, 8 cards, last card spans 2
+   Every tier fills exactly. The feature is part of the grid rather than a
+   header above it: nine equal boxes read as a list to skim past, and one
+   large cell gives the eye somewhere to land. */
 .sector-block {
   margin-top: 82px;
 }
 .sector-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(158px, auto);
+  grid-template-columns: 0.98fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(172px, auto);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
 }
 
-/* Feature cell: 2x2 of the 4x4. */
+/* Feature: the full left column, so the nine cards sit as a clean 3x3. */
 .sector-feature {
-  grid-column: span 2;
-  grid-row: span 2;
-  /* Tinted a step off the card surface so the cell reads as the anchor of the
-     grid rather than a thirteenth sector. */
   position: relative;
+  grid-column: 1;
+  grid-row: span 3;
+  /* Tinted a step off the card surface so the cell reads as the anchor of the
+     grid rather than a tenth sector. */
   background: #14211a;
-  padding: 26px 26px 24px;
+  padding: 28px 26px 26px;
   display: flex;
   flex-direction: column;
 }
@@ -78,26 +142,24 @@
 }
 .sector-feature h3 {
   margin: 11px 0 0;
-  font-size: clamp(1.6rem, 2.1vw, 2.05rem);
+  font-size: clamp(1.6rem, 2.1vw, 2.15rem);
   letter-spacing: -0.055em;
   line-height: 1.02;
-  max-width: 19ch;
 }
 .sector-feature > p {
-  margin: 12px 0 0;
-  max-width: 46ch;
+  margin: 13px 0 0;
   color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.6;
+  font-size: 0.83rem;
+  line-height: 1.62;
 }
 .sector-stats {
   display: flex;
-  flex-wrap: wrap;
-  gap: 26px;
-  /* Pushes the figures and the CTA to the bottom of the cell so they line up
-     with the last row of cards beside them. */
+  flex-direction: column;
+  gap: 18px;
+  /* Pushes the figures and the CTA to the foot of the column so they sit
+     against the last row of cards. */
   margin: auto 0 0;
-  padding-top: 20px;
+  padding-top: 26px;
 }
 .sector-stats div {
   display: flex;
@@ -105,7 +167,7 @@
   gap: 3px;
 }
 .sector-stats dt {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -120,7 +182,7 @@
   color: var(--muted);
 }
 .sector-feature-cta {
-  margin-top: 16px;
+  margin-top: 22px;
   align-self: flex-start;
   font-size: 0.8rem;
   font-weight: 600;
@@ -171,7 +233,7 @@
 .sector-name {
   margin-top: auto;
   padding-top: 26px;
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -181,6 +243,9 @@
   color: var(--muted);
   font-size: 0.74rem;
   line-height: 1.6;
+  /* Cards are bottom-aligned, so a two-line role list would lift its title
+     while a one-line neighbour's stayed down and the row read ragged.
+     Reserving two lines puts every title in a row on one baseline. */
   min-height: calc(0.74rem * 1.6 * 2);
 }
 .sector-go {
@@ -206,14 +271,13 @@
   }
 }
 
-/* Three columns: the feature goes full width, cards run 4 rows. */
+/* Three columns: the feature spans the top row, cards fall into 3x3 below.
+   Its children are flat, so they are placed explicitly — copy left, figures
+   stacked right — rather than leaving half the band empty. */
 @media (max-width: 1100px) {
   .sector-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  /* Full width, so the copy column alone would leave the right half empty.
-     The children are flat, so they are placed explicitly: copy left, figures
-     stacked right. */
   .sector-feature {
     grid-column: 1 / -1;
     grid-row: auto;
@@ -234,11 +298,11 @@
   .sector-feature > p {
     grid-column: 1;
     grid-row: 3;
+    max-width: 46ch;
   }
   .sector-stats {
     grid-column: 2;
     grid-row: 1 / span 3;
-    flex-direction: column;
     gap: 16px;
     margin: 0;
     padding-top: 2px;
@@ -252,11 +316,12 @@
   }
 }
 
-/* Two columns: cards run 6 rows. */
+/* Two columns. Nine is odd, so the ninth card takes the full pair — without
+   it the last row sits half empty. */
 @media (max-width: 780px) {
   .sector-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(140px, auto);
+    grid-auto-rows: minmax(146px, auto);
   }
   .sector-feature {
     display: flex;
@@ -264,6 +329,7 @@
   }
   .sector-stats {
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
     margin: auto 0 0;
     padding-top: 22px;
@@ -273,6 +339,9 @@
   }
   .sector-card {
     padding: 18px 16px 16px;
+  }
+  .sector-card:last-child {
+    grid-column: 1 / -1;
   }
   .sector-name {
     font-size: 1rem;

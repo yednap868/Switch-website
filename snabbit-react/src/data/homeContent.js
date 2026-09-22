@@ -17,9 +17,10 @@ export const ROLES = [
   { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', focus: '49% 6%', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
-/* Twelve sectors, not six. The count is deliberate: the grid runs four across
-   on desktop, three on tablet and two on phone, and twelve divides evenly by
-   all three, so no breakpoint leaves a hole in the last row.
+/* Nine sectors — business premises only; domestic and institutional work came
+   out. Nine is what the grid is built around: a 3x3 block beside a feature
+   column on desktop, three rows of three on tablet, and at two columns the
+   last card spans the pair so the odd count does not leave a hole.
    `ico` is carried for the interior pages; the homepage cards are numbered
    rather than illustrated. */
 export const INDUSTRIES = [
@@ -31,10 +32,7 @@ export const INDUSTRIES = [
   { ico: '🎉', name: 'Events & Banquets',       roles: 'Waiters · Bartenders · Bouncers · Promoters' },
   { ico: '🏨', name: 'Hotels & Guest Houses',   roles: 'Housekeeping · Stewards · Kitchen helpers · Security' },
   { ico: '🛒', name: 'Grocery & Q-Commerce',   roles: 'Pickers · Packers · Delivery riders · Store helpers' },
-  { ico: '🏘️', name: 'Societies & Facilities',  roles: 'Guards · Gardeners · Cleaners · Caretakers' },
   { ico: '💈', name: 'Salons, Gyms & Clinics',  roles: 'Front desk · Housekeeping · Attendants · Helpers' },
-  { ico: '🎓', name: 'Schools & Institutes',    roles: 'Housekeeping · Security · Attendants · Support staff' },
-  { ico: '🏠', name: 'Homes & Residences',      roles: 'Cooks · House cleaners · Caretakers · Baby care' },
 ]
 
 /* Client logo wall. `logo` is a file in public/logos/. `h` is its display
