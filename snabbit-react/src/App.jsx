@@ -122,6 +122,17 @@ function HomeHead() {
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
+  const videoSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Café owner reviews Switch staffing',
+    description: 'A café owner talks, unscripted, about hiring verified staff through Switch.',
+    thumbnailUrl: 'https://switchlocally.com/employer-review-poster.jpg',
+    contentUrl: 'https://switchlocally.com/employer-review.mp4',
+    uploadDate: '2026-09-26',
+    duration: 'PT1M5S',
+    publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
+  }
   return (
     <Helmet>
       <title>Hire Verified Staff for Business in Gurgaon | Switch</title>
@@ -143,6 +154,7 @@ function HomeHead() {
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
     </Helmet>
   )
 }

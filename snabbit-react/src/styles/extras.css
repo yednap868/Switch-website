@@ -1084,3 +1084,183 @@
   .service-proof strong { font-size: .8rem; }
   .service-proof small  { font-size: .72rem; line-height: 1.45; }
 }
+
+/* ── Trust: employer video review ────────────────────
+   Takes the worker photo's cell in .trust-story. The source is 9:16; a 4:5
+   frame keeps it level with the quote column, and cover crops only sky and
+   table, never the speaker or the burned-in captions. */
+.trust-video {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.trust-video-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 540px;
+  overflow: hidden;
+  border: 1px solid #253029;
+  background: #0d120f;
+}
+.trust-video-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  background: #0d120f;
+  filter: saturate(.8) contrast(1.04);
+  transform: scale(1.03);
+  transition: transform .7s var(--ease), filter .4s;
+}
+.trust-video:not(.is-started):hover video {
+  transform: scale(1.06);
+  filter: saturate(.95) contrast(1.04);
+}
+/* Once started, show the real picture: no grading, no zoom, and contain so
+   the native controls sit on the full frame. */
+.trust-video.is-started video {
+  object-fit: contain;
+  filter: none;
+  transform: none;
+  background: #000;
+}
+.trust-video-frame:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(7, 10, 8, .82), transparent 42%),
+    linear-gradient(180deg, rgba(7, 10, 8, .5), transparent 22%);
+  transition: opacity .3s;
+}
+.trust-video.is-playing .trust-video-frame:after,
+.trust-video.is-started .trust-video-frame:after {
+  opacity: 0;
+}
+.trust-video-tag {
+  position: absolute;
+  left: 18px;
+  top: 17px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d8e5dc;
+  font-size: .56rem;
+  transition: opacity .3s;
+}
+.trust-video-tag i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--active);
+  box-shadow: 0 0 0 4px #32c96733;
+}
+.trust-video.is-started .trust-video-tag {
+  opacity: 0;
+}
+.trust-video-play {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+.trust-video.is-started .trust-video-play {
+  /* paused mid-way: centre the button so it doesn't cover the controls */
+  inset: 0;
+  justify-content: center;
+  background: rgba(7, 10, 8, .45);
+}
+.trust-video-play-icon {
+  flex: none;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--active);
+  color: #06140b;
+  box-shadow: 0 0 0 0 #32c96766;
+  animation: trust-video-pulse 2.4s var(--ease) infinite;
+  transition: transform .3s var(--ease);
+}
+.trust-video-play-icon svg {
+  margin-left: 3px;
+}
+.trust-video-play:hover .trust-video-play-icon {
+  transform: scale(1.08);
+}
+.trust-video-play-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trust-video-play-text b {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -.03em;
+}
+.trust-video-play-text .mono {
+  color: #aebbb2;
+  font-size: .56rem;
+}
+@keyframes trust-video-pulse {
+  0% { box-shadow: 0 0 0 0 #32c96766; }
+  70% { box-shadow: 0 0 0 16px #32c96700; }
+  100% { box-shadow: 0 0 0 0 #32c96700; }
+}
+.trust-video figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+  color: #849088;
+  font-size: .68rem;
+}
+.trust-video figcaption strong {
+  color: #fff;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .trust-video-frame {
+    max-height: none;
+    max-width: 460px;
+    width: 100%;
+  }
+}
+@media (max-width: 560px) {
+  .trust-video-frame {
+    max-width: none;
+  }
+  .trust-video figcaption {
+    display: block;
+    line-height: 1.7;
+  }
+  .trust-video figcaption strong {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trust-video-play-icon {
+    animation: none;
+  }
+  .trust-video-frame video,
+  .trust-video:not(.is-started):hover video {
+    transition: none;
+    transform: none;
+  }
+}

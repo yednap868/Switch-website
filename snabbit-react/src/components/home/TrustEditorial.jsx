@@ -83,6 +83,60 @@ const INCLUDES = [
 
 const REVIEW_MS = 4000
 
+/* Employer video testimonial. Poster only until played: the file is ~10MB,
+   so nothing downloads for visitors who never press play. */
+function VideoReview() {
+  const videoRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
+  const [started, setStarted] = useState(false)
+
+  const play = () => {
+    const v = videoRef.current
+    if (!v) return
+    setStarted(true)
+    v.play().catch(() => {})
+  }
+
+  return (
+    <figure className={`trust-video${started ? ' is-started' : ''}${playing ? ' is-playing' : ''}`}>
+      <div className="trust-video-frame">
+        <video
+          ref={videoRef}
+          src="/employer-review.mp4"
+          poster="/employer-review-poster.jpg"
+          preload="none"
+          playsInline
+          controls={started}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}
+          aria-label="Video review from a café owner who hires staff through Switch"
+        />
+        {!playing && (
+          <button type="button" className="trust-video-play" onClick={play}>
+            <span className="trust-video-play-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22">
+                <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
+              </svg>
+            </span>
+            <span className="trust-video-play-text">
+              <b>{started ? 'Resume review' : 'Watch the review'}</b>
+              <span className="mono">1:05 · SOUND ON</span>
+            </span>
+          </button>
+        )}
+        <span className="trust-video-tag mono">
+          <i aria-hidden="true" /> EMPLOYER REVIEW
+        </span>
+      </div>
+      <figcaption>
+        <span>Unscripted, on camera, in their own café.</span>
+        <strong>Hear it from an employer.</strong>
+      </figcaption>
+    </figure>
+  )
+}
+
 export default function TrustEditorial() {
   const [index, setIndex] = useState(0)
   const [changing, setChanging] = useState(false)
@@ -206,17 +260,8 @@ export default function TrustEditorial() {
             </div>
           </div>
 
-          <figure className="trust-worker">
-            <div className="trust-worker-image">
-              <img src="/hero-workers.jpg" alt="Switch worker ready for a shift" loading="lazy" />
-              <span className="trust-worker-tag mono">THE PEOPLE BEHIND THE WORK</span>
-              <span className="trust-worker-line" aria-hidden="true" />
-            </div>
-            <figcaption>
-              <span>Built for the moments that cannot wait.</span>
-              <strong>People in motion.</strong>
-            </figcaption>
-          </figure>
+          <VideoReview />
+
         </div>
 
         <div className="trust-logos">
