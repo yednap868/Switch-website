@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ParticleWordmark from '../fx/ParticleWordmark.jsx'
 import { SERVICE_LIST } from '../../data/seoData.js'
+import { INDUSTRY_PAGES } from '../../data/industryPages.js'
 import {
   ADDRESS,
   APPLE_URL,
@@ -91,7 +92,11 @@ export default function Footer() {
           <div className="footer-column">
             <span className="footer-column-title">FOR BUSINESS</span>
             <Link to="/staffing-gurgaon">Staffing in Gurgaon</Link>
-            <a href="/#industries">Industries</a>
+            {INDUSTRY_PAGES.map((p) => (
+              <Link key={p.slug} to={`/${p.slug}`}>
+                {p.name}
+              </Link>
+            ))}
             <a href={waLink('Hi Switch — I need a bulk staffing quote.')} target="_blank" rel="noreferrer">
               Bulk hiring
             </a>

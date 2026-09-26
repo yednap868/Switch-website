@@ -127,20 +127,31 @@ export default function ServiceEditorial() {
               </a>
             </div>
 
-            {INDUSTRIES.map((ind, i) => (
-              <a
-                className="sector-card"
-                key={ind.name}
-                href={waLink(`Hi Switch — I need staff for my ${ind.name} business in Gurgaon.`)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="sector-num mono">{String(i + 1).padStart(2, '0')}</span>
-                <span className="sector-name">{ind.name}</span>
-                <span className="sector-roles">{ind.roles}</span>
-                <span className="sector-go" aria-hidden="true">↗</span>
-              </a>
-            ))}
+            {INDUSTRIES.map((ind, i) => {
+              const body = (
+                <>
+                  <span className="sector-num mono">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="sector-name">{ind.name}</span>
+                  <span className="sector-roles">{ind.roles}</span>
+                  <span className="sector-go" aria-hidden="true">↗</span>
+                </>
+              )
+              return ind.slug ? (
+                <Link className="sector-card" key={ind.name} to={`/${ind.slug}`}>
+                  {body}
+                </Link>
+              ) : (
+                <a
+                  className="sector-card"
+                  key={ind.name}
+                  href={waLink(`Hi Switch — I need staff for my ${ind.name} business in Gurgaon.`)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {body}
+                </a>
+              )
+            })}
           </div>
         </div>
 

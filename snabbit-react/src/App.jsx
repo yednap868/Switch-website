@@ -30,8 +30,10 @@ import AppPage from './pages/AppPage.jsx'
 import LegalPage from './pages/LegalPage.jsx'
 import StaffingPage from './pages/StaffingPage.jsx'
 import VerifyPage from './pages/VerifyPage.jsx'
+import IndustryPage from './pages/IndustryPage.jsx'
 
 import { SERVICE_LIST } from './data/seoData.js'
+import { INDUSTRY_PAGES } from './data/industryPages.js'
 import { FAQS } from './data/homeContent.js'
 import { APP_URL, WHATSAPP_URL, waLink } from './data/site.js'
 
@@ -394,6 +396,9 @@ export default function App() {
         <Route path="/privacy" element={<LegalPage policy="privacy" />} />
         <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
         <Route path="/staffing-gurgaon" element={<StaffingPage />} />
+        {INDUSTRY_PAGES.map((p) => (
+          <Route key={p.slug} path={`/${p.slug}`} element={<IndustryPage slug={p.slug} />} />
+        ))}
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/:slug" element={<SeoPage />} />
       </Routes>

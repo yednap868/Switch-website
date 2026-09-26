@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SEO_PAGES } from '../src/data/seoData.js'
 import { BLOG_POSTS } from '../src/data/blogData.js'
+import { INDUSTRY_PAGES } from '../src/data/industryPages.js'
 
 const BASE = 'https://switchlocally.com'
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -33,6 +34,7 @@ const add = (path, c, p) => {
 // static routes
 add('', 'weekly', '1.0')
 add('staffing-gurgaon', 'weekly', '0.9')
+for (const page of INDUSTRY_PAGES) add(page.slug, 'weekly', '0.9')
 add('app', 'monthly', '0.9')
 add('about', 'monthly', '0.7')
 add('partner', 'monthly', '0.7')

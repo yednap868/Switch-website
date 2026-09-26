@@ -16,6 +16,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import { dirname, join } from 'node:path'
 import { SEO_PAGES } from '../src/data/seoData.js'
 import { BLOG_POSTS } from '../src/data/blogData.js'
+import { INDUSTRY_PAGES } from '../src/data/industryPages.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
@@ -36,6 +37,7 @@ const routes = [
   '/privacy',
   '/cancellation',
   '/verify',
+  ...INDUSTRY_PAGES.map(p => `/${p.slug}`),
   ...BLOG_POSTS.map(p => `/blog/${p.slug}`),
   ...SEO_PAGES.map(p => `/${p.slug}`),
 ]

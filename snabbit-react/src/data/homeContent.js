@@ -24,12 +24,12 @@ export const ROLES = [
    `ico` is carried for the interior pages; the homepage cards are numbered
    rather than illustrated. */
 export const INDUSTRIES = [
-  { ico: '🛍️', name: 'Retail & Shops',          roles: 'Store helpers · Billing support · Loaders · Security' },
-  { ico: '🍽️', name: 'Restaurants & Cafés',     roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
-  { ico: '📦', name: 'Warehouses & Logistics',  roles: 'Pickers · Packers · Loaders · Dispatch help' },
+  { ico: '🛍️', name: 'Retail & Shops', slug: 'retail-staffing-gurgaon',          roles: 'Store helpers · Billing support · Loaders · Security' },
+  { ico: '🍽️', name: 'Restaurants & Cafés', slug: 'restaurant-staffing-gurgaon',     roles: 'Waiters · Kitchen helpers · Cooks · Dishwashers' },
+  { ico: '📦', name: 'Warehouses & Logistics', slug: 'warehouse-staffing-gurgaon',  roles: 'Pickers · Packers · Loaders · Dispatch help' },
   { ico: '🏭', name: 'Factories & Production',  roles: 'Factory helpers · Loaders · Packers · Shift hands' },
-  { ico: '🏢', name: 'Offices & Co-working',    roles: 'Office boys · Housekeeping · Pantry · Front desk' },
-  { ico: '🎉', name: 'Events & Banquets',       roles: 'Waiters · Bartenders · Bouncers · Promoters' },
+  { ico: '🏢', name: 'Offices & Co-working', slug: 'office-staffing-gurgaon',    roles: 'Office boys · Housekeeping · Pantry · Front desk' },
+  { ico: '🎉', name: 'Events & Banquets', slug: 'event-staffing-gurgaon',       roles: 'Waiters · Bartenders · Bouncers · Promoters' },
   { ico: '🏨', name: 'Hotels & Guest Houses',   roles: 'Housekeeping · Stewards · Kitchen helpers · Security' },
   { ico: '🛒', name: 'Grocery & Q-Commerce',   roles: 'Pickers · Packers · Delivery riders · Store helpers' },
   { ico: '💈', name: 'Salons, Gyms & Clinics',  roles: 'Front desk · Housekeeping · Attendants · Helpers' },

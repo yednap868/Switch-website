@@ -18,11 +18,11 @@ const TITLE = 'Staffing Agency in Gurgaon | Hire Verified Staff — Switch'
 const DESCRIPTION = 'Switch is a staffing agency in Gurgaon for shops, restaurants, warehouses, offices & events. Hire Aadhaar-verified store helpers, guards, waiters, cooks, housekeeping & factory workers — bulk & weekly teams, replacement guaranteed, transparent rates. Same-day staffing across Gurgaon.'
 
 const INDUSTRIES = [
-  { ico: '🛍️', title: 'Retail & Shops', desc: 'Store helpers, sales staff and stock hands for shops, showrooms and malls across DLF, MG Road and Galleria.' },
-  { ico: '🍽️', title: 'Restaurants & Cafés', desc: 'Waiters, kitchen helpers, cooks, dishwashers and bartenders — for daily service, weekends and rush hours.' },
-  { ico: '🏭', title: 'Warehouses & Factories', desc: 'Loaders, packers, pickers and factory helpers for Udyog Vihar, IMT Manesar and industrial units.' },
-  { ico: '🏢', title: 'Offices & Corporates', desc: 'Office boys, housekeeping, pantry staff and front-desk support for offices in Cyber City and Sohna Road.' },
-  { ico: '🎉', title: 'Events & Banquets', desc: 'Waiters, bartenders, bouncers and helpers for weddings, parties, exhibitions and corporate events.' },
+  { ico: '🛍️', title: 'Retail & Shops', slug: 'retail-staffing-gurgaon', desc: 'Store helpers, sales staff and stock hands for shops, showrooms and malls across DLF, MG Road and Galleria.' },
+  { ico: '🍽️', title: 'Restaurants & Cafés', slug: 'restaurant-staffing-gurgaon', desc: 'Waiters, kitchen helpers, cooks, dishwashers and bartenders — for daily service, weekends and rush hours.' },
+  { ico: '🏭', title: 'Warehouses & Factories', slug: 'warehouse-staffing-gurgaon', desc: 'Loaders, packers, pickers and factory helpers for Udyog Vihar, IMT Manesar and industrial units.' },
+  { ico: '🏢', title: 'Offices & Corporates', slug: 'office-staffing-gurgaon', desc: 'Office boys, housekeeping, pantry staff and front-desk support for offices in Cyber City and Sohna Road.' },
+  { ico: '🎉', title: 'Events & Banquets', slug: 'event-staffing-gurgaon', desc: 'Waiters, bartenders, bouncers and helpers for weddings, parties, exhibitions and corporate events.' },
   { ico: '🛡️', title: 'Security & Facility', desc: 'Trained security guards, bouncers and facility staff for buildings, sites, gated societies and events.' },
 ]
 
@@ -230,6 +230,7 @@ export default function StaffingPage() {
                   <div className="ab-card-ico">{w.ico}</div>
                   <h3 className="ab-card-title">{w.title}</h3>
                   <p className="ab-card-desc">{w.desc}</p>
+                  {w.slug && <Link className="st-ind-link" to={`/${w.slug}`}>{w.title} staffing →</Link>}
                 </div>
               ))}
             </div>
