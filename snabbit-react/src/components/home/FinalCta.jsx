@@ -8,7 +8,6 @@ import {
   PHONE_DISPLAY,
   trackWhatsApp,
   waLink,
-  withSource,
 } from '../../data/site.js'
 
 const encodeForm = (data) =>
@@ -43,7 +42,7 @@ export default function FinalCta({ onToast }) {
 
   const submit = (e) => {
     e.preventDefault()
-    window.open(withSource(waRequest(form)), '_blank', 'noopener')
+    window.open(waRequest(form), '_blank', 'noopener')
     trackWhatsApp('Request form')
     setStatus('done')
     onToast?.('Opening WhatsApp — hit send to share your request.')
