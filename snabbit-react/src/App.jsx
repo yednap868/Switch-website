@@ -371,7 +371,7 @@ function HomePage() {
         <CtaFeature
           title={
             <>
-              Staff that shows up. <em>Book your first shift.</em>
+              Staff who show up. <em>Book your first shift.</em>
             </>
           }
           sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for ₹149."

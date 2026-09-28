@@ -170,7 +170,7 @@ export default function HomeHero() {
             ))}
           </span>
           <br />
-          that <em>show{w === 0 ? 's' : ''} up.</em>
+          who <em>show up.</em>
         </h1>
         <p className="sw-lead hh-in" style={{ '--d': '0.2s' }}>
           Aadhaar-verified helpers, cooks, guards and housekeeping for your shop, kitchen, warehouse

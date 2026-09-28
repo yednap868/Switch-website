@@ -112,7 +112,7 @@ export const SERVICE_TILES = [
 
 /* ── Redesign (Switch app style) ─────────────────────────────────── */
 
-export const TAGLINE = 'Staff that shows up.'
+export const TAGLINE = 'Staff who show up.'
 
 export const HOME_STATS = [
   { value: '20,000+', label: 'Verified Switch Players' },

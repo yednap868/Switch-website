@@ -339,7 +339,7 @@ export default function AboutPage() {
         <CtaFeature
           title={
             <>
-              Let&apos;s Switch — <em>to staff that shows up.</em>
+              Let&apos;s Switch — <em>to staff who show up.</em>
             </>
           }
           sub="Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters, or a warehouse needing a 7-day team — Switch has verified Switch Players ready for you."
