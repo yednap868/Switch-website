@@ -1,27 +1,30 @@
 import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import './PartnerPage.css'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
-import { PHONE_DISPLAY, waLink } from '../data/site.js'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs, Faq, HeroArt, StatsRow } from '../components/ui/Blocks.jsx'
+import { PHONE_DISPLAY, trackWhatsApp, waLink } from '../data/site.js'
 
-const PARTNER_WA = waLink('Hi Switch — I want to join as a Switch Partner.')
+/* Workers apply on WhatsApp — the Switch app on the stores is the employer app. */
+const APPLY_WA = waLink('Hi Switch — I want to work as a Switch Player in Gurgaon.')
 
-const APP_URL = 'https://app.switchlocally.com/'
+const TINTS = ['t-lav', 't-mint', 't-sky', 't-peach', 't-pink', 't-lav', 't-sky', 't-mint']
 
 const BENEFITS = [
-  { ico: '💰', title: 'Earn ₹15,000–₹40,000/month', desc: 'Flexible bookings — work part-time or full-time. No agency cuts, no middlemen.' },
-  { ico: '⚡', title: 'Daily payouts to your bank', desc: 'Finish work today, money in your account tomorrow. Direct UPI / bank transfers — every single day.' },
-  { ico: '📅', title: 'You pick your hours',        desc: 'Choose your availability — 4-hour shifts, full days, or week-long gigs. Total flexibility.' },
-  { ico: '🛡️', title: 'Verified, trusted jobs',     desc: 'All customers are app-verified. No fake bookings, no last-minute cancellations, no chasing payments.' },
-  { ico: '⭐', title: 'Build your reputation',      desc: 'Higher ratings unlock higher hourly rates and premium clients. Your work earns you growth.' },
-  { ico: '🎓', title: 'Free skill training',        desc: 'Free training modules and certifications across 12+ categories. Level up, earn more per hour.' },
-  { ico: '🏥', title: 'Insurance &amp; safety cover', desc: 'On-duty insurance and a 24×7 helpline. Your safety on every booking is non-negotiable.' },
-  { ico: '🚀', title: 'Same-day approval',          desc: 'Apply today, get verified within 24 hours, start earning the very next day. No waiting.' },
+  { ico: 'wallet',   title: 'Earn ₹15,000–₹40,000/month', desc: 'Flexible bookings — work part-time or full-time. No agency cuts, no middlemen.' },
+  { ico: 'timer',    title: 'Daily payouts to your bank', desc: 'Finish work today, money in your account tomorrow. Direct UPI / bank transfers — every single day.' },
+  { ico: 'cal',      title: 'You pick your hours',        desc: 'Choose your availability — 4-hour shifts, full days, or week-long gigs. Total flexibility.' },
+  { ico: 'shield',   title: 'Verified, trusted jobs',     desc: 'All customers are app-verified. No fake bookings, no last-minute cancellations, no chasing payments.' },
+  { ico: 'star',     title: 'Build your reputation',      desc: 'Higher ratings unlock higher hourly rates and premium clients. Your work earns you growth.' },
+  { ico: 'book',     title: 'Free skill training',        desc: 'Free training modules and certifications across 12+ categories. Level up, earn more per hour.' },
+  { ico: 'heart',    title: 'Insurance & safety cover',   desc: 'On-duty insurance and a 24×7 helpline. Your safety on every booking is non-negotiable.' },
+  { ico: 'sparkles', title: 'Same-day approval',          desc: 'Apply today, get verified within 24 hours, start earning the very next day. No waiting.' },
 ]
 
 const STEPS = [
-  { n: '01', title: 'Apply on the app',          desc: 'Download the Switch Partner app, upload Aadhaar and a selfie. Takes under 5 minutes.' },
+  { n: '01', title: 'Apply on WhatsApp',         desc: 'Message us on WhatsApp and share your Aadhaar and a selfie. Takes under 5 minutes.' },
   { n: '02', title: 'Get verified',              desc: 'Aadhaar + background + skills check. Same-day approval for most applicants.' },
   { n: '03', title: 'Accept your first booking', desc: 'Browse nearby jobs that match your skills, hours, and preferred area. Pick what works.' },
   { n: '04', title: 'Get paid daily',            desc: 'Complete the job, get rated, and receive payment directly to your bank — within 24 hours.' },
@@ -51,17 +54,17 @@ const REQUIREMENTS = [
 ]
 
 const TRUST = [
-  { val: '20,000+', lbl: 'Active partners' },
-  { val: '₹40K',   lbl: 'Top monthly earner' },
-  { val: '24 hrs', lbl: 'Approval time' },
-  { val: '4.9 ★',  lbl: 'Partner rating' },
+  { value: '20,000+', label: 'Active partners' },
+  { value: '₹40K',    label: 'Top monthly earner' },
+  { value: '24 hrs',  label: 'Approval time' },
+  { value: '4.9 ★',   label: 'Partner rating' },
 ]
 
 const STORIES = [
-  { img: '/cook-new.jpg',           name: 'Ramesh K.',  role: 'Cook',           text: 'I used to earn ₹12,000 in a restaurant. With Switch, I make ₹38,000 working only mornings. I pick my own hours now.' },
-  { img: '/driver-new.jpg',         name: 'Suresh M.',  role: 'Driver',         text: 'Daily payouts changed everything. No waiting till month-end. I get my earnings in my account by 11 AM every day.' },
-  { img: '/cleaning-staff.jpg',     name: 'Priya S.',   role: 'Cleaning Staff', text: 'I started with one booking a week. After 4 months of 5★ ratings, I’m booked solid — full 8-hour days, every day.' },
-  { img: '/security-guard-new.jpg', name: 'Vikram T.',  role: 'Security Guard', text: 'No middleman, no agency fee. Whatever the client pays, that’s what I take home. Best decision I made.' },
+  { img: '/sw-cook.jpg',            name: 'Ramesh K.',  role: 'Cook',           text: 'I used to earn ₹12,000 in a restaurant. With Switch, I make ₹38,000 working only mornings. I pick my own hours now.' },
+  { img: '/sw-driver.jpg',          name: 'Suresh M.',  role: 'Driver',         text: 'Daily payouts changed everything. No waiting till month-end. I get my earnings in my account by 11 AM every day.' },
+  { img: '/sw-maid.jpg',            name: 'Priya S.',   role: 'Cleaning Staff', text: 'I started with one booking a week. After 4 months of 5★ ratings, I’m booked solid — full 8-hour days, every day.' },
+  { img: '/sw-security-guard.jpg',  name: 'Vikram T.',  role: 'Security Guard', text: 'No middleman, no agency fee. Whatever the client pays, that’s what I take home. Best decision I made.' },
 ]
 
 const FAQS = [
@@ -75,36 +78,21 @@ const FAQS = [
   { q: 'Can I work in more than one category?', a: 'Absolutely. Many partners are verified in 2–3 categories (e.g., Cook + Kitchen Helper) which doubles their booking opportunities.' },
 ]
 
-function Check() {
+function Apply({ children = 'Apply on WhatsApp', className = '', label = 'partner_apply' }) {
   return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-      <polyline points="3 8.5 6.5 12 13 5"/>
-    </svg>
-  )
-}
-function Arrow({ size = 16 }) {
-  return (
-    <svg viewBox="0 0 16 16" width={size} height={size} fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="3" y1="8" x2="13" y2="8"/>
-      <polyline points="9 4 13 8 9 12"/>
-    </svg>
-  )
-}
-function Star() {
-  return (
-    <svg viewBox="0 0 20 20" width="14" height="14">
-      <path fill="#fbbf24" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-    </svg>
-  )
-}
-
-function CtaPrimary({ children, big = false }) {
-  return (
-    <a href={APP_URL} className={`pp-cta-primary${big ? ' pp-cta-big' : ''}`}>
-      {children}<Arrow size={big ? 18 : 16}/>
+    <a
+      href={APPLY_WA}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`sw-btn ${className}`}
+      onClick={() => trackWhatsApp(label)}
+    >
+      {children} <Icon name="arrow" />
     </a>
   )
 }
+
+const inr = (n) => `₹${n.toLocaleString('en-IN')}`
 
 export default function PartnerPage() {
   useEffect(() => { if (!window.location.hash) window.scrollTo(0, 0) }, [])
@@ -136,7 +124,7 @@ export default function PartnerPage() {
   }
 
   return (
-    <div className="pp-root">
+    <>
       <Helmet>
         <title>Become a Switch Partner — Daily Payouts · Earn ₹15K–40K/month in Gurgaon</title>
         <meta name="description" content="Join Switch as a verified partner. Earn ₹15,000–₹40,000/month with DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bouncer, bartender or waiter in Gurgaon. Free to join, same-day approval." />
@@ -144,258 +132,266 @@ export default function PartnerPage() {
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
 
-      <Nav />
+      <a className="skip-link" href="#page-main">Skip to main content</a>
+      <Header />
 
-      {/* HERO */}
-      <header className="pp-hero">
-        <div className="pp-hero-bg" aria-hidden="true">
-          <div className="pp-hero-grid" />
-          <div className="pp-hero-glow" />
-          <div className="pp-hero-glow pp-hero-glow-2" />
-        </div>
-        <div className="pp-hero-inner">
-          <div className="pp-tag-row">
-            <span className="pp-dot" />
-            <span>Now hiring in Gurgaon · 20,000+ partners onboard</span>
-          </div>
-          <h1 className="pp-h1">
-            Earn ₹40,000/month.<br />
-            <em>Get paid daily.</em>
-          </h1>
-          <p className="pp-lead">
-            Switch is India’s premium platform for verified blue-collar professionals.
-            Pick your hours, pick your jobs, and receive your earnings in your bank
-            <strong> every single day</strong>. No agency cuts. No waiting.
-          </p>
-          <div className="pp-cta-row">
-            <CtaPrimary big>Apply on the App</CtaPrimary>
-            <a href="#earnings" className="pp-cta-secondary">See earnings →</a>
-          </div>
+      <main id="page-main" className="sw-wrap pp">
+        <Crumbs items={[['Become a Switch Player']]} />
 
-          <div className="pp-trust-row">
-            {TRUST.map((t, i) => (
-              <div className="pp-trust-cell" key={i}>
-                <strong>{t.val}</strong>
-                <span>{t.lbl}</span>
-              </div>
-            ))}
+        {/* HERO */}
+        <section className="sw-hero">
+          <div>
+            <span className="sw-pill sw-live">Now hiring in Gurgaon · 20,000+ partners onboard</span>
+            <h1 className="sw-h1" style={{ marginTop: 14 }}>
+              Earn ₹40,000/month. <em>Get paid daily.</em>
+            </h1>
+            <p className="sw-lead">
+              Switch is India’s premium platform for verified blue-collar professionals.
+              Pick your hours, pick your jobs, and receive your earnings in your bank
+              <strong> every single day</strong>. No agency cuts. No waiting.
+            </p>
+            <div className="sw-btns">
+              <Apply label="partner_hero" />
+              <a href="#earnings" className="sw-btn line">See earnings</a>
+            </div>
+            <div className="pp-rating">
+              <span className="pp-stars" aria-hidden="true">★★★★★</span>
+              <span>Rated <strong>4.9</strong> by Switch partners across Gurgaon</span>
+            </div>
           </div>
+          <HeroArt
+            img="/delivery-rider.jpg"
+            badge={{ icon: 'wallet', title: 'Paid daily', sub: 'In your bank by 11 AM' }}
+          />
+        </section>
 
-          <div className="pp-rating">
-            <div className="pp-stars"><Star/><Star/><Star/><Star/><Star/></div>
-            <span>Rated <strong>4.9</strong> by Switch partners across Gurgaon</span>
-          </div>
-        </div>
-      </header>
-
-      <main>
+        <StatsRow items={TRUST} />
 
         {/* EARNINGS CALCULATOR */}
-        <section className="pp-sec pp-sec-alt" id="earnings">
-          <div className="pp-w">
-            <div className="pp-sec-hd">
-              <span className="pp-tag">Earnings</span>
-              <h2 className="pp-h2">See exactly what you can earn.</h2>
-              <p className="pp-sub">Adjust your daily hours and hourly rate. Earnings update live.</p>
+        <section className="sw-sec" id="earnings">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Earnings</p>
+            <h2 className="sw-h2">See exactly <em>what you can earn.</em></h2>
+            <p className="sw-lead">Adjust your daily hours and hourly rate. Earnings update live.</p>
+          </div>
+
+          <div className="sw-card pp-calc">
+            <div className="pp-calc-controls">
+              <div className="pp-ctrl">
+                <div className="pp-ctrl-top">
+                  <label htmlFor="pp-hours">Hours per day</label>
+                  <span className="pp-ctrl-val">{hours} hrs</span>
+                </div>
+                <input id="pp-hours" type="range" min="4" max="12" value={hours} onChange={(e) => setHours(+e.target.value)} />
+                <div className="pp-ctrl-scale"><span>4</span><span>8</span><span>12</span></div>
+              </div>
+              <div className="pp-ctrl">
+                <div className="pp-ctrl-top">
+                  <label htmlFor="pp-rate">Hourly rate</label>
+                  <span className="pp-ctrl-val">₹{rate}</span>
+                </div>
+                <input id="pp-rate" type="range" min="99" max="129" step="1" value={rate} onChange={(e) => setRate(+e.target.value)} />
+                <div className="pp-ctrl-scale"><span>₹99</span><span>₹114</span><span>₹129</span></div>
+              </div>
+              <div className="pp-calc-side">
+                <div className="pp-mini">
+                  <span>Daily payout</span>
+                  <b>{inr(daily)}</b>
+                  <small>In your bank by 11 AM next day</small>
+                </div>
+                <div className="pp-mini">
+                  <span>Weekly total</span>
+                  <b>{inr(daily * 7)}</b>
+                  <small>7-day work week</small>
+                </div>
+              </div>
             </div>
 
-            <div className="pp-calc">
-              <div className="pp-calc-controls">
-                <div className="pp-ctrl">
-                  <div className="pp-ctrl-top">
-                    <label>Hours per day</label>
-                    <span className="pp-ctrl-val">{hours} hrs</span>
-                  </div>
-                  <input type="range" min="4" max="12" value={hours} onChange={e => setHours(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>4</span><span>8</span><span>12</span></div>
-                </div>
-                <div className="pp-ctrl">
-                  <div className="pp-ctrl-top">
-                    <label>Hourly rate</label>
-                    <span className="pp-ctrl-val">₹{rate}</span>
-                  </div>
-                  <input type="range" min="99" max="129" step="1" value={rate} onChange={e => setRate(+e.target.value)} />
-                  <div className="pp-ctrl-scale"><span>₹99</span><span>₹114</span><span>₹129</span></div>
-                </div>
-              </div>
-
-              <div className="pp-calc-out">
-                <div className="pp-calc-card pp-calc-card--hero">
-                  <div className="pp-calc-lbl">Estimated monthly earnings</div>
-                  <div className="pp-calc-big">₹{monthly.toLocaleString('en-IN')}</div>
-                  <div className="pp-calc-note">Based on 30 working days. Paid daily to your bank.</div>
-                  <CtaPrimary big>Apply on the App</CtaPrimary>
-                </div>
-                <div className="pp-calc-side">
-                  <div className="pp-calc-card">
-                    <div className="pp-calc-lbl">Daily payout</div>
-                    <div className="pp-calc-mid">₹{daily.toLocaleString('en-IN')}</div>
-                    <div className="pp-calc-note">In your bank by 11 AM next day</div>
-                  </div>
-                  <div className="pp-calc-card">
-                    <div className="pp-calc-lbl">Weekly total</div>
-                    <div className="pp-calc-mid">₹{(daily*7).toLocaleString('en-IN')}</div>
-                    <div className="pp-calc-note">7-day work week</div>
-                  </div>
-                </div>
-              </div>
+            <div className="pp-calc-out" aria-live="polite">
+              <p className="sw-eyebrow">Estimated monthly earnings</p>
+              <div className="pp-calc-big">{inr(monthly)}</div>
+              <p className="sw-muted">Based on 30 working days. Paid daily to your bank.</p>
+              <Apply label="partner_calc" />
             </div>
           </div>
         </section>
 
         {/* BENEFITS */}
-        <section className="pp-sec">
-          <div className="pp-w">
-            <div className="pp-sec-hd">
-              <span className="pp-tag">Why Switch</span>
-              <h2 className="pp-h2">Built for Switch Players who want freedom.</h2>
-              <p className="pp-sub">No agency cuts. No middlemen. No hidden fees. Just real jobs, real pay, real growth.</p>
-            </div>
-            <div className="pp-benefits">
-              {BENEFITS.map((b, i) => (
-                <div className="pp-benefit" key={i}>
-                  <div className="pp-benefit-ico">{b.ico}</div>
-                  <div className="pp-benefit-title">{b.title}</div>
-                  <p className="pp-benefit-desc">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-            <div className="pp-mid-cta">
-              <CtaPrimary>Apply on the App</CtaPrimary>
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Why Switch</p>
+            <h2 className="sw-h2">Built for Switch Players who <em>want freedom.</em></h2>
+            <p className="sw-lead">No agency cuts. No middlemen. No hidden fees. Just real jobs, real pay, real growth.</p>
+          </div>
+          <div className="sw-grid sw-g4">
+            {BENEFITS.map((b, i) => (
+              <div className="sw-card sw-ind" key={b.title}>
+                <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+                  <Icon name={b.ico} />
+                </span>
+                <h3 className="sw-h3">{b.title}</h3>
+                <p>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="pp-mid-cta">
+            <Apply label="partner_benefits" />
           </div>
         </section>
 
         {/* HOW TO JOIN */}
-        <section className="pp-sec pp-sec-alt" id="how-to-join">
-          <div className="pp-w">
-            <div className="pp-sec-hd">
-              <span className="pp-tag">How to join</span>
-              <h2 className="pp-h2">4 steps to your first booking.</h2>
-              <p className="pp-sub">Apply today. Start earning tomorrow.</p>
-            </div>
-            <div className="pp-steps">
-              {STEPS.map((s, i) => (
-                <div className="pp-step" key={i}>
-                  <div className="pp-step-num">{s.n}</div>
-                  <div className="pp-step-title">{s.title}</div>
-                  <p className="pp-step-desc">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-            <div className="pp-mid-cta">
-              <CtaPrimary>Apply on the App</CtaPrimary>
-            </div>
+        <section className="sw-sec" id="how-to-join">
+          <div className="sw-head">
+            <p className="sw-eyebrow">How to join</p>
+            <h2 className="sw-h2">4 steps to your <em>first booking.</em></h2>
+            <p className="sw-lead">Apply today. Start earning tomorrow.</p>
+          </div>
+          <div className="sw-grid sw-g4">
+            {STEPS.map((s) => (
+              <div className="sw-card sw-step" key={s.n}>
+                <span className="n">STEP {s.n}</span>
+                <h3 className="sw-h3">{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="pp-mid-cta">
+            <Apply label="partner_steps" />
           </div>
         </section>
 
         {/* CATEGORIES + ELIGIBILITY */}
-        <section className="pp-sec">
-          <div className="pp-w pp-two-col">
+        <section className="sw-sec">
+          <div className="sw-two">
             <div>
-              <span className="pp-tag">Categories &amp; rates</span>
-              <h2 className="pp-h2">Pick what you’re great at.</h2>
-              <p className="pp-sub">Live hourly rates across our 12 verified categories. Apply for one or several — many partners run two.</p>
+              <div className="sw-head">
+                <p className="sw-eyebrow">Categories &amp; rates</p>
+                <h2 className="sw-h2">Pick what you’re <em>great at.</em></h2>
+                <p className="sw-lead">Live hourly rates across our 12 verified categories. Apply for one or several — many partners run two.</p>
+              </div>
               <div className="pp-rate-grid">
-                {CATEGORIES.map(c => (
-                  <div className="pp-rate" key={c.name}>
-                    <span className="pp-rate-name">{c.name}</span>
-                    <span className="pp-rate-pay">{c.pay}</span>
+                {CATEGORIES.map((c) => (
+                  <div className="sw-card pp-rate" key={c.name}>
+                    <span>{c.name}</span>
+                    <b>{c.pay}</b>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="pp-req-card">
-              <h3 className="pp-req-title">Eligibility</h3>
-              <ul className="pp-req-list">
-                {REQUIREMENTS.map((r, i) => (
-                  <li key={i}><Check />{r}</li>
+            <div className="sw-card pp-req">
+              <span className="sw-sq t-mint"><Icon name="check" /></span>
+              <h3 className="sw-h3">Eligibility</h3>
+              <ul className="sw-list-check">
+                {REQUIREMENTS.map((r) => (
+                  <li key={r}><Icon name="check" />{r}</li>
                 ))}
               </ul>
-              <CtaPrimary>Apply on the App</CtaPrimary>
-              <a href={PARTNER_WA} target="_blank" rel="noopener noreferrer" className="pp-req-call">or WhatsApp · {PHONE_DISPLAY}</a>
+              <Apply label="partner_eligibility" />
+              <a
+                href={APPLY_WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sw-link"
+                onClick={() => trackWhatsApp('partner_eligibility_phone')}
+              >
+                or WhatsApp · {PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </section>
 
         {/* STORIES */}
-        <section className="pp-sec pp-sec-alt">
-          <div className="pp-w">
-            <div className="pp-sec-hd">
-              <span className="pp-tag">Partner stories</span>
-              <h2 className="pp-h2">Real partners. Real earnings.</h2>
-              <p className="pp-sub">From small towns to top-tier neighborhoods — Switch partners are building real careers.</p>
-            </div>
-            <div className="pp-stories">
-              {STORIES.map((s, i) => (
-                <div className="pp-story" key={i}>
-                  <div className="pp-story-top">
-                    <img src={s.img} alt={`${s.name} — ${s.role}`} width="80" height="80" loading="lazy" />
-                    <div>
-                      <div className="pp-story-name">{s.name}</div>
-                      <div className="pp-story-role">{s.role} · Gurgaon</div>
-                      <div className="pp-story-stars"><Star/><Star/><Star/><Star/><Star/></div>
-                    </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Partner stories</p>
+            <h2 className="sw-h2">Real partners. <em>Real earnings.</em></h2>
+            <p className="sw-lead">From small towns to top-tier neighborhoods — Switch partners are building real careers.</p>
+          </div>
+          <div className="sw-grid sw-g4">
+            {STORIES.map((s) => (
+              <figure className="sw-card pp-story" key={s.name}>
+                <div className="pp-story-top">
+                  <img src={s.img} alt={`${s.name} — ${s.role}`} width="56" height="56" loading="lazy" />
+                  <div>
+                    <b>{s.name}</b>
+                    <span>{s.role} · Gurgaon</span>
                   </div>
-                  <p className="pp-story-text">“{s.text}”</p>
                 </div>
-              ))}
-            </div>
-            <div className="pp-mid-cta">
-              <CtaPrimary>Join 20,000+ partners</CtaPrimary>
-            </div>
+                <span className="pp-stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote>“{s.text}”</blockquote>
+              </figure>
+            ))}
+          </div>
+          <div className="pp-mid-cta">
+            <Apply label="partner_stories">Join 20,000+ partners</Apply>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="pp-sec">
-          <div className="pp-w">
-            <div className="pp-sec-hd">
-              <span className="pp-tag">Partner FAQ</span>
-              <h2 className="pp-h2">Common questions.</h2>
-              <p className="pp-sub">Everything you need to know before applying.</p>
-            </div>
-            <div className="pp-faq">
-              {FAQS.map((f, i) => (
-                <div className="pp-faq-item" key={i}>
-                  <div className="pp-faq-q">{f.q}</div>
-                  <p className="pp-faq-a">{f.a}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Partner FAQ</p>
+            <h2 className="sw-h2">Common <em>questions.</em></h2>
+            <p className="sw-lead">Everything you need to know before applying.</p>
           </div>
+          <Faq items={FAQS} />
         </section>
 
         {/* FINAL */}
-        <section className="pp-final">
-          <div className="pp-final-inner">
-            <span className="pp-final-tag">Ready when you are</span>
-            <h2 className="pp-final-h">Start earning by tomorrow.</h2>
-            <p className="pp-final-p">Download the Switch Partner app, submit your Aadhaar, and we’ll approve you within 24 hours. Daily payouts begin from your very first booking.</p>
-            <div className="pp-final-ctas">
-              <CtaPrimary big>Apply on the App</CtaPrimary>
-              <a href={PARTNER_WA} target="_blank" rel="noopener noreferrer" className="pp-cta-secondary">WhatsApp {PHONE_DISPLAY}</a>
+        <section className="sw-sec">
+          <div className="sw-feature sw-feature-grid">
+            <div>
+              <p className="sw-eyebrow">Ready when you are</p>
+              <h2 style={{ marginTop: 10 }}>Start earning <em>by tomorrow.</em></h2>
+              <p style={{ marginTop: 10, maxWidth: '52ch' }}>
+                Message us on WhatsApp, submit your Aadhaar, and we’ll approve you within 24 hours.
+                Daily payouts begin from your very first booking.
+              </p>
+              <div className="sw-btns" style={{ marginTop: 18 }}>
+                <Apply className="white" label="partner_final" />
+                <a
+                  href={APPLY_WA}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sw-btn line"
+                  onClick={() => trackWhatsApp('partner_final_phone')}
+                >
+                  WhatsApp {PHONE_DISPLAY}
+                </a>
+              </div>
+              <ul className="pp-final-row">
+                {['Free to join', 'Daily payouts', 'Verified jobs only', 'Insurance included'].map((x) => (
+                  <li key={x}><Icon name="check" />{x}</li>
+                ))}
+              </ul>
             </div>
-            <div className="pp-final-row">
-              <span><Check/> Free to join</span>
-              <span><Check/> Daily payouts</span>
-              <span><Check/> Verified jobs only</span>
-              <span><Check/> Insurance included</span>
+            <div className="sw-f-art" aria-hidden="true">
+              <div className="sw-blob" />
+              <div className="sw-arch a1">
+                <img src="/sw-driver.jpg" alt="" loading="lazy" />
+              </div>
+              <div className="sw-arch a2">
+                <img src="/sw-cook.jpg" alt="" loading="lazy" />
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      {/* STICKY MOBILE CTA */}
-      <div className="pp-sticky">
-        <div className="pp-sticky-info">
-          <strong>Earn ₹15K–40K/month</strong>
-          <span>Daily payouts · Free to join</span>
-        </div>
-        <a href={APP_URL} className="pp-sticky-btn">Apply<Arrow size={14}/></a>
-      </div>
-
       <Footer />
-    </div>
+
+      {/* STICKY MOBILE CTA */}
+      <div className="sw-bar pp-bar" aria-label="Quick actions">
+        <a href={APPLY_WA} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsApp('partner_sticky')}>
+          <span>
+            <b>Earn ₹15K–40K/month</b>
+            <small>Daily payouts · Free to join</small>
+          </span>
+          <span className="gob">
+            Apply <Icon name="arrow" />
+          </span>
+        </a>
+      </div>
+    </>
   )
 }

@@ -108,3 +108,94 @@ export const SERVICE_TILES = [
   { slug: 'store-helper-gurgaon',     name: 'General / Store Helper',  img: '/sw-general-helper.jpg',  desc: 'Billing support, stocking, loading & shop-floor help.', focus: '46% 3%' },
   { slug: 'factory-warehouse-gurgaon',name: 'Picker / Packer',         img: '/sw-factory-helper.jpg',  desc: 'Warehouse picking, packing, sorting & dispatch.', focus: '51% 0%' },
 ]
+
+/* ── Redesign (Switch app style) ─────────────────────────────────── */
+
+export const TAGLINE = 'Staff that shows up.'
+
+export const HOME_STATS = [
+  { value: '20,000+', label: 'Verified Switch Players' },
+  { value: '1,500+', label: 'Businesses served' },
+  { value: '24h', label: 'Replacement time' },
+  { value: '9', label: 'Sectors staffed' },
+]
+
+/* The fixed-price 3-hour trials the employer app sells (app lib/trial.ts).
+   `book` opens the app's trial payment page directly. */
+export const TRIALS = [
+  {
+    role: 'Housekeeping',
+    price: 149,
+    img: '/sw-maid.jpg',
+    kicker: 'Offices · shops',
+    blurb: 'Floors, washrooms, dusting — shops, offices, premises',
+    book: 'https://app.switchlocally.com/employer/trial/Housekeeping',
+  },
+  {
+    role: 'Kitchen Helper',
+    price: 179,
+    img: '/sw-kitchen-helper.jpg',
+    kicker: 'Cafés · kitchens',
+    blurb: 'Prep, dishes, kitchen cleaning — cafés, restaurants, messes',
+    book: 'https://app.switchlocally.com/employer/trial/Kitchen%20Helper',
+  },
+]
+export const TRIAL_INCLUDES = [
+  '1 verified worker',
+  '3 full hours',
+  'Aadhaar & interview checked',
+  'OTP check-in on site',
+  'Replacement if no-show',
+  'Pay by UPI or card',
+]
+
+/* Employer reviews filmed at their own businesses (public/reviews). */
+export const REVIEW_VIDEOS = [
+  { src: '/reviews/c01.mp4', poster: '/reviews/c01.jpg', len: '1:05', who: 'Café owner', where: 'Gurgaon', line: 'Unscripted, on camera, in their own café.' },
+  { src: '/reviews/c02.mp4', poster: '/reviews/c02.jpg', len: '0:36', who: 'Café team', where: 'Gurgaon', line: 'On what hiring was like before Switch.' },
+  { src: '/reviews/c03.mp4', poster: '/reviews/c03.jpg', len: '0:31', who: 'Grand Manor by Xenious', where: 'Hotel · Gurgaon', line: 'Front desk of a Gurgaon hotel that books with Switch.' },
+]
+
+export const PRICES = [
+  { tier: 'Hourly', figure: '₹99–199', unit: '/hour' },
+  { tier: 'Full Day', figure: '₹999–1,299', unit: '/day' },
+  { tier: 'Weekly Team', figure: 'from ₹6,500', unit: '/week' },
+]
+
+export const PATHWAYS = [
+  { kicker: 'TRY FIRST', title: 'Trial Shift', copy: 'Start with one shift and see the difference.', msg: 'Hi Switch — I would like to book a trial shift.' },
+  { kicker: 'SCALE UP', title: 'Bulk / Weekly Staffing', copy: 'Build a dependable team for the week ahead.', msg: 'Hi Switch — I need a bulk or weekly staffing quote.' },
+]
+
+export const PLANS = [
+  {
+    badge: 'CORE TEAM', name: 'Essential', price: '₹999', per: '/mo',
+    description: 'Reliable everyday support for your operations.',
+    items: ['Housekeeping', 'General Helper', 'Picker & Packer', 'Cleaner · Office Boy', 'Loader · Gardener'],
+    cta: 'Ask about Essential',
+    msg: "Hi Switch — I'd like to subscribe to the Essential staffing plan (₹999/mo). Please share the details.",
+  },
+  {
+    badge: 'PEACE OF MIND', name: 'Security', price: '₹999', per: '/mo', featured: true,
+    description: 'Consistent security cover with replacement support.',
+    items: ['Background & Aadhaar verified', 'Day / night shift cover', 'Instant replacement', 'Uniformed & briefed'],
+    cta: 'Ask about Security',
+    msg: "Hi Switch — I'd like to subscribe to the Security guard plan (₹999/mo). Please share the details.",
+  },
+  {
+    badge: 'CUSTOM', name: 'Skilled · Custom', price: 'On request',
+    description: 'A tailored team for specialist or larger staffing needs.',
+    items: ['Cook · Chef', 'Waiter · Bartender', 'Delivery Rider · Driver', 'Cashier', 'Bulk / team hiring'],
+    cta: 'Talk to Switch',
+    msg: 'Hi Switch — I need skilled / custom staff on subscription. Please share pricing.',
+  },
+]
+
+export const COVERAGE_AREAS = ['DLF', 'Sushant Lok', 'Palam Vihar', 'Udyog Vihar', 'Cyber City', 'MG Road', 'Sohna Road', 'Sectors 1–49']
+
+export const HOW_STEPS = [
+  { n: '01', title: 'REQUEST', line: 'Tell us what you need.', caption: 'Role, location and timing. One WhatsApp message or a few taps in the app.' },
+  { n: '02', title: 'MATCH', line: 'We find the right people.', caption: 'Aadhaar-verified, skill-checked Switch Players from our Gurgaon network — usually within hours.' },
+  { n: '03', title: 'CONFIRM', line: 'You confirm the fit.', caption: 'Review the match and schedule. Book by the hour, the day or a full 7-day team.' },
+  { n: '04', title: 'REPORT', line: 'They check in by OTP.', caption: 'A code confirms the right person reached your site. No-show? Replacement within 24 hours.' },
+]

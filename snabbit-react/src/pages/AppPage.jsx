@@ -1,73 +1,34 @@
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs, StoreButtons } from '../components/ui/Blocks.jsx'
+import { APP_URL, APPLE_URL, PLAY_URL, WHATSAPP_URL, trackWhatsApp } from '../data/site.js'
 import './AppPage.css'
 
-const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
-const APPLE_URL = 'https://apps.apple.com/in/app/switch-hire-verified-staff/id6798368902'
-const APP_URL = 'https://app.switchlocally.com'
-const PHONE = '+918796894500'
-const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
-const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
+const TINTS = ['t-lav', 't-mint', 't-sky', 't-peach', 't-pink', 't-lav']
 
-/* ─── ICONS ───────────────────────────────────────── */
-function IcoApple() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-    </svg>
-  )
-}
-function IcoPlay() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
-      <path d="M3.18 23.2c.3.17.64.26.99.26.52 0 1.03-.2 1.41-.58l14.02-8.1c.78-.45 1.25-1.27 1.25-2.17 0-.9-.47-1.72-1.25-2.17L5.58 2.34C5.2 1.96 4.69 1.76 4.17 1.76c-.35 0-.69.09-.99.26C2.47 2.47 2 3.25 2 4.17v15.66c0 .92.47 1.7 1.18 2.11z" />
-    </svg>
-  )
-}
-function IcoCheck() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="15" height="15" aria-hidden="true">
-      <polyline points="3 8.5 6.5 12 13 5" />
-    </svg>
-  )
-}
-function IcoStar() {
-  return (
-    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true">
-      <path fill="#f59e0b" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  )
-}
-
-/* ─── DATA ────────────────────────────────────────── */
 const FEATURES = [
-  { ico: '⚡', title: 'Hire in a day', desc: 'Post your requirement and get matched with verified Switch Players within hours — no agency runaround.' },
-  { ico: '🆔', title: 'Aadhaar-verified staff', desc: 'Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they reach your site.' },
-  { ico: '🔁', title: 'Replacement guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
-  { ico: '📅', title: 'Hourly, daily or weekly', desc: 'Book a few hours, a full shift, or a 7-day team. The longer you book, the lower the rate per Switch Player.' },
-  { ico: '💸', title: 'Transparent billing', desc: 'Track your bookings, see exactly what you are charged, and get clean invoices for your records.' },
-  { ico: '📲', title: 'Manage on the go', desc: 'Re-hire favourite Switch Players, scale your team up or down, and chat with support — all from your phone.' },
+  { ico: 'timer',  title: 'Hire in a day', desc: 'Post your requirement and get matched with verified Switch Players within hours — no agency runaround.' },
+  { ico: 'shield', title: 'Aadhaar-verified staff', desc: 'Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they reach your site.' },
+  { ico: 'check',  title: 'Replacement guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
+  { ico: 'cal',    title: 'Hourly, daily or weekly', desc: 'Book a few hours, a full shift, or a 7-day team. The longer you book, the lower the rate per Switch Player.' },
+  { ico: 'wallet', title: 'Transparent billing', desc: 'Track your bookings, see exactly what you are charged, and get clean invoices for your records.' },
+  { ico: 'phone',  title: 'Manage on the go', desc: 'Re-hire favourite Switch Players, scale your team up or down, and chat with support — all from your phone.' },
 ]
 
 const STEPS = [
-  { n: '01', title: 'Download & sign up', desc: 'Install the app from Google Play and create your business account in under a minute.' },
+  { n: '01', title: 'Download & sign up', desc: 'Install the app from Google Play or the App Store and create your business account in under a minute.' },
   { n: '02', title: 'Post your requirement', desc: 'Pick the role, how many Switch Players, and how long you need them — hourly to 7 days.' },
   { n: '03', title: 'Get verified staff', desc: 'Matched Switch Players report to your site with OTP verification, and every shift is invoiced clearly.' },
 ]
 
+const PERKS = ['Aadhaar-verified', 'Replacement guarantee', 'Transparent billing']
+
 export default function AppPage() {
   useEffect(() => {
     if (!window.location.hash) window.scrollTo(0, 0)
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
-      }),
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    )
-    document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
   }, [])
 
   const appSchema = {
@@ -108,132 +69,129 @@ export default function AppPage() {
         <script type="application/ld+json">{JSON.stringify(appSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
-      <Nav />
-      <main className="ap">
+
+      <a className="skip-link" href="#page-main">Skip to main content</a>
+      <Header />
+
+      <main id="page-main" className="sw-wrap ap">
+        <Crumbs items={[['Download App']]} />
 
         {/* HERO */}
-        <section className="ap-hero">
-          <div className="ap-hero-bg" aria-hidden="true">
-            <div className="ap-hero-glow" />
-          </div>
-          <div className="ap-hero-inner">
-            <div className="ap-hero-copy" data-anim>
-              <div className="ap-live">
-                <span className="ap-dot" />
-                <span>Now live on Google Play · Gurgaon</span>
-              </div>
-              <h1 className="ap-h1">Hire verified staff<br /><em>from your phone.</em></h1>
-              <p className="ap-lead">
-                Get the Switch app to staff your shop, restaurant, warehouse or office with Aadhaar-verified Switch Players — by the hour, day or week. Replacement guaranteed, transparent rates.
-              </p>
-
-              <div className="ap-stores">
-                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
-                  <IcoPlay />
-                  <span className="ap-store-txt">
-                    <span className="ap-store-sm">Download on</span>
-                    <span className="ap-store-lg">Google Play</span>
-                  </span>
-                </a>
-                <a href={APPLE_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
-                  <IcoApple />
-                  <span className="ap-store-txt">
-                    <span className="ap-store-sm">Download on the</span>
-                    <span className="ap-store-lg">App Store</span>
-                  </span>
-                </a>
-              </div>
-
-              <div className="ap-trust">
-                <div className="ap-trust-stars">{[0, 1, 2, 3, 4].map(i => <IcoStar key={i} />)}</div>
-                <span><strong>4.8</strong> rating · <strong>20,000+</strong> verified Switch Players</span>
-              </div>
-
-              <p className="ap-ios-note">
-                📱 On an iPhone? The Switch app is now live on the{' '}
-                <a href={APPLE_URL} target="_blank" rel="noopener noreferrer">App Store</a> — or hire instantly on{' '}
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a> and at{' '}
-                <a href={APP_URL} target="_blank" rel="noopener noreferrer">app.switchlocally.com</a>.
-              </p>
+        <section className="sw-hero ap-hero">
+          <div>
+            <span className="sw-pill sw-live">Now live on Google Play &amp; the App Store · Gurgaon</span>
+            <h1 className="sw-h1" style={{ marginTop: 14 }}>
+              Hire verified staff <em>from your phone.</em>
+            </h1>
+            <p className="sw-lead">
+              Get the Switch app to staff your shop, restaurant, warehouse or office with Aadhaar-verified
+              Switch Players — by the hour, day or week. Replacement guaranteed, transparent rates.
+            </p>
+            <div className="sw-btns">
+              <StoreButtons />
             </div>
+            <div className="ap-trust">
+              <span className="ap-stars" aria-hidden="true">★★★★★</span>
+              <span><strong>4.8</strong> rating · <strong>20,000+</strong> verified Switch Players</span>
+            </div>
+            <p className="ap-note">
+              On Android or iPhone, the Switch app is live on{' '}
+              <a href={PLAY_URL} target="_blank" rel="noopener noreferrer">Google Play</a> and the{' '}
+              <a href={APPLE_URL} target="_blank" rel="noopener noreferrer">App Store</a> — or hire instantly on{' '}
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsApp('app_hero_note')}>WhatsApp</a>{' '}
+              and at{' '}
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer">app.switchlocally.com</a>.
+            </p>
+          </div>
 
-            <div className="ap-hero-phones" data-anim style={{ '--delay': '160ms' }}>
-              <img src="/screen-2.png" alt="Switch app — browse staff categories" className="ap-ph ap-ph-side ap-ph-left" width="390" height="844" loading="eager" decoding="async" />
-              <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" className="ap-ph ap-ph-main" width="390" height="844" loading="eager" decoding="async" fetchPriority="high" />
-              <img src="/screen-3.png" alt="Switch app — verified Switch Player profiles" className="ap-ph ap-ph-side ap-ph-right" width="390" height="844" loading="eager" decoding="async" />
+          <div className="ap-art">
+            <div className="sw-blob" aria-hidden="true" />
+            <div className="sw-phones">
+              <div className="sw-phone side">
+                <img src="/screen-2.png" alt="Switch app — browse staff categories" width="390" height="844" decoding="async" />
+              </div>
+              <div className="sw-phone mid">
+                <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" width="390" height="844" decoding="async" fetchPriority="high" />
+              </div>
+              <div className="sw-phone side">
+                <img src="/screen-3.png" alt="Switch app — verified Switch Player profiles" width="390" height="844" decoding="async" />
+              </div>
             </div>
           </div>
         </section>
 
         {/* FEATURES */}
-        <section className="ap-sec ap-sec-border">
-          <div className="ap-w">
-            <div className="ap-hd" data-anim>
-              <span className="ap-tag">Why the app</span>
-              <h2 className="ap-h2">Everything you need to<br />staff your business.</h2>
-              <p className="ap-sub">Post a job, track your Switch Players and manage payments — all from one app built for Gurgaon businesses.</p>
-            </div>
-            <div className="ap-feat-grid" data-anim style={{ '--delay': '80ms' }}>
-              {FEATURES.map((f, i) => (
-                <div className="ap-feat" key={i} style={{ '--delay': `${(i % 3) * 70}ms` }}>
-                  <div className="ap-feat-ico">{f.ico}</div>
-                  <h3 className="ap-feat-title">{f.title}</h3>
-                  <p className="ap-feat-desc">{f.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Why the app</p>
+            <h2 className="sw-h2">Everything you need to <em>staff your business.</em></h2>
+            <p className="sw-lead">Post a job, track your Switch Players and manage payments — all from one app built for Gurgaon businesses.</p>
+          </div>
+          <div className="sw-grid sw-g3">
+            {FEATURES.map((f, i) => (
+              <div className="sw-card sw-ind" key={f.title}>
+                <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+                  <Icon name={f.ico} />
+                </span>
+                <h3 className="sw-h3">{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* HOW IT WORKS */}
-        <section className="ap-sec ap-sec-alt ap-sec-border">
-          <div className="ap-w">
-            <div className="ap-hd" data-anim>
-              <span className="ap-tag">Get started</span>
-              <h2 className="ap-h2">From download to<br />staffed in three steps.</h2>
-            </div>
-            <div className="ap-steps" data-anim style={{ '--delay': '80ms' }}>
-              {STEPS.map((s, i) => (
-                <div className="ap-step" key={i} style={{ '--delay': `${i * 100}ms` }}>
-                  <div className="ap-step-n">{s.n}</div>
-                  <h3 className="ap-step-title">{s.title}</h3>
-                  <p className="ap-step-desc">{s.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Get started</p>
+            <h2 className="sw-h2">From download to <em>staffed in three steps.</em></h2>
+          </div>
+          <div className="sw-grid sw-g3">
+            {STEPS.map((s) => (
+              <div className="sw-card sw-step" key={s.n}>
+                <span className="n">STEP {s.n}</span>
+                <h3 className="sw-h3">{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="ap-cta">
-          <div className="ap-cta-inner" data-anim>
-            <h2 className="ap-cta-h">Download Switch and<br />hire your first Switch Player today.</h2>
-            <p className="ap-cta-p">Free to download. Transparent rates. Verified Switch Players, replacement guaranteed.</p>
-            <div className="ap-stores ap-stores--center">
-              <a href={PLAY_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
-                <IcoPlay />
-                <span className="ap-store-txt">
-                  <span className="ap-store-sm">Download on</span>
-                  <span className="ap-store-lg">Google Play</span>
-                </span>
-              </a>
-              <a href={APPLE_URL} target="_blank" rel="noopener noreferrer" className="ap-store ap-store--live">
-                <IcoApple />
-                <span className="ap-store-txt">
-                  <span className="ap-store-sm">Download on the</span>
-                  <span className="ap-store-lg">App Store</span>
-                </span>
-              </a>
+        <section className="sw-sec">
+          <div className="sw-feature sw-feature-grid ap-cta">
+            <div>
+              <p className="sw-eyebrow">Free to download</p>
+              <h2 style={{ marginTop: 10 }}>
+                Download Switch and <em>hire your first Switch Player today.</em>
+              </h2>
+              <p style={{ marginTop: 10, maxWidth: '52ch' }}>
+                Free to download. Transparent rates. Verified Switch Players, replacement guaranteed.
+              </p>
+              <div className="sw-btns" style={{ marginTop: 18 }}>
+                <StoreButtons />
+              </div>
+              <p className="ap-cta-alt">
+                <span>Prefer not to download?</span>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsApp('app_cta')}>
+                  Hire on WhatsApp <Icon name="arrow" />
+                </a>
+              </p>
+              <ul className="ap-perks">
+                {PERKS.map((x) => (
+                  <li key={x}><Icon name="check" />{x}</li>
+                ))}
+              </ul>
             </div>
-            <div className="ap-cta-alt">
-              <span>Prefer not to download?</span>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ap-cta-wa">💬 Hire on WhatsApp</a>
+            <div className="sw-f-art" aria-hidden="true">
+              <div className="sw-blob" />
+              <div className="sw-arch a1">
+                <img src="/sw-general-helper.jpg" alt="" loading="lazy" />
+              </div>
+              <div className="sw-arch a2">
+                <img src="/sw-security-guard.jpg" alt="" loading="lazy" />
+              </div>
             </div>
-            <ul className="ap-cta-perks">
-              <li><IcoCheck /> Aadhaar-verified</li>
-              <li><IcoCheck /> Replacement guarantee</li>
-              <li><IcoCheck /> Transparent billing</li>
-            </ul>
           </div>
         </section>
       </main>

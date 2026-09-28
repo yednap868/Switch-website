@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs, CtaFeature, HeroArt, ReviewVideos, StatsRow } from '../components/ui/Blocks.jsx'
 import './AboutPage.css'
 
 const PHONE = '+918796894500'
@@ -11,32 +13,32 @@ const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
 
 const WHAT_WE_DO = [
   {
-    ico: '💼',
+    ico: 'building',
     title: 'Business Staffing',
     desc: 'Store helpers, security guards, factory & warehouse Switch Players, waiters, bartenders, bouncers, cooks and housekeeping — for shops, restaurants, warehouses, offices and events of every size.',
   },
   {
-    ico: '👥',
+    ico: 'cal',
     title: 'Bulk & Weekly Teams',
     desc: 'Need 3, 5 or a full team for 7 days straight? We deploy verified Switch Players at scale, with a dedicated point of contact and priority coverage.',
   },
   {
-    ico: '🔁',
+    ico: 'check',
     title: 'Replacement Guarantee',
     desc: 'A no-show shouldn’t stop your business. If a Switch Player doesn’t turn up or isn’t the right fit, we dispatch a replacement fast — usually within 24 hours.',
   },
   {
-    ico: '🛡️',
+    ico: 'shield',
     title: 'Verified at Every Step',
     desc: 'Every Switch Player on Switch is Aadhaar-verified, document-checked and personally interviewed before being assigned to your site.',
   },
   {
-    ico: '💳',
+    ico: 'wallet',
     title: 'Simple & Transparent',
     desc: 'Hire in minutes on WhatsApp, switchlocally.com or the Switch App. Transparent rates, with proper invoices for your records.',
   },
   {
-    ico: '🏠',
+    ico: 'heart',
     title: 'Home Services Too',
     desc: 'Beyond business, we also place trusted cooks, maids, caretakers and nannies for your home — the same verification, the same reliability.',
   },
@@ -44,32 +46,32 @@ const WHAT_WE_DO = [
 
 const WHY_SWITCH = [
   {
-    ico: '🧩',
+    ico: 'sparkles',
     title: 'One Platform, Every Service',
     desc: 'From domestic help to business staffing — we do it all. No need to call five different agencies.',
   },
   {
-    ico: '🆔',
+    ico: 'shield',
     title: 'Aadhaar-Verified Switch Players',
     desc: 'Every Switch Player on our platform is Aadhaar-verified and background-checked. Your safety is not negotiable.',
   },
   {
-    ico: '⚡',
+    ico: 'phone',
     title: 'Switch Players at a Click',
     desc: 'No long waits, no endless back-and-forth. Book a verified Switch Player in minutes on switchlocally.com or the Switch App.',
   },
   {
-    ico: '💸',
+    ico: 'wallet',
     title: 'Transparent, Honest Billing',
     desc: 'One clear rate agreed up front — no hidden charges, no agency commissions, no surprises on the invoice.',
   },
   {
-    ico: '🔁',
+    ico: 'check',
     title: 'Replacement Guarantee',
     desc: 'Not happy with the assigned Switch Player? We will replace them — fast, no questions asked.',
   },
   {
-    ico: '📞',
+    ico: 'msg',
     title: '24/7 Support',
     desc: 'Our team is always available to help you find the right person and resolve any concerns along the way.',
   },
@@ -89,9 +91,11 @@ const AREAS = [
 
 const PINCODES = ['122001','122002','122006','122009','122010','122017','122018','122022']
 
+const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey']
+
 const STATS = [
   { num: '20,000+', lbl: 'Verified Partners' },
-  { num: '1000+', lbl: 'Bookings Served' },
+  { num: '1,500+', lbl: 'Bookings Served' },
   { num: '12+', lbl: 'Service Categories' },
   { num: '4.8 ★', lbl: 'Average Rating' },
 ]
@@ -99,14 +103,6 @@ const STATS = [
 export default function AboutPage() {
   useEffect(() => {
     if (!window.location.hash) window.scrollTo(0, 0)
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
-      }),
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    )
-    document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
   }, [])
 
   const aboutSchema = {
@@ -146,53 +142,55 @@ export default function AboutPage() {
         <script type="application/ld+json">{JSON.stringify(aboutSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
-      <Nav />
-      <main className="ab-root">
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
+      <main id="page-main" className="sw-wrap">
+        <Crumbs items={[['About Us']]} />
+
         {/* Hero */}
-        <section className="ab-hero">
-          <div className="ab-hero-bg" aria-hidden="true">
-            <div className="ab-hero-grid" />
-            <div className="ab-hero-glow" />
-          </div>
-          <div className="ab-w">
-            <div className="ab-hero-inner" data-anim>
-              <span className="ab-tag">About Switch</span>
-              <h1 className="ab-h1">
-                Gurgaon's staffing<br />
-                partner for <em>shops,<br />
-                restaurants &amp; offices.</em>
-              </h1>
-              <p className="ab-lead">
-                Born in 2026 with one simple idea — staffing your business should never be hard.
-                Whether you run a shop, a kitchen, a warehouse or an event, Switch puts verified,
-                reliable Switch Players on your floor — for a shift, a day, or a full week.
-              </p>
-              <div className="ab-hero-ctas">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Hire staff for your business →</a>
-                <Link to="/partner" className="ab-cta-secondary">Become a Partner</Link>
-              </div>
-              <div className="ab-stats">
-                {STATS.map((s, i) => (
-                  <div className="ab-stat" key={i}>
-                    <div className="ab-stat-num">{s.num}</div>
-                    <div className="ab-stat-lbl">{s.lbl}</div>
-                  </div>
-                ))}
-              </div>
+        <section className="sw-hero ab-hero">
+          <div>
+            <p className="sw-eyebrow">About Switch</p>
+            <h1 className="sw-h1">
+              Gurgaon&apos;s staffing partner for <em>shops, restaurants &amp; offices.</em>
+            </h1>
+            <p className="sw-lead">
+              Born in 2026 with one simple idea — staffing your business should never be hard.
+              Whether you run a shop, a kitchen, a warehouse or an event, Switch puts verified,
+              reliable Switch Players on your floor — for a shift, a day, or a full week.
+            </p>
+            <div className="sw-btns">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="sw-btn">
+                Hire staff for your business <Icon name="arrow" />
+              </a>
+              <Link to="/partner" className="sw-btn line">
+                Become a Partner
+              </Link>
             </div>
           </div>
+          <HeroArt
+            img="/sw-security-guard.jpg"
+            alt="A verified Switch Player in uniform"
+            badge={{ icon: 'shield', title: 'Aadhaar verified', sub: 'Every Switch Player' }}
+          />
         </section>
 
+        <StatsRow items={STATS.map((s) => ({ value: s.num, label: s.lbl }))} />
+
         {/* Who We Are */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Who we are</span>
-              <h2 className="ab-h2">Built for Gurgaon.<br />Trusted by thousands.</h2>
+        <section className="sw-sec">
+          <div className="ab-split">
+            <div className="sw-head">
+              <p className="sw-eyebrow">Who we are</p>
+              <h2 className="sw-h2">
+                Built for Gurgaon. <em>Trusted by thousands.</em>
+              </h2>
             </div>
-            <div className="ab-text" data-anim style={{'--delay':'80ms'}}>
+            <div className="ab-prose">
               <p>
-                We are <strong>Switch</strong> — Gurgaon's business staffing platform.
+                We are <strong>Switch</strong> — Gurgaon&apos;s business staffing platform.
                 Born in 2026, we set out to fix one of the most frustrating problems any business owner faces:
                 <em> finding reliable Switch Players who actually show up, without the agency runaround.</em>
               </p>
@@ -208,88 +206,117 @@ export default function AboutPage() {
         </section>
 
         {/* What We Do */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">What we do</span>
-              <h2 className="ab-h2">Every Switch Player. One platform.</h2>
-              <p className="ab-sub">Running a home or a business is not easy — and finding the right people makes all the difference. At Switch, we bring everything under one roof.</p>
-            </div>
-            <div className="ab-grid">
-              {WHAT_WE_DO.map((w, i) => (
-                <div className="ab-card" key={i} data-anim style={{'--delay':`${(i%3)*80}ms`}}>
-                  <div className="ab-card-ico">{w.ico}</div>
-                  <h3 className="ab-card-title">{w.title}</h3>
-                  <p className="ab-card-desc">{w.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-head">
+            <p className="sw-eyebrow">What we do</p>
+            <h2 className="sw-h2">
+              Every Switch Player. <em>One platform.</em>
+            </h2>
+            <p className="sw-lead">
+              Running a home or a business is not easy — and finding the right people makes all the difference. At Switch, we bring everything under one roof.
+            </p>
+          </div>
+          <div className="sw-grid sw-g3">
+            {WHAT_WE_DO.map((w, i) => (
+              <div className="sw-card ab-card" key={w.title}>
+                <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+                  <Icon name={w.ico} />
+                </span>
+                <h3 className="sw-h3">{w.title}</h3>
+                <p>{w.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Mission */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-mission" data-anim>
-              <span className="ab-tag">Our mission</span>
-              <h2 className="ab-h2">Good staff shouldn't be hard to find.</h2>
-              <p className="ab-mission-text">
-                Our mission is simple — to make sure every business in Gurgaon can staff up at the right time,
-                without the hassle. We have built a platform where verified store helpers, security guards,
-                factory and warehouse Switch Players, waiters, bartenders, bouncers, cooks, drivers and housekeeping
-                are available at the click of a button —
-                <strong> background-checked, Aadhaar-verified, and ready to work.</strong>
-              </p>
-            </div>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-feature ab-mission">
+            <p className="sw-eyebrow">Our mission</p>
+            <h2>
+              Good staff shouldn&apos;t be <em>hard to find.</em>
+            </h2>
+            <p>
+              Our mission is simple — to make sure every business in Gurgaon can staff up at the right time,
+              without the hassle. We have built a platform where verified store helpers, security guards,
+              factory and warehouse Switch Players, waiters, bartenders, bouncers, cooks, drivers and housekeeping
+              are available at the click of a button —
+              <strong> background-checked, Aadhaar-verified, and ready to work.</strong>
+            </p>
           </div>
         </section>
 
         {/* Why Switch */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Why Switch</span>
-              <h2 className="ab-h2">Six reasons businesses<br />trust Switch.</h2>
-              <p className="ab-sub">There are plenty of options out there — here's why shops, restaurants, warehouses and offices across Gurgaon choose us.</p>
-            </div>
-            <div className="ab-grid">
-              {WHY_SWITCH.map((w, i) => (
-                <div className="ab-card ab-card--why" key={i} data-anim style={{'--delay':`${(i%3)*80}ms`}}>
-                  <div className="ab-card-ico">{w.ico}</div>
-                  <h3 className="ab-card-title">{w.title}</h3>
-                  <p className="ab-card-desc">{w.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-head">
+            <p className="sw-eyebrow">Why Switch</p>
+            <h2 className="sw-h2">
+              Six reasons businesses <em>trust Switch.</em>
+            </h2>
+            <p className="sw-lead">
+              There are plenty of options out there — here&apos;s why shops, restaurants, warehouses and offices across Gurgaon choose us.
+            </p>
+          </div>
+          <div className="sw-grid sw-g3">
+            {WHY_SWITCH.map((w, i) => (
+              <div className="sw-card ab-card" key={w.title}>
+                <span className={`sw-sq ${TINTS[(i + 3) % TINTS.length]}`}>
+                  <Icon name={w.ico} />
+                </span>
+                <h3 className="sw-h3">{w.title}</h3>
+                <p>{w.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
+        {/* Reviews */}
+        <section className="sw-sec" style={{ paddingTop: 0 }} id="reviews">
+          <div className="sw-head">
+            <p className="sw-eyebrow">In their words</p>
+            <h2 className="sw-h2">
+              Employers on <em>working with Switch.</em>
+            </h2>
+            <p className="sw-lead">Business owners across Gurgaon on the staff we send and how it works.</p>
+          </div>
+          <ReviewVideos />
+        </section>
+
         {/* Where We Serve */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Where we serve</span>
-              <h2 className="ab-h2">Across every corner of Gurgaon.</h2>
-              <p className="ab-sub">From DLF Cyber City to Sohna Road — Switch is already right around the corner.</p>
-            </div>
-            <div className="ab-areas" data-anim style={{'--delay':'80ms'}}>
-              {AREAS.map(a => <span className="ab-area-pill" key={a}>{a}</span>)}
-            </div>
-            <div className="ab-pin-block" data-anim style={{'--delay':'160ms'}}>
-              <div className="ab-pin-label">All pincodes:</div>
-              <div className="ab-pins">
-                {PINCODES.map(p => <span className="ab-pin" key={p}>{p}</span>)}
-              </div>
-            </div>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-head">
+            <p className="sw-eyebrow">Where we serve</p>
+            <h2 className="sw-h2">
+              Across every corner <em>of Gurgaon.</em>
+            </h2>
+            <p className="sw-lead">From DLF Cyber City to Sohna Road — Switch is already right around the corner.</p>
+          </div>
+          <div className="ab-areas">
+            {AREAS.map((a) => (
+              <span className="ab-area" key={a}>
+                <Icon name="pin" />
+                {a}
+              </span>
+            ))}
+          </div>
+          <div className="sw-card ab-pins">
+            <b>All pincodes:</b>
+            {PINCODES.map((p) => (
+              <span key={p}>{p}</span>
+            ))}
           </div>
         </section>
 
         {/* Story */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-story" data-anim>
-              <span className="ab-tag">Our story</span>
-              <h2 className="ab-h2">From a real problem to a real platform.</h2>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-card ab-story ab-split">
+            <div className="sw-head">
+              <p className="sw-eyebrow">Our story</p>
+              <h2 className="sw-h2">
+                From a real problem <em>to a real platform.</em>
+              </h2>
+            </div>
+            <div className="ab-prose">
               <p>
                 Switch was founded in 2026 with a very real problem in mind — finding verified, trustworthy
                 domestic and business staff in Gurgaon was unnecessarily complicated. Too many middlemen,
@@ -309,22 +336,21 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="ab-cta-sec">
-          <div className="ab-w">
-            <div className="ab-cta" data-anim>
-              <h2 className="ab-cta-h">Let's Switch — to staff that shows up.</h2>
-              <p className="ab-cta-p">
-                Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters,
-                or a warehouse needing a 7-day team — Switch has verified Switch Players ready for you.
-              </p>
-              <div className="ab-cta-btns">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Hire staff for your business →</a>
-                <Link to="/blog" className="ab-cta-secondary">Read our guides</Link>
-              </div>
-              <p className="ab-cta-fine">Verified staff. Transparent rates. Just Switch.</p>
-            </div>
-          </div>
-        </section>
+        <CtaFeature
+          title={
+            <>
+              Let&apos;s Switch — <em>to staff that shows up.</em>
+            </>
+          }
+          sub="Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters, or a warehouse needing a 7-day team — Switch has verified Switch Players ready for you."
+          photos={['/sw-cook.jpg', '/sw-general-helper.jpg']}
+        />
+        <p className="ab-fine">
+          <span>Verified staff. Transparent rates. Just Switch.</span>
+          <Link to="/blog" className="sw-link">
+            Read our guides <Icon name="arrow" />
+          </Link>
+        </p>
       </main>
       <Footer />
     </>

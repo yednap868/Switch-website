@@ -1,345 +1,188 @@
-/* ─── SEO PAGE BASE ─────────────────────────────── */
-.sp-root {
-  background: #000;
-  color: #fff;
-  font-family: 'Inter', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-}
-.sp-w { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+/* SEO service pages (/:slug). Built from the sw-* design system in
+   src/styles/switch.css; this file only adds page-specific layout, using the
+   design tokens (no raw colours). */
 
-/* ─── NAV ───────────────────────────────────────── */
-.sp-nav {
-  position: sticky; top: 0; z-index: 100; height: 64px;
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+.sp-main {
+  padding-bottom: 8px;
 }
-.sp-nav-inner {
-  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
-  height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-}
-.sp-nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-.sp-nav-mark {
-  width: 34px; height: 34px; background: #fff; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 1rem; color: #000; flex-shrink: 0;
-}
-.sp-nav-name { font-weight: 800; font-size: 1.25rem; color: #fff; letter-spacing: -0.03em; }
-.sp-nav-links { display: flex; gap: 0.25rem; }
-.sp-nav-link {
-  font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.45);
-  padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.sp-nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
-.sp-nav-cta {
-  background: #fff; color: #000; padding: 0.5rem 1.125rem;
-  border-radius: 8px; font-size: 0.875rem; font-weight: 700;
-  text-decoration: none; white-space: nowrap; transition: background .15s;
-}
-.sp-nav-cta:hover { background: #e5e5e5; }
 
-/* ─── BREADCRUMB ────────────────────────────────── */
-.sp-breadcrumb {
-  background: #000; border-bottom: 1px solid #111;
-  padding: 0.625rem 2rem;
-}
-.sp-breadcrumb ol {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; flex-wrap: wrap;
-  gap: 0.375rem; list-style: none; padding: 0;
-}
-.sp-breadcrumb li { font-size: 0.8125rem; color: #444; }
-.sp-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color .15s; }
-.sp-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
-.sp-breadcrumb [aria-current="page"] { color: rgba(255,255,255,0.55); }
-
-/* ─── HERO ──────────────────────────────────────── */
-.sp-hero { padding: 4.5rem 2rem 3.5rem; background: #000; }
-.sp-hero-sm { padding: 3.5rem 2rem 2.75rem; }
-.sp-hero-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: center;
-}
-.sp-hero-img { position: relative; }
-.sp-hero-img img {
-  width: 100%; height: 300px; object-fit: cover; object-position: center top;
-  border-radius: 16px; background: #f0f0f0; display: block;
-}
-.sp-hero-badge {
-  position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
-  display: flex; align-items: center; gap: 0.5rem;
-  background: rgba(12,12,12,0.9); border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-radius: 99px; padding: 0.375rem 1rem; white-space: nowrap;
-  font-size: 0.8125rem; font-weight: 600; color: rgba(255,255,255,0.6);
-}
-.sp-hero-badge-dot {
-  width: 7px; height: 7px; background: #32c967; border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(34,197,94,.2); flex-shrink: 0;
-  animation: spDot 2.5s ease-in-out infinite;
-}
-@keyframes spDot {
-  0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
-  50%      { box-shadow: 0 0 0 6px rgba(34,197,94,.06); }
-}
-.sp-hero-btns { display: flex; gap: 0.875rem; flex-wrap: wrap; }
-
-/* ─── TYPOGRAPHY ────────────────────────────────── */
-.sp-tag {
-  display: inline-block; font-size: 0.6875rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 1rem;
-}
+/* ── hero ── */
 .sp-h1 {
-  font-size: clamp(2rem,3.5vw,3rem); font-weight: 800; color: #fff;
-  letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 1.25rem;
+  margin-top: 12px;
+  font-size: clamp(34px, 5.4vw, 60px);
 }
-.sp-h2 {
-  font-size: clamp(1.375rem,2.25vw,1.875rem); font-weight: 800; color: #fff;
-  letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1.5rem;
+.sp-hero .sw-art {
+  max-width: 420px;
 }
-.sp-intro {
-  font-size: 1.0625rem; color: rgba(255,255,255,0.55); line-height: 1.8;
-  margin-bottom: 1.75rem; max-width: 600px;
-}
-.sp-body {
-  font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.8;
-  max-width: 700px; margin-bottom: 1.5rem;
-}
-
-/* ─── SECTIONS ──────────────────────────────────── */
-.sp-section { padding: 4.5rem 2rem; }
-.sp-alt { background: #070a08; }
-
-/* ─── TRUST BADGES ──────────────────────────────── */
-.sp-trust { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 2rem; }
-.sp-trust span {
-  font-size: 0.8125rem; font-weight: 600; color: rgba(255,255,255,0.45);
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  padding: 0.3rem 0.875rem; border-radius: 99px;
+@media (max-width: 900px) {
+  .sp-hero {
+    padding-top: 20px;
+  }
+  .sp-hero .sw-art {
+    max-width: 260px;
+  }
 }
 
-/* ─── PRICING ───────────────────────────────────── */
-.sp-prices {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1px; background: #151f18;
-  border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
+/* ── sections ── */
+.sp-sec {
+  padding-block: clamp(28px, 4.5vw, 52px);
 }
-.sp-price-card {
-  background: #070a08; padding: 2rem 1.5rem; text-align: center; transition: background .2s;
+.sp-sec .sw-head {
+  margin-bottom: 18px;
 }
-.sp-price-card:hover { background: #111; }
-.sp-price-label { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 0.75rem; }
-.sp-price-amt { font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-.sp-price-desc { font-size: 0.8125rem; color: #555; }
-
-/* ─── TASKS / LISTS ─────────────────────────────── */
-.sp-tasks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem 2rem; }
-.sp-tasks li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9375rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
-.sp-check { color: #32c967; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-
-/* ─── BENEFITS ──────────────────────────────────── */
-.sp-benefits { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
-.sp-benefits li {
-  display: flex; align-items: flex-start; gap: 0.75rem;
-  font-size: 0.9375rem; color: rgba(255,255,255,0.65); line-height: 1.6;
-  padding: 1rem 1.25rem; background: #0b0f0d; border: 1px solid #151f18; border-radius: 10px;
+.sp-sec .sw-h2 {
+  font-size: clamp(24px, 3.2vw, 36px);
+}
+.sp-sec .sw-lead {
+  font-size: 16px;
+}
+.sp-gap {
+  margin-top: 12px;
+}
+.sp-small {
+  font-size: 13.5px;
+  margin-top: 4px;
 }
 
-/* ─── AREAS ─────────────────────────────────────── */
-.sp-areas { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.sp-area {
-  font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-  padding: 0.375rem 1rem; border-radius: 99px;
+/* ── check-list cards ── */
+.sp-list {
+  padding: 16px 20px;
+}
+.sp-list .sw-list-check {
+  columns: 2;
+  column-gap: 28px;
+}
+.sp-list .sw-list-check li {
+  break-inside: avoid;
+}
+.sw-list-check .sp-arrow {
+  color: var(--p-t);
+}
+@media (max-width: 700px) {
+  .sp-list .sw-list-check {
+    columns: 1;
+  }
 }
 
-/* ─── REVIEWS ───────────────────────────────────── */
-.sp-reviews { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-bottom: 2rem; }
+/* ── prose (alias / area unique section) ── */
+.sp-prose {
+  padding: clamp(18px, 3vw, 26px);
+  display: grid;
+  gap: 12px;
+  color: var(--muted);
+  max-width: 900px;
+}
+.sp-group {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+.sp-group .sw-h3 {
+  color: var(--ink);
+}
+
+/* ── prices ── */
+.sp-prices .sw-rate b {
+  margin-top: 12px;
+}
+
+/* ── checklist categories ── */
+.sp-cat {
+  padding: 18px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+/* ── verification steps ── */
+.sp-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--p-soft);
+  color: var(--p-t);
+  font-weight: 800;
+}
+
+/* ── comparison table ── */
+.sp-compare th.sp-sw {
+  color: var(--p-t);
+}
+.sp-compare td.sp-sw {
+  background: var(--p-soft);
+}
+.sp-compare .sp-feat {
+  font-weight: 700;
+}
+.sp-compare .sp-good {
+  color: var(--ok);
+  font-weight: 800;
+}
+
+/* ── chips ── */
+.sp-chips .sw-chip {
+  cursor: default;
+}
+.sp-chips .sw-ico,
+.sp-link-chip .sw-ico {
+  width: 15px;
+  height: 15px;
+  color: var(--p-t);
+}
+.sp-link-chip {
+  max-width: 100%;
+}
+.sp-link-chip:hover {
+  border-color: var(--line2);
+  color: var(--p-t);
+}
+
+/* ── reviews ── */
 .sp-review {
-  background: #0b0f0d; border: 1px solid #151f18; border-radius: 14px;
-  padding: 1.75rem; display: flex; flex-direction: column; gap: 0.875rem;
-  transition: border-color .2s;
+  margin: 0;
 }
-.sp-review:hover { border-color: #193322; }
-.sp-stars { display: flex; gap: 2px; }
-.sp-rev-text { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-style: italic; flex: 1; }
-.sp-rev-name { font-size: 0.875rem; font-weight: 700; color: rgba(255,255,255,0.7); }
-.sp-rating-summary { text-align: center; margin-bottom: 2.5rem; }
-.sp-rating-big { font-size: 3.5rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
-.sp-rating-label { font-size: 0.875rem; color: #555; margin-top: 0.5rem; }
+.sp-stars {
+  color: var(--amber);
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+.sp-rating {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.sp-rating b {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--amber);
+}
+.sp-rating span {
+  color: var(--muted);
+  font-weight: 600;
+}
 
-/* ─── FAQ ───────────────────────────────────────── */
-.sp-faqs { border: 1px solid #151f18; border-radius: 14px; overflow: hidden; margin-bottom: 2rem; }
-.sp-faq-item { background: #070a08; border-bottom: 1px solid #1a1a1a; }
-.sp-faq-item:last-child { border-bottom: none; }
-.sp-faq-btn {
-  width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 1.25rem;
-  padding: 1.375rem 1.75rem; background: none; border: none; cursor: pointer;
-  text-align: left; font-family: inherit; font-size: 0.9375rem; font-weight: 700;
-  color: #fff; line-height: 1.5; transition: background .15s;
-}
-.sp-faq-btn:hover { background: rgba(255,255,255,0.02); }
-.sp-faq-icon {
-  width: 16px; height: 16px; flex-shrink: 0; stroke: #555; stroke-width: 2.5;
-  fill: none; stroke-linecap: round; margin-top: 2px; transition: transform .25s, stroke .2s;
-}
-.sp-faq-item.open .sp-faq-icon { transform: rotate(45deg); stroke: #888; }
-.sp-faq-body {
-  max-height: 0; overflow: hidden; font-size: 0.9375rem; color: rgba(255,255,255,0.5);
-  line-height: 1.8; padding: 0 1.75rem; transition: max-height .3s ease, padding .3s ease;
-}
-.sp-faq-item.open .sp-faq-body { max-height: 300px; padding: 0 1.75rem 1.5rem; }
-
-/* ─── STEPS ─────────────────────────────────────── */
-.sp-steps {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
-}
-.sp-step { background: #070a08; padding: 2.25rem 2rem; transition: background .2s; }
-.sp-step:hover { background: #0b0f0d; }
-.sp-step-n { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #444; margin-bottom: 1.125rem; }
-.sp-step-title { font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-.sp-step-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
-
-/* ─── CTA BLOCK ─────────────────────────────────── */
-.sp-cta {
-  margin-top: 3rem; background: #080808; border: 1px solid #222;
-  border-radius: 16px; padding: 3rem; text-align: center;
-}
-.sp-cta-rating { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
-.sp-cta-rating span { font-size: 0.875rem; color: #555; font-weight: 500; }
-.sp-cta-h { font-size: 1.625rem; font-weight: 800; color: #fff; letter-spacing: -0.025em; margin-bottom: 0.625rem; }
-.sp-cta-p { font-size: 0.9375rem; color: rgba(255,255,255,0.4); margin-bottom: 1.75rem; line-height: 1.7; }
-.sp-cta-btn {
-  display: inline-flex; align-items: center; background: #fff; color: #000;
-  padding: 0.875rem 2.25rem; border-radius: 10px; font-size: 0.9375rem; font-weight: 700;
-  text-decoration: none; transition: background .15s, transform .2s;
-}
-.sp-cta-btn:hover { background: #e8e8e8; transform: translateY(-2px); }
-.sp-cta-ghost {
-  display: inline-flex; align-items: center;
-  color: rgba(255,255,255,0.45); font-size: 0.9375rem; font-weight: 500;
-  text-decoration: none; padding: 0.875rem 0; transition: color .15s;
-}
-.sp-cta-ghost:hover { color: rgba(255,255,255,0.8); }
-
-/* ─── COMPARISON TABLE ──────────────────────────── */
-.sp-comparison { margin-top: 0.5rem; }
-.sp-comparison-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; border: 1px solid #151f18; }
-.sp-comparison table { width: 100%; border-collapse: collapse; min-width: 560px; }
-.sp-comparison thead tr { background: #0b0f0d; border-bottom: 1px solid #151f18; }
-.sp-comparison th {
-  padding: 1rem 1.25rem; font-size: 0.8125rem; font-weight: 700; text-align: center;
-  color: #555; letter-spacing: 0.06em; text-transform: uppercase;
-}
-.sp-comp-switch { color: #fff !important; background: rgba(255,255,255,0.04) !important; }
-.sp-comparison tbody tr { border-bottom: 1px solid #111713; }
-.sp-comparison tbody tr:last-child { border-bottom: none; }
-.sp-comparison td {
-  padding: 0.875rem 1.25rem; font-size: 0.9375rem; text-align: center;
-  color: rgba(255,255,255,0.35); background: #070a08;
-}
-.sp-comp-feature { text-align: left !important; font-weight: 600; color: rgba(255,255,255,0.55) !important; }
-.sp-comp-good { color: #32c967 !important; font-weight: 600; background: rgba(34,197,94,0.04) !important; }
-.sp-comp-neutral { color: rgba(255,255,255,0.25) !important; }
-
-/* ─── CHECKLIST GRID ─────────────────────────────── */
-.sp-checklist-grid {
-  display: grid; grid-template-columns: repeat(2,1fr); gap: 1px;
-  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden; margin-bottom: 2rem;
-}
-.sp-checklist-cat { background: #070a08; padding: 2rem; }
-.sp-cat-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #444; margin-bottom: 1.125rem; }
-.sp-checklist-cat ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.625rem; }
-.sp-checklist-cat li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
-
-/* ─── VERIFICATION STEPS ─────────────────────────── */
-.sp-vsteps {
-  display: flex; flex-direction: column; gap: 1px;
-  background: #151f18; border: 1px solid #151f18; border-radius: 14px; overflow: hidden;
-}
-.sp-vstep { display: flex; align-items: flex-start; gap: 1.5rem; background: #070a08; padding: 2rem 2.25rem; transition: background .2s; }
-.sp-vstep:hover { background: #0b0f0d; }
-.sp-vstep-n {
-  width: 44px; height: 44px; flex-shrink: 0; background: #111713; border: 1px solid #193322;
-  border-radius: 10px; display: flex; align-items: center; justify-content: center;
-  font-size: 1.125rem; font-weight: 900; color: #fff;
-}
-.sp-vstep-title { font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.015em; }
-.sp-vstep-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
-
-/* ─── RELATED PAGES ──────────────────────────────── */
-.sp-related { padding: 2.5rem 2rem; background: #050505; border-top: 1px solid #111713; }
-.sp-related-inner { max-width: 1100px; margin: 0 auto; }
-.sp-related-h { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.18); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-.sp-related-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.sp-related-link {
-  font-size: 0.8125rem; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07); padding: 0.35rem 0.875rem; border-radius: 99px;
-  text-decoration: none; transition: color .15s, border-color .15s;
-}
-.sp-related-link:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.18); }
-
-/* ─── FOOTER ─────────────────────────────────────── */
-.sp-footer { background: #000; border-top: 1px solid #111; padding: 1.5rem 2rem; }
-.sp-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
-.sp-footer-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
-.sp-footer p { font-size: 0.8125rem; color: rgba(255,255,255,0.18); }
-.sp-footer a { color: #444; text-decoration: none; transition: color .15s; }
-.sp-footer a:hover { color: rgba(255,255,255,0.5); }
-
-/* ─── STICKY MOBILE CTA ──────────────────────────── */
+/* ── sticky booking bar: slides in after the hero ── */
 .sp-sticky {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  padding: 0.875rem 1.25rem calc(0.875rem + env(safe-area-inset-bottom));
-  background: rgba(0,0,0,0.95); border-top: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  transform: translateY(110%); transition: transform 0.3s ease; pointer-events: none;
+  transform: translateY(130%);
+  transition: transform 0.25s ease;
 }
-.sp-sticky--show { transform: translateY(0); pointer-events: auto; }
-.sp-sticky-btn {
-  display: block; width: 100%; text-align: center;
-  background: #fff; color: #000; padding: 0.875rem; border-radius: 10px;
-  font-size: 0.9375rem; font-weight: 700; text-decoration: none;
-  transition: background .15s;
+.sp-sticky.is-on {
+  transform: none;
 }
-.sp-sticky-btn:hover { background: #e8e8e8; }
-
-/* ─── RESPONSIVE ─────────────────────────────────── */
-@media (min-width: 960px) {
-  .sp-sticky { display: none; }
-}
-@media (max-width: 960px) {
-  .sp-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .sp-hero-img { display: none; }
-  .sp-prices { grid-template-columns: repeat(2,1fr); }
-  .sp-reviews { grid-template-columns: repeat(2,1fr); }
-  .sp-steps { grid-template-columns: 1fr; }
-  .sp-tasks { grid-template-columns: 1fr; }
-  .sp-checklist-grid { grid-template-columns: 1fr; }
-  .sp-nav-links { display: none; }
-}
-@media (max-width: 600px) {
-  .sp-hero { padding: 2.5rem 1.25rem 2rem; }
-  .sp-hero-sm { padding: 2.5rem 1.25rem 2rem; }
-  .sp-section { padding: 3rem 1.25rem; }
-  .sp-w { padding: 0 1.25rem; }
-  .sp-nav-inner { padding: 0 1.25rem; }
-  .sp-breadcrumb { padding: 0.5rem 1.25rem; }
-  .sp-h1 { font-size: 1.75rem; }
-  .sp-h2 { font-size: 1.375rem; margin-bottom: 1.125rem; }
-  .sp-prices { grid-template-columns: repeat(2,1fr); }
-  .sp-reviews { grid-template-columns: 1fr; }
-  .sp-cta { padding: 2rem 1.25rem; }
-  .sp-cta-h { font-size: 1.25rem; }
-  .sp-hero-btns { flex-direction: column; align-items: flex-start; }
-  .sp-related { padding: 2rem 1.25rem; }
-  .sp-footer { padding: 1.25rem; }
-  .sp-footer-inner { flex-direction: column; align-items: flex-start; }
-}
-@media (max-width: 380px) {
-  .sp-prices { grid-template-columns: 1fr; }
-  .sp-trust span { font-size: 0.75rem; padding: 0.25rem 0.625rem; }
+@media (max-width: 560px) {
+  .sp-prices.sw-g4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sp-prices .sw-rate {
+    padding: 16px;
+  }
+  .sp-prices .sw-rate b {
+    font-size: 24px;
+  }
 }

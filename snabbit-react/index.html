@@ -21,7 +21,18 @@
     <meta name="geo.placename" content="Gurgaon" />
     <meta name="geo.position" content="28.4595;77.0266" />
     <meta name="ICBM" content="28.4595, 77.0266" />
-    <meta name="theme-color" content="#070a08" />
+    <meta name="theme-color" content="#0b0a0f" />
+    <script>
+      /* Apply the saved light/dark choice before first paint (default: dark). */
+      try {
+        var q = /[?&]theme=(light|dark)/.exec(location.search)
+        if (q) localStorage.setItem('switch-theme', q[1])
+        if (localStorage.getItem('switch-theme') === 'light') {
+          document.documentElement.dataset.theme = 'light'
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f6f4fb')
+        }
+      } catch (e) {}
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
@@ -35,7 +46,7 @@
     <link rel="preconnect" href="https://app.switchlocally.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
     <link rel="preload" as="image" href="/hero-workers.jpg" fetchpriority="high" />
     <meta property="og:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
     <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, pay on arrival." />

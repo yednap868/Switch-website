@@ -1,54 +1,95 @@
-.legal {
-  background: #000;
-  color: #fff;
-  padding: 7rem 1.5rem 5rem;
-  min-height: 100vh;
-}
-.legal-wrap {
+/* ─── Legal pages (/terms, /privacy, /cancellation) ─────────────────
+   Only switch.css tokens here. */
+
+.legal-doc {
   max-width: 760px;
-  margin: 0 auto;
+  margin-inline: auto;
+  padding-block: 22px clamp(40px, 6vw, 72px);
 }
-.legal-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #55d57b;
-  margin-bottom: 0.75rem;
+.legal-head {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+  max-width: 68ch;
 }
 .legal-title {
-  font-size: clamp(2rem, 5vw, 2.9rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.1rem;
+  font-size: clamp(34px, 5.2vw, 54px);
 }
 .legal-intro {
-  font-size: 1.075rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2.75rem;
-  padding-bottom: 2.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--muted);
 }
-.legal-sec { margin-bottom: 2rem; }
-.legal-h {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  color: #fff;
+
+.legal-toc {
+  margin-block: 28px 8px;
+  padding: 18px 22px;
+  max-width: 68ch;
 }
-.legal-p {
-  font-size: 1rem;
+.legal-toc ol {
+  margin: 10px 0 0;
+  padding-left: 1.3em;
+  columns: 2;
+  column-gap: 28px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.legal-toc li {
+  break-inside: avoid;
+  padding-block: 3px;
+}
+.legal-toc li::marker {
+  color: var(--p-t);
+  font-weight: 800;
+}
+.legal-toc a {
+  color: var(--ink);
+}
+.legal-toc a:hover {
+  color: var(--p-t);
+}
+@media (max-width: 560px) {
+  .legal-toc ol {
+    columns: 1;
+  }
+}
+
+.legal-prose {
+  max-width: 68ch;
+  font-size: 17px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.68);
+  overflow-wrap: break-word;
 }
+.legal-sec {
+  padding-top: 30px;
+  scroll-margin-top: 90px;
+}
+.legal-sec + .legal-sec {
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+}
+.legal-sec h2 {
+  font-size: clamp(20px, 2.4vw, 24px);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+.legal-sec p {
+  margin-top: 10px;
+  color: var(--ink);
+}
+.legal-sec a,
+.legal-updated a {
+  color: var(--p-t);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .legal-updated {
-  margin-top: 3rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
+  margin-top: 40px;
+  max-width: 68ch;
+  padding: 18px 22px;
+  font-size: 14.5px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
 }
-.legal-updated a { color: #55d57b; text-decoration: none; }
-.legal-updated a:hover { text-decoration: underline; }

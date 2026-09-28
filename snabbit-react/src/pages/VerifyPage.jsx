@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
 import { lookupCertificate } from '../data/certificates'
 import './VerifyPage.css'
 
@@ -43,32 +44,48 @@ export default function VerifyPage() {
         <meta property="og:description" content="Confirm a certificate issued by Switch (Third Wave Labs Private Limited)." />
         <meta property="og:url" content={`${BASE_URL}/verify`} />
       </Helmet>
-      <Nav />
-      <main className="verify">
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
+      <main id="page-main" className="sw-wrap verify">
         <div className="verify-wrap">
-          <p className="verify-eyebrow">Certificate Verification</p>
-          <h1 className="verify-title">Verify a Switch Certificate</h1>
-          <p className="verify-intro">
-            Enter or scan the certificate ID to confirm it was genuinely issued by
-            Switch (Third Wave Labs Private Limited).
-          </p>
+          <header className="verify-head">
+            <span className="verify-seal" aria-hidden="true">
+              <Icon name="shield" />
+            </span>
+            <p className="sw-eyebrow">Certificate Verification</p>
+            <h1 className="sw-h1 verify-title">Verify a Switch Certificate</h1>
+            <p className="verify-intro">
+              Enter or scan the certificate ID to confirm it was genuinely issued by
+              Switch (Third Wave Labs Private Limited).
+            </p>
+          </header>
 
-          <form className="verify-form" onSubmit={onSubmit}>
-            <input
-              className="verify-input"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="e.g. SWITCH/INT/2026/0007"
-              aria-label="Certificate ID"
-            />
-            <button className="verify-btn" type="submit">Verify</button>
+          <form className="sw-card sw-form verify-form" onSubmit={onSubmit}>
+            <label className="sw-field" htmlFor="cert-id">Certificate ID</label>
+            <div className="verify-row">
+              <input
+                id="cert-id"
+                className="sw-inp"
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="e.g. SWITCH/INT/2026/0007"
+                aria-label="Certificate ID"
+                autoComplete="off"
+                spellCheck={false}
+              />
+              <button className="sw-btn" type="submit">
+                <Icon name="search" /> Verify
+              </button>
+            </div>
           </form>
 
           {searched && cert && (
-            <div className="verify-card verify-ok">
+            <div className="sw-card verify-card verify-ok" role="status">
               <div className="verify-badge">
-                <span className="verify-check">✓</span> Verified — Genuine Certificate
+                <span className="mark" aria-hidden="true">✓</span> Verified — Genuine Certificate
               </div>
               <dl className="verify-details">
                 <div><dt>Name</dt><dd>{cert.name}</dd></div>
@@ -80,22 +97,22 @@ export default function VerifyPage() {
                 <div><dt>Certificate No.</dt><dd>{cert.displayId}</dd></div>
                 <div><dt>Issued by</dt><dd>Switch · Third Wave Labs Private Limited</dd></div>
               </dl>
-              <p className="verify-foot-note">
+              <p>
                 This confirms the above certificate is recorded in Switch's issuance register.
               </p>
             </div>
           )}
 
           {searched && !cert && (
-            <div className="verify-card verify-bad">
+            <div className="sw-card verify-card verify-bad" role="status">
               <div className="verify-badge verify-badge-bad">
-                <span className="verify-cross">!</span> No match found
+                <span className="mark" aria-hidden="true">!</span> No match found
               </div>
               <p>
                 We couldn't find a certificate with the ID <b>{idFromUrl}</b> in our register.
                 Please check the ID and try again, or contact us to confirm.
               </p>
-              <p className="verify-contact">
+              <p>
                 Email <a href="mailto:hr@switchlocally.com">hr@switchlocally.com</a> with a copy of the certificate.
               </p>
             </div>

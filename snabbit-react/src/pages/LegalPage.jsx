@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import { Crumbs } from '../components/ui/Blocks.jsx'
 import './LegalPage.css'
 
 const CONTACT_EMAIL = 'hello@switchlocally.com'
@@ -72,23 +73,42 @@ export default function LegalPage({ policy }) {
         <meta property="og:description" content={data.intro} />
         <meta property="og:url" content={url} />
       </Helmet>
-      <Nav />
-      <main className="legal">
-        <div className="legal-wrap">
-          <p className="legal-eyebrow">Legal</p>
-          <h1 className="legal-title">{data.title}</h1>
-          <p className="legal-intro">{data.intro}</p>
-          {data.sections.map((s, i) => (
-            <section className="legal-sec" key={i}>
-              <h2 className="legal-h">{s.h}</h2>
-              <p className="legal-p">{s.p}</p>
-            </section>
-          ))}
-          <p className="legal-updated">
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
+      <main id="page-main" className="sw-wrap legal">
+        <Crumbs items={[[data.title]]} />
+        <article className="legal-doc">
+          <header className="legal-head">
+            <p className="sw-eyebrow">Legal</p>
+            <h1 className="sw-h1 legal-title">{data.title}</h1>
+            <p className="legal-intro">{data.intro}</p>
+            <span className="sw-tag">Last updated {LAST_UPDATED}</span>
+          </header>
+          <nav className="sw-card legal-toc" aria-label="On this page">
+            <p className="sw-eyebrow">On this page</p>
+            <ol>
+              {data.sections.map((s, i) => (
+                <li key={i}>
+                  <a href={`#s${i + 1}`}>{s.h.replace(/^\d+\.\s*/, '')}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <div className="legal-prose">
+            {data.sections.map((s, i) => (
+              <section className="legal-sec" id={`s${i + 1}`} key={i}>
+                <h2>{s.h}</h2>
+                <p>{s.p}</p>
+              </section>
+            ))}
+          </div>
+          <p className="sw-card legal-updated">
             Last updated: {LAST_UPDATED}. Questions? Email{' '}
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
           </p>
-        </div>
+        </article>
       </main>
       <Footer />
     </>

@@ -3,58 +3,70 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs, CtaFeature, Faq as FaqList, HeroArt, StatsRow } from '../components/ui/Blocks.jsx'
+import { HOME_STATS } from '../data/homeContent.js'
 import { GURGAON_AREAS, INDUSTRY_PAGES, getIndustryPage } from '../data/industryPages.js'
 import { APP_URL, EMAIL, waLink } from '../data/site.js'
 import './IndustryPage.css'
 
 const BASE_URL = 'https://switchlocally.com'
 const pad = (n) => String(n + 1).padStart(2, '0')
+const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey']
+
+/* Staff photo (arch-cropped in the hero) and CTA photos per industry. */
+const ART = {
+  'warehouse-staffing-gurgaon': ['/sw-factory-helper.jpg', '/sw-general-helper.jpg', 'warehouse'],
+  'event-staffing-gurgaon': ['/sw-bartender.jpg', '/sw-waiter.jpg', 'party'],
+  'restaurant-staffing-gurgaon': ['/sw-waiter.jpg', '/sw-cook.jpg', 'utensils'],
+  'office-staffing-gurgaon': ['/sw-maid.jpg', '/sw-security-guard.jpg', 'building'],
+  'retail-staffing-gurgaon': ['/sw-general-helper.jpg', '/sw-security-guard.jpg', 'store'],
+}
+const DEFAULT_ART = ['/hero-workers.jpg', '/sw-general-helper.jpg', 'building']
 
 /* "Hire X Staff" books through the app; "Talk to Switch" and
    "Tell Us What You Need" open WhatsApp with the page's context. */
-function HireCta({ page, className = 'btn primary' }) {
+function HireCta({ page, className = 'sw-btn' }) {
   return (
     <a href={APP_URL} className={className}>
-      {page.hero.cta} <b>→</b>
+      {page.hero.cta} <Icon name="arrow" />
     </a>
   )
 }
 
-function NeedCta({ page, className = 'btn ghost' }) {
+function NeedCta({ page, className = 'sw-btn line' }) {
   return (
     <a href={waLink(page.waMsg)} target="_blank" rel="noreferrer" className={className}>
-      Tell Us What You Need <b>→</b>
+      Tell Us What You Need <Icon name="arrow" />
     </a>
   )
 }
 
 function SectionHead({ s }) {
   return (
-    <div className="section-head">
-      <div>
-        <span className="eyebrow">{s.eyebrow}</span>
-        <h2>{s.h2}</h2>
-      </div>
-      {s.lead && <p>{s.lead}</p>}
+    <div className="sw-head">
+      <p className="sw-eyebrow">{s.eyebrow}</p>
+      <h2 className="sw-h2">{s.h2}</h2>
+      {s.lead && <p className="sw-lead">{s.lead}</p>}
     </div>
   )
 }
 
 function Intro({ s, page }) {
   return (
-    <div className="ind-intro">
-      <div>
-        <span className="eyebrow">{s.eyebrow}</span>
-        <h2 className="ind-h2">{s.h2}</h2>
+    <div className="ind-split">
+      <div className="sw-head">
+        <p className="sw-eyebrow">{s.eyebrow}</p>
+        <h2 className="sw-h2">{s.h2}</h2>
       </div>
-      <div className="ind-intro-body">
+      <div className="ind-prose">
         {s.paras.map((p) => (
           <p key={p}>{p}</p>
         ))}
-        <aside className="ind-callout">
+        <aside className="sw-feature ind-callout">
           <strong>{s.callout.title}</strong>
           <p>{s.callout.text}</p>
-          <NeedCta page={page} className="btn primary" />
+          <NeedCta page={page} className="sw-btn white" />
         </aside>
       </div>
     </div>
@@ -65,36 +77,41 @@ function Roles({ s, page }) {
   return (
     <>
       <SectionHead s={s} />
-      <div className="ind-roles">
+      <div className="sw-grid sw-g3">
         {s.groups.map((g, i) => (
-          <div className="ind-role" key={g.name}>
-            <span className="eyebrow">{pad(i)}</span>
-            <h3>{g.name}</h3>
-            <ul>
+          <div className="sw-card ind-role" key={g.name}>
+            <span className="ind-n">{pad(i)}</span>
+            <h3 className="sw-h3">{g.name}</h3>
+            <ul className="ind-tags">
               {g.roles.map((r) => (
-                <li key={r}>{r}</li>
+                <li className="sw-tag" key={r}>
+                  {r}
+                </li>
               ))}
             </ul>
             {g.desc && <p>{g.desc}</p>}
           </div>
         ))}
       </div>
-      <div className="ind-actions">
+      <div className="sw-btns ind-actions">
         <HireCta page={page} />
       </div>
     </>
   )
 }
 
-function Cards({ s }) {
+function Cards({ s, page }) {
+  const icon = (ART[page.slug] || DEFAULT_ART)[2]
   return (
     <>
       <SectionHead s={s} />
-      <div className="reasons ind-cards">
+      <div className="sw-grid sw-g3">
         {s.items.map((c, i) => (
-          <div className="reason" key={c.title}>
-            <span className="eyebrow">{pad(i)}</span>
-            <b>{c.title}</b>
+          <div className="sw-card sw-ind" key={c.title}>
+            <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+              <Icon name={icon} />
+            </span>
+            <h3 className="sw-h3">{c.title}</h3>
             <p>{c.desc}</p>
           </div>
         ))}
@@ -107,11 +124,11 @@ function Flow({ s }) {
   return (
     <>
       <SectionHead s={s} />
-      <ol className="ind-flow" style={{ '--n': s.items.length }}>
+      <ol className="sw-grid sw-g4 ind-ol">
         {s.items.map((f, i) => (
-          <li key={f.title}>
-            <span className="ind-flow-num">{pad(i)}</span>
-            <h3>{f.title}</h3>
+          <li className="sw-card sw-step" key={f.title}>
+            <span className="n">{pad(i)}</span>
+            <h3 className="sw-h3">{f.title}</h3>
             <p>{f.desc}</p>
           </li>
         ))}
@@ -124,9 +141,12 @@ function List({ s }) {
   return (
     <>
       <SectionHead s={s} />
-      <ul className="ind-chips">
+      <ul className="sw-chips ind-chips">
         {s.items.map((t) => (
-          <li key={t}>{t}</li>
+          <li className="sw-chip" key={t}>
+            <Icon name="check" />
+            {t}
+          </li>
         ))}
       </ul>
     </>
@@ -137,21 +157,29 @@ function Table({ s, page }) {
   return (
     <>
       <SectionHead s={s} />
-      <div className="ind-table" role="table">
-        <div className="ind-table-row ind-table-head" role="row">
-          {s.cols.map((c) => (
-            <span role="columnheader" key={c}>{c}</span>
-          ))}
-        </div>
-        {s.rows.map(([need, how]) => (
-          <div className="ind-table-row" role="row" key={need}>
-            <span role="cell">{need}</span>
-            <span role="cell">{how}</span>
-          </div>
-        ))}
+      <div className="sw-table">
+        <table>
+          <thead>
+            <tr>
+              {s.cols.map((c) => (
+                <th scope="col" key={c}>
+                  {c}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {s.rows.map(([need, how]) => (
+              <tr key={need}>
+                <td className="ind-need">{need}</td>
+                <td>{how}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       {s.cta && (
-        <div className="ind-actions">
+        <div className="sw-btns ind-actions">
           <HireCta page={page} />
         </div>
       )}
@@ -163,15 +191,23 @@ function Why({ s, page }) {
   return (
     <>
       <SectionHead s={s} />
-      <div className="reasons ind-why">
-        {s.items.map((w, i) => (
-          <div className={`reason${w.cta ? ' ind-why-cta' : ''}`} key={w.title}>
-            <span className="eyebrow">{pad(i)}</span>
-            <b>{w.title}</b>
-            <p>{w.desc}</p>
-            {w.cta && <NeedCta page={page} className="text-link" />}
-          </div>
-        ))}
+      <div className="sw-grid sw-g3">
+        {s.items.map((w, i) =>
+          w.cta ? (
+            <div className="sw-dashed ind-why-cta" key={w.title}>
+              <span className="ind-n">{pad(i)}</span>
+              <h3 className="sw-h3">{w.title}</h3>
+              <p>{w.desc}</p>
+              <NeedCta page={page} className="sw-link" />
+            </div>
+          ) : (
+            <div className="sw-card sw-step" key={w.title}>
+              <Icon name="shield" style={{ color: 'var(--p-t)' }} />
+              <h3 className="sw-h3">{w.title}</h3>
+              <p>{w.desc}</p>
+            </div>
+          ),
+        )}
       </div>
     </>
   )
@@ -181,16 +217,16 @@ function Steps({ s, page }) {
   return (
     <>
       <SectionHead s={s} />
-      <ol className="ind-steps">
+      <ol className="sw-grid sw-g3 ind-ol">
         {s.items.map((st, i) => (
-          <li key={st.title}>
-            <span className="eyebrow">Step {i + 1}</span>
-            <h3>{st.title}</h3>
+          <li className="sw-card sw-step" key={st.title}>
+            <span className="n">STEP {i + 1}</span>
+            <h3 className="sw-h3">{st.title}</h3>
             <p>{st.desc}</p>
           </li>
         ))}
       </ol>
-      <div className="ind-actions">
+      <div className="sw-btns ind-actions">
         <HireCta page={page} />
       </div>
     </>
@@ -199,17 +235,17 @@ function Steps({ s, page }) {
 
 function Areas({ s, page }) {
   return (
-    <div className="ind-areas">
-      <div>
-        <span className="eyebrow">{s.eyebrow}</span>
-        <h2 className="ind-h2">{s.h2}</h2>
-        <p className="ind-muted">{s.lead}</p>
+    <div className="ind-split">
+      <div className="sw-head">
+        <p className="sw-eyebrow">{s.eyebrow}</p>
+        <h2 className="sw-h2">{s.h2}</h2>
+        <p className="sw-lead">{s.lead}</p>
       </div>
       <div>
-        <ul className="ind-area-list">
+        <ul className="ind-areas">
           {GURGAON_AREAS.map((a) => (
             <li key={a}>
-              <i aria-hidden="true" />
+              <Icon name="pin" />
               {a}
             </li>
           ))}
@@ -218,12 +254,12 @@ function Areas({ s, page }) {
           Need staff somewhere else in Gurgaon? Tell us your location and we&apos;ll confirm
           availability.{' '}
           <a
-            className="text-link"
+            className="sw-link"
             href={waLink(`${page.waMsg} My location is: `)}
             target="_blank"
             rel="noreferrer"
           >
-            Check your area →
+            Check your area <Icon name="arrow" />
           </a>
         </p>
       </div>
@@ -233,20 +269,13 @@ function Areas({ s, page }) {
 
 function Faq({ s }) {
   return (
-    <div className="ind-faq">
-      <div>
-        <span className="eyebrow">{s.eyebrow}</span>
-        <h2 className="ind-h2">{s.h2}</h2>
+    <>
+      <div className="sw-head">
+        <p className="sw-eyebrow">{s.eyebrow}</p>
+        <h2 className="sw-h2">{s.h2}</h2>
       </div>
-      <div className="ind-faq-list">
-        {s.items.map((f) => (
-          <details key={f.q}>
-            <summary>{f.q}</summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
+      <FaqList items={s.items} />
+    </>
   )
 }
 
@@ -339,6 +368,7 @@ export default function IndustryPage({ slug }) {
   }, [slug])
 
   const others = INDUSTRY_PAGES.filter((p) => p.slug !== slug)
+  const [heroImg, altImg] = ART[page.slug] || DEFAULT_ART
 
   return (
     <>
@@ -347,62 +377,91 @@ export default function IndustryPage({ slug }) {
         Skip to main content
       </a>
       <Header />
-      <main id="page-main" className="ind-root">
-        <section className="ind-hero">
-          <div className="shell">
-            <nav className="ind-crumbs" aria-label="Breadcrumb">
-              <Link to="/">Home</Link>
-              <span aria-hidden="true">/</span>
-              <Link to="/staffing-gurgaon">Staffing in Gurgaon</Link>
-              <span aria-hidden="true">/</span>
-              <span aria-current="page">{page.name}</span>
-            </nav>
-            <h1 className="ind-hero-eyebrow eyebrow">{page.hero.eyebrow}</h1>
-            <p className="ind-hero-title">
+      <main id="page-main" className="sw-wrap">
+        <Crumbs items={[['Staffing in Gurgaon', '/staffing-gurgaon'], [page.name]]} />
+
+        <section className="sw-hero">
+          <div>
+            <h1 className="sw-eyebrow ind-h1">{page.hero.eyebrow}</h1>
+            <p className="sw-h1 ind-title">
               {page.hero.h1} <em>{page.hero.h1Em}</em>
             </p>
-            <p className="ind-hero-lead">{page.hero.lead}</p>
-            <div className="ind-actions ind-hero-actions">
+            <p className="sw-lead">{page.hero.lead}</p>
+            <div className="sw-btns">
               <HireCta page={page} />
-              <a href={waLink(page.waMsg)} target="_blank" rel="noreferrer" className="btn ghost">
-                Talk to Switch <b>→</b>
+              <a href={waLink(page.waMsg)} target="_blank" rel="noreferrer" className="sw-btn line">
+                Talk to Switch <Icon name="arrow" />
               </a>
             </div>
-            <ul className="ind-hero-trust">
-              <li>Aadhaar-verified</li>
-              <li>Staff in a day</li>
-              <li>Replacement guarantee</li>
-              <li>Transparent billing</li>
+            <ul className="sw-checks ind-trust">
+              {['Aadhaar-verified', 'Staff in a day', 'Replacement guarantee', 'Transparent billing'].map((x) => (
+                <li className="sw-pill sw-live" key={x}>
+                  {x}
+                </li>
+              ))}
             </ul>
           </div>
+          <HeroArt
+            img={heroImg}
+            alt={`${page.name} — a verified Switch Player in Gurgaon`}
+            otp
+            badge={{ title: 'Staff confirmed', sub: 'Often within the day' }}
+          />
         </section>
+
+        <StatsRow items={HOME_STATS} />
 
         {page.sections.map((s, i) => {
           const Render = RENDERERS[s.type]
           return (
-            <section className={`ind-sec ind-sec-${s.type}`} key={`${s.type}-${i}`}>
-              <div className="shell">
-                <Render s={s} page={page} />
-              </div>
+            <section className={`sw-sec ind-sec-${s.type}`} key={`${s.type}-${i}`}>
+              <Render s={s} page={page} />
             </section>
           )
         })}
 
-        <section className="ind-sec ind-more">
-          <div className="shell">
-            <span className="eyebrow">More industries</span>
-            <div className="ind-more-links">
-              {others.map((p) => (
-                <Link key={p.slug} to={`/${p.slug}`}>
-                  {p.name} <b>↗</b>
+        <section className="sw-sec ind-more" aria-labelledby="ind-more-h">
+          <div className="sw-head">
+            <p className="sw-eyebrow" id="ind-more-h">
+              More industries
+            </p>
+          </div>
+          <div className="sw-grid sw-g3">
+            {others.map((p) => {
+              const [img] = ART[p.slug] || DEFAULT_ART
+              return (
+                <Link key={p.slug} className="sw-card sw-press ind-more-link" to={`/${p.slug}`}>
+                  <span className="ind-more-img">
+                    <img src={img} alt="" loading="lazy" />
+                  </span>
+                  <b>{p.name}</b>
+                  <span className="sw-go">
+                    <Icon name="arrow" />
+                  </span>
                 </Link>
-              ))}
-              <Link to="/staffing-gurgaon">
-                All staffing in Gurgaon <b>↗</b>
-              </Link>
-            </div>
+              )
+            })}
+            <Link className="sw-card sw-press ind-more-link" to="/staffing-gurgaon">
+              <span className="sw-sq t-lav">
+                <Icon name="sparkles" />
+              </span>
+              <b>All staffing in Gurgaon</b>
+              <span className="sw-go">
+                <Icon name="arrow" />
+              </span>
+            </Link>
           </div>
         </section>
+
+        <CtaFeature
+          title={
+            <>
+              {page.hero.cta} <em>today.</em>
+            </>
+          }
+          msg={page.waMsg}
+          photos={[heroImg, altImg]}
+        />
       </main>
       <Footer />
     </>

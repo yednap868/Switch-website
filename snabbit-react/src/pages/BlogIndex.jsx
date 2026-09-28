@@ -1,8 +1,10 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs } from '../components/ui/Blocks.jsx'
 import { BLOG_POSTS } from '../data/blogData.js'
 import './Blog.css'
 
@@ -10,17 +12,36 @@ function formatDate(d) {
   return new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
+/* Card used on /blog and in "Keep reading" under each post. */
+export function PostCard({ p }) {
+  return (
+    <Link to={`/blog/${p.slug}`} className="sw-card sw-press bl-card">
+      {p.hero && (
+        <div className="bl-card-img">
+          <img src={p.hero} alt={p.title} loading="lazy" />
+        </div>
+      )}
+      <div className="bl-card-body">
+        <div className="bl-tags">
+          <span className="sw-pill">{p.category}</span>
+          <span className="sw-tag">{p.readMins} min read</span>
+        </div>
+        <h3 className="bl-card-title">{p.title}</h3>
+        <p className="bl-card-excerpt">{p.excerpt}</p>
+        <span className="bl-card-foot">
+          <span>{formatDate(p.date)}</span>
+          <span className="sw-link">
+            Read <Icon name="arrow" />
+          </span>
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 export default function BlogIndex() {
   useEffect(() => {
     if (!window.location.hash) window.scrollTo(0, 0)
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('anim-in'); obs.unobserve(e.target) }
-      }),
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    )
-    document.querySelectorAll('[data-anim]').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
   }, [])
 
   const blogSchema = {
@@ -64,92 +85,80 @@ export default function BlogIndex() {
         <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
-      <Nav />
-      <main className="bl-root">
-        {/* Header */}
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
+      <main id="page-main" className="sw-wrap bl-root">
+        <Crumbs items={[['Blog']]} />
+
         <section className="bl-hero">
-          <div className="bl-hero-bg" aria-hidden="true">
-            <div className="bl-hero-grid" />
-            <div className="bl-hero-glow" />
-          </div>
-          <div className="bl-w">
-            <div className="bl-hero-inner" data-anim>
-              <span className="bl-tag">Switch Blog</span>
-              <h1 className="bl-h1">
-                Hiring guides for<br />
-                <em>Gurgaon families &amp; businesses.</em>
-              </h1>
-              <p className="bl-lead">
-                Honest, practical advice on hiring verified maids, cooks, caretakers, drivers,
-                security staff and event staff in Gurgaon — written by the team behind Switch.
-              </p>
-            </div>
-          </div>
+          <p className="sw-eyebrow">Switch Blog</p>
+          <h1 className="sw-h1 bl-h1">
+            Hiring guides for <em>Gurgaon families &amp; businesses.</em>
+          </h1>
+          <p className="sw-lead">
+            Honest, practical advice on hiring verified maids, cooks, caretakers, drivers,
+            security staff and event staff in Gurgaon — written by the team behind Switch.
+          </p>
         </section>
 
         {/* Featured */}
-        <section className="bl-sec">
-          <div className="bl-w">
-            <Link to={`/blog/${featured.slug}`} className="bl-feature" data-anim>
+        <section aria-label="Featured guide">
+          <Link to={`/blog/${featured.slug}`} className="sw-card sw-press bl-feature">
+            {featured.hero && (
               <div className="bl-feature-img">
                 <img src={featured.hero} alt={featured.title} loading="eager" />
-                <div className="bl-feature-overlay" />
               </div>
-              <div className="bl-feature-body">
-                <div className="bl-meta">
-                  <span className="bl-chip">{featured.category}</span>
-                  <span className="bl-meta-sep">·</span>
-                  <span>{formatDate(featured.date)}</span>
-                  <span className="bl-meta-sep">·</span>
-                  <span>{featured.readMins} min read</span>
-                </div>
-                <h2 className="bl-feature-title">{featured.title}</h2>
-                <p className="bl-feature-excerpt">{featured.excerpt}</p>
-                <span className="bl-feature-cta">Read the guide →</span>
+            )}
+            <div className="bl-feature-body">
+              <div className="bl-tags">
+                <span className="sw-pill">{featured.category}</span>
+                <span className="sw-tag">{featured.readMins} min read</span>
+                <span className="sw-tag">{formatDate(featured.date)}</span>
               </div>
-            </Link>
-          </div>
+              <h2 className="bl-feature-title">{featured.title}</h2>
+              <p className="bl-feature-excerpt">{featured.excerpt}</p>
+              <span className="sw-btn sm bl-feature-cta">
+                Read the guide <Icon name="arrow" />
+              </span>
+            </div>
+          </Link>
         </section>
 
         {/* Grid */}
-        <section className="bl-sec">
-          <div className="bl-w">
-            <div className="bl-sec-hd" data-anim>
-              <span className="bl-tag">More guides</span>
-              <h2 className="bl-h2">Read every guide.</h2>
-              <p className="bl-sub">Everything we know about hiring verified Switch Players in Gurgaon — straight to the point.</p>
-            </div>
-            <div className="bl-grid">
-              {rest.map((p, i) => (
-                <Link to={`/blog/${p.slug}`} className="bl-card" key={p.slug} data-anim style={{'--delay':`${(i%3)*80}ms`}}>
-                  <div className="bl-card-img">
-                    <img src={p.hero} alt={p.title} loading="lazy" />
-                  </div>
-                  <div className="bl-card-body">
-                    <div className="bl-meta bl-meta--sm">
-                      <span className="bl-chip">{p.category}</span>
-                      <span>{p.readMins} min</span>
-                    </div>
-                    <h3 className="bl-card-title">{p.title}</h3>
-                    <p className="bl-card-excerpt">{p.excerpt}</p>
-                    <span className="bl-card-date">{formatDate(p.date)}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">More guides</p>
+            <h2 className="sw-h2">
+              Read every <em>guide.</em>
+            </h2>
+            <p className="sw-lead">
+              Everything we know about hiring verified Switch Players in Gurgaon — straight to the point.
+            </p>
+          </div>
+          <div className="sw-grid sw-g3 bl-grid">
+            {rest.map((p) => (
+              <PostCard p={p} key={p.slug} />
+            ))}
           </div>
         </section>
 
         {/* CTA */}
-        <section className="bl-cta-sec">
-          <div className="bl-w">
-            <div className="bl-cta" data-anim>
-              <h2 className="bl-cta-h">Ready to hire a verified Switch Player?</h2>
-              <p className="bl-cta-p">
-                Skip the reading and skip ahead. Book a verified maid, cook, caretaker, driver,
-                security guard or event staff member in minutes.
-              </p>
-              <a href="https://app.switchlocally.com/" className="bl-cta-primary">Book Now →</a>
+        <section className="sw-sec" style={{ paddingTop: 0 }}>
+          <div className="sw-feature bl-cta">
+            <p className="sw-eyebrow">Ready when you are</p>
+            <h2>
+              Ready to hire a verified <em>Switch Player?</em>
+            </h2>
+            <p>
+              Skip the reading and skip ahead. Book a verified maid, cook, caretaker, driver,
+              security guard or event staff member in minutes.
+            </p>
+            <div className="sw-btns">
+              <a href="https://app.switchlocally.com/" className="sw-btn white">
+                Book Now <Icon name="arrow" />
+              </a>
             </div>
           </div>
         </section>
