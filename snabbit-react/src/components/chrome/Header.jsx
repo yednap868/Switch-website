@@ -1,91 +1,125 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState, useSyncExternalStore } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import Icon from '../ui/Icon.jsx'
 import { EMPLOYER_LOGIN } from '../../data/site.js'
 
 const LINKS = [
-  { href: '/#services', label: 'Services' },
-  { href: '/#how', label: 'How it works' },
-  { href: '/#trust', label: 'Why Switch' },
-  { href: '/#pricing', label: 'Pricing' },
-  { href: '/#coverage', label: 'Coverage' },
-  { href: '/#app-section', label: 'Get the app' },
+  { to: '/staffing-gurgaon', label: 'Services' },
+  { to: '/#trial', label: '₹149 Trial' },
+  { to: '/#pricing', label: 'Pricing' },
+  { to: '/#how', label: 'How it works' },
+  { to: '/about', label: 'About' },
+  { to: '/blog', label: 'Blog' },
 ]
 
+/* Theme: dark is the default. The choice lives on <html data-theme>, is saved
+   to localStorage, and is applied before first paint by the inline script in
+   index.html, so there is no flash. The server always renders the dark icon. */
+const themeListeners = new Set()
+const readTheme = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark')
+const subscribeTheme = (fn) => {
+  themeListeners.add(fn)
+  return () => themeListeners.delete(fn)
+}
+function setTheme(next) {
+  document.documentElement.dataset.theme = next
+  const meta = document.querySelector('meta[name="theme-color"]')
+  if (meta) meta.setAttribute('content', next === 'light' ? '#f6f4fb' : '#0b0a0f')
+  try {
+    localStorage.setItem('switch-theme', next)
+  } catch {
+    /* private mode — the choice just won't persist */
+  }
+  themeListeners.forEach((fn) => fn())
+}
+
+export function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribeTheme, readTheme, () => 'dark')
+  const toLight = theme === 'dark'
+  return (
+    <button
+      type="button"
+      className="sw-theme"
+      onClick={() => setTheme(toLight ? 'light' : 'dark')}
+      aria-label={toLight ? 'Switch to light theme' : 'Switch to dark theme'}
+      title={toLight ? 'Light theme' : 'Dark theme'}
+    >
+      <Icon name={toLight ? 'sun' : 'moon'} />
+    </button>
+  )
+}
+
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    if (typeof document === 'undefined') return
-    document.body.classList.toggle('menu-open', open)
-    return () => document.body.classList.remove('menu-open')
-  }, [open])
+  const { pathname } = useLocation()
 
   useEffect(() => {
     if (!open) return
-    const onKey = (e) => {
-      if (e.key === 'Escape') {
-        setOpen(false)
-        document.querySelector('.menu')?.focus()
-      }
-    }
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
   }, [open])
 
   return (
-    <header className={`header${scrolled ? ' scrolled' : ''}`}>
-      <div className="shell nav">
-        <Link to="/" className="logo" aria-label="Switch home">
-          {/* The S monogram the favicon and touch icon already carry, so the
-              tab, the home-screen icon and the header all show one mark. The
-              three skewed bars it replaces were a generic chart glyph. */}
-          <span className="logo-mark" aria-hidden="true">S</span>
-          {/* Plain text, not the particle canvas. At the header's 19px cap the
-              particle sampler only lands a few dots per glyph, so the wordmark
-              read as noise rather than the word. The footer mark is 80px and
-              still uses ParticleWordmark, where the effect actually resolves. */}
-          <span className="logo-wordmark">Switch</span>
+    <header className="sw-header">
+      <div className="sw-wrap">
+        <Link to="/" className="sw-brand" aria-label="Switch home">
+          <img className="wm-dark" src="/brand/switch-wordmark-white.png" alt="Switch" width="130" height="34" />
+          <img className="wm-light" src="/brand/switch-wordmark-black.png" alt="" width="130" height="34" />
+          <small>
+            <Icon name="pin" />
+            Gurgaon
+          </small>
         </Link>
 
-        <nav className={`nav-links${open ? ' open' : ''}`}>
-          {LINKS.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
-              {link.label}
-            </a>
+        <nav className="sw-nav" aria-label="Main">
+          {LINKS.map((l) => (
+            <Link key={l.to} to={l.to} aria-current={pathname === l.to ? 'page' : undefined}>
+              {l.label}
+            </Link>
           ))}
-          {/* The "Looking for work?" button is desktop-only, so the panel keeps
-              its own link to /partner. */}
-          <Link className="nav-link-jobs" to="/partner" onClick={() => setOpen(false)}>
-            Looking for work?
-          </Link>
         </nav>
 
-        <div className="nav-actions">
-          <Link className="btn ghost" to="/partner">
+        <div className="sw-hdr-cta">
+          <ThemeToggle />
+          <Link className="sw-btn sm line" to="/partner">
             Looking for work?
           </Link>
-          <a className="btn primary" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
-            Hire staff ↗
+          <a className="sw-btn sm sw-hire" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
+            Hire staff <Icon name="arrow" />
           </a>
         </div>
 
         <button
-          className="menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
+          type="button"
+          className="sw-menu-btn"
+          aria-label="Open menu"
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(true)}
         >
-          {open ? '✕' : '☰'}
+          <Icon name="menu" />
         </button>
       </div>
+
+      {open && (
+        <div className="sw-sheet" onClick={() => setOpen(false)}>
+          <div className="sw-sheet-in" role="dialog" aria-modal="true" aria-label="Menu" onClick={(e) => e.stopPropagation()}>
+            {[{ to: '/', label: 'Home' }, ...LINKS, { to: '/app', label: 'Get the app' }, { to: '/partner', label: 'Looking for work?' }].map((l) => (
+              <Link key={l.to + l.label} to={l.to} onClick={() => setOpen(false)}>
+                {l.label}
+                <Icon name="arrow" />
+              </Link>
+            ))}
+            <a className="sw-btn" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
+              Hire staff <Icon name="arrow" />
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

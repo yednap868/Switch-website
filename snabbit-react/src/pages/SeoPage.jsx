@@ -1,68 +1,144 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { getPageBySlug, SEO_PAGES } from '../data/seoData'
+import { ROLES } from '../data/homeContent.js'
+import { waLink } from '../data/site.js'
 import SeoHead from '../components/SeoHead'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import { Crumbs, CtaFeature, Faq, HeroArt, ServiceRow, TrialTickets } from '../components/ui/Blocks.jsx'
 import './SeoPage.css'
+
+const APP = 'https://app.switchlocally.com'
+
+/* Services that have a 3-hour trial ticket (Housekeeping / Kitchen Helper). */
+const TRIAL_SERVICES = new Set(['home-cleaning', 'kitchen-helper'])
 
 /* ─── MICRO COMPONENTS ─── */
 
-function StarFill() {
-  return (
-    <svg viewBox="0 0 20 20" width="14" height="14">
-      <path fill="#f59e0b" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  )
-}
-
 function Stars() {
-  return <div className="sp-stars">{[0,1,2,3,4].map(i => <StarFill key={i} />)}</div>
+  return (
+    <span className="sp-stars" aria-label="5 out of 5 stars">
+      ★★★★★
+    </span>
+  )
 }
 
 function TrustBadges() {
   return (
-    <div className="sp-trust">
-      <span>✓ Aadhaar Verified</span>
-      <span>✓ Background Checked</span>
-      <span>✓ Transparent Billing</span>
-      <span>✓ Same-Day Available</span>
+    <div className="sw-checks">
+      {['Aadhaar Verified', 'Background Checked', 'Transparent Billing', 'Same-Day Available'].map((x) => (
+        <span className="sw-pill sw-live" key={x}>
+          {x}
+        </span>
+      ))}
     </div>
   )
 }
 
 function Breadcrumb({ page }) {
+  const items =
+    page.type === 'landing'
+      ? [[page.service]]
+      : [
+          [page.service, `/${page.serviceId}-gurgaon`],
+          [page.h1],
+        ]
+  return <Crumbs items={items} />
+}
+
+/* Page hero: copy on the left, the service photo in the purple-blob arch. */
+function SpHero({ page, tag, trust = false, children }) {
   return (
-    <nav className="sp-breadcrumb" aria-label="Breadcrumb">
-      <ol>
-        <li><Link to="/">Home</Link></li>
-        <li aria-hidden="true">/</li>
-        <li>
-          {page.type === 'landing'
-            ? <span aria-current="page">{page.service}</span>
-            : <Link to={`/${page.serviceId}-gurgaon`}>{page.service}</Link>
-          }
-        </li>
-        {page.type !== 'landing' && (
-          <>
-            <li aria-hidden="true">/</li>
-            <li><span aria-current="page">{page.h1}</span></li>
-          </>
-        )}
-      </ol>
-    </nav>
+    <section className="sw-hero sp-hero">
+      <div>
+        <p className="sw-eyebrow">{tag}</p>
+        <h1 className="sw-h1 sp-h1">{page.h1}</h1>
+        <p className="sw-lead">{page.intro}</p>
+        <div className="sw-btns">
+          {children || (
+            <>
+              <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
+                Book {page.service} <Icon name="arrow" />
+              </a>
+              <a
+                className="sw-btn line"
+                href={waLink(`Hi Switch — I'd like to book a ${page.service.toLowerCase()} in Gurgaon.`)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ask on WhatsApp
+              </a>
+            </>
+          )}
+        </div>
+        {trust && <TrustBadges />}
+      </div>
+      <HeroArt
+        img={page.serviceImg}
+        alt={`Hire a verified ${page.service.toLowerCase()} in Gurgaon`}
+        badge={{ title: 'Available today', sub: 'in Gurgaon' }}
+      />
+    </section>
+  )
+}
+
+/* A titled section with the shared sw-head (eyebrow, h2, lead). */
+function Sec({ title, eyebrow, lead, children }) {
+  return (
+    <section className="sw-sec sp-sec">
+      {(title || lead) && (
+        <div className="sw-head">
+          {eyebrow && <p className="sw-eyebrow">{eyebrow}</p>}
+          {title && <h2 className="sw-h2">{title}</h2>}
+          {lead && <p className="sw-lead">{lead}</p>}
+        </div>
+      )}
+      {children}
+    </section>
+  )
+}
+
+function CheckList({ items, arrow = false }) {
+  if (!items?.length) return null
+  return (
+    <div className="sw-card sp-list">
+      <ul className="sw-list-check">
+        {items.map((t, i) => (
+          <li key={i}>
+            <Icon name={arrow ? 'arrow' : 'check'} className={arrow ? 'sp-arrow' : ''} />
+            <span>{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
 function PricingTable({ prices }) {
   if (!prices?.length) return null
   return (
-    <div className="sp-prices">
+    <div className="sw-grid sw-g4 sp-prices">
       {prices.map((p, i) => (
-        <div className="sp-price-card" key={i}>
-          <div className="sp-price-label">{p.label}</div>
-          <div className="sp-price-amt">{p.price}</div>
-          <div className="sp-price-desc">{p.desc}</div>
+        <div className="sw-card sw-rate" key={i}>
+          <span className="sw-pill">{p.label}</span>
+          <b>{p.price}</b>
+          <p className="sw-muted sp-small">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Steps({ steps }) {
+  return (
+    <div className="sw-grid sw-g3">
+      {steps.map((s, i) => (
+        <div className="sw-card sw-step" key={i}>
+          <span className="n">STEP {s.n}</span>
+          <h3 className="sw-h3">{s.title}</h3>
+          <p>{s.desc}</p>
         </div>
       ))}
     </div>
@@ -71,90 +147,99 @@ function PricingTable({ prices }) {
 
 function ComparisonTable({ service }) {
   const rows = [
-    ['Booking time',         'Under 2 min',     '24–48 hrs',    'Hours or days'],
-    ['Background verified',  '✓ Aadhaar',       'Sometimes',    'Never'],
-    ['Transparent pricing',  '✓ Fixed rate',    '+ Commission', 'Variable'],
-    ['Transparent billing',  '✓',               '✗',            '✗'],
-    ['Same-day available',   '✓',               'Rare',         'Rare'],
-    ['Free cancellation',    '✓ Up to 2 hrs',   'Fee charged',  'N/A'],
-    ['Rated & reviewed',     '✓ 4.8 ★',        '✗',            '✗'],
+    ['Booking time', 'Under 2 min', '24–48 hrs', 'Hours or days'],
+    ['Background verified', '✓ Aadhaar', 'Sometimes', 'Never'],
+    ['Transparent pricing', '✓ Fixed rate', '+ Commission', 'Variable'],
+    ['Transparent billing', '✓', '✗', '✗'],
+    ['Same-day available', '✓', 'Rare', 'Rare'],
+    ['Free cancellation', '✓ Up to 2 hrs', 'Fee charged', 'N/A'],
+    ['Rated & reviewed', '✓ 4.8 ★', '✗', '✗'],
   ]
   return (
-    <div className="sp-comparison">
-      <div className="sp-comparison-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th className="sp-comp-feature">Hiring a {service.toLowerCase()}</th>
-              <th className="sp-comp-switch">Switch</th>
-              <th>Agency / Broker</th>
-              <th>Find Yourself</th>
+    <div className="sw-table sp-compare">
+      <table>
+        <thead>
+          <tr>
+            <th>Hiring a {service.toLowerCase()}</th>
+            <th className="sp-sw">Switch</th>
+            <th>Agency / Broker</th>
+            <th>Find Yourself</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([feat, sw, ag, fy], i) => (
+            <tr key={i}>
+              <td className="sp-feat">{feat}</td>
+              <td className="sp-sw sp-good">{sw}</td>
+              <td className="sw-muted">{ag}</td>
+              <td className="sw-muted">{fy}</td>
             </tr>
-          </thead>
-          <tbody>
-            {rows.map(([feat, sw, ag, fy], i) => (
-              <tr key={i}>
-                <td className="sp-comp-feature">{feat}</td>
-                <td className="sp-comp-switch sp-comp-good">{sw}</td>
-                <td className="sp-comp-neutral">{ag}</td>
-                <td className="sp-comp-neutral">{fy}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
 
-function FaqAccordion({ faqs }) {
-  const [open, setOpen] = useState(null)
-  if (!faqs?.length) return null
+function Areas({ areas }) {
+  if (!areas?.length) return null
   return (
-    <div className="sp-faqs">
-      {faqs.map((f, i) => (
-        <div className={`sp-faq-item${open === i ? ' open' : ''}`} key={i}>
-          <button className="sp-faq-btn" onClick={() => setOpen(o => o === i ? null : i)}>
-            <span>{f.q}</span>
-            <svg viewBox="0 0 12 12" className="sp-faq-icon"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg>
-          </button>
-          <div className="sp-faq-body">{f.a}</div>
-        </div>
+    <div className="sw-chips sp-chips">
+      {areas.map((a, i) => (
+        <span className="sw-chip" key={i}>
+          <Icon name="pin" />
+          {a}
+        </span>
       ))}
     </div>
   )
 }
 
-function CtaBlock({ service }) {
+function Reviews({ reviews }) {
+  if (!reviews?.length) return null
   return (
-    <div className="sp-cta">
-      <div className="sp-cta-rating">
-        <Stars />
-        <span>4.8 · 1,000+ businesses served</span>
-      </div>
-      <h3 className="sp-cta-h">Book a {service} in Gurgaon Today</h3>
-      <p className="sp-cta-p">Verified professionals. Flexible hours. Transparent rates, no hidden charges.</p>
-      <a href="https://app.switchlocally.com" className="sp-cta-btn">Get the App — It's Free</a>
+    <div className="sw-grid sw-g3">
+      {reviews.map((r, i) => (
+        <figure className="sw-card sw-q sp-review" key={i}>
+          <Stars />
+          <blockquote>“{r.text}”</blockquote>
+          <cite>{r.name}</cite>
+        </figure>
+      ))}
     </div>
   )
 }
 
+function FaqList({ faqs }) {
+  if (!faqs?.length) return null
+  return <Faq items={faqs} />
+}
+
 function RelatedPages({ serviceId, currentSlug }) {
-  const related = SEO_PAGES
-    .filter(p => p.serviceId === serviceId && p.slug !== currentSlug)
-    .slice(0, 9)
-  if (!related.length) return null
+  const related = SEO_PAGES.filter((p) => p.serviceId === serviceId && p.slug !== currentSlug).slice(0, 9)
+  const roles = ROLES.filter((r) => r.slug !== `${serviceId}-gurgaon`)
   return (
-    <div className="sp-related">
-      <div className="sp-related-inner">
-        <h3 className="sp-related-h">More {related[0].service} pages</h3>
-        <div className="sp-related-links">
-          {related.map(p => (
-            <Link key={p.slug} to={`/${p.slug}`} className="sp-related-link">{p.h1}</Link>
+    <>
+      {related.length > 0 && (
+        <Sec title={`More ${related[0].service} pages`}>
+          <div className="sw-chips">
+            {related.map((p) => (
+              <Link key={p.slug} to={`/${p.slug}`} className="sw-chip sp-link-chip">
+                {p.h1}
+                <Icon name="arrow" />
+              </Link>
+            ))}
+          </div>
+        </Sec>
+      )}
+      <Sec eyebrow="Other roles we staff" title="Related services in Gurgaon">
+        <div className="sw-grid sw-g2">
+          {roles.map((r) => (
+            <ServiceRow key={r.slug} to={`/${r.slug}`} img={r.img} name={r.name} desc={r.desc} tags={r.tags} />
           ))}
         </div>
-      </div>
-    </div>
+      </Sec>
+    </>
   )
 }
 
@@ -166,8 +251,16 @@ function StickyCTA({ service }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <div className={`sp-sticky${visible ? ' sp-sticky--show' : ''}`}>
-      <a href="https://app.switchlocally.com" className="sp-sticky-btn">Book {service} Now</a>
+    <div className={`sw-bar sp-sticky${visible ? ' is-on' : ''}`} aria-hidden={!visible}>
+      <a href={APP} tabIndex={visible ? undefined : -1}>
+        <span>
+          <b>Book {service} Now</b>
+          <small>Verified · same-day in Gurgaon</small>
+        </span>
+        <span className="gob">
+          Book <Icon name="arrow" />
+        </span>
+      </a>
     </div>
   )
 }
@@ -177,140 +270,89 @@ function StickyCTA({ service }) {
 function LandingPage({ page }) {
   return (
     <>
-      <section className="sp-hero">
-        <div className="sp-hero-inner">
-          <div className="sp-hero-text">
-            <span className="sp-tag">Gurgaon · Book Instantly · Verified Switch Players</span>
-            <h1 className="sp-h1">{page.h1}</h1>
-            <p className="sp-intro">{page.intro}</p>
-            <TrustBadges />
-            <div className="sp-hero-btns">
-              <a href="https://app.switchlocally.com" className="sp-cta-btn">Book Now — Free App</a>
-              <a href={`/${page.serviceId}-cost-gurgaon`} className="sp-cta-ghost">View Pricing →</a>
-            </div>
-          </div>
-          <div className="sp-hero-img">
-            <img src={page.serviceImg} alt={`Hire a verified ${page.service.toLowerCase()} in Gurgaon`} width="360" height="300" loading="lazy" decoding="async" />
-            <div className="sp-hero-badge">
-              <span className="sp-hero-badge-dot" />
-              <span>Available today in Gurgaon</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SpHero page={page} tag="Gurgaon · Book Instantly · Verified Switch Players" trust>
+        <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
+          Book Now — Free App <Icon name="arrow" />
+        </a>
+        <Link className="sw-btn line" to={`/${page.serviceId}-cost-gurgaon`}>
+          View Pricing
+        </Link>
+      </SpHero>
 
       {page.uniqueSection && (
-        <section className="sp-section sp-alt">
-          <div className="sp-w">
-            <h2 className="sp-h2">{page.uniqueSection.heading}</h2>
-            {page.uniqueSection.paragraphs.map((p, i) => <p className="sp-body" key={i}>{p}</p>)}
+        <Sec title={page.uniqueSection.heading}>
+          <div className="sw-card sp-prose">
+            {page.uniqueSection.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
             {page.uniqueSection.chipGroups?.map((g, i) => (
-              <div key={i} style={{marginTop:'1.5rem'}}>
-                <h3 className="sp-cat-title">{g.title}</h3>
-                <div className="sp-areas">
-                  {g.chips.map((c, j) => <span className="sp-area" key={j}>{c}</span>)}
-                </div>
+              <div key={i} className="sp-group">
+                <h3 className="sw-h3">{g.title}</h3>
+                <Areas areas={g.chips} />
               </div>
             ))}
           </div>
-        </section>
+        </Sec>
       )}
 
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">What a {page.service} Does for You</h2>
-          <p className="sp-body">{page.longDesc}</p>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
+      <Sec title={`What a ${page.service} Does for You`} lead={page.longDesc}>
+        <CheckList items={page.tasks} />
+      </Sec>
 
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Transparent Pricing — No Hidden Fees</h2>
-          <p className="sp-body">All rates are fixed and shown upfront. No agency commission, no call-out fees, no surprises. You pay against a clear invoiced to your satisfaction.</p>
-          <PricingTable prices={page.prices} />
-        </div>
-      </section>
+      <Sec
+        title="Transparent Pricing — No Hidden Fees"
+        lead="All rates are fixed and shown upfront. No agency commission, no call-out fees, no surprises. You pay against a clear invoiced to your satisfaction."
+      >
+        <PricingTable prices={page.prices} />
+      </Sec>
 
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">How It Works — 3 Simple Steps</h2>
-          <div className="sp-steps">
-            <div className="sp-step">
-              <div className="sp-step-n">Step 1</div>
-              <h3 className="sp-step-title">Choose {page.service}</h3>
-              <p className="sp-step-desc">Open the Switch app, select {page.service.toLowerCase()} and pick your duration — from 4 hours to 7 days.</p>
-            </div>
-            <div className="sp-step">
-              <div className="sp-step-n">Step 2</div>
-              <h3 className="sp-step-title">Set time & address</h3>
-              <p className="sp-step-desc">Pick your date, time and Gurgaon address. Confirm in under 2 minutes — no calls, no paperwork.</p>
-            </div>
-            <div className="sp-step">
-              <div className="sp-step-n">Step 3</div>
-              <h3 className="sp-step-title">Switch Player arrives & the work gets done</h3>
-              <p className="sp-step-desc">Your verified {page.service.toLowerCase()} arrives on time. Pay securely in-app only after the job is done.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Sec title="How It Works — 3 Simple Steps">
+        <Steps
+          steps={[
+            {
+              n: 1,
+              title: `Choose ${page.service}`,
+              desc: `Open the Switch app, select ${page.service.toLowerCase()} and pick your duration — from 4 hours to 7 days.`,
+            },
+            {
+              n: 2,
+              title: 'Set time & address',
+              desc: 'Pick your date, time and Gurgaon address. Confirm in under 2 minutes — no calls, no paperwork.',
+            },
+            {
+              n: 3,
+              title: 'Switch Player arrives & the work gets done',
+              desc: `Your verified ${page.service.toLowerCase()} arrives on time. Pay securely in-app only after the job is done.`,
+            },
+          ]}
+        />
+      </Sec>
 
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Switch vs Other Options</h2>
-          <p className="sp-body">See why Gurgaon residents book through Switch instead of agencies or finding Switch Players themselves.</p>
-          <ComparisonTable service={page.service} />
-        </div>
-      </section>
+      <Sec
+        title="Switch vs Other Options"
+        lead="See why Gurgaon residents book through Switch instead of agencies or finding Switch Players themselves."
+      >
+        <ComparisonTable service={page.service} />
+      </Sec>
 
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Why Choose Switch?</h2>
-          <ul className="sp-benefits">
-            {page.benefits.map((b, i) => <li key={i}><span className="sp-check">✓</span>{b}</li>)}
-          </ul>
-        </div>
-      </section>
+      <Sec title="Why Choose Switch?">
+        <CheckList items={page.benefits} />
+      </Sec>
 
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">What Customers Say</h2>
-          <div className="sp-reviews">
-            {page.reviews.map((r, i) => (
-              <div className="sp-review" key={i}>
-                <Stars />
-                <p className="sp-rev-text">"{r.text}"</p>
-                <div className="sp-rev-name">{r.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Sec title="What Customers Say">
+        <Reviews reviews={page.reviews} />
+      </Sec>
 
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Areas We Serve in Gurgaon</h2>
-          <p className="sp-body">Switch {page.service.toLowerCase()} bookings are available across all major sectors and localities in Gurgaon. Check the app for real-time availability in your area.</p>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
-        </div>
-      </section>
+      <Sec
+        title="Areas We Serve in Gurgaon"
+        lead={`Switch ${page.service.toLowerCase()} bookings are available across all major sectors and localities in Gurgaon. Check the app for real-time availability in your area.`}
+      >
+        <Areas areas={page.areas} />
+      </Sec>
 
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Frequently Asked Questions</h2>
-          <FaqAccordion faqs={page.faqs} />
-        </div>
-      </section>
-
-      <section className="sp-section">
-        <div className="sp-w">
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <Sec title="Frequently Asked Questions">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -318,51 +360,25 @@ function LandingPage({ page }) {
 function PricingPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Transparent Pricing · No Hidden Fees · Clean Invoices</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
+      <SpHero page={page} tag="Transparent Pricing · No Hidden Fees · Clean Invoices" />
+      <Sec title="Rate Card">
+        <PricingTable prices={page.prices} />
+        <div className="sp-gap">
+          <CheckList items={page.pricingNotes} />
         </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Rate Card</h2>
-          <PricingTable prices={page.prices} />
-          <ul className="sp-tasks" style={{marginTop:'2rem'}}>
-            {page.pricingNotes.map((n, i) => <li key={i}><span className="sp-check">✓</span>{n}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">What's Included at Every Price</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Switch vs Agency Pricing</h2>
-          <ComparisonTable service={page.service} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing FAQs</h2>
-          <FaqAccordion faqs={page.faqs} />
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Available in These Areas</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      </Sec>
+      <Sec title="What's Included at Every Price">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Switch vs Agency Pricing">
+        <ComparisonTable service={page.service} />
+      </Sec>
+      <Sec title="Pricing FAQs">
+        <FaqList faqs={page.faqs} />
+      </Sec>
+      <Sec title="Available in These Areas">
+        <Areas areas={page.areas} />
+      </Sec>
     </>
   )
 }
@@ -370,50 +386,19 @@ function PricingPage({ page }) {
 function HowToHirePage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Step-by-Step Guide · No Agency Needed</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">3 Steps to Book on Switch</h2>
-          <div className="sp-steps">
-            {page.steps.map((s, i) => (
-              <div className="sp-step" key={i}>
-                <div className="sp-step-n">Step {s.n}</div>
-                <h3 className="sp-step-title">{s.title}</h3>
-                <p className="sp-step-desc">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Tips Before You Book</h2>
-          <ul className="sp-tasks">
-            {page.tips.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">What They Can Do for You</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Common Questions About Hiring</h2>
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <SpHero page={page} tag="Step-by-Step Guide · No Agency Needed" />
+      <Sec title="3 Steps to Book on Switch">
+        <Steps steps={page.steps} />
+      </Sec>
+      <Sec title="Tips Before You Book">
+        <CheckList items={page.tips} />
+      </Sec>
+      <Sec title="What They Can Do for You">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Common Questions About Hiring">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -421,50 +406,22 @@ function HowToHirePage({ page }) {
 function BenefitsPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Why Switch · Gurgaon's Top-Rated Platform</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Top Benefits</h2>
-          <ul className="sp-benefits">
-            {page.benefits.map((b, i) => <li key={i}><span className="sp-check">✓</span>{b}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">When to Hire a {page.service}</h2>
-          <ul className="sp-tasks">
-            {page.useCases.map((u, i) => <li key={i}><span className="sp-check">→</span>{u}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Switch vs Other Options</h2>
-          <ComparisonTable service={page.service} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Full Task List</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Questions</h2>
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <SpHero page={page} tag="Why Switch · Gurgaon's Top-Rated Platform" />
+      <Sec title="Top Benefits">
+        <CheckList items={page.benefits} />
+      </Sec>
+      <Sec title={`When to Hire a ${page.service}`}>
+        <CheckList items={page.useCases} arrow />
+      </Sec>
+      <Sec title="Switch vs Other Options">
+        <ComparisonTable service={page.service} />
+      </Sec>
+      <Sec title="Full Task List">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Questions">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -472,50 +429,33 @@ function BenefitsPage({ page }) {
 function ChecklistPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Full Task Checklist · No Surprises</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
+      <SpHero page={page} tag="Full Task Checklist · No Surprises" />
+      <Sec title="Task Breakdown by Category">
+        <div className="sw-grid sw-g4 sp-cats">
+          {page.checklistCategories.map((cat, i) => (
+            <div className="sw-card sp-cat" key={i}>
+              <h3 className="sw-h3">{cat.cat}</h3>
+              <ul className="sw-list-check">
+                {cat.items.map((item, j) => (
+                  <li key={j}>
+                    <Icon name="check" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Task Breakdown by Category</h2>
-          <div className="sp-checklist-grid">
-            {page.checklistCategories.map((cat, i) => (
-              <div className="sp-checklist-cat" key={i}>
-                <h3 className="sp-cat-title">{cat.cat}</h3>
-                <ul>
-                  {cat.items.map((item, j) => (
-                    <li key={j}><span className="sp-check">✓</span>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Full Task List</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing</h2>
-          <PricingTable prices={page.prices} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      </Sec>
+      <Sec title="Full Task List">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Pricing">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="Frequently Asked Questions">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -523,34 +463,16 @@ function ChecklistPage({ page }) {
 function FaqPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">All Your Questions Answered</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">All FAQs</h2>
-          <FaqAccordion faqs={page.faqs} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing at a Glance</h2>
-          <PricingTable prices={page.prices} />
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Serving These Areas in Gurgaon</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <SpHero page={page} tag="All Your Questions Answered" />
+      <Sec title="All FAQs">
+        <FaqList faqs={page.faqs} />
+      </Sec>
+      <Sec title="Pricing at a Glance">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="Serving These Areas in Gurgaon">
+        <Areas areas={page.areas} />
+      </Sec>
     </>
   )
 }
@@ -558,51 +480,36 @@ function FaqPage({ page }) {
 function NearMePage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Nearest Available · Gurgaon</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
-          <TrustBadges />
-          <a href="https://app.switchlocally.com" className="sp-cta-btn">Find One Near You</a>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Areas We Cover in Gurgaon</h2>
-          <div className="sp-areas">
-            {page.areas.map((a, i) => <span className="sp-area" key={i}>{a}</span>)}
-          </div>
-          <p className="sp-body" style={{marginTop:'1.5rem'}}>Don't see your area? Open the Switch app — we are expanding coverage across Gurgaon every week. Enter your location to check real-time availability in your sector.</p>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Why Location Matters</h2>
-          <ul className="sp-tasks">
-            <li><span className="sp-check">✓</span>Nearby Switch Players arrive faster — less waiting time</li>
-            <li><span className="sp-check">✓</span>Lower travel overhead means better value for you</li>
-            <li><span className="sp-check">✓</span>Switch Players familiar with your area navigate easily</li>
-            <li><span className="sp-check">✓</span>Same-day slots more likely when Switch Player is local to your sector</li>
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">What They Can Do</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing</h2>
-          <PricingTable prices={page.prices} />
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <SpHero page={page} tag="Nearest Available · Gurgaon" trust>
+        <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
+          Find One Near You <Icon name="arrow" />
+        </a>
+      </SpHero>
+      <Sec
+        title="Areas We Cover in Gurgaon"
+        lead="Don't see your area? Open the Switch app — we are expanding coverage across Gurgaon every week. Enter your location to check real-time availability in your sector."
+      >
+        <Areas areas={page.areas} />
+      </Sec>
+      <Sec title="Why Location Matters">
+        <CheckList
+          items={[
+            'Nearby Switch Players arrive faster — less waiting time',
+            'Lower travel overhead means better value for you',
+            'Switch Players familiar with your area navigate easily',
+            'Same-day slots more likely when Switch Player is local to your sector',
+          ]}
+        />
+      </Sec>
+      <Sec title="What They Can Do">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Pricing">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="Frequently Asked Questions">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -610,50 +517,23 @@ function NearMePage({ page }) {
 function SameDayPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Urgent Booking · Confirmed Within Hours · No Surge</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
-          <TrustBadges />
-          <a href="https://app.switchlocally.com" className="sp-cta-btn">Book for Today</a>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">How Same-Day Booking Works</h2>
-          <div className="sp-steps">
-            {page.steps.map((s, i) => (
-              <div className="sp-step" key={i}>
-                <div className="sp-step-n">Step {s.n}</div>
-                <h3 className="sp-step-title">{s.title}</h3>
-                <p className="sp-step-desc">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Why Switch for Urgent Jobs</h2>
-          <ul className="sp-benefits">
-            {page.benefits.map((b, i) => <li key={i}><span className="sp-check">✓</span>{b}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Same-Day Pricing — No Extra Charge</h2>
-          <PricingTable prices={page.prices} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Questions About Same-Day Booking</h2>
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      <SpHero page={page} tag="Urgent Booking · Confirmed Within Hours · No Surge" trust>
+        <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
+          Book for Today <Icon name="arrow" />
+        </a>
+      </SpHero>
+      <Sec title="How Same-Day Booking Works">
+        <Steps steps={page.steps} />
+      </Sec>
+      <Sec title="Why Switch for Urgent Jobs">
+        <CheckList items={page.benefits} />
+      </Sec>
+      <Sec title="Same-Day Pricing — No Extra Charge">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="Questions About Same-Day Booking">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -661,47 +541,23 @@ function SameDayPage({ page }) {
 function ReviewsPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">Verified Customer Reviews · 4.8 ★ Average</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
+      <SpHero page={page} tag="Verified Customer Reviews · 4.8 ★ Average" />
+      <Sec title="Customer Stories">
+        <div className="sw-card sp-rating">
+          <b>4.8 ★</b>
+          <span>Average from verified {page.service.toLowerCase()} bookings in Gurgaon</span>
         </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <div className="sp-rating-summary">
-            <div className="sp-rating-big">4.8 ★</div>
-            <div className="sp-rating-label">Average from verified {page.service.toLowerCase()} bookings in Gurgaon</div>
-          </div>
-          <h2 className="sp-h2">Customer Stories</h2>
-          <div className="sp-reviews sp-reviews-lg">
-            {page.reviews.map((r, i) => (
-              <div className="sp-review" key={i}>
-                <Stars />
-                <p className="sp-rev-text">"{r.text}"</p>
-                <div className="sp-rev-name">{r.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Why They Keep Coming Back</h2>
-          <ul className="sp-benefits">
-            {page.benefits.map((b, i) => <li key={i}><span className="sp-check">✓</span>{b}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing</h2>
-          <PricingTable prices={page.prices} />
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+        <Reviews reviews={page.reviews} />
+      </Sec>
+      <Sec title="Why They Keep Coming Back">
+        <CheckList items={page.benefits} />
+      </Sec>
+      <Sec title="Pricing">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="Frequently Asked Questions">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -709,64 +565,33 @@ function ReviewsPage({ page }) {
 function VerifiedPage({ page }) {
   return (
     <>
-      <section className="sp-hero sp-hero-sm">
-        <div className="sp-w">
-          <span className="sp-tag">3-Step Verification · Aadhaar · Background Checked · Skills Tested</span>
-          <h1 className="sp-h1">{page.h1}</h1>
-          <p className="sp-intro">{page.intro}</p>
+      <SpHero page={page} tag="3-Step Verification · Aadhaar · Background Checked · Skills Tested" />
+      <Sec title="How We Verify Every Switch Player">
+        <div className="sw-grid sw-g3">
+          {page.verificationSteps.map((v, i) => (
+            <div className="sw-card sw-step" key={i}>
+              <span className="sp-num">{i + 1}</span>
+              <h3 className="sw-h3">{v.title}</h3>
+              <p>{v.desc}</p>
+            </div>
+          ))}
         </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">How We Verify Every Switch Player</h2>
-          <div className="sp-vsteps">
-            {page.verificationSteps.map((v, i) => (
-              <div className="sp-vstep" key={i}>
-                <div className="sp-vstep-n">{i + 1}</div>
-                <div>
-                  <h3 className="sp-vstep-title">{v.title}</h3>
-                  <p className="sp-vstep-desc">{v.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">What Verified Switch Players Can Do</h2>
-          <ul className="sp-tasks">
-            {page.tasks.map((t, i) => <li key={i}><span className="sp-check">✓</span>{t}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Switch vs Unverified Alternatives</h2>
-          <ComparisonTable service={page.service} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">Benefits of Booking Verified</h2>
-          <ul className="sp-benefits">
-            {page.benefits.map((b, i) => <li key={i}><span className="sp-check">✓</span>{b}</li>)}
-          </ul>
-        </div>
-      </section>
-      <section className="sp-section sp-alt">
-        <div className="sp-w">
-          <h2 className="sp-h2">Pricing</h2>
-          <PricingTable prices={page.prices} />
-        </div>
-      </section>
-      <section className="sp-section">
-        <div className="sp-w">
-          <h2 className="sp-h2">FAQs About Verification</h2>
-          <FaqAccordion faqs={page.faqs} />
-          <CtaBlock service={page.service} />
-        </div>
-      </section>
+      </Sec>
+      <Sec title="What Verified Switch Players Can Do">
+        <CheckList items={page.tasks} />
+      </Sec>
+      <Sec title="Switch vs Unverified Alternatives">
+        <ComparisonTable service={page.service} />
+      </Sec>
+      <Sec title="Benefits of Booking Verified">
+        <CheckList items={page.benefits} />
+      </Sec>
+      <Sec title="Pricing">
+        <PricingTable prices={page.prices} />
+      </Sec>
+      <Sec title="FAQs About Verification">
+        <FaqList faqs={page.faqs} />
+      </Sec>
     </>
   )
 }
@@ -774,16 +599,16 @@ function VerifiedPage({ page }) {
 /* ─── MAIN SEO PAGE ─── */
 
 const PAGE_RENDERERS = {
-  'landing':      LandingPage,
-  'pricing':      PricingPage,
-  'how-to-hire':  HowToHirePage,
-  'benefits':     BenefitsPage,
-  'checklist':    ChecklistPage,
-  'faq':          FaqPage,
-  'near-me':      NearMePage,
-  'same-day':     SameDayPage,
-  'reviews':      ReviewsPage,
-  'verified':     VerifiedPage,
+  landing: LandingPage,
+  pricing: PricingPage,
+  'how-to-hire': HowToHirePage,
+  benefits: BenefitsPage,
+  checklist: ChecklistPage,
+  faq: FaqPage,
+  'near-me': NearMePage,
+  'same-day': SameDayPage,
+  reviews: ReviewsPage,
+  verified: VerifiedPage,
 }
 
 export default function SeoPage() {
@@ -795,22 +620,33 @@ export default function SeoPage() {
   const Renderer = PAGE_RENDERERS[page.type]
 
   return (
-    <div className="sp-root">
+    <>
       <SeoHead page={page} />
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
 
-      <Nav />
-
-      <Breadcrumb page={page} />
-
-      <main className="sp-main">
+      <main id="page-main" className="sw-wrap sp-main">
+        <Breadcrumb page={page} />
         <Renderer page={page} />
+        {TRIAL_SERVICES.has(page.serviceId) && <TrialTickets id="trial" />}
+        <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} />
+        <CtaFeature
+          title={
+            <>
+              Book a {page.service} in Gurgaon <em>today.</em>
+            </>
+          }
+          sub="Verified professionals. Flexible hours. Transparent rates, no hidden charges. Rated 4.8 ★ · 1,500+ businesses served."
+          msg={`Hi Switch — I'd like to book a ${page.service.toLowerCase()} in Gurgaon.`}
+          photos={[page.serviceImg, page.serviceImg === '/sw-general-helper.jpg' ? '/sw-security-guard.jpg' : '/sw-general-helper.jpg']}
+        />
       </main>
-
-      <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} />
 
       <Footer />
 
       <StickyCTA service={page.service} />
-    </div>
+    </>
   )
 }

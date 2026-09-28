@@ -1,8 +1,18 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Nav from '../components/chrome/Header.jsx'
+import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import Icon from '../components/ui/Icon.jsx'
+import {
+  BrandBand,
+  Crumbs,
+  CtaFeature,
+  Faq,
+  HeroArt,
+  StatsRow,
+  TrialTickets,
+} from '../components/ui/Blocks.jsx'
 import { SERVICE_LIST } from '../data/seoData'
 import './AboutPage.css'
 import './StaffingPage.css'
@@ -18,12 +28,12 @@ const TITLE = 'Staffing Agency in Gurgaon | Hire Verified Staff — Switch'
 const DESCRIPTION = 'Switch is a staffing agency in Gurgaon for shops, restaurants, warehouses, offices & events. Hire Aadhaar-verified store helpers, guards, waiters, cooks, housekeeping & factory workers — bulk & weekly teams, replacement guaranteed, transparent rates. Same-day staffing across Gurgaon.'
 
 const INDUSTRIES = [
-  { ico: '🛍️', title: 'Retail & Shops', slug: 'retail-staffing-gurgaon', desc: 'Store helpers, sales staff and stock hands for shops, showrooms and malls across DLF, MG Road and Galleria.' },
-  { ico: '🍽️', title: 'Restaurants & Cafés', slug: 'restaurant-staffing-gurgaon', desc: 'Waiters, kitchen helpers, cooks, dishwashers and bartenders — for daily service, weekends and rush hours.' },
-  { ico: '🏭', title: 'Warehouses & Factories', slug: 'warehouse-staffing-gurgaon', desc: 'Loaders, packers, pickers and factory helpers for Udyog Vihar, IMT Manesar and industrial units.' },
-  { ico: '🏢', title: 'Offices & Corporates', slug: 'office-staffing-gurgaon', desc: 'Office boys, housekeeping, pantry staff and front-desk support for offices in Cyber City and Sohna Road.' },
-  { ico: '🎉', title: 'Events & Banquets', slug: 'event-staffing-gurgaon', desc: 'Waiters, bartenders, bouncers and helpers for weddings, parties, exhibitions and corporate events.' },
-  { ico: '🛡️', title: 'Security & Facility', desc: 'Trained security guards, bouncers and facility staff for buildings, sites, gated societies and events.' },
+  { ico: 'store', title: 'Retail & Shops', slug: 'retail-staffing-gurgaon', desc: 'Store helpers, sales staff and stock hands for shops, showrooms and malls across DLF, MG Road and Galleria.' },
+  { ico: 'utensils', title: 'Restaurants & Cafés', slug: 'restaurant-staffing-gurgaon', desc: 'Waiters, kitchen helpers, cooks, dishwashers and bartenders — for daily service, weekends and rush hours.' },
+  { ico: 'warehouse', title: 'Warehouses & Factories', slug: 'warehouse-staffing-gurgaon', desc: 'Loaders, packers, pickers and factory helpers for Udyog Vihar, IMT Manesar and industrial units.' },
+  { ico: 'building', title: 'Offices & Corporates', slug: 'office-staffing-gurgaon', desc: 'Office boys, housekeeping, pantry staff and front-desk support for offices in Cyber City and Sohna Road.' },
+  { ico: 'party', title: 'Events & Banquets', slug: 'event-staffing-gurgaon', desc: 'Waiters, bartenders, bouncers and helpers for weddings, parties, exhibitions and corporate events.' },
+  { ico: 'shield', title: 'Security & Facility', desc: 'Trained security guards, bouncers and facility staff for buildings, sites, gated societies and events.' },
 ]
 
 const STEPS = [
@@ -34,12 +44,12 @@ const STEPS = [
 ]
 
 const WHY = [
-  { ico: '🆔', title: 'Every Worker Verified', desc: 'Aadhaar-verified, document-checked and interviewed before they ever reach your site — no strangers on your floor.' },
-  { ico: '⚡', title: 'Same-Day & Fast', desc: 'Need staff today? We deploy quickly across Gurgaon — often within hours for common roles.' },
-  { ico: '👥', title: 'Bulk & Weekly Teams', desc: 'One worker or a full team for 7 days straight — we scale to your peak demand with a single point of contact.' },
-  { ico: '🔁', title: 'Replacement Guarantee', desc: 'A no-show shouldn’t stop your business. If someone doesn’t turn up or fit, we dispatch a replacement fast.' },
-  { ico: '💳', title: 'Transparent Billing', desc: 'No hidden agency commissions. Clear rates and proper invoices for your records.' },
-  { ico: '📞', title: 'Dedicated Support', desc: 'A real team on WhatsApp to help you staff up, handle changes and resolve issues — any day of the week.' },
+  { ico: 'shield', title: 'Every Worker Verified', desc: 'Aadhaar-verified, document-checked and interviewed before they ever reach your site — no strangers on your floor.' },
+  { ico: 'timer', title: 'Same-Day & Fast', desc: 'Need staff today? We deploy quickly across Gurgaon — often within hours for common roles.' },
+  { ico: 'cal', title: 'Bulk & Weekly Teams', desc: 'One worker or a full team for 7 days straight — we scale to your peak demand with a single point of contact.' },
+  { ico: 'check', title: 'Replacement Guarantee', desc: 'A no-show shouldn’t stop your business. If someone doesn’t turn up or fit, we dispatch a replacement fast.' },
+  { ico: 'wallet', title: 'Transparent Billing', desc: 'No hidden agency commissions. Clear rates and proper invoices for your records.' },
+  { ico: 'msg', title: 'Dedicated Support', desc: 'A real team on WhatsApp to help you staff up, handle changes and resolve issues — any day of the week.' },
 ]
 
 const AREAS = [
@@ -51,6 +61,8 @@ const AREAS = [
 
 /* Area anchors — the homepage coverage map links to /staffing-gurgaon#<id>. */
 const areaId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
+const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey']
 
 const FAQS = [
   { q: 'Which is the best staffing agency in Gurgaon?', a: 'Switch is a leading staffing agency in Gurgaon, trusted by shops, restaurants, warehouses, offices and event organisers. Every worker is Aadhaar-verified and background-checked, you get a replacement guarantee, and every booking is invoiced clearly — transparent rates.' },
@@ -139,52 +151,75 @@ export default function StaffingPage() {
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
-      <Nav />
-      <main className="ab-root">
+      <a className="skip-link" href="#page-main">
+        Skip to main content
+      </a>
+      <Header />
+      <main id="page-main" className="sw-wrap">
+        <Crumbs items={[['Staffing in Gurgaon']]} />
+
         {/* Hero */}
-        <section className="ab-hero">
-          <div className="ab-hero-bg" aria-hidden="true">
-            <div className="ab-hero-grid" />
-            <div className="ab-hero-glow" />
-          </div>
-          <div className="ab-w">
-            <div className="ab-hero-inner" data-anim>
-              <span className="ab-tag">Staffing in Gurgaon</span>
-              <h1 className="ab-h1">
-                Staffing agency in Gurgaon —<br />
-                <em>verified staff, on demand.</em>
-              </h1>
-              <p className="ab-lead">
-                Switch is Gurgaon's on-demand staffing agency for shops, restaurants, warehouses,
-                offices and events. Hire Aadhaar-verified store helpers, guards, waiters, cooks,
-                housekeeping and factory workers — for a shift, a day, or a full week. Bulk teams,
-                replacement guaranteed, and you pay against a clear invoice.
-              </p>
-              <div className="ab-hero-ctas">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Get staff for your business →</a>
-              </div>
-              <div className="ab-stats">
-                <div className="ab-stat"><div className="ab-stat-num">20,000+</div><div className="ab-stat-lbl">Verified Workers</div></div>
-                <div className="ab-stat"><div className="ab-stat-num">Same-day</div><div className="ab-stat-lbl">Deployment</div></div>
-                <div className="ab-stat"><div className="ab-stat-num">12+</div><div className="ab-stat-lbl">Staff Categories</div></div>
-                <div className="ab-stat"><div className="ab-stat-num">4.8 ★</div><div className="ab-stat-lbl">Average Rating</div></div>
-              </div>
+        <section className="sw-hero ab-hero">
+          <div>
+            <p className="sw-eyebrow">Staffing in Gurgaon</p>
+            <h1 className="sw-h1">
+              Staffing agency in Gurgaon —<br />
+              <em>verified staff, on demand.</em>
+            </h1>
+            <p className="sw-lead">
+              Switch is Gurgaon&apos;s on-demand staffing agency for shops, restaurants, warehouses,
+              offices and events. Hire Aadhaar-verified store helpers, guards, waiters, cooks,
+              housekeeping and factory workers — for a shift, a day, or a full week. Bulk teams,
+              replacement guaranteed, and you pay against a clear invoice.
+            </p>
+            <div className="sw-btns">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="sw-btn">
+                Get staff for your business <Icon name="arrow" />
+              </a>
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="sw-btn line">
+                Open the Switch App
+              </a>
+            </div>
+            <div className="sw-checks">
+              {['Aadhaar verified', 'Same-day staffing', 'Replacement guarantee', 'Clear invoices'].map((x) => (
+                <span className="sw-pill sw-live" key={x}>
+                  {x}
+                </span>
+              ))}
             </div>
           </div>
+          <HeroArt
+            img="/hero-workers.jpg"
+            alt="Switch staff in uniform ready for work in Gurgaon"
+            badge={{ title: 'Staff confirmed', sub: 'Same-day across Gurgaon' }}
+          />
         </section>
 
+        <StatsRow
+          items={[
+            { value: '20,000+', label: 'Verified Workers' },
+            { value: 'Same-day', label: 'Deployment' },
+            { value: '12+', label: 'Staff Categories' },
+            { value: '4.8 ★', label: 'Average Rating' },
+          ]}
+        />
+
+        <BrandBand />
+
         {/* Intro copy */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Staffing, made simple</span>
-              <h2 className="ab-h2">Reliable staffing in Gurgaon,<br />without the agency runaround.</h2>
+        <section className="sw-sec">
+          <div className="ab-split">
+            <div className="sw-head">
+              <p className="sw-eyebrow">Staffing, made simple</p>
+              <h2 className="sw-h2">
+                Reliable staffing in Gurgaon, <em>without the agency runaround.</em>
+              </h2>
             </div>
-            <div className="ab-text" data-anim style={{ '--delay': '80ms' }}>
+            <div className="ab-prose">
               <p>
                 Finding dependable staff in Gurgaon is hard — middlemen, delays, no-shows and no
-                accountability. <strong>Switch fixes that.</strong> We're a modern staffing agency that puts
-                verified, background-checked workers on your floor exactly when you need them, whether that's
+                accountability. <strong>Switch fixes that.</strong> We&apos;re a modern staffing agency that puts
+                verified, background-checked workers on your floor exactly when you need them, whether that&apos;s
                 one waiter for tonight or a 20-person warehouse team for a week.
               </p>
               <p>
@@ -196,134 +231,137 @@ export default function StaffingPage() {
           </div>
         </section>
 
+        <TrialTickets />
+
         {/* Roles we staff */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Roles we staff</span>
-              <h2 className="ab-h2">Every role. One platform.</h2>
-              <p className="ab-sub">Hire any of these in minutes — explore rates, availability and how it works for each role.</p>
-            </div>
-            <div className="st-svc-grid" data-anim style={{ '--delay': '80ms' }}>
-              {SERVICE_LIST.map(s => (
-                <Link className="st-svc" to={`/${s.slug}`} key={s.id}>
-                  <span className="st-svc-name">{s.name} in Gurgaon</span>
-                  <span className="st-svc-cta">View rates & hire →</span>
-                </Link>
-              ))}
-            </div>
+        <section className="sw-sec" id="roles">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Roles we staff</p>
+            <h2 className="sw-h2">
+              Every role. <em>One platform.</em>
+            </h2>
+            <p className="sw-lead">
+              Hire any of these in minutes — explore rates, availability and how it works for each role.
+            </p>
+          </div>
+          <div className="st-svc-grid">
+            {SERVICE_LIST.map((s) => (
+              <Link className="sw-card sw-press st-svc" to={`/${s.slug}`} key={s.id}>
+                <span className="st-svc-name">{s.name} in Gurgaon</span>
+                <span className="st-svc-cta">View rates &amp; hire →</span>
+              </Link>
+            ))}
           </div>
         </section>
 
         {/* Industries */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Industries we serve</span>
-              <h2 className="ab-h2">Staffing for every business in Gurgaon.</h2>
-            </div>
-            <div className="ab-grid">
-              {INDUSTRIES.map((w, i) => (
-                <div className="ab-card" key={i} data-anim style={{ '--delay': `${(i % 3) * 80}ms` }}>
-                  <div className="ab-card-ico">{w.ico}</div>
-                  <h3 className="ab-card-title">{w.title}</h3>
-                  <p className="ab-card-desc">{w.desc}</p>
-                  {w.slug && <Link className="st-ind-link" to={`/${w.slug}`}>{w.title} staffing →</Link>}
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec" id="industries">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Industries we serve</p>
+            <h2 className="sw-h2">
+              Staffing for every <em>business in Gurgaon.</em>
+            </h2>
+          </div>
+          <div className="sw-grid sw-g3">
+            {INDUSTRIES.map((w, i) => (
+              <div className="sw-card ab-card" key={w.title}>
+                <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+                  <Icon name={w.ico} />
+                </span>
+                <h3 className="sw-h3">{w.title}</h3>
+                <p>{w.desc}</p>
+                {w.slug && (
+                  <Link className="sw-link" to={`/${w.slug}`}>
+                    {w.title} staffing <Icon name="arrow" />
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 
         {/* How it works */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">How it works</span>
-              <h2 className="ab-h2">Staffed up in four steps.</h2>
-            </div>
-            <div className="st-steps" data-anim style={{ '--delay': '80ms' }}>
-              {STEPS.map((s, i) => (
-                <div className="st-step" key={i}>
-                  <div className="st-step-num">STEP {i + 1}</div>
-                  <h3 className="st-step-title">{s.title}</h3>
-                  <p className="st-step-desc">{s.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec" id="how">
+          <div className="sw-head">
+            <p className="sw-eyebrow">How it works</p>
+            <h2 className="sw-h2">
+              Staffed up in <em>four steps.</em>
+            </h2>
+          </div>
+          <div className="sw-grid sw-g4">
+            {STEPS.map((s, i) => (
+              <div className="sw-card sw-step" key={s.title}>
+                <span className="n">STEP {i + 1}</span>
+                <h3 className="sw-h3">{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Why Switch */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Why Switch</span>
-              <h2 className="ab-h2">Why businesses choose Switch<br />for staffing in Gurgaon.</h2>
-            </div>
-            <div className="ab-grid">
-              {WHY.map((w, i) => (
-                <div className="ab-card ab-card--why" key={i} data-anim style={{ '--delay': `${(i % 3) * 80}ms` }}>
-                  <div className="ab-card-ico">{w.ico}</div>
-                  <h3 className="ab-card-title">{w.title}</h3>
-                  <p className="ab-card-desc">{w.desc}</p>
-                </div>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Why Switch</p>
+            <h2 className="sw-h2">
+              Why businesses choose Switch <em>for staffing in Gurgaon.</em>
+            </h2>
+          </div>
+          <div className="sw-grid sw-g3">
+            {WHY.map((w, i) => (
+              <div className="sw-card ab-card" key={w.title}>
+                <span className={`sw-sq ${TINTS[(i + 2) % TINTS.length]}`}>
+                  <Icon name={w.ico} />
+                </span>
+                <h3 className="sw-h3">{w.title}</h3>
+                <p>{w.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Areas */}
-        <section className="ab-sec ab-sec-alt">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">Where we serve</span>
-              <h2 className="ab-h2">Staffing across all of Gurgaon.</h2>
-              <p className="ab-sub">From Cyber City to IMT Manesar — verified staff, right around the corner.</p>
-            </div>
-            <div className="ab-areas" id="areas" data-anim style={{ '--delay': '80ms' }}>
-              {AREAS.map(a => (
-                <span className="ab-area-pill" id={areaId(a)} key={a}>{a}</span>
-              ))}
-            </div>
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Where we serve</p>
+            <h2 className="sw-h2">
+              Staffing across <em>all of Gurgaon.</em>
+            </h2>
+            <p className="sw-lead">From Cyber City to IMT Manesar — verified staff, right around the corner.</p>
+          </div>
+          <div className="ab-areas" id="areas">
+            {AREAS.map((a) => (
+              <span className="ab-area" id={areaId(a)} key={a}>
+                <Icon name="pin" />
+                {a}
+              </span>
+            ))}
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="ab-sec">
-          <div className="ab-w">
-            <div className="ab-sec-hd" data-anim>
-              <span className="ab-tag">FAQs</span>
-              <h2 className="ab-h2">Staffing in Gurgaon — your questions answered.</h2>
-            </div>
-            <div className="st-faqs" data-anim style={{ '--delay': '80ms' }}>
-              {FAQS.map((f, i) => (
-                <details className="st-faq" key={i}>
-                  <summary>{f.q}</summary>
-                  <p className="st-faq-a">{f.a}</p>
-                </details>
-              ))}
-            </div>
+        <section className="sw-sec" id="faq">
+          <div className="sw-head">
+            <p className="sw-eyebrow">FAQs</p>
+            <h2 className="sw-h2">
+              Staffing in Gurgaon — <em>your questions answered.</em>
+            </h2>
           </div>
+          <Faq items={FAQS} />
         </section>
 
         {/* CTA */}
-        <section className="ab-cta-sec">
-          <div className="ab-w">
-            <div className="ab-cta" data-anim>
-              <h2 className="ab-cta-h">Need staff in Gurgaon? Let's Switch.</h2>
-              <p className="ab-cta-p">
-                Tell us the role, headcount and dates — we'll put verified, reliable staff on your
-                site fast. Bulk teams, weekly staffing and same-day deployment across Gurgaon.
-              </p>
-              <div className="ab-cta-btns">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Get staff for your business →</a>
-                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-secondary">Open the Switch App</a>
-              </div>
-              <p className="ab-cta-fine">Transparent rates. Clean invoices. Replacement guaranteed.</p>
-            </div>
-          </div>
-        </section>
+        <CtaFeature
+          title={
+            <>
+              Need staff in Gurgaon? <em>Let&apos;s Switch.</em>
+            </>
+          }
+          sub="Tell us the role, headcount and dates — we'll put verified, reliable staff on your site fast. Bulk teams, weekly staffing and same-day deployment across Gurgaon."
+          msg="Hi Switch — I need staffing for my business in Gurgaon."
+          photos={['/sw-waiter.jpg', '/sw-factory-helper.jpg']}
+        />
+        <p className="ab-fine">Transparent rates. Clean invoices. Replacement guaranteed.</p>
       </main>
       <Footer />
     </>

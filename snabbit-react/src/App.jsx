@@ -1,25 +1,28 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Analytics } from '@vercel/analytics/react'
 
-import './styles/editorial.css'
-import './styles/extras.css'
+import './styles/switch.css'
 
 import Header from './components/chrome/Header.jsx'
 import Footer from './components/chrome/Footer.jsx'
 import HashScroll from './components/HashScroll.jsx'
-import PixelCanvas from './components/fx/PixelCanvas.jsx'
-import useScrollReveal from './components/fx/useScrollReveal.js'
 import useToast from './components/fx/useToast.jsx'
-
-import Hero from './components/home/Hero.jsx'
-import ServiceEditorial from './components/home/ServiceEditorial.jsx'
-import Journey from './components/home/Journey.jsx'
-import TrustEditorial from './components/home/TrustEditorial.jsx'
-import Coverage from './components/home/Coverage.jsx'
-import AppSection from './components/home/AppSection.jsx'
-import FinalCta from './components/home/FinalCta.jsx'
+import Icon from './components/ui/Icon.jsx'
+import { BrandBand, Faq, Ticker, TrialTickets } from './components/ui/Blocks.jsx'
+import {
+  AppBlock,
+  Coverage,
+  Hero,
+  How,
+  Industries,
+  Pricing,
+  RequestForm,
+  RoleTiles,
+  Services,
+  Trust,
+} from './components/home/HomeSections.jsx'
 
 import SeoPage from './pages/SeoPage.jsx'
 import PartnerPage from './pages/PartnerPage.jsx'
@@ -34,8 +37,8 @@ import IndustryPage from './pages/IndustryPage.jsx'
 
 import { SERVICE_LIST } from './data/seoData.js'
 import { INDUSTRY_PAGES } from './data/industryPages.js'
-import { FAQS } from './data/homeContent.js'
-import { APP_URL, WHATSAPP_URL, waLink } from './data/site.js'
+import { FAQS, REVIEW_VIDEOS } from './data/homeContent.js'
+import { WHATSAPP_URL } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
 function HomeHead() {
@@ -122,17 +125,20 @@ function HomeHead() {
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
-  const videoSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: 'Café owner reviews Switch staffing',
-    description: 'A café owner talks, unscripted, about hiring verified staff through Switch.',
-    thumbnailUrl: 'https://switchlocally.com/employer-review-poster.jpg',
-    contentUrl: 'https://switchlocally.com/employer-review.mp4',
-    uploadDate: '2026-09-26',
-    duration: 'PT1M5S',
-    publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
-  }
+  const videoSchema = REVIEW_VIDEOS.map((v) => {
+    const [m, sec] = v.len.split(':').map(Number)
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: `${v.who} reviews Switch staffing`,
+      description: `${v.who}, ${v.where}: ${v.line}`,
+      thumbnailUrl: `https://switchlocally.com${v.poster}`,
+      contentUrl: `https://switchlocally.com${v.src}`,
+      uploadDate: '2026-09-26',
+      duration: `PT${m}M${sec}S`,
+      publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
+    }
+  })
   return (
     <Helmet>
       <title>Hire Verified Staff for Business in Gurgaon | Switch</title>
@@ -154,65 +160,46 @@ function HomeHead() {
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      <script type="application/ld+json">{JSON.stringify(videoSchema)}</script>
+      {videoSchema.map((v) => (
+        <script key={v.contentUrl} type="application/ld+json">
+          {JSON.stringify(v)}
+        </script>
+      ))}
     </Helmet>
   )
 }
 
-/* ─── SCROLL PROGRESS ─────────────────────────────── */
-function ScrollProgress() {
-  const ref = useRef(null)
-  useEffect(() => {
-    const fn = () => {
-      const h = document.documentElement
-      const max = h.scrollHeight - h.clientHeight || 1
-      const p = Math.min(1, Math.max(0, h.scrollTop / max))
-      if (ref.current) ref.current.style.transform = `scaleX(${p})`
-    }
-    fn()
-    window.addEventListener('scroll', fn, { passive: true })
-    window.addEventListener('resize', fn)
-    return () => {
-      window.removeEventListener('scroll', fn)
-      window.removeEventListener('resize', fn)
-    }
-  }, [])
-  return <div className="scroll-prog" ref={ref} aria-hidden="true" />
-}
-
 /* ─── SERVICES DIRECTORY ──────────────────────────── */
-/* Every generated service page, linked from the homepage. */
+/* Every generated service page, linked from the homepage (internal linking
+   for the ~190 SEO pages). */
 function AllServicesDirectory() {
   return (
-    <section className="svc-dir">
-      <div className="shell">
-        <div className="svc-dir-head">
-          <div>
-            <span className="eyebrow">BROWSE BY SERVICE</span>
-            <h2>Every role, every guide.</h2>
-          </div>
-          <p>
-            Pricing, hiring guides and verified professionals for every Switch Player type in
-            Gurgaon.
-          </p>
-        </div>
-        <div className="svc-dir-grid">
-          {SERVICE_LIST.map((svc) => (
-            <div className="svc-dir-card" key={svc.id}>
-              <Link to={`/${svc.slug}`} className="svc-dir-card-head">
-                <span>{svc.name}</span>
-                <b>↗</b>
-              </Link>
-              <div className="svc-dir-chips">
-                {svc.pages.slice(1).map((p) => (
-                  <Link key={p.slug} to={`/${p.slug}`} className="svc-dir-chip">
-                    {p.label}
-                  </Link>
-                ))}
-              </div>
+    <section className="sw-sec" id="svc-dir">
+      <div className="sw-head">
+        <p className="sw-eyebrow">Browse by service</p>
+        <h2 className="sw-h2">
+          Every role, <em>every guide.</em>
+        </h2>
+        <p className="sw-lead">Pricing, hiring guides and verified professionals for every role in Gurgaon.</p>
+      </div>
+      <div className="sw-grid sw-g4">
+        {SERVICE_LIST.map((svc) => (
+          <div className="sw-card" key={svc.id} style={{ padding: 16, display: 'grid', gap: 10, alignContent: 'start' }}>
+            <Link to={`/${svc.slug}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 800 }}>
+              {svc.name}
+              <span className="sw-go" style={{ width: 30, height: 30 }}>
+                <Icon name="arrow" />
+              </span>
+            </Link>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {svc.pages.slice(1).map((p) => (
+                <Link key={p.slug} to={`/${p.slug}`} className="sw-tag" style={{ height: 'auto', padding: '4px 9px' }}>
+                  {p.label}
+                </Link>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   )
@@ -257,50 +244,33 @@ function OfferPopup() {
   if (!open) return null
 
   return (
-    <div className="offer-pop-overlay" onClick={close}>
+    <div className="sw-pop-bg" onClick={close}>
       <div
-        className="offer-pop"
+        className="sw-pop sw-feature"
         role="dialog"
         aria-modal="true"
         aria-label="Special staffing offer"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="offer-pop-close" onClick={close} aria-label="Close offer">
+        <button type="button" className="sw-vm-x" onClick={close} aria-label="Close offer">
           ✕
         </button>
-        <span className="offer-pop-badge">LIMITED-TIME OFFER</span>
-        <h3 className="offer-pop-title">
-          Hire verified staff at just <span>₹999/mo</span>
-        </h3>
-        <p className="offer-pop-sub">
-          Full-time, Aadhaar-verified Switch Players — a simple monthly plan, paid in advance, with
-          replacement guaranteed.
+        <span className="sw-pill" style={{ background: 'rgba(123,77,255,.22)', color: '#CDBBFF' }}>
+          Limited-time offer
+        </span>
+        <h2 style={{ marginTop: 12 }}>
+          Try a verified worker for <em>₹149.</em>
+        </h2>
+        <p style={{ marginTop: 10 }}>
+          3 hours of Housekeeping (₹149) or Kitchen Helper (₹179). Or hire full-time staff from
+          ₹999/mo, replacement guaranteed.
         </p>
-        <ul className="offer-pop-list">
-          <li>
-            <b>✓</b> Housekeeping, helpers, guards, pickers &amp; more
-          </li>
-          <li>
-            <b>✓</b> Replacement guarantee
-          </li>
-          <li>
-            <b>✓</b> Cancel anytime · GST extra · T&amp;C apply
-          </li>
-        </ul>
-        <div className="offer-pop-cta">
-          <a
-            href={waLink(
-              'Hi Switch — I want to hire staff on the ₹999/mo subscription. Please share the details.',
-            )}
-            target="_blank"
-            rel="noreferrer"
-            className="btn primary"
-            onClick={close}
-          >
-            Hire now on WhatsApp ↗
+        <div className="sw-btns" style={{ marginTop: 18 }}>
+          <a href="#trial" className="sw-btn white" onClick={close}>
+            See the trial <Icon name="arrow" />
           </a>
-          <a href="#subscription" className="btn ghost" onClick={close}>
-            View plans
+          <a href="#subscription" className="sw-btn line" onClick={close}>
+            Monthly plans
           </a>
         </div>
       </div>
@@ -313,33 +283,29 @@ function OfferPopup() {
    than eating viewport height on every screen; the sticky header takes over. */
 function OfferBanner() {
   return (
-    <aside className="offer-banner">
-      <a
-        className="offer-banner-inner"
-        href={waLink('Hi Switch — I want to hire staff at ₹999 for a month. Please share the details.')}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span className="offer-banner-tag">OFFER</span>
-        <strong>
-          Hire staff at just <em>₹999</em> for a month
-        </strong>
-        <span className="offer-banner-tc">T&amp;C apply</span>
-        <b className="offer-banner-cta">Hire now ↗</b>
+    <aside className="sw-strip">
+      <a href="/#trial">
+        <span>
+          <b>New</b> · 3-hour trial from <b>₹149</b> · Monthly staff from <b>₹999</b>
+        </span>
+        <u>See offers</u>
       </a>
     </aside>
   )
 }
 
-/* ─── MOBILE STICKY CTA BAR ───────────────────────── */
+/* ─── MOBILE / BOTTOM CTA BAR ─────────────────────── */
 function MobileCTABar() {
   return (
-    <div className="mcta" aria-label="Quick actions">
+    <div className="sw-bar" aria-label="Quick actions">
       <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-        WhatsApp
-      </a>
-      <a href={APP_URL} className="mcta-hire">
-        Hire staff ↗
+        <span>
+          <b>Hire verified staff</b>
+          <small>Trial from ₹149 · Staff in a day</small>
+        </span>
+        <span className="gob">
+          WhatsApp <Icon name="arrow" />
+        </span>
       </a>
     </div>
   )
@@ -348,26 +314,38 @@ function MobileCTABar() {
 /* ─── HOME ────────────────────────────────────────── */
 function HomePage() {
   const [toast, showToast] = useToast()
-  useScrollReveal()
 
   return (
     <>
       <HomeHead />
-      <ScrollProgress />
-      <PixelCanvas />
       <a className="skip-link" href="#page-main">
         Skip to main content
       </a>
       <Header />
       <OfferPopup />
-      <main id="page-main">
+      <main id="page-main" className="sw-wrap">
         <Hero />
-        <ServiceEditorial />
-        <Journey />
-        <TrustEditorial />
+        <RoleTiles />
+        <Ticker />
+        <BrandBand />
+        <TrialTickets />
+        <Services />
+        <Industries />
+        <How />
+        <Pricing />
+        <Trust />
         <Coverage />
-        <AppSection />
-        <FinalCta onToast={showToast} />
+        <AppBlock />
+        <RequestForm onToast={showToast} />
+        <section className="sw-sec" id="faq" style={{ paddingTop: 0 }}>
+          <div className="sw-head">
+            <p className="sw-eyebrow">Questions, answered</p>
+            <h2 className="sw-h2">
+              Before you <em>book.</em>
+            </h2>
+          </div>
+          <Faq items={FAQS} />
+        </section>
         <AllServicesDirectory />
       </main>
       <Footer />
