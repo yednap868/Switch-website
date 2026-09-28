@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.jsx'
 import RouteAnalytics from './components/RouteAnalytics.jsx'
+import WhatsAppTracking from './components/WhatsAppTracking.jsx'
 
 /* Note: routes ship pre-rendered (scripts/prerender.mjs) but the client does a
    fresh render rather than hydrating — several pages produce hydration
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <BrowserRouter>
         <RouteAnalytics />
+        <WhatsAppTracking />
         <App />
       </BrowserRouter>
     </HelmetProvider>

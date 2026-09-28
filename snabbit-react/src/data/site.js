@@ -29,3 +29,21 @@ export const ADDRESS = ['5th Floor, WeWork, Cyber Hub', 'Gurgaon, Haryana 122002
 
 export const REGISTERED_OFFICE =
   'Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana, India'
+
+/* Lead tracking: stamp a wa.me link with the page it was clicked from, so each
+   WhatsApp chat shows where the lead came from, and count the click in GA4. */
+export const withSource = (url, path = window.location.pathname) => {
+  const u = new URL(url)
+  const text = u.searchParams.get('text') || 'Hi Switch'
+  if (text.includes('(via switchlocally.com')) return url
+  return `${u.origin}${u.pathname}?text=${encodeURIComponent(`${text}\n\n(via switchlocally.com${path})`)}`
+}
+
+export const trackWhatsApp = (label, path = window.location.pathname) => {
+  if (typeof window.gtag !== 'function') return
+  window.gtag('event', 'whatsapp_click', {
+    page_path: path,
+    link_label: label,
+    transport_type: 'beacon',
+  })
+}
