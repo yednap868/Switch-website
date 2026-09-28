@@ -2,6 +2,7 @@
    from src/data/homeContent.js and site.js; nothing here is invented copy. */
 import AppScreens from '../ui/AppScreens.jsx'
 import CoverageMap from './CoverageMap.jsx'
+import BookingDemo from '../ui/BookingDemo.jsx'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
@@ -9,7 +10,6 @@ import { ReviewVideos, ServiceRow, StoreButtons, StatsRow } from '../ui/Blocks.j
 import {
   FORM_ROLES,
   HOME_STATS,
-  HOW_STEPS,
   INDUSTRIES,
   PATHWAYS,
   PLANS,
@@ -151,26 +151,17 @@ export function How() {
   return (
     <section className="sw-sec" id="how">
       <div className="sw-head">
-        <p className="sw-eyebrow">How Switch works</p>
+        <p className="sw-eyebrow">How to book</p>
         <h2 className="sw-h2">
-          One message. <em>People on site.</em>
+          Book in five taps. <em>Watch it.</em>
         </h2>
         <p className="sw-lead">
-          Tell us the role, place and time. We match verified people, you confirm, they check in
-          with an OTP.
+          Pick a role, choose the time, pay, get matched, check in with an OTP. This is the Switch
+          app, step by step — tap any step to jump to it.
         </p>
       </div>
-      <div className="sw-grid sw-g4">
-        {HOW_STEPS.map((s) => (
-          <div className="sw-card sw-step" key={s.n}>
-            <span className="n">
-              {s.n} · {s.title}
-            </span>
-            <h3 className="sw-h3">{s.line}</h3>
-            <p>{s.caption}</p>
-          </div>
-        ))}
-      </div>
+      <BookingDemo />
+      <p className="bd-caption">Illustrative walkthrough of the Switch app · names and details are examples</p>
     </section>
   )
 }

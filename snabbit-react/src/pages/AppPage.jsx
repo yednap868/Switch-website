@@ -1,3 +1,4 @@
+import BookingDemo from '../components/ui/BookingDemo.jsx'
 import AppScreens from '../components/ui/AppScreens.jsx'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
@@ -146,6 +147,18 @@ export default function AppPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* BOOKING WALKTHROUGH */}
+        <section className="sw-sec">
+          <div className="sw-head">
+            <p className="sw-eyebrow">Inside the app</p>
+            <h2 className="sw-h2">
+              Watch a booking, <em>tap by tap.</em>
+            </h2>
+          </div>
+          <BookingDemo />
+          <p className="bd-caption">Illustrative walkthrough · names and details are examples</p>
         </section>
 
         {/* CTA */}
