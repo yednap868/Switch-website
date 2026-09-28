@@ -27,7 +27,17 @@ import {
   waLink,
 } from '../../data/site.js'
 
-const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey', 't-lav', 't-peach', 't-sky']
+const TINTS = [
+  't-lav',
+  't-peach',
+  't-sky',
+  't-mint',
+  't-pink',
+  't-grey',
+  't-lav',
+  't-peach',
+  't-sky',
+]
 const ROLE_ICON = {
   'store-helper-gurgaon': 'store',
   'security-guard-gurgaon': 'shield',
@@ -36,6 +46,17 @@ const ROLE_ICON = {
   'cook-gurgaon': 'chef',
   'home-cleaning-gurgaon': 'sparkles',
   'nanny-gurgaon': 'heart',
+}
+const IND_PHOTO = {
+  'Retail & Shops': '/sw-promoter.jpg',
+  'Restaurants & Cafés': '/sw-waiter.jpg',
+  'Warehouses & Logistics': '/sw-factory-helper.jpg',
+  'Factories & Production': '/sw-general-helper.jpg',
+  'Offices & Co-working': '/sw-maid.jpg',
+  'Events & Banquets': '/sw-bartender.jpg',
+  'Hotels & Guest Houses': '/sw-kitchen-helper.jpg',
+  'Grocery & Q-Commerce': '/delivery-rider.jpg',
+  'Salons, Gyms & Clinics': '/sw-caretaker.jpg',
 }
 const IND_ICON = {
   'Retail & Shops': 'store',
@@ -54,7 +75,11 @@ export function RoleTiles() {
     <section aria-label="Find your people">
       <div className="sw-tiles">
         {ROLES.map((r, i) => (
-          <Link key={r.slug} className={`sw-tile sw-press ${TINTS[i % TINTS.length]}`} to={`/${r.slug}`}>
+          <Link
+            key={r.slug}
+            className={`sw-tile sw-press ${TINTS[i % TINTS.length]}`}
+            to={`/${r.slug}`}
+          >
             <Icon name={ROLE_ICON[r.slug] || 'sparkles'} />
             {r.name.split(' / ')[0]}
           </Link>
@@ -83,7 +108,14 @@ export function Services() {
       </div>
       <div className="sw-grid sw-g2">
         {ROLES.map((r) => (
-          <ServiceRow key={r.slug} to={`/${r.slug}`} img={r.img} name={r.name} desc={r.desc} tags={r.tags} />
+          <ServiceRow
+            key={r.slug}
+            to={`/${r.slug}`}
+            img={r.img}
+            name={r.name}
+            desc={r.desc}
+            tags={r.tags}
+          />
         ))}
       </div>
       <div className="sw-grid sw-g3" style={{ marginTop: 12 }}>
@@ -116,24 +148,29 @@ export function Industries() {
         {INDUSTRIES.map((x, i) => {
           const inner = (
             <>
-              <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
-                <Icon name={IND_ICON[x.name] || 'building'} />
+              <span className="sw-ind-ph">
+                <img src={IND_PHOTO[x.name]} alt="" loading="lazy" />
+                <span className={`sw-sq ${TINTS[i % TINTS.length]}`}>
+                  <Icon name={IND_ICON[x.name] || 'building'} />
+                </span>
               </span>
-              <h3 className="sw-h3">{x.name}</h3>
-              <p>{x.roles}</p>
-              <span className="sw-link">
-                {x.slug ? 'See staffing' : 'Ask on WhatsApp'} <Icon name="arrow" />
+              <span className="sw-ind-body">
+                <h3 className="sw-h3">{x.name}</h3>
+                <p>{x.roles}</p>
+                <span className="sw-link">
+                  {x.slug ? 'See staffing' : 'Ask on WhatsApp'} <Icon name="arrow" />
+                </span>
               </span>
             </>
           )
           return x.slug ? (
-            <Link key={x.name} className="sw-card sw-ind sw-press" to={`/${x.slug}`}>
+            <Link key={x.name} className="sw-card sw-ind sw-ind-card sw-press" to={`/${x.slug}`}>
               {inner}
             </Link>
           ) : (
             <a
               key={x.name}
-              className="sw-card sw-ind sw-press"
+              className="sw-card sw-ind sw-ind-card sw-press"
               href={waLink(`Hi Switch — I need staff for my ${x.name} business in Gurgaon.`)}
               target="_blank"
               rel="noreferrer"
@@ -149,7 +186,7 @@ export function Industries() {
 
 export function How() {
   return (
-    <section className="sw-sec" id="how">
+    <section className="sw-sec sw-band" id="how">
       <div className="sw-head">
         <p className="sw-eyebrow">How to book</p>
         <h2 className="sw-h2">
@@ -161,7 +198,9 @@ export function How() {
         </p>
       </div>
       <BookingDemo />
-      <p className="bd-caption">Illustrative walkthrough of the Switch app · names and details are examples</p>
+      <p className="bd-caption">
+        Illustrative walkthrough of the Switch app · names and details are examples
+      </p>
     </section>
   )
 }
@@ -192,7 +231,14 @@ export function Pricing() {
         <div className="sw-grid sw-g3">
           {PLANS.map((p) => (
             <div className={`sw-card sw-plan${p.featured ? ' hl' : ''}`} key={p.name}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'center' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  gap: 8,
+                  alignItems: 'center',
+                }}
+              >
                 <h3 className="sw-h3">{p.name}</h3>
                 <span className="sw-pill">{p.badge}</span>
               </div>
@@ -211,7 +257,12 @@ export function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a className={`sw-btn sm${p.featured ? ' white' : ''}`} href={waLink(p.msg)} target="_blank" rel="noreferrer">
+              <a
+                className={`sw-btn sm${p.featured ? ' white' : ''}`}
+                href={waLink(p.msg)}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {p.cta}
               </a>
             </div>
@@ -220,7 +271,13 @@ export function Pricing() {
       </div>
       <div className="sw-grid sw-g2" style={{ marginTop: 12 }}>
         {PATHWAYS.map((p) => (
-          <a className="sw-dashed sw-press" key={p.title} href={waLink(p.msg)} target="_blank" rel="noreferrer">
+          <a
+            className="sw-dashed sw-press"
+            key={p.title}
+            href={waLink(p.msg)}
+            target="_blank"
+            rel="noreferrer"
+          >
             <p className="sw-eyebrow">{p.kicker}</p>
             <h3 className="sw-h3" style={{ marginTop: 6 }}>
               {p.title}
@@ -241,13 +298,15 @@ export function Pricing() {
 
 export function Trust() {
   return (
-    <section className="sw-sec" id="trust">
+    <section className="sw-sec sw-band" id="trust">
       <div className="sw-head">
         <p className="sw-eyebrow">Trusted by businesses</p>
         <h2 className="sw-h2">
           Real businesses. <em>Real results.</em>
         </h2>
-        <p className="sw-lead">Owners and managers across Gurgaon, on camera and in their own words.</p>
+        <p className="sw-lead">
+          Owners and managers across Gurgaon, on camera and in their own words.
+        </p>
       </div>
       <StatsRow items={HOME_STATS} />
       <div style={{ marginTop: 14 }}>
@@ -275,18 +334,25 @@ export function Trust() {
           <p>Why we built Switch for Gurgaon’s businesses.</p>
         </Link>
       </div>
-      <div className="sw-quotes" style={{ marginTop: 18 }}>
-        {REVIEWS.map((t) => (
-          <figure className="sw-card sw-q" key={t.name} style={{ margin: 0 }}>
-            <div className="stars" aria-label="5 stars">
-              ★★★★★
-            </div>
-            <blockquote>“{t.text}”</blockquote>
-            <cite>
-              {t.name} · {t.loc}
-            </cite>
-          </figure>
-        ))}
+      <div className="sw-marquee" style={{ marginTop: 18 }}>
+        <div className="sw-marquee-row">
+          {[...REVIEWS, ...REVIEWS].map((t, i) => (
+            <figure
+              className="sw-card sw-q"
+              key={t.name + i}
+              style={{ margin: 0 }}
+              aria-hidden={i >= REVIEWS.length ? 'true' : undefined}
+            >
+              <div className="stars" aria-label="5 stars">
+                ★★★★★
+              </div>
+              <blockquote>“{t.text}”</blockquote>
+              <cite>
+                {t.name} · {t.loc}
+              </cite>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -434,14 +500,36 @@ export function RequestForm({ onToast }) {
         </div>
         <form className="sw-card sw-form" onSubmit={submit}>
           <b className="sw-h3">Prefer to send your requirement?</b>
-          <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
+          <input
+            type="text"
+            name="bot-field"
+            tabIndex={-1}
+            autoComplete="off"
+            style={{ display: 'none' }}
+            aria-hidden="true"
+          />
           <label className="sw-field" htmlFor="rq-business">
             Business name
-            <input className="sw-inp" id="rq-business" required value={form.business} onChange={set('business')} placeholder="e.g. Yum Yum Cha" />
+            <input
+              className="sw-inp"
+              id="rq-business"
+              required
+              value={form.business}
+              onChange={set('business')}
+              placeholder="e.g. Yum Yum Cha"
+            />
           </label>
           <label className="sw-field" htmlFor="rq-phone">
             Phone / WhatsApp
-            <input className="sw-inp" id="rq-phone" required inputMode="numeric" value={form.phone} onChange={set('phone')} placeholder="10-digit mobile" />
+            <input
+              className="sw-inp"
+              id="rq-phone"
+              required
+              inputMode="numeric"
+              value={form.phone}
+              onChange={set('phone')}
+              placeholder="10-digit mobile"
+            />
           </label>
           <div className="sw-grid sw-g2">
             <label className="sw-field" htmlFor="rq-role">
@@ -454,16 +542,35 @@ export function RequestForm({ onToast }) {
             </label>
             <label className="sw-field" htmlFor="rq-count">
               How many?
-              <input className="sw-inp" id="rq-count" inputMode="numeric" value={form.count} onChange={set('count')} placeholder="e.g. 3" />
+              <input
+                className="sw-inp"
+                id="rq-count"
+                inputMode="numeric"
+                value={form.count}
+                onChange={set('count')}
+                placeholder="e.g. 3"
+              />
             </label>
           </div>
           <label className="sw-field" htmlFor="rq-area">
             Area / locality
-            <input className="sw-inp" id="rq-area" value={form.area} onChange={set('area')} placeholder="e.g. DLF Phase 2, Udyog Vihar" />
+            <input
+              className="sw-inp"
+              id="rq-area"
+              value={form.area}
+              onChange={set('area')}
+              placeholder="e.g. DLF Phase 2, Udyog Vihar"
+            />
           </label>
           <label className="sw-field" htmlFor="rq-message">
             Anything else? (optional)
-            <textarea className="sw-inp" id="rq-message" value={form.message} onChange={set('message')} placeholder="Shift timings, start date…" />
+            <textarea
+              className="sw-inp"
+              id="rq-message"
+              value={form.message}
+              onChange={set('message')}
+              placeholder="Shift timings, start date…"
+            />
           </label>
           <button className="sw-btn" type="submit">
             Send on WhatsApp <Icon name="arrow" />

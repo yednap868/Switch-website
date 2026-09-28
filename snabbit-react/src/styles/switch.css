@@ -3839,3 +3839,128 @@ html[data-theme='light'] .sw-mark {
   from { width: 0; }
   to { width: 18%; }
 }
+
+/* ── polish pass ──────────────────────────────────────────────────── */
+/* bottom bar slides away when it would cover the hero, form or footer */
+.sw-bar {
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.3s;
+}
+.sw-bar.is-hidden {
+  transform: translateY(140%);
+  opacity: 0;
+}
+.sw-bar.is-hidden a {
+  pointer-events: none;
+}
+/* full-width tinted band behind a section, for rhythm */
+.sw-band {
+  position: relative;
+  isolation: isolate;
+}
+.sw-band::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  background:
+    radial-gradient(700px 320px at 80% 0%, var(--glow), transparent 70%),
+    linear-gradient(180deg, transparent, var(--card) 18%, var(--card) 82%, transparent);
+  border-block: 1px solid var(--line);
+}
+html[data-theme='light'] .sw-band::before {
+  background:
+    radial-gradient(700px 320px at 80% 0%, var(--glow), transparent 70%),
+    linear-gradient(180deg, transparent, #efeaf9 18%, #efeaf9 82%, transparent);
+}
+/* industry photo cards */
+.sw-ind-card {
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+.sw-ind-ph {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--sunk);
+}
+.sw-ind-ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sw-ind-ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 10, 15, 0.75), transparent 55%);
+}
+.sw-ind-ph .sw-sq {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+.sw-ind-card:hover .sw-ind-ph img {
+  transform: scale(1.06);
+}
+.sw-ind-body {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px 18px;
+}
+.sw-ind-body p {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+/* reviews marquee */
+.sw-marquee {
+  overflow: hidden;
+  margin-inline: calc(-1 * var(--gut));
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.sw-marquee-row {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 4px var(--gut);
+}
+.sw-marquee .sw-q {
+  width: min(360px, 78vw);
+  flex: 0 0 auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sw-marquee-row {
+    animation: sw-tick 70s linear infinite;
+  }
+  .sw-marquee:hover .sw-marquee-row {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sw-marquee {
+    overflow-x: auto;
+  }
+}
+/* FAQ in two columns on desktop */
+@media (min-width: 901px) {
+  .sw-faq.two {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+/* stat numbers a touch bigger, gradient */
+.sw-stat b {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(28px, 3vw, 36px);
+}

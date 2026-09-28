@@ -1,7 +1,7 @@
 /* Shared building blocks of the redesign. Home and the inner pages compose
    their sections from these, so a trial ticket or a review video looks the
    same everywhere. Styles live in src/styles/switch.css (sw-* classes). */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import {
@@ -217,9 +217,9 @@ export function Ticker() {
   )
 }
 
-export function Faq({ items }) {
+export function Faq({ items, two = false }) {
   return (
-    <div className="sw-faq">
+    <div className={`sw-faq${two ? ' two' : ''}`}>
       {items.map((f) => (
         <details className="sw-card" key={f.q}>
           <summary>
@@ -309,12 +309,50 @@ export function Crumbs({ items }) {
   )
 }
 
+/* Counts a stat like "20,000+" or "24h" up from zero the first time it scrolls
+   into view. The server HTML carries the final value; values with no number
+   in them ("Same-day") are left alone. */
+export function CountUp({ value }) {
+  const ref = useRef(null)
+  const [shown, setShown] = useState(value)
+  useEffect(() => {
+    const m = /^(\D*)([\d,]+)(.*)$/.exec(value)
+    const el = ref.current
+    if (!m || !el || !('IntersectionObserver' in window)) return
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    const [, pre, num, post] = m
+    const target = Number(num.replace(/,/g, ''))
+    let raf = 0
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return
+        io.disconnect()
+        const t0 = performance.now()
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / 1300)
+          const eased = 1 - Math.pow(1 - k, 3)
+          setShown(`${pre}${Math.round(target * eased).toLocaleString('en-IN')}${post}`)
+          if (k < 1) raf = requestAnimationFrame(tick)
+        }
+        raf = requestAnimationFrame(tick)
+      },
+      { threshold: 0.4 },
+    )
+    io.observe(el)
+    return () => {
+      io.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [value])
+  return <b ref={ref}>{shown}</b>
+}
+
 export function StatsRow({ items }) {
   return (
     <div className="sw-grid sw-g4">
       {items.map((s) => (
         <div className="sw-card sw-stat" key={s.label}>
-          <b>{s.value}</b>
+          <CountUp value={s.value} />
           <span>{s.label}</span>
         </div>
       ))}

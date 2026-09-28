@@ -12,7 +12,7 @@ import ScrollReveal from './components/ScrollReveal.jsx'
 import HomeHero from './components/home/HomeHero.jsx'
 import useToast from './components/fx/useToast.jsx'
 import Icon from './components/ui/Icon.jsx'
-import { BrandBand, Faq, Ticker, TrialTickets } from './components/ui/Blocks.jsx'
+import { BrandBand, CtaFeature, Faq, Ticker, TrialTickets } from './components/ui/Blocks.jsx'
 import {
   AppBlock,
   Coverage,
@@ -297,9 +297,30 @@ function OfferBanner() {
 
 /* ─── MOBILE / BOTTOM CTA BAR ─────────────────────── */
 function MobileCTABar() {
+  /* Shows once the hero is scrolled past, and steps aside for the request
+     form and the footer so it never covers them. Hidden in the server HTML. */
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    let blocked = false
+    const update = () => setShow(window.scrollY > 560 && !blocked)
+    const io =
+      'IntersectionObserver' in window
+        ? new IntersectionObserver((entries) => {
+            blocked = entries.some((e) => e.isIntersecting)
+            update()
+          })
+        : null
+    document.querySelectorAll('#request, footer').forEach((el) => io?.observe(el))
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    return () => {
+      io?.disconnect()
+      window.removeEventListener('scroll', update)
+    }
+  }, [])
   return (
-    <div className="sw-bar" aria-label="Quick actions">
-      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+    <div className={`sw-bar${show ? '' : ' is-hidden'}`} aria-label="Quick actions">
+      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" tabIndex={show ? undefined : -1}>
         <span>
           <b>Hire verified staff</b>
           <small>Trial from ₹149 · Staff in a day</small>
@@ -345,8 +366,17 @@ function HomePage() {
               Before you <em>book.</em>
             </h2>
           </div>
-          <Faq items={FAQS} />
+          <Faq items={FAQS} two />
         </section>
+        <CtaFeature
+          title={
+            <>
+              Staff that shows up. <em>Book your first shift.</em>
+            </>
+          }
+          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for ₹149."
+          photos={['/sw-maid.jpg', '/sw-kitchen-helper.jpg']}
+        />
         <AllServicesDirectory />
       </main>
       <Footer />
