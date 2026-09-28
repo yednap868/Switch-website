@@ -5,7 +5,7 @@ import Nav from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
 import './AboutPage.css'
 
-const PHONE = '+919205617375'
+const PHONE = '+918796894517'
 const WA_MSG = encodeURIComponent("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+','')}?text=${WA_MSG}`
 

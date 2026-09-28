@@ -29,6 +29,7 @@ const { render } = await import(SSR_ENTRY)
 const routes = [
   '/',
   '/staffing-gurgaon',
+  '/retail-staffing-gurgaon',
   '/app',
   '/about',
   '/partner',

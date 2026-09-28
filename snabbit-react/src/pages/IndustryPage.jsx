@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
 import { GURGAON_AREAS, INDUSTRY_PAGES, getIndustryPage } from '../data/industryPages.js'
-import { APP_URL, EMAIL, PHONE, waLink } from '../data/site.js'
+import { APP_URL, EMAIL, waLink } from '../data/site.js'
 import './IndustryPage.css'
 
 const BASE_URL = 'https://switchlocally.com'
@@ -291,7 +291,6 @@ function IndustryHead({ page }) {
       name: 'Switch',
       url: BASE_URL,
       email: EMAIL,
-      telephone: PHONE,
       areaServed: { '@type': 'City', name: 'Gurgaon' },
     },
   }

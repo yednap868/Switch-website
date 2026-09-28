@@ -3,6 +3,9 @@ import { Helmet } from 'react-helmet-async'
 import './PartnerPage.css'
 import Nav from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
+import { PHONE_DISPLAY, waLink } from '../data/site.js'
+
+const PARTNER_WA = waLink('Hi Switch — I want to join as a Switch Partner.')
 
 const APP_URL = 'https://app.switchlocally.com/'
 
@@ -310,7 +313,7 @@ export default function PartnerPage() {
                 ))}
               </ul>
               <CtaPrimary>Apply on the App</CtaPrimary>
-              <a href="tel:+919205617375" className="pp-req-call">or call · +91 92056 17375</a>
+              <a href={PARTNER_WA} target="_blank" rel="noopener noreferrer" className="pp-req-call">or WhatsApp · {PHONE_DISPLAY}</a>
             </div>
           </div>
         </section>
@@ -371,7 +374,7 @@ export default function PartnerPage() {
             <p className="pp-final-p">Download the Switch Partner app, submit your Aadhaar, and we’ll approve you within 24 hours. Daily payouts begin from your very first booking.</p>
             <div className="pp-final-ctas">
               <CtaPrimary big>Apply on the App</CtaPrimary>
-              <a href="tel:+919205617375" className="pp-cta-secondary">📞 Call +91 92056 17375</a>
+              <a href={PARTNER_WA} target="_blank" rel="noopener noreferrer" className="pp-cta-secondary">WhatsApp {PHONE_DISPLAY}</a>
             </div>
             <div className="pp-final-row">
               <span><Check/> Free to join</span>

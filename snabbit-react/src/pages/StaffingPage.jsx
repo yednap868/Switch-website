@@ -10,7 +10,7 @@ import './StaffingPage.css'
 const BASE_URL = 'https://switchlocally.com'
 const CANONICAL = `${BASE_URL}/staffing-gurgaon`
 const APP_URL = 'https://app.switchlocally.com/'
-const PHONE = '+919205617375'
+const PHONE = '+918796894517'
 const WA_MSG = encodeURIComponent("Hi Switch — I need staffing for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
 
@@ -27,7 +27,7 @@ const INDUSTRIES = [
 ]
 
 const STEPS = [
-  { title: 'Tell us what you need', desc: 'Message us on WhatsApp or call — share the role, headcount, location and dates. Takes two minutes.' },
+  { title: 'Tell us what you need', desc: 'Message us on WhatsApp — share the role, headcount, location and dates. Takes two minutes.' },
   { title: 'We match verified staff', desc: 'We assign Aadhaar-verified, background-checked Switch Players suited to your role and shift timings.' },
   { title: 'Staff show up on site', desc: 'Your team reports on time at your location — for a single shift, a full day, or a 7-day stretch.' },
   { title: 'Transparent billing', desc: 'One clear rate with a proper invoice, and a fast replacement if anyone falls short.' },
@@ -99,7 +99,6 @@ export default function StaffingPage() {
       name: 'Switch',
       url: BASE_URL,
       email: 'hello@switchlocally.com',
-      telephone: PHONE,
       areaServed: { '@type': 'City', name: 'Gurgaon' },
     },
   }
@@ -163,7 +162,6 @@ export default function StaffingPage() {
               </p>
               <div className="ab-hero-ctas">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="ab-cta-primary">Get staff for your business →</a>
-                <a href={`tel:${PHONE}`} className="ab-cta-secondary">Call +91 92056 17375</a>
               </div>
               <div className="ab-stats">
                 <div className="ab-stat"><div className="ab-stat-num">20,000+</div><div className="ab-stat-lbl">Verified Workers</div></div>

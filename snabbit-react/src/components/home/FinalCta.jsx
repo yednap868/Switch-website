@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Annotate from '../fx/Annotate.jsx'
 import { FORM_ROLES } from '../../data/homeContent.js'
 import {
-  CALL_URL,
   EMAIL,
   EMPLOYER_LOGIN,
   MAPS_URL,
@@ -19,27 +18,37 @@ const EMPTY = { business: '', phone: '', role: '', count: '', area: '', message:
 
 export default function FinalCta({ onToast }) {
   const [form, setForm] = useState(EMPTY)
-  const [status, setStatus] = useState('idle') // idle | sending | done | error
+  const [status, setStatus] = useState('idle') // idle | done
   const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
-  /* Posts to the Netlify form defined in index.html — field names must stay
-     in sync with that hidden form. */
+  /* Hands the request to WhatsApp so every lead lands in one inbox, and still
+     posts to the Netlify form defined in index.html as a backup log — field
+     names must stay in sync with that hidden form. */
+  const waRequest = (f) =>
+    waLink(
+      [
+        "Hi Switch — I'd like to hire staff.",
+        `Business: ${f.business}`,
+        `Phone: ${f.phone}`,
+        `Role: ${f.role}`,
+        f.count && `How many: ${f.count}`,
+        f.area && `Area: ${f.area}`,
+        f.message && `Notes: ${f.message}`,
+      ]
+        .filter(Boolean)
+        .join('\n'),
+    )
+
   const submit = (e) => {
     e.preventDefault()
-    setStatus('sending')
+    window.open(waRequest(form), '_blank', 'noopener')
+    setStatus('done')
+    onToast?.('Opening WhatsApp — hit send to share your request.')
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encodeForm({ 'form-name': 'request-staff', 'bot-field': '', ...form }),
-    })
-      .then(() => {
-        setStatus('done')
-        onToast?.('Request sent — our team will call you back shortly.')
-      })
-      .catch(() => {
-        setStatus('error')
-        onToast?.("Couldn't send — please WhatsApp or call us instead.")
-      })
+    }).catch(() => {})
   }
 
   return (
@@ -124,12 +133,12 @@ export default function FinalCta({ onToast }) {
                   <span className="request-tick">✓</span>
                   <strong>Got it{form.business ? `, ${form.business}` : ''}.</strong>
                   <p>
-                    Our team will call you on <b>{form.phone || 'your number'}</b> shortly. For
-                    anything urgent, WhatsApp us now.
+                    Send the WhatsApp message we just opened and our team will reply there. Didn&apos;t
+                    open? Tap below.
                   </p>
                   <a
                     className="btn primary"
-                    href={waLink('Hi Switch — I just sent a staffing request.')}
+                    href={waRequest(form)}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -216,34 +225,21 @@ export default function FinalCta({ onToast }) {
                       />
                     </div>
                   </div>
-                  <button className="btn form-submit" type="submit" disabled={status === 'sending'}>
-                    {status === 'sending' ? 'Sending…' : 'Send request'} <b>↗</b>
+                  <button className="btn form-submit" type="submit">
+                    Send on WhatsApp <b>↗</b>
                   </button>
-                  {status === 'error' && (
-                    <p className="form-error">
-                      Couldn&apos;t send — please WhatsApp or call us instead.
-                    </p>
-                  )}
-                  <p className="form-fine">No obligation. We call you back to confirm.</p>
+                  <p className="form-fine">No obligation. We reply on WhatsApp.</p>
                 </form>
               )}
             </div>
           </div>
 
           <div className="support-links">
-            <a className="support-link" href={CALL_URL}>
-              <span className="support-icon">⌕</span>
-              <span>
-                <strong>Call</strong>
-                <small>{PHONE_DISPLAY}</small>
-              </span>
-              <b>↗</b>
-            </a>
             <a className="support-link" href={waLink()} target="_blank" rel="noreferrer">
               <span className="support-icon">◌</span>
               <span>
                 <strong>WhatsApp</strong>
-                <small>Chat with our team</small>
+                <small>{PHONE_DISPLAY}</small>
               </span>
               <b>↗</b>
             </a>

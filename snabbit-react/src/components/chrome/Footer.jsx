@@ -5,13 +5,13 @@ import { INDUSTRY_PAGES } from '../../data/industryPages.js'
 import {
   ADDRESS,
   APPLE_URL,
-  CALL_URL,
   CAREERS_EMAIL,
   MAPS_URL,
   PHONE_DISPLAY,
   PLAY_URL,
   REGISTERED_OFFICE,
   SOCIALS,
+  WHATSAPP_URL,
   waLink,
 } from '../../data/site.js'
 
@@ -66,10 +66,10 @@ export default function Footer() {
               View on Google Maps →
             </a>
           </div>
-          <a className="footer-phone" href={CALL_URL}>
-            <span aria-hidden="true">☎</span>
+          <a className="footer-phone" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <span aria-hidden="true">💬</span>
             <span>
-              <small>Call us</small>
+              <small>WhatsApp us</small>
               <b>{PHONE_DISPLAY}</b>
             </span>
           </a>
@@ -101,7 +101,9 @@ export default function Footer() {
               Bulk hiring
             </a>
             <a href="/#request">Request staff</a>
-            <a href={CALL_URL}>Contact sales</a>
+            <a href={waLink('Hi Switch — I want to talk to sales.')} target="_blank" rel="noreferrer">
+              Contact sales
+            </a>
           </div>
           <div className="footer-column">
             <span className="footer-column-title">COMPANY</span>

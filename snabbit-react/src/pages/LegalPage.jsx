@@ -5,7 +5,7 @@ import Footer from '../components/chrome/Footer.jsx'
 import './LegalPage.css'
 
 const CONTACT_EMAIL = 'hello@switchlocally.com'
-const PHONE_DISPLAY = '+91 92056 17375'
+const PHONE_DISPLAY = '+91 87968 94517'
 const LAST_UPDATED = '24 July 2026'
 
 /* ─── POLICY CONTENT ──────────────────────────────────
@@ -52,7 +52,7 @@ const POLICIES = {
       { h: '3. Rescheduling', p: 'Need a different day or time? Let us know as early as you can and we will do our best to move the booking at no extra cost, subject to availability.' },
       { h: '4. Replacement instead of refund', p: 'If a Switch Player is a no-show or not the right fit, our first remedy is a fast replacement — usually within 24 hours — so your business stays covered. Raise the issue during or right after the shift.' },
       { h: '5. Refunds', p: 'Where a refund is due — for example, a shift we could not staff after taking payment — we process it to the original payment method, typically within 5–7 business days.' },
-      { h: '6. Questions', p: `For anything to do with a cancellation, reschedule or refund, contact us at ${CONTACT_EMAIL} or ${PHONE_DISPLAY}.` },
+      { h: '6. Questions', p: `For anything to do with a cancellation, reschedule or refund, contact us at ${CONTACT_EMAIL} or on WhatsApp at ${PHONE_DISPLAY}.` },
     ],
   },
 }

@@ -14,7 +14,7 @@ export default function Hero() {
             <span className="hero-line">
               <em>business</em> with
             </span>{' '}
-            <span className="hero-line">Switch Players</span>{' '}
+            <span className="hero-line">Players</span>{' '}
             <span className="hero-line">who show up.</span>
           </h1>
           <p>
