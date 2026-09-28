@@ -1,12 +1,12 @@
 /* The homepage, section by section, in the Switch app's look. Content comes
    from src/data/homeContent.js and site.js; nothing here is invented copy. */
 import AppScreens from '../ui/AppScreens.jsx'
+import CoverageMap from './CoverageMap.jsx'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
-import { HeroArt, ReviewVideos, ServiceRow, StoreButtons, StatsRow } from '../ui/Blocks.jsx'
+import { ReviewVideos, ServiceRow, StoreButtons, StatsRow } from '../ui/Blocks.jsx'
 import {
-  COVERAGE_AREAS,
   FORM_ROLES,
   HOME_STATS,
   HOW_STEPS,
@@ -21,10 +21,8 @@ import {
 import {
   ADDRESS,
   EMAIL,
-  EMPLOYER_LOGIN,
   LEADS_SHEET_URL,
   PHONE_DISPLAY,
-  WHATSAPP_URL,
   trackWhatsApp,
   waLink,
 } from '../../data/site.js'
@@ -50,45 +48,6 @@ const IND_ICON = {
   'Hotels & Guest Houses': 'hotel',
   'Grocery & Q-Commerce': 'cart',
   'Salons, Gyms & Clinics': 'scissors',
-}
-
-export function Hero() {
-  return (
-    <section className="sw-hero">
-      <div>
-        <p className="sw-eyebrow">Gurgaon’s on-demand staffing</p>
-        <h1 className="sw-h1" style={{ marginTop: 12 }}>
-          Switch to staff that <em>shows up.</em>
-        </h1>
-        <p className="sw-lead">
-          Aadhaar-verified helpers, cooks, guards and housekeeping for your shop, kitchen, warehouse
-          or office. Book in minutes, staffed the same day, replaced within 24 hours if anyone
-          doesn’t turn up.
-        </p>
-        <div className="sw-btns">
-          <a className="sw-btn" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
-            Hire staff now <Icon name="arrow" />
-          </a>
-          <a className="sw-btn line" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-            Talk on WhatsApp
-          </a>
-        </div>
-        <div className="sw-checks">
-          {['Aadhaar verified', 'Staff in a day', 'Replacement guarantee', 'Transparent billing'].map((x) => (
-            <span className="sw-pill sw-live" key={x}>
-              {x}
-            </span>
-          ))}
-        </div>
-      </div>
-      <HeroArt
-        img="/hero-workers.jpg"
-        alt="Switch staff in uniform — a driver, technician, housekeeper and delivery staff"
-        otp
-        badge={{ title: 'Staff confirmed', sub: 'Often within the day' }}
-      />
-    </section>
-  )
 }
 
 export function RoleTiles() {
@@ -344,45 +303,33 @@ export function Trust() {
 }
 
 export function Coverage() {
-  const [area, setArea] = useState('')
   return (
     <section className="sw-sec" id="coverage">
-      <div className="sw-two">
-        <div>
+      <div className="sw-row-head">
+        <div className="sw-head" style={{ margin: 0 }}>
           <p className="sw-eyebrow">Our coverage</p>
-          <h2 className="sw-h2" style={{ marginTop: 10 }}>
+          <h2 className="sw-h2">
             Every corner of Gurgaon. <em>Same day.</em>
           </h2>
-          <p className="sw-lead" style={{ marginTop: 10 }}>
+          <p className="sw-lead">
             From DLF and Sushant Lok to Palam Vihar, Udyog Vihar, Cyber City, Sohna Road, MG Road
-            and Sectors 1–49.
+            and Sectors 1–49 — all pincodes 122001 to 122022. Watch a booking move from request to
+            check-in, or tap an area.
           </p>
-          <div className="sw-chips" style={{ marginTop: 18 }}>
-            {COVERAGE_AREAS.map((a) => (
-              <button key={a} type="button" className="sw-chip" aria-pressed={area === a} onClick={() => setArea(a)}>
-                {a}
-              </button>
-            ))}
+        </div>
+      </div>
+      <CoverageMap />
+      <div className="sw-grid sw-g3" style={{ marginTop: 12 }}>
+        {[
+          ['1,500+', 'Businesses served'],
+          ['8 areas · 22 pincodes', 'Across Gurgaon'],
+          ['Same-day', 'Staffing available'],
+        ].map(([v, l]) => (
+          <div className="sw-card sw-stat" key={l}>
+            <b style={{ fontSize: 22 }}>{v}</b>
+            <span>{l}</span>
           </div>
-          <p className="sw-muted" style={{ marginTop: 12, fontSize: 14 }} aria-live="polite">
-            <span className="sw-pill sw-live">Covered</span>{' '}
-            {area
-              ? `${area}: same-day staff usually available. Tell us your exact location to confirm.`
-              : 'All Gurgaon pincodes, 122001 to 122022.'}
-          </p>
-        </div>
-        <div className="sw-grid sw-g3" style={{ alignSelf: 'end' }}>
-          {[
-            ['1,500+', 'Businesses served'],
-            ['Gurgaon', 'Our core market'],
-            ['Same-day', 'Staffing available'],
-          ].map(([v, l]) => (
-            <div className="sw-card sw-stat" key={l}>
-              <b style={{ fontSize: 22 }}>{v}</b>
-              <span>{l}</span>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </section>
   )

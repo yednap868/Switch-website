@@ -135,7 +135,7 @@ export function BrandBand({ title = true }) {
       )}
       <div className="sw-logos">
         {BRANDS.map((b) => (
-          <div className="sw-logo" key={b.name} title={b.name}>
+          <div className={`sw-logo${b.light ? ' is-light' : ''}`} key={b.name} title={b.name}>
             {b.logo ? <img src={b.logo} alt={b.name} loading="lazy" /> : <span>{b.name}</span>}
           </div>
         ))}

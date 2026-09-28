@@ -21,9 +21,14 @@ export default function Footer() {
       <div className="sw-wrap">
         <div className="sw-fgrid">
           <div>
-            <Link to="/" className="sw-brand" aria-label="Switch home">
+            <Link to="/" className="sw-logo-link sw-logo-lg" aria-label="Switch home">
+              <span className="sw-mark" aria-hidden="true">
+                S
+              </span>
+              <span className="sw-brand">
               <img className="wm-dark" src="/brand/switch-wordmark-white.png" alt="Switch" width="180" height="48" style={{ height: 48 }} loading="lazy" />
               <img className="wm-light" src="/brand/switch-wordmark-black.png" alt="" width="180" height="48" style={{ height: 48 }} loading="lazy" />
+              </span>
             </Link>
             <p className="sw-tagline">{TAGLINE}</p>
             <p className="sw-muted" style={{ marginTop: 8, fontSize: 14, maxWidth: '40ch' }}>

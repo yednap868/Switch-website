@@ -67,13 +67,18 @@ export default function Header() {
   return (
     <header className="sw-header">
       <div className="sw-wrap">
-        <Link to="/" className="sw-brand" aria-label="Switch home">
-          <img className="wm-dark" src="/brand/switch-wordmark-white.png" alt="Switch" width="130" height="34" />
-          <img className="wm-light" src="/brand/switch-wordmark-black.png" alt="" width="130" height="34" />
-          <small>
-            <Icon name="pin" />
-            Gurgaon
-          </small>
+        <Link to="/" className="sw-logo-link" aria-label="Switch home">
+          <span className="sw-mark" aria-hidden="true">
+            S
+          </span>
+          <span className="sw-brand">
+            <img className="wm-dark" src="/brand/switch-wordmark-white.png" alt="Switch" width="130" height="34" />
+            <img className="wm-light" src="/brand/switch-wordmark-black.png" alt="" width="130" height="34" />
+            <small>
+              <Icon name="pin" />
+              Gurgaon
+            </small>
+          </span>
         </Link>
 
         <nav className="sw-nav" aria-label="Main">

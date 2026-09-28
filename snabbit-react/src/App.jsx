@@ -8,13 +8,14 @@ import './styles/switch.css'
 import Header from './components/chrome/Header.jsx'
 import Footer from './components/chrome/Footer.jsx'
 import HashScroll from './components/HashScroll.jsx'
+import ScrollReveal from './components/ScrollReveal.jsx'
+import HomeHero from './components/home/HomeHero.jsx'
 import useToast from './components/fx/useToast.jsx'
 import Icon from './components/ui/Icon.jsx'
 import { BrandBand, Faq, Ticker, TrialTickets } from './components/ui/Blocks.jsx'
 import {
   AppBlock,
   Coverage,
-  Hero,
   How,
   Industries,
   Pricing,
@@ -324,7 +325,7 @@ function HomePage() {
       <Header />
       <OfferPopup />
       <main id="page-main" className="sw-wrap">
-        <Hero />
+        <HomeHero />
         <RoleTiles />
         <Ticker />
         <BrandBand />
@@ -360,6 +361,7 @@ export default function App() {
   return (
     <>
       <HashScroll />
+      <ScrollReveal />
       <OfferBanner />
       <Routes>
         <Route path="/" element={<HomePage />} />

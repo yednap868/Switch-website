@@ -43,6 +43,10 @@ export const INDUSTRIES = [
    A brand with no logo file falls back to a styled wordmark, so the row stays
    complete — drop a file in public/logos/ and add `logo` + `h` to swap it. */
 export const BRANDS = [
+  { name: 'Taco Bell',          logo: '/logos/taco-bell.png' },
+  { name: 'Wow! Momo',          logo: '/logos/wow-momo.png' },
+  { name: 'Libas',              logo: '/logos/libas.png', light: true },
+  { name: 'Caterspoint'                                                },
   { name: 'Ivory Stayz',        logo: '/logos/ivory-stayz.svg', h: 24 },
   { name: 'Dr Diet Restaurant', logo: '/logos/dr-diet.png',     h: 42 },
   { name: 'Foressta Cafe',      logo: '/logos/foressta.png',    h: 22 },
