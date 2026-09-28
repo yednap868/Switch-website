@@ -6,8 +6,8 @@ export const EMPLOYER_LOGIN = 'https://app.switchlocally.com/employer/login'
 export const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.switchlocally.employer'
 export const APPLE_URL = 'https://apps.apple.com/in/app/switch-hire-verified-staff/id6798368902'
 
-export const PHONE = '+918796894517'
-export const PHONE_DISPLAY = '+91 87968 94517'
+export const PHONE = '+918796894500'
+export const PHONE_DISPLAY = '+91 87968 94500'
 export const EMAIL = 'hello@switchlocally.com'
 export const CAREERS_EMAIL = 'careers@switchlocally.com'
 

@@ -10,7 +10,7 @@ import './StaffingPage.css'
 const BASE_URL = 'https://switchlocally.com'
 const CANONICAL = `${BASE_URL}/staffing-gurgaon`
 const APP_URL = 'https://app.switchlocally.com/'
-const PHONE = '+918796894517'
+const PHONE = '+918796894500'
 const WA_MSG = encodeURIComponent("Hi Switch — I need staffing for my business in Gurgaon.")
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
 

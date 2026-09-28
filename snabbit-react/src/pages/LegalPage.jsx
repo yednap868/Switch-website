@@ -5,7 +5,7 @@ import Footer from '../components/chrome/Footer.jsx'
 import './LegalPage.css'
 
 const CONTACT_EMAIL = 'hello@switchlocally.com'
-const PHONE_DISPLAY = '+91 87968 94517'
+const PHONE_DISPLAY = '+91 87968 94500'
 const LAST_UPDATED = '24 July 2026'
 
 /* ─── POLICY CONTENT ──────────────────────────────────
