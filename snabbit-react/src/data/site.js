@@ -16,6 +16,10 @@ export const waLink = (msg) =>
 
 export const WHATSAPP_URL = waLink("Hi Switch — I'd like to hire staff for my business in Gurgaon.")
 
+/* Google Apps Script web app that appends each request-form entry to the
+   "Leads" sheet — source in scripts/lead-sheet.gs. Empty = backup off. */
+export const LEADS_SHEET_URL = ''
+
 export const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=WeWork%20Cyber%20Hub%20Gurgaon'
 

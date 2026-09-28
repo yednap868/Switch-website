@@ -57,17 +57,6 @@
     </script>
   </head>
   <body>
-    <!-- Netlify Forms detection: this hidden static form lets Netlify register
-         the "request-staff" form at build time. The real, styled form is the
-         React one in App.jsx, which posts to this endpoint. Field names must match. -->
-    <form name="request-staff" data-netlify="true" netlify-honeypot="bot-field" hidden>
-      <input type="text" name="business" />
-      <input type="tel" name="phone" />
-      <input type="text" name="role" />
-      <input type="text" name="count" />
-      <input type="text" name="area" />
-      <textarea name="message"></textarea>
-    </form>
     <div id="root"></div>
     <noscript>
       <h1>Switch — Staffing for Business in Gurgaon</h1>

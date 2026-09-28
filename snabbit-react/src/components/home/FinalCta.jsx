@@ -4,16 +4,12 @@ import { FORM_ROLES } from '../../data/homeContent.js'
 import {
   EMAIL,
   EMPLOYER_LOGIN,
+  LEADS_SHEET_URL,
   MAPS_URL,
   PHONE_DISPLAY,
   trackWhatsApp,
   waLink,
 } from '../../data/site.js'
-
-const encodeForm = (data) =>
-  Object.keys(data)
-    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
-    .join('&')
 
 const EMPTY = { business: '', phone: '', role: '', count: '', area: '', message: '' }
 
@@ -22,9 +18,9 @@ export default function FinalCta({ onToast }) {
   const [status, setStatus] = useState('idle') // idle | done
   const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }))
 
-  /* Hands the request to WhatsApp so every lead lands in one inbox, and still
-     posts to the Netlify form defined in index.html as a backup log — field
-     names must stay in sync with that hidden form. */
+  /* Hands the request to WhatsApp so every lead lands in one inbox, and logs it
+     to the Google Sheet too, so a lead who never hits send in WhatsApp isn't
+     lost. Field names must match scripts/lead-sheet.gs. */
   const waRequest = (f) =>
     waLink(
       [
@@ -46,10 +42,16 @@ export default function FinalCta({ onToast }) {
     trackWhatsApp('Request form')
     setStatus('done')
     onToast?.('Opening WhatsApp — hit send to share your request.')
-    fetch('/', {
+    if (!LEADS_SHEET_URL) return
+    // no-cors: Apps Script doesn't send CORS headers, and we don't need the reply.
+    fetch(LEADS_SHEET_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeForm({ 'form-name': 'request-staff', 'bot-field': '', ...form }),
+      mode: 'no-cors',
+      body: new URLSearchParams({
+        ...form,
+        page: window.location.pathname,
+        'bot-field': e.currentTarget.elements['bot-field']?.value || '',
+      }),
     }).catch(() => {})
   }
 
@@ -152,11 +154,8 @@ export default function FinalCta({ onToast }) {
                   id="request-form"
                   name="request-staff"
                   method="POST"
-                  data-netlify="true"
-                  netlify-honeypot="bot-field"
                   onSubmit={submit}
                 >
-                  <input type="hidden" name="form-name" value="request-staff" />
                   <p hidden>
                     <label>
                       Don&apos;t fill this: <input name="bot-field" />
