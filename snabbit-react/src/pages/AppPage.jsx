@@ -1,3 +1,4 @@
+import AppScreens from '../components/ui/AppScreens.jsx'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import Header from '../components/chrome/Header.jsx'
@@ -106,17 +107,7 @@ export default function AppPage() {
 
           <div className="ap-art">
             <div className="sw-blob" aria-hidden="true" />
-            <div className="sw-phones">
-              <div className="sw-phone side">
-                <img src="/screen-2.png" alt="Switch app — browse staff categories" width="390" height="844" decoding="async" />
-              </div>
-              <div className="sw-phone mid">
-                <img src="/screen-home.png" alt="Switch app — hire verified Switch Players in Gurgaon" width="390" height="844" decoding="async" fetchPriority="high" />
-              </div>
-              <div className="sw-phone side">
-                <img src="/screen-3.png" alt="Switch app — verified Switch Player profiles" width="390" height="844" decoding="async" />
-              </div>
-            </div>
+            <AppScreens />
           </div>
         </section>
 

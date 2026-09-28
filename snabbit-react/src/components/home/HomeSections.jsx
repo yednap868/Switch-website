@@ -1,5 +1,6 @@
 /* The homepage, section by section, in the Switch app's look. Content comes
    from src/data/homeContent.js and site.js; nothing here is invented copy. */
+import AppScreens from '../ui/AppScreens.jsx'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
@@ -425,17 +426,7 @@ export function AppBlock() {
               Free to download · Built for busy teams
             </p>
           </div>
-          <div className="sw-phones" aria-hidden="true">
-            <div className="sw-phone side">
-              <img src="/screen-2.png" alt="" loading="lazy" />
-            </div>
-            <div className="sw-phone mid">
-              <img src="/screen-home.png" alt="" loading="lazy" />
-            </div>
-            <div className="sw-phone side">
-              <img src="/screen-3.png" alt="" loading="lazy" />
-            </div>
-          </div>
+          <AppScreens />
         </div>
       </div>
     </section>
