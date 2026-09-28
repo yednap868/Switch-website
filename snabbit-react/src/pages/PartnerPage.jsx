@@ -33,7 +33,6 @@ const STEPS = [
 const CATEGORIES = [
   { name: 'Cook',           pay: '₹109–129/hr' },
   { name: 'Cleaning Staff', pay: '₹99–119/hr' },
-  { name: 'Driver',         pay: '₹109–129/hr' },
   { name: 'Security Guard', pay: '₹99–119/hr' },
   { name: 'Factory Helper', pay: '₹99–119/hr' },
   { name: 'General Helper', pay: '₹99–119/hr' },
@@ -62,7 +61,6 @@ const TRUST = [
 
 const STORIES = [
   { img: '/sw-cook.jpg',            name: 'Ramesh K.',  role: 'Cook',           text: 'I used to earn ₹12,000 in a restaurant. With Switch, I make ₹38,000 working only mornings. I pick my own hours now.' },
-  { img: '/sw-driver.jpg',          name: 'Suresh M.',  role: 'Driver',         text: 'Daily payouts changed everything. No waiting till month-end. I get my earnings in my account by 11 AM every day.' },
   { img: '/sw-maid.jpg',            name: 'Priya S.',   role: 'Cleaning Staff', text: 'I started with one booking a week. After 4 months of 5★ ratings, I’m booked solid — full 8-hour days, every day.' },
   { img: '/sw-security-guard.jpg',  name: 'Vikram T.',  role: 'Security Guard', text: 'No middleman, no agency fee. Whatever the client pays, that’s what I take home. Best decision I made.' },
 ]
@@ -72,8 +70,8 @@ const FAQS = [
   { q: 'Do I pay anything to join?',            a: 'No. Joining is 100% free. We only take a small platform fee from each completed booking — never upfront.' },
   { q: 'When do I get paid?',                   a: 'Daily. Finish your booking, get rated, and the money lands in your bank or UPI within 24 hours. No monthly cycles.' },
   { q: 'Can I choose which jobs to accept?',    a: 'Yes. You see every nearby job on the app and decide. Skip what doesn’t fit, accept what does. Full control.' },
-  { q: 'What documents do I need?',             a: 'Just an Aadhaar and a smartphone. Drivers also need a valid driving licence. Bouncers may need a fitness declaration.' },
-  { q: 'How long does verification take?',      a: 'Same day for most applicants. Background-check heavy categories (driver, bouncer) may take up to 48 hours.' },
+  { q: 'What documents do I need?',             a: 'Just an Aadhaar and a smartphone. Bouncers may need a fitness declaration.' },
+  { q: 'How long does verification take?',      a: 'Same day for most applicants. Background-check heavy categories (bouncer, security guard) may take up to 48 hours.' },
   { q: 'Is there an insurance cover?',          a: 'Yes — every Switch partner is covered by on-duty accident insurance and a 24×7 emergency helpline.' },
   { q: 'Can I work in more than one category?', a: 'Absolutely. Many partners are verified in 2–3 categories (e.g., Cook + Kitchen Helper) which doubles their booking opportunities.' },
 ]
@@ -106,7 +104,7 @@ export default function PartnerPage() {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: 'Switch Partner — Earn ₹15,000–₹40,000/month with Daily Payouts',
-    description: 'Join Switch as a verified partner. Earn ₹15,000–₹40,000 per month with flexible hours and DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bartender, bouncer, or waiter.',
+    description: 'Join Switch as a verified partner. Earn ₹15,000–₹40,000 per month with flexible hours and DAILY bank payouts. Work as a cook, cleaner, security guard, helper, bartender, bouncer, or waiter.',
     employmentType: ['FULL_TIME', 'PART_TIME', 'CONTRACTOR'],
     hiringOrganization: { '@type': 'Organization', name: 'Switch', sameAs: 'https://switchlocally.com' },
     jobLocation: {
@@ -127,7 +125,7 @@ export default function PartnerPage() {
     <>
       <Helmet>
         <title>Become a Switch Partner — Daily Payouts · Earn ₹15K–40K/month in Gurgaon</title>
-        <meta name="description" content="Join Switch as a verified partner. Earn ₹15,000–₹40,000/month with DAILY bank payouts. Work as a cook, cleaner, driver, security guard, helper, bouncer, bartender or waiter in Gurgaon. Free to join, same-day approval." />
+        <meta name="description" content="Join Switch as a verified partner. Earn ₹15,000–₹40,000/month with DAILY bank payouts. Work as a cook, cleaner, security guard, helper, bouncer, bartender or waiter in Gurgaon. Free to join, same-day approval." />
         <link rel="canonical" href="https://switchlocally.com/partner" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
@@ -368,7 +366,7 @@ export default function PartnerPage() {
             <div className="sw-f-art" aria-hidden="true">
               <div className="sw-blob" />
               <div className="sw-arch a1">
-                <img src="/sw-driver.jpg" alt="" loading="lazy" />
+                <img src="/sw-general-helper.jpg" alt="" loading="lazy" />
               </div>
               <div className="sw-arch a2">
                 <img src="/sw-cook.jpg" alt="" loading="lazy" />

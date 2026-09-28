@@ -32,7 +32,6 @@ const ROLE_ICON = {
   'store-helper-gurgaon': 'store',
   'security-guard-gurgaon': 'shield',
   'factory-warehouse-gurgaon': 'package',
-  'driver-gurgaon': 'truck',
   'delivery-worker-gurgaon': 'bike',
   'cook-gurgaon': 'chef',
   'home-cleaning-gurgaon': 'sparkles',

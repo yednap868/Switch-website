@@ -49,6 +49,141 @@
       "source": "/verified-painter-gurgaon",
       "destination": "/staffing-gurgaon",
       "permanent": true
+    },
+    {
+      "source": "/blog/hire-verified-personal-driver-gurgaon",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/driver-benefits-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-checklist-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-cost-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-faq-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-dlf-phase-1-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-dlf-phase-2-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-dlf-phase-3-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-dlf-phase-4-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-golf-course-road-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-malibu-towne-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-nirvana-country-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-palam-vihar-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sector-14-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sector-29-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sector-45-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sector-52-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sector-56-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sohna-road-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-south-city-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-in-sushant-lok-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-near-me-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/driver-reviews-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/hire-driver-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/same-day-driver-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
+    },
+    {
+      "source": "/verified-driver-gurgaon",
+      "destination": "/staffing-gurgaon",
+      "permanent": true
     }
   ],
   "rewrites": [

@@ -44,7 +44,7 @@ import { WHATSAPP_URL } from './data/site.js'
 /* ─── SEO HEAD ────────────────────────────────────── */
 function HomeHead() {
   const allServices = [
-    'Housekeeping','Maid','House Cleaning','Cook','Driver','Cleaning Staff',
+    'Housekeeping','Maid','House Cleaning','Cook','Cleaning Staff',
     'Security Guard','Bouncer','Bartender','Waiter','Kitchen Helper','Promoter',
     'Factory Helper','General Helper','Caretaker','Nanny','Delivery Switch Player',
   ]
@@ -54,7 +54,7 @@ function HomeHead() {
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
     alternateName: ['Switch Locally', 'Switch App'],
-    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
+    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     image: 'https://switchlocally.com/hero-workers.jpg',

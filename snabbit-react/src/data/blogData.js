@@ -274,81 +274,6 @@ export const BLOG_POSTS = [
   },
 
   {
-    slug: 'hire-verified-personal-driver-gurgaon',
-    title: 'How to Hire a Verified Personal Driver in Gurgaon — Everything You Need to Know in 2026',
-    description: 'Looking to hire a personal or corporate driver in Gurgaon? Read this complete 2026 guide covering verification, costs, tips and how to book a verified driver in minutes.',
-    excerpt: 'Cyber City to Palam Vihar, Udyog Vihar to Sohna Road — a verified personal driver can completely change your daily life. Here\'s how to hire one in Gurgaon.',
-    category: 'Driver',
-    hero: '/driver-new.jpg',
-    date: '2026-03-25',
-    readMins: 7,
-    keywords: 'hire personal driver Gurgaon, corporate driver Gurgaon, full-time driver cost Gurgaon, verify driver license India, family driver Gurgaon, switchlocally.com',
-    blocks: [
-      { type: 'p', content: 'Whether you\'re a busy professional in Cyber City, a family in Palam Vihar or a corporate business in Udyog Vihar — a reliable, verified personal driver in Gurgaon can completely change the quality of your daily life. No more traffic stress, parking hassle or road safety worries.' },
-      { type: 'p', content: 'But hiring the wrong driver can be a costly mistake. This guide covers everything you need to know about hiring a trusted, verified driver in Gurgaon in 2026.' },
-
-      { type: 'h2', content: 'Why you need a verified personal driver in Gurgaon' },
-      { type: 'ul', content: [
-        'Safety: An experienced driver who knows Gurgaon\'s roads',
-        'Time savings: No driving, parking or traffic stress',
-        'Convenience: Door-to-door travel on your schedule',
-        'Reliability: Someone who shows up on time, every time',
-        'Peace of mind: Especially for families with kids or elderly members',
-      ]},
-
-      { type: 'h2', content: 'What to check before hiring a driver in Gurgaon' },
-      { type: 'h3', content: '1. Valid driving licence' },
-      { type: 'p', content: 'Always verify a valid, current driving licence. For private vehicles, a Light Motor Vehicle (LMV) licence is required.' },
-      { type: 'h3', content: '2. Aadhaar verification' },
-      { type: 'p', content: 'Every driver should be Aadhaar-verified — basic but critical. All Switch drivers are Aadhaar-verified and document-checked.' },
-      { type: 'h3', content: '3. Background check' },
-      { type: 'p', content: 'Criminal record verification and previous employment history are essential before trusting anyone with your vehicle and family.' },
-      { type: 'h3', content: '4. Driving experience' },
-      { type: 'p', content: 'Ask about years of experience and familiarity with Gurgaon\'s roads. An experienced driver who knows DLF, Sushant Lok, Udyog Vihar and Cyber City is a significant advantage.' },
-      { type: 'h3', content: '5. Language and communication' },
-      { type: 'p', content: 'The driver should communicate effectively in Hindi or English for directions, scheduling and day-to-day coordination.' },
-
-      { type: 'h2', content: 'Part-time vs full-time vs corporate driver' },
-      { type: 'h3', content: 'Part-time driver in Gurgaon' },
-      { type: 'ul', content: [
-        'Works for a set number of hours per day — typically morning and evening',
-        'Ideal for families that need a driver only during peak hours',
-        'More affordable than full-time',
-      ]},
-      { type: 'h3', content: 'Full-time driver in Gurgaon' },
-      { type: 'ul', content: [
-        'Works a full 8–10 hour shift daily',
-        'Ideal for busy executives and large households',
-        'Comprehensive travel support throughout the day',
-      ]},
-      { type: 'h3', content: 'Corporate driver in Gurgaon' },
-      { type: 'ul', content: [
-        'Assigned to a business or executive for office travel',
-        'Handles airport transfers, client meetings and corporate commutes',
-        'Must be professionally presented and reliable',
-      ]},
-
-      { type: 'h2', content: 'How much does a personal driver cost in Gurgaon in 2026?' },
-      { type: 'ul', content: [
-        'Part-Time Driver: ₹8,000 to ₹12,000 per month',
-        'Full-Time Driver: ₹12,000 to ₹18,000 per month',
-        'Corporate Driver: ₹15,000 to ₹22,000 per month',
-      ]},
-      { type: 'callout', content: 'All Switch driver pricing is transparent — no hidden charges and no agency commission.' },
-
-      { type: 'h2', content: 'How to book a verified driver in Gurgaon through Switch' },
-      { type: 'ol', content: [
-        'Visit switchlocally.com or the Switch App',
-        'Select the Driver service',
-        'Enter your location, hours and requirements',
-        'Get matched with a verified, experienced driver',
-        'Meet the driver and do a trial run',
-        'Transparent rates — no hidden charges or agency commission',
-      ]},
-    ],
-  },
-
-  {
     slug: 'event-staff-gurgaon-2026-guide',
     title: 'Planning an Event in Gurgaon? Here\'s How to Get the Perfect Staff in 2026',
     description: 'Planning a party, corporate event or wedding in Gurgaon? Learn how to hire verified bartenders, waiters, bouncers and promoters through Switch — Gurgaon\'s trusted event staff provider.',
@@ -406,7 +331,7 @@ export const BLOG_POSTS = [
   {
     slug: 'aadhaar-verification-domestic-help-gurgaon',
     title: 'Why Aadhaar Verification Is the Most Important Thing When Hiring Domestic Help in Gurgaon',
-    description: 'Why is Aadhaar verification so important when hiring a maid, cook, driver or caretaker in Gurgaon? Read this essential guide by Switch and learn how to protect your home and family.',
+    description: 'Why is Aadhaar verification so important when hiring a maid, cook or caretaker in Gurgaon? Read this essential guide by Switch and learn how to protect your home and family.',
     excerpt: 'Identity, accountability, deterrence and peace of mind — Aadhaar verification is the single most important step you can take to protect your home.',
     category: 'Verification & Safety',
     hero: '/security-guard-new.jpg',
@@ -414,7 +339,7 @@ export const BLOG_POSTS = [
     readMins: 7,
     keywords: 'Aadhaar verification domestic Switch Players Gurgaon, background check maid Gurgaon, verified domestic help Gurgaon, criminal background check maid, police-verified domestic help Gurgaon, switchlocally.com',
     blocks: [
-      { type: 'p', content: 'Every day, thousands of families across Gurgaon invite domestic Switch Players into their homes — maids, cooks, kitchen helpers, caretakers, drivers and more. These are people with access to your home, your family, your children and your valuables. And yet, a surprisingly large number of households hire with little to no verification.' },
+      { type: 'p', content: 'Every day, thousands of families across Gurgaon invite domestic Switch Players into their homes — maids, cooks, kitchen helpers, caretakers and more. These are people with access to your home, your family, your children and your valuables. And yet, a surprisingly large number of households hire with little to no verification.' },
       { type: 'p', content: 'This is a serious risk — and Aadhaar verification is the single most important step you can take to protect yourself, your family and your home.' },
 
       { type: 'h2', content: 'What is Aadhaar verification?' },
@@ -458,7 +383,7 @@ export const BLOG_POSTS = [
       { type: 'callout', content: 'This is why Switch is trusted by families across Gurgaon as the most reliable and safe domestic help platform — across DLF Phase, Sushant Lok, Palam Vihar, Udyog Vihar, Sohna Road and all pincodes 122001–122022.' },
 
       { type: 'h2', content: 'Always choose verified — always choose Switch' },
-      { type: 'p', content: 'Whether you\'re hiring a maid, home cook, kitchen helper, elderly caretaker, nanny, security guard, driver or any other Switch Player — always make Aadhaar verification your first requirement. At Switch, we\'ve already done all of that for you. Visit switchlocally.com or the Switch App and book a verified Switch Player today.' },
+      { type: 'p', content: 'Whether you\'re hiring a maid, home cook, kitchen helper, elderly caretaker, nanny, security guard or any other Switch Player — always make Aadhaar verification your first requirement. At Switch, we\'ve already done all of that for you. Visit switchlocally.com or the Switch App and book a verified Switch Player today.' },
     ],
   },
 ]

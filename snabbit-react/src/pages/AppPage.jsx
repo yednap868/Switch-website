@@ -41,7 +41,7 @@ export default function AppPage() {
     url: 'https://switchlocally.com/app',
     downloadUrl: [PLAY_URL, APPLE_URL],
     installUrl: [PLAY_URL, APPLE_URL],
-    description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse Switch Players, waiters, cooks, drivers and housekeeping — by the hour, day or week. Replacement guaranteed, transparent rates.',
+    description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse Switch Players, waiters, cooks and housekeeping — by the hour, day or week. Replacement guaranteed, transparent rates.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', ratingCount: '500' },
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },

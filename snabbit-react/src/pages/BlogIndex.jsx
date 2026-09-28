@@ -49,7 +49,7 @@ export default function BlogIndex() {
     '@type': 'Blog',
     name: 'Switch Blog — Hiring Guides for Gurgaon',
     url: 'https://switchlocally.com/blog',
-    description: 'Hiring guides, safety tips and verified-staffing advice for families and businesses in Gurgaon — maids, cooks, caretakers, drivers, security guards, bartenders and more.',
+    description: 'Hiring guides, safety tips and verified-staffing advice for families and businesses in Gurgaon — maids, cooks, caretakers, security guards, bartenders and more.',
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
     blogPost: BLOG_POSTS.map(p => ({
       '@type': 'BlogPosting',
@@ -75,8 +75,8 @@ export default function BlogIndex() {
     <>
       <Helmet>
         <title>Switch Blog — Hiring Guides for Domestic &amp; Business Staff in Gurgaon</title>
-        <meta name="description" content="Complete hiring guides for Gurgaon — how to hire verified maids, cooks, caretakers, drivers, security guards and event staff. Tips on Aadhaar verification, pricing, replacement policies and more — from Switch, Gurgaon's trusted staffing platform." />
-        <meta name="keywords" content="Switch blog, hire verified maid Gurgaon guide, home cook Gurgaon, elderly caretaker Gurgaon, security guard vs bouncer, personal driver Gurgaon, event staff Gurgaon, Aadhaar verification domestic help, switchlocally.com" />
+        <meta name="description" content="Complete hiring guides for Gurgaon — how to hire verified maids, cooks, caretakers, security guards and event staff. Tips on Aadhaar verification, pricing, replacement policies and more — from Switch, Gurgaon's trusted staffing platform." />
+        <meta name="keywords" content="Switch blog, hire verified maid Gurgaon guide, home cook Gurgaon, elderly caretaker Gurgaon, security guard vs bouncer, event staff Gurgaon, Aadhaar verification domestic help, switchlocally.com" />
         <link rel="canonical" href="https://switchlocally.com/blog" />
         <meta property="og:title" content="Switch Blog — Hiring Guides for Gurgaon" />
         <meta property="og:description" content="Hiring guides, safety tips and verified staffing advice for families and businesses across Gurgaon." />
@@ -98,7 +98,7 @@ export default function BlogIndex() {
             Hiring guides for <em>Gurgaon families &amp; businesses.</em>
           </h1>
           <p className="sw-lead">
-            Honest, practical advice on hiring verified maids, cooks, caretakers, drivers,
+            Honest, practical advice on hiring verified maids, cooks, caretakers,
             security staff and event staff in Gurgaon — written by the team behind Switch.
           </p>
         </section>
@@ -152,7 +152,7 @@ export default function BlogIndex() {
               Ready to hire a verified <em>Switch Player?</em>
             </h2>
             <p>
-              Skip the reading and skip ahead. Book a verified maid, cook, caretaker, driver,
+              Skip the reading and skip ahead. Book a verified maid, cook, caretaker,
               security guard or event staff member in minutes.
             </p>
             <div className="sw-btns">

@@ -10,9 +10,9 @@ import { useEffect, useRef, useState } from 'react'
 import Icon from '../ui/Icon.jsx'
 import { EMPLOYER_LOGIN, WHATSAPP_URL } from '../../data/site.js'
 
-const WORDS = ['staff', 'cooks', 'guards', 'helpers', 'waiters', 'drivers']
+const WORDS = ['staff', 'cooks', 'guards', 'helpers', 'waiters', 'packers']
 const OTP = '4719'
-const FACES = ['/sw-maid.jpg', '/sw-security-guard.jpg', '/sw-cook.jpg', '/sw-driver.jpg']
+const FACES = ['/sw-maid.jpg', '/sw-security-guard.jpg', '/sw-cook.jpg', '/sw-general-helper.jpg']
 
 const reduced = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -88,7 +88,7 @@ function HeroVisual() {
         <div className="sw-arch">
           <img
             src="/hero-workers.jpg"
-            alt="Switch staff in uniform — a driver, technician, housekeeper and delivery staff"
+            alt="Switch staff in uniform, ready for the shift"
             fetchPriority="high"
           />
         </div>

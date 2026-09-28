@@ -2,7 +2,7 @@
    src/components/home stay presentational. Copy is the live site's. */
 
 export const ALL_ROLES_MARQUEE = [
-  'Store Helper','Security Guard','Picker / Packer','Driver','Delivery Rider','Cook / Chef',
+  'Store Helper','Security Guard','Picker / Packer','Delivery Rider','Cook / Chef',
   'Housekeeping','Caretaker',
 ]
 
@@ -10,7 +10,6 @@ export const ROLES = [
   { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', focus: '46% 3%', tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', focus: '50% 8%', tags: ['12 hrs','2 days','7 days'] },
   { img: '/sw-factory-helper.jpg', name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', focus: '51% 0%', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-driver.jpg',         name: 'Driver',                 slug: 'driver-gurgaon',           desc: 'Commercial runs, deliveries & staff transport', focus: '42% 14%', tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', focus: '45% 10%', tags: ['4 hrs','8 hrs','12 hrs'] },
   { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', focus: '51% 4%', tags: ['8 hrs','12 hrs','7 days'] },
   { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', focus: '54% 6%', tags: ['4 hrs','8 hrs','12 hrs'] },
@@ -61,7 +60,6 @@ export const REVIEWS = [
   { name: 'Pradnyesh', loc: 'Warehouse · Udyog Vihar', text: 'Needed 4 warehouse Switch Players urgently. Got verified staff same-day. Absolute lifesaver for our dispatch team.' },
   { name: 'Sameer K.',  loc: 'Retail Store · DLF Phase 5', text: 'Our store needed extra hands during Diwali. Switch sent 3 experienced helpers within just a few hours.' },
   { name: 'Rohit M.',   loc: 'Restaurant · Sector 29',   text: 'We staff weekend banquets through Switch — waiters and a bartender, every time on time. Replacement was instant when one fell sick.' },
-  { name: 'Neha P.',    loc: 'Logistics · Sector 52',     text: 'Booked drivers for 7 days straight. Always professional, always on time. Now our default for staffing.' },
   { name: 'Aman G.',    loc: 'Café · Golf Course Road',   text: 'Two kitchen helpers for a full week during our launch. Verified, skilled, and no agency drama.' },
   { name: 'Ritika M.',  loc: 'Event · Sector 23',         text: 'Hired waiters for a corporate event. Booked at 9 PM, reported 8 AM sharp. Incredible reliability.' },
   { name: 'Vivek S.',   loc: 'Office · Cyber City',       text: 'Daily housekeeping and a security guard for our office floor. Set up in a day, billing was clean.' },
@@ -69,7 +67,7 @@ export const REVIEWS = [
 ]
 
 export const FAQS = [
-  { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, drivers, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
+  { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
   { q: 'Can I hire multiple Switch Players or a full team?', a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more Switch Players, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.' },
   { q: 'What if a Switch Player doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
   { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the rate per Switch Player. Talk to us on WhatsApp for exact rates for your business.' },
@@ -90,7 +88,7 @@ export const WHY_US = [
 
 export const FORM_ROLES = [
   'Store / General Helper','Waiter','Kitchen Helper','Cook / Chef','Dishwasher',
-  'Housekeeping','Security Guard','Picker / Packer','Loader','Driver','Delivery Rider',
+  'Housekeeping','Security Guard','Picker / Packer','Loader','Delivery Rider',
   'Receptionist / Front Desk','Bartender','Bouncer','Promoter','Other / Multiple',
 ]
 
@@ -105,7 +103,6 @@ export const HOW_SHOTS = ['/screen-2.png', '/screen-home.png', '/screen-3.png']
 export const SERVICE_TILES = [
   { slug: 'home-cleaning-gurgaon',    name: 'Housekeeping',            img: '/sw-maid.jpg',            desc: 'Daily upkeep for offices, shops & premises.', focus: '54% 6%' },
   { slug: 'cook-gurgaon',             name: 'Cook / Chef',             img: '/sw-cook.jpg',            desc: 'Kitchen production for cafés, messes & catering.', focus: '51% 4%' },
-  { slug: 'driver-gurgaon',           name: 'Driver',                  img: '/sw-driver.jpg',          desc: 'Commercial runs, deliveries & staff transport.', focus: '42% 14%' },
   { slug: 'delivery-worker-gurgaon',  name: 'Delivery Rider',          img: '/delivery-rider.jpg',     desc: 'Last-mile delivery, loading & movers.', focus: '45% 10%' },
   { slug: 'nanny-gurgaon',            name: 'Caretaker / Elder Care',  img: '/sw-caretaker.jpg',       desc: 'Baby care, elder care & home assistance.', focus: '49% 6%' },
   { slug: 'security-guard-gurgaon',   name: 'Security Guard',          img: '/sw-security-guard.jpg',  desc: 'Gate duty, premises security & night patrol.', focus: '50% 8%' },
@@ -189,7 +186,7 @@ export const PLANS = [
   {
     badge: 'CUSTOM', name: 'Skilled · Custom', price: 'On request',
     description: 'A tailored team for specialist or larger staffing needs.',
-    items: ['Cook · Chef', 'Waiter · Bartender', 'Delivery Rider · Driver', 'Cashier', 'Bulk / team hiring'],
+    items: ['Cook · Chef', 'Waiter · Bartender', 'Delivery Rider', 'Cashier', 'Bulk / team hiring'],
     cta: 'Talk to Switch',
     msg: 'Hi Switch — I need skilled / custom staff on subscription. Please share pricing.',
   },

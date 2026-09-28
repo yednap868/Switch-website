@@ -3287,3 +3287,18 @@ html[data-theme='light'] .sw-mark {
     inset: 2%;
   }
 }
+
+/* Any number of role tiles fills one row on desktop. */
+@media (min-width: 901px) {
+  .sw-tiles {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+/* An odd last card in a two-column grid spans the row instead of sitting alone. */
+@media (min-width: 561px) {
+  .sw-g2 > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}

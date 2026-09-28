@@ -239,7 +239,7 @@ export default function AboutPage() {
             <p>
               Our mission is simple — to make sure every business in Gurgaon can staff up at the right time,
               without the hassle. We have built a platform where verified store helpers, security guards,
-              factory and warehouse Switch Players, waiters, bartenders, bouncers, cooks, drivers and housekeeping
+              factory and warehouse Switch Players, waiters, bartenders, bouncers, cooks and housekeeping
               are available at the click of a button —
               <strong> background-checked, Aadhaar-verified, and ready to work.</strong>
             </p>

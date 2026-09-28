@@ -66,7 +66,7 @@ const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey']
 
 const FAQS = [
   { q: 'Which is the best staffing agency in Gurgaon?', a: 'Switch is a leading staffing agency in Gurgaon, trusted by shops, restaurants, warehouses, offices and event organisers. Every worker is Aadhaar-verified and background-checked, you get a replacement guarantee, and every booking is invoiced clearly — transparent rates.' },
-  { q: 'What types of staff can I hire in Gurgaon through Switch?', a: 'You can hire store helpers, security guards, waiters, bartenders, cooks, kitchen helpers, housekeeping staff, office boys, factory and warehouse workers, drivers and more — for a single shift, a full day, or weekly teams.' },
+  { q: 'What types of staff can I hire in Gurgaon through Switch?', a: 'You can hire store helpers, security guards, waiters, bartenders, cooks, kitchen helpers, housekeeping staff, office boys, factory and warehouse workers and more — for a single shift, a full day, or weekly teams.' },
   { q: 'How much does staffing cost in Gurgaon?', a: 'Rates depend on the role, skill level and duration. Pricing is transparent and fixed upfront with no hidden agency commission, and you pay against a clear invoice. Message us with your requirement for a quick quote.' },
   { q: 'Can I get staff on the same day?', a: 'Yes. For common roles we can deploy verified staff across Gurgaon on the same day — often within a few hours. For large or specialised teams we recommend a day’s notice.' },
   { q: 'Are the workers verified and background-checked?', a: 'Yes. Every Switch Player is Aadhaar-verified, document-checked and personally screened before being assigned to your site, so you never have strangers on your floor.' },
