@@ -116,6 +116,17 @@ export const CERTIFICATES = {
     issued: '17 September 2026',
     location: 'Gurugram',
   },
+  'SWITCH-INT-2026-0016': {
+    displayId: 'SWITCH/INT/2026/0016',
+    name: 'Harman Jeet Singh',
+    type: 'Internship',
+    role: 'Frontend Developer Intern',
+    duration: 'Three (3) months',
+    start: '1 July 2026',
+    end: '29 September 2026',
+    issued: '29 September 2026',
+    location: 'Gurugram',
+  },
 }
 
 /* Normalise any user/QR-supplied id to the registry key:
