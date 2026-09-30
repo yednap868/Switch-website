@@ -7,13 +7,13 @@ export const ALL_ROLES_MARQUEE = [
 ]
 
 export const ROLES = [
-  { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', focus: '46% 3%', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', focus: '50% 8%', tags: ['12 hrs','2 days','7 days'] },
-  { img: '/sw-factory-helper.jpg', name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', focus: '51% 0%', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', focus: '45% 10%', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', focus: '51% 4%', tags: ['8 hrs','12 hrs','7 days'] },
-  { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', focus: '54% 6%', tags: ['4 hrs','8 hrs','12 hrs'] },
-  { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', focus: '49% 6%', tags: ['4 hrs','8 hrs','2 days'] },
+  { img: '/sw-general-helper.jpg', name: 'General / Store Helper', slug: 'store-helper-gurgaon',     desc: 'Billing support, stocking, loading & shop-floor help', focus: '50% 5%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/sw-security-guard.jpg', name: 'Security Guard',         slug: 'security-guard-gurgaon',   desc: 'Gate duty, premises security & night patrol', focus: '47% 3%', tags: ['12 hrs','2 days','7 days'] },
+  { img: '/sw-picker-packer.jpg', name: 'Picker / Packer',        slug: 'factory-warehouse-gurgaon', desc: 'Warehouse picking, packing, sorting & dispatch', focus: '52% 2%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/delivery-rider.jpg',  name: 'Delivery Rider',         slug: 'delivery-worker-gurgaon',  desc: 'Last-mile delivery, loading & movers', focus: '52% 1%', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/sw-cook.jpg',           name: 'Cook / Chef',            slug: 'cook-gurgaon',             desc: 'Kitchen production for cafés, messes & catering', focus: '58% 2%', tags: ['8 hrs','12 hrs','7 days'] },
+  { img: '/sw-maid.jpg',           name: 'Housekeeping',           slug: 'home-cleaning-gurgaon',    desc: 'Daily upkeep for offices, shops & premises', focus: '47% 2%', tags: ['4 hrs','8 hrs','12 hrs'] },
+  { img: '/sw-caretaker.jpg',      name: 'Caretaker / Elder Care', slug: 'nanny-gurgaon',            desc: 'Baby care, elder care & home assistance', focus: '48% 11%', tags: ['4 hrs','8 hrs','2 days'] },
 ]
 
 /* Nine sectors — business premises only; domestic and institutional work came
@@ -101,13 +101,13 @@ export const HOW_SHOTS = ['/screen-2.png', '/screen-home.png', '/screen-3.png']
    subject's centre; the Y is set from the headroom above the hair, not the face,
    so the head survives the shallowest crop. Re-measure if an image changes. */
 export const SERVICE_TILES = [
-  { slug: 'home-cleaning-gurgaon',    name: 'Housekeeping',            img: '/sw-maid.jpg',            desc: 'Daily upkeep for offices, shops & premises.', focus: '54% 6%' },
-  { slug: 'cook-gurgaon',             name: 'Cook / Chef',             img: '/sw-cook.jpg',            desc: 'Kitchen production for cafés, messes & catering.', focus: '51% 4%' },
-  { slug: 'delivery-worker-gurgaon',  name: 'Delivery Rider',          img: '/delivery-rider.jpg',     desc: 'Last-mile delivery, loading & movers.', focus: '45% 10%' },
-  { slug: 'nanny-gurgaon',            name: 'Caretaker / Elder Care',  img: '/sw-caretaker.jpg',       desc: 'Baby care, elder care & home assistance.', focus: '49% 6%' },
-  { slug: 'security-guard-gurgaon',   name: 'Security Guard',          img: '/sw-security-guard.jpg',  desc: 'Gate duty, premises security & night patrol.', focus: '50% 8%' },
-  { slug: 'store-helper-gurgaon',     name: 'General / Store Helper',  img: '/sw-general-helper.jpg',  desc: 'Billing support, stocking, loading & shop-floor help.', focus: '46% 3%' },
-  { slug: 'factory-warehouse-gurgaon',name: 'Picker / Packer',         img: '/sw-factory-helper.jpg',  desc: 'Warehouse picking, packing, sorting & dispatch.', focus: '51% 0%' },
+  { slug: 'home-cleaning-gurgaon',    name: 'Housekeeping',            img: '/sw-maid.jpg',            desc: 'Daily upkeep for offices, shops & premises.', focus: '47% 2%' },
+  { slug: 'cook-gurgaon',             name: 'Cook / Chef',             img: '/sw-cook.jpg',            desc: 'Kitchen production for cafés, messes & catering.', focus: '58% 2%' },
+  { slug: 'delivery-worker-gurgaon',  name: 'Delivery Rider',          img: '/delivery-rider.jpg',     desc: 'Last-mile delivery, loading & movers.', focus: '52% 1%' },
+  { slug: 'nanny-gurgaon',            name: 'Caretaker / Elder Care',  img: '/sw-caretaker.jpg',       desc: 'Baby care, elder care & home assistance.', focus: '48% 11%' },
+  { slug: 'security-guard-gurgaon',   name: 'Security Guard',          img: '/sw-security-guard.jpg',  desc: 'Gate duty, premises security & night patrol.', focus: '47% 3%' },
+  { slug: 'store-helper-gurgaon',     name: 'General / Store Helper',  img: '/sw-general-helper.jpg',  desc: 'Billing support, stocking, loading & shop-floor help.', focus: '50% 5%' },
+  { slug: 'factory-warehouse-gurgaon',name: 'Picker / Packer',         img: '/sw-picker-packer.jpg',  desc: 'Warehouse picking, packing, sorting & dispatch.', focus: '52% 2%' },
 ]
 
 /* ── Redesign (Switch app style) ─────────────────────────────────── */
