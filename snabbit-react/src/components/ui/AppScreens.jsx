@@ -70,7 +70,7 @@ function HomeScreen() {
           <p className="sd-trial-h">
             Switch &amp; try
             <br />
-            from <b>₹149</b>
+            at <b>₹299</b>
           </p>
           <span className="sd-timer">
             <Icon name="timer" /> Ends in 07:12:40
@@ -119,7 +119,7 @@ function TrialPayScreen() {
           </span>
           <b className="sd-role">Housekeeping</b>
           <span className="sd-price">
-            ₹149 <small>· 1 worker · 3 hrs</small>
+            ₹299 <small>· 1 worker · 3 hrs</small>
           </span>
         </div>
       </div>
@@ -152,16 +152,16 @@ function TrialPayScreen() {
       <div className="sd-bill">
         <div>
           <span>Housekeeping · 3 hrs</span>
-          <b>₹149</b>
+          <b>₹299</b>
         </div>
         <div className="sd-total">
           <span>To pay</span>
-          <b>₹149</b>
+          <b>₹299</b>
         </div>
       </div>
       <div className="sd-pay">
         <span>
-          <Icon name="sparkles" /> Pay ₹149 →
+          <Icon name="sparkles" /> Pay ₹299 →
         </span>
         <small>Today, 11:00 AM · UPI or card</small>
       </div>
@@ -228,12 +228,12 @@ function Device({ size, children, label }) {
 export default function AppScreens() {
   return (
     <div className="sw-devs">
-      <Device size="side" label="Switch app: pay ₹149 for a 3-hour Housekeeping trial">
+      <Device size="side" label="Switch app: pay ₹299 for a 3-hour Housekeeping trial">
         <TrialPayScreen />
       </Device>
       <Device
         size="mid"
-        label="Switch app home: hire instantly, scheduled or monthly, trial from ₹149"
+        label="Switch app home: hire instantly, scheduled or monthly, trial at ₹299"
       >
         <HomeScreen />
       </Device>

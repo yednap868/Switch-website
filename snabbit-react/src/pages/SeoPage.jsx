@@ -517,7 +517,7 @@ function NearMePage({ page }) {
 function SameDayPage({ page }) {
   return (
     <>
-      <SpHero page={page} tag="Urgent Booking · Confirmed Within Hours · No Surge" trust>
+      <SpHero page={page} tag="Urgent Booking · Confirmed Within Hours · Price Shown Upfront" trust>
         <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
           Book for Today <Icon name="arrow" />
         </a>

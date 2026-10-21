@@ -59,7 +59,7 @@ function HomeHead() {
     email: 'hello@switchlocally.com',
     image: 'https://switchlocally.com/hero-workers.jpg',
     logo: 'https://switchlocally.com/hero-workers.jpg',
-    priceRange: '₹99-₹199 per hour',
+    priceRange: '₹119-₹599 per hour',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '5th Floor, WeWork, Cyber Hub',
@@ -260,11 +260,11 @@ function OfferPopup() {
           Limited-time offer
         </span>
         <h2 style={{ marginTop: 12 }}>
-          Try a verified worker for <em>₹149.</em>
+          Try a verified worker for <em>₹299.</em>
         </h2>
         <p style={{ marginTop: 10 }}>
-          3 hours of Housekeeping (₹149) or Kitchen Helper (₹179). Or hire full-time staff from
-          ₹999/mo, replacement guaranteed.
+          3 hours of Housekeeping, Kitchen Helper, Utility or Picker &amp; Packer at ₹299, and 50%
+          off your first booking. Or hire monthly staff from ₹20,800, replacement guaranteed.
         </p>
         <div className="sw-btns" style={{ marginTop: 18 }}>
           <a href="#trial" className="sw-btn white" onClick={close}>
@@ -279,7 +279,7 @@ function OfferPopup() {
   )
 }
 
-/* ─── ₹999 OFFER BANNER ───────────────────────────── */
+/* ─── OFFER BANNER ────────────────────────────────── */
 /* Site-wide strip above the sticky header. Scrolls away with the page rather
    than eating viewport height on every screen; the sticky header takes over. */
 function OfferBanner() {
@@ -287,7 +287,7 @@ function OfferBanner() {
     <aside className="sw-strip">
       <a href="/#trial">
         <span>
-          <b>New</b> · 3-hour trial from <b>₹149</b> · Monthly staff from <b>₹999</b>
+          <b>New</b> · 3-hour trial at <b>₹299</b> · 50% off your first booking · Monthly staff from <b>₹20,800</b>
         </span>
         <u>See offers</u>
       </a>
@@ -323,7 +323,7 @@ function MobileCTABar() {
       <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" tabIndex={show ? undefined : -1}>
         <span>
           <b>Hire verified staff</b>
-          <small>Trial from ₹149 · Staff in a day</small>
+          <small>3-hour trial at ₹299 · Staff in a day</small>
         </span>
         <span className="gob">
           WhatsApp <Icon name="arrow" />
@@ -374,7 +374,7 @@ function HomePage() {
               Staff who show up. <em>Book your first shift.</em>
             </>
           }
-          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for ₹149."
+          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for 3 hours at ₹299."
           photos={['/sw-maid.jpg', '/sw-kitchen-helper.jpg']}
         />
         <AllServicesDirectory />

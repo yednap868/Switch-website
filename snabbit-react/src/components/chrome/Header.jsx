@@ -5,7 +5,7 @@ import { EMPLOYER_LOGIN } from '../../data/site.js'
 
 const LINKS = [
   { to: '/staffing-gurgaon', label: 'Services' },
-  { to: '/#trial', label: '₹149 Trial' },
+  { to: '/#trial', label: '₹299 Trial' },
   { to: '/#pricing', label: 'Pricing' },
   { to: '/#how', label: 'How it works' },
   { to: '/about', label: 'About' },

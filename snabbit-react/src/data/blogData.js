@@ -61,7 +61,7 @@ export const BLOG_POSTS = [
         'Full-time maid: ₹10,000 to ₹18,000 per month',
         'Live-in maid: ₹12,000 to ₹20,000 per month including accommodation',
       ]},
-      { type: 'callout', content: 'At Switch, maid services start at ₹149/hr for early-bird bookings — transparent, with no hidden charges and no agency commission. Every booking is invoiced clearly. The work is done.' },
+      { type: 'callout', content: 'At Switch, maid services start at ₹119/hr — transparent, with no hidden charges and no agency commission. Every booking is invoiced clearly. The work is done.' },
 
       { type: 'h2', content: 'Areas in Gurgaon where Switch provides verified maids' },
       { type: 'p', content: 'DLF Phase 1, DLF Phase 3, DLF Phase 4, DLF Queens Enclave, Sushant Lok Phase 1, 2 & 3, Palam Vihar, Palam Vihar Extension, Udyog Vihar, Sohna Road, Sector 14, 15, 17, 17B, 23, 23A, 24, 25, 26, 27, 28, 31, 40, 47, 48, 49, Chakkarpur, Sikanderpur, Nathupur, Galleria Market, Railway Road, Basai, Greenwood City, Malibu Towne and Sun City — covering pincodes 122001, 122002, 122006, 122009, 122010, 122017, 122018 and 122022.' },

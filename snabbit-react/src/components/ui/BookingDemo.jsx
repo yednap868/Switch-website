@@ -10,7 +10,7 @@ import Icon from './Icon.jsx'
 
 const BOOKING_STEPS = [
   { title: 'Pick a role', line: 'Housekeeping, kitchen, security, helpers and more.', ms: 3400 },
-  { title: 'Choose the time', line: 'Date, start time and hours. Try 3 hours from ₹149.', ms: 3800 },
+  { title: 'Choose the time', line: 'Date, start time and hours. Try 3 hours at ₹299.', ms: 3800 },
   { title: 'Pay by UPI or card', line: 'One tap. The price you see is the price you pay.', ms: 3600 },
   { title: 'Worker matched', line: 'An Aadhaar-verified Switch Player accepts, often within the hour.', ms: 3400 },
   { title: 'OTP check-in', line: 'Share the code on arrival — the shift starts. No-show? We replace.', ms: 3800 },
@@ -79,7 +79,7 @@ function PickScreen() {
         ))}
       </div>
       <div className="bd-mini-trial">
-        <b>₹149</b>
+        <b>₹299</b>
         <span>3-hour trial · Housekeeping</span>
       </div>
       <span className="bd-finger f-pick" aria-hidden="true" />
@@ -132,10 +132,10 @@ function TimeScreen() {
           <b>3-hour trial</b>
           <small>1 verified worker</small>
         </div>
-        <b className="bd-price">₹149</b>
+        <b className="bd-price">₹299</b>
       </div>
       <div className="sd-pay">
-        <span className="bd-press-c">Continue · ₹149 →</span>
+        <span className="bd-press-c">Continue · ₹299 →</span>
       </div>
       <span className="bd-finger f-time" aria-hidden="true" />
     </>
@@ -150,7 +150,7 @@ function PayScreen() {
       <div className="sd-bill" style={{ marginTop: 12 }}>
         <div>
           <span>Housekeeping · 3 hrs</span>
-          <b>₹149</b>
+          <b>₹299</b>
         </div>
         <div>
           <span>Today · 11:00 AM</span>
@@ -158,7 +158,7 @@ function PayScreen() {
         </div>
         <div className="sd-total">
           <span>To pay</span>
-          <b>₹149</b>
+          <b>₹299</b>
         </div>
       </div>
       <div className="sd-card sd-addr">
@@ -172,12 +172,12 @@ function PayScreen() {
       </div>
       <div className="sd-pay">
         <span className="bd-press-a">
-          <Icon name="sparkles" /> Pay ₹149 →
+          <Icon name="sparkles" /> Pay ₹299 →
         </span>
       </div>
       <div className="bd-sheet">
         <i className="bd-grab" />
-        <b>Pay ₹149 with UPI</b>
+        <b>Pay ₹299 with UPI</b>
         <div className="bd-upi">
           {['UPI app', 'Card', 'Wallet'].map((u, i) => (
             <span key={u} className={i === 0 ? 'bd-sel-upi' : ''}>
@@ -191,7 +191,7 @@ function PayScreen() {
             <Icon name="check" />
           </span>
           <b>Payment successful</b>
-          <small>₹149 · Booking confirmed</small>
+          <small>₹299 · Booking confirmed</small>
         </div>
       </div>
       <span className="bd-finger f-pay" aria-hidden="true" />

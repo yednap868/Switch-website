@@ -26,10 +26,10 @@ const SERVICES = [
       { cat: 'Bedrooms', items: ['Dust furniture', 'Change linens', 'Vacuum/sweep', 'Organize surfaces'] },
     ],
     prices: [
-      { label: '4 Hours', price: '₹499', desc: 'Quick clean – 1–2 rooms' },
-      { label: '8 Hours', price: '₹899', desc: 'Full home – 2–3 BHK' },
-      { label: '12 Hours', price: '₹1,299', desc: 'Deep clean – large homes' },
-      { label: '2 Days', price: '₹1,699', desc: 'Move-in / move-out clean' },
+      { label: '4 Hours', price: '₹476', desc: 'Quick clean – 1–2 rooms' },
+      { label: '8 Hours', price: '₹952', desc: 'Full home – 2–3 BHK' },
+      { label: '12 Hours', price: '₹1,428', desc: 'Deep clean – large homes' },
+      { label: '2 Days', price: '₹1,904', desc: 'Move-in / move-out clean' },
     ],
     benefits: [
       'Save 3–6 hours every week on household chores',
@@ -89,10 +89,10 @@ const SERVICES = [
       { cat: 'Kitchen Hygiene', items: ['Clean counters after cooking', 'Wash utensils', 'Dispose waste', 'Wipe stovetop'] },
     ],
     prices: [
-      { label: '4 Hours', price: '₹599', desc: 'Tiffin prep or one meal' },
-      { label: '8 Hours', price: '₹999', desc: 'Full day meals' },
-      { label: '2 Days', price: '₹1,799', desc: 'Weekend cooking' },
-      { label: '7 Days', price: '₹5,499', desc: 'Weekly cook' },
+      { label: '4 Hours', price: '₹1,196', desc: 'Tiffin prep or one meal' },
+      { label: '8 Hours', price: '₹2,392', desc: 'Full day meals' },
+      { label: '2 Days', price: '₹4,784', desc: 'Weekend cooking' },
+      { label: '7 Days', price: '₹9,118', desc: 'Weekly cook' },
     ],
     benefits: [
       'Home-cooked food without the daily effort',
@@ -278,9 +278,9 @@ const SERVICES = [
       { cat: 'Documentation', items: ['Shift handover log', 'Visitor register', 'Incident log', 'Vehicle entry/exit record'] },
     ],
     prices: [
-      { label: '12 Hours', price: '₹1,099', desc: 'Day or night shift' },
-      { label: '2 Days', price: '₹1,999', desc: 'Event security' },
-      { label: '7 Days', price: '₹6,499', desc: 'Weekly guard' },
+      { label: '12 Hours', price: '₹2,148', desc: 'Day or night shift' },
+      { label: '2 Days', price: '₹2,864', desc: 'Event security' },
+      { label: '7 Days', price: '₹6,808', desc: 'Weekly guard' },
       { label: 'Custom', price: 'Quote', desc: 'Long-term deployment' },
     ],
     benefits: [
@@ -341,10 +341,10 @@ const SERVICES = [
       { cat: 'Store Upkeep', items: ['Sweep aisles', 'Remove empty cartons', 'Wipe shelves', 'Maintain trial room'] },
     ],
     prices: [
-      { label: '8 Hours', price: '₹749', desc: 'Full-day store support' },
-      { label: '12 Hours', price: '₹1,099', desc: 'Extended shift' },
-      { label: '2 Days', price: '₹1,399', desc: 'Weekend or sale event' },
-      { label: '7 Days', price: '₹4,499', desc: 'Weekly store staffing' },
+      { label: '8 Hours', price: '₹1,432', desc: 'Full-day store support' },
+      { label: '12 Hours', price: '₹2,148', desc: 'Extended shift' },
+      { label: '2 Days', price: '₹2,864', desc: 'Weekend or sale event' },
+      { label: '7 Days', price: '₹6,537', desc: 'Weekly store staffing' },
     ],
     benefits: [
       'Reliable cover during peak hours and festive sales',
@@ -404,10 +404,10 @@ const SERVICES = [
       { cat: 'Safety', items: ['Wear PPE as required', 'Keep aisles clear', 'Report spills immediately', 'No unauthorised zone entry'] },
     ],
     prices: [
-      { label: '8 Hours', price: '₹749', desc: 'Single shift' },
-      { label: '12 Hours', price: '₹1,099', desc: 'Extended production shift' },
-      { label: '2 Days', price: '₹1,399', desc: 'Short-term project' },
-      { label: '7 Days', price: '₹4,499', desc: 'Weekly workforce' },
+      { label: '8 Hours', price: '₹1,144', desc: 'Single shift' },
+      { label: '12 Hours', price: '₹1,716', desc: 'Extended production shift' },
+      { label: '2 Days', price: '₹2,288', desc: 'Short-term project' },
+      { label: '7 Days', price: '₹6,291', desc: 'Weekly workforce' },
     ],
     benefits: [
       'Scale up workforce quickly for peak production seasons',
@@ -618,7 +618,7 @@ function makeSameDayPage(s) {
     ],
     faqs: [
       { q: `How fast can I get a ${s.name.toLowerCase()} today?`, a: 'Same-day slots are available and most bookings are confirmed within 6 hours of request.' },
-      { q: 'Is the pricing higher for same-day bookings?', a: 'No. Switch charges the same transparent rate regardless of booking urgency — no surge pricing.' },
+      { q: 'Is the pricing higher for same-day bookings?', a: 'Instant (urgent) bookings add ₹50/hr on top of the standard hourly rate. Housekeeping and Kitchen Helper stay at a flat rate. The full price is shown before you confirm.' },
       ...s.faqs.slice(0, 3),
     ],
     prices: s.prices,

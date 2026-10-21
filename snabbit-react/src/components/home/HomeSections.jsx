@@ -289,8 +289,11 @@ export function Pricing() {
         ))}
       </div>
       <p className="sw-fine">
-        Monthly prices are per staff, exclusive of GST (18%), with a 1-month minimum and 15 days’
-        notice to cancel. Rates depend on role, shift and location. T&amp;C apply.
+        Monthly prices are per staff for 8 hours a day, 26 days, exclusive of GST (18%), with a
+        1-month minimum and 15 days’ notice to cancel. 10 hours a day: ₹26,000 for helpers, waiters,
+        guards, drivers, utility, stewards and captains; ₹30,525 for cooks and bartenders; ₹38,850 for
+        chefs. Instant bookings add ₹50/hr, except Housekeeping and Kitchen Helper (flat rate). Rates
+        depend on role, shift and location. T&amp;C apply.
       </p>
     </section>
   )

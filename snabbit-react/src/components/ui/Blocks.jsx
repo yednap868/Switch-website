@@ -39,7 +39,7 @@ export function TrialTickets({ id = 'trial' }) {
       <div className="sw-trial">
         <div className="sw-trial-top">
           <div>
-            <p className="sw-eyebrow">3-hour trial · today’s offer</p>
+            <p className="sw-eyebrow">3-hour trial at ₹299 · 50% off your first booking</p>
             <h2>
               Try Switch for <em>3 hours.</em>
               <br />

@@ -126,7 +126,7 @@ export const HOME_STATS = [
 export const TRIALS = [
   {
     role: 'Housekeeping',
-    price: 149,
+    price: 299,
     img: '/sw-maid.jpg',
     kicker: 'Offices · shops',
     blurb: 'Floors, washrooms, dusting — shops, offices, premises',
@@ -134,7 +134,7 @@ export const TRIALS = [
   },
   {
     role: 'Kitchen Helper',
-    price: 179,
+    price: 299,
     img: '/sw-kitchen-helper.jpg',
     kicker: 'Cafés · kitchens',
     blurb: 'Prep, dishes, kitchen cleaning — cafés, restaurants, messes',
@@ -158,9 +158,9 @@ export const REVIEW_VIDEOS = [
 ]
 
 export const PRICES = [
-  { tier: 'Hourly', figure: '₹99–199', unit: '/hour' },
-  { tier: 'Full Day', figure: '₹999–1,299', unit: '/day' },
-  { tier: 'Weekly Team', figure: 'from ₹6,500', unit: '/week' },
+  { tier: 'Hourly', figure: '₹119–599', unit: '/hour' },
+  { tier: 'Full Day', figure: '₹952–4,792', unit: '/day' },
+  { tier: 'Weekly Team', figure: 'from ₹6,181', unit: '/week' },
 ]
 
 export const PATHWAYS = [
@@ -170,18 +170,18 @@ export const PATHWAYS = [
 
 export const PLANS = [
   {
-    badge: 'CORE TEAM', name: 'Essential', price: '₹999', per: '/mo',
+    badge: 'CORE TEAM', name: 'Essential', price: '₹20,800', per: '/mo',
     description: 'Reliable everyday support for your operations.',
     items: ['Housekeeping', 'General Helper', 'Picker & Packer', 'Cleaner · Office Boy', 'Loader · Gardener'],
     cta: 'Ask about Essential',
-    msg: "Hi Switch — I'd like to subscribe to the Essential staffing plan (₹999/mo). Please share the details.",
+    msg: "Hi Switch — I'd like to subscribe to the Essential staffing plan (₹20,800/mo). Please share the details.",
   },
   {
-    badge: 'PEACE OF MIND', name: 'Security', price: '₹999', per: '/mo', featured: true,
+    badge: 'PEACE OF MIND', name: 'Security', price: '₹21,994', per: '/mo', featured: true,
     description: 'Consistent security cover with replacement support.',
     items: ['Background & Aadhaar verified', 'Day / night shift cover', 'Instant replacement', 'Uniformed & briefed'],
     cta: 'Ask about Security',
-    msg: "Hi Switch — I'd like to subscribe to the Security guard plan (₹999/mo). Please share the details.",
+    msg: "Hi Switch — I'd like to subscribe to the Security guard plan (₹21,994/mo). Please share the details.",
   },
   {
     badge: 'CUSTOM', name: 'Skilled · Custom', price: 'On request',
