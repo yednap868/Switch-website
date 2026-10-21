@@ -54,18 +54,6 @@ export default function SeoHead({ page }) {
     },
   }
 
-  // Only attach a rating where genuine reviews are actually rendered on the
-  // page (landing / reviews / alias / area pages). Stamping a rating on pages
-  // that show no reviews is a Google rich-result policy violation.
-  if (page.reviews?.length) {
-    serviceSchema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      bestRating: '5',
-      reviewCount: String(page.reviews.length),
-    }
-  }
-
   const webPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -81,7 +69,7 @@ export default function SeoHead({ page }) {
     <Helmet>
       <title>{page.title}</title>
       <meta name="description" content={page.description} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={page.noindex ? 'noindex, follow' : 'index, follow'} />
       <meta name="geo.region" content="IN-HR" />
       <meta name="geo.placename" content="Gurgaon" />
       <meta name="geo.position" content="28.4595;77.0266" />

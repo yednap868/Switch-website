@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { Analytics } from '@vercel/analytics/react'
@@ -25,21 +25,22 @@ import {
   Trust,
 } from './components/home/HomeSections.jsx'
 
-import SeoPage from './pages/SeoPage.jsx'
-import PartnerPage from './pages/PartnerPage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
-import BlogIndex from './pages/BlogIndex.jsx'
-import BlogPost from './pages/BlogPost.jsx'
-import AppPage from './pages/AppPage.jsx'
-import LegalPage from './pages/LegalPage.jsx'
-import StaffingPage from './pages/StaffingPage.jsx'
-import VerifyPage from './pages/VerifyPage.jsx'
-import IndustryPage from './pages/IndustryPage.jsx'
+import {
+  AboutPage,
+  AppPage,
+  BlogIndex,
+  BlogPost,
+  IndustryPage,
+  LegalPage,
+  PartnerPage,
+  SeoPage,
+  StaffingPage,
+  VerifyPage,
+} from './routes.jsx'
 
-import { SERVICE_LIST } from './data/seoData.js'
-import { INDUSTRY_PAGES } from './data/industryPages.js'
+import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
 import { FAQS, REVIEW_VIDEOS } from './data/homeContent.js'
-import { WHATSAPP_URL } from './data/site.js'
+import { PHONE, WHATSAPP_URL } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
 function HomeHead() {
@@ -75,7 +76,7 @@ function HomeHead() {
       ...['DLF Phase 1','DLF Phase 3','DLF Phase 4','DLF Queens Enclave','Sushant Lok Phase 1','Sushant Lok Phase 2','Sushant Lok Phase 3','Palam Vihar','Udyog Vihar','Sohna Road','Cyber City','MG Road','Galleria Market','Sector 14','Sector 17','Sector 23','Sector 31','Sector 40','Sector 47','Sector 49','Chakkarpur','Sikanderpur','Nathupur','Greenwood City','Malibu Towne','Sun City'].map(n => ({ '@type': 'Place', name: `${n}, Gurgaon` })),
       ...['122001','122002','122006','122009','122010','122017','122018','122022'].map(p => ({ '@type': 'PostalAddress', postalCode: p, addressLocality: 'Gurgaon', addressRegion: 'Haryana', addressCountry: 'IN' })),
     ],
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', reviewCount: '500' },
+    telephone: PHONE,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Blue-Collar &amp; Housekeeping Services in Gurgaon',
@@ -225,8 +226,18 @@ function OfferPopup() {
     } catch {
       /* ignore */
     }
-    const t = setTimeout(() => setOpen(true), 1200)
-    return () => clearTimeout(t)
+    /* Desktop only, and only once the visitor has scrolled into the page.
+       A full-screen popup on load hides the content Google's mobile crawler
+       lands on (an "intrusive interstitial"), and the offer is already in the
+       banner and trial section on phones. */
+    if (window.matchMedia('(max-width: 900px)').matches) return
+    const onScroll = () => {
+      if (window.scrollY < 1400) return
+      window.removeEventListener('scroll', onScroll)
+      setOpen(true)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
@@ -393,23 +404,25 @@ export default function App() {
       <HashScroll />
       <ScrollReveal />
       <OfferBanner />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/partner" element={<PartnerPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/blog" element={<BlogIndex />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/app" element={<AppPage />} />
-        <Route path="/terms" element={<LegalPage policy="terms" />} />
-        <Route path="/privacy" element={<LegalPage policy="privacy" />} />
-        <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
-        <Route path="/staffing-gurgaon" element={<StaffingPage />} />
-        {INDUSTRY_PAGES.map((p) => (
-          <Route key={p.slug} path={`/${p.slug}`} element={<IndustryPage slug={p.slug} />} />
-        ))}
-        <Route path="/verify" element={<VerifyPage />} />
-        <Route path="/:slug" element={<SeoPage />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/partner" element={<PartnerPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/app" element={<AppPage />} />
+          <Route path="/terms" element={<LegalPage policy="terms" />} />
+          <Route path="/privacy" element={<LegalPage policy="privacy" />} />
+          <Route path="/cancellation" element={<LegalPage policy="cancellation" />} />
+          <Route path="/staffing-gurgaon" element={<StaffingPage />} />
+          {INDUSTRY_LINKS.map((p) => (
+            <Route key={p.slug} path={`/${p.slug}`} element={<IndustryPage slug={p.slug} />} />
+          ))}
+          <Route path="/verify" element={<VerifyPage />} />
+          <Route path="/:slug" element={<SeoPage />} />
+        </Routes>
+      </Suspense>
       <Analytics />
     </>
   )

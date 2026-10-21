@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { StoreButtons } from '../ui/Blocks.jsx'
-import { SERVICE_LIST } from '../../data/seoData.js'
-import { INDUSTRY_PAGES } from '../../data/industryPages.js'
+import { INDUSTRY_LINKS, SERVICE_LIST } from '../../data/siteIndex.js'
 import { TAGLINE } from '../../data/homeContent.js'
 import {
   ADDRESS,
@@ -54,7 +53,7 @@ export default function Footer() {
           <div>
             <h4>For business</h4>
             <Link to="/staffing-gurgaon">Staffing in Gurgaon</Link>
-            {INDUSTRY_PAGES.map((p) => (
+            {INDUSTRY_LINKS.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`}>
                 {p.name}
               </Link>

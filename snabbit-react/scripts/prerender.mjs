@@ -23,7 +23,9 @@ const ROOT = join(__dirname, '..')
 const DIST = join(ROOT, 'dist')
 const SSR_ENTRY = pathToFileURL(join(ROOT, 'dist-ssr', 'entry-server.js')).href
 
-const { render } = await import(SSR_ENTRY)
+const { render, preloadAll } = await import(SSR_ENTRY)
+// Page chunks are code-split; load them all so renderToString never suspends.
+await preloadAll()
 
 // ── Build the full route list (mirror of gen-sitemap.mjs) ──
 const routes = [
@@ -66,6 +68,21 @@ if (!template.includes('<div id="root"></div>')) {
   throw new Error('prerender: could not find <div id="root"></div> in dist/index.html')
 }
 
+// React 19 renders <title>, <meta>, <link> and JSON-LD where the component
+// sits, so in the server markup they land inside <div id="root">. Crawlers
+// ignore a canonical (and may ignore other tags) outside <head>, so move them
+// there. Tags are marked data-pre so main.jsx can drop them before React adds
+// its own on the client (otherwise the title would go stale on navigation).
+const HEAD_TAG = /<title>[\s\S]*?<\/title>|<meta\b[^>]*>|<link\b[^>]*>|<script type="application\/ld\+json">[\s\S]*?<\/script>/g
+function liftHeadTags(body) {
+  const tags = []
+  const html = body.replace(HEAD_TAG, (tag) => {
+    tags.push(/^<link\b[^>]*rel="preload"/.test(tag) ? tag : tag.replace(/^<(\w+)/, '<$1 data-pre=""'))
+    return ''
+  })
+  return { html, tags: tags.join('\n    ') }
+}
+
 function outPathFor(route) {
   if (route === '/') return join(DIST, 'index.html')
   return join(DIST, route.replace(/^\//, ''), 'index.html')
@@ -75,9 +92,14 @@ let ok = 0
 let failed = 0
 for (const route of uniqueRoutes) {
   try {
-    const { html, head } = render(route)
-    const page = template
-      .replace('</head>', `    ${head}\n  </head>`)
+    const { html: body, head } = render(route)
+    const { html, tags } = liftHeadTags(body)
+    // A page that sets its own robots tag (e.g. noindex) replaces the shell's.
+    const shell = /<meta[^>]*name="robots"/i.test(tags)
+      ? template.replace(/<meta\s+name="robots"[^>]*>\s*/i, '')
+      : template
+    const page = shell
+      .replace('</head>', `    ${[head, tags].filter(Boolean).join('\n    ')}\n  </head>`)
       .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
     const out = outPathFor(route)
     mkdirSync(dirname(out), { recursive: true })

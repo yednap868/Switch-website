@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { HelmetProvider } from 'react-helmet-async'
 import App from './App.jsx'
+export { preloadAll } from './routes.jsx'
 
 /**
  * Render a single route to static HTML for build-time prerendering.

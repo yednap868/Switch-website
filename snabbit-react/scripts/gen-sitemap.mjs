@@ -48,6 +48,7 @@ for (const post of BLOG_POSTS) add(`blog/${post.slug}`, 'monthly', '0.6')
 
 // all programmatic SEO pages (services × intents + aliases + hyperlocal)
 for (const page of SEO_PAGES) {
+  if (page.noindex) continue
   const { c, p } = rank(page.slug)
   add(page.slug, c, p)
 }

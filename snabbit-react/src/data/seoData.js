@@ -1002,24 +1002,17 @@ export const SEO_PAGES = [
   ...AREA_PAGES,
 ]
 
+// Template variants that repeat their service page almost word for word, and
+// area pages that duplicate "Maid in <area>" under another name. They stay
+// reachable but are kept out of Google's index (and the sitemap) so the
+// stronger page for each search ranks instead of competing with near-copies.
+const THIN_TYPES = new Set(['benefits', 'checklist', 'faq', 'reviews', 'verified'])
+for (const p of SEO_PAGES) {
+  if (THIN_TYPES.has(p.type) || /^(house-help|home-cleaning)-in-/.test(p.slug)) p.noindex = true
+}
+
 export function getPageBySlug(slug) {
   return SEO_PAGES.find(p => p.slug === slug) || null
 }
 
-export const SERVICE_LIST = SERVICES.map(s => ({
-  id: s.id,
-  name: s.name,
-  slug: `${s.id}-gurgaon`,
-  pages: [
-    { label: `${s.name} in Gurgaon`, slug: `${s.id}-gurgaon` },
-    { label: 'Pricing & Rates', slug: `${s.id}-cost-gurgaon` },
-    { label: 'How to Hire', slug: `hire-${s.id}-gurgaon` },
-    { label: 'Benefits', slug: `${s.id}-benefits-gurgaon` },
-    { label: 'Checklist', slug: `${s.id}-checklist-gurgaon` },
-    { label: 'FAQs', slug: `${s.id}-faq-gurgaon` },
-    { label: 'Near Me', slug: `${s.id}-near-me-gurgaon` },
-    { label: 'Same Day', slug: `same-day-${s.id}-gurgaon` },
-    { label: 'Reviews', slug: `${s.id}-reviews-gurgaon` },
-    { label: 'Verified Switch Players', slug: `verified-${s.id}-gurgaon` },
-  ],
-}))
+export { SERVICE_LIST } from './siteIndex.js'
