@@ -1,7 +1,6 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Analytics } from '@vercel/analytics/react'
 
 import './styles/switch.css'
 
@@ -423,7 +422,6 @@ export default function App() {
           <Route path="/:slug" element={<SeoPage />} />
         </Routes>
       </Suspense>
-      <Analytics />
     </>
   )
 }
