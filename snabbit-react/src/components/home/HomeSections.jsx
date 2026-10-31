@@ -90,6 +90,37 @@ export function RoleTiles() {
   )
 }
 
+export function PayrollBanner() {
+  const [day1] = PAYROLL_PLANS
+  return (
+    <section className="sw-feature sw-payroll" aria-label="Hire on your payroll">
+      <div>
+        <p className="sw-eyebrow">New · Hire on your payroll</p>
+        <h2>
+          Permanent staff for a one-time <em>₹2,000.</em>
+        </h2>
+        <p>Pay on day 1, or ₹2,500 if you pay on day 7.</p>
+        <ul>
+          {day1.items.map((it) => (
+            <li key={it}>
+              <Icon name="check" />
+              {it}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="sw-payroll-cta">
+        <a className="sw-btn white" href={waLink(day1.msg)} target="_blank" rel="noreferrer">
+          {day1.cta} <Icon name="arrow" />
+        </a>
+        <Link className="sw-btn line" to="/#payroll">
+          See details
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 export function Services() {
   return (
     <section className="sw-sec" id="services">

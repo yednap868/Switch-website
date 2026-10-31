@@ -17,6 +17,7 @@ import {
   Coverage,
   How,
   Industries,
+  PayrollBanner,
   Pricing,
   RequestForm,
   RoleTiles,
@@ -357,6 +358,7 @@ function HomePage() {
       <OfferPopup />
       <main id="page-main" className="sw-wrap">
         <HomeHero />
+        <PayrollBanner />
         <RoleTiles />
         <Ticker />
         <BrandBand />
