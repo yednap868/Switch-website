@@ -44,9 +44,9 @@ export const INDUSTRIES = [
 export const BRANDS = [
   { name: 'Taco Bell',          logo: '/logos/taco-bell.png' },
   { name: 'Zepto',              logo: '/logos/zepto.png',      h: 40 },
-  { name: 'Ozi',                logo: '/logos/ozi.png', h: 40, light: true },
+  { name: 'Ozi',                logo: '/logos/ozi.png',        h: 40 },
   { name: 'Wow! Momo',          logo: '/logos/wow-momo.png' },
-  { name: 'Libas',              logo: '/logos/libas.png', light: true },
+  { name: 'Libas',              logo: '/logos/libas.png' },
   { name: 'Caterspoint',        logo: '/logos/caterspoint.png', h: 28 },
   { name: 'Ivory Stayz',        logo: '/logos/ivory-stayz.svg', h: 24 },
   { name: 'Dr Diet Restaurant', logo: '/logos/dr-diet.png',     h: 42 },
