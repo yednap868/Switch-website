@@ -1,20 +1,23 @@
 /* "How to book", played on a phone: five screens of the Switch employer app,
    each acting out its step (a finger taps, chips select, the UPI sheet slides
-   up, a worker is matched, the OTP checks them in). It autoplays and loops;
-   the step list beside it jumps to any step. Screens are markup laid out at
+   up, a worker is matched, the OTP checks them in), then an end card. It plays
+   from step 1 when scrolled into view, pauses off-screen, and has a story bar
+   with play/pause; the step list jumps to any step. Screens are markup laid out at
    280×606 inside the shared device frame (.sw-dev, see AppScreens.jsx);
    their styles are .bd-* / .sd-* in src/styles/switch.css. With reduced
    motion it doesn't autoplay and every screen shows its finished state. */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from './Icon.jsx'
 
 const BOOKING_STEPS = [
-  { title: 'Pick a role', line: 'Housekeeping, kitchen, security, helpers and more.', ms: 3400 },
-  { title: 'Choose the time', line: 'Date, start time and hours. Try 4 hours at ₹429.', ms: 3800 },
-  { title: 'Pay by UPI or card', line: 'One tap. The price you see is the price you pay.', ms: 3600 },
-  { title: 'Worker matched', line: 'An Aadhaar-verified Switch Player accepts, often within the hour.', ms: 3400 },
-  { title: 'OTP check-in', line: 'Share the code on arrival — the shift starts. No-show? We replace.', ms: 3800 },
+  { title: 'Pick a role', line: 'Housekeeping, kitchen, security, helpers and more.', ms: 3400, tag: ['Housekeeping', 'Role selected'] },
+  { title: 'Choose the time', line: 'Date, start time and hours. Try 4 hours at ₹429.', ms: 3800, tag: ['₹429', '4 hours · 1 worker'] },
+  { title: 'Pay by UPI or card', line: 'One tap. The price you see is the price you pay.', ms: 3600, tag: ['UPI or card', 'No hidden charges'] },
+  { title: 'Worker matched', line: 'An Aadhaar-verified Switch Player accepts, often within the hour.', ms: 3400, tag: ['Aadhaar verified', 'Worker accepted'] },
+  { title: 'OTP check-in', line: 'Share the code on arrival — the shift starts. No-show? We replace.', ms: 3800, tag: ['OTP check-in', 'Right person, right site'] },
 ]
+const END_MS = 3200
+const durationOf = (i) => BOOKING_STEPS[i]?.ms ?? END_MS
 
 const reduced = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -81,6 +84,23 @@ function PickScreen() {
       <div className="bd-mini-trial">
         <b>₹429</b>
         <span>4-hour trial · Housekeeping</span>
+      </div>
+      <div className="sd-nav">
+        <span className="on">
+          <Icon name="building" />
+        </span>
+        <span>
+          <Icon name="cal" />
+        </span>
+        <span className="sd-sw">
+          <Icon name="sparkles" />
+        </span>
+        <span>
+          <Icon name="wallet" />
+        </span>
+        <span>
+          <Icon name="heart" />
+        </span>
       </div>
       <span className="bd-finger f-pick" aria-hidden="true" />
     </>
@@ -277,37 +297,87 @@ function OtpScreen() {
   )
 }
 
-const SCREENS = [PickScreen, TimeScreen, PayScreen, MatchScreen, OtpScreen]
+function EndScreen() {
+  return (
+    <>
+      <Status />
+      <div className="bd-end">
+        <span className="sd-check">
+          <Icon name="check" />
+        </span>
+        <b>Staff on site.</b>
+        <small>Booked in five taps</small>
+        <div className="bd-mini-trial">
+          <b>₹429</b>
+          <span>Try 4 hours · 1 verified worker</span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const SCREENS = [PickScreen, TimeScreen, PayScreen, MatchScreen, OtpScreen, EndScreen]
 
 export default function BookingDemo({ children }) {
   // Server HTML (and reduced motion) shows the first screen in its finished state.
   const [step, setStep] = useState(0)
   const [auto, setAuto] = useState(false)
   const [run, setRun] = useState(0)
-
-  useEffect(() => {
-    if (reduced()) return
-    const t = setTimeout(() => setAuto(true), 300)
-    return () => clearTimeout(t)
-  }, [])
-
-  useEffect(() => {
-    if (!auto) return
-    const t = setTimeout(() => {
-      setStep((s) => (s + 1) % SCREENS.length)
-      setRun((r) => r + 1)
-    }, BOOKING_STEPS[step].ms)
-    return () => clearTimeout(t)
-  }, [auto, step, run])
+  const [inView, setInView] = useState(false)
+  const [paused, setPaused] = useState(false)
+  const root = useRef(null)
+  const left = useRef({ run: 0, ms: durationOf(0) })
+  const playing = auto && inView && !paused
 
   const go = (i) => {
     setStep(i)
     setRun((r) => r + 1)
   }
 
+  useEffect(() => {
+    if (reduced()) return
+    let seen = false
+    const io = new IntersectionObserver(
+      ([e]) => {
+        setAuto(true)
+        setInView(e.isIntersecting)
+        // The first look starts at step 1, wherever the loop would have been.
+        if (e.isIntersecting && !seen) {
+          seen = true
+          go(0)
+        }
+      },
+      { threshold: 0.4 },
+    )
+    io.observe(root.current)
+    return () => io.disconnect()
+  }, [])
+
+  // Pausing keeps the time left, so play resumes mid-step with the animations.
+  useEffect(() => {
+    if (!playing) return
+    if (left.current.run !== run) left.current = { run, ms: durationOf(step) }
+    const started = Date.now()
+    const t = setTimeout(() => go((step + 1) % SCREENS.length), left.current.ms)
+    return () => {
+      clearTimeout(t)
+      left.current.ms -= Date.now() - started
+    }
+  }, [playing, step, run])
+
+  const jump = (i) => {
+    setPaused(false)
+    go(i)
+  }
+
   const Screen = SCREENS[step]
+  const now = BOOKING_STEPS[step]
+  const live = BOOKING_STEPS[Math.min(step, BOOKING_STEPS.length - 1)]
   return (
-    <div className={`bd${auto ? ' is-live' : ''}`}>
+    <div
+      ref={root}
+      className={`bd${auto ? ' is-live' : ''}${auto && !playing ? ' is-paused' : ''}`}
+    >
       <div className="bd-left">
         <ol className="bd-steps">
           {BOOKING_STEPS.map((s, i) => (
@@ -315,37 +385,75 @@ export default function BookingDemo({ children }) {
               <button
                 type="button"
                 className={i === step ? 'on' : i < step ? 'done' : ''}
-                onClick={() => go(i)}
+                onClick={() => jump(i)}
                 aria-current={i === step ? 'step' : undefined}
+                aria-label={`Step ${i + 1}: ${s.title}`}
               >
                 <span className="bd-n">{i < step ? <Icon name="check" /> : i + 1}</span>
                 <span className="bd-t">
                   <b>{s.title}</b>
                   <small>{s.line}</small>
                 </span>
-                {i === step && auto && (
-                  <span className="bd-prog" aria-hidden="true">
-                    <i key={run} style={{ animationDuration: `${s.ms}ms` }} />
-                  </span>
-                )}
               </button>
             </li>
           ))}
         </ol>
         {children}
       </div>
-      <div className="sw-devs bd-devs">
-        <div
-          className="sw-dev mid"
-          role="img"
-          aria-label={`Switch app, step ${step + 1} of ${SCREENS.length}: ${BOOKING_STEPS[step].title}`}
-        >
-          <div className="sw-dev-in">
-            <div className="sd-screen bd-screen" key={`${step}-${run}`}>
-              <Screen />
+      <div className="bd-stage">
+        <div className="bd-story">
+          <div className="bd-segs" aria-hidden="true">
+            {BOOKING_STEPS.map((s, i) => (
+              <span key={s.title} className={i < step ? 'done' : ''}>
+                {i === step && <i key={run} style={{ animationDuration: `${s.ms}ms` }} />}
+              </span>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="bd-play"
+            onClick={() => setPaused((p) => !p)}
+            aria-label={paused ? 'Play walkthrough' : 'Pause walkthrough'}
+          >
+            <Icon name={paused ? 'play' : 'pause'} />
+          </button>
+        </div>
+        <div className="sw-devs bd-devs">
+          <div
+            className="sw-dev mid"
+            role="img"
+            aria-label={`Switch app, step ${Math.min(step + 1, BOOKING_STEPS.length)} of ${BOOKING_STEPS.length}: ${live.title}`}
+          >
+            <div className="sw-dev-in">
+              <div className="sd-screen bd-screen" key={`${step}-${run}`}>
+                <Screen />
+              </div>
             </div>
           </div>
+          {now && (
+            <div className={`bd-tag ${step % 2 ? 'l' : 'r'}`} key={`tag-${step}-${run}`} aria-hidden="true">
+              <b>{now.tag[0]}</b>
+              <span>{now.tag[1]}</span>
+            </div>
+          )}
         </div>
+        <p className="bd-now" key={`now-${step}-${run}`}>
+          {now ? (
+            <>
+              <small>
+                Step {step + 1} of {BOOKING_STEPS.length}
+              </small>
+              <b>{now.title}</b>
+              {now.line}
+            </>
+          ) : (
+            <>
+              <small>Done</small>
+              <b>Staff on site.</b>
+              Booked in five taps.
+            </>
+          )}
+        </p>
       </div>
     </div>
   )

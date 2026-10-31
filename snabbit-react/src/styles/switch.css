@@ -3504,9 +3504,6 @@ html[data-theme='light'] .sw-mark {
   .bd {
     grid-template-columns: 1fr;
   }
-  .bd-devs {
-    order: -1;
-  }
 }
 .bd-steps {
   list-style: none;
@@ -3577,26 +3574,181 @@ html[data-theme='light'] .sw-mark {
   color: var(--muted);
   margin-top: 2px;
 }
-.bd-prog {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--sunk);
+.bd-stage {
+  position: relative;
+  min-width: 0;
 }
-.bd-prog i {
+.bd-stage::before {
+  content: '';
+  position: absolute;
+  inset: 8% 4% 12%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(123, 77, 255, 0.34), transparent);
+  pointer-events: none;
+}
+.bd-story {
+  position: relative;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  width: min(360px, 100%);
+  margin-inline: auto;
+}
+.bd.is-live .bd-story {
+  display: flex;
+}
+.bd-segs {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+.bd-segs span {
+  height: 4px;
+  border-radius: 99px;
+  background: var(--line2);
+  overflow: hidden;
+}
+.bd-segs span.done,
+.bd-segs i {
+  background: linear-gradient(90deg, var(--p), #4bd891);
+}
+.bd-segs i {
   display: block;
   height: 100%;
-  width: 100%;
   transform-origin: left;
-  background: linear-gradient(90deg, var(--p), #4bd891);
   animation: bd-fill linear both;
 }
 @keyframes bd-fill {
   from {
     transform: scaleX(0);
   }
+}
+.bd-play {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line2);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.bd-play .sw-ico {
+  width: 14px;
+  height: 14px;
+}
+.bd.is-paused * {
+  animation-play-state: paused !important;
+}
+.bd-tag {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  gap: 1px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line2);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 0.32);
+  white-space: nowrap;
+}
+.bd-tag.r {
+  top: 26%;
+  right: 0;
+}
+.bd-tag.l {
+  top: 52%;
+  left: 0;
+}
+.bd-tag b {
+  font-size: 15px;
+  font-weight: 800;
+}
+.bd-tag span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.bd-now {
+  display: none;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+.bd-now small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bd-now b {
+  display: block;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--ink);
+}
+@media (max-width: 900px) {
+  /* The phone plays first, so the caption carries the words and the list
+     shrinks to a row of numbers. */
+  .bd.is-live .bd-now {
+    display: block;
+    min-height: 86px;
+  }
+  .bd.is-live .bd-steps {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .bd.is-live .bd-steps button {
+    justify-content: center;
+    padding: 8px 0;
+    transform: none;
+  }
+  .bd.is-live .bd-t {
+    display: none;
+  }
+  .bd-stage {
+    order: -1;
+  }
+}
+@media (max-width: 560px) {
+  .bd-tag {
+    display: none;
+  }
+}
+.bd-end {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  height: 520px;
+  text-align: center;
+}
+.bd-end > b {
+  margin-top: 12px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.bd-end > small {
+  font-size: 12px;
+  color: #a6a2b2;
+}
+.bd-end .bd-mini-trial {
+  margin-top: 18px;
+  text-align: left;
+}
+.bd-end .sd-check {
+  width: 64px;
+  height: 64px;
+  background: rgba(75, 216, 145, 0.18);
+  box-shadow: 0 0 0 10px rgba(75, 216, 145, 0.08);
+}
+.bd-end .sd-check .sw-ico {
+  width: 30px;
+  height: 30px;
 }
 .bd-devs {
   --mid: 0.88;
@@ -3880,6 +4032,24 @@ html[data-theme='light'] .sw-mark {
   .bd.is-live .bd-screen {
     animation: bd-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
+  .bd.is-live .bd-tag {
+    animation: bd-tag 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
+  }
+  .bd.is-live .bd-now {
+    animation: bd-tag 0.4s ease both;
+  }
+  .bd.is-live .bd-end > * {
+    animation: bd-slide 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .bd.is-live .bd-end > :nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .bd.is-live .bd-end > :nth-child(3) {
+    animation-delay: 0.25s;
+  }
+  .bd.is-live .bd-end > :nth-child(4) {
+    animation-delay: 0.4s;
+  }
   .bd.is-live .bd-finger {
     display: block;
   }
@@ -3939,6 +4109,9 @@ html[data-theme='light'] .sw-mark {
   .bd.is-live .bd-timer i {
     animation: bd-grow 1.6s ease 2.5s both;
   }
+}
+@keyframes bd-tag {
+  from { opacity: 0; transform: translateY(10px) scale(0.94); }
 }
 /* keeps the screen's own scale(--sc) while sliding in */
 @keyframes bd-in {
