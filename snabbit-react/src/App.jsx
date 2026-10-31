@@ -39,8 +39,8 @@ import {
 } from './routes.jsx'
 
 import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
-import { FAQS, REVIEW_VIDEOS } from './data/homeContent.js'
-import { PHONE, WHATSAPP_URL } from './data/site.js'
+import { FAQS, PAYROLL_PLANS, REVIEW_VIDEOS } from './data/homeContent.js'
+import { PHONE, WHATSAPP_URL, waLink } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
 function HomeHead() {
@@ -213,7 +213,7 @@ function OfferPopup() {
   const close = () => {
     setOpen(false)
     try {
-      sessionStorage.setItem('switch_offer_dismissed', '1')
+      sessionStorage.setItem('switch_payroll_dismissed', '1')
     } catch {
       /* ignore */
     }
@@ -222,22 +222,13 @@ function OfferPopup() {
   useEffect(() => {
     if (typeof window === 'undefined') return
     try {
-      if (sessionStorage.getItem('switch_offer_dismissed')) return
+      if (sessionStorage.getItem('switch_payroll_dismissed')) return
     } catch {
       /* ignore */
     }
-    /* Desktop only, and only once the visitor has scrolled into the page.
-       A full-screen popup on load hides the content Google's mobile crawler
-       lands on (an "intrusive interstitial"), and the offer is already in the
-       banner and trial section on phones. */
-    if (window.matchMedia('(max-width: 900px)').matches) return
-    const onScroll = () => {
-      if (window.scrollY < 1400) return
-      window.removeEventListener('scroll', onScroll)
-      setOpen(true)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    /* First thing a visitor sees, once the page has had a moment to paint. */
+    const t = setTimeout(() => setOpen(true), 900)
+    return () => clearTimeout(t)
   }, [])
 
   useEffect(() => {
@@ -255,34 +246,55 @@ function OfferPopup() {
 
   if (!open) return null
 
+  const [day1] = PAYROLL_PLANS
   return (
     <div className="sw-pop-bg" onClick={close}>
       <div
-        className="sw-pop sw-feature"
+        className="sw-pop sw-pop-pay sw-feature"
         role="dialog"
         aria-modal="true"
-        aria-label="Special staffing offer"
+        aria-label="Hire staff on your payroll"
         onClick={(e) => e.stopPropagation()}
       >
         <button type="button" className="sw-vm-x" onClick={close} aria-label="Close offer">
           ✕
         </button>
-        <span className="sw-pill" style={{ background: 'rgba(123,77,255,.22)', color: '#CDBBFF' }}>
-          Limited-time offer
-        </span>
-        <h2 style={{ marginTop: 12 }}>
-          Try a verified worker for <em>₹299.</em>
-        </h2>
-        <p style={{ marginTop: 10 }}>
-          3 hours of Housekeeping, Kitchen Helper, Utility or Picker &amp; Packer at ₹299, and 50%
-          off your first booking. Or hire monthly staff from ₹20,800, replacement guaranteed.
-        </p>
-        <div className="sw-btns" style={{ marginTop: 18 }}>
-          <a href="#trial" className="sw-btn white" onClick={close}>
-            See the trial <Icon name="arrow" />
+        <div className="sw-pop-ph">
+          <img src="/hero-workers.jpg" alt="" />
+          <p>
+            Your staff.
+            <br />
+            Your salary.
+          </p>
+        </div>
+        <div className="sw-pop-body">
+          <span className="sw-pill">New · Hire on your payroll</span>
+          <h2>
+            Staff on your payroll from <em>₹2,000/month.</em>
+          </h2>
+          <p>Monthly retention fee for the same worker.</p>
+          <div className="sw-pop-fees">
+            {PAYROLL_PLANS.map((p) => (
+              <div className={p.featured ? 'on' : ''} key={p.name}>
+                <span>{p.name}</span>
+                <b>{p.price}</b>
+                <small>per worker / month</small>
+              </div>
+            ))}
+          </div>
+          <ul className="sw-pop-inc">
+            {day1.items.map((it) => (
+              <li key={it}>
+                <Icon name="check" />
+                {it}
+              </li>
+            ))}
+          </ul>
+          <a className="sw-btn white" href={waLink(day1.msg)} target="_blank" rel="noreferrer" onClick={close}>
+            {day1.cta} <Icon name="arrow" />
           </a>
-          <a href="#subscription" className="sw-btn line" onClick={close}>
-            Monthly plans
+          <a className="sw-pop-alt" href="#trial" onClick={close}>
+            Or try a verified worker for ₹299
           </a>
         </div>
       </div>

@@ -97,9 +97,9 @@ export function PayrollBanner() {
       <div>
         <p className="sw-eyebrow">New · Hire on your payroll</p>
         <h2>
-          Permanent staff for a one-time <em>₹2,000.</em>
+          Staff on your payroll from <em>₹2,000/month.</em>
         </h2>
-        <p>Pay on day 1, or ₹2,500 if you pay on day 7.</p>
+        <p>Monthly retention fee per worker: ₹2,000 if paid on day 1, ₹2,500 if paid on day 7.</p>
         <ul>
           {day1.items.map((it) => (
             <li key={it}>
@@ -310,7 +310,7 @@ export function Pricing() {
       <div id="payroll" style={{ marginTop: 26 }}>
         <p className="sw-eyebrow">Hire on your payroll</p>
         <p className="sw-muted" style={{ marginTop: 4, marginBottom: 14 }}>
-          We find the person. You decide the salary and keep them on your payroll.
+          We find the person. You decide the salary and keep them on your payroll, with a monthly retention fee for the same worker.
         </p>
         <div className="sw-grid sw-g2">
           {PAYROLL_PLANS.map((p) => (

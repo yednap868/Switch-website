@@ -70,7 +70,7 @@ export const FAQS = [
   { q: 'What kind of staff can I hire for my business?', a: 'Store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, cooks, kitchen helpers and housekeeping — for shops, restaurants, warehouses, offices, events and more.' },
   { q: 'Can I hire multiple Switch Players or a full team?', a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more Switch Players, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.' },
   { q: 'What if a Switch Player doesn’t show up?', a: 'We back every booking with a replacement guarantee. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
-  { q: 'Can I hire staff on my own payroll?', a: 'Yes. You decide the salary and pay Switch a one-time fee: ₹2,000 per hire on day 1, or ₹2,500 if you pay on day 7. Every hire includes 2 replacements and attendance tracking.' },
+  { q: 'Can I hire staff on my own payroll?', a: 'Yes. You decide the salary and pay Switch a monthly retention fee for the same worker: ₹2,000 if paid on day 1, or ₹2,500 if paid on day 7. It includes 2 replacements and attendance tracking.' },
   { q: 'How does pricing work for longer bookings?', a: 'You can hire by the hour (1–4 hrs), by the full day, or in 2-day and 7-day blocks. The longer the booking, the lower the rate per Switch Player. Talk to us on WhatsApp for exact rates for your business.' },
   { q: 'Are all Switch Players verified?', a: 'Yes. Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they’re approved on the platform. On arrival, OTP verification confirms the right person reached your site.' },
   { q: 'Do you provide GST invoices and how is payment handled?', a: 'Monthly plans are billed in advance; hourly and daily bookings are invoiced against the hours worked. Pay via UPI, cards or bank transfer, and we provide proper invoices for your business records. Ask our team to set up a business account.' },
@@ -197,18 +197,18 @@ const PAYROLL_INCLUDES = ['You decide the salary', '2 replacements', 'Attendance
 
 export const PAYROLL_PLANS = [
   {
-    badge: 'BEST PRICE', name: 'Pay on day 1', price: '₹2,000', per: '/hire', featured: true,
-    description: 'Pay the one-time fee on the day your hire joins.',
+    badge: 'BEST PRICE', name: 'Pay on day 1', price: '₹2,000', per: '/month', featured: true,
+    description: 'Monthly retention fee per worker, paid on day 1.',
     items: PAYROLL_INCLUDES,
     cta: 'Hire on payroll',
-    msg: "Hi Switch — I'd like to hire staff on my payroll and pay the ₹2,000 fee on day 1. Please share the details.",
+    msg: "Hi Switch — I'd like to hire staff on my payroll and pay the ₹2,000 monthly retention fee on day 1. Please share the details.",
   },
   {
-    badge: 'PAY LATER', name: 'Pay on day 7', price: '₹2,500', per: '/hire',
-    description: 'Pay the one-time fee a week after your hire joins.',
+    badge: 'PAY LATER', name: 'Pay on day 7', price: '₹2,500', per: '/month',
+    description: 'Monthly retention fee per worker, paid on day 7.',
     items: PAYROLL_INCLUDES,
     cta: 'Hire on payroll',
-    msg: "Hi Switch — I'd like to hire staff on my payroll and pay the ₹2,500 fee on day 7. Please share the details.",
+    msg: "Hi Switch — I'd like to hire staff on my payroll and pay the ₹2,500 monthly retention fee on day 7. Please share the details.",
   },
 ]
 

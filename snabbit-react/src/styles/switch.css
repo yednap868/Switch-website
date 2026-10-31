@@ -1918,6 +1918,131 @@ textarea.sw-inp {
   right: 14px;
 }
 
+.sw-pop-pay {
+  width: min(780px, 100%);
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  overflow: auto;
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
+  animation: sw-pop-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes sw-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+}
+.sw-pop-ph {
+  position: relative;
+  overflow: hidden;
+}
+.sw-pop-ph::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgb(20 12 45 / 0.92));
+}
+.sw-pop-ph img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sw-pop-ph p {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  right: 20px;
+  bottom: 18px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+.sw-pop-body {
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 3vw, 28px);
+}
+.sw-pop-body .sw-pill {
+  justify-self: start;
+  background: rgb(123 77 255 / 0.22);
+  color: #cdbbff;
+}
+.sw-pop-body h2 {
+  padding-right: 22px;
+  font-size: clamp(25px, 3.2vw, 32px);
+}
+.sw-pop-fees {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sw-pop-fees > div {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 16px;
+}
+.sw-pop-fees > div.on {
+  border-color: #8f6bff;
+  background: rgb(123 77 255 / 0.2);
+}
+.sw-pop-fees span {
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.75);
+}
+.sw-pop-fees b {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.sw-pop-fees small {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.6);
+}
+.sw-pop-inc {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sw-pop-inc li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgb(255 255 255 / 0.85);
+}
+.sw-pop-body .sw-btn {
+  justify-content: center;
+}
+.sw-pop-alt {
+  justify-self: center;
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.7);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 680px) {
+  .sw-pop-pay {
+    grid-template-columns: 1fr;
+    width: min(420px, 100%);
+  }
+  .sw-pop-ph {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
