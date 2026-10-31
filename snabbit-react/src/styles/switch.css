@@ -440,6 +440,19 @@ a.sw-card:hover,
 .sw-strip b {
   font-weight: 800;
 }
+@media (max-width: 560px) {
+  .sw-strip a {
+    flex-wrap: nowrap;
+  }
+  .sw-strip a > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sw-strip u {
+    flex: none;
+  }
+}
 .sw-strip u {
   font-weight: 800;
   text-underline-offset: 3px;
@@ -717,7 +730,6 @@ html[data-theme='light'] .sw-brand .wm-light {
   }
   .sw-hero .sw-art {
     max-width: 380px;
-    order: -1;
   }
 }
 .sw-crumbs {
@@ -859,7 +871,7 @@ html[data-theme='light'] .sw-brand .wm-light {
 }
 .sw-logo {
   height: 128px;
-  padding: 18px;
+  padding: 14px;
   border-radius: var(--r);
   background: var(--logo-tile);
   display: grid;
@@ -867,8 +879,8 @@ html[data-theme='light'] .sw-brand .wm-light {
   border: 1px solid #2a2833;
 }
 .sw-logo img {
-  max-height: 78px;
-  max-width: 88%;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
 }
@@ -1851,6 +1863,12 @@ textarea.sw-inp {
 @media (max-width: 860px) {
   .sw-fgrid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+/* The header's Hire staff button covers desktop; this bar is for phones. */
+@media (min-width: 901px) {
+  .sw-bar {
+    display: none;
   }
 }
 .sw-bar {
@@ -3171,6 +3189,9 @@ html[data-theme='light'] .sw-mark {
   background: #ffffff;
   border-color: #e7e2f1;
 }
+.sw-logo.is-light img {
+  filter: none;
+}
 
 /* ── coverage map (components/home/CoverageMap.jsx) ───────────────── */
 .cm {
@@ -4244,7 +4265,7 @@ html[data-theme='light'] .sw-band::before {
 .sw-ind-ph {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 5 / 2;
   overflow: hidden;
   background: var(--sunk);
 }

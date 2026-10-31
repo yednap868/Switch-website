@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
+import useFreshOtp from './useFreshOtp.js'
 import {
   BRANDS,
   REVIEW_VIDEOS,
@@ -136,7 +137,11 @@ export function BrandBand({ title = true }) {
       <div className="sw-logos">
         {BRANDS.map((b) => (
           <div className={`sw-logo${b.light ? ' is-light' : ''}`} key={b.name} title={b.name}>
-            {b.logo ? <img src={b.logo} alt={b.name} loading="lazy" /> : <span>{b.name}</span>}
+            {b.logo ? (
+              <img src={b.logo} alt={b.name} loading="lazy" style={{ height: b.h }} />
+            ) : (
+              <span>{b.name}</span>
+            )}
           </div>
         ))}
       </div>
@@ -362,6 +367,7 @@ export function StatsRow({ items }) {
 
 /* Photo-in-arch hero art with optional floating cards. */
 export function HeroArt({ img, alt = '', otp = false, badge }) {
+  const code = useFreshOtp()
   return (
     <div className="sw-art" aria-hidden={alt ? undefined : 'true'}>
       <div className="sw-blob" />
@@ -382,7 +388,7 @@ export function HeroArt({ img, alt = '', otp = false, badge }) {
       {otp && (
         <div className="sw-float sw-f-otp">
           <small>Share this code on arrival</small>
-          <div className="sw-otp">4719</div>
+          <div className="sw-otp">{code}</div>
         </div>
       )}
     </div>

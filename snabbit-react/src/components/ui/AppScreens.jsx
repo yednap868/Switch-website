@@ -4,6 +4,7 @@
    match the app's real look. Each screen is laid out at 280×606 and scaled
    by the device size. Styles: .sw-dev-* in src/styles/switch.css. */
 import Icon from './Icon.jsx'
+import useFreshOtp from './useFreshOtp.js'
 
 function StatusBar() {
   return (
@@ -170,6 +171,7 @@ function TrialPayScreen() {
 }
 
 function ShiftScreen() {
+  const otp = useFreshOtp()
   return (
     <div className="sd-screen">
       <StatusBar />
@@ -195,8 +197,8 @@ function ShiftScreen() {
       <div className="sd-card sd-otp">
         <small>Share this code with the worker</small>
         <div className="sd-otp-code">
-          {['4', '7', '1', '9'].map((d) => (
-            <span key={d}>{d}</span>
+          {otp.split('').map((d, i) => (
+            <span key={i}>{d}</span>
           ))}
         </div>
       </div>

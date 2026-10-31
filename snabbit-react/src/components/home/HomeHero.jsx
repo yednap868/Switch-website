@@ -11,7 +11,8 @@ import Icon from '../ui/Icon.jsx'
 import { EMPLOYER_LOGIN, WHATSAPP_URL } from '../../data/site.js'
 
 const WORDS = ['staff', 'cooks', 'guards', 'helpers', 'waiters', 'packers']
-const OTP = '4719'
+const FIRST_OTP = '4719'
+const newOtp = () => String(1000 + Math.floor(Math.random() * 9000))
 const FACES = ['/sw-maid.jpg', '/sw-security-guard.jpg', '/sw-cook.jpg', '/sw-general-helper.jpg']
 
 const reduced = () =>
@@ -28,9 +29,10 @@ function useCycle(length, ms) {
 }
 
 /* 0–4 = digits typed, 5 = checked in. Starts at 4 so the server HTML shows the
-   whole code. */
+   whole code; every new round gets a new code, like a real booking. */
 function useOtpStage() {
   const [stage, setStage] = useState(4)
+  const [otp, setOtp] = useState(FIRST_OTP)
   useEffect(() => {
     if (reduced()) return
     let s = 4
@@ -38,18 +40,19 @@ function useOtpStage() {
     let t
     const next = () => {
       s = s === 5 ? 0 : s + 1
+      if (s === 0) setOtp(newOtp())
       setStage(s)
       t = setTimeout(next, steps[s])
     }
     t = setTimeout(next, 2200)
     return () => clearTimeout(t)
   }, [])
-  return stage
+  return [stage, otp]
 }
 
 function HeroVisual() {
   const ref = useRef(null)
-  const stage = useOtpStage()
+  const [stage, otp] = useOtpStage()
 
   // Pointer tilt, desktop only: sets --rx / --ry on the art box.
   useEffect(() => {
@@ -122,7 +125,7 @@ function HeroVisual() {
       >
         <small>{checked ? 'Right person, right site' : 'Share this code on arrival'}</small>
         <div className="hh-otp">
-          {OTP.split('').map((d, i) => (
+          {otp.split('').map((d, i) => (
             <span key={i} className={i < stage || checked ? 'on' : ''}>
               {i < stage || checked ? d : ''}
             </span>
@@ -200,10 +203,6 @@ export default function HomeHero() {
           <i aria-hidden="true" />
           <span>
             <b>1,500+</b> businesses
-          </span>
-          <i aria-hidden="true" />
-          <span>
-            <b>24h</b> replacement
           </span>
         </div>
       </div>

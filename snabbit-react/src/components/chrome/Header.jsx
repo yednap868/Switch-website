@@ -6,9 +6,13 @@ import { EMPLOYER_LOGIN } from '../../data/site.js'
 const LINKS = [
   { to: '/staffing-gurgaon', label: 'Services' },
   { to: '/#payroll', label: 'Payroll' },
-  { to: '/#trial', label: '₹429 Trial' },
   { to: '/#pricing', label: 'Pricing' },
   { to: '/#how', label: 'How it works' },
+]
+/* Trial, About and Blog stay in the phone menu and the footer. */
+const MENU_LINKS = [
+  ...LINKS,
+  { to: '/#trial', label: '₹429 Trial' },
   { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
 ]
@@ -114,7 +118,7 @@ export default function Header() {
       {open && (
         <div className="sw-sheet" onClick={() => setOpen(false)}>
           <div className="sw-sheet-in" role="dialog" aria-modal="true" aria-label="Menu" onClick={(e) => e.stopPropagation()}>
-            {[{ to: '/', label: 'Home' }, ...LINKS, { to: '/app', label: 'Get the app' }, { to: '/partner', label: 'Looking for work?' }].map((l) => (
+            {[{ to: '/', label: 'Home' }, ...MENU_LINKS, { to: '/app', label: 'Get the app' }, { to: '/partner', label: 'Looking for work?' }].map((l) => (
               <Link key={l.to + l.label} to={l.to} onClick={() => setOpen(false)}>
                 {l.label}
                 <Icon name="arrow" />

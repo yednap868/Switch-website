@@ -38,24 +38,24 @@ export const INDUSTRIES = [
    height in px: these marks range from a 3:1 wordmark to a taller-than-wide
    crest, so a single height makes the wide ones shout and the tall ones vanish.
    Each h is set to give every logo roughly the same optical area
-   (h ~= sqrt(1600 / aspect)), which is what makes a logo wall look even.
-   A brand with no logo file falls back to a styled wordmark, so the row stays
-   complete — drop a file in public/logos/ and add `logo` + `h` to swap it. */
+   (h ~= sqrt(8100 / aspect), capped at 100), which is what makes a logo wall
+   look even; marks boxed in their own colour get a little more. A brand with no logo file falls back to a styled wordmark, so the
+   row stays complete — drop a file in public/logos/ and add `logo` + `h`. */
 export const BRANDS = [
-  { name: 'Taco Bell',          logo: '/logos/taco-bell.png' },
-  { name: 'Zepto',              logo: '/logos/zepto.png',      h: 40 },
-  { name: 'Ozi',                logo: '/logos/ozi.png',        h: 40 },
-  { name: 'Wow! Momo',          logo: '/logos/wow-momo.png' },
-  { name: 'Libas',              logo: '/logos/libas.png' },
-  { name: 'Caterspoint',        logo: '/logos/caterspoint.png', h: 28 },
-  { name: 'Ivory Stayz',        logo: '/logos/ivory-stayz.svg', h: 24 },
-  { name: 'Dr Diet Restaurant', logo: '/logos/dr-diet.png',     h: 42 },
-  { name: 'Foressta Cafe',      logo: '/logos/foressta.png',    h: 22 },
-  { name: 'Crax',               logo: '/logos/crax.png',        h: 38 },
-  { name: 'ValueShoppe',        logo: '/logos/valueshoppe.png', h: 42 },
-  { name: 'BentoBox'                                                  },
-  { name: 'Fairdeal'                                                  },
-  { name: 'Inamo',              logo: '/logos/inamo.png',       h: 24 },
+  { name: 'Taco Bell',           logo: '/logos/taco-bell.png', h: 100 },
+  { name: 'Zepto',               logo: '/logos/zepto.png', h: 100 },
+  { name: 'Ozi',                 logo: '/logos/ozi.png', h: 66, light: true },
+  { name: 'Wow! Momo',           logo: '/logos/wow-momo.png', h: 100 },
+  { name: 'Libas',               logo: '/logos/libas.png', h: 79, light: true },
+  { name: 'Caterspoint',         logo: '/logos/caterspoint.png', h: 88 },
+  { name: 'Ivory Stayz',         logo: '/logos/ivory-stayz.svg', h: 52 },
+  { name: 'Dr Diet Restaurant',  logo: '/logos/dr-diet.png', h: 99 },
+  { name: 'Foressta Cafe',       logo: '/logos/foressta.png', h: 47 },
+  { name: 'Crax',                logo: '/logos/crax.png', h: 87 },
+  { name: 'ValueShoppe',         logo: '/logos/valueshoppe.png', h: 99 },
+  { name: 'BentoBox' },
+  { name: 'Fairdeal' },
+  { name: 'Inamo',               logo: '/logos/inamo.png', h: 51 },
 ]
 
 export const REVIEWS = [
@@ -121,7 +121,7 @@ export const HOME_STATS = [
   { value: '20,000+', label: 'Verified Switch Players' },
   { value: '1,500+', label: 'Businesses served' },
   { value: '24h', label: 'Replacement time' },
-  { value: '9', label: 'Sectors staffed' },
+  { value: '₹429', label: '4-hour trial' },
 ]
 
 /* The fixed-price 4-hour trials the employer app sells (app lib/trial.ts).

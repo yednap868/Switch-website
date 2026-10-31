@@ -259,6 +259,8 @@ function MatchScreen() {
 }
 
 function OtpScreen() {
+  // A fresh code on every play, like a real booking. Never in the server HTML.
+  const [otp] = useState(() => String(1000 + Math.floor(Math.random() * 9000)))
   return (
     <>
       <Status />
@@ -274,7 +276,7 @@ function OtpScreen() {
       <div className="sd-card sd-otp">
         <small>Share this code with the worker</small>
         <div className="sd-otp-code">
-          {['4', '7', '1', '9'].map((d, i) => (
+          {otp.split('').map((d, i) => (
             <span key={i} className="bd-digit" style={{ animationDelay: `${0.5 + i * 0.35}s` }}>
               {d}
             </span>
