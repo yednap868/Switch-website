@@ -12,6 +12,7 @@ import {
   HOME_STATS,
   INDUSTRIES,
   PATHWAYS,
+  PAYROLL_PLANS,
   PLANS,
   PRICES,
   REVIEWS,
@@ -205,6 +206,47 @@ export function How() {
   )
 }
 
+function PlanCard({ plan: p }) {
+  return (
+    <div className={`sw-card sw-plan${p.featured ? ' hl' : ''}`}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          gap: 8,
+          alignItems: 'center',
+        }}
+      >
+        <h3 className="sw-h3">{p.name}</h3>
+        <span className="sw-pill">{p.badge}</span>
+      </div>
+      <div className="amt">
+        {p.price}
+        {p.per && <small>{p.per}</small>}
+      </div>
+      <p className="sw-muted" style={{ fontSize: 14 }}>
+        {p.description}
+      </p>
+      <ul>
+        {p.items.map((it) => (
+          <li key={it}>
+            <Icon name="check" />
+            {it}
+          </li>
+        ))}
+      </ul>
+      <a
+        className={`sw-btn sm${p.featured ? ' white' : ''}`}
+        href={waLink(p.msg)}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {p.cta}
+      </a>
+    </div>
+  )
+}
+
 export function Pricing() {
   return (
     <section className="sw-sec" id="pricing">
@@ -230,42 +272,18 @@ export function Pricing() {
         </p>
         <div className="sw-grid sw-g3">
           {PLANS.map((p) => (
-            <div className={`sw-card sw-plan${p.featured ? ' hl' : ''}`} key={p.name}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  gap: 8,
-                  alignItems: 'center',
-                }}
-              >
-                <h3 className="sw-h3">{p.name}</h3>
-                <span className="sw-pill">{p.badge}</span>
-              </div>
-              <div className="amt">
-                {p.price}
-                {p.per && <small>{p.per}</small>}
-              </div>
-              <p className="sw-muted" style={{ fontSize: 14 }}>
-                {p.description}
-              </p>
-              <ul>
-                {p.items.map((it) => (
-                  <li key={it}>
-                    <Icon name="check" />
-                    {it}
-                  </li>
-                ))}
-              </ul>
-              <a
-                className={`sw-btn sm${p.featured ? ' white' : ''}`}
-                href={waLink(p.msg)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {p.cta}
-              </a>
-            </div>
+            <PlanCard key={p.name} plan={p} />
+          ))}
+        </div>
+      </div>
+      <div id="payroll" style={{ marginTop: 26 }}>
+        <p className="sw-eyebrow">Hire on your payroll</p>
+        <p className="sw-muted" style={{ marginTop: 4, marginBottom: 14 }}>
+          We find the person. You decide the salary and keep them on your payroll.
+        </p>
+        <div className="sw-grid sw-g2">
+          {PAYROLL_PLANS.map((p) => (
+            <PlanCard key={p.name} plan={p} />
           ))}
         </div>
       </div>
