@@ -108,9 +108,9 @@ function HeroVisual() {
       </div>
 
       <div className="sw-float hh-trial hh-in" style={{ '--d': '1.1s' }}>
-        <b>₹299</b>
+        <b>₹429</b>
         <span>
-          3-hour trial
+          4-hour trial
           <br />1 verified worker
         </span>
       </div>
@@ -182,7 +182,7 @@ export default function HomeHero() {
             Hire staff now <Icon name="arrow" />
           </a>
           <a className="sw-btn line" href="#trial">
-            Try for ₹299
+            Try for ₹429
           </a>
           <a className="sw-btn line hh-wa" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
             WhatsApp

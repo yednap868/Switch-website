@@ -58,7 +58,7 @@ export default function Footer() {
                 {p.name}
               </Link>
             ))}
-            <a href="/#trial">₹299 3-hour trial</a>
+            <a href="/#trial">₹429 4-hour trial</a>
             <a href="/#pricing">Pricing</a>
             <a href={waLink('Hi Switch — I need a bulk staffing quote.')} target="_blank" rel="noreferrer">
               Bulk hiring

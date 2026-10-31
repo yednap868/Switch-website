@@ -39,9 +39,9 @@ export function TrialTickets({ id = 'trial' }) {
       <div className="sw-trial">
         <div className="sw-trial-top">
           <div>
-            <p className="sw-eyebrow">3-hour trial at ₹299 · 50% off your first booking</p>
+            <p className="sw-eyebrow">4-hour trial at ₹429 · 50% off your first booking</p>
             <h2>
-              Try Switch for <em>3 hours.</em>
+              Try Switch for <em>4 hours.</em>
               <br />
               Decide after.
             </h2>
@@ -67,7 +67,7 @@ export function TrialTickets({ id = 'trial' }) {
                     <div className="t-price">
                       <b>₹{t.price}</b>
                       <span>
-                        for 3 hours
+                        for 4 hours
                         <br />1 worker
                       </span>
                     </div>
@@ -98,7 +98,7 @@ export function TrialTickets({ id = 'trial' }) {
                     </a>
                     <a
                       className="sw-btn ghost"
-                      href={waLink(`Hi Switch — I want the 3-hour ${t.role} trial (₹${t.price}).`)}
+                      href={waLink(`Hi Switch — I want the 4-hour ${t.role} trial (₹${t.price}).`)}
                       target="_blank"
                       rel="noreferrer"
                       aria-label={`Ask about the ${t.role} trial on WhatsApp`}

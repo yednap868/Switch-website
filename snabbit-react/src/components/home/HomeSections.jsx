@@ -10,6 +10,7 @@ import { ReviewVideos, ServiceRow, StoreButtons, StatsRow } from '../ui/Blocks.j
 import {
   FORM_ROLES,
   HOME_STATS,
+  HOW_ASSURANCES,
   INDUSTRIES,
   PATHWAYS,
   PAYROLL_PLANS,
@@ -22,8 +23,10 @@ import {
 import {
   ADDRESS,
   EMAIL,
+  EMPLOYER_LOGIN,
   LEADS_SHEET_URL,
   PHONE_DISPLAY,
+  WHATSAPP_URL,
   trackWhatsApp,
   waLink,
 } from '../../data/site.js'
@@ -222,14 +225,33 @@ export function How() {
       <div className="sw-head">
         <p className="sw-eyebrow">How to book</p>
         <h2 className="sw-h2">
-          Book in five taps. <em>Watch it.</em>
+          Book staff in <em>five taps.</em>
         </h2>
         <p className="sw-lead">
-          Pick a role, choose the time, pay, get matched, check in with an OTP. This is the Switch
-          app, step by step — tap any step to jump to it.
+          From picking a role to OTP check-in, here’s exactly what happens in the Switch app.
         </p>
       </div>
-      <BookingDemo />
+      <BookingDemo>
+        <ul className="bd-assure">
+          {HOW_ASSURANCES.map((a) => (
+            <li key={a}>
+              <Icon name="check" />
+              {a}
+            </li>
+          ))}
+        </ul>
+        <div className="sw-btns">
+          <a className="sw-btn" href={EMPLOYER_LOGIN} target="_blank" rel="noreferrer">
+            Book staff now <Icon name="arrow" />
+          </a>
+          <a className="sw-btn line" href="#trial">
+            Try 4 hours for ₹429
+          </a>
+          <a className="sw-btn line" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            WhatsApp
+          </a>
+        </div>
+      </BookingDemo>
       <p className="bd-caption">
         Illustrative walkthrough of the Switch app · names and details are examples
       </p>

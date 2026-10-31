@@ -43,9 +43,11 @@ export const INDUSTRIES = [
    complete — drop a file in public/logos/ and add `logo` + `h` to swap it. */
 export const BRANDS = [
   { name: 'Taco Bell',          logo: '/logos/taco-bell.png' },
+  { name: 'Zepto',              logo: '/logos/zepto.png',      h: 40 },
+  { name: 'Ozi',                logo: '/logos/ozi.png', h: 40, light: true },
   { name: 'Wow! Momo',          logo: '/logos/wow-momo.png' },
   { name: 'Libas',              logo: '/logos/libas.png', light: true },
-  { name: 'Caterspoint'                                                },
+  { name: 'Caterspoint',        logo: '/logos/caterspoint.png', h: 28 },
   { name: 'Ivory Stayz',        logo: '/logos/ivory-stayz.svg', h: 24 },
   { name: 'Dr Diet Restaurant', logo: '/logos/dr-diet.png',     h: 42 },
   { name: 'Foressta Cafe',      logo: '/logos/foressta.png',    h: 22 },
@@ -122,12 +124,12 @@ export const HOME_STATS = [
   { value: '9', label: 'Sectors staffed' },
 ]
 
-/* The fixed-price 3-hour trials the employer app sells (app lib/trial.ts).
+/* The fixed-price 4-hour trials the employer app sells (app lib/trial.ts).
    `book` opens the app's trial payment page directly. */
 export const TRIALS = [
   {
     role: 'Housekeeping',
-    price: 299,
+    price: 429,
     img: '/sw-maid.jpg',
     kicker: 'Offices · shops',
     blurb: 'Floors, washrooms, dusting — shops, offices, premises',
@@ -135,7 +137,7 @@ export const TRIALS = [
   },
   {
     role: 'Kitchen Helper',
-    price: 299,
+    price: 429,
     img: '/sw-kitchen-helper.jpg',
     kicker: 'Cafés · kitchens',
     blurb: 'Prep, dishes, kitchen cleaning — cafés, restaurants, messes',
@@ -144,7 +146,7 @@ export const TRIALS = [
 ]
 export const TRIAL_INCLUDES = [
   '1 verified worker',
-  '3 full hours',
+  '4 full hours',
   'Aadhaar & interview checked',
   'OTP check-in on site',
   'Replacement if no-show',
@@ -213,6 +215,8 @@ export const PAYROLL_PLANS = [
 ]
 
 export const COVERAGE_AREAS = ['DLF', 'Sushant Lok', 'Palam Vihar', 'Udyog Vihar', 'Cyber City', 'MG Road', 'Sohna Road', 'Sectors 1–49']
+
+export const HOW_ASSURANCES = ['Aadhaar-verified staff', 'No hidden charges', 'No-show? Replaced within 24 hours']
 
 export const HOW_STEPS = [
   { n: '01', title: 'REQUEST', line: 'Tell us what you need.', caption: 'Role, location and timing. One WhatsApp message or a few taps in the app.' },

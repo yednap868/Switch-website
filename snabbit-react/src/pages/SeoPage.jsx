@@ -12,7 +12,7 @@ import './SeoPage.css'
 
 const APP = 'https://app.switchlocally.com'
 
-/* Services that have a 3-hour trial ticket (Housekeeping / Kitchen Helper). */
+/* Services that have a 4-hour trial ticket (Housekeeping / Kitchen Helper). */
 const TRIAL_SERVICES = new Set(['home-cleaning', 'kitchen-helper'])
 
 /* ─── MICRO COMPONENTS ─── */

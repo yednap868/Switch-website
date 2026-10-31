@@ -851,6 +851,12 @@ html[data-theme='light'] .sw-brand .wm-light {
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
+/* 14 logos in a 4-column wall: the last two share the bottom row evenly. */
+@media (min-width: 761px) {
+  .sw-logos > :nth-last-child(-n + 2) {
+    grid-column: span 2;
+  }
+}
 .sw-logo {
   height: 128px;
   padding: 18px;
@@ -993,7 +999,7 @@ html[data-theme='light'] .sw-brand .wm-light {
   }
 }
 
-/* ── 3-hour trial tickets ─────────────────────────────────────────── */
+/* ── 4-hour trial tickets ─────────────────────────────────────────── */
 .sw-trial {
   position: relative;
   border-radius: 30px;
@@ -3472,6 +3478,28 @@ html[data-theme='light'] .sw-mark {
   gap: 28px;
   align-items: center;
 }
+.bd-left {
+  display: grid;
+  gap: 16px;
+}
+.bd-assure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bd-assure li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.bd-assure .sw-ico {
+  color: var(--ok);
+}
 @media (max-width: 900px) {
   .bd {
     grid-template-columns: 1fr;
@@ -3504,7 +3532,7 @@ html[data-theme='light'] .sw-mark {
     border-color 0.25s,
     transform 0.25s var(--ease),
     opacity 0.25s;
-  opacity: 0.72;
+  opacity: 0.9;
 }
 .bd-steps button:hover {
   opacity: 1;

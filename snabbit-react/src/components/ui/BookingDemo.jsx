@@ -10,7 +10,7 @@ import Icon from './Icon.jsx'
 
 const BOOKING_STEPS = [
   { title: 'Pick a role', line: 'Housekeeping, kitchen, security, helpers and more.', ms: 3400 },
-  { title: 'Choose the time', line: 'Date, start time and hours. Try 3 hours at ₹299.', ms: 3800 },
+  { title: 'Choose the time', line: 'Date, start time and hours. Try 4 hours at ₹429.', ms: 3800 },
   { title: 'Pay by UPI or card', line: 'One tap. The price you see is the price you pay.', ms: 3600 },
   { title: 'Worker matched', line: 'An Aadhaar-verified Switch Player accepts, often within the hour.', ms: 3400 },
   { title: 'OTP check-in', line: 'Share the code on arrival — the shift starts. No-show? We replace.', ms: 3800 },
@@ -79,8 +79,8 @@ function PickScreen() {
         ))}
       </div>
       <div className="bd-mini-trial">
-        <b>₹299</b>
-        <span>3-hour trial · Housekeeping</span>
+        <b>₹429</b>
+        <span>4-hour trial · Housekeeping</span>
       </div>
       <span className="bd-finger f-pick" aria-hidden="true" />
     </>
@@ -115,7 +115,7 @@ function TimeScreen() {
       <div className="sd-card">
         <div className="sd-row">
           <b>Start time</b>
-          <small className="sd-ok bd-show-b">11:00 AM – 2:00 PM</small>
+          <small className="sd-ok bd-show-b">11:00 AM – 3:00 PM</small>
         </div>
         <div className="sd-chips">
           <span>10:30</span>
@@ -129,13 +129,13 @@ function TimeScreen() {
           <Icon name="sparkles" />
         </span>
         <div>
-          <b>3-hour trial</b>
+          <b>4-hour trial</b>
           <small>1 verified worker</small>
         </div>
-        <b className="bd-price">₹299</b>
+        <b className="bd-price">₹429</b>
       </div>
       <div className="sd-pay">
-        <span className="bd-press-c">Continue · ₹299 →</span>
+        <span className="bd-press-c">Continue · ₹429 →</span>
       </div>
       <span className="bd-finger f-time" aria-hidden="true" />
     </>
@@ -149,8 +149,8 @@ function PayScreen() {
       <Bar title="Pay for your trial" />
       <div className="sd-bill" style={{ marginTop: 12 }}>
         <div>
-          <span>Housekeeping · 3 hrs</span>
-          <b>₹299</b>
+          <span>Housekeeping · 4 hrs</span>
+          <b>₹429</b>
         </div>
         <div>
           <span>Today · 11:00 AM</span>
@@ -158,7 +158,7 @@ function PayScreen() {
         </div>
         <div className="sd-total">
           <span>To pay</span>
-          <b>₹299</b>
+          <b>₹429</b>
         </div>
       </div>
       <div className="sd-card sd-addr">
@@ -172,12 +172,12 @@ function PayScreen() {
       </div>
       <div className="sd-pay">
         <span className="bd-press-a">
-          <Icon name="sparkles" /> Pay ₹299 →
+          <Icon name="sparkles" /> Pay ₹429 →
         </span>
       </div>
       <div className="bd-sheet">
         <i className="bd-grab" />
-        <b>Pay ₹299 with UPI</b>
+        <b>Pay ₹429 with UPI</b>
         <div className="bd-upi">
           {['UPI app', 'Card', 'Wallet'].map((u, i) => (
             <span key={u} className={i === 0 ? 'bd-sel-upi' : ''}>
@@ -191,7 +191,7 @@ function PayScreen() {
             <Icon name="check" />
           </span>
           <b>Payment successful</b>
-          <small>₹299 · Booking confirmed</small>
+          <small>₹429 · Booking confirmed</small>
         </div>
       </div>
       <span className="bd-finger f-pay" aria-hidden="true" />
@@ -267,7 +267,7 @@ function OtpScreen() {
         </span>
         <div>
           <b>Checked in · shift started</b>
-          <small>11:02 AM · ends 2:02 PM</small>
+          <small>11:02 AM · ends 3:02 PM</small>
         </div>
       </div>
       <div className="bd-timer">
@@ -279,7 +279,7 @@ function OtpScreen() {
 
 const SCREENS = [PickScreen, TimeScreen, PayScreen, MatchScreen, OtpScreen]
 
-export default function BookingDemo() {
+export default function BookingDemo({ children }) {
   // Server HTML (and reduced motion) shows the first screen in its finished state.
   const [step, setStep] = useState(0)
   const [auto, setAuto] = useState(false)
@@ -308,29 +308,32 @@ export default function BookingDemo() {
   const Screen = SCREENS[step]
   return (
     <div className={`bd${auto ? ' is-live' : ''}`}>
-      <ol className="bd-steps">
-        {BOOKING_STEPS.map((s, i) => (
-          <li key={s.title}>
-            <button
-              type="button"
-              className={i === step ? 'on' : i < step ? 'done' : ''}
-              onClick={() => go(i)}
-              aria-current={i === step ? 'step' : undefined}
-            >
-              <span className="bd-n">{i < step ? <Icon name="check" /> : i + 1}</span>
-              <span className="bd-t">
-                <b>{s.title}</b>
-                <small>{s.line}</small>
-              </span>
-              {i === step && auto && (
-                <span className="bd-prog" aria-hidden="true">
-                  <i key={run} style={{ animationDuration: `${s.ms}ms` }} />
+      <div className="bd-left">
+        <ol className="bd-steps">
+          {BOOKING_STEPS.map((s, i) => (
+            <li key={s.title}>
+              <button
+                type="button"
+                className={i === step ? 'on' : i < step ? 'done' : ''}
+                onClick={() => go(i)}
+                aria-current={i === step ? 'step' : undefined}
+              >
+                <span className="bd-n">{i < step ? <Icon name="check" /> : i + 1}</span>
+                <span className="bd-t">
+                  <b>{s.title}</b>
+                  <small>{s.line}</small>
                 </span>
-              )}
-            </button>
-          </li>
-        ))}
-      </ol>
+                {i === step && auto && (
+                  <span className="bd-prog" aria-hidden="true">
+                    <i key={run} style={{ animationDuration: `${s.ms}ms` }} />
+                  </span>
+                )}
+              </button>
+            </li>
+          ))}
+        </ol>
+        {children}
+      </div>
       <div className="sw-devs bd-devs">
         <div
           className="sw-dev mid"

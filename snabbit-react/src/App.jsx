@@ -294,7 +294,7 @@ function OfferPopup() {
             {day1.cta} <Icon name="arrow" />
           </a>
           <a className="sw-pop-alt" href="#trial" onClick={close}>
-            Or try a verified worker for ₹299
+            Or try a verified worker for ₹429
           </a>
         </div>
       </div>
@@ -310,7 +310,7 @@ function OfferBanner() {
     <aside className="sw-strip">
       <a href="/#trial">
         <span>
-          <b>New</b> · 3-hour trial at <b>₹299</b> · 50% off your first booking · Monthly staff from <b>₹20,800</b>
+          <b>New</b> · 4-hour trial at <b>₹429</b> · 50% off your first booking · Monthly staff from <b>₹20,800</b>
         </span>
         <u>See offers</u>
       </a>
@@ -346,7 +346,7 @@ function MobileCTABar() {
       <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" tabIndex={show ? undefined : -1}>
         <span>
           <b>Hire verified staff</b>
-          <small>3-hour trial at ₹299 · Staff in a day</small>
+          <small>4-hour trial at ₹429 · Staff in a day</small>
         </span>
         <span className="gob">
           WhatsApp <Icon name="arrow" />
@@ -398,7 +398,7 @@ function HomePage() {
               Staff who show up. <em>Book your first shift.</em>
             </>
           }
-          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for 3 hours at ₹299."
+          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for 4 hours at ₹429."
           photos={['/sw-maid.jpg', '/sw-kitchen-helper.jpg']}
         />
         <AllServicesDirectory />

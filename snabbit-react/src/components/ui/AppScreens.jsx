@@ -1,5 +1,5 @@
 /* The Switch employer app, drawn in HTML: three screens of the current app
-   (home, the 3-hour trial payment page, and a confirmed shift with its OTP).
+   (home, the 4-hour trial payment page, and a confirmed shift with its OTP).
    Built as markup rather than screenshots so they stay sharp at any size and
    match the app's real look. Each screen is laid out at 280×606 and scaled
    by the device size. Styles: .sw-dev-* in src/styles/switch.css. */
@@ -70,7 +70,7 @@ function HomeScreen() {
           <p className="sd-trial-h">
             Switch &amp; try
             <br />
-            at <b>₹299</b>
+            at <b>₹429</b>
           </p>
           <span className="sd-timer">
             <Icon name="timer" /> Ends in 07:12:40
@@ -119,14 +119,14 @@ function TrialPayScreen() {
           </span>
           <b className="sd-role">Housekeeping</b>
           <span className="sd-price">
-            ₹299 <small>· 1 worker · 3 hrs</small>
+            ₹429 <small>· 1 worker · 4 hrs</small>
           </span>
         </div>
       </div>
       <div className="sd-card">
         <div className="sd-row">
           <b>When</b>
-          <small className="sd-ok">11:00 AM – 2:00 PM</small>
+          <small className="sd-ok">11:00 AM – 3:00 PM</small>
         </div>
         <div className="sd-chips">
           <span className="on">Today</span>
@@ -151,17 +151,17 @@ function TrialPayScreen() {
       </div>
       <div className="sd-bill">
         <div>
-          <span>Housekeeping · 3 hrs</span>
-          <b>₹299</b>
+          <span>Housekeeping · 4 hrs</span>
+          <b>₹429</b>
         </div>
         <div className="sd-total">
           <span>To pay</span>
-          <b>₹299</b>
+          <b>₹429</b>
         </div>
       </div>
       <div className="sd-pay">
         <span>
-          <Icon name="sparkles" /> Pay ₹299 →
+          <Icon name="sparkles" /> Pay ₹429 →
         </span>
         <small>Today, 11:00 AM · UPI or card</small>
       </div>
@@ -228,12 +228,12 @@ function Device({ size, children, label }) {
 export default function AppScreens() {
   return (
     <div className="sw-devs">
-      <Device size="side" label="Switch app: pay ₹299 for a 3-hour Housekeeping trial">
+      <Device size="side" label="Switch app: pay ₹429 for a 4-hour Housekeeping trial">
         <TrialPayScreen />
       </Device>
       <Device
         size="mid"
-        label="Switch app home: hire instantly, scheduled or monthly, trial at ₹299"
+        label="Switch app home: hire instantly, scheduled or monthly, trial at ₹429"
       >
         <HomeScreen />
       </Device>
