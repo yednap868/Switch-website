@@ -63,10 +63,8 @@ function HomeHead() {
     priceRange: '₹119-₹599 per hour',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '5th Floor, WeWork, Cyber Hub',
       addressLocality: 'Gurgaon',
       addressRegion: 'Haryana',
-      postalCode: '122002',
       addressCountry: 'IN',
     },
     geo: { '@type': 'GeoCoordinates', latitude: 28.4595, longitude: 77.0266 },
@@ -184,7 +182,7 @@ function AllServicesDirectory() {
         </h2>
         <p className="sw-lead">Pricing, hiring guides and verified professionals for every role in Gurgaon.</p>
       </div>
-      <div className="sw-grid sw-g4">
+      <div className="sw-grid sw-g4 sw-swipe">
         {SERVICE_LIST.map((svc) => (
           <div className="sw-card" key={svc.id} style={{ padding: 16, display: 'grid', gap: 10, alignContent: 'start' }}>
             <Link to={`/${svc.slug}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 800 }}>

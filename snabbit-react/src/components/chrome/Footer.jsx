@@ -3,12 +3,9 @@ import { StoreButtons } from '../ui/Blocks.jsx'
 import { INDUSTRY_LINKS, SERVICE_LIST } from '../../data/siteIndex.js'
 import { TAGLINE } from '../../data/homeContent.js'
 import {
-  ADDRESS,
   CAREERS_EMAIL,
   EMAIL,
-  MAPS_URL,
   PHONE_DISPLAY,
-  REGISTERED_OFFICE,
   SOCIALS,
   WHATSAPP_URL,
   waLink,
@@ -40,12 +37,6 @@ export default function Footer() {
             <a href={`mailto:${EMAIL}`} className="sw-muted" style={{ fontSize: 14 }}>
               {EMAIL}
             </a>
-            <p className="sw-muted" style={{ fontSize: 13.5, marginTop: 6 }}>
-              {ADDRESS.join(', ')} ·{' '}
-              <a href={MAPS_URL} target="_blank" rel="noreferrer" style={{ color: 'var(--p-t)', display: 'inline' }}>
-                Map
-              </a>
-            </p>
             <div className="sw-btns" style={{ marginTop: 16 }}>
               <StoreButtons />
             </div>
@@ -91,7 +82,6 @@ export default function Footer() {
         </div>
         <div className="sw-legal">
           <span>© {new Date().getFullYear()} Third Wave Labs Private Limited. All rights reserved.</span>
-          <span>{REGISTERED_OFFICE}</span>
           <span>Made in India 🇮🇳</span>
         </div>
       </div>

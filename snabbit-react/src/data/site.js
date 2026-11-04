@@ -20,19 +20,11 @@ export const WHATSAPP_URL = waLink("Hi Switch — I'd like to hire staff for my 
    "Leads" sheet — source in scripts/lead-sheet.gs. Empty = backup off. */
 export const LEADS_SHEET_URL = ''
 
-export const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=WeWork%20Cyber%20Hub%20Gurgaon'
-
 export const SOCIALS = [
   { label: 'in', href: 'https://www.linkedin.com/company/switchlocal', name: 'LinkedIn' },
   { label: 'ig', href: 'https://www.instagram.com/switchlocally/', name: 'Instagram' },
   { label: 'fb', href: 'https://www.facebook.com/switchlocally', name: 'Facebook' },
 ]
-
-export const ADDRESS = ['5th Floor, WeWork, Cyber Hub', 'Gurgaon, Haryana 122002']
-
-export const REGISTERED_OFFICE =
-  'Registered office: Shop No R-02/06, Tower A3, M3M Woodshire, Sector 107, Gurugram – 122006, Haryana, India'
 
 /* Lead tracking: count every WhatsApp click in GA4 with the page it came from. */
 export const trackWhatsApp = (label, path = window.location.pathname) => {

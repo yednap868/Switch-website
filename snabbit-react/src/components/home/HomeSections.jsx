@@ -21,7 +21,6 @@ import {
   WHY_US,
 } from '../../data/homeContent.js'
 import {
-  ADDRESS,
   EMAIL,
   EMPLOYER_LOGIN,
   LEADS_SHEET_URL,
@@ -566,9 +565,6 @@ export function RequestForm({ onToast }) {
             </p>
             <p style={{ fontWeight: 800, marginTop: 6 }}>
               {PHONE_DISPLAY} · {EMAIL}
-            </p>
-            <p className="sw-muted" style={{ fontSize: 13 }}>
-              {ADDRESS.join(', ')}
             </p>
           </div>
         </div>
