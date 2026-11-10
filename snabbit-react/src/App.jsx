@@ -268,9 +268,9 @@ function OfferPopup() {
         <div className="sw-pop-body">
           <span className="sw-pill">New · Hire on your payroll</span>
           <h2>
-            Staff on your payroll from <em>₹2,000/month.</em>
+            Staff on your payroll for <em>₹2,000 one-time.</em>
           </h2>
-          <p>Monthly retention fee for the same worker.</p>
+          <p>One-time fee per worker, paid on day 1.</p>
           <div className="sw-pop-fees">
             {PAYROLL_PLANS.map((p) => (
               <div className={p.featured ? 'on' : ''} key={p.name}>
