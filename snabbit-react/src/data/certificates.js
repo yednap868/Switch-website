@@ -151,7 +151,7 @@ export const CERTIFICATES = {
   },
   'SWITCH-INT-2026-0019': {
     displayId: 'SWITCH/INT/2026/0019',
-    name: 'Rishabh',
+    name: 'Rishabh Chawla',
     type: 'Internship',
     role: 'Frontend Developer Intern',
     duration: 'Two (2) months',
