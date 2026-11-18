@@ -200,6 +200,18 @@ function AllServicesDirectory() {
             </div>
           </div>
         ))}
+        <a
+          className="sw-card sw-dir-more sw-press"
+          href={waLink("Hi Switch — I need a role that isn't listed on the site.")}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <b>Role not listed?</b>
+          <span className="sw-muted">Cashiers, loaders, office boys, gardeners and more.</span>
+          <span className="sw-link">
+            Ask on WhatsApp <Icon name="arrow" />
+          </span>
+        </a>
       </div>
     </section>
   )

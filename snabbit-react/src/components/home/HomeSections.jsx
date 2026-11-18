@@ -30,6 +30,13 @@ import {
   waLink,
 } from '../../data/site.js'
 
+// What happens after a request is sent (same promises as the rest of the page).
+const NEXT_STEPS = [
+  ['We confirm on WhatsApp', 'A real person checks the role, timing and site with you.'],
+  ['Verified people matched', 'Aadhaar-checked Switch Players near you, often within the hour.'],
+  ['They check in with an OTP', 'The right person at the right site. No-show? Replaced within 24 hours.'],
+]
+
 const TINTS = [
   't-lav',
   't-peach',
@@ -558,13 +565,32 @@ export function RequestForm({ onToast }) {
             Tell us what you need, and our team will find verified, trained staff for your business
             — quickly and hassle-free.
           </p>
+          <ol className="sw-next">
+            {NEXT_STEPS.map(([t, d], i) => (
+              <li key={t}>
+                <span className="n">{i + 1}</span>
+                <span>
+                  <b>{t}</b>
+                  <small>{d}</small>
+                </span>
+              </li>
+            ))}
+          </ol>
           <div className="sw-card" style={{ padding: 18, marginTop: 18, display: 'grid', gap: 6 }}>
             <b>We’re here to help.</b>
             <p className="sw-muted" style={{ fontSize: 14 }}>
               Questions, bulk teams or a custom quote — talk to a real person.
             </p>
             <p style={{ fontWeight: 800, marginTop: 6 }}>
-              {PHONE_DISPLAY} · {EMAIL}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackWhatsApp('Request help card')}
+              >
+                WhatsApp {PHONE_DISPLAY}
+              </a>{' '}
+              · <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
             </p>
           </div>
         </div>

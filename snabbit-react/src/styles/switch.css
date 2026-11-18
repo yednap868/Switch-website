@@ -4346,3 +4346,167 @@ html[data-theme='light'] .sw-band::before {
   color: transparent;
   font-size: clamp(28px, 3vw, 36px);
 }
+
+/* ── polish pass 2 ────────────────────────────────────────────────── */
+/* Hero backdrop: .hh clips to the content box, so fade the glow and grid
+   out before the edges instead of ending on a hard rectangle. */
+.hh-bg {
+  --hh-fade:
+    linear-gradient(90deg, transparent var(--gut), #000 calc(var(--gut) * 4), #000 calc(100% - var(--gut) * 4), transparent calc(100% - var(--gut))),
+    linear-gradient(180deg, #000 55%, transparent 100%);
+  -webkit-mask-image: var(--hh-fade);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--hh-fade);
+  mask-composite: intersect;
+}
+
+.sw-logo {
+  transition: border-color 0.2s, transform 0.25s var(--ease);
+}
+.sw-logo:hover {
+  border-color: #3a3648;
+  transform: translateY(-2px);
+}
+
+/* Try-first / bulk pathway cards read as links. */
+a.sw-dashed {
+  display: block;
+  transition: border-color 0.2s, background 0.2s;
+}
+a.sw-dashed:hover {
+  border-color: var(--p);
+  background: rgba(123, 77, 255, 0.06);
+}
+a.sw-dashed .sw-h3::after {
+  content: ' →';
+  color: var(--p);
+}
+
+/* Phones: a shorter page. Stats pair up, rates sit three across, industries
+   become a swipeable row instead of nine full-height cards. */
+@media (max-width: 560px) {
+  .sw-grid:has(> .sw-stat) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sw-grid:has(> .sw-stat) > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .sw-stat {
+    padding: 14px;
+  }
+  .sw-grid:has(> .sw-rate) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .sw-rate {
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .sw-rate .sw-eyebrow {
+    margin: 0;
+  }
+  .sw-rate b {
+    font-size: 20px;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .sw-rate .sw-muted {
+    font-size: 13px;
+  }
+  #industries .sw-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * var(--gut));
+    padding: 2px var(--gut) 10px;
+    scroll-padding-inline: var(--gut);
+    scrollbar-width: none;
+  }
+  #industries .sw-grid::-webkit-scrollbar {
+    display: none;
+  }
+  #industries .sw-ind-card {
+    scroll-snap-align: start;
+  }
+  #industries .sw-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+/* Trial tickets on phones: keep "for 3 hours · 1 worker" on two lines. */
+@media (max-width: 480px) {
+  .t-price b {
+    font-size: 52px;
+  }
+  .t-price span {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  .t-role {
+    font-size: 23px;
+  }
+}
+
+/* Footer: keep the S tile beside the wordmark (the generic footer-link
+   rule would otherwise stack them); brand column spans the row on phones. */
+.sw-fgrid .sw-logo-link {
+  display: inline-flex;
+  padding: 0;
+}
+@media (max-width: 860px) {
+  .sw-fgrid > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Request section: what happens after you send it. */
+.sw-next {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.sw-next li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.sw-next .n {
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--p-t);
+  background: rgba(123, 77, 255, 0.14);
+}
+.sw-next b {
+  display: block;
+  font-size: 15.5px;
+}
+.sw-next small {
+  display: block;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+#request .sw-card a:hover {
+  color: var(--p-t);
+}
+
+/* Services directory: the "role not listed" card fills the last slot. */
+.sw-dir-more {
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  border-style: dashed;
+}
