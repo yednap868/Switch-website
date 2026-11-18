@@ -2,81 +2,16 @@
    Jyoti. Mobile-first (390px), off-white with one green accent, serif
    headings. Own header and footer so the page reads as one piece; the rest of
    the site keeps its shared chrome. Styles: ./sx.css (prefix sx-). */
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
 import PhoneChat from './PhoneChat.jsx'
 import Radar from './Radar.jsx'
-import { APP_URL, APPLE_URL, EMAIL, PHONE, PLAY_URL, SOCIALS, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
+import { APP_URL, PHONE, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
+import { SxFooter, SxHeader } from './SxChrome.jsx'
 import { FAQS, LANG_LINES, STEPS, TRUST, WORKER_APP_URL } from '../../data/switchHome.js'
+import { BRANDS, REVIEWS, REVIEW_VIDEOS } from '../../data/homeContent.js'
 import './sx.css'
-
-/* Theme: light by default here; follows the system until someone toggles,
-   and remembers the choice under the same key as the rest of the site. */
-function useTheme() {
-  const [theme, setTheme] = useState(null)
-  useEffect(() => {
-    const t = document.documentElement.dataset.theme
-    const sys = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    const id = setTimeout(() => setTheme(t || sys), 0)
-    return () => clearTimeout(id)
-  }, [])
-  const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
-    document.documentElement.dataset.theme = next
-    try {
-      localStorage.setItem('switch-theme', next)
-    } catch {
-      /* private mode — the choice just won't stick */
-    }
-    setTheme(next)
-  }
-  return [theme, toggle]
-}
-
-function SxHeader() {
-  const [theme, toggle] = useTheme()
-  const [open, setOpen] = useState(false)
-  const links = [
-    ['#how', 'How it works'],
-    ['#pricing', 'Pricing'],
-    ['#workers', 'For workers'],
-    ['#faq', 'FAQ'],
-  ]
-  return (
-    <header className="sx-head">
-      <div className="sx-wrap sx-head-in">
-        <a href="#top" className="sx-logo" aria-label="Switch home">
-          Switch<span>.</span>
-        </a>
-        <nav className={`sx-nav${open ? ' open' : ''}`} aria-label="Main">
-          {links.map(([h, l]) => (
-            <a key={h} href={h} onClick={() => setOpen(false)}>
-              {l}
-            </a>
-          ))}
-        </nav>
-        <div className="sx-head-cta">
-          <button type="button" className="sx-icon-btn" onClick={toggle} aria-label="Switch light or dark mode">
-            <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
-          </button>
-          <a className="sx-btn sm" href={APP_URL} target="_blank" rel="noreferrer">
-            Book staff
-          </a>
-          <button
-            type="button"
-            className="sx-icon-btn sx-menu"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-label="Menu"
-          >
-            <Icon name={open ? 'x' : 'menu'} />
-          </button>
-        </div>
-      </div>
-    </header>
-  )
-}
 
 function Hero() {
   return (
@@ -97,9 +32,9 @@ function Hero() {
             <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
               Book staff <Icon name="arrow" />
             </a>
-            <a className="sx-btn ghost" href="#workers">
+            <Link className="sx-btn ghost" to="/work">
               Find work
-            </a>
+            </Link>
           </div>
           <ul className="sx-hero-facts">
             <li>
@@ -116,6 +51,89 @@ function Hero() {
         <div className="sx-hero-phone">
           <PhoneChat />
           <p className="sx-cap">Try it — tap your answers. A preview of the Switch app.</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* Real clients — the same logo set the site has always shown. Tiles stay
+   white in dark mode too, because several marks are dark ink. */
+function Brands() {
+  return (
+    <section className="sx-brands" aria-labelledby="sx-b-h">
+      <div className="sx-wrap">
+        <p id="sx-b-h" className="sx-brands-h">
+          Trusted by <b>1,500+</b> Gurugram businesses
+        </p>
+      </div>
+      <div className="sx-marquee sx-logo-row">
+        <div className="sx-track slow">
+          {[...BRANDS, ...BRANDS].map((b, i) => (
+            <div key={i} className={`sx-logo-tile${b.light ? ' light' : ''}`} aria-hidden={i >= BRANDS.length ? 'true' : undefined}>
+              {b.logo ? <img src={b.logo} alt={i < BRANDS.length ? b.name : ''} loading="lazy" /> : <span>{b.name}</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function VideoReview({ v }) {
+  const [play, setPlay] = useState(false)
+  return (
+    <figure className="sx-vid">
+      {play ? (
+        <video src={v.src} poster={v.poster} controls autoPlay playsInline preload="none" />
+      ) : (
+        <button type="button" onClick={() => setPlay(true)} aria-label={`Play review: ${v.who}`}>
+          <img src={v.poster} alt="" loading="lazy" />
+          <span className="sx-play" aria-hidden="true">
+            <Icon name="play" />
+          </span>
+          <span className="sx-len">{v.len}</span>
+        </button>
+      )}
+      <figcaption>
+        <b>{v.who}</b>
+        <span>{v.where}</span>
+      </figcaption>
+    </figure>
+  )
+}
+
+function Reviews() {
+  return (
+    <section className="sx-sec" id="reviews" aria-labelledby="sx-r-h">
+      <div className="sx-wrap">
+        <p className="sx-eyebrow">What customers say</p>
+        <h2 id="sx-r-h" className="sx-h2">
+          Heard from the people who book<span className="sx-dot">.</span>
+        </h2>
+        <div className="sx-vids">
+          {REVIEW_VIDEOS.map((v) => (
+            <VideoReview key={v.src} v={v} />
+          ))}
+        </div>
+        <div className="sx-quotes">
+          {REVIEWS.slice(0, 6).map((r) => (
+            <blockquote key={r.name} className="sx-card sx-quote">
+              <span className="sx-qmark" aria-hidden="true">
+                “
+              </span>
+              <p>{r.text}</p>
+              <footer>
+                <span className="sx-av" aria-hidden="true">
+                  {r.name[0]}
+                </span>
+                <span>
+                  <b>{r.name}</b>
+                  <small>{r.loc}</small>
+                </span>
+              </footer>
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>
@@ -274,9 +292,14 @@ function Workers() {
               <b>Full-time नौकरी भी</b> — salary, खाना और रहने की सुविधा वाली; interview Jyoti बुक करेगी
             </li>
           </ul>
-          <a className="sx-btn" href={WORKER_APP_URL} target="_blank" rel="noreferrer" lang="en">
-            Download app <Icon name="arrow" />
-          </a>
+          <div className="sx-btns" lang="en">
+            <a className="sx-btn" href={WORKER_APP_URL} target="_blank" rel="noreferrer">
+              Download app <Icon name="arrow" />
+            </a>
+            <Link className="sx-btn ghost" to="/work">
+              Workers ke liye poori jaankari
+            </Link>
+          </div>
         </div>
         <div className="sx-ringcard" aria-hidden="true">
           <div className="sx-ring-top">
@@ -401,95 +424,49 @@ function Faq() {
   )
 }
 
-function SxFooter() {
-  return (
-    <footer className="sx-foot">
-      <div className="sx-wrap">
-        <div className="sx-foot-cta">
-          <h2 className="sx-h2">
-            Staff chahiye? Bas boliye<span className="sx-dot">.</span>
-          </h2>
-          <div className="sx-btns">
-            <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
-              Book staff <Icon name="arrow" />
-            </a>
-            <a className="sx-btn ghost" href={WORKER_APP_URL} target="_blank" rel="noreferrer">
-              Find work
-            </a>
-          </div>
-        </div>
-        <div className="sx-foot-grid">
-          <div>
-            <a href="#top" className="sx-logo">
-              Switch<span>.</span>
-            </a>
-            <p>One chat with Jyoti to book staff or find work in Gurugram.</p>
-            <p>
-              <a href={`tel:${PHONE}`}>+91 87968 94500</a>
-              <br />
-              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-            </p>
-          </div>
-          <nav aria-label="Switch">
-            <b>Switch</b>
-            <Link to="/about">About</Link>
-            <Link to="/staffing-gurgaon">Services</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/partner">Partner with us</Link>
-            <Link to="/verify">Verify a certificate</Link>
-          </nav>
-          <nav aria-label="Apps">
-            <b>Apps</b>
-            <a href={PLAY_URL} target="_blank" rel="noreferrer">
-              Employer app · Android
-            </a>
-            <a href={APPLE_URL} target="_blank" rel="noreferrer">
-              Employer app · iPhone
-            </a>
-            <a href={WORKER_APP_URL} target="_blank" rel="noreferrer">
-              Worker app · Android
-            </a>
-          </nav>
-          <nav aria-label="Legal">
-            <b>Legal</b>
-            <Link to="/terms">Terms</Link>
-            <Link to="/privacy">Privacy</Link>
-            <Link to="/cancellation">Cancellation</Link>
-          </nav>
-        </div>
-        <div className="sx-foot-base">
-          <span>© {new Date().getFullYear()} Third Wave Labs Private Limited · Gurugram</span>
-          <span className="sx-social">
-            {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noreferrer" aria-label={s.name}>
-                {s.label}
-              </a>
-            ))}
-          </span>
-        </div>
-      </div>
-    </footer>
-  )
-}
-
 export default function SwitchHome() {
   return (
     <div className="sx">
       <a className="skip-link" href="#sx-main">
         Skip to main content
       </a>
-      <SxHeader />
+      <SxHeader
+        links={[
+          ['#how', 'How it works'],
+          ['#pricing', 'Pricing'],
+          ['#reviews', 'Reviews'],
+          ['/work', 'Find work'],
+        ]}
+      />
       <main id="sx-main">
         <Hero />
+        <Brands />
         <How />
         <Pricing />
         <Network />
+        <Reviews />
         <Workers />
         <Languages />
         <Trust />
         <Faq />
       </main>
-      <SxFooter />
+      <SxFooter
+        title={
+          <>
+            Staff chahiye? Bas boliye<span className="sx-dot">.</span>
+          </>
+        }
+        primary={
+          <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
+            Book staff <Icon name="arrow" />
+          </a>
+        }
+        secondary={
+          <Link className="sx-btn ghost" to="/work">
+            Find work
+          </Link>
+        }
+      />
     </div>
   )
 }

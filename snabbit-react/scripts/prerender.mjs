@@ -34,6 +34,7 @@ const routes = [
   '/retail-staffing-gurgaon',
   '/app',
   '/about',
+  '/work',
   '/partner',
   '/blog',
   '/terms',

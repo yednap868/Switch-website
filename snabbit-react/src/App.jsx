@@ -23,6 +23,7 @@ import {
 import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
 import { FAQS } from './data/switchHome.js'
 import SwitchHome from './components/sx/SwitchHome.jsx'
+import WorkerPage from './components/sx/WorkerPage.jsx'
 import { PHONE } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
@@ -171,6 +172,7 @@ export default function App() {
           {INDUSTRY_LINKS.map((p) => (
             <Route key={p.slug} path={`/${p.slug}`} element={<IndustryPage slug={p.slug} />} />
           ))}
+          <Route path="/work" element={<WorkerPage />} />
           <Route path="/verify" element={<VerifyPage />} />
           <Route path="/:slug" element={<SeoPage />} />
         </Routes>
