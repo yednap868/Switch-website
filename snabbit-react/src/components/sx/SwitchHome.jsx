@@ -19,7 +19,7 @@ function Hero() {
       <div className="sx-wrap sx-hero-in">
         <div className="sx-hero-copy">
           <p className="sx-kicker">
-            <span className="sx-live-dot" aria-hidden="true" /> Gurugram · one chat with Jyoti
+            <span className="sx-live-dot" aria-hidden="true" /> Gurugram · Jyoti searches the offline world for you
           </p>
           <h1 className="sx-h1">
             Staff chahiye? Bas boliye<span className="sx-dot">.</span>
@@ -239,13 +239,14 @@ function Network() {
     <section className="sx-sec sx-net" id="network" aria-labelledby="sx-net-h">
       <div className="sx-wrap sx-net-in">
         <div>
-          <p className="sx-eyebrow">Live, around you</p>
+          <p className="sx-eyebrow">The best workers aren’t online</p>
           <h2 id="sx-net-h" className="sx-h2">
-            Watch your shift reach the neighbourhood<span className="sx-dot">.</span>
+            See for yourself how Jyoti searches the offline world<span className="sx-dot">.</span>
           </h2>
           <p className="sx-lead">
-            The moment you confirm, Jyoti alerts nearby workers — an app ring like a ride request, plus
-            WhatsApp. You see each one go from ringing to seen to yes.
+            Gurugram’s cooks, helpers and housekeepers aren’t scrolling job portals — they answer their
+            phone. The moment you confirm, Jyoti alerts the ones nearby with an app ring and WhatsApp, and
+            you watch each go from ringing to seen to yes.
           </p>
           <ul className="sx-ticks">
             <li>
