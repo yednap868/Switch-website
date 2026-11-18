@@ -64,6 +64,18 @@ export const LANG_LINES = [
   { l: 'hl', t: 'Picker-packer, Sunday, 8 ghante' },
 ]
 
+/* Homepage strip: only what a business would say. */
+export const LANG_LINES_EMPLOYER = [
+  { l: 'hi', t: 'कल सुबह दो कुक चाहिए' },
+  { l: 'en', t: 'Need a waiter tonight in Sector 49' },
+  { l: 'te', t: 'రేపు ఉదయం వంటవాడు కావాలి' },
+  { l: 'en', t: '2 kitchen helpers, 4 hours, tomorrow 11 AM' },
+  { l: 'hl', t: 'Housekeeping ke liye ek didi chahiye' },
+  { l: 'hi', t: 'आज शाम के लिए एक वेटर चाहिए' },
+  { l: 'te', t: 'ఈ రాత్రికి ఇద్దరు వెయిటర్లు కావాలి' },
+  { l: 'hl', t: 'Picker-packer, Sunday, 8 ghante' },
+]
+
 export const TRUST = [
   { i: 'shield', t: 'Police-verified workers', d: 'Every worker is verified before they can take a job.' },
   { i: 'star', t: 'Ratings after every job', d: 'You rate the worker, the worker rates you. Good work rises.' },
@@ -103,7 +115,7 @@ export const FAQS = [
     a: 'Tell Jyoti the role, monthly salary (each role has a minimum), duty hours, food/stay and joining date. You pay ₹1,000 when a worker confirms and ₹1,000 when they show up on joining day.',
   },
   {
-    q: 'I’m a worker. How do I get jobs?',
-    a: 'Download the Switch app and tell Jyoti “aaj free hoon, kaam chahiye”. She asks what work you do, until when you’re free and how far you can travel, then finds jobs near you. New jobs ring your phone — accept in one tap. 100% of the fare is yours.',
+    q: 'Can I book staff for my home?',
+    a: 'Yes. Homes, PGs, shops, restaurants and hotels in Gurugram all book the same way — tell Jyoti the role, day, time and your address, and confirm for ₹0.',
   },
 ]

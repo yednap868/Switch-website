@@ -9,7 +9,7 @@ import PhoneChat from './PhoneChat.jsx'
 import Radar from './Radar.jsx'
 import { APP_URL, PHONE, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
 import { SxFooter, SxHeader } from './SxChrome.jsx'
-import { FAQS, LANG_LINES, STEPS, TRUST, WORKER_APP_URL } from '../../data/switchHome.js'
+import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES, STEPS, TRUST } from '../../data/switchHome.js'
 import { BRANDS, REVIEWS, REVIEW_VIDEOS } from '../../data/homeContent.js'
 import './sx.css'
 
@@ -269,73 +269,6 @@ function Network() {
   )
 }
 
-function Workers() {
-  return (
-    <section className="sx-sec sx-workers" id="workers" aria-labelledby="sx-w-h" lang="hi">
-      <div className="sx-wrap sx-workers-in">
-        <div>
-          <p className="sx-eyebrow">काम ढूँढ रहे हैं?</p>
-          <h2 id="sx-w-h" className="sx-h2 deva">
-            आज फ्री हो? Jyoti को बोलो<span className="sx-dot">।</span>
-          </h2>
-          <p className="sx-lead deva-sans">
-            बस बोलिए “आज फ्री हूँ, काम चाहिए”। Jyoti पूछेगी आप कौन सा काम करते हैं, कब तक फ्री हैं और कितनी
-            दूर जा सकते हैं — फिर आपके पास का काम ढूँढेगी।
-          </p>
-          <ul className="sx-wlist deva-sans">
-            <li>
-              <b>नया काम आते ही फ़ोन बजेगा</b> — ride app की तरह, एक टैप में accept
-            </li>
-            <li>
-              <b>पूरा 100% किराया आपका</b> — काम के बाद मालिक सीधे आपको देंगे, cash या UPI
-            </li>
-            <li>
-              <b>Full-time नौकरी भी</b> — salary, खाना और रहने की सुविधा वाली; interview Jyoti बुक करेगी
-            </li>
-          </ul>
-          <div className="sx-btns" lang="en">
-            <a className="sx-btn" href={WORKER_APP_URL} target="_blank" rel="noreferrer">
-              Download app <Icon name="arrow" />
-            </a>
-            <Link className="sx-btn ghost" to="/work">
-              Workers ke liye poori jaankari
-            </Link>
-          </div>
-        </div>
-        <div className="sx-ringcard" aria-hidden="true">
-          <div className="sx-ring-top">
-            <span className="sx-ring-ico">
-              <Icon name="phone" />
-            </span>
-            <div>
-              <small>Switch · अभी</small>
-              <b>नया काम — Kitchen helper</b>
-            </div>
-          </div>
-          <dl>
-            <div>
-              <dt>दूरी</dt>
-              <dd>1.2 km</dd>
-            </div>
-            <div>
-              <dt>समय</dt>
-              <dd>आज 3 PM · 4 घंटे</dd>
-            </div>
-            <div>
-              <dt>किराया</dt>
-              <dd>सीधे आपको</dd>
-            </div>
-          </dl>
-          <div className="sx-ring-btns">
-            <span className="no">छोड़ें</span>
-            <span className="yes">Accept</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function Languages() {
   const row = [...LANG_LINES, ...LANG_LINES]
   return (
@@ -446,7 +379,6 @@ export default function SwitchHome() {
         <Pricing />
         <Network />
         <Reviews />
-        <Workers />
         <Languages />
         <Trust />
         <Faq />
