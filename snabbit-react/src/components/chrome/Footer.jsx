@@ -1,90 +1,53 @@
+/* Site footer for every inner page — the homepage footer plus the full
+   directory of service and industry pages (internal links the SEO pages
+   rely on). */
 import { Link } from 'react-router-dom'
-import { StoreButtons } from '../ui/Blocks.jsx'
+import Icon from '../ui/Icon.jsx'
+import { SxFooter } from '../sx/SxChrome.jsx'
 import { INDUSTRY_LINKS, SERVICE_LIST } from '../../data/siteIndex.js'
-import { TAGLINE } from '../../data/homeContent.js'
-import {
-  CAREERS_EMAIL,
-  EMAIL,
-  PHONE_DISPLAY,
-  SOCIALS,
-  WHATSAPP_URL,
-  waLink,
-} from '../../data/site.js'
+import { APP_URL } from '../../data/site.js'
+import '../sx/sx.css'
 
 export default function Footer() {
   return (
-    <footer className="sw-footer">
-      <div className="sw-wrap">
-        <div className="sw-fgrid">
-          <div>
-            <Link to="/" className="sw-logo-link sw-logo-lg" aria-label="Switch home">
-              <span className="sw-mark" aria-hidden="true">
-                S
-              </span>
-              <span className="sw-brand">
-              <img className="wm-dark" src="/brand/switch-wordmark-white.png" alt="Switch" width="180" height="48" style={{ height: 48 }} loading="lazy" />
-              <img className="wm-light" src="/brand/switch-wordmark-black.png" alt="" width="180" height="48" style={{ height: 48 }} loading="lazy" />
-              </span>
-            </Link>
-            <p className="sw-tagline">{TAGLINE}</p>
-            <p className="sw-muted" style={{ marginTop: 8, fontSize: 14, maxWidth: '40ch' }}>
-              Gurgaon&apos;s staffing partner for shops, restaurants, warehouses, offices and events —
-              verified Switch Players, replacement-guaranteed.
-            </p>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ display: 'block', marginTop: 14, fontWeight: 800 }}>
-              WhatsApp {PHONE_DISPLAY}
-            </a>
-            <a href={`mailto:${EMAIL}`} className="sw-muted" style={{ fontSize: 14 }}>
-              {EMAIL}
-            </a>
-            <div className="sw-btns" style={{ marginTop: 16 }}>
-              <StoreButtons />
-            </div>
-          </div>
-          <div>
-            <h4>For business</h4>
+    <SxFooter
+      className="sx-tok"
+      title={
+        <>
+          Staff chahiye? Bas boliye<span className="sx-dot">.</span>
+        </>
+      }
+      primary={
+        <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
+          Book staff <Icon name="arrow" />
+        </a>
+      }
+      secondary={
+        <Link className="sx-btn ghost" to="/work">
+          Find work
+        </Link>
+      }
+      directory={
+        <div className="sx-dir">
+          <nav aria-label="Staffing by industry">
+            <b>By industry</b>
             <Link to="/staffing-gurgaon">Staffing in Gurgaon</Link>
             {INDUSTRY_LINKS.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`}>
-                {p.name}
+                {p.label || p.title || p.name}
               </Link>
             ))}
-            <a href="/#how">How it works</a>
-            <a href="/#pricing">Pricing</a>
-            <a href={waLink('Hi Switch — I need a bulk staffing quote.')} target="_blank" rel="noreferrer">
-              Bulk hiring
-            </a>
-          </div>
-          <div>
-            <h4>Hire in Gurgaon</h4>
+          </nav>
+          <nav aria-label="Hire in Gurgaon">
+            <b>Hire in Gurgaon</b>
             {SERVICE_LIST.map((s) => (
               <Link key={s.slug} to={`/${s.slug}`}>
                 {s.name}
               </Link>
             ))}
-          </div>
-          <div>
-            <h4>Company</h4>
-            <Link to="/about">About us</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/app">Get the app</Link>
-            <Link to="/partner">Become a Switch Player</Link>
-            <a href={`mailto:${CAREERS_EMAIL}`}>Careers</a>
-            <Link to="/terms">Terms &amp; Conditions</Link>
-            <Link to="/privacy">Privacy policy</Link>
-            <Link to="/cancellation">Cancellation policy</Link>
-            {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noreferrer">
-                {s.name}
-              </a>
-            ))}
-          </div>
+          </nav>
         </div>
-        <div className="sw-legal">
-          <span>© {new Date().getFullYear()} Third Wave Labs Private Limited. All rights reserved.</span>
-          <span>Made in India 🇮🇳</span>
-        </div>
-      </div>
-    </footer>
+      }
+    />
   )
 }

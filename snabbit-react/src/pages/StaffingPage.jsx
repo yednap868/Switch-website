@@ -11,7 +11,6 @@ import {
   Faq,
   HeroArt,
   StatsRow,
-  TrialTickets,
 } from '../components/ui/Blocks.jsx'
 import { SERVICE_LIST } from '../data/seoData'
 import './AboutPage.css'
@@ -231,7 +230,6 @@ export default function StaffingPage() {
           </div>
         </section>
 
-        <TrialTickets />
 
         {/* Roles we staff */}
         <section className="sw-sec" id="roles">

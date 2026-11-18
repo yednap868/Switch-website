@@ -121,7 +121,7 @@ export const HOME_STATS = [
   { value: '20,000+', label: 'Verified Switch Players' },
   { value: '1,500+', label: 'Businesses served' },
   { value: '24h', label: 'Replacement time' },
-  { value: '₹429', label: '4-hour trial' },
+  { value: '₹99', label: 'Only after a worker says yes' },
 ]
 
 /* The fixed-price 4-hour trials the employer app sells (app lib/trial.ts).

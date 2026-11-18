@@ -3,7 +3,8 @@
    (Inter / Noto Sans Devanagari / Noto Sans Telugu). Light by default; dark
    follows the system until the header toggle sets html[data-theme]. */
 
-.sx {
+.sx,
+.sx-tok {
   --bg: #fbfbf9;
   --ink: #0e1220;
   --muted: #5b6070;
@@ -22,7 +23,8 @@
   --r: 22px;
   --gut: 16px;
   --max: 1160px;
-
+}
+.sx {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -32,7 +34,8 @@
   min-height: 100vh;
 }
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme='light']) .sx {
+  html:not([data-theme='light']) .sx,
+  html:not([data-theme='light']) .sx-tok {
     --bg: #0b0e14;
     --ink: #f2f3ef;
     --muted: #a3a8b4;
@@ -51,7 +54,8 @@
     background: #0b0e14;
   }
 }
-html[data-theme='dark'] .sx {
+html[data-theme='dark'] .sx,
+html[data-theme='dark'] .sx-tok {
   --bg: #0b0e14;
   --ink: #f2f3ef;
   --muted: #a3a8b4;
@@ -1606,4 +1610,55 @@ html[data-theme='dark'] .sx-phone-notch {
   border: 1px solid var(--line);
   background: var(--card);
   font-size: 14.5px;
+}
+
+/* footer directory of service/industry pages (inner pages) */
+.sx-dir {
+  display: grid;
+  gap: 28px;
+  padding: 0 0 36px;
+  font-size: 14px;
+}
+.sx-dir nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  align-content: start;
+}
+.sx-dir nav b {
+  flex-basis: 100%;
+  margin-bottom: 4px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sx-dir a {
+  color: var(--muted);
+}
+.sx-dir a:hover {
+  color: var(--g-ink);
+}
+.sx-tok.sx-head,
+.sx-tok.sx-foot {
+  font-family: var(--sans);
+  color: var(--ink);
+}
+.sx-tok.sx-head a,
+.sx-tok.sx-foot a {
+  color: inherit;
+  text-decoration: none;
+}
+.sx-tok.sx-foot h2 {
+  margin: 0;
+}
+.sx-tok.sx-foot p {
+  margin: 10px 0 0;
+}
+
+/* inner pages: header/footer line up with the page's own content width */
+.sx-tok.sx-head,
+.sx-tok.sx-foot {
+  --max: 1200px;
+  --gut: clamp(16px, 3.4vw, 40px);
 }

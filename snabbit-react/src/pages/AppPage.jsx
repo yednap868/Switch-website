@@ -1,5 +1,5 @@
-import BookingDemo from '../components/ui/BookingDemo.jsx'
-import AppScreens from '../components/ui/AppScreens.jsx'
+import PhoneChat from '../components/sx/PhoneChat.jsx'
+import '../components/sx/sx.css'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import Header from '../components/chrome/Header.jsx'
@@ -12,21 +12,19 @@ import './AppPage.css'
 const TINTS = ['t-lav', 't-mint', 't-sky', 't-peach', 't-pink', 't-lav']
 
 const FEATURES = [
-  { ico: 'timer',  title: 'Hire in a day', desc: 'Post your requirement and get matched with verified Switch Players within hours — no agency runaround.' },
-  { ico: 'shield', title: 'Aadhaar-verified staff', desc: 'Every Switch Player is Aadhaar-verified, background-checked and skill-assessed before they reach your site.' },
-  { ico: 'check',  title: 'Replacement guarantee', desc: 'A no-show won’t stop your business. We dispatch a replacement fast — usually within 24 hours.' },
-  { ico: 'cal',    title: 'Hourly, daily or weekly', desc: 'Book a few hours, a full shift, or a 7-day team. The longer you book, the lower the rate per Switch Player.' },
-  { ico: 'wallet', title: 'Transparent billing', desc: 'Track your bookings, see exactly what you are charged, and get clean invoices for your records.' },
-  { ico: 'phone',  title: 'Manage on the go', desc: 'Re-hire favourite Switch Players, scale your team up or down, and chat with support — all from your phone.' },
+  { ico: 'msg', title: 'Just talk to Jyoti', desc: 'Type or speak in Hindi, Hinglish, English or Telugu. Jyoti asks role, day, time, hours, people and address — one small question at a time.' },
+  { ico: 'wallet', title: 'You set the rate', desc: 'Choose the hourly rate yourself. Each role has a fixed minimum; paying a little more finds someone faster.' },
+  { ico: 'phone', title: 'Watch workers get called live', desc: 'Nearby workers get an app ring and a WhatsApp alert. See who saw it and who said yes, as it happens.' },
+  { ico: 'check', title: '₹0 to post, ₹99 after a yes', desc: 'Confirming is free. You pay the ₹99 booking fee only when a worker accepts — then you get the start OTP.' },
+  { ico: 'pin', title: 'Live tracking & start OTP', desc: 'Track the worker to your door. The job starts with your OTP, the timer runs, and you rate them after.' },
+  { ico: 'book', title: 'Invoice on WhatsApp', desc: 'Every booking comes with a clean invoice on WhatsApp. The fare goes straight to the worker — Switch takes no cut.' },
 ]
-
 const STEPS = [
-  { n: '01', title: 'Download & sign up', desc: 'Install the app from Google Play or the App Store and create your business account in under a minute.' },
-  { n: '02', title: 'Post your requirement', desc: 'Pick the role, how many Switch Players, and how long you need them — hourly to 7 days.' },
-  { n: '03', title: 'Get verified staff', desc: 'Matched Switch Players report to your site with OTP verification, and every shift is invoiced clearly.' },
+  { n: '01', title: 'Download & say hello', desc: 'Install the app from Google Play or the App Store and tell Jyoti what you need.' },
+  { n: '02', title: 'Answer a few taps', desc: 'Role, day, time, hours, how many people, your rate and address — Jyoti never decides for you.' },
+  { n: '03', title: 'Pay ₹99 when someone says yes', desc: 'You get the start OTP, the worker gets your address, and you pay their fare directly after the work.' },
 ]
-
-const PERKS = ['Aadhaar-verified', 'Replacement guarantee', 'Transparent billing']
+const PERKS = ['₹0 to post', '₹99 only after a yes', 'Fare paid to the worker']
 
 export default function AppPage() {
   useEffect(() => {
@@ -42,7 +40,7 @@ export default function AppPage() {
     url: 'https://switchlocally.com/app',
     downloadUrl: [PLAY_URL, APPLE_URL],
     installUrl: [PLAY_URL, APPLE_URL],
-    description: 'Switch is Gurgaon’s business staffing app. Hire Aadhaar-verified store helpers, security guards, warehouse Switch Players, waiters, cooks and housekeeping — by the hour, day or week. Replacement guaranteed, transparent rates.',
+    description: 'Switch is one chat with Jyoti, an AI assistant, to book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram — in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', ratingCount: '500' },
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
@@ -61,13 +59,13 @@ export default function AppPage() {
     <>
       <Helmet>
         <title>Download the Switch App — Hire Verified Staff in Gurgaon</title>
-        <meta name="description" content="Download the Switch app to hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters & more. Available on Google Play and the App Store." />
+        <meta name="description" content="Download the Switch app — one chat with Jyoti to book staff in Gurugram. ₹0 to post, ₹99 only when a worker says yes. On Google Play and the App Store." />
         <meta name="keywords" content="Switch app download, Switch app Gurgaon, hire staff app, staffing app Gurgaon, Switch Google Play, download Switch app, business staffing app India" />
         <link rel="canonical" href="https://switchlocally.com/app" />
         <meta property="og:title" content="Download the Switch App — Hire Verified Staff in Gurgaon" />
-        <meta property="og:description" content="Hire Aadhaar-verified staff for your business in a day. Available now on Google Play and the App Store." />
+        <meta property="og:description" content="One chat with Jyoti to book staff in Gurugram. ₹0 to post, ₹99 only when a worker says yes." />
         <meta property="og:url" content="https://switchlocally.com/app" />
-        <meta property="og:image" content="https://switchlocally.com/switch-banner.jpg" />
+        <meta property="og:image" content="https://switchlocally.com/og-switch.png" />
         <script type="application/ld+json">{JSON.stringify(appSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
@@ -83,11 +81,11 @@ export default function AppPage() {
           <div>
             <span className="sw-pill sw-live">Now live on Google Play &amp; the App Store · Gurgaon</span>
             <h1 className="sw-h1" style={{ marginTop: 14 }}>
-              Hire verified staff <em>from your phone.</em>
+              Staff chahiye? <em>Bas boliye.</em>
             </h1>
             <p className="sw-lead">
-              Get the Switch app to staff your shop, restaurant, warehouse or office with Aadhaar-verified
-              Switch Players — by the hour, day or week. Replacement guaranteed, transparent rates.
+              The Switch app is one chat with Jyoti. Tell her what you need for your shop, restaurant, PG,
+              hotel or home — she alerts verified workers nearby. ₹0 to post, ₹99 only when someone says yes.
             </p>
             <div className="sw-btns">
               <StoreButtons />
@@ -107,8 +105,9 @@ export default function AppPage() {
           </div>
 
           <div className="ap-art">
-            <div className="sw-blob" aria-hidden="true" />
-            <AppScreens />
+            <div className="sx-tok" style={{ width: '100%', maxWidth: 360 }}>
+              <PhoneChat />
+            </div>
           </div>
         </section>
 
@@ -117,7 +116,7 @@ export default function AppPage() {
           <div className="sw-head">
             <p className="sw-eyebrow">Why the app</p>
             <h2 className="sw-h2">Everything you need to <em>staff your business.</em></h2>
-            <p className="sw-lead">Post a job, track your Switch Players and manage payments — all from one app built for Gurgaon businesses.</p>
+            <p className="sw-lead">One chat to post a shift, watch workers respond live, and pay only when it works.</p>
           </div>
           <div className="sw-grid sw-g3">
             {FEATURES.map((f, i) => (
@@ -136,7 +135,7 @@ export default function AppPage() {
         <section className="sw-sec">
           <div className="sw-head">
             <p className="sw-eyebrow">Get started</p>
-            <h2 className="sw-h2">From download to <em>staffed in three steps.</em></h2>
+            <h2 className="sw-h2">From download to <em>a yes in three steps.</em></h2>
           </div>
           <div className="sw-grid sw-g3">
             {STEPS.map((s) => (
@@ -149,17 +148,6 @@ export default function AppPage() {
           </div>
         </section>
 
-        {/* BOOKING WALKTHROUGH */}
-        <section className="sw-sec">
-          <div className="sw-head">
-            <p className="sw-eyebrow">Inside the app</p>
-            <h2 className="sw-h2">
-              Watch a booking, <em>tap by tap.</em>
-            </h2>
-          </div>
-          <BookingDemo />
-          <p className="bd-caption">Illustrative walkthrough · names and details are examples</p>
-        </section>
 
         {/* CTA */}
         <section className="sw-sec">
@@ -167,7 +155,7 @@ export default function AppPage() {
             <div>
               <p className="sw-eyebrow">Free to download</p>
               <h2 style={{ marginTop: 10 }}>
-                Download Switch and <em>hire your first Switch Player today.</em>
+                Download Switch and <em>book your first shift today.</em>
               </h2>
               <p style={{ marginTop: 10, maxWidth: '52ch' }}>
                 Free to download. Transparent rates. Verified Switch Players, replacement guaranteed.

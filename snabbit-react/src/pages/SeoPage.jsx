@@ -7,13 +7,11 @@ import SeoHead from '../components/SeoHead'
 import Header from '../components/chrome/Header.jsx'
 import Footer from '../components/chrome/Footer.jsx'
 import Icon from '../components/ui/Icon.jsx'
-import { Crumbs, CtaFeature, Faq, HeroArt, ServiceRow, TrialTickets } from '../components/ui/Blocks.jsx'
+import { Crumbs, CtaFeature, Faq, HeroArt, ServiceRow } from '../components/ui/Blocks.jsx'
 import './SeoPage.css'
 
 const APP = 'https://app.switchlocally.com'
 
-/* Services that have a 4-hour trial ticket (Housekeeping / Kitchen Helper). */
-const TRIAL_SERVICES = new Set(['home-cleaning', 'kitchen-helper'])
 
 /* ─── MICRO COMPONENTS ─── */
 
@@ -630,7 +628,6 @@ export default function SeoPage() {
       <main id="page-main" className="sw-wrap sp-main">
         <Breadcrumb page={page} />
         <Renderer page={page} />
-        {TRIAL_SERVICES.has(page.serviceId) && <TrialTickets id="trial" />}
         <RelatedPages serviceId={page.serviceId} currentSlug={page.slug} />
         <CtaFeature
           title={

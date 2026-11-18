@@ -71,8 +71,8 @@ const FAQ = {
     a: 'Switch backs bookings with a replacement guarantee. If a Switch Player is a no-show or isn’t the right fit, a replacement is dispatched fast, usually within 24 hours.',
   },
   trial: {
-    q: 'Can I request a trial shift?',
-    a: 'Yes. Businesses can request a trial shift before continuing with a longer staffing requirement.',
+    q: 'Can I try one shift before hiring for longer?',
+    a: 'Yes. Book a single hourly shift first — posting is ₹0, and you pay the ₹99 booking fee only when a worker accepts.',
   },
   help: {
     q: 'What if I need help with my booking?',
@@ -305,7 +305,7 @@ export const INDUSTRY_PAGES = [
           { q: 'Can I hire event staff at short notice?', a: 'Yes. Switch can help businesses and event organisers find workers for urgent and same-day staffing requirements.' },
           { q: 'Can I hire staff for just one event?', a: 'Yes. You can book workers for a single event or make a longer booking when your event runs across multiple days.' },
           FAQ.bulk, FAQ.unlisted, FAQ.verified, FAQ.noShow,
-          { q: FAQ.trial.q, a: 'Yes. Businesses can request a trial shift before continuing with a longer staffing requirement. If a Switch Player isn’t the right fit, we replace them — no questions asked.' },
+          { q: FAQ.trial.q, a: 'Yes. Book a single hourly shift first — posting is ₹0, and you pay the ₹99 booking fee only when a worker accepts.' },
           cost('event'), FAQ.help,
         ],
       },
@@ -658,7 +658,7 @@ export const INDUSTRY_PAGES = [
           { q: 'Can I hire a worker for a requirement that isn’t listed?', a: 'Yes. Tell Switch what kind of worker you need, what the work involves and when you need them. Switch can help you arrange the staff based on your requirement.' },
           { q: 'Are the workers verified?', a: 'Yes. Switch Players are Aadhaar-verified, document-checked and interviewed before reaching the worksite.' },
           { q: 'What happens if a booked worker doesn’t show up?', a: 'Switch provides a replacement guarantee for every booking. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
-          { q: 'Can I request a trial shift before hiring a worker for longer?', a: 'Yes. Switch allows businesses to request a trial shift to assess the fit before committing to a longer requirement.' },
+          { q: 'Can I request a trial shift before hiring a worker for longer?', a: 'Yes. Book a single hourly shift first — posting is ₹0, and you pay the ₹99 booking fee only when a worker accepts.' },
           cost('retail'), FAQ.help,
         ],
       },

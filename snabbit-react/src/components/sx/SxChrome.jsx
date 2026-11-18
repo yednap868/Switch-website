@@ -28,11 +28,11 @@ function useTheme() {
   return [theme, toggle]
 }
 
-export function SxHeader({ links, cta = { href: APP_URL, label: 'Book staff' } }) {
+export function SxHeader({ links, cta = { href: APP_URL, label: 'Book staff' }, className = '' }) {
   const [theme, toggle] = useTheme()
   const [open, setOpen] = useState(false)
   return (
-    <header className="sx-head">
+    <header className={`sx-head ${className}`}>
       <div className="sx-wrap sx-head-in">
         <Link to="/" className="sx-logo" aria-label="Switch home">
           Switch<span>.</span>
@@ -72,9 +72,9 @@ export function SxHeader({ links, cta = { href: APP_URL, label: 'Book staff' } }
   )
 }
 
-export function SxFooter({ title, primary, secondary }) {
+export function SxFooter({ title, primary, secondary, directory, className = '' }) {
   return (
-    <footer className="sx-foot">
+    <footer className={`sx-foot ${className}`}>
       <div className="sx-wrap">
         <div className="sx-foot-cta">
           <h2 className="sx-h2">{title}</h2>
@@ -123,6 +123,7 @@ export function SxFooter({ title, primary, secondary }) {
             <Link to="/cancellation">Cancellation</Link>
           </nav>
         </div>
+        {directory}
         <div className="sx-foot-base">
           <span>© {new Date().getFullYear()} Third Wave Labs Private Limited · Gurugram</span>
           <span className="sx-social">
