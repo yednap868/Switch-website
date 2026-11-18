@@ -9,7 +9,8 @@ import PhoneChat from './PhoneChat.jsx'
 import Radar from './Radar.jsx'
 import { APP_URL, PHONE, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
 import { SxFooter, SxHeader } from './SxChrome.jsx'
-import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES, STEPS, TRUST } from '../../data/switchHome.js'
+import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES, TRUST } from '../../data/switchHome.js'
+import HowSteps from './HowSteps.jsx'
 import { BRANDS, REVIEWS, REVIEW_VIDEOS } from '../../data/homeContent.js'
 import './sx.css'
 
@@ -148,15 +149,7 @@ function How() {
         <h2 id="sx-how-h" className="sx-h2">
           Four steps. You only talk<span className="sx-dot">.</span>
         </h2>
-        <ol className="sx-steps">
-          {STEPS.map((s) => (
-            <li key={s.n} className="sx-card">
-              <span className="sx-n">{s.n}</span>
-              <h3>{s.t}</h3>
-              <p>{s.d}</p>
-            </li>
-          ))}
-        </ol>
+        <HowSteps />
         <p className="sx-note">
           Roles: cook, kitchen helper, housekeeping, waiter, utility staff, picker-packer — for shops,
           restaurants, PGs, hotels and homes.
