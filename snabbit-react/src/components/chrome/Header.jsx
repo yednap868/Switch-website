@@ -4,18 +4,14 @@ import Icon from '../ui/Icon.jsx'
 import { EMPLOYER_LOGIN } from '../../data/site.js'
 
 const LINKS = [
-  { to: '/staffing-gurgaon', label: 'Services' },
-  { to: '/#payroll', label: 'Payroll' },
-  { to: '/#pricing', label: 'Pricing' },
   { to: '/#how', label: 'How it works' },
-]
-/* Trial, About and Blog stay in the phone menu and the footer. */
-const MENU_LINKS = [
-  ...LINKS,
-  { to: '/#trial', label: '₹429 Trial' },
+  { to: '/#pricing', label: 'Pricing' },
+  { to: '/#workers', label: 'Find work' },
+  { to: '/staffing-gurgaon', label: 'Services' },
   { to: '/about', label: 'About' },
-  { to: '/blog', label: 'Blog' },
 ]
+/* Blog stays in the phone menu and the footer. */
+const MENU_LINKS = [...LINKS, { to: '/blog', label: 'Blog' }]
 
 /* Theme: dark is the default. The choice lives on <html data-theme>, is saved
    to localStorage, and is applied before first paint by the inline script in

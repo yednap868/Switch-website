@@ -1,29 +1,11 @@
-import { Suspense, useEffect, useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 import './styles/switch.css'
 
-import Header from './components/chrome/Header.jsx'
-import Footer from './components/chrome/Footer.jsx'
 import HashScroll from './components/HashScroll.jsx'
 import ScrollReveal from './components/ScrollReveal.jsx'
-import HomeHero from './components/home/HomeHero.jsx'
-import useToast from './components/fx/useToast.jsx'
-import Icon from './components/ui/Icon.jsx'
-import { BrandBand, CtaFeature, Faq, Ticker, TrialTickets } from './components/ui/Blocks.jsx'
-import {
-  AppBlock,
-  Coverage,
-  How,
-  Industries,
-  PayrollBanner,
-  Pricing,
-  RequestForm,
-  RoleTiles,
-  Services,
-  Trust,
-} from './components/home/HomeSections.jsx'
 
 import {
   AboutPage,
@@ -39,8 +21,9 @@ import {
 } from './routes.jsx'
 
 import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
-import { FAQS, PAYROLL_PLANS, REVIEW_VIDEOS } from './data/homeContent.js'
-import { PHONE, WHATSAPP_URL, waLink } from './data/site.js'
+import { FAQS } from './data/switchHome.js'
+import SwitchHome from './components/sx/SwitchHome.jsx'
+import { PHONE } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
 function HomeHead() {
@@ -55,12 +38,12 @@ function HomeHead() {
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
     alternateName: ['Switch Locally', 'Switch App'],
-    description: 'Switch is Gurgaon\'s business staffing platform. Hire Aadhaar-verified, background-checked store and general helpers, security guards, factory and warehouse Switch Players, waiters, bartenders, bouncers, promoters, cooks, kitchen helpers and housekeeping for shops, restaurants, warehouses, offices and events across all major areas and pincodes of Gurgaon. Bulk hiring, weekly teams, replacement guaranteed.',
+    description: 'Switch is one chat with Jyoti, an AI assistant: businesses and homes in Gurugram book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers, and workers find jobs near them — in Hindi, Hinglish, English or Telugu. ₹0 to post; a ₹99 booking fee only after a worker accepts..',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     image: 'https://switchlocally.com/hero-workers.jpg',
     logo: 'https://switchlocally.com/hero-workers.jpg',
-    priceRange: '₹119-₹599 per hour',
+    priceRange: '₹0 to post · ₹99 booking fee',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Gurgaon',
@@ -112,7 +95,7 @@ function HomeHead() {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       areaServed: 'IN',
-      availableLanguage: ['en', 'hi'],
+      availableLanguage: ['en', 'hi', 'te'],
     },
     sameAs: ['https://www.linkedin.com/company/switchlocal', 'https://www.instagram.com/switchlocally/', 'https://www.facebook.com/switchlocally'],
   }
@@ -125,46 +108,30 @@ function HomeHead() {
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
-  const videoSchema = REVIEW_VIDEOS.map((v) => {
-    const [m, sec] = v.len.split(':').map(Number)
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'VideoObject',
-      name: `${v.who} reviews Switch staffing`,
-      description: `${v.who}, ${v.where}: ${v.line}`,
-      thumbnailUrl: `https://switchlocally.com${v.poster}`,
-      contentUrl: `https://switchlocally.com${v.src}`,
-      uploadDate: '2026-09-26',
-      duration: `PT${m}M${sec}S`,
-      publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
-    }
-  })
   return (
     <Helmet>
-      <title>Hire Verified Staff for Business in Gurgaon | Switch</title>
-      <meta name="description" content="Hire Aadhaar-verified staff for your Gurgaon business — helpers, guards, cooks, waiters &amp; more. Bulk &amp; weekly teams, replacement guaranteed, transparent rates." />
+      <title>Book Staff in Gurugram — Just Ask Jyoti | Switch</title>
+      <meta name="description" content="Staff chahiye? Bas boliye. Book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram by chatting with Jyoti — Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only when a worker says yes; the fare goes straight to the worker." />
       <meta name="keywords" content="staffing agency Gurgaon, manpower supply Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, factory helper Gurgaon, store helper Gurgaon, retail staff Gurgaon, security guard Gurgaon, waiter for events Gurgaon, bartender hire Gurgaon, bouncer Gurgaon, housekeeping staff Gurgaon, office boy Gurgaon, on-demand blue-collar staffing Gurgaon, hire Switch Players Udyog Vihar, Cyber City staffing, DLF business staff, Sohna Road staffing, switchlocally.com, Switch App, same-day Switch Player hiring Gurgaon, replacement guarantee staffing Gurgaon, transparent staffing rates Gurgaon, weekly staff hire Gurgaon" />
       <link rel="canonical" href="https://switchlocally.com/" />
-      <meta property="og:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
-      <meta property="og:description" content="Hire Aadhaar-verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams, replacement guaranteed, transparent rates." />
+      <meta property="og:title" content="Book Staff in Gurugram — Just Ask Jyoti | Switch" />
+      <meta property="og:description" content="Staff chahiye? Bas boliye. Book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram by chatting with Jyoti — Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only when a worker says yes; the fare goes straight to the worker." />
       <meta property="og:url" content="https://switchlocally.com/" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Switch" />
-      <meta property="og:image" content="https://switchlocally.com/hero-workers.jpg" />
+      <meta property="og:image" content="https://switchlocally.com/og-switch.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Switch — Staff chahiye? Bas boliye. One chat with Jyoti." />
       <meta property="og:locale" content="en_IN" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Staffing for Business in Gurgaon — Hire Verified Switch Players | Switch" />
-      <meta name="twitter:description" content="Hire verified staff for shops, restaurants, warehouses, offices &amp; events in Gurgaon. Store helpers, guards, waiters, cooks, housekeeping. Bulk &amp; weekly teams." />
-      <meta name="twitter:image" content="https://switchlocally.com/hero-workers.jpg" />
+      <meta name="twitter:title" content="Book Staff in Gurugram — Just Ask Jyoti | Switch" />
+      <meta name="twitter:description" content="Staff chahiye? Bas boliye. Book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram by chatting with Jyoti — Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only when a worker says yes; the fare goes straight to the worker." />
+      <meta name="twitter:image" content="https://switchlocally.com/og-switch.png" />
       <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      {videoSchema.map((v) => (
-        <script key={v.contentUrl} type="application/ld+json">
-          {JSON.stringify(v)}
-        </script>
-      ))}
     </Helmet>
   )
 }
@@ -172,250 +139,13 @@ function HomeHead() {
 /* ─── SERVICES DIRECTORY ──────────────────────────── */
 /* Every generated service page, linked from the homepage (internal linking
    for the ~190 SEO pages). */
-function AllServicesDirectory() {
-  return (
-    <section className="sw-sec" id="svc-dir">
-      <div className="sw-head">
-        <p className="sw-eyebrow">Browse by service</p>
-        <h2 className="sw-h2">
-          Every role, <em>every guide.</em>
-        </h2>
-        <p className="sw-lead">Pricing, hiring guides and verified professionals for every role in Gurgaon.</p>
-      </div>
-      <div className="sw-grid sw-g4 sw-swipe">
-        {SERVICE_LIST.map((svc) => (
-          <div className="sw-card" key={svc.id} style={{ padding: 16, display: 'grid', gap: 10, alignContent: 'start' }}>
-            <Link to={`/${svc.slug}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 800 }}>
-              {svc.name}
-              <span className="sw-go" style={{ width: 30, height: 30 }}>
-                <Icon name="arrow" />
-              </span>
-            </Link>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {svc.pages.slice(1).map((p) => (
-                <Link key={p.slug} to={`/${p.slug}`} className="sw-tag" style={{ height: 'auto', padding: '4px 9px' }}>
-                  {p.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        ))}
-        <a
-          className="sw-card sw-dir-more sw-press"
-          href={waLink("Hi Switch — I need a role that isn't listed on the site.")}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <b>Role not listed?</b>
-          <span className="sw-muted">Cashiers, loaders, office boys, gardeners and more.</span>
-          <span className="sw-link">
-            Ask on WhatsApp <Icon name="arrow" />
-          </span>
-        </a>
-      </div>
-    </section>
-  )
-}
-
-/* ─── OFFER POPUP ─────────────────────────────────── */
-function OfferPopup() {
-  const [open, setOpen] = useState(false)
-  const close = () => {
-    setOpen(false)
-    try {
-      sessionStorage.setItem('switch_payroll_dismissed', '1')
-    } catch {
-      /* ignore */
-    }
-  }
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    try {
-      if (sessionStorage.getItem('switch_payroll_dismissed')) return
-    } catch {
-      /* ignore */
-    }
-    /* First thing a visitor sees, once the page has had a moment to paint. */
-    const t = setTimeout(() => setOpen(true), 900)
-    return () => clearTimeout(t)
-  }, [])
-
-  useEffect(() => {
-    if (!open) return
-    const onKey = (e) => {
-      if (e.key === 'Escape') close()
-    }
-    document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [open])
-
-  if (!open) return null
-
-  const [day1] = PAYROLL_PLANS
-  return (
-    <div className="sw-pop-bg" onClick={close}>
-      <div
-        className="sw-pop sw-pop-pay sw-feature"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Hire staff on your payroll"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button type="button" className="sw-vm-x" onClick={close} aria-label="Close offer">
-          ✕
-        </button>
-        <div className="sw-pop-ph">
-          <img src="/hero-workers.jpg" alt="" />
-          <p>
-            Your staff.
-            <br />
-            Your salary.
-          </p>
-        </div>
-        <div className="sw-pop-body">
-          <span className="sw-pill">New · Hire on your payroll</span>
-          <h2>
-            Staff on your payroll for <em>₹2,000 one-time.</em>
-          </h2>
-          <p>One-time fee per worker, paid on day 1.</p>
-          <div className="sw-pop-fees">
-            {PAYROLL_PLANS.map((p) => (
-              <div className={p.featured ? 'on' : ''} key={p.name}>
-                <span>{p.name}</span>
-                <b>{p.price}</b>
-                <small>per worker / month</small>
-              </div>
-            ))}
-          </div>
-          <ul className="sw-pop-inc">
-            {day1.items.map((it) => (
-              <li key={it}>
-                <Icon name="check" />
-                {it}
-              </li>
-            ))}
-          </ul>
-          <a className="sw-btn white" href={waLink(day1.msg)} target="_blank" rel="noreferrer" onClick={close}>
-            {day1.cta} <Icon name="arrow" />
-          </a>
-          <a className="sw-pop-alt" href="#trial" onClick={close}>
-            Or try a verified worker for ₹429
-          </a>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 /* ─── OFFER BANNER ────────────────────────────────── */
-/* Site-wide strip above the sticky header. Scrolls away with the page rather
-   than eating viewport height on every screen; the sticky header takes over. */
-function OfferBanner() {
-  return (
-    <aside className="sw-strip">
-      <a href="/#trial">
-        <span>
-          <b>New</b> · 4-hour trial at <b>₹429</b> · 50% off your first booking · Monthly staff from <b>₹20,800</b>
-        </span>
-        <u>See offers</u>
-      </a>
-    </aside>
-  )
-}
-
-/* ─── MOBILE / BOTTOM CTA BAR ─────────────────────── */
-function MobileCTABar() {
-  /* Shows once the hero is scrolled past, and steps aside for the request
-     form and the footer so it never covers them. Hidden in the server HTML. */
-  const [show, setShow] = useState(false)
-  useEffect(() => {
-    let blocked = false
-    const update = () => setShow(window.scrollY > 560 && !blocked)
-    const io =
-      'IntersectionObserver' in window
-        ? new IntersectionObserver((entries) => {
-            blocked = entries.some((e) => e.isIntersecting)
-            update()
-          })
-        : null
-    document.querySelectorAll('#request, footer').forEach((el) => io?.observe(el))
-    update()
-    window.addEventListener('scroll', update, { passive: true })
-    return () => {
-      io?.disconnect()
-      window.removeEventListener('scroll', update)
-    }
-  }, [])
-  return (
-    <div className={`sw-bar${show ? '' : ' is-hidden'}`} aria-label="Quick actions">
-      <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" tabIndex={show ? undefined : -1}>
-        <span>
-          <b>Hire verified staff</b>
-          <small>4-hour trial at ₹429 · Staff in a day</small>
-        </span>
-        <span className="gob">
-          WhatsApp <Icon name="arrow" />
-        </span>
-      </a>
-    </div>
-  )
-}
-
 /* ─── HOME ────────────────────────────────────────── */
 function HomePage() {
-  const [toast, showToast] = useToast()
-
   return (
     <>
       <HomeHead />
-      <a className="skip-link" href="#page-main">
-        Skip to main content
-      </a>
-      <Header />
-      <OfferPopup />
-      <main id="page-main" className="sw-wrap">
-        <HomeHero />
-        <PayrollBanner />
-        <RoleTiles />
-        <Ticker />
-        <BrandBand />
-        <TrialTickets />
-        <Services />
-        <Industries />
-        <How />
-        <Pricing />
-        <Trust />
-        <Coverage />
-        <AppBlock />
-        <RequestForm onToast={showToast} />
-        <section className="sw-sec" id="faq" style={{ paddingTop: 0 }}>
-          <div className="sw-head">
-            <p className="sw-eyebrow">Questions, answered</p>
-            <h2 className="sw-h2">
-              Before you <em>book.</em>
-            </h2>
-          </div>
-          <Faq items={FAQS} two />
-        </section>
-        <CtaFeature
-          title={
-            <>
-              Staff who show up. <em>Book your first shift.</em>
-            </>
-          }
-          sub="Aadhaar-verified people across Gurgaon, a replacement within 24 hours, and a clear invoice. Try one for 4 hours at ₹429."
-          photos={['/sw-maid.jpg', '/sw-kitchen-helper.jpg']}
-        />
-        <AllServicesDirectory />
-      </main>
-      <Footer />
-      <MobileCTABar />
-      {toast}
+      <SwitchHome />
     </>
   )
 }
@@ -426,7 +156,6 @@ export default function App() {
     <>
       <HashScroll />
       <ScrollReveal />
-      <OfferBanner />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
