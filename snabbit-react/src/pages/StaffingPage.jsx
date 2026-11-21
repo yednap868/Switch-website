@@ -24,7 +24,7 @@ const WA_MSG = encodeURIComponent("Hi Switch — I need staffing for my business
 const WHATSAPP_URL = `https://wa.me/${PHONE.replace('+', '')}?text=${WA_MSG}`
 
 const TITLE = 'Staffing Agency in Gurgaon | Hire Verified Staff — Switch'
-const DESCRIPTION = 'Switch is a staffing agency in Gurgaon for shops, restaurants, warehouses, offices & events. Hire Aadhaar-verified store helpers, guards, waiters, cooks, housekeeping & factory workers — bulk & weekly teams, replacement guaranteed, transparent rates. Same-day staffing across Gurgaon.'
+const DESCRIPTION = 'Switch is a staffing agency in Gurgaon for shops, restaurants, warehouses, offices & events. Hire verified store helpers, guards, waiters, cooks, housekeeping & factory workers — bulk & weekly teams, pay ₹99 only after a yes, transparent rates. Same-day staffing across Gurgaon.'
 
 const INDUSTRIES = [
   { ico: 'store', title: 'Retail & Shops', slug: 'retail-staffing-gurgaon', desc: 'Store helpers, sales staff and stock hands for shops, showrooms and malls across DLF, MG Road and Galleria.' },
@@ -37,13 +37,13 @@ const INDUSTRIES = [
 
 const STEPS = [
   { title: 'Tell us what you need', desc: 'Message us on WhatsApp — share the role, headcount, location and dates. Takes two minutes.' },
-  { title: 'We match verified staff', desc: 'We assign Aadhaar-verified, background-checked Switch Players suited to your role and shift timings.' },
+  { title: 'We match verified staff', desc: 'We assign verified, background-checked workers suited to your role and shift timings.' },
   { title: 'Staff show up on site', desc: 'Your team reports on time at your location — for a single shift, a full day, or a 7-day stretch.' },
   { title: 'Transparent billing', desc: 'One clear rate with a proper invoice, and a fast replacement if anyone falls short.' },
 ]
 
 const WHY = [
-  { ico: 'shield', title: 'Every Worker Verified', desc: 'Aadhaar-verified, document-checked and interviewed before they ever reach your site — no strangers on your floor.' },
+  { ico: 'shield', title: 'Every Worker Verified', desc: 'verified, document-checked and interviewed before they ever reach your site — no strangers on your floor.' },
   { ico: 'timer', title: 'Same-Day & Fast', desc: 'Need staff today? We deploy quickly across Gurgaon — often within hours for common roles.' },
   { ico: 'cal', title: 'Bulk & Weekly Teams', desc: 'One worker or a full team for 7 days straight — we scale to your peak demand with a single point of contact.' },
   { ico: 'check', title: 'Replacement Guarantee', desc: 'A no-show shouldn’t stop your business. If someone doesn’t turn up or fit, we dispatch a replacement fast.' },
@@ -64,11 +64,11 @@ const areaId = (name) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 const TINTS = ['t-lav', 't-peach', 't-sky', 't-mint', 't-pink', 't-grey']
 
 const FAQS = [
-  { q: 'Which is the best staffing agency in Gurgaon?', a: 'Switch is a leading staffing agency in Gurgaon, trusted by shops, restaurants, warehouses, offices and event organisers. Every worker is Aadhaar-verified and background-checked, you get a replacement guarantee, and every booking is invoiced clearly — transparent rates.' },
+  { q: 'Which is the best staffing agency in Gurgaon?', a: 'Switch is a leading staffing agency in Gurgaon, trusted by shops, restaurants, warehouses, offices and event organisers. Every worker is verified and background-checked, you get a replacement guarantee, and every booking is invoiced clearly — transparent rates.' },
   { q: 'What types of staff can I hire in Gurgaon through Switch?', a: 'You can hire store helpers, security guards, waiters, bartenders, cooks, kitchen helpers, housekeeping staff, office boys, factory and warehouse workers and more — for a single shift, a full day, or weekly teams.' },
   { q: 'How much does staffing cost in Gurgaon?', a: 'Rates depend on the role, skill level and duration. Pricing is transparent and fixed upfront with no hidden agency commission, and you pay against a clear invoice. Message us with your requirement for a quick quote.' },
   { q: 'Can I get staff on the same day?', a: 'Yes. For common roles we can deploy verified staff across Gurgaon on the same day — often within a few hours. For large or specialised teams we recommend a day’s notice.' },
-  { q: 'Are the workers verified and background-checked?', a: 'Yes. Every Switch Player is Aadhaar-verified, document-checked and personally screened before being assigned to your site, so you never have strangers on your floor.' },
+  { q: 'Are the workers verified and background-checked?', a: 'Yes. Every worker is verified, document-checked and personally screened before being assigned to your site, so you never have strangers on your floor.' },
   { q: 'Can I hire staff in bulk or for a full week?', a: 'Absolutely. Switch specialises in bulk and weekly staffing — deploy a full team for 7 days straight during sales, events or peak season, with a dedicated point of contact.' },
   { q: 'Which areas of Gurgaon do you cover?', a: 'We staff businesses across all of Gurgaon — DLF, Cyber City, Udyog Vihar, Sohna Road, MG Road, Golf Course Road, Sushant Lok, Palam Vihar, IMT Manesar, New Gurgaon and every sector and pincode from 122001 to 122022.' },
   { q: 'How does payment work?', a: 'Monthly plans are billed in advance for the plan period. Hourly, daily and weekly bookings are invoiced against the hours worked. Either way you receive a proper invoice for your records.' },
@@ -167,9 +167,9 @@ export default function StaffingPage() {
             </h1>
             <p className="sw-lead">
               Switch is Gurgaon&apos;s on-demand staffing agency for shops, restaurants, warehouses,
-              offices and events. Hire Aadhaar-verified store helpers, guards, waiters, cooks,
+              offices and events. Hire verified store helpers, guards, waiters, cooks,
               housekeeping and factory workers — for a shift, a day, or a full week. Bulk teams,
-              replacement guaranteed, and you pay against a clear invoice.
+              pay ₹99 only after a yes, and you pay against a clear invoice.
             </p>
             <div className="sw-btns">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="sw-btn">
@@ -180,7 +180,7 @@ export default function StaffingPage() {
               </a>
             </div>
             <div className="sw-checks">
-              {['Aadhaar verified', 'Same-day staffing', 'Replacement guarantee', 'Clear invoices'].map((x) => (
+              {['verified', 'Same-day staffing', 'Replacement guarantee', 'Clear invoices'].map((x) => (
                 <span className="sw-pill sw-live" key={x}>
                   {x}
                 </span>
@@ -223,7 +223,7 @@ export default function StaffingPage() {
               </p>
               <p>
                 From <strong>staffing in Gurgaon</strong> for a single busy weekend to ongoing weekly teams,
-                every worker is Aadhaar-verified, you get a replacement guarantee, and rates are transparent —
+                every worker is verified, you get a replacement guarantee, and rates are transparent —
                 you pay against a clear invoice.
               </p>
             </div>
@@ -359,7 +359,7 @@ export default function StaffingPage() {
           msg="Hi Switch — I need staffing for my business in Gurgaon."
           photos={['/sw-waiter.jpg', '/sw-factory-helper.jpg']}
         />
-        <p className="ab-fine">Transparent rates. Clean invoices. Replacement guaranteed.</p>
+        <p className="ab-fine">Transparent rates. Clean invoices. Pay ₹99 only after a yes.</p>
       </main>
       <Footer />
     </>

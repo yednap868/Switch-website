@@ -69,7 +69,7 @@ export default function BlogPost() {
   return (
     <>
       <Helmet>
-        <title>{`${post.title} | Switch`}</title>
+        <title>{post.title.length > 50 ? post.title : `${post.title} | Switch`}</title>
         <meta name="description" content={post.description} />
         <meta name="keywords" content={post.keywords} />
         <link rel="canonical" href={canonical} />

@@ -186,3 +186,32 @@
     font-size: 24px;
   }
 }
+
+/* pricing model cards (₹0 / ₹99 / your rate / fare): stack cleanly on phones */
+.sp-prices .sw-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+.sp-prices .sw-rate b {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.1;
+}
+@media (max-width: 760px) {
+  .sp-prices.sp-prices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: row;
+    gap: 10px;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+  .sp-prices .sw-rate {
+    padding: 16px;
+  }
+}

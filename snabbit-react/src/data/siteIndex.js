@@ -5,7 +5,7 @@
 const SERVICES = [
   { id: 'home-cleaning', name: 'Home Cleaning' },
   { id: 'cook', name: 'Cook' },
-  { id: 'delivery-worker', name: 'Delivery Switch Player' },
+  { id: 'delivery-worker', name: 'Delivery Worker' },
   { id: 'nanny', name: 'Nanny' },
   { id: 'security-guard', name: 'Security Guard' },
   { id: 'store-helper', name: 'Store Helper' },

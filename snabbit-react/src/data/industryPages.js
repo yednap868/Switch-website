@@ -11,8 +11,8 @@ export const GURGAON_AREAS = [
    written specifically for them. */
 const WHY = {
   verified: {
-    title: 'Aadhaar-Verified Staff',
-    desc: "Every Switch Player goes through the platform's verification process, including document checks and interviews.",
+    title: 'Verified Staff',
+    desc: "Every worker goes through the platform's verification process, including document checks and interviews.",
   },
   sameDay: {
     title: 'Staff in a Day',
@@ -24,7 +24,7 @@ const WHY = {
   },
   replacement: {
     title: 'Replacement Guarantee',
-    desc: 'We back every booking with a replacement guarantee. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.',
+    desc: 'We back every booking with a replacement guarantee. If a worker is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.',
   },
   specific: {
     title: 'Have a Specific Requirement?',
@@ -48,15 +48,15 @@ const steps = (place) => [
   },
   {
     title: 'Your Staff Reports. Booking Confirmed.',
-    desc: 'Once your payment is completed at checkout, your booking is confirmed. Your Switch Players arrive for the booking, and OTP verification confirms their arrival.',
+    desc: 'Once your payment is completed at checkout, your booking is confirmed. Your workers arrive for the booking, and OTP verification confirms their arrival.',
   },
 ]
 
 /* FAQ entries that read the same on every page. */
 const FAQ = {
   bulk: {
-    q: 'Can I hire multiple Switch Players or a full team?',
-    a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more Switch Players, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.',
+    q: 'Can I hire multiple workers or a full team?',
+    a: 'Yes. Bulk hiring is one of our most common requests — 3, 5 or more workers, including full teams for 7-day blocks. WhatsApp us your requirement for a custom quote and a dedicated point of contact.',
   },
   unlisted: {
     q: 'Can I request a worker type that isn’t listed?',
@@ -64,11 +64,11 @@ const FAQ = {
   },
   verified: {
     q: 'Are Switch workers verified?',
-    a: "Switch provides Aadhaar-verified staff who go through the platform's verification process.",
+    a: "Switch provides verified staff who go through the platform's verification process.",
   },
   noShow: {
     q: 'What happens if a worker doesn’t show up?',
-    a: 'Switch backs bookings with a replacement guarantee. If a Switch Player is a no-show or isn’t the right fit, a replacement is dispatched fast, usually within 24 hours.',
+    a: 'Switch backs bookings with a replacement guarantee. If a worker is a no-show or isn’t the right fit, a replacement is dispatched fast, usually within 24 hours.',
   },
   trial: {
     q: 'Can I try one shift before hiring for longer?',
@@ -82,7 +82,7 @@ const FAQ = {
 
 const cost = (kind) => ({
   q: `How much does ${kind} staffing cost?`,
-  a: 'Pricing depends on the worker role, booking duration and number of workers required. You can see the applicable pricing when making a booking. The longer the booking, the lower the rate per Switch Player. For exact rates for your business, talk to us on WhatsApp.',
+  a: 'Pricing depends on the worker role, booking duration and number of workers required. You can see the applicable pricing when making a booking. The longer the booking, the lower the rate per worker. For exact rates for your business, talk to us on WhatsApp.',
 })
 
 const areas = (h2, lead) => ({ type: 'areas', eyebrow: 'Coverage', h2, lead })
@@ -92,9 +92,9 @@ export const INDUSTRY_PAGES = [
   {
     slug: 'warehouse-staffing-gurgaon',
     name: 'Warehouse Staffing',
-    title: 'Warehouse Staffing in Gurgaon | Hire Pickers, Packers & Loaders — Switch',
+    title: 'Warehouse Staffing in Gurgaon — Pickers & Packers | Switch',
     description:
-      'Hire Aadhaar-verified warehouse staff in Gurgaon — pickers, packers, loaders, helpers & delivery executives. Book for a day or longer, replacement guaranteed.',
+      'Hire verified warehouse staff in Gurgaon — pickers, packers, loaders, helpers & delivery executives. Book for a day or longer, pay ₹99 only after a yes.',
     keywords:
       'warehouse staffing Gurgaon, warehouse workers Gurgaon, picker packer Gurgaon, loader unloader Gurgaon, warehouse helper Gurgaon, fulfilment staff Gurgaon, dark store staff Gurgaon',
     hero: {
@@ -203,7 +203,7 @@ export const INDUSTRY_PAGES = [
   {
     slug: 'event-staffing-gurgaon',
     name: 'Event & Banquet Staffing',
-    title: 'Event & Banquet Staffing in Gurgaon | Waiters, Bartenders, Bouncers — Switch',
+    title: 'Event Staffing in Gurgaon — Waiters & Bartenders | Switch',
     description:
       'Hire verified event staff in Gurgaon — waiters, bartenders, cooks, bouncers, promoters & helpers for weddings, parties, corporate events and banquets. Same-day available.',
     keywords:
@@ -286,7 +286,7 @@ export const INDUSTRY_PAGES = [
         eyebrow: 'Why Switch',
         h2: 'Why Choose Switch',
         items: [
-          { ...WHY.verified, desc: "Switch Players go through the platform's verification process, including document checks and interviews." },
+          { ...WHY.verified, desc: "Workers go through the platform's verification process, including document checks and interviews." },
           WHY.sameDay,
           { title: 'Multiple Roles Through One Platform', desc: 'Need different people for different parts of your event? Book the staff you need for service, kitchen, guest support, setup and more — all through one platform.' },
           WHY.flexible,
@@ -316,7 +316,7 @@ export const INDUSTRY_PAGES = [
   {
     slug: 'restaurant-staffing-gurgaon',
     name: 'Restaurant Staffing',
-    title: 'Restaurant Staffing in Gurgaon | Hire Cooks, Waiters & Kitchen Staff — Switch',
+    title: 'Restaurant Staffing in Gurgaon — Cooks & Waiters | Switch',
     description:
       'Hire verified restaurant staff in Gurgaon — cooks, chefs, waiters, bartenders, baristas & kitchen helpers for restaurants, cafés, QSRs and cloud kitchens. Staff within the day.',
     keywords:
@@ -428,7 +428,7 @@ export const INDUSTRY_PAGES = [
   {
     slug: 'office-staffing-gurgaon',
     name: 'Office & Co-working Staffing',
-    title: 'Office & Co-working Staffing in Gurgaon | Office Boys, Housekeeping — Switch',
+    title: 'Office Staffing in Gurgaon — Housekeeping & Help | Switch',
     description:
       'Hire verified office staff in Gurgaon — office boys, pantry boys, receptionists, housekeeping & security for corporate offices and co-working spaces. Daily or ongoing.',
     keywords:
@@ -510,7 +510,7 @@ export const INDUSTRY_PAGES = [
         eyebrow: 'Why Switch',
         h2: 'Built for the Way Your Workplace Works',
         items: [
-          { ...WHY.verified, desc: "Switch Players go through the platform's verification process, including document checks and interviews." },
+          { ...WHY.verified, desc: "Workers go through the platform's verification process, including document checks and interviews." },
           WHY.sameDay,
           { title: 'Multiple Roles Through One Platform', desc: 'Handle different staffing requirements in one place, instead of coordinating with multiple sources.' },
           WHY.flexible,
@@ -540,7 +540,7 @@ export const INDUSTRY_PAGES = [
   {
     slug: 'retail-staffing-gurgaon',
     name: 'Retail & Store Staffing',
-    title: 'Retail & Store Staffing in Gurgaon | Store Helpers, Cashiers, Promoters — Switch',
+    title: 'Retail Staffing in Gurgaon — Store Helpers | Switch',
     description:
       'Hire verified retail staff in Gurgaon — store helpers, cashiers, promoters, security guards & stock handlers for stores, supermarkets and outlets. Book for a shift or longer.',
     keywords:
@@ -609,7 +609,7 @@ export const INDUSTRY_PAGES = [
         lead: "Retail staffing doesn't always mean hiring an entire team.",
         cols: ['Your requirement', 'What you can do'],
         rows: [
-          ['One store helper', 'Book an individual Switch Player'],
+          ['One store helper', 'Book an individual worker'],
           ['Extra support for a busy day', 'Book additional workers'],
           ['A cashier for a shift', 'Book a cashier for the required duration'],
           ['Promoters for an activation', 'Book promoters for your requirement'],
@@ -623,7 +623,7 @@ export const INDUSTRY_PAGES = [
         eyebrow: 'Why Switch',
         h2: 'Why Retail Businesses Use Switch',
         items: [
-          { ...WHY.verified, desc: "Switch Players go through the platform's verification process, including document checks and interviews." },
+          { ...WHY.verified, desc: "Workers go through the platform's verification process, including document checks and interviews." },
           { title: 'Staff in a Day', desc: 'Tell Switch what your store needs and get matched with suitable available workers within the day.' },
           { title: 'Multiple Roles Through One Platform', desc: "Whether you're staffing the shop floor, managing billing counters or preparing for a major sale, book the different workers your store needs through Switch — all in one place." },
           WHY.flexible,
@@ -656,8 +656,8 @@ export const INDUSTRY_PAGES = [
           FAQ.bulk,
           { q: 'Can I hire staff for multiple store locations?', a: 'Yes. Share your location-wise requirement with Switch for multiple stores or outlets.' },
           { q: 'Can I hire a worker for a requirement that isn’t listed?', a: 'Yes. Tell Switch what kind of worker you need, what the work involves and when you need them. Switch can help you arrange the staff based on your requirement.' },
-          { q: 'Are the workers verified?', a: 'Yes. Switch Players are Aadhaar-verified, document-checked and interviewed before reaching the worksite.' },
-          { q: 'What happens if a booked worker doesn’t show up?', a: 'Switch provides a replacement guarantee for every booking. If a Switch Player is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
+          { q: 'Are the workers verified?', a: 'Yes. Workers are verified, document-checked and interviewed before reaching the worksite.' },
+          { q: 'What happens if a booked worker doesn’t show up?', a: 'Switch provides a replacement guarantee for every booking. If a worker is a no-show or not the right fit, we dispatch a replacement fast — usually within 24 hours — so your business stays covered.' },
           { q: 'Can I request a trial shift before hiring a worker for longer?', a: 'Yes. Book a single hourly shift first — posting is ₹0, and you pay the ₹99 booking fee only when a worker accepts.' },
           cost('retail'), FAQ.help,
         ],

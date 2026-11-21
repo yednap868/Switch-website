@@ -15,22 +15,22 @@ const WHAT_WE_DO = [
   {
     ico: 'building',
     title: 'Business Staffing',
-    desc: 'Store helpers, security guards, factory & warehouse Switch Players, waiters, bartenders, bouncers, cooks and housekeeping — for shops, restaurants, warehouses, offices and events of every size.',
+    desc: 'Store helpers, security guards, factory & warehouse workers, waiters, bartenders, bouncers, cooks and housekeeping — for shops, restaurants, warehouses, offices and events of every size.',
   },
   {
     ico: 'cal',
     title: 'Bulk & Weekly Teams',
-    desc: 'Need 3, 5 or a full team for 7 days straight? We deploy verified Switch Players at scale, with a dedicated point of contact and priority coverage.',
+    desc: 'Need 3, 5 or a full team for 7 days straight? We deploy verified workers at scale, with a dedicated point of contact and priority coverage.',
   },
   {
     ico: 'check',
     title: 'Replacement Guarantee',
-    desc: 'A no-show shouldn’t stop your business. If a Switch Player doesn’t turn up or isn’t the right fit, we dispatch a replacement fast — usually within 24 hours.',
+    desc: 'A no-show shouldn’t stop your business. If a worker doesn’t turn up or isn’t the right fit, we dispatch a replacement fast — usually within 24 hours.',
   },
   {
     ico: 'shield',
     title: 'Verified at Every Step',
-    desc: 'Every Switch Player on Switch is Aadhaar-verified, document-checked and personally interviewed before being assigned to your site.',
+    desc: 'Every worker on Switch is verified, document-checked and personally interviewed before being assigned to your site.',
   },
   {
     ico: 'wallet',
@@ -52,13 +52,13 @@ const WHY_SWITCH = [
   },
   {
     ico: 'shield',
-    title: 'Aadhaar-Verified Switch Players',
-    desc: 'Every Switch Player on our platform is Aadhaar-verified and background-checked. Your safety is not negotiable.',
+    title: 'Verified Workers',
+    desc: 'Every worker on our platform is verified and background-checked. Your safety is not negotiable.',
   },
   {
     ico: 'phone',
-    title: 'Switch Players at a Click',
-    desc: 'No long waits, no endless back-and-forth. Book a verified Switch Player in minutes on switchlocally.com or the Switch App.',
+    title: 'Workers at a Click',
+    desc: 'No long waits, no endless back-and-forth. Book a verified worker in minutes on switchlocally.com or the Switch App.',
   },
   {
     ico: 'wallet',
@@ -68,7 +68,7 @@ const WHY_SWITCH = [
   {
     ico: 'check',
     title: 'Replacement Guarantee',
-    desc: 'Not happy with the assigned Switch Player? We will replace them — fast, no questions asked.',
+    desc: 'Not happy with the assigned worker? We will replace them — fast, no questions asked.',
   },
   {
     ico: 'msg',
@@ -110,7 +110,7 @@ export default function AboutPage() {
     '@type': 'AboutPage',
     name: 'About Switch — Gurgaon\'s Trusted Home & Business Staffing Platform',
     url: 'https://switchlocally.com/about',
-    description: 'Switch is Gurgaon\'s most trusted home and business staffing platform. Founded in 2026, we connect families and businesses across Gurgaon with Aadhaar-verified, background-checked domestic Switch Players and business staff.',
+    description: 'Switch is Gurgaon\'s most trusted home and business staffing platform. Founded in 2026, we connect families and businesses across Gurgaon with verified, background-checked domestic workers and business staff.',
     publisher: {
       '@type': 'Organization',
       name: 'Switch',
@@ -131,11 +131,11 @@ export default function AboutPage() {
     <>
       <Helmet>
         <title>About Switch — Gurgaon's Business Staffing Platform</title>
-        <meta name="description" content="Switch is Gurgaon's business staffing platform. Founded in 2026, we connect 20,000+ Aadhaar-verified Switch Players with shops, restaurants, warehouses, offices and events across DLF, Udyog Vihar, Cyber City, Sohna Road and all pincodes 122001–122022. Hire store helpers, guards, waiters, cooks, housekeeping — bulk and weekly teams, replacement guaranteed." />
-        <meta name="keywords" content="about Switch, staffing agency Gurgaon, manpower supply Gurgaon, verified Switch Players Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse Switch Players Gurgaon, store helper Gurgaon, on-demand staffing Gurgaon, switchlocally.com, Switch App" />
+        <meta name="description" content="Switch is Gurgaon's business staffing platform. Founded in 2026, we connect 20,000+ verified workers with shops, restaurants, warehouses, offices and events across DLF, Udyog Vihar, Cyber City, Sohna Road and all pincodes 122001–122022. Hire store helpers, guards, waiters, cooks, housekeeping — bulk and weekly teams, pay ₹99 only after a yes." />
+        <meta name="keywords" content="about Switch, staffing agency Gurgaon, manpower supply Gurgaon, verified workers Gurgaon, hire staff for business Gurgaon, bulk hiring Gurgaon, contract staff Gurgaon, restaurant staff Gurgaon, warehouse workers Gurgaon, store helper Gurgaon, on-demand staffing Gurgaon, switchlocally.com, Switch App" />
         <link rel="canonical" href="https://switchlocally.com/about" />
         <meta property="og:title" content="About Switch — Gurgaon's Business Staffing Platform" />
-        <meta property="og:description" content="Founded in 2026. 20,000+ verified Switch Players. Staffing shops, restaurants, warehouses, offices and events across Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk & weekly teams." />
+        <meta property="og:description" content="Founded in 2026. 20,000+ verified workers. Staffing shops, restaurants, warehouses, offices and events across Gurgaon — store helpers, guards, waiters, cooks, housekeeping. Bulk & weekly teams." />
         <meta property="og:url" content="https://switchlocally.com/about" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -159,7 +159,7 @@ export default function AboutPage() {
             <p className="sw-lead">
               Born in 2026 with one simple idea — staffing your business should never be hard.
               Whether you run a shop, a kitchen, a warehouse or an event, Switch puts verified,
-              reliable Switch Players on your floor — for a shift, a day, or a full week.
+              reliable workers on your floor — for a shift, a day, or a full week.
             </p>
             <div className="sw-btns">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="sw-btn">
@@ -172,8 +172,8 @@ export default function AboutPage() {
           </div>
           <HeroArt
             img="/sw-security-guard.jpg"
-            alt="A verified Switch Player in uniform"
-            badge={{ icon: 'shield', title: 'Aadhaar verified', sub: 'Every Switch Player' }}
+            alt="A verified worker in uniform"
+            badge={{ icon: 'shield', title: 'verified', sub: 'Every worker' }}
           />
         </section>
 
@@ -192,12 +192,12 @@ export default function AboutPage() {
               <p>
                 We are <strong>Switch</strong> — Gurgaon&apos;s business staffing platform.
                 Born in 2026, we set out to fix one of the most frustrating problems any business owner faces:
-                <em> finding reliable Switch Players who actually show up, without the agency runaround.</em>
+                <em> finding reliable workers who actually show up, without the agency runaround.</em>
               </p>
               <p>
                 Whether you need store helpers for a shop in DLF, packers for a warehouse in Udyog Vihar,
                 waiters and a bartender for an event in Cyber City, or a 7-day team during a sale —
-                Switch has verified Switch Players ready for you. With <strong>20,000+ verified Switch Players</strong> on our platform
+                Switch has verified workers ready for you. With <strong>20,000+ verified workers</strong> on our platform
                 and a fast-growing base of businesses across Gurgaon, Switch is becoming the go-to name
                 for dependable staffing across the city.
               </p>
@@ -210,7 +210,7 @@ export default function AboutPage() {
           <div className="sw-head">
             <p className="sw-eyebrow">What we do</p>
             <h2 className="sw-h2">
-              Every Switch Player. <em>One platform.</em>
+              Every worker. <em>One platform.</em>
             </h2>
             <p className="sw-lead">
               Running a home or a business is not easy — and finding the right people makes all the difference. At Switch, we bring everything under one roof.
@@ -239,9 +239,9 @@ export default function AboutPage() {
             <p>
               Our mission is simple — to make sure every business in Gurgaon can staff up at the right time,
               without the hassle. We have built a platform where verified store helpers, security guards,
-              factory and warehouse Switch Players, waiters, bartenders, bouncers, cooks and housekeeping
+              factory and warehouse workers, waiters, bartenders, bouncers, cooks and housekeeping
               are available at the click of a button —
-              <strong> background-checked, Aadhaar-verified, and ready to work.</strong>
+              <strong> background-checked, verified, and ready to work.</strong>
             </p>
           </div>
         </section>
@@ -323,7 +323,7 @@ export default function AboutPage() {
                 too many delays, too little trust.
               </p>
               <p>
-                We decided to change that. We built a simple, transparent platform where Switch Players are verified
+                We decided to change that. We built a simple, transparent platform where workers are verified
                 before they ever reach your door, where booking takes minutes not days, and where you only pay
                 after the work is done.
               </p>
@@ -342,7 +342,7 @@ export default function AboutPage() {
               Let&apos;s Switch — <em>to staff who show up.</em>
             </>
           }
-          sub="Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters, or a warehouse needing a 7-day team — Switch has verified Switch Players ready for you."
+          sub="Whether you run a shop in DLF needing extra hands, a restaurant in Udyog Vihar needing waiters, or a warehouse needing a 7-day team — Switch has verified workers ready for you."
           photos={['/sw-cook.jpg', '/sw-general-helper.jpg']}
         />
         <p className="ab-fine">

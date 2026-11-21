@@ -42,7 +42,6 @@ export default function AppPage() {
     installUrl: [PLAY_URL, APPLE_URL],
     description: 'Switch is one chat with Jyoti, an AI assistant, to book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram — in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', bestRating: '5', ratingCount: '500' },
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
   }
 
@@ -92,7 +91,7 @@ export default function AppPage() {
             </div>
             <div className="ap-trust">
               <span className="ap-stars" aria-hidden="true">★★★★★</span>
-              <span><strong>4.8</strong> rating · <strong>20,000+</strong> verified Switch Players</span>
+              <span><strong>4.8</strong> rating · <strong>20,000+</strong> verified workers</span>
             </div>
             <p className="ap-note">
               On Android or iPhone, the Switch app is live on{' '}
@@ -158,7 +157,7 @@ export default function AppPage() {
                 Download Switch and <em>book your first shift today.</em>
               </h2>
               <p style={{ marginTop: 10, maxWidth: '52ch' }}>
-                Free to download. Transparent rates. Verified Switch Players, replacement guaranteed.
+                Free to download. Transparent rates. Verified workers, pay ₹99 only after a yes.
               </p>
               <div className="sw-btns" style={{ marginTop: 18 }}>
                 <StoreButtons />

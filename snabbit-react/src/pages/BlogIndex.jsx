@@ -74,7 +74,7 @@ export default function BlogIndex() {
   return (
     <>
       <Helmet>
-        <title>Switch Blog — Hiring Guides for Domestic &amp; Business Staff in Gurgaon</title>
+        <title>Switch Blog — Hiring Guides for Gurgaon</title>
         <meta name="description" content="Complete hiring guides for Gurgaon — how to hire verified maids, cooks, caretakers, security guards and event staff. Tips on Aadhaar verification, pricing, replacement policies and more — from Switch, Gurgaon's trusted staffing platform." />
         <meta name="keywords" content="Switch blog, hire verified maid Gurgaon guide, home cook Gurgaon, elderly caretaker Gurgaon, security guard vs bouncer, event staff Gurgaon, Aadhaar verification domestic help, switchlocally.com" />
         <link rel="canonical" href="https://switchlocally.com/blog" />
@@ -134,7 +134,7 @@ export default function BlogIndex() {
               Read every <em>guide.</em>
             </h2>
             <p className="sw-lead">
-              Everything we know about hiring verified Switch Players in Gurgaon — straight to the point.
+              Everything we know about hiring verified workers in Gurgaon — straight to the point.
             </p>
           </div>
           <div className="sw-grid sw-g3 bl-grid">
@@ -149,7 +149,7 @@ export default function BlogIndex() {
           <div className="sw-feature bl-cta">
             <p className="sw-eyebrow">Ready when you are</p>
             <h2>
-              Ready to hire a verified <em>Switch Player?</em>
+              Ready to hire a verified <em>Worker?</em>
             </h2>
             <p>
               Skip the reading and skip ahead. Book a verified maid, cook, caretaker,

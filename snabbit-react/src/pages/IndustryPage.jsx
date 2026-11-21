@@ -394,7 +394,7 @@ export default function IndustryPage({ slug }) {
               </a>
             </div>
             <ul className="sw-checks ind-trust">
-              {['Aadhaar-verified', 'Staff in a day', 'Replacement guarantee', 'Transparent billing'].map((x) => (
+              {['verified', 'Staff in a day', 'Replacement guarantee', 'Transparent billing'].map((x) => (
                 <li className="sw-pill sw-live" key={x}>
                   {x}
                 </li>
@@ -403,7 +403,7 @@ export default function IndustryPage({ slug }) {
           </div>
           <HeroArt
             img={heroImg}
-            alt={`${page.name} — a verified Switch Player in Gurgaon`}
+            alt={`${page.name} — a verified worker in Gurgaon`}
             otp
             badge={{ title: 'Staff confirmed', sub: 'Often within the day' }}
           />

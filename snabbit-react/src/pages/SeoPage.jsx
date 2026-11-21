@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import NotFound from '../components/sx/NotFound.jsx'
 import { getPageBySlug, SEO_PAGES } from '../data/seoData'
-import { ROLES } from '../data/homeContent.js'
+import { ROLES, REVIEWS as REAL_REVIEWS } from '../data/homeContent.js'
 import { waLink } from '../data/site.js'
 import SeoHead from '../components/SeoHead'
 import Header from '../components/chrome/Header.jsx'
@@ -16,18 +16,10 @@ const APP = 'https://app.switchlocally.com'
 
 /* ─── MICRO COMPONENTS ─── */
 
-function Stars() {
-  return (
-    <span className="sp-stars" aria-label="5 out of 5 stars">
-      ★★★★★
-    </span>
-  )
-}
-
 function TrustBadges() {
   return (
     <div className="sw-checks">
-      {['Aadhaar Verified', 'Background Checked', 'Transparent Billing', 'Same-Day Available'].map((x) => (
+      {['Verified workers', '₹0 to post', '₹99 only after a yes', 'Start OTP & live tracking'].map((x) => (
         <span className="sw-pill sw-live" key={x}>
           {x}
         </span>
@@ -115,18 +107,30 @@ function CheckList({ items, arrow = false }) {
   )
 }
 
-function PricingTable({ prices }) {
-  if (!prices?.length) return null
+/* Switch pricing is the same for every role now: you set the rate, the
+   fare goes to the worker, Switch only charges ₹99 after a yes. */
+const PRICE_MODEL = [
+  { label: 'To post', price: '₹0', desc: 'Tell Jyoti the shift and confirm — free.' },
+  { label: 'After a yes', price: '₹99', desc: 'Booking fee, only when a worker accepts.' },
+  { label: 'Hourly rate', price: 'You set it', desc: 'Each role has a fixed minimum; more finds someone faster.' },
+  { label: 'Fare', price: 'To the worker', desc: 'Paid by you directly after the work — cash or UPI. No cut.' },
+]
+function PricingTable() {
   return (
-    <div className="sw-grid sw-g4 sp-prices">
-      {prices.map((p, i) => (
-        <div className="sw-card sw-rate" key={i}>
-          <span className="sw-pill">{p.label}</span>
-          <b>{p.price}</b>
-          <p className="sw-muted sp-small">{p.desc}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="sw-grid sw-g4 sp-prices">
+        {PRICE_MODEL.map((p) => (
+          <div className="sw-card sw-rate" key={p.label}>
+            <span className="sw-pill">{p.label}</span>
+            <b>{p.price}</b>
+            <p className="sw-muted sp-small">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+      <p className="sw-muted sp-small" style={{ marginTop: 12 }}>
+        First booking: 10% off, up to ₹100. Full-time staff: ₹1,000 when a worker confirms + ₹1,000 when they join.
+      </p>
+    </>
   )
 }
 
@@ -146,13 +150,13 @@ function Steps({ steps }) {
 
 function ComparisonTable({ service }) {
   const rows = [
-    ['Booking time', 'Under 2 min', '24–48 hrs', 'Hours or days'],
-    ['Background verified', '✓ Aadhaar', 'Sometimes', 'Never'],
-    ['Transparent pricing', '✓ Fixed rate', '+ Commission', 'Variable'],
-    ['Transparent billing', '✓', '✗', '✗'],
+    ['How you book', 'One chat with Jyoti', 'Calls & visits', 'Asking around'],
+    ['Background verified', '✓ Verified', 'Sometimes', 'Never'],
+    ['Who sets the rate', '✓ You do', 'Agency', 'Negotiated'],
+    ['Cut from the worker’s fare', '✓ None', 'Commission', 'None'],
     ['Same-day available', '✓', 'Rare', 'Rare'],
-    ['Free cancellation', '✓ Up to 2 hrs', 'Fee charged', 'N/A'],
-    ['Rated & reviewed', '✓ 4.8 ★', '✗', '✗'],
+    ['Pay before anyone says yes', '✓ Never — ₹0 to post', 'Advance fees', 'N/A'],
+    ['Start OTP & live tracking', '✓', '✗', '✗'],
   ]
   return (
     <div className="sw-table sp-compare">
@@ -194,15 +198,17 @@ function Areas({ areas }) {
   )
 }
 
-function Reviews({ reviews }) {
-  if (!reviews?.length) return null
+/* Real customer reviews (the same set the homepage shows), not per-service
+   sample quotes. */
+function Reviews() {
   return (
     <div className="sw-grid sw-g3">
-      {reviews.map((r, i) => (
-        <figure className="sw-card sw-q sp-review" key={i}>
-          <Stars />
+      {REAL_REVIEWS.slice(0, 3).map((r) => (
+        <figure className="sw-card sw-q sp-review" key={r.name}>
           <blockquote>“{r.text}”</blockquote>
-          <cite>{r.name}</cite>
+          <cite>
+            {r.name} · {r.loc}
+          </cite>
         </figure>
       ))}
     </div>
@@ -269,7 +275,7 @@ function StickyCTA({ service }) {
 function LandingPage({ page }) {
   return (
     <>
-      <SpHero page={page} tag="Gurgaon · Book Instantly · Verified Switch Players" trust>
+      <SpHero page={page} tag="Gurgaon · Book Instantly · Verified workers" trust>
         <a className="sw-btn" href={APP} target="_blank" rel="noreferrer">
           Book Now — Free App <Icon name="arrow" />
         </a>
@@ -300,7 +306,7 @@ function LandingPage({ page }) {
 
       <Sec
         title="Transparent Pricing — No Hidden Fees"
-        lead="All rates are fixed and shown upfront. No agency commission, no call-out fees, no surprises. You pay against a clear invoiced to your satisfaction."
+        lead="Posting is free. You choose the hourly rate, pay the worker their fare directly, and pay Switch ₹99 only when someone says yes."
       >
         <PricingTable prices={page.prices} />
       </Sec>
@@ -310,18 +316,18 @@ function LandingPage({ page }) {
           steps={[
             {
               n: 1,
-              title: `Choose ${page.service}`,
-              desc: `Open the Switch app, select ${page.service.toLowerCase()} and pick your duration — from 4 hours to 7 days.`,
+              title: 'Talk to Jyoti',
+              desc: `Open the Switch app and tell Jyoti — in Hindi or English — the day, time and hours you need a ${page.service.toLowerCase()}.`,
             },
             {
               n: 2,
-              title: 'Set time & address',
-              desc: 'Pick your date, time and Gurgaon address. Confirm in under 2 minutes — no calls, no paperwork.',
+              title: 'Set your rate, confirm for ₹0',
+              desc: 'Choose the hourly rate and your Gurgaon address. Nearby workers get an app ring and WhatsApp — watch who says yes, live.',
             },
             {
               n: 3,
-              title: 'Switch Player arrives & the work gets done',
-              desc: `Your verified ${page.service.toLowerCase()} arrives on time. Pay securely in-app only after the job is done.`,
+              title: 'Worker arrives & the work gets done',
+              desc: `Pay ₹99 once someone accepts. You get the start OTP; they get your address. Pay their fare directly after the work.`,
             },
           ]}
         />
@@ -329,7 +335,7 @@ function LandingPage({ page }) {
 
       <Sec
         title="Switch vs Other Options"
-        lead="See why Gurgaon residents book through Switch instead of agencies or finding Switch Players themselves."
+        lead="See why Gurgaon residents book through Switch instead of agencies or finding workers themselves."
       >
         <ComparisonTable service={page.service} />
       </Sec>
@@ -493,10 +499,10 @@ function NearMePage({ page }) {
       <Sec title="Why Location Matters">
         <CheckList
           items={[
-            'Nearby Switch Players arrive faster — less waiting time',
+            'Nearby workers arrive faster — less waiting time',
             'Lower travel overhead means better value for you',
-            'Switch Players familiar with your area navigate easily',
-            'Same-day slots more likely when Switch Player is local to your sector',
+            'Workers familiar with your area navigate easily',
+            'Same-day slots more likely when worker is local to your sector',
           ]}
         />
       </Sec>
@@ -540,12 +546,8 @@ function SameDayPage({ page }) {
 function ReviewsPage({ page }) {
   return (
     <>
-      <SpHero page={page} tag="Verified Customer Reviews · 4.8 ★ Average" />
+      <SpHero page={page} tag="What Gurgaon businesses say" />
       <Sec title="Customer Stories">
-        <div className="sw-card sp-rating">
-          <b>4.8 ★</b>
-          <span>Average from verified {page.service.toLowerCase()} bookings in Gurgaon</span>
-        </div>
         <Reviews reviews={page.reviews} />
       </Sec>
       <Sec title="Why They Keep Coming Back">
@@ -565,7 +567,7 @@ function VerifiedPage({ page }) {
   return (
     <>
       <SpHero page={page} tag="3-Step Verification · Aadhaar · Background Checked · Skills Tested" />
-      <Sec title="How We Verify Every Switch Player">
+      <Sec title="How We Verify Every worker">
         <div className="sw-grid sw-g3">
           {page.verificationSteps.map((v, i) => (
             <div className="sw-card sw-step" key={i}>
@@ -576,7 +578,7 @@ function VerifiedPage({ page }) {
           ))}
         </div>
       </Sec>
-      <Sec title="What Verified Switch Players Can Do">
+      <Sec title="What Verified workers Can Do">
         <CheckList items={page.tasks} />
       </Sec>
       <Sec title="Switch vs Unverified Alternatives">
@@ -636,7 +638,7 @@ export default function SeoPage() {
               Book a {page.service} in Gurgaon <em>today.</em>
             </>
           }
-          sub="Verified professionals. Flexible hours. Transparent rates, no hidden charges. Rated 4.8 ★ · 1,500+ businesses served."
+          sub="Tell Jyoti what you need. ₹0 to post, ₹99 only when a worker says yes — and the fare goes straight to the worker. 1,500+ Gurgaon businesses served."
           msg={`Hi Switch — I'd like to book a ${page.service.toLowerCase()} in Gurgaon.`}
           photos={[page.serviceImg, page.serviceImg === '/sw-general-helper.jpg' ? '/sw-security-guard.jpg' : '/sw-general-helper.jpg']}
         />
