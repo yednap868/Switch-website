@@ -207,7 +207,9 @@ export default function HowSteps() {
       </ol>
       <div className="hs-stage" aria-live="polite">
         <div className="hs-stage-top">
-          <img className="sx-jy" src="/img/jyoti-face.webp" alt="" width="36" height="36" />
+          <span className="sx-jy" aria-hidden="true">
+          J
+        </span>
           <b>Step {STEPS[i].n}</b>
           <span>{STEPS[i].t}</span>
         </div>

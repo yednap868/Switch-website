@@ -110,7 +110,9 @@ export default function PhoneChat() {
     <div className="sx-phone" aria-label="Preview: booking staff by chatting with Jyoti">
       <div className="sx-phone-notch" aria-hidden="true" />
       <div className="sx-phone-top">
-        <img className="sx-jy" src="/img/jyoti-face.webp" alt="" width="36" height="36" />
+        <span className="sx-jy" aria-hidden="true">
+          J
+        </span>
         <div>
           <b>Jyoti</b>
           <small>{stage === 'alerting' ? 'workers ko alert kar rahi hoon…' : 'online'}</small>

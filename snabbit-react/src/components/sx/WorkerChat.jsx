@@ -48,7 +48,9 @@ export default function WorkerChat() {
     <div className="sx-phone" aria-label="Preview: a worker finding work by chatting with Jyoti">
       <div className="sx-phone-notch" aria-hidden="true" />
       <div className="sx-phone-top">
-        <img className="sx-jy" src="/img/jyoti-face.webp" alt="" width="36" height="36" />
+        <span className="sx-jy" aria-hidden="true">
+          J
+        </span>
         <div>
           <b>Jyoti</b>
           <small>{stage === 'ask' ? 'online' : 'aap available ho'}</small>
