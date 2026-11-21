@@ -89,9 +89,7 @@ function StageLive({ t }) {
           const s = st(w)
           return (
             <li key={w.n} className={`st-${s}`}>
-              <span className="sx-av" aria-hidden="true">
-                {w.n[0]}
-              </span>
+              <img className="sx-av" src={`/av/${w.n.toLowerCase()}.jpg`} alt="" width="28" height="28" loading="lazy" />
               <span>
                 <b>{w.n}</b> <small>{w.km}</small>
               </span>

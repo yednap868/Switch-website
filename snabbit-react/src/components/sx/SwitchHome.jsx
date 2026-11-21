@@ -51,6 +51,25 @@ function Hero() {
           </ul>
         </div>
         <div className="sx-hero-phone">
+          <div className="sx-hero-photos" aria-hidden="true">
+            <img className="p1" src="/sw-cook.jpg" alt="" width="1024" height="1024" />
+            <img className="p2" src="/sw-waiter.jpg" alt="" width="1024" height="1024" />
+            <img className="p3" src="/sw-kitchen-helper.jpg" alt="" width="1024" height="1024" />
+            <div className="sx-hero-badge b1">
+              <img src="/av/ravi.jpg" alt="" width="36" height="36" />
+              <span>
+                <b>Ravi said yes</b>
+                <small>Cook · 0.8 km away</small>
+              </span>
+            </div>
+            <div className="sx-hero-badge b2">
+              <span className="sx-otp-mini">4719</span>
+              <span>
+                <b>Start OTP</b>
+                <small>Job starts at your door</small>
+              </span>
+            </div>
+          </div>
           <PhoneChat />
           <p className="sx-cap">Try it — tap your answers. A preview of the Switch app.</p>
         </div>

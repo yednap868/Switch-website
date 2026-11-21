@@ -2068,3 +2068,162 @@ html[data-theme='dark'] .sx-phone-notch {
 .sx-rolechips a:hover {
   border-color: var(--g);
 }
+
+/* ── realistic layer: real worker photos behind the hero phone ── */
+.sx-hero-phone {
+  position: relative;
+}
+.sx-hero-phone .sx-phone {
+  position: relative;
+  z-index: 2;
+}
+.sx-hero-photos > img {
+  z-index: 1;
+}
+.sx-hero-photos .sx-hero-badge {
+  z-index: 3;
+}
+.sx-hero-photos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sx-hero-photos img:not([width='36']) {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 4px solid var(--card);
+  box-shadow: 0 24px 60px rgba(14, 18, 32, 0.18);
+}
+.sx-hero-photos .p1 {
+  width: 190px;
+  height: 240px;
+  left: -170px;
+  top: 40px;
+  transform: rotate(-6deg);
+  object-position: 50% 20%;
+}
+.sx-hero-photos .p2 {
+  width: 170px;
+  height: 210px;
+  right: -140px;
+  top: 10px;
+  transform: rotate(5deg);
+  object-position: 50% 15%;
+}
+.sx-hero-photos .p3 {
+  width: 180px;
+  height: 200px;
+  right: -120px;
+  bottom: 30px;
+  transform: rotate(-4deg);
+  object-position: 50% 25%;
+}
+.sx-hero-badge {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(14, 18, 32, 0.16);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.sx-hero-badge img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.sx-hero-badge b {
+  display: block;
+  font-size: 13.5px;
+}
+.sx-hero-badge small {
+  color: var(--muted);
+}
+.sx-hero-badge.b1 {
+  left: -150px;
+  bottom: 150px;
+}
+.sx-hero-badge.b1 b {
+  color: var(--g-ink);
+}
+.sx-hero-badge.b2 {
+  right: -120px;
+  top: 300px;
+}
+.sx-otp-mini {
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: #0e1220;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sx-hero-badge.b1 {
+    animation: sx-float 5s ease-in-out infinite;
+  }
+  .sx-hero-badge.b2 {
+    animation: sx-float 6s ease-in-out 1s infinite;
+  }
+}
+@keyframes sx-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+/* below desktop: photos become a strip under the phone; badges sit on it */
+@media (max-width: 1100px) {
+  .sx-hero-photos {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+    order: 2;
+  }
+  .sx-hero-phone {
+    display: flex;
+    flex-direction: column;
+  }
+  .sx-hero-photos > img {
+    position: static !important;
+    width: 100% !important;
+    height: 120px !important;
+    transform: none !important;
+    border-width: 2px !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+  }
+  .sx-hero-badge {
+    position: static;
+    grid-column: span 3;
+    justify-content: flex-start;
+    white-space: normal;
+    animation: none !important;
+  }
+  .sx-hero-phone .sx-phone {
+    order: 1;
+    margin-bottom: 14px;
+  }
+  .sx-hero-phone .sx-cap {
+    order: 3;
+  }
+}
+.sx-hero {
+  overflow: hidden;
+}
+img.sx-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}

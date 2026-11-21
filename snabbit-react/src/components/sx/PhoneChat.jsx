@@ -179,9 +179,7 @@ export default function PhoneChat() {
               <ul className="sx-live">
                 {WORKERS.map((w, i) => (
                   <li key={w.n} className={`st-${alerts[i] || 'wait'}`}>
-                    <span className="sx-av" aria-hidden="true">
-                      {w.n[0]}
-                    </span>
+                    <img className="sx-av" src={`/av/${w.n.toLowerCase()}.jpg`} alt="" width="28" height="28" loading="lazy" />
                     <span>
                       <b>{w.n}</b> <small>{w.km}</small>
                     </span>
