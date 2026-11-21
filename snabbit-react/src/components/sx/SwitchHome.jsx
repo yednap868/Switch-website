@@ -2,7 +2,7 @@
    Jyoti. Mobile-first (390px), off-white with one green accent, serif
    headings. Own header and footer so the page reads as one piece; the rest of
    the site keeps its shared chrome. Styles: ./sx.css (prefix sx-). */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
 import PhoneChat from './PhoneChat.jsx'
@@ -93,7 +93,7 @@ function Brands() {
         <div className="sx-track slow">
           {[...BRANDS, ...BRANDS].map((b, i) => (
             <div key={i} className={`sx-logo-tile${b.light ? ' light' : ''}`} aria-hidden={i >= BRANDS.length ? 'true' : undefined}>
-              {b.logo ? <img src={b.logo} alt={i < BRANDS.length ? b.name : ''} loading="lazy" /> : <span>{b.name}</span>}
+              {b.logo ? <img src={b.logo} alt={i < BRANDS.length ? b.name : ''} loading="lazy" width="112" height="48" /> : <span>{b.name}</span>}
             </div>
           ))}
         </div>
@@ -109,7 +109,8 @@ function VideoReview({ v }) {
       {play ? (
         <video src={v.src} poster={v.poster} controls autoPlay playsInline preload="none" />
       ) : (
-        <button type="button" onClick={() => setPlay(true)} aria-label={`Play review: ${v.who}`}>
+        <button type="button" onClick={() => setPlay(true)}>
+          <span className="sx-sr">Play review: {v.who}, </span>
           <img src={v.poster} alt="" loading="lazy" />
           <span className="sx-play" aria-hidden="true">
             <Icon name="play" />
@@ -463,6 +464,51 @@ function Faq() {
   )
 }
 
+/* Phones: a slim bar pinned to the bottom once the hero scrolls away, hidden
+   again from the closing call-to-action down. */
+function MobileBar() {
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    const hero = document.getElementById('top')
+    const end = document.querySelector('.fc')
+    if (!hero || !('IntersectionObserver' in window)) return
+    let heroOut = false
+    let endIn = false
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.target === hero) heroOut = !e.isIntersecting
+        if (e.target === end) endIn = e.isIntersecting || e.boundingClientRect.top < 0
+      }
+      setShow(heroOut && !endIn)
+    })
+    io.observe(hero)
+    if (end) io.observe(end)
+    return () => io.disconnect()
+  }, [])
+  return (
+    <div className={`sx-mbar${show ? ' on' : ''}`} aria-hidden={!show}>
+      <div>
+        <b>Staff chahiye?</b>
+        <small>₹0 to post · ₹99 after a yes</small>
+      </div>
+      <a
+        className="sx-mbar-wa"
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noreferrer"
+        tabIndex={show ? undefined : -1}
+        onClick={() => trackWhatsApp('Home mobile bar')}
+      >
+        <Icon name="msg" />
+        <span className="sx-sr">WhatsApp us</span>
+      </a>
+      <a className="sx-btn sm" href={APP_URL} target="_blank" rel="noreferrer" tabIndex={show ? undefined : -1}>
+        Book staff
+      </a>
+    </div>
+  )
+}
+
 export default function SwitchHome() {
   return (
     <div className="sx">
@@ -490,6 +536,7 @@ export default function SwitchHome() {
         <FinalCta />
       </main>
       <Footer cta={false} />
+      <MobileBar />
     </div>
   )
 }

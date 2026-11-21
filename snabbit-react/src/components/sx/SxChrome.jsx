@@ -130,8 +130,9 @@ export function SxFooter({ title, primary, secondary, directory, className = '' 
           <span>© {new Date().getFullYear()} Third Wave Labs Private Limited · Gurugram</span>
           <span className="sx-social">
             {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} target="_blank" rel="noreferrer" aria-label={s.name}>
-                {s.label}
+              <a key={s.name} href={s.href} target="_blank" rel="noreferrer">
+                <span aria-hidden="true">{s.label}</span>
+                <span className="sx-sr">{s.name}</span>
               </a>
             ))}
           </span>

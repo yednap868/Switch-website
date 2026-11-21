@@ -3267,3 +3267,80 @@ img.sx-jy {
   font-size: 13px;
   color: var(--muted);
 }
+
+/* Solid green fills that carry white text use the deeper green so small
+   text passes WCAG AA (white on #047857 = 5.5:1) in both themes. */
+.sx-jy,
+.sx-sum .sx-btn,
+.hs-list li.on .sx-n,
+.hs-chat .sx-opts span.on,
+.hs-receipt.paid em {
+  background: #047857;
+}
+.hs-chat .sx-opts span.on {
+  border-color: #047857;
+}
+
+.sx-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* mobile sticky booking bar (home) */
+.sx-mbar {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px 8px 16px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 40px rgba(14, 18, 32, 0.18);
+  transform: translateY(140%);
+  transition: transform 0.3s ease;
+}
+.sx-mbar.on {
+  transform: none;
+}
+@media (max-width: 760px) {
+  .sx-mbar {
+    display: flex;
+  }
+}
+.sx-mbar > div {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.25;
+}
+.sx-mbar b {
+  display: block;
+  font-size: 14.5px;
+}
+.sx-mbar small {
+  font-size: 12px;
+  color: var(--muted);
+}
+.sx-mbar-wa {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff !important;
+}
+.sx-mbar-wa .sw-ico {
+  width: 18px;
+  height: 18px;
+}
