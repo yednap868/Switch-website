@@ -159,7 +159,7 @@ export function Services() {
           />
         ))}
       </div>
-      <div className="sw-grid sw-g3" style={{ marginTop: 12 }}>
+      <div className="sw-grid sw-g3 sw-swipe" style={{ marginTop: 12 }}>
         {WHY_US.slice(1, 4).map((p) => (
           <div className="sw-card sw-step" key={p.title}>
             <Icon name="shield" style={{ color: 'var(--p-t)' }} />
@@ -185,7 +185,7 @@ export function Industries() {
           replacement guarantee, same day.
         </p>
       </div>
-      <div className="sw-grid sw-g3">
+      <div className="sw-grid sw-g3 sw-swipe">
         {INDUSTRIES.map((x, i) => {
           const inner = (
             <>
@@ -329,7 +329,7 @@ export function Pricing() {
         <p className="sw-muted" style={{ marginTop: 4, marginBottom: 14 }}>
           For businesses that need dependable people on a regular schedule.
         </p>
-        <div className="sw-grid sw-g3">
+        <div className="sw-grid sw-g3 sw-swipe">
           {PLANS.map((p) => (
             <PlanCard key={p.name} plan={p} />
           ))}
@@ -340,7 +340,7 @@ export function Pricing() {
         <p className="sw-muted" style={{ marginTop: 4, marginBottom: 14 }}>
           We find the person. You decide the salary and keep them on your payroll, for a one-time fee of ₹2,000 per worker, paid on day 1.
         </p>
-        <div className="sw-grid sw-g2">
+        <div className="sw-grid sw-g2 sw-swipe">
           {PAYROLL_PLANS.map((p) => (
             <PlanCard key={p.name} plan={p} />
           ))}
@@ -392,7 +392,7 @@ export function Trust() {
       <div style={{ marginTop: 14 }}>
         <ReviewVideos />
       </div>
-      <div className="sw-grid sw-g4" style={{ marginTop: 12 }}>
+      <div className="sw-grid sw-g4 sw-swipe" style={{ marginTop: 12 }}>
         {WHY_US.filter((w, i) => i === 0 || i >= 4).map((w) => (
           <div className="sw-card sw-step" key={w.title}>
             <span className="sw-pill" style={{ justifySelf: 'start' }}>

@@ -53,7 +53,7 @@ export function TrialTickets({ id = 'trial' }) {
             <b>{left}</b>
           </div>
         </div>
-        <div className="sw-tickets">
+        <div className="sw-tickets sw-swipe">
           {TRIALS.map((t) => (
             <div className="sw-ticket" key={t.role}>
               <div className="sw-ticket-in">
@@ -163,7 +163,7 @@ export function ReviewVideos() {
   }, [open])
   return (
     <>
-      <div className="sw-vids">
+      <div className="sw-vids sw-swipe">
         {REVIEW_VIDEOS.map((r) => (
           <button
             type="button"

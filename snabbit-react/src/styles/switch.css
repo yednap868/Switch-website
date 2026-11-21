@@ -4552,3 +4552,65 @@ a.sw-dashed .sw-h3::after {
   align-content: start;
   border-style: dashed;
 }
+/* ── phone swipe rows ─────────────────────────────────────────────────
+   Long card stacks become one swipeable row on phones, with the next card
+   peeking in, so the page stays short and nothing is removed.           */
+@media (max-width: 560px) {
+  .sw-swipe.sw-swipe {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 84%;
+    gap: 10px;
+    margin-inline: calc(-1 * var(--gut));
+    padding-inline: var(--gut);
+    scroll-padding-inline: var(--gut);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .sw-swipe::-webkit-scrollbar {
+    display: none;
+  }
+  .sw-swipe > * {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+  .sw-tickets.sw-swipe {
+    grid-auto-columns: 96%;
+  }
+  .sw-tickets .t-price b {
+    font-size: 46px;
+  }
+  .sw-tickets .t-price span {
+    white-space: nowrap;
+  }
+  .sw-tickets .sw-btn {
+    width: 100%;
+    justify-content: center;
+    padding-inline: 12px;
+  }
+  .sw-logo {
+    height: 84px;
+    padding: 10px;
+  }
+  .sw-logo span {
+    font-size: 18px;
+  }
+}
+
+/* ── new look: serif headings everywhere (Fraunces / Noto Serif Devanagari) ── */
+h1,
+h2,
+.sw-h1,
+.sw-h2 {
+  font-family: var(--serif) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+.sw-h1 em,
+.sw-h2 em,
+.sw-grad {
+  font-style: normal;
+}
