@@ -165,19 +165,19 @@ function Reviews() {
 /* Meet Jyoti — the face of the app. Her capabilities are the real ones. */
 function MeetJyoti() {
   const caps = [
-    { i: 'cal', t: 'Staff book karna', d: 'Hourly shifts — role, day, time, rate, address, one question at a time.' },
-    { i: 'building', t: 'Full-time hiring', d: 'Monthly salary, duty hours, food/stay — she finds and confirms.' },
-    { i: 'phone', t: 'Workers ko alert', d: 'App ring + WhatsApp to the nearest verified workers, live.' },
-    { i: 'msg', t: 'Aapke sawaal', d: 'Pricing, OTP, payments — ask her anything, any time.' },
+    { i: 'cal', t: 'Staff book karna', d: 'Ghante ke hisaab se — role, din, time, rate aur address, ek-ek karke.' },
+    { i: 'building', t: 'Full-time staff', d: 'Monthly salary, duty hours, khana/rehna — main dhoondh ke confirm karti hoon.' },
+    { i: 'phone', t: 'Workers ko alert', d: 'Sabse paas ke verified workers ko app ring aur WhatsApp — live.' },
+    { i: 'msg', t: 'Aapke sawaal', d: 'Pricing, OTP, payment — kuch bhi poochhiye, kabhi bhi.' },
   ]
   return (
     <section className="sx-sec mj" id="jyoti" aria-labelledby="mj-h">
       <div className="sx-wrap mj-in">
         <figure className="mj-photo">
-          <img src="/img/jyoti.webp" alt="Jyoti, Switch’s AI agent, wearing a headset" width="520" height="951" loading="lazy" />
+          <img src="/img/jyoti.webp" alt="Jyoti, your Switch assistant, wearing a headset" width="520" height="951" loading="lazy" />
           <div className="mj-bubble">
             <p>
-              Namaste! 👋 Main hoon <b>Jyoti</b>, Switch ki AI agent. Aapki kaise madad kar sakti hoon?
+              Hi! 👋 Main <b>Jyoti</b> — aapki Switch assistant. Batayiye, kaisa staff chahiye?
             </p>
           </div>
           <span className="mj-live">
@@ -187,11 +187,12 @@ function MeetJyoti() {
         <div>
           <p className="sx-eyebrow">Meet Jyoti</p>
           <h2 id="mj-h" className="sx-h2">
-            Your Switch AI agent. She does the running around<span className="sx-dot">.</span>
+            Hi, main Jyoti — aapki Switch assistant<span className="sx-dot">.</span>
           </h2>
           <p className="sx-lead">
-            Jyoti talks to you in Hindi, Hinglish, English or Telugu, asks only what she needs, and works the
-            phones for you — so you never chase a worker again.
+            Mujhse Hindi, Hinglish, English ya Telugu mein baat kariye. Main sirf zaroori sawaal poochhti hoon,
+            paas ke workers ko call karti hoon, aur jab koi haan bolta hai, aapko bata deti hoon — aapko kisi ke
+            peeche nahi bhaagna padega.
           </p>
           <ul className="mj-caps">
             {caps.map((c) => (
@@ -208,7 +209,7 @@ function MeetJyoti() {
           </ul>
           <div className="sx-btns">
             <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
-              Talk to Jyoti <Icon name="arrow" />
+              Jyoti se baat kariye <Icon name="arrow" />
             </a>
             <a className="sx-btn ghost" href="#how">
               See how it works

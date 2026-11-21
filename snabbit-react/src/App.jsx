@@ -40,7 +40,7 @@ function HomeHead() {
     '@id': 'https://switchlocally.com/#business',
     name: 'Switch',
     alternateName: ['Switch Locally', 'Switch App'],
-    description: 'Switch is one chat with Jyoti, an AI assistant: businesses and homes in Gurugram book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers, and workers find jobs near them — in Hindi, Hinglish, English or Telugu. ₹0 to post; a ₹99 booking fee only after a worker accepts..',
+    description: 'Switch is one chat with Jyoti, your Switch assistant: businesses and homes in Gurugram book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers, and workers find jobs near them — in Hindi, Hinglish, English or Telugu. ₹0 to post; a ₹99 booking fee only after a worker accepts..',
     url: 'https://switchlocally.com',
     email: 'hello@switchlocally.com',
     image: 'https://switchlocally.com/hero-workers.jpg',

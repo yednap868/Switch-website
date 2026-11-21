@@ -40,7 +40,7 @@ export default function AppPage() {
     url: 'https://switchlocally.com/app',
     downloadUrl: [PLAY_URL, APPLE_URL],
     installUrl: [PLAY_URL, APPLE_URL],
-    description: 'Switch is one chat with Jyoti, an AI assistant, to book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram — in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts.',
+    description: 'Switch is one chat with Jyoti, your Switch assistant, to book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram — in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
     publisher: { '@type': 'Organization', name: 'Switch', url: 'https://switchlocally.com' },
   }
