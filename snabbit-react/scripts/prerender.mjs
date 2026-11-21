@@ -44,6 +44,7 @@ const routes = [
   ...INDUSTRY_PAGES.map(p => `/${p.slug}`),
   ...BLOG_POSTS.map(p => `/blog/${p.slug}`),
   ...SEO_PAGES.map(p => `/${p.slug}`),
+  '/404',
 ]
 const uniqueRoutes = [...new Set(routes)]
 
@@ -86,6 +87,7 @@ function liftHeadTags(body) {
 
 function outPathFor(route) {
   if (route === '/') return join(DIST, 'index.html')
+  if (route === '/404') return join(DIST, '404.html')
   return join(DIST, route.replace(/^\//, ''), 'index.html')
 }
 

@@ -2053,3 +2053,18 @@ html[data-theme='dark'] .sx-phone-notch {
     order: -1;
   }
 }
+
+.sx-404 {
+  min-height: 0;
+  padding: 80px 0 96px;
+}
+.sx-rolechips a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  font-size: 14.5px;
+}
+.sx-rolechips a:hover {
+  border-color: var(--g);
+}

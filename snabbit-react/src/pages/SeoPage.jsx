@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import NotFound from '../components/sx/NotFound.jsx'
 import { getPageBySlug, SEO_PAGES } from '../data/seoData'
 import { ROLES } from '../data/homeContent.js'
 import { waLink } from '../data/site.js'
@@ -613,7 +614,7 @@ export default function SeoPage() {
   const { slug } = useParams()
   const page = getPageBySlug(slug)
 
-  if (!page) return <Navigate to="/" replace />
+  if (!page) return <NotFound />
 
   const Renderer = PAGE_RENDERERS[page.type]
 

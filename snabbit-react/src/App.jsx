@@ -24,6 +24,7 @@ import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
 import { FAQS } from './data/switchHome.js'
 import SwitchHome from './components/sx/SwitchHome.jsx'
 import WorkerPage from './components/sx/WorkerPage.jsx'
+import NotFound from './components/sx/NotFound.jsx'
 import { PHONE } from './data/site.js'
 
 /* ─── SEO HEAD ────────────────────────────────────── */
@@ -175,6 +176,7 @@ export default function App() {
           <Route path="/work" element={<WorkerPage />} />
           <Route path="/verify" element={<VerifyPage />} />
           <Route path="/:slug" element={<SeoPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

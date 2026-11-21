@@ -8,7 +8,8 @@ import Icon from '../ui/Icon.jsx'
 import PhoneChat from './PhoneChat.jsx'
 import Radar from './Radar.jsx'
 import { APP_URL, PHONE, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
-import { SxFooter, SxHeader } from './SxChrome.jsx'
+import { SxHeader } from './SxChrome.jsx'
+import Footer from '../chrome/Footer.jsx'
 import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES, TRUST } from '../../data/switchHome.js'
 import HowSteps from './HowSteps.jsx'
 import { BRANDS, REVIEWS, REVIEW_VIDEOS } from '../../data/homeContent.js'
@@ -376,23 +377,7 @@ export default function SwitchHome() {
         <Trust />
         <Faq />
       </main>
-      <SxFooter
-        title={
-          <>
-            Staff chahiye? Bas boliye<span className="sx-dot">.</span>
-          </>
-        }
-        primary={
-          <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
-            Book staff <Icon name="arrow" />
-          </a>
-        }
-        secondary={
-          <Link className="sx-btn ghost" to="/work">
-            Find work
-          </Link>
-        }
-      />
+      <Footer />
     </div>
   )
 }

@@ -185,11 +185,5 @@
       "destination": "/staffing-gurgaon",
       "permanent": true
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
   ]
 }
