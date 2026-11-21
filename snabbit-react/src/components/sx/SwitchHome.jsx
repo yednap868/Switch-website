@@ -53,9 +53,9 @@ function Hero() {
         </div>
         <div className="sx-hero-phone">
           <div className="sx-hero-photos" aria-hidden="true">
-            <img className="p1" src="/sw-cook.jpg" alt="" width="1024" height="1024" />
-            <img className="p2" src="/sw-waiter.jpg" alt="" width="1024" height="1024" />
-            <img className="p3" src="/sw-kitchen-helper.jpg" alt="" width="1024" height="1024" />
+            <img className="p1" src="/img/sw-cook.webp" alt="" width="520" height="520" fetchpriority="low" />
+            <img className="p2" src="/img/sw-waiter.webp" alt="" width="520" height="520" fetchpriority="low" />
+            <img className="p3" src="/img/sw-kitchen-helper.webp" alt="" width="520" height="520" fetchpriority="low" />
             <div className="sx-hero-badge b1">
               <img src="/av/ravi.jpg" alt="" width="36" height="36" />
               <span>
@@ -327,7 +327,7 @@ function Trust() {
         </h2>
         <div className="tb">
           <figure className="tb-photo">
-            <img src="/sw-maid.jpg" alt="Two Switch housekeeping workers in uniform" loading="lazy" width="1024" height="1024" />
+            <img src="/img/sw-maid.webp" alt="Two Switch housekeeping workers in uniform" loading="lazy" width="820" height="820" />
             <figcaption>
               <b>Verified before the first job</b>
               <span>Every worker is verified before they can accept work.</span>

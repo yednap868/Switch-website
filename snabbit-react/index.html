@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JYBS455RT"></script>
+    <!-- Google tag (gtag.js): queued now, the library loads after the page
+         has painted so it never delays first render. -->
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
         dataLayer.push(arguments)
       }
       gtag('js', new Date())
-
       gtag('config', 'G-6JYBS455RT')
+      addEventListener('load', function () {
+        setTimeout(function () {
+          var g = document.createElement('script')
+          g.async = true
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-6JYBS455RT'
+          document.head.appendChild(g)
+        }, 1500)
+      })
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +54,11 @@
     <link rel="preconnect" href="https://app.switchlocally.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@500;600&family=Noto+Sans+Telugu:wght@400;500&display=swap" />
+    <!-- Fonts load without blocking paint; Hindi/Telugu use the phone's own
+         Noto fonts, which every Android ships. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
     <meta property="og:title" content="Book Staff in Gurugram — Just Ask Jyoti | Switch" />
     <meta property="og:description" content="Staff chahiye? Bas boliye. Book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers in Gurugram by chatting with Jyoti. ₹0 to post, ₹99 only when a worker says yes." />
     <meta property="og:url" content="https://switchlocally.com/" />
