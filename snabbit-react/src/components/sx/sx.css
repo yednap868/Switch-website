@@ -2926,3 +2926,122 @@ img.sx-av {
     grid-column: 1 / -1;
   }
 }
+
+img.sx-jy {
+  display: block;
+  object-fit: cover;
+  background: var(--g-soft);
+}
+
+/* ── Meet Jyoti ───────────────────────────────────── */
+.mj {
+  overflow: hidden;
+}
+.mj-in {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .mj-in {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+}
+.mj-photo {
+  position: relative;
+  margin: 0;
+  justify-self: center;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 520 / 760;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #f4f4f4;
+  box-shadow: 0 40px 90px rgba(5, 150, 105, 0.18);
+}
+.mj-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+.mj-bubble {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 20px 20px 20px 6px;
+  background: color-mix(in srgb, #ffffff 94%, transparent);
+  backdrop-filter: blur(8px);
+  color: #0e1220;
+  font-size: 15px;
+  line-height: 1.45;
+  box-shadow: 0 16px 40px rgba(14, 18, 32, 0.16);
+}
+.mj-bubble b {
+  color: #047857;
+}
+.mj-live {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0e1220;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(14, 18, 32, 0.12);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mj-bubble {
+    animation: sx-float 6s ease-in-out infinite;
+  }
+  .mj-live .sx-live-dot {
+    animation: sx-pulse 1.8s ease-in-out infinite;
+  }
+}
+@keyframes sx-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+.mj-caps {
+  display: grid;
+  gap: 10px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .mj-caps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.mj-caps li {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+.mj-caps b {
+  display: block;
+  font-size: 15.5px;
+}
+.mj-caps small {
+  display: block;
+  margin-top: 2px;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.mj-caps .sx-ti {
+  flex: none;
+}

@@ -162,6 +162,64 @@ function Reviews() {
   )
 }
 
+/* Meet Jyoti — the face of the app. Her capabilities are the real ones. */
+function MeetJyoti() {
+  const caps = [
+    { i: 'cal', t: 'Staff book karna', d: 'Hourly shifts — role, day, time, rate, address, one question at a time.' },
+    { i: 'building', t: 'Full-time hiring', d: 'Monthly salary, duty hours, food/stay — she finds and confirms.' },
+    { i: 'phone', t: 'Workers ko alert', d: 'App ring + WhatsApp to the nearest verified workers, live.' },
+    { i: 'msg', t: 'Aapke sawaal', d: 'Pricing, OTP, payments — ask her anything, any time.' },
+  ]
+  return (
+    <section className="sx-sec mj" id="jyoti" aria-labelledby="mj-h">
+      <div className="sx-wrap mj-in">
+        <figure className="mj-photo">
+          <img src="/img/jyoti.webp" alt="Jyoti, Switch’s AI agent, wearing a headset" width="520" height="951" loading="lazy" />
+          <div className="mj-bubble">
+            <p>
+              Namaste! 👋 Main hoon <b>Jyoti</b>, Switch ki AI agent. Aapki kaise madad kar sakti hoon?
+            </p>
+          </div>
+          <span className="mj-live">
+            <span className="sx-live-dot" aria-hidden="true" /> Online · 24×7
+          </span>
+        </figure>
+        <div>
+          <p className="sx-eyebrow">Meet Jyoti</p>
+          <h2 id="mj-h" className="sx-h2">
+            Your Switch AI agent. She does the running around<span className="sx-dot">.</span>
+          </h2>
+          <p className="sx-lead">
+            Jyoti talks to you in Hindi, Hinglish, English or Telugu, asks only what she needs, and works the
+            phones for you — so you never chase a worker again.
+          </p>
+          <ul className="mj-caps">
+            {caps.map((c) => (
+              <li key={c.t}>
+                <span className="sx-ti" aria-hidden="true">
+                  <Icon name={c.i} />
+                </span>
+                <span>
+                  <b>{c.t}</b>
+                  <small>{c.d}</small>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div className="sx-btns">
+            <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
+              Talk to Jyoti <Icon name="arrow" />
+            </a>
+            <a className="sx-btn ghost" href="#how">
+              See how it works
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function How() {
   return (
     <section className="sx-sec" id="how" aria-labelledby="sx-how-h">
@@ -480,6 +538,7 @@ export default function SwitchHome() {
       <main id="sx-main">
         <Hero />
         <Brands />
+        <MeetJyoti />
         <How />
         <Pricing />
         <Network />
