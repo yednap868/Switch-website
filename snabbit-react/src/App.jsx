@@ -95,7 +95,7 @@ function HomeHead() {
     url: 'https://switchlocally.com',
     logo: 'https://switchlocally.com/favicon-512.png',
     slogan: 'Staff chahiye? Bas boliye.',
-    description: 'Switch is a staffing app for Gurugram: businesses and homes book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers by chatting with Jyoti, an AI assistant, in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts; the fare goes to the worker.',
+    description: 'Switch is a staffing app for Gurugram: businesses and homes book cooks, kitchen helpers, housekeeping, waiters, utility staff and picker-packers by chatting with Jyoti, the Switch assistant, in Hindi, Hinglish, English or Telugu. ₹0 to post, ₹99 only after a worker accepts; the fare goes to the worker.',
     knowsAbout: ['Staffing in Gurgaon', 'Hiring cooks', 'Kitchen helpers', 'Housekeeping staff', 'Waiters', 'Utility staff', 'Picker and packer jobs', 'Blue-collar jobs in Gurugram'],
     areaServed: { '@type': 'City', name: 'Gurugram' },
     contactPoint: {
