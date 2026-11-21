@@ -10,6 +10,10 @@ const SERVICES = [
   { id: 'security-guard', name: 'Security Guard' },
   { id: 'store-helper', name: 'Store Helper' },
   { id: 'factory-warehouse', name: 'Factory / Warehouse' },
+  { id: 'kitchen-helper', name: 'Kitchen Helper' },
+  { id: 'waiter', name: 'Waiter' },
+  { id: 'utility-staff', name: 'Utility Staff' },
+  { id: 'picker-packer', name: 'Picker & Packer' },
 ]
 
 export const SERVICE_LIST = SERVICES.map(s => ({
