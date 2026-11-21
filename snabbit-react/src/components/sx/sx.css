@@ -2580,3 +2580,349 @@ img.sx-av {
 .rd-feed li.busy em {
   color: var(--muted);
 }
+
+/* ── cost calculator ──────────────────────────────── */
+.cc {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 24px;
+}
+@media (min-width: 860px) {
+  .cc {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    align-items: center;
+  }
+  .cc-head,
+  .cc-note {
+    grid-column: 1 / -1;
+  }
+  .cc-bar {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+  }
+  .cc-out {
+    grid-column: 2;
+    grid-row: 3 / span 2;
+  }
+}
+.cc-head b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+}
+.cc-head small {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.cc-row {
+  display: grid;
+  gap: 8px;
+  font-size: 14.5px;
+}
+.cc-row span {
+  display: flex;
+  justify-content: space-between;
+}
+.cc-row b {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+}
+.cc-row input {
+  width: 100%;
+  accent-color: var(--g);
+}
+.cc-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--line);
+}
+.cc-bar .w {
+  background: var(--g);
+  transition: width 0.25s;
+}
+.cc-bar .s {
+  flex: 1;
+  background: var(--ink);
+}
+.cc-out {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+.cc-out div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14.5px;
+}
+.cc-out dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 22px;
+}
+.cc-out .tot {
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-weight: 600;
+}
+.cc-out .tot dd {
+  font-size: 28px;
+}
+.cc-out i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+.cc-out i.w {
+  background: var(--g);
+}
+.cc-out i.s {
+  background: var(--ink);
+}
+.cc-note {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+/* ── trust bento ──────────────────────────────────── */
+.tb {
+  display: grid;
+  gap: 12px;
+  margin-top: 36px;
+}
+@media (min-width: 720px) {
+  .tb {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .tb {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .tb-photo {
+    grid-row: span 2;
+  }
+}
+.tb-photo {
+  position: relative;
+  margin: 0;
+  min-height: 320px;
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.tb-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+}
+.tb-photo figcaption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+.tb-photo figcaption span {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.tb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.tb-card > b {
+  font-size: 16.5px;
+}
+.tb-card p {
+  font-size: 14.5px;
+  color: var(--muted);
+}
+.tb-otp {
+  background: #0e1220;
+  border-color: #0e1220;
+  color: #f2f3ef;
+}
+.tb-otp small {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a3a8b4;
+}
+.tb-otp p {
+  color: #a3a8b4;
+}
+.tb-digits {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 10px;
+}
+.tb-digits span {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 56px;
+  border-radius: 12px;
+  background: #059669;
+  font-family: var(--serif);
+  font-size: 28px;
+}
+.tb-route {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  margin-bottom: 8px;
+}
+.tb-route .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.tb-route .a {
+  background: var(--g);
+  box-shadow: 0 0 0 5px var(--g-soft);
+}
+.tb-route .b {
+  background: var(--ink);
+}
+.tb-route .line {
+  flex: 1;
+  height: 0;
+  margin: 0 6px;
+  border-top: 3px dashed var(--g);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tb-route .a {
+    animation: tb-move 3.5s ease-in-out infinite;
+  }
+}
+@keyframes tb-move {
+  0%,
+  10% {
+    transform: translateX(0);
+  }
+  90%,
+  100% {
+    transform: translateX(160px);
+  }
+}
+.tb-stars {
+  color: #f59e0b;
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.tb-wa {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: #dcf8c6;
+  color: #0e1220;
+  font-size: 13px;
+}
+.tb-wa small {
+  font-size: 11px;
+  color: #4b5563;
+}
+.tb-call:hover {
+  border-color: var(--g);
+}
+.tb-call u {
+  color: var(--g-ink);
+  font-weight: 600;
+}
+
+/* ── final CTA band ───────────────────────────────── */
+.fc {
+  padding: 72px 0;
+  background:
+    radial-gradient(600px 300px at 85% 50%, rgba(5, 150, 105, 0.12), transparent 70%),
+    var(--card2);
+  border-top: 1px solid var(--line);
+}
+.fc-in {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .fc-in {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+.fc .sx-h2 {
+  max-width: none;
+  font-size: clamp(36px, 7vw, 64px);
+}
+.fc-qr {
+  display: none;
+  gap: 16px;
+  justify-content: flex-end;
+}
+@media (min-width: 900px) {
+  .fc-qr {
+    display: flex;
+  }
+}
+.fc-qr a {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  color: #0e1220;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.fc-qr img {
+  width: 132px;
+  height: 132px;
+}
+
+/* support strip spans the whole bento on desktop */
+@media (min-width: 1000px) {
+  .tb-call {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    column-gap: 16px;
+  }
+  .tb-call p {
+    margin: 0;
+  }
+}
+@media (min-width: 720px) and (max-width: 999px) {
+  .tb-call {
+    grid-column: 1 / -1;
+  }
+}

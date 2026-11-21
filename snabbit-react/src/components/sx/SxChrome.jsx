@@ -76,13 +76,15 @@ export function SxFooter({ title, primary, secondary, directory, className = '' 
   return (
     <footer className={`sx-foot ${className}`}>
       <div className="sx-wrap">
-        <div className="sx-foot-cta">
-          <h2 className="sx-h2">{title}</h2>
-          <div className="sx-btns">
-            {primary}
-            {secondary}
+        {title && (
+          <div className="sx-foot-cta">
+            <h2 className="sx-h2">{title}</h2>
+            <div className="sx-btns">
+              {primary}
+              {secondary}
+            </div>
           </div>
-        </div>
+        )}
         <div className="sx-foot-grid">
           <div>
             <Link to="/" className="sx-logo">

@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom'
 import Icon from '../ui/Icon.jsx'
 import PhoneChat from './PhoneChat.jsx'
 import Radar from './Radar.jsx'
-import { APP_URL, PHONE, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
+import { APP_URL, APPLE_URL, PHONE, PLAY_URL, WHATSAPP_URL, trackWhatsApp } from '../../data/site.js'
+import CostCalc from './CostCalc.jsx'
 import { SxHeader } from './SxChrome.jsx'
 import Footer from '../chrome/Footer.jsx'
-import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES, TRUST } from '../../data/switchHome.js'
+import { FAQS, LANG_LINES_EMPLOYER as LANG_LINES } from '../../data/switchHome.js'
 import HowSteps from './HowSteps.jsx'
 import { BRANDS, REVIEWS, REVIEW_VIDEOS } from '../../data/homeContent.js'
 import './sx.css'
@@ -242,6 +243,7 @@ function Pricing() {
             </a>
           </article>
         </div>
+        <CostCalc />
       </div>
     </section>
   )
@@ -323,20 +325,100 @@ function Trust() {
         <h2 id="sx-t-h" className="sx-h2">
           Built for trust, from the first hello<span className="sx-dot">.</span>
         </h2>
-        <div className="sx-trust">
-          {TRUST.map((x) => (
-            <div key={x.t} className="sx-card sx-trust-i">
-              <span className="sx-ti" aria-hidden="true">
-                <Icon name={x.i} />
-              </span>
-              <h3>{x.t}</h3>
-              <p>{x.d}</p>
+        <div className="tb">
+          <figure className="tb-photo">
+            <img src="/sw-maid.jpg" alt="Two Switch housekeeping workers in uniform" loading="lazy" width="1024" height="1024" />
+            <figcaption>
+              <b>Verified before the first job</b>
+              <span>Every worker is verified before they can accept work.</span>
+            </figcaption>
+          </figure>
+          <div className="tb-card tb-otp">
+            <small>Start OTP</small>
+            <div className="tb-digits" aria-label="Example OTP 4 7 1 9">
+              {'4719'.split('').map((d, k) => (
+                <span key={k}>{d}</span>
+              ))}
             </div>
-          ))}
+            <p>The job starts only when you share this code — then the timer runs.</p>
+          </div>
+          <div className="tb-card tb-track">
+            <div className="tb-route" aria-hidden="true">
+              <span className="dot a" />
+              <span className="line" />
+              <span className="dot b" />
+            </div>
+            <b>Live tracking</b>
+            <p>See the worker on the way to your door.</p>
+          </div>
+          <div className="tb-card tb-rate">
+            <span className="tb-stars" aria-hidden="true">
+              ★★★★★
+            </span>
+            <b>Ratings both ways</b>
+            <p>You rate the worker, the worker rates you. Good work rises.</p>
+          </div>
+          <div className="tb-card tb-inv">
+            <div className="tb-wa" aria-hidden="true">
+              <small>WhatsApp · Switch</small>
+              <span>Invoice · Cook · 4 hrs</span>
+              <b>Booking fee ₹99 ✓</b>
+            </div>
+            <b>Invoice on WhatsApp</b>
+            <p>A clean invoice for every booking.</p>
+          </div>
+          <a className="tb-card tb-call" href={`tel:${PHONE}`}>
+            <span className="sx-ti" aria-hidden="true">
+              <Icon name="phone" />
+            </span>
+            <b>A real person to call</b>
+            <p>
+              Support on <u>87968 94500</u> whenever something isn’t right.
+            </p>
+          </a>
         </div>
-        <a className="sx-support" href={`tel:${PHONE}`}>
-          <Icon name="phone" /> Support: <b>87968 94500</b>
-        </a>
+      </div>
+    </section>
+  )
+}
+
+/* Closing band: app QR codes for desktop visitors, buttons on phones. */
+function FinalCta() {
+  return (
+    <section className="fc" aria-labelledby="fc-h">
+      <div className="sx-wrap fc-in">
+        <div>
+          <h2 id="fc-h" className="sx-h2">
+            Staff chahiye? Bas boliye<span className="sx-dot">.</span>
+          </h2>
+          <p className="sx-lead">
+            Download the Switch app and tell Jyoti what you need. ₹0 to post — ₹99 only when someone says yes.
+          </p>
+          <div className="sx-btns">
+            <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
+              Book staff <Icon name="arrow" />
+            </a>
+            <a
+              className="sx-btn ghost"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackWhatsApp('Home final')}
+            >
+              WhatsApp us
+            </a>
+          </div>
+        </div>
+        <div className="fc-qr" aria-label="Scan to download the Switch app">
+          <a href={PLAY_URL} target="_blank" rel="noreferrer">
+            <img src="/qr-android.svg" alt="QR code: Switch on Google Play" width="132" height="132" loading="lazy" />
+            <span>Android</span>
+          </a>
+          <a href={APPLE_URL} target="_blank" rel="noreferrer">
+            <img src="/qr-iphone.svg" alt="QR code: Switch on the App Store" width="132" height="132" loading="lazy" />
+            <span>iPhone</span>
+          </a>
+        </div>
       </div>
     </section>
   )
@@ -405,8 +487,9 @@ export default function SwitchHome() {
         <Languages />
         <Trust />
         <Faq />
+        <FinalCta />
       </main>
-      <Footer />
+      <Footer cta={false} />
     </div>
   )
 }

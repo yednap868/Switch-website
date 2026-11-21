@@ -8,14 +8,16 @@ import { INDUSTRY_LINKS, SERVICE_LIST } from '../../data/siteIndex.js'
 import { APP_URL } from '../../data/site.js'
 import '../sx/sx.css'
 
-export default function Footer() {
+export default function Footer({ cta = true }) {
   return (
     <SxFooter
       className="sx-tok"
       title={
+        cta && (
         <>
           Staff chahiye? Bas boliye<span className="sx-dot">.</span>
         </>
+        )
       }
       primary={
         <a className="sx-btn" href={APP_URL} target="_blank" rel="noreferrer">
