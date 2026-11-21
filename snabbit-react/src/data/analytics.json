@@ -1,0 +1,716 @@
+{
+  "generatedAt": "2026-11-21T08:19:13.658Z",
+  "days": 30,
+  "totals": {
+    "pageViews": 3833,
+    "requests": 67818,
+    "aiAssistantVisits": 429,
+    "aiCrawlerVisits": 1206,
+    "searchCrawlerVisits": 3425,
+    "googleReferrals": 858
+  },
+  "pageViewsDaily": [
+    {
+      "date": "2026-10-22",
+      "n": 143
+    },
+    {
+      "date": "2026-10-23",
+      "n": 84
+    },
+    {
+      "date": "2026-10-24",
+      "n": 64
+    },
+    {
+      "date": "2026-10-25",
+      "n": 44
+    },
+    {
+      "date": "2026-10-26",
+      "n": 69
+    },
+    {
+      "date": "2026-10-27",
+      "n": 89
+    },
+    {
+      "date": "2026-10-28",
+      "n": 59
+    },
+    {
+      "date": "2026-10-29",
+      "n": 52
+    },
+    {
+      "date": "2026-10-30",
+      "n": 52
+    },
+    {
+      "date": "2026-10-31",
+      "n": 95
+    },
+    {
+      "date": "2026-11-01",
+      "n": 51
+    },
+    {
+      "date": "2026-11-02",
+      "n": 63
+    },
+    {
+      "date": "2026-11-03",
+      "n": 125
+    },
+    {
+      "date": "2026-11-04",
+      "n": 86
+    },
+    {
+      "date": "2026-11-05",
+      "n": 214
+    },
+    {
+      "date": "2026-11-06",
+      "n": 68
+    },
+    {
+      "date": "2026-11-07",
+      "n": 71
+    },
+    {
+      "date": "2026-11-08",
+      "n": 90
+    },
+    {
+      "date": "2026-11-09",
+      "n": 166
+    },
+    {
+      "date": "2026-11-10",
+      "n": 162
+    },
+    {
+      "date": "2026-11-11",
+      "n": 79
+    },
+    {
+      "date": "2026-11-12",
+      "n": 135
+    },
+    {
+      "date": "2026-11-13",
+      "n": 127
+    },
+    {
+      "date": "2026-11-14",
+      "n": 139
+    },
+    {
+      "date": "2026-11-15",
+      "n": 103
+    },
+    {
+      "date": "2026-11-16",
+      "n": 128
+    },
+    {
+      "date": "2026-11-17",
+      "n": 132
+    },
+    {
+      "date": "2026-11-18",
+      "n": 166
+    },
+    {
+      "date": "2026-11-19",
+      "n": 125
+    },
+    {
+      "date": "2026-11-20",
+      "n": 804
+    },
+    {
+      "date": "2026-11-21",
+      "n": 48
+    }
+  ],
+  "requestsDaily": [
+    {
+      "date": "2026-10-22",
+      "n": 4128
+    },
+    {
+      "date": "2026-10-23",
+      "n": 2678
+    },
+    {
+      "date": "2026-10-24",
+      "n": 1131
+    },
+    {
+      "date": "2026-10-25",
+      "n": 959
+    },
+    {
+      "date": "2026-10-26",
+      "n": 1470
+    },
+    {
+      "date": "2026-10-27",
+      "n": 2207
+    },
+    {
+      "date": "2026-10-28",
+      "n": 1630
+    },
+    {
+      "date": "2026-10-29",
+      "n": 1455
+    },
+    {
+      "date": "2026-10-30",
+      "n": 1444
+    },
+    {
+      "date": "2026-10-31",
+      "n": 3523
+    },
+    {
+      "date": "2026-11-01",
+      "n": 1583
+    },
+    {
+      "date": "2026-11-02",
+      "n": 1926
+    },
+    {
+      "date": "2026-11-03",
+      "n": 2315
+    },
+    {
+      "date": "2026-11-04",
+      "n": 1782
+    },
+    {
+      "date": "2026-11-05",
+      "n": 1935
+    },
+    {
+      "date": "2026-11-06",
+      "n": 1240
+    },
+    {
+      "date": "2026-11-07",
+      "n": 1793
+    },
+    {
+      "date": "2026-11-08",
+      "n": 1026
+    },
+    {
+      "date": "2026-11-09",
+      "n": 3357
+    },
+    {
+      "date": "2026-11-10",
+      "n": 3216
+    },
+    {
+      "date": "2026-11-11",
+      "n": 1814
+    },
+    {
+      "date": "2026-11-12",
+      "n": 2383
+    },
+    {
+      "date": "2026-11-13",
+      "n": 1927
+    },
+    {
+      "date": "2026-11-14",
+      "n": 1805
+    },
+    {
+      "date": "2026-11-15",
+      "n": 1166
+    },
+    {
+      "date": "2026-11-16",
+      "n": 1888
+    },
+    {
+      "date": "2026-11-17",
+      "n": 1935
+    },
+    {
+      "date": "2026-11-18",
+      "n": 3977
+    },
+    {
+      "date": "2026-11-19",
+      "n": 3276
+    },
+    {
+      "date": "2026-11-20",
+      "n": 4383
+    },
+    {
+      "date": "2026-11-21",
+      "n": 2466
+    }
+  ],
+  "aiDaily": [
+    {
+      "date": "2026-10-22",
+      "n": 15
+    },
+    {
+      "date": "2026-10-23",
+      "n": 12
+    },
+    {
+      "date": "2026-10-24",
+      "n": 11
+    },
+    {
+      "date": "2026-10-25",
+      "n": 15
+    },
+    {
+      "date": "2026-10-26",
+      "n": 11
+    },
+    {
+      "date": "2026-10-27",
+      "n": 15
+    },
+    {
+      "date": "2026-10-28",
+      "n": 11
+    },
+    {
+      "date": "2026-10-29",
+      "n": 15
+    },
+    {
+      "date": "2026-10-30",
+      "n": 3
+    },
+    {
+      "date": "2026-10-31",
+      "n": 11
+    },
+    {
+      "date": "2026-11-01",
+      "n": 21
+    },
+    {
+      "date": "2026-11-02",
+      "n": 7
+    },
+    {
+      "date": "2026-11-03",
+      "n": 11
+    },
+    {
+      "date": "2026-11-04",
+      "n": 5
+    },
+    {
+      "date": "2026-11-05",
+      "n": 4
+    },
+    {
+      "date": "2026-11-06",
+      "n": 9
+    },
+    {
+      "date": "2026-11-07",
+      "n": 47
+    },
+    {
+      "date": "2026-11-08",
+      "n": 4
+    },
+    {
+      "date": "2026-11-09",
+      "n": 8
+    },
+    {
+      "date": "2026-11-10",
+      "n": 5
+    },
+    {
+      "date": "2026-11-11",
+      "n": 4
+    },
+    {
+      "date": "2026-11-12",
+      "n": 12
+    },
+    {
+      "date": "2026-11-13",
+      "n": 5
+    },
+    {
+      "date": "2026-11-14",
+      "n": 4
+    },
+    {
+      "date": "2026-11-15",
+      "n": 10
+    },
+    {
+      "date": "2026-11-16",
+      "n": 85
+    },
+    {
+      "date": "2026-11-17",
+      "n": 48
+    },
+    {
+      "date": "2026-11-18",
+      "n": 11
+    },
+    {
+      "date": "2026-11-19",
+      "n": 6
+    },
+    {
+      "date": "2026-11-20",
+      "n": 6
+    },
+    {
+      "date": "2026-11-21",
+      "n": 3
+    }
+  ],
+  "topPages": [
+    {
+      "key": "/",
+      "n": 795
+    },
+    {
+      "key": "/staffing-gurgaon",
+      "n": 134
+    },
+    {
+      "key": "/same-day-nanny-gurgaon",
+      "n": 131
+    },
+    {
+      "key": "/cook-gurgaon",
+      "n": 116
+    },
+    {
+      "key": "/japa-maid-gurgaon",
+      "n": 88
+    },
+    {
+      "key": "/partner",
+      "n": 47
+    },
+    {
+      "key": "/app",
+      "n": 46
+    },
+    {
+      "key": "/nanny-gurgaon",
+      "n": 46
+    },
+    {
+      "key": "/nanny-cost-gurgaon",
+      "n": 44
+    },
+    {
+      "key": "/blog",
+      "n": 43
+    },
+    {
+      "key": "/about",
+      "n": 41
+    },
+    {
+      "key": "/same-day-store-helper-gurgaon",
+      "n": 37
+    },
+    {
+      "key": "/factory-warehouse-near-me-gurgaon",
+      "n": 34
+    },
+    {
+      "key": "/security-guard-cost-gurgaon",
+      "n": 34
+    },
+    {
+      "key": "/same-day-factory-warehouse-gurgaon",
+      "n": 30
+    }
+  ],
+  "referrers": [
+    {
+      "key": "www.google.com",
+      "n": 858
+    },
+    {
+      "key": "l.wl.co",
+      "n": 54
+    },
+    {
+      "key": "l.instagram.com",
+      "n": 10
+    },
+    {
+      "key": "www.linkedin.com",
+      "n": 7
+    },
+    {
+      "key": "www.bing.com",
+      "n": 6
+    },
+    {
+      "key": "com.google.android.googlequicksearchbox",
+      "n": 5
+    },
+    {
+      "key": "duckduckgo.com",
+      "n": 3
+    },
+    {
+      "key": "app.notion.com",
+      "n": 2
+    },
+    {
+      "key": "in.search.yahoo.com",
+      "n": 2
+    },
+    {
+      "key": "l.meta.ai",
+      "n": 1
+    }
+  ],
+  "countries": [
+    {
+      "key": "IN",
+      "n": 1445
+    },
+    {
+      "key": "NL",
+      "n": 680
+    },
+    {
+      "key": "US",
+      "n": 579
+    },
+    {
+      "key": "BR",
+      "n": 110
+    },
+    {
+      "key": "DE",
+      "n": 102
+    },
+    {
+      "key": "FI",
+      "n": 82
+    },
+    {
+      "key": "GB",
+      "n": 67
+    },
+    {
+      "key": "CA",
+      "n": 52
+    }
+  ],
+  "botCategories": [
+    {
+      "key": "people",
+      "n": 35310
+    },
+    {
+      "key": "unknown",
+      "n": 15709
+    },
+    {
+      "key": "advertising",
+      "n": 6169
+    },
+    {
+      "key": "search_engine_crawler",
+      "n": 3425
+    },
+    {
+      "key": "search_engine_optimization",
+      "n": 2291
+    },
+    {
+      "key": "preview",
+      "n": 2089
+    },
+    {
+      "key": "ai_crawler",
+      "n": 1206
+    },
+    {
+      "key": "ai_assistant",
+      "n": 429
+    },
+    {
+      "key": "agent",
+      "n": 165
+    },
+    {
+      "key": "accessibility",
+      "n": 2
+    },
+    {
+      "key": "verification",
+      "n": 1
+    }
+  ],
+  "searchBots": [
+    {
+      "key": "googlebot",
+      "n": 1267,
+      "label": "Google"
+    },
+    {
+      "key": "petalbot",
+      "n": 672,
+      "label": "Huawei Petal"
+    },
+    {
+      "key": "exasearchbot",
+      "n": 503,
+      "label": "Exa Search"
+    },
+    {
+      "key": "bingbot",
+      "n": 465,
+      "label": "Bing"
+    },
+    {
+      "key": "baiduspider",
+      "n": 445,
+      "label": "Baidu"
+    },
+    {
+      "key": "googleother",
+      "n": 30,
+      "label": "Google (other)"
+    },
+    {
+      "key": "yandexbot",
+      "n": 30,
+      "label": "Yandex"
+    },
+    {
+      "key": "duckduckbot",
+      "n": 13,
+      "label": "DuckDuckGo"
+    }
+  ],
+  "aiAssistants": [
+    {
+      "key": "oai-searchbot",
+      "n": 273,
+      "label": "ChatGPT Search"
+    },
+    {
+      "key": "perplexitybot",
+      "n": 52,
+      "label": "Perplexity"
+    },
+    {
+      "key": "gpt-actions",
+      "n": 39,
+      "label": "ChatGPT actions"
+    },
+    {
+      "key": "chatgpt-user",
+      "n": 37,
+      "label": "ChatGPT (user)"
+    },
+    {
+      "key": "claude-user",
+      "n": 20,
+      "label": "Claude (user)"
+    },
+    {
+      "key": "exauser",
+      "n": 5,
+      "label": "Exa"
+    },
+    {
+      "key": "duckassistbot",
+      "n": 3,
+      "label": "DuckDuckGo Assist"
+    }
+  ],
+  "aiAssistantPages": [
+    {
+      "key": "/",
+      "n": 76
+    },
+    {
+      "key": "/partner",
+      "n": 8
+    }
+  ],
+  "aiCrawlers": [
+    {
+      "key": "shapbot",
+      "n": 534,
+      "label": "shapbot"
+    },
+    {
+      "key": "amazonbot",
+      "n": 398,
+      "label": "Amazon"
+    },
+    {
+      "key": "meta-webindexer",
+      "n": 150,
+      "label": "meta-webindexer"
+    },
+    {
+      "key": "gptbot",
+      "n": 61,
+      "label": "OpenAI GPTBot"
+    },
+    {
+      "key": "meta-externalagent",
+      "n": 49,
+      "label": "Meta AI"
+    },
+    {
+      "key": "claudebot",
+      "n": 11,
+      "label": "Anthropic ClaudeBot"
+    },
+    {
+      "key": "applebot",
+      "n": 3,
+      "label": "Apple"
+    }
+  ],
+  "notFound": [],
+  "site": {
+    "sitemapUrls": 138,
+    "lighthouse": {
+      "scores": {
+        "performance": 79,
+        "accessibility": 97,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "fcp": "2.5 s",
+      "lcp": "4.2 s",
+      "cls": "0",
+      "tbt": "190 ms"
+    }
+  }
+}

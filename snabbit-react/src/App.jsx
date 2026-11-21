@@ -18,6 +18,7 @@ import {
   SeoPage,
   StaffingPage,
   VerifyPage,
+  AnalyticsPage,
 } from './routes.jsx'
 
 import { INDUSTRY_LINKS, SERVICE_LIST } from './data/siteIndex.js'
@@ -180,6 +181,7 @@ export default function App() {
             <Route key={p.slug} path={`/${p.slug}`} element={<IndustryPage slug={p.slug} />} />
           ))}
           <Route path="/work" element={<WorkerPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
           <Route path="/verify" element={<VerifyPage />} />
           <Route path="/:slug" element={<SeoPage />} />
           <Route path="*" element={<NotFound />} />

@@ -35,6 +35,7 @@ const routes = [
   '/app',
   '/about',
   '/work',
+  '/analytics',
   '/partner',
   '/blog',
   '/terms',

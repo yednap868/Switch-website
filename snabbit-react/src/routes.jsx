@@ -31,8 +31,9 @@ export const LegalPage = page(() => import('./pages/LegalPage.jsx'))
 export const StaffingPage = page(() => import('./pages/StaffingPage.jsx'))
 export const VerifyPage = page(() => import('./pages/VerifyPage.jsx'))
 export const IndustryPage = page(() => import('./pages/IndustryPage.jsx'))
+export const AnalyticsPage = page(() => import('./components/sx/AnalyticsPage.jsx'))
 
-const ALL = [SeoPage, PartnerPage, AboutPage, BlogIndex, BlogPost, AppPage, LegalPage, StaffingPage, VerifyPage, IndustryPage]
+const ALL = [SeoPage, PartnerPage, AboutPage, BlogIndex, BlogPost, AppPage, LegalPage, StaffingPage, VerifyPage, IndustryPage, AnalyticsPage]
 const INDUSTRY_PATHS = new Set(INDUSTRY_LINKS.map((p) => `/${p.slug}`))
 
 /* Mirror of the <Routes> table in App.jsx: which page chunk serves a path. */
@@ -48,6 +49,8 @@ function pageFor(pathname) {
   if (path === '/staffing-gurgaon') return StaffingPage
   if (INDUSTRY_PATHS.has(path)) return IndustryPage
   if (path === '/verify') return VerifyPage
+  if (path === '/analytics') return AnalyticsPage
+  if (path === '/work') return null
   return SeoPage
 }
 
