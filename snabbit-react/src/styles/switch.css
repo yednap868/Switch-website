@@ -1,3 +1,22 @@
+/* Metric-matched fallbacks: while Fraunces/Inter load, Georgia/Arial are
+   scaled to the same width so nothing jumps when the web font swaps in. */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia');
+  size-adjust: 87.3%;
+  ascent-override: 98%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 106.8%;
+  ascent-override: 90.6%;
+  descent-override: 22.6%;
+  line-gap-override: 0%;
+}
+
 /* Switch design system — the website in the Switch employer app's own look.
    Tokens mirror the app (app/globals.css emp-*). Dark is the default; light
    is html[data-theme="light"], set by the header toggle and restored before
@@ -16,8 +35,8 @@
      --f (font) --max (content width) --r (card radius)                        */
 
 :root {
-  --f: 'Inter', 'Noto Sans Devanagari', 'Noto Sans Telugu', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --serif: 'Fraunces', 'Noto Serif Devanagari', Georgia, serif;
+  --f: 'Inter', 'Inter Fallback', 'Noto Sans Devanagari', 'Noto Sans Telugu', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Fraunces', 'Fraunces Fallback', 'Noto Serif Devanagari', Georgia, serif;
   --max: 1200px;
   --gut: clamp(16px, 3.4vw, 40px);
   --r: 22px;
