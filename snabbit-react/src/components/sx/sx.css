@@ -2227,3 +2227,356 @@ img.sx-av {
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* ── offline-world map (Radar) ────────────────────── */
+@media (min-width: 900px) {
+  .sx-net-in {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+}
+.sx-net-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.sx-net-stats b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.sx-net-stats span {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.rd {
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .rd {
+    grid-template-columns: 1.25fr 1fr;
+    align-items: stretch;
+  }
+}
+.rd-map {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.rd-map {
+  min-height: 340px;
+}
+.rd-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+}
+.rd-land {
+  fill: var(--card2);
+}
+.rd-park {
+  fill: var(--g-soft);
+  opacity: 0.9;
+}
+.rd-block {
+  fill: var(--line);
+  opacity: 0.45;
+}
+.rd-roads path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.rd-roads path.major {
+  stroke-width: 11;
+}
+.rd-area {
+  fill: var(--muted);
+  font: 600 10px var(--sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.rd-ring {
+  fill: none;
+  stroke: var(--g);
+  stroke-opacity: 0.18;
+  stroke-dasharray: 3 5;
+}
+.rd-sweep {
+  transform-origin: 200px 200px;
+}
+.rd-far {
+  fill: var(--muted);
+  opacity: 0.35;
+}
+.rd-link {
+  stroke: var(--g);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.55;
+}
+.rd-w.busy .rd-link,
+.rd-w.seen .rd-link {
+  opacity: 0.25;
+}
+.rd-ringbg {
+  fill: var(--card);
+  stroke: var(--line);
+  stroke-width: 2;
+  transition: stroke 0.3s;
+}
+.rd-w image {
+  transition: opacity 0.3s;
+}
+.rd-w.idle image {
+  opacity: 0.45;
+}
+.rd-w.ring .rd-ringbg {
+  stroke: #d97706;
+  stroke-width: 3;
+}
+.rd-w.seen .rd-ringbg {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+.rd-w.yes .rd-ringbg {
+  stroke: var(--g);
+  stroke-width: 3.5;
+}
+.rd-w.busy image {
+  opacity: 0.5;
+}
+.rd-halo {
+  fill: none;
+  stroke: #d97706;
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.rd-tick circle {
+  fill: var(--g);
+  stroke: var(--card);
+  stroke-width: 2;
+}
+.rd-tick path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rd-you circle {
+  fill: #0e1220;
+  stroke: var(--card);
+  stroke-width: 4;
+}
+.rd-you path {
+  fill: #fff;
+}
+.rd-you text {
+  fill: var(--ink);
+  font: 700 12px var(--sans);
+  paint-order: stroke;
+  stroke: var(--card2);
+  stroke-width: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rd-sweep {
+    animation: sx-sweep 4.5s linear infinite;
+  }
+  .rd-halo {
+    animation: sx-halo 0.9s ease-out infinite;
+  }
+  .rd-wa {
+    animation: rd-drop 0.4s ease both;
+  }
+}
+@keyframes rd-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+.rd-wa {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(14, 18, 32, 0.14);
+}
+.rd-wa-ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #25d366;
+  color: #fff;
+}
+.rd-wa-ico .sw-ico {
+  width: 18px;
+  height: 18px;
+}
+.rd-wa small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+.rd-wa b {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+.rd-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rd-job {
+  display: grid;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.rd-job small {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rd-job b {
+  font-size: 15px;
+}
+.rd-status {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.rd-status.ok {
+  background: var(--g-soft);
+  color: var(--g-ink);
+}
+.rd-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+.rd-stats div {
+  padding: 10px 4px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.rd-stats b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.rd-stats i {
+  font-style: normal;
+  font-size: 15px;
+  color: var(--muted);
+}
+.rd-stats small {
+  font-size: 12px;
+  color: var(--muted);
+}
+.rd-stats .g b {
+  color: var(--g);
+}
+.rd-feed {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  min-height: 200px;
+}
+.rd-feed li {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 12px;
+  font-size: 13.5px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rd-feed li {
+    animation: sx-in 0.35s both;
+  }
+}
+.rd-feed li.wait {
+  display: block;
+  color: var(--muted);
+}
+.rd-feed img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.rd-feed b {
+  display: block;
+  line-height: 1.2;
+}
+.rd-feed small {
+  color: var(--muted);
+  font-size: 12px;
+}
+.rd-feed em {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+}
+.rd-feed li.ring {
+  background: var(--amber-soft);
+}
+.rd-feed li.ring em {
+  color: var(--amber);
+}
+.rd-feed li.yes {
+  background: var(--g-soft);
+}
+.rd-feed li.yes em {
+  color: var(--g-ink);
+}
+.rd-feed li.busy em {
+  color: var(--muted);
+}

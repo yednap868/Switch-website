@@ -251,7 +251,7 @@ function Network() {
   return (
     <section className="sx-sec sx-net" id="network" aria-labelledby="sx-net-h">
       <div className="sx-wrap sx-net-in">
-        <div>
+        <div className="sx-net-copy">
           <p className="sx-eyebrow">The best workers aren’t online</p>
           <h2 id="sx-net-h" className="sx-h2">
             See for yourself how Jyoti searches the offline world<span className="sx-dot">.</span>
@@ -272,10 +272,20 @@ function Network() {
               <Icon name="check" /> ₹0 until someone accepts
             </li>
           </ul>
+          <div className="sx-net-stats">
+            <div>
+              <b>20,000+</b>
+              <span>workers on Switch</span>
+            </div>
+            <div>
+              <b>1,500+</b>
+              <span>Gurugram businesses</span>
+            </div>
+          </div>
         </div>
-        <div>
+        <div className="sx-net-viz">
           <Radar />
-          <p className="sx-cap">Illustration — positions aren’t real workers.</p>
+          <p className="sx-cap">Illustration — names and positions are examples.</p>
         </div>
       </div>
     </section>
